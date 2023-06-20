@@ -19,9 +19,12 @@ class ProfileView extends GetView<ProfileController> {
           SliverAppBar(
             toolbarHeight: 0,
             systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: Colors.white, // <-- SEE HERE
-              statusBarIconBrightness: Brightness.dark, //<-- For Android SEE HERE (dark icons)
-              statusBarBrightness: Brightness.light, //<-- For iOS SEE HERE (dark icons)
+              statusBarColor:
+                  Color.fromARGB(255, 255, 255, 255), // <-- SEE HERE
+              statusBarIconBrightness:
+                  Brightness.dark, //<-- For Android SEE HERE (dark icons)
+              statusBarBrightness:
+                  Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(

@@ -1,23 +1,23 @@
+import 'package:a_dokter_register/app/data/componen/publics.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+  final dataRegist = Publics.controller.getDataRegist;
+  final isObscurePass = true.obs;
+  final isObscureConfirmPass = true.obs;
+  final ingatSaya = false.obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
+    ingatSaya.value = dataRegist.value.ingatSaya ?? false;
+    if (ingatSaya.value == true) {
+      usernameController.text = dataRegist.value.email ?? 'demo123@mail.com';
+      passwordController.text =
+          dataRegist.value.password ?? '0134a762b1c7d4acab4a766061b57093';
+    }
     super.onInit();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

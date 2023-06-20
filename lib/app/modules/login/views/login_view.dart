@@ -1,3 +1,6 @@
+import 'package:a_dokter_register/app/data/componen/data_regist_model.dart';
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/model/login_and_regist/local_storage.dart';
 import 'package:a_dokter_register/app/modules/login/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
@@ -6,6 +9,7 @@ import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
+import '../../../data/model/login_and_regist/akses_px.dart';
 import '../../../routes/app_pages.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -17,7 +21,6 @@ class LoginView extends GetView<LoginController> {
   }
 }
 
-
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -25,8 +28,7 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<Login>
-    with SingleTickerProviderStateMixin {
+class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _opacity;
   late Animation<double> _transform;
@@ -44,8 +46,8 @@ class _LoginState extends State<Login>
         curve: Curves.ease,
       ),
     )..addListener(() {
-      setState(() {});
-    });
+        setState(() {});
+      });
 
     _transform = Tween<double>(begin: 2, end: 1).animate(
       CurvedAnimation(
@@ -66,6 +68,7 @@ class _LoginState extends State<Login>
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -73,10 +76,12 @@ class _LoginState extends State<Login>
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.white, // <-- SEE HERE
-          statusBarIconBrightness: Brightness.dark, //<-- For Android SEE HERE (dark icons)
-          statusBarBrightness: Brightness.light, //<-- For iOS SEE HERE (dark icons)
+          statusBarIconBrightness:
+              Brightness.dark, //<-- For Android SEE HERE (dark icons)
+          statusBarBrightness:
+              Brightness.light, //<-- For iOS SEE HERE (dark icons)
         ),
-        title:  Image.asset(
+        title: Image.asset(
           'assets/images/icons/logo.png',
           width: 110,
         ),
@@ -92,105 +97,139 @@ class _LoginState extends State<Login>
             child: Container(
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                // gradient: LinearGradient(
-                //   begin: Alignment.topLeft,
-                //   end: Alignment.bottomRight,
-                //   colors: [
-                //     Color(0xffc9edf8),
-                //     Color(0xffc1edfa),
-                //   ],
-                // ),
-              ),
+                  // gradient: LinearGradient(
+                  //   begin: Alignment.topLeft,
+                  //   end: Alignment.bottomRight,
+                  //   colors: [
+                  //     Color(0xffc9edf8),
+                  //     Color(0xffc1edfa),
+                  //   ],
+                  // ),
+                  ),
               child: Opacity(
                 opacity: _opacity.value,
                 child: Transform.scale(
-                  scale: _transform.value,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 130,
-                      ),
-                      Column(children: [
-                        Padding(padding: EdgeInsets.only(left: 10),
-                      child : Image.asset(
-                        'assets/hero.png',
-                        width: 250,
-                      ),
-                      ),
-                        Text("A-Dokter adalah system management klinik berbasis cloud.",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12)),
-                        SizedBox(
-                          height: 10,
-                        )
-                      ],),
-                    Container(
-                    width: size.width * .9,
-                    height: size.width * 0.8,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(.1),
-                          blurRadius: 90,
-                        ),
-                      ],
-                    ),
+                    scale: _transform.value,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(
-                          'Sign In',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black.withOpacity(.7),
-                          ),
+                        SizedBox(
+                          height: 130,
                         ),
-                        component1(
-                            Icons.email_outlined, 'Email...', false, true),
-                        component1(
-                            Icons.lock_outline, 'Password...', true, false),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            component2(
-                              'LOGIN',
-                              2.6,
-                                  () {
-                                HapticFeedback.lightImpact();
-                                Get.toNamed(Routes.HOME);
-                              },
-                            ),
-                            SizedBox(width: size.width / 25),
-                          ],
-                        ),
-                        InkWell(
-                          onTap: () => showModalBottomSheet(
-
-                            context: context,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(20),
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Image.asset(
+                                'assets/hero.png',
+                                width: 250,
                               ),
                             ),
-                            builder: (context) => buildSheet(),
+                            Text(
+                                "A-Dokter adalah system management klinik berbasis cloud.",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 12)),
+                            SizedBox(
+                              height: 10,
+                            )
+                          ],
+                        ),
+                        Container(
+                          width: size.width * .9,
+                          height: size.width * 0.8,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(.1),
+                                blurRadius: 90,
+                              ),
+                            ],
                           ),
-                          child: RichText(
-                          text: TextSpan(
-                            text: 'Register Akun Baru',
-                            style: TextStyle(
-                              color: Colors.blueAccent,
-                              fontSize: 15,
-                            ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Sign In',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black.withOpacity(.7),
+                                ),
+                              ),
+                              component1(Icons.email_outlined, 'Email...',
+                                  false, true),
+                              component1(Icons.lock_outline, 'Password...',
+                                  true, false),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  component2(
+                                    'LOGIN',
+                                    2.6,
+                                    () async {
+                                      HapticFeedback.lightImpact();
+                                      if (controller.passwordController.text
+                                              .isNotEmpty &&
+                                          controller.passwordController.text
+                                              .isNotEmpty) {
+                                        Get.defaultDialog(
+                                          content:
+                                              const CircularProgressIndicator(),
+                                          title: 'Loading..',
+                                          barrierDismissible: false,
+                                        );
+                                        await LocalStorages.setDataRegist(
+                                            DataRegist(
+                                                ingatSaya: controller
+                                                    .ingatSaya.value));
+                                        AksesPX aksesPX = await API.getAksesPx(
+                                          pass: controller
+                                              .passwordController.text,
+                                          user: controller
+                                              .usernameController.text,
+                                        );
+                                        if (aksesPX.code != 200) {
+                                          Get.snackbar(aksesPX.code.toString(),
+                                              aksesPX.msg.toString());
+                                        } else {
+                                          Get.offAllNamed(Routes.HOME);
+                                        }
+                                      } else {
+                                        Get.snackbar('404',
+                                            'Username dan Password harus di Isi');
+                                      }
+                                    },
+                                  ),
+                                  SizedBox(width: size.width / 25),
+                                ],
+                              ),
+                              InkWell(
+                                onTap: () => showModalBottomSheet(
+                                  context: context,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(20),
+                                    ),
+                                  ),
+                                  builder: (context) => buildSheet(),
+                                ),
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: 'Register Akun Baru',
+                                    style: TextStyle(
+                                      color: Colors.blueAccent,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(),
+                            ],
                           ),
                         ),
-                        ),
-                        SizedBox(),
                       ],
-                    ),
-                  ),
-                  ],)
-                ),
+                    )),
               ),
             ),
           ),
@@ -224,21 +263,27 @@ class _LoginState extends State<Login>
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Padding(padding: EdgeInsets.only(left: 10),
-                      child : Image.asset(
-                        'assets/logo_averin.png',
-                        width: 80,
-                      ),),
-                  Padding(padding: EdgeInsets.only(left: 10),
-                    child : Image.asset(
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Image.asset(
+                      'assets/logo_averin.png',
+                      width: 80,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Image.asset(
                       'assets/logo_ipg.png',
                       width: 80,
-                    ),),
-                  Padding(padding: EdgeInsets.only(left: 10),
-                    child : Image.asset(
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Image.asset(
                       'assets/logo_privy.png',
                       width: 80,
-                    ),),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -273,7 +318,7 @@ class _LoginState extends State<Login>
           hintMaxLines: 1,
           hintText: hintText,
           hintStyle:
-          TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
+              TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
         ),
       ),
     );
@@ -301,35 +346,36 @@ class _LoginState extends State<Login>
     );
   }
 }
+
 Widget buildSheet() {
   return Container(
     height: 220,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(50),
-        color: Colors.transparent,
-      ),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 10,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(50),
+      color: Colors.transparent,
+    ),
+    child: Column(
+      children: [
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: 4,
+          margin: EdgeInsets.only(
+            right: Get.width / 2 - 40,
+            left: Get.width / 2 - 40,
           ),
-          Container(
-            height: 4,
-            margin: EdgeInsets.only(
-              right: Get.width / 2 - 40,
-              left: Get.width / 2 - 40,
-            ),
-            decoration: BoxDecoration(
-              color: Color(0xFFe0e0e0),
-              borderRadius: BorderRadius.circular(10),
-            ),
+          decoration: BoxDecoration(
+            color: Color(0xFFe0e0e0),
+            borderRadius: BorderRadius.circular(10),
           ),
-          SizedBox(
-            height: 30,
-          ),
-          InkWell(
-            onTap: () => Get.toNamed(Routes.REGISTER_DOKTER),
-          child : Container(
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        InkWell(
+          onTap: () => Get.toNamed(Routes.REGISTER_DOKTER),
+          child: Container(
             height: 45,
             width: 305,
             decoration: BoxDecoration(
@@ -357,13 +403,13 @@ Widget buildSheet() {
               ],
             ),
           ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          InkWell(
-            onTap: () => Get.toNamed(Routes.REGISTER_DOSEN),
-          child : Container(
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        InkWell(
+          onTap: () => Get.toNamed(Routes.REGISTER_DOSEN),
+          child: Container(
             height: 45,
             width: 305,
             decoration: BoxDecoration(
@@ -391,13 +437,13 @@ Widget buildSheet() {
               ],
             ),
           ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          InkWell(
-            onTap: () => Get.toNamed(Routes.REGISTER_MAHASISWA),
-            child : Container(
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        InkWell(
+          onTap: () => Get.toNamed(Routes.REGISTER_MAHASISWA),
+          child: Container(
             height: 45,
             width: 305,
             decoration: BoxDecoration(
@@ -425,16 +471,19 @@ Widget buildSheet() {
               ],
             ),
           ),
-          ),
-  ],),);
+        ),
+      ],
+    ),
+  );
 }
+
 class MyBehavior extends ScrollBehavior {
   @override
   Widget buildViewportChrome(
-      BuildContext context,
-      Widget child,
-      AxisDirection axisDirection,
-      ) {
+    BuildContext context,
+    Widget child,
+    AxisDirection axisDirection,
+  ) {
     return child;
   }
 }

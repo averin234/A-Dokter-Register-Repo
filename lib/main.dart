@@ -23,7 +23,7 @@ void main() {
           iconTheme: IconThemeData(color: Colors.black),
         ),
       ),
-      title: "Application",
+      title: "A-Dokter Register",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),

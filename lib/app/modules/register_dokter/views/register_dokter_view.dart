@@ -1,3 +1,5 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/modules/register_dokter/controllers/register_dokter_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
@@ -64,6 +66,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -78,16 +81,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             height: size.height,
             child: Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  // gradient: LinearGradient(
-                  //   begin: Alignment.topLeft,
-                  //   end: Alignment.bottomRight,
-                  //   colors: [
-                  //     Color(0xffFEC37B),
-                  //     Color(0xffFF4184),
-                  //   ],
-                  // ),
-                  ),
+              decoration: BoxDecoration(),
               child: Opacity(
                 opacity: _opacity.value,
                 child: Transform.scale(
@@ -189,23 +183,6 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                     },
                                   ),
                                   SizedBox(width: size.width / 25),
-                                  // Container(
-                                  //   width: size.width / 2.6,
-                                  //   alignment: Alignment.center,
-                                  //   child: RichText(
-                                  //     text: TextSpan(
-                                  //       text: 'Lupa password!',
-                                  //       style: TextStyle(color: Colors.blueAccent),
-                                  //       recognizer: TapGestureRecognizer()
-                                  //         ..onTap = () {
-                                  //           Fluttertoast.showToast(
-                                  //             msg:
-                                  //             'Forgotten password! button pressed',
-                                  //           );
-                                  //         },
-                                  //     ),
-                                  //   ),
-                                  // )
                                 ],
                               ),
                               SizedBox(),
@@ -293,6 +270,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
   Widget component1(
       IconData icon, String hintText, bool isPassword, bool isEmail) {
     Size size = MediaQuery.of(context).size;
+
     return Container(
       height: size.width / 8,
       width: size.width / 1.22,
@@ -354,10 +332,49 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
 
   Widget component2(String string, double width, VoidCallback voidCallback) {
     Size size = MediaQuery.of(context).size;
+    final controller = Get.put(RegisterDokterController());
     return InkWell(
+      onTap: () async {
+        if (controller.namaController.text.isNotEmpty &&
+            controller.emailController.text.isNotEmpty &&
+            controller.nikPasienController.text.isNotEmpty &&
+            controller.jenisKelaminController.text.isNotEmpty &&
+            controller.tglLhrController.text.isNotEmpty &&
+            controller.noTelpController.text.isNotEmpty &&
+            controller.alamatController.text.isNotEmpty &&
+            controller.alergiController.text.isNotEmpty &&
+            controller.golDarahController.text.isNotEmpty &&
+            controller.passwordController.value.text.isNotEmpty) {
+          if (controller.passwordController.value.text ==
+              controller.confirmPassController.value.text) {
+            dynamic daftarPXBaru = await API.postDaftarPxBaruDokter(
+              namaPasien: controller.namaController.text,
+              email: controller.emailController.text,
+              noKtp: controller.nikPasienController.text,
+              jenisKelamin: controller.jenisKelaminController.text,
+              tanggalLahir: controller.tglLhrController.text,
+              noHp: controller.noTelpController.text,
+              alamat: controller.alamatController.text,
+              alergi: controller.alergiController.text,
+              golonganDarah: controller.golDarahController.text,
+              password: controller.passwordController.value.text,
+            );
+            if (daftarPXBaru['code'] != 200) {
+              Get.snackbar(daftarPXBaru['code'].toString(),
+                  daftarPXBaru['msg'].toString());
+            } else {
+              Get.offAllNamed(Routes.HOME);
+            }
+          } else {
+            Get.snackbar(
+                'Gagal Proses', 'Password dan Confirm Password berbeda');
+          }
+        } else {
+          Get.snackbar('title', 'message');
+        }
+      },
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
-      onTap: voidCallback,
       child: Container(
         height: size.width / 8,
         width: size.width / width,
