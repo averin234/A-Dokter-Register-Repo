@@ -59,6 +59,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final controller = Get.put(RegisterMahasiswaController());
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -71,16 +72,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
         child: SingleChildScrollView(
           child: Container(
             alignment: Alignment.center,
-            decoration: BoxDecoration(
-                // gradient: LinearGradient(
-                //   begin: Alignment.topLeft,
-                //   end: Alignment.bottomRight,
-                //   colors: [
-                //     Color(0xffFEC37B),
-                //     Color(0xffFF4184),
-                //   ],
-                // ),
-                ),
+            decoration: BoxDecoration(),
             child: Opacity(
               opacity: _opacity.value,
               child: Transform.scale(
@@ -124,24 +116,34 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                               ),
                             ),
                             SizedBox(),
-                            component1(Icons.account_circle_outlined,
-                                'User name...', false, false),
                             component1(
-                                Icons.email_outlined, 'Email...', false, true),
+                                Icons.account_circle_outlined,
+                                'Nama Lengkap...',
+                                false,
+                                false,
+                                controller.namaController),
+                            component1(Icons.email_outlined, 'Email...', false,
+                                true, controller.emailController),
                             component1(Icons.phone_android_rounded, 'No HP...',
-                                false, false),
-                            component1(Icons.school_rounded, 'Instansi...',
-                                false, false),
-                            component1(Icons.school_outlined,
-                                'No. Induk Mahasiswa...', false, false),
+                                false, false, controller.noTelpController),
+                            component1(Icons.school_rounded, 'Universitas...',
+                                false, false, controller.universitasController),
+                            component1(
+                                Icons.school_outlined,
+                                'No. Induk Mahasiswa...',
+                                false,
+                                false,
+                                controller.noindukmahasiswaController),
                             component1(Icons.school_rounded, 'Falkultas...',
-                                false, false),
-                            component1(Icons.medical_information_rounded,
-                                'Spesialis...', false, false),
-                            component1(Icons.calendar_month_rounded,
-                                'Tahun Masuk...', false, false),
+                                false, false, controller.falkultasController),
+                            component1(
+                                Icons.calendar_month_rounded,
+                                'Tahun Masuk...',
+                                false,
+                                false,
+                                controller.tahunmasukController),
                             component1(Icons.school_outlined, 'Semester...',
-                                false, false),
+                                false, false, controller.semesterController),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -240,8 +242,8 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
     );
   }
 
-  Widget component1(
-      IconData icon, String hintText, bool isPassword, bool isEmail) {
+  Widget component1(IconData icon, String hintText, bool isPassword,
+      bool isEmail, TextEditingController controller) {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.width / 8,
@@ -253,6 +255,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
+        controller: controller,
         style: TextStyle(color: Colors.black.withOpacity(.8)),
         obscureText: isPassword,
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,

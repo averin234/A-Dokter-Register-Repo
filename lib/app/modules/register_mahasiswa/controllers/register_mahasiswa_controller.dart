@@ -13,6 +13,11 @@ class RegisterMahasiswaController extends GetxController {
   final jenisKelaminController = TextEditingController();
   final alergiController = TextEditingController();
   final golDarahController = TextEditingController();
+  final falkultasController = TextEditingController();
+  final universitasController = TextEditingController();
+  final tahunmasukController = TextEditingController();
+  final noindukmahasiswaController = TextEditingController();
+  final semesterController = TextEditingController();
   final passwordController = TextEditingController().obs;
   final confirmPassController = TextEditingController().obs;
   final isObscurePass = true.obs;

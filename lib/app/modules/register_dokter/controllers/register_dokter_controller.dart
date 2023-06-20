@@ -13,6 +13,10 @@ class RegisterDokterController extends GetxController {
   final jenisKelaminController = TextEditingController();
   final alergiController = TextEditingController();
   final golDarahController = TextEditingController();
+  final falkultasController = TextEditingController();
+  final universitasController = TextEditingController();
+  final noindukdosenController = TextEditingController();
+  final noiizindoktenController = TextEditingController();
   final passwordController = TextEditingController().obs;
   final confirmPassController = TextEditingController().obs;
   final isObscurePass = true.obs;

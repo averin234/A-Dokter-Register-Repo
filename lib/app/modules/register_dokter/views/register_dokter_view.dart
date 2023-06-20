@@ -1,5 +1,6 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/modules/register_dokter/controllers/register_dokter_controller.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
@@ -66,7 +67,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
+    final controller = Get.put(RegisterDokterController());
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -101,7 +102,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                         ),
                         Container(
                           width: size.width * .9,
-                          height: size.width * 1.1,
+                          height: size.width * 1.4,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(15),
@@ -161,14 +162,28 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 ),
                               ),
                               SizedBox(),
-                              component1(Icons.account_circle_outlined,
-                                  'Nama Lengkap...', false, false),
+                              component1(
+                                  Icons.account_circle_outlined,
+                                  'Nama Lengkap...',
+                                  false,
+                                  false,
+                                  controller.namaController),
                               component1(Icons.email_outlined, 'Email...',
-                                  false, true),
-                              componentnamber(Icons.phone_android_rounded,
-                                  'No HP...', false, false),
-                              component1(Icons.credit_card_rounded,
-                                  'Surat Izin Praktek...', false, false),
+                                  false, true, controller.emailController),
+                              componentnamber(
+                                  Icons.phone_android_rounded,
+                                  'No HP...',
+                                  false,
+                                  false,
+                                  controller.noTelpController),
+                              componentnamber(
+                                  Icons.credit_card_rounded,
+                                  'Surat Izin Praktek...',
+                                  false,
+                                  false,
+                                  controller.noiizindoktenController),
+                              dropdown(Icons.credit_card_rounded,
+                                  'Spesialisasi...', false, false),
                               SizedBox(),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -267,8 +282,77 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
     );
   }
 
-  Widget component1(
+  Widget dropdown(
       IconData icon, String hintText, bool isPassword, bool isEmail) {
+    Size size = MediaQuery.of(context).size;
+    final List<String> items = [
+      'Item1',
+      'Item2',
+      'Item3',
+      'Item4',
+      'Item5',
+      'Item6',
+      'Item7',
+      'Item8',
+    ];
+    String? selectedValue;
+    return Container(
+      height: size.width / 8,
+      width: size.width / 1.22,
+      alignment: Alignment.center,
+      padding: EdgeInsets.only(right: size.width / 30),
+      decoration: BoxDecoration(
+        color: Colors.black.withOpacity(.05),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton2(
+          isExpanded: true,
+          hint: Row(
+            children: const [
+              SizedBox(
+                width: 4,
+              ),
+              Expanded(
+                child: Text(
+                  'Spesialisasi',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black38,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+          items: items
+              .map((item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(
+                      item,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ))
+              .toList(),
+          value: selectedValue,
+          onChanged: (value) {
+            setState(() {
+              selectedValue = value as String;
+            });
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget component1(IconData icon, String hintText, bool isPassword,
+      bool isEmail, TextEditingController controller) {
     Size size = MediaQuery.of(context).size;
 
     return Container(
@@ -281,6 +365,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
+        controller: controller,
         style: TextStyle(color: Colors.black.withOpacity(.8)),
         obscureText: isPassword,
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
@@ -299,8 +384,8 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
     );
   }
 
-  Widget componentnamber(
-      IconData icon, String hintText, bool isPassword, bool isEmail) {
+  Widget componentnamber(IconData icon, String hintText, bool isPassword,
+      bool isEmail, TextEditingController controller) {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.width / 8,
@@ -312,6 +397,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
+        controller: controller,
         style: TextStyle(color: Colors.black.withOpacity(.8)),
         obscureText: isPassword,
         keyboardType: isEmail ? TextInputType.number : TextInputType.number,

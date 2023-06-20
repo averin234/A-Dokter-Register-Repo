@@ -1,5 +1,7 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/modules/register_dokter/controllers/register_dokter_controller.dart';
 import 'package:a_dokter_register/app/modules/register_dosen/controllers/register_dosen_controller.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
@@ -59,6 +61,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final controller = Get.put(RegisterDosenController());
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -73,16 +76,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
             height: size.height,
             child: Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  // gradient: LinearGradient(
-                  //   begin: Alignment.topLeft,
-                  //   end: Alignment.bottomRight,
-                  //   colors: [
-                  //     Color(0xffFEC37B),
-                  //     Color(0xffFF4184),
-                  //   ],
-                  // ),
-                  ),
+              decoration: BoxDecoration(),
               child: Opacity(
                 opacity: _opacity.value,
                 child: Transform.scale(
@@ -126,18 +120,38 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                               ),
                             ),
                             SizedBox(),
-                            component1(Icons.account_circle_outlined,
-                                'User name...', false, false),
-                            component1(Icons.phone_android_rounded, 'No HP...',
-                                false, false),
-                            componentnamber(Icons.medical_information_rounded,
-                                'Instansi...', false, false),
+                            component1(
+                                Icons.account_circle_outlined,
+                                'Nama Lengkap...',
+                                false,
+                                false,
+                                controller.namaController),
+                            component1(
+                                Icons.account_circle_outlined,
+                                'Email...',
+                                false,
+                                false,
+                                controller.emailController),
+                            componentnamber(
+                                Icons.phone_android_rounded,
+                                'No HP...',
+                                false,
+                                false,
+                                controller.noTelpController),
+                            component1(
+                                Icons.medical_information_rounded,
+                                'Universitas...',
+                                false,
+                                false,
+                                controller.universitasController),
                             component1(Icons.school_rounded, 'Falkultas...',
-                                false, false),
-                            componentnamber(Icons.add_card, 'No Induk Dosen...',
-                                false, false),
-                            component1(Icons.medical_services_rounded,
-                                'Spesialis...', false, false),
+                                false, false, controller.falkultasController),
+                            componentnamber(
+                                Icons.add_card,
+                                'No Induk Dosen...',
+                                false,
+                                false,
+                                controller.noindukdosenController),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -236,8 +250,8 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
     );
   }
 
-  Widget component1(
-      IconData icon, String hintText, bool isPassword, bool isEmail) {
+  Widget component1(IconData icon, String hintText, bool isPassword,
+      bool isEmail, TextEditingController controller) {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.width / 8,
@@ -249,6 +263,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
+        controller: controller,
         style: TextStyle(color: Colors.black.withOpacity(.8)),
         obscureText: isPassword,
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
@@ -267,8 +282,8 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
     );
   }
 
-  Widget componentnamber(
-      IconData icon, String hintText, bool isPassword, bool isEmail) {
+  Widget componentnamber(IconData icon, String hintText, bool isPassword,
+      bool isEmail, TextEditingController controller) {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.width / 8,
@@ -280,6 +295,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
+        controller: controller,
         style: TextStyle(color: Colors.black.withOpacity(.8)),
         obscureText: isPassword,
         keyboardType: isEmail ? TextInputType.number : TextInputType.number,
