@@ -3,23 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisterDosenController extends GetxController {
-  final nikPasienController = TextEditingController();
   final namaController = TextEditingController();
   final emailController = TextEditingController();
   final noTelpController = TextEditingController();
-  final tglLhrController = TextEditingController();
-  final tempatLhrController = TextEditingController();
-  final alamatController = TextEditingController();
-  final jenisKelaminController = TextEditingController();
-  final alergiController = TextEditingController();
-  final golDarahController = TextEditingController();
   final falkultasController = TextEditingController();
   final universitasController = TextEditingController();
   final noindukdosenController = TextEditingController();
-  final passwordController = TextEditingController().obs;
-  final confirmPassController = TextEditingController().obs;
-  final isObscurePass = true.obs;
-  final isObscureConfirmPass = true.obs;
   final gender = [
     Dropdowns(kategori: 'Pria', initialValue: 'L'),
     Dropdowns(kategori: 'Wanita', initialValue: 'P')

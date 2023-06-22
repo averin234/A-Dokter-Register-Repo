@@ -10,6 +10,8 @@ import '../modules/detail_antrian/bindings/detail_tindakan_binding.dart';
 import '../modules/detail_antrian/views/detail_tindakan_view.dart';
 import '../modules/detail_riwayat/bindings/detail_riwayat_binding.dart';
 import '../modules/detail_riwayat/views/detail_riwayat_view.dart';
+import '../modules/dosen/bindings/dosen_binding.dart';
+import '../modules/dosen/views/dosen_view.dart';
 import '../modules/hiss/bindings/hiss_binding.dart';
 import '../modules/hiss/views/hiss_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -22,6 +24,8 @@ import '../modules/isi_tindakan/bindings/isi_tindakan_binding.dart';
 import '../modules/isi_tindakan/views/isi_tindakan_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/mahasiswa/bindings/mahasiswa_binding.dart';
+import '../modules/mahasiswa/views/mahasiswa_view.dart';
 import '../modules/medical_record/bindings/tindakan_binding.dart';
 import '../modules/medical_record/views/tindakan_view.dart';
 import '../modules/pemeriksaan/bindings/pemeriksaan_binding.dart';
@@ -197,6 +201,16 @@ class AppPages {
       name: _Paths.SPLASHSCREEN,
       page: () => SplashscreenView(),
       binding: SplashscreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.MAHASISWA,
+      page: () => const MahasiswaView(),
+      binding: MahasiswaBinding(),
+    ),
+    GetPage(
+      name: _Paths.DOSEN,
+      page: () => const DosenView(),
+      binding: DosenBinding(),
     ),
   ];
 }

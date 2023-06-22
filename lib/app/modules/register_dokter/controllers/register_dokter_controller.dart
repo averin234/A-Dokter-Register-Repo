@@ -3,22 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisterDokterController extends GetxController {
-  final nikPasienController = TextEditingController();
   final namaController = TextEditingController();
   final emailController = TextEditingController();
   final noTelpController = TextEditingController();
-  final tglLhrController = TextEditingController();
-  final tempatLhrController = TextEditingController();
-  final alamatController = TextEditingController();
-  final jenisKelaminController = TextEditingController();
-  final alergiController = TextEditingController();
-  final golDarahController = TextEditingController();
-  final falkultasController = TextEditingController();
-  final universitasController = TextEditingController();
-  final noindukdosenController = TextEditingController();
   final noiizindoktenController = TextEditingController();
-  final passwordController = TextEditingController().obs;
-  final confirmPassController = TextEditingController().obs;
+  final sipController = TextEditingController();
+  final kodeBagianController = TextEditingController();
   final isObscurePass = true.obs;
   final isObscureConfirmPass = true.obs;
   final gender = [
@@ -36,4 +26,10 @@ class RegisterDokterController extends GetxController {
     Dropdowns(kategori: 'O-', initialValue: 'O-'),
     Dropdowns(kategori: 'Belum Diperiksa', initialValue: 'Belum Diperiksa'),
   ];
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+  }
 }

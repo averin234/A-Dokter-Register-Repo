@@ -3,10 +3,8 @@ import 'package:a_dokter_register/app/modules/register_mahasiswa/controllers/reg
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
-import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../routes/app_pages.dart';
 
@@ -27,7 +25,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
     );
 
     _opacity = Tween<double>(begin: 0, end: 1).animate(
@@ -56,6 +54,8 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
     super.dispose();
   }
 
+  int viewId = 1;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -63,124 +63,158 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        brightness: Brightness.dark,
         backgroundColor: Colors.white,
         elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
-      body: ScrollConfiguration(
-        behavior: MyBehavior(),
-        child: SingleChildScrollView(
-          child: Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(),
-            child: Opacity(
-              opacity: _opacity.value,
-              child: Transform.scale(
-                  scale: _transform.value,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 100,
+      body: SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(),
+          child: Opacity(
+            opacity: _opacity.value,
+            child: Transform.scale(
+                scale: _transform.value,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    Image.asset(
+                      'assets/images/icons/logo.png',
+                      width: 160,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: size.width * .9,
+                      height: size.width * 1.9,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(.1),
+                            blurRadius: 90,
+                          ),
+                        ],
                       ),
-                      Image.asset(
-                        'assets/images/icons/logo.png',
-                        width: 160,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: size.width * .9,
-                        height: size.width * 1.9,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(.1),
-                              blurRadius: 90,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const SizedBox(),
+                          Text(
+                            'Register Mahasiswa',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black.withOpacity(.7),
                             ),
-                          ],
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(),
-                            Text(
-                              'Register Mahasiswa',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black.withOpacity(.7),
-                              ),
-                            ),
-                            SizedBox(),
-                            component1(
-                                Icons.account_circle_outlined,
-                                'Nama Lengkap...',
-                                false,
-                                false,
-                                controller.namaController),
-                            component1(Icons.email_outlined, 'Email...', false,
-                                true, controller.emailController),
-                            component1(Icons.phone_android_rounded, 'No HP...',
-                                false, false, controller.noTelpController),
-                            component1(Icons.school_rounded, 'Universitas...',
-                                false, false, controller.universitasController),
-                            component1(
-                                Icons.school_outlined,
-                                'No. Induk Mahasiswa...',
-                                false,
-                                false,
-                                controller.noindukmahasiswaController),
-                            component1(Icons.school_rounded, 'Falkultas...',
-                                false, false, controller.falkultasController),
-                            component1(
-                                Icons.calendar_month_rounded,
-                                'Tahun Masuk...',
-                                false,
-                                false,
-                                controller.tahunmasukController),
-                            component1(Icons.school_outlined, 'Semester...',
-                                false, false, controller.semesterController),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                component2(
-                                  'Register',
-                                  2.6,
-                                  () {
-                                    HapticFeedback.lightImpact();
-                                    Fluttertoast.showToast(
-                                        msg: 'Login button pressed');
+                          ),
+                          const SizedBox(),
+                          component1(
+                              Icons.account_circle_outlined,
+                              'Nama Lengkap...',
+                              false,
+                              false,
+                              controller.namaController),
+                          component1(Icons.email_outlined, 'Email...', false,
+                              true, controller.emailController),
+                          component1(Icons.phone_android_rounded, 'No HP...',
+                              false, false, controller.noTelpController),
+                          component1(Icons.school_rounded, 'Universitas...',
+                              false, false, controller.universitasController),
+                          component1(
+                              Icons.school_outlined,
+                              'No. Induk Mahasiswa...',
+                              false,
+                              false,
+                              controller.noindukmahasiswaController),
+                          component1(Icons.school_rounded, 'Falkultas...',
+                              false, false, controller.falkultasController),
+                          component1(
+                              Icons.calendar_month_rounded,
+                              'Tahun Masuk...',
+                              false,
+                              false,
+                              controller.tahunmasukController),
+                          component1(Icons.school_outlined, 'Semester...',
+                              false, false, controller.semesterController),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                const Text("Jenjang Pendidikan :"),
+                                Radio(
+                                  value: 1,
+                                  groupValue: viewId,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      controller.jenjangController.text = '1';
+                                      viewId = 1;
+                                    });
                                   },
                                 ),
-                                SizedBox(width: size.width / 25),
+                                const Text(
+                                  'S1',
+                                  style: TextStyle(),
+                                ),
+                                Radio(
+                                  value: 2,
+                                  groupValue: viewId,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      controller.jenjangController.text = '2';
+                                      viewId = 2;
+                                    });
+                                  },
+                                ),
+                                const Text(
+                                  'S2',
+                                  style: TextStyle(),
+                                ),
                               ],
                             ),
-                            SizedBox(),
-                            InkWell(
-                              onTap: () => Get.toNamed(Routes.LOGIN),
-                              child: RichText(
-                                text: TextSpan(
-                                    text: 'Kembali ke login',
-                                    style: TextStyle(
-                                      color: Colors.blueAccent,
-                                      fontSize: 15,
-                                    ),
-                                    recognizer: TapGestureRecognizer()),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              component2(
+                                'Register',
+                                2.6,
+                                () {
+                                  HapticFeedback.lightImpact();
+                                  Fluttertoast.showToast(
+                                      msg: 'Login button pressed');
+                                },
                               ),
+                              SizedBox(width: size.width / 25),
+                            ],
+                          ),
+                          const SizedBox(),
+                          InkWell(
+                            onTap: () => Get.toNamed(Routes.LOGIN),
+                            child: RichText(
+                              text: TextSpan(
+                                  text: 'Kembali ke login',
+                                  style: const TextStyle(
+                                    color: Colors.blueAccent,
+                                    fontSize: 15,
+                                  ),
+                                  recognizer: TapGestureRecognizer()),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                    ],
-                  )),
-            ),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                  ],
+                )),
           ),
         ),
       ),
@@ -197,37 +231,37 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
           ],
         ),
         height: 75,
-        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Column(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Text("Powered by"),
-            SizedBox(
+            const Text("Powered by"),
+            const SizedBox(
               height: 10,
             ),
-            Container(
+            SizedBox(
               width: 290,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_averin.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_ipg.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_privy.png',
                       width: 80,
@@ -281,40 +315,32 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
       onTap: () async {
         if (controller.namaController.text.isNotEmpty &&
             controller.emailController.text.isNotEmpty &&
-            controller.nikPasienController.text.isNotEmpty &&
-            controller.jenisKelaminController.text.isNotEmpty &&
-            controller.tglLhrController.text.isNotEmpty &&
+            controller.falkultasController.text.isNotEmpty &&
+            controller.jenjangController.text.isNotEmpty &&
+            controller.noindukmahasiswaController.text.isNotEmpty &&
             controller.noTelpController.text.isNotEmpty &&
-            controller.alamatController.text.isNotEmpty &&
-            controller.alergiController.text.isNotEmpty &&
-            controller.golDarahController.text.isNotEmpty &&
-            controller.passwordController.value.text.isNotEmpty) {
-          if (controller.passwordController.value.text ==
-              controller.confirmPassController.value.text) {
-            dynamic daftarPXBaru = await API.postDaftarPxBaruDokter(
-              namaPasien: controller.namaController.text,
-              email: controller.emailController.text,
-              noKtp: controller.nikPasienController.text,
-              jenisKelamin: controller.jenisKelaminController.text,
-              tanggalLahir: controller.tglLhrController.text,
-              noHp: controller.noTelpController.text,
-              alamat: controller.alamatController.text,
-              alergi: controller.alergiController.text,
-              golonganDarah: controller.golDarahController.text,
-              password: controller.passwordController.value.text,
-            );
-            if (daftarPXBaru['code'] != 200) {
-              Get.snackbar(daftarPXBaru['code'].toString(),
-                  daftarPXBaru['msg'].toString());
-            } else {
-              Get.offAllNamed(Routes.HOME);
-            }
-          } else {
+            controller.semesterController.text.isNotEmpty &&
+            controller.tahunmasukController.text.isNotEmpty &&
+            controller.universitasController.text.isNotEmpty) {
+          final daftarPXBaru = await API.postDaftarPxBaruMahasiswa(
+            email: controller.emailController.text,
+            noHp: controller.noTelpController.text,
+            fakultas: controller.falkultasController.text,
+            jenjang: controller.jenjangController.text,
+            nama: controller.namaController.text,
+            noInduk: controller.noindukmahasiswaController.text,
+            semester: controller.semesterController.text,
+            tahunMasuk: controller.tahunmasukController.text,
+            universitas: controller.universitasController.text,
+          );
+          if (daftarPXBaru.code != 200) {
             Get.snackbar(
-                'Gagal Proses', 'Password dan Confirm Password berbeda');
+                daftarPXBaru.code.toString(), daftarPXBaru.msg.toString());
+          } else {
+            Get.offAllNamed(Routes.LOGIN);
           }
         } else {
-          Get.snackbar('title', 'message');
+          Get.snackbar('404', 'Data Tolong diisi semua');
         }
       },
       highlightColor: Colors.transparent,
@@ -324,25 +350,15 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
         width: size.width / width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Color(0xff4796ff),
+          color: const Color(0xff4796ff),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(
           string,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
     );
-  }
-}
-
-class MyBehavior extends ScrollBehavior {
-  @override
-  Widget buildViewportChrome(
-    BuildContext context,
-    Widget child,
-    AxisDirection axisDirection,
-  ) {
-    return child;
   }
 }

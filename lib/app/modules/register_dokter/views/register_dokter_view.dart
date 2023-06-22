@@ -1,13 +1,11 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/modules/register_dokter/controllers/register_dokter_controller.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:a_dokter_register/app/modules/register_dokter/views/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
-import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../routes/app_pages.dart';
 
@@ -28,7 +26,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
     );
 
     _opacity = Tween<double>(begin: 0, end: 1).animate(
@@ -59,9 +57,6 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
 
   String? selectedValue;
 
-  // Default Radio Button Selected Item When App Starts.
-  String radioButtonItem = 'ONE';
-
   // Group Value for Radio Button.
   int id = 1;
   @override
@@ -71,155 +66,160 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        brightness: Brightness.dark,
         backgroundColor: Colors.white,
         elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
-      body: ScrollConfiguration(
-        behavior: MyBehavior(),
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height: size.height,
-            child: Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(),
-              child: Opacity(
-                opacity: _opacity.value,
-                child: Transform.scale(
-                    scale: _transform.value,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 100,
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: size.height,
+          child: Container(
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(),
+            child: Opacity(
+              opacity: _opacity.value,
+              child: Transform.scale(
+                  scale: _transform.value,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 100,
+                      ),
+                      Image.asset(
+                        'assets/images/icons/logo.png',
+                        width: 160,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        width: size.width * .9,
+                        height: size.width * 1.4,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(.1),
+                              blurRadius: 90,
+                            ),
+                          ],
                         ),
-                        Image.asset(
-                          'assets/images/icons/logo.png',
-                          width: 160,
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          width: size.width * .9,
-                          height: size.width * 1.4,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(.1),
-                                blurRadius: 90,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            const SizedBox(),
+                            Text(
+                              'Register Dokter',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black.withOpacity(.7),
                               ),
-                            ],
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SizedBox(),
-                              Text(
-                                'Register Dokter',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black.withOpacity(.7),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 400,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Radio(
-                                      value: 1,
-                                      groupValue: id,
-                                      onChanged: (val) {
-                                        setState(() {
-                                          radioButtonItem = 'ONE';
-                                          id = 1;
-                                        });
-                                      },
-                                    ),
-                                    Text(
-                                      'Dokter Umum',
-                                      style: new TextStyle(),
-                                    ),
-                                    Radio(
-                                      value: 2,
-                                      groupValue: id,
-                                      onChanged: (val) {
-                                        setState(() {
-                                          radioButtonItem = 'TWO';
-                                          id = 2;
-                                        });
-                                      },
-                                    ),
-                                    Text(
-                                      'Dokter Gigi',
-                                      style: new TextStyle(),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(),
-                              component1(
-                                  Icons.account_circle_outlined,
-                                  'Nama Lengkap...',
-                                  false,
-                                  false,
-                                  controller.namaController),
-                              component1(Icons.email_outlined, 'Email...',
-                                  false, true, controller.emailController),
-                              componentnamber(
-                                  Icons.phone_android_rounded,
-                                  'No HP...',
-                                  false,
-                                  false,
-                                  controller.noTelpController),
-                              componentnamber(
-                                  Icons.credit_card_rounded,
-                                  'Surat Izin Praktek...',
-                                  false,
-                                  false,
-                                  controller.noiizindoktenController),
-                              dropdown(Icons.credit_card_rounded,
-                                  'Spesialisasi...', false, false),
-                              SizedBox(),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  component2(
-                                    'Register',
-                                    2.6,
-                                    () {
-                                      HapticFeedback.lightImpact();
-                                      Fluttertoast.showToast(
-                                          msg: 'Login button pressed');
+                            ),
+                            SizedBox(
+                              width: 400,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  Radio(
+                                    value: 1,
+                                    groupValue: id,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        controller.kodeBagianController.text =
+                                            '010011';
+                                        id = 1;
+                                      });
                                     },
                                   ),
-                                  SizedBox(width: size.width / 25),
+                                  const Text(
+                                    'Dokter Umum',
+                                    style: TextStyle(),
+                                  ),
+                                  Radio(
+                                    value: 2,
+                                    groupValue: id,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        controller.kodeBagianController.text =
+                                            '010001';
+                                        id = 2;
+                                      });
+                                    },
+                                  ),
+                                  const Text(
+                                    'Dokter Gigi',
+                                    style: TextStyle(),
+                                  ),
                                 ],
                               ),
-                              SizedBox(),
-                              InkWell(
-                                onTap: () => Get.toNamed(Routes.LOGIN),
-                                child: RichText(
-                                  text: TextSpan(
-                                      text: 'Kembali ke login',
-                                      style: TextStyle(
-                                        color: Colors.blueAccent,
-                                        fontSize: 15,
-                                      ),
-                                      recognizer: TapGestureRecognizer()),
+                            ),
+                            const SizedBox(),
+                            component1(
+                                Icons.account_circle_outlined,
+                                'Nama Lengkap...',
+                                false,
+                                false,
+                                controller.namaController),
+                            component1(Icons.email_outlined, 'Email...', false,
+                                true, controller.emailController),
+                            componentnamber(
+                                Icons.phone_android_rounded,
+                                'No HP...',
+                                false,
+                                false,
+                                controller.noTelpController),
+                            componentnamber(
+                                Icons.credit_card_rounded,
+                                'Surat Izin Praktek...',
+                                false,
+                                false,
+                                controller.noiizindoktenController),
+                            id != 2
+                                ? dropdown(
+                                    Icons.credit_card_rounded,
+                                    'Spesialisasi...',
+                                    false,
+                                    false,
+                                    controller.kodeBagianController)
+                                : Container(),
+                            const SizedBox(),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                component2(
+                                  'Register',
+                                  2.6,
+                                  () {
+                                    HapticFeedback.lightImpact();
+                                    Fluttertoast.showToast(
+                                        msg: 'Login button pressed');
+                                  },
                                 ),
+                                SizedBox(width: size.width / 25),
+                              ],
+                            ),
+                            const SizedBox(),
+                            InkWell(
+                              onTap: () => Get.toNamed(Routes.LOGIN),
+                              child: RichText(
+                                text: TextSpan(
+                                    text: 'Kembali ke login',
+                                    style: const TextStyle(
+                                      color: Colors.blueAccent,
+                                      fontSize: 15,
+                                    ),
+                                    recognizer: TapGestureRecognizer()),
                               ),
-                              SizedBox(),
-                            ],
-                          ),
+                            ),
+                            const SizedBox(),
+                          ],
                         ),
-                      ],
-                    )),
-              ),
+                      ),
+                    ],
+                  )),
             ),
           ),
         ),
@@ -237,37 +237,37 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
           ],
         ),
         height: 75,
-        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Column(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Text("Powered by"),
-            SizedBox(
+            const Text("Powered by"),
+            const SizedBox(
               height: 10,
             ),
-            Container(
+            SizedBox(
               width: 290,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_averin.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_ipg.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_privy.png',
                       width: 80,
@@ -282,73 +282,27 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
     );
   }
 
-  Widget dropdown(
-      IconData icon, String hintText, bool isPassword, bool isEmail) {
+  Widget dropdown(IconData icon, String hintText, bool isPassword, bool isEmail,
+      TextEditingController controller) {
     Size size = MediaQuery.of(context).size;
-    final List<String> items = [
-      'Item1',
-      'Item2',
-      'Item3',
-      'Item4',
-      'Item5',
-      'Item6',
-      'Item7',
-      'Item8',
-    ];
-    String? selectedValue;
-    return Container(
-      height: size.width / 8,
-      width: size.width / 1.22,
-      alignment: Alignment.center,
-      padding: EdgeInsets.only(right: size.width / 30),
-      decoration: BoxDecoration(
-        color: Colors.black.withOpacity(.05),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton2(
-          isExpanded: true,
-          hint: Row(
-            children: const [
-              SizedBox(
-                width: 4,
-              ),
-              Expanded(
-                child: Text(
-                  'Spesialisasi',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.black38,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
-          ),
-          items: items
-              .map((item) => DropdownMenuItem<String>(
-                    value: item,
-                    child: Text(
-                      item,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ))
-              .toList(),
-          value: selectedValue,
-          onChanged: (value) {
-            setState(() {
-              selectedValue = value as String;
-            });
-          },
-        ),
-      ),
-    );
+    return FutureBuilder(
+        future: API.getPoli(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData &&
+              snapshot.connectionState != ConnectionState.waiting &&
+              snapshot.data != null) {
+            final data = snapshot.data!;
+            return AppTextField(
+              textEditingController: controller,
+              hint: "Cari Dokter/Spesialisasi",
+              isCitySelected: true,
+              lists: data.list!,
+              title: '',
+            );
+          } else {
+            return Container();
+          }
+        });
   }
 
   Widget component1(IconData icon, String hintText, bool isPassword,
@@ -423,40 +377,24 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
       onTap: () async {
         if (controller.namaController.text.isNotEmpty &&
             controller.emailController.text.isNotEmpty &&
-            controller.nikPasienController.text.isNotEmpty &&
-            controller.jenisKelaminController.text.isNotEmpty &&
-            controller.tglLhrController.text.isNotEmpty &&
             controller.noTelpController.text.isNotEmpty &&
-            controller.alamatController.text.isNotEmpty &&
-            controller.alergiController.text.isNotEmpty &&
-            controller.golDarahController.text.isNotEmpty &&
-            controller.passwordController.value.text.isNotEmpty) {
-          if (controller.passwordController.value.text ==
-              controller.confirmPassController.value.text) {
-            dynamic daftarPXBaru = await API.postDaftarPxBaruDokter(
-              namaPasien: controller.namaController.text,
-              email: controller.emailController.text,
-              noKtp: controller.nikPasienController.text,
-              jenisKelamin: controller.jenisKelaminController.text,
-              tanggalLahir: controller.tglLhrController.text,
-              noHp: controller.noTelpController.text,
-              alamat: controller.alamatController.text,
-              alergi: controller.alergiController.text,
-              golonganDarah: controller.golDarahController.text,
-              password: controller.passwordController.value.text,
-            );
-            if (daftarPXBaru['code'] != 200) {
-              Get.snackbar(daftarPXBaru['code'].toString(),
-                  daftarPXBaru['msg'].toString());
-            } else {
-              Get.offAllNamed(Routes.HOME);
-            }
-          } else {
+            controller.kodeBagianController.text.isNotEmpty &&
+            controller.sipController.text.isNotEmpty) {
+          final daftarPXBaru = await API.postDaftarPxBaruDokter(
+            nama: controller.namaController.text,
+            email: controller.emailController.text,
+            noHp: controller.noTelpController.text,
+            kodeBagian: controller.kodeBagianController.text,
+            sip: controller.sipController.text,
+          );
+          if (daftarPXBaru.code != 200) {
             Get.snackbar(
-                'Gagal Proses', 'Password dan Confirm Password berbeda');
+                daftarPXBaru.code.toString(), daftarPXBaru.msg.toString());
+          } else {
+            Get.offAllNamed(Routes.LOGIN);
           }
         } else {
-          Get.snackbar('title', 'message');
+          Get.snackbar('404', 'Data Tolong diisi semua');
         }
       },
       highlightColor: Colors.transparent,
@@ -466,25 +404,15 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         width: size.width / width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Color(0xff4796ff),
+          color: const Color(0xff4796ff),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(
           string,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
     );
-  }
-}
-
-class MyBehavior extends ScrollBehavior {
-  @override
-  Widget buildViewportChrome(
-    BuildContext context,
-    Widget child,
-    AxisDirection axisDirection,
-  ) {
-    return child;
   }
 }

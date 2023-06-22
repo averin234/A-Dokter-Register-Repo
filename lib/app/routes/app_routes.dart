@@ -35,6 +35,8 @@ abstract class Routes {
   static const PERJANJIAN_DOKTER = _Paths.PERJANJIAN_DOKTER;
   static const PRIVYID = _Paths.PRIVYID;
   static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
+  static const MAHASISWA = _Paths.MAHASISWA;
+  static const DOSEN = _Paths.DOSEN;
 }
 
 abstract class _Paths {
@@ -71,4 +73,6 @@ abstract class _Paths {
   static const PERJANJIAN_DOKTER = '/perjanjian-dokter';
   static const PRIVYID = '/privyid';
   static const SPLASHSCREEN = '/splashscreen';
+  static const MAHASISWA = '/mahasiswa';
+  static const DOSEN = '/dosen';
 }

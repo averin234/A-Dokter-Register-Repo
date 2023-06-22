@@ -1,11 +1,11 @@
-class AksesPX {
+class AksesPx {
   int? code;
-  Res? res;
   String? msg;
+  Res? res;
 
-  AksesPX({this.code, this.res});
+  AksesPx({this.code, this.res, this.msg});
 
-  AksesPX.fromJson(Map<String, dynamic> json) {
+  AksesPx.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     msg = json['msg'];
     res = json['res'] != null ? Res.fromJson(json['res']) : null;
@@ -23,23 +23,23 @@ class AksesPX {
 }
 
 class Res {
-  String? namaPasien;
-  String? noKtp;
-  String? fotoPasien;
+  int? id;
+  int? kodeKelompok;
+  String? namaKelompok;
 
-  Res({this.namaPasien, this.noKtp, this.fotoPasien});
+  Res({this.id, this.kodeKelompok, this.namaKelompok});
 
   Res.fromJson(Map<String, dynamic> json) {
-    namaPasien = json['nama_pasien'];
-    noKtp = json['no_ktp'];
-    fotoPasien = json['foto_pasien'];
+    id = json['id'];
+    kodeKelompok = json['kode_kelompok'];
+    namaKelompok = json['nama_kelompok'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['nama_pasien'] = namaPasien;
-    data['no_ktp'] = noKtp;
-    data['foto_pasien'] = fotoPasien;
+    data['id'] = id;
+    data['kode_kelompok'] = kodeKelompok;
+    data['nama_kelompok'] = namaKelompok;
     return data;
   }
 }

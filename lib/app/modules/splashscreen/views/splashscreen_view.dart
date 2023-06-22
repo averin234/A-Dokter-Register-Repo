@@ -1,9 +1,12 @@
 import 'dart:async';
-import 'package:a_dokter_register/app/modules/login/views/login_view.dart';
+import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class SplashscreenView extends StatefulWidget {
+  const SplashscreenView({super.key});
+
   @override
   _SplashscreenViewState createState() => _SplashscreenViewState();
 }
@@ -23,7 +26,7 @@ class _SplashscreenViewState extends State<SplashscreenView>
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 3));
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
 
     animation1 = Tween<double>(begin: 40, end: 20).animate(CurvedAnimation(
         parent: _controller, curve: Curves.fastLinearToSlowEaseIn))
@@ -35,23 +38,21 @@ class _SplashscreenViewState extends State<SplashscreenView>
 
     _controller.forward();
 
-    Timer(Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 2), () {
       setState(() {
         _fontSize = 1.06;
       });
     });
 
-    Timer(Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 2), () {
       setState(() {
         _containerSize = 2;
         _containerOpacity = 1;
       });
     });
 
-    Timer(Duration(seconds: 4), () {
-      setState(() {
-        Navigator.pushReplacement(context, PageTransition(LoginView()));
-      });
+    Timer(const Duration(seconds: 4), () {
+      Get.offNamed(Routes.LOGIN);
     });
   }
 
@@ -63,8 +64,8 @@ class _SplashscreenViewState extends State<SplashscreenView>
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -73,11 +74,11 @@ class _SplashscreenViewState extends State<SplashscreenView>
           Column(
             children: [
               AnimatedContainer(
-                  duration: Duration(milliseconds: 2000),
+                  duration: const Duration(milliseconds: 2000),
                   curve: Curves.fastLinearToSlowEaseIn,
-                  height: _height / _fontSize),
+                  height: height / _fontSize),
               AnimatedOpacity(
-                duration: Duration(milliseconds: 1000),
+                duration: const Duration(milliseconds: 1000),
                 opacity: _textOpacity,
                 child: Text(
                   'A-Dokter',
@@ -92,14 +93,14 @@ class _SplashscreenViewState extends State<SplashscreenView>
           ),
           Center(
             child: AnimatedOpacity(
-              duration: Duration(milliseconds: 2000),
+              duration: const Duration(milliseconds: 2000),
               curve: Curves.fastLinearToSlowEaseIn,
               opacity: _containerOpacity,
               child: AnimatedContainer(
-                duration: Duration(milliseconds: 2000),
+                duration: const Duration(milliseconds: 2000),
                 curve: Curves.fastLinearToSlowEaseIn,
-                height: _width / _containerSize,
-                width: _width / _containerSize,
+                height: width / _containerSize,
+                width: width / _containerSize,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -117,28 +118,4 @@ class _SplashscreenViewState extends State<SplashscreenView>
       ),
     );
   }
-}
-
-class PageTransition extends PageRouteBuilder {
-  final Widget page;
-
-  PageTransition(this.page)
-      : super(
-          pageBuilder: (context, animation, anotherAnimation) => page,
-          transitionDuration: Duration(milliseconds: 2000),
-          transitionsBuilder: (context, animation, anotherAnimation, child) {
-            animation = CurvedAnimation(
-              curve: Curves.fastLinearToSlowEaseIn,
-              parent: animation,
-            );
-            return Align(
-              alignment: Alignment.bottomCenter,
-              child: SizeTransition(
-                sizeFactor: animation,
-                child: page,
-                axisAlignment: 0,
-              ),
-            );
-          },
-        );
 }
