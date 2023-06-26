@@ -69,6 +69,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.white, // <-- SEE HERE
           statusBarIconBrightness:

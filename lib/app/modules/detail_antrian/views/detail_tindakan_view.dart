@@ -1,3 +1,4 @@
+import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/surat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -99,9 +100,10 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                     //   height: 10,
                     // ),
                     // PlanningRadiologi(),
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
+                    Surat(),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Planning(),
                     SizedBox(
                       height: 40,

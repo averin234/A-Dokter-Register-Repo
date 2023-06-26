@@ -105,7 +105,7 @@ class _PlanningState extends State<Planning> {
                   ],
                 ),
                 SizedBox(
-                  width: 60,
+                  width: 20,
                 ),
                 Column(
                   children: [
@@ -138,6 +138,45 @@ class _PlanningState extends State<Planning> {
                       height: 10,
                     ),
                     Text("Tindakan")
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Column(
+                  children: [
+                    InkWell(
+                      onTap: () => Get.toNamed(Routes.CETAKAN),
+                      child: Container(
+                        width: 80.0,
+                        height: 80.0,
+                        decoration: BoxDecoration(
+                          image: new DecorationImage(
+                            image: new AssetImage("assets/print.png"),
+                            fit: BoxFit.fill,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(.1),
+                                blurRadius: 3,
+                                spreadRadius: 1)
+                          ],
+                          border: Border.all(
+                            width: 1.5,
+                            color: Colors.white,
+                          ),
+                          borderRadius: BorderRadius.circular(40.0),
+                        ),
+                        padding: EdgeInsets.all(5),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text("Cetakan")
                   ],
                 ),
                 SizedBox(

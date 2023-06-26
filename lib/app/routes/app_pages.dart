@@ -4,6 +4,8 @@ import '../modules/Jadwal_Dokter/bindings/jadwal_dokter_binding.dart';
 import '../modules/Jadwal_Dokter/views/jadwal_dokter_view.dart';
 import '../modules/antrian_pasien/bindings/antrian_pasien_binding.dart';
 import '../modules/antrian_pasien/views/antrian_pasien_view.dart';
+import '../modules/cetakan/bindings/cetakan_binding.dart';
+import '../modules/cetakan/views/cetakan_view.dart';
 import '../modules/cv/bindings/cv_binding.dart';
 import '../modules/cv/views/cv_view.dart';
 import '../modules/detail_antrian/bindings/detail_tindakan_binding.dart';
@@ -211,6 +213,11 @@ class AppPages {
       name: _Paths.DOSEN,
       page: () => const DosenView(),
       binding: DosenBinding(),
+    ),
+    GetPage(
+      name: _Paths.CETAKAN,
+      page: () => CetakanView(),
+      binding: CetakanBinding(),
     ),
   ];
 }
