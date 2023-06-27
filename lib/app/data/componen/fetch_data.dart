@@ -25,6 +25,18 @@ class API {
       '$_baseUrl/post-daftar-px-baru-dosen.php';
   static const _postDaftarPxBaruMahasiswa =
       '$_baseUrl/post-daftar-px-baru-mahasiswa.php';
+  // baru di tambah kan
+  static const _getAntrianPasien = '$_baseUrl/get-antrian-pasien.php';
+  static const _getDokterDetail = '$_baseUrl/get-dokter-detail.php';
+  static const _getJadwalDokter = '$_baseUrl/get-jadwal-dokter.php';
+  static const _getRiwayatPraktek = '$_baseUrl/get-riwayat-praktek.php';
+  static const _getDataKota = '$_baseUrl/get-data-kota.php';
+  static const _getID = '$_baseUrl/delete-jadwal-dokter.php';
+  static const _getEditDokter = '$_baseUrl/edit-dokter.php';
+  static const _getNamaPenyakit = '$_baseUrl/get-nama-penyakit.php';
+  static const _getHISS = '$_baseUrl/get-soap-hiss.php';
+  static const _getTindakan = '$_baseUrl/get-tindakan-px.php';
+  static const _getVitalSign = '$_baseUrl/get-vital-sign-px.php';
 
   static Future<Token> getToken() async {
     var response = await Dio().post(
@@ -37,6 +49,410 @@ class API {
     final data = jsonDecode(response.data);
     final obj = Token.fromJson(data);
     await LocalStorages.setToken(obj);
+    return obj;
+  }
+
+  static Future<dynamic> getVitalSign({
+    required String no_mr,
+    required String no_registrasi,
+    required String no_kunjungan,
+  }) async {
+    var token = await getToken();
+    final data = {
+      "no_mr": no_mr,
+      "no_registrasi": no_registrasi,
+      "no_kunjungan": no_kunjungan,
+    };
+    var response = await Dio().post(
+      _getVitalSign,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = AksesPx.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    } else {
+      Get.back();
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<dynamic> getTindakan({
+    required String kode_bagian,
+  }) async {
+    var token = await getToken();
+    final data = {"kode_bagian": kode_bagian};
+    var response = await Dio().post(
+      _getTindakan,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = AksesPx.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    } else {
+      Get.back();
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<dynamic> getHISS({
+    required String ID,
+  }) async {
+    var token = await getToken();
+    final data = {"ID": ID};
+    var response = await Dio().post(
+      _getHISS,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = AksesPx.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    } else {
+      Get.back();
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<dynamic> getNamaPenyakit({
+    required String src_penyakit,
+  }) async {
+    var token = await getToken();
+    final data = {"src_penyakit": src_penyakit};
+    var response = await Dio().post(
+      _getNamaPenyakit,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = AksesPx.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    } else {
+      Get.back();
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<dynamic> getEditDokter({
+    required String kode_dokter,
+    required String nama,
+    required String nik,
+    required String tgl_lhr,
+    required String id_spesialisasi,
+    required String id_status_dokter,
+    required String kode_bagian,
+    required String sip,
+    required String provinsi,
+    required String kota,
+    required String telp,
+    required String email,
+    required String alamat,
+    required String foto_ktp,
+    required String foto_dokter,
+  }) async {
+    var token = await getToken();
+    final data = {
+      "kode_dokter": kode_dokter,
+      "nama": nama,
+      "nik": nik,
+      "tgl_lhr": tgl_lhr,
+      "id_spesialisasi": id_spesialisasi,
+      "id_status_dokter": id_status_dokter,
+      "kode_bagian": kode_bagian,
+      "sip": sip,
+      "provinsi": provinsi,
+      "kota": kota,
+      "telp": telp,
+      "email": email,
+      "alamat": alamat,
+      "foto_ktp": foto_ktp,
+      "foto_dokter": foto_dokter,
+    };
+    var response = await Dio().post(
+      _getEditDokter,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = AksesPx.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    } else {
+      Get.back();
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<dynamic> getID({
+    required String id,
+  }) async {
+    var token = await getToken();
+    final data = {"id": id};
+    var response = await Dio().post(
+      _getID,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = AksesPx.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    } else {
+      Get.back();
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<dynamic> getDataKota({
+    required String id,
+  }) async {
+    var token = await getToken();
+    final data = {"id": id};
+    var response = await Dio().post(
+      _getDataKota,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = AksesPx.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    } else {
+      Get.back();
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<dynamic> getRiwayatPraktek({
+    required String kode_dokter,
+  }) async {
+    var token = await getToken();
+    final data = {"kode_dokter": kode_dokter};
+    var response = await Dio().post(
+      _getRiwayatPraktek,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = AksesPx.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    } else {
+      Get.back();
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<dynamic> getJadwalDokter({
+    required String kode_dokter,
+  }) async {
+    var token = await getToken();
+    final data = {"kode_dokter": kode_dokter};
+    var response = await Dio().post(
+      _getJadwalDokter,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = AksesPx.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    } else {
+      Get.back();
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<dynamic> getDokterDetail({
+    required String kode_dokter,
+  }) async {
+    var token = await getToken();
+    final data = {"kode_dokter": kode_dokter};
+    var response = await Dio().post(
+      _getDokterDetail,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = AksesPx.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    } else {
+      Get.back();
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<dynamic> getAntrianPasien(
+      {required String tanggal,
+      required String kode_dokter,
+      required String jenis_layanan}) async {
+    var token = await getToken();
+    final data = {
+      "tanggal": tanggal,
+      "jenis_layanan": jenis_layanan,
+      "kode_dokter": kode_dokter
+    };
+    var response = await Dio().post(
+      _getAntrianPasien,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = AksesPx.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    } else {
+      Get.back();
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
     return obj;
   }
 
