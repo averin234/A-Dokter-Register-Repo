@@ -194,8 +194,6 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                   2.6,
                                   () {
                                     HapticFeedback.lightImpact();
-                                    Fluttertoast.showToast(
-                                        msg: 'Login button pressed');
                                   },
                                 ),
                                 SizedBox(width: size.width / 25),

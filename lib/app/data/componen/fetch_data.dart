@@ -652,7 +652,7 @@ class API {
   }
 
   static Future<Poli> getPoli() async {
-    var token = LocalStorages.getToken;
+    var token = await getToken();
     var data = {};
     var response = await Dio().post(
       _getPoli,
