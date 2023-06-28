@@ -55,9 +55,7 @@ class ProfileView extends GetView<ProfileController> {
           ),
           // Other Sliver Widgets
           SliverList(
-            delegate: SliverChildListDelegate([
-              CardSettingAkun(),
-            ]),
+            delegate: SliverChildListDelegate([]),
           ),
         ],
       ),

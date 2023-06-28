@@ -17,7 +17,9 @@ class LoginView extends GetView<LoginController> {
 }
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _LoginState createState() => _LoginState();
@@ -27,6 +29,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _opacity;
   late Animation<double> _transform;
+  bool isPassword = true;
 
   @override
   void initState() {
@@ -150,10 +153,14 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                 color: Colors.black.withOpacity(.7),
                               ),
                             ),
-                            component1(Icons.email_outlined, 'Email...', false,
+                            component(Icons.email_outlined, 'Email...', false,
                                 true, controller.usernameController),
-                            component1(Icons.lock_outline, 'Password...', true,
-                                false, controller.passwordController),
+                            component1(
+                                Icons.lock_outline,
+                                'Password...',
+                                isPassword,
+                                false,
+                                controller.passwordController),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -286,8 +293,13 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget component1(IconData icon, String hintText, bool isPassword,
-      bool isEmail, TextEditingController controller) {
+  Widget component(
+    IconData icon,
+    String hintText,
+    bool isPassword,
+    bool isEmail,
+    TextEditingController controller,
+  ) {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.width / 8,
@@ -304,15 +316,55 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
         obscureText: isPassword,
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
         decoration: InputDecoration(
-          prefixIcon: Icon(
-            icon,
-            color: Colors.black.withOpacity(.7),
-          ),
+          border: InputBorder.none,
+          hintMaxLines: 1,
+          hintText: hintText,
+        ),
+      ),
+    );
+  }
+
+  Widget component1(
+    IconData icon,
+    String hintText,
+    bool isPassword,
+    bool isEmail,
+    TextEditingController controller,
+  ) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      height: size.width / 8,
+      width: size.width / 1.22,
+      alignment: Alignment.center,
+      padding: EdgeInsets.only(right: size.width / 30),
+      decoration: BoxDecoration(
+        color: Colors.black.withOpacity(.05),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: TextField(
+        controller: controller,
+        style: TextStyle(color: Colors.black.withOpacity(.8)),
+        obscureText: isPassword,
+        keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
+        decoration: InputDecoration(
           border: InputBorder.none,
           hintMaxLines: 1,
           hintText: hintText,
           hintStyle:
               TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
+          suffixIcon: IconButton(
+            icon: Icon(
+              // Based on passwordVisible state choose the icon
+              isPassword ? Icons.visibility : Icons.visibility_off,
+              color: Theme.of(context).primaryColorDark,
+            ),
+            onPressed: () {
+              // Update the state i.e. toogle the state of passwordVisible variable
+              setState(() {
+                isPassword = !isPassword;
+              });
+            },
+          ),
         ),
       ),
     );
