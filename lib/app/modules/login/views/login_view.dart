@@ -30,6 +30,18 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   late Animation<double> _opacity;
   late Animation<double> _transform;
   bool isPassword = true;
+  final textFieldFocusNode = FocusNode();
+  bool _obscured = false;
+
+  void _toggleObscured() {
+    setState(() {
+      _obscured = !_obscured;
+      if (textFieldFocusNode.hasPrimaryFocus)
+        return; // If focus is on text field, dont unfocus
+      textFieldFocusNode.canRequestFocus =
+          false; // Prevents focus if tap on eye
+    });
+  }
 
   @override
   void initState() {
@@ -319,6 +331,11 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
           border: InputBorder.none,
           hintMaxLines: 1,
           hintText: hintText,
+          prefixIcon: Icon(
+            Icons.email_rounded,
+            size: 24,
+            color: Colors.grey,
+          ),
         ),
       ),
     );
@@ -344,26 +361,31 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
       child: TextField(
         controller: controller,
         style: TextStyle(color: Colors.black.withOpacity(.8)),
-        obscureText: isPassword,
-        keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
+        obscureText: _obscured,
+        keyboardType: TextInputType.visiblePassword,
+        focusNode: textFieldFocusNode,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintMaxLines: 1,
           hintText: hintText,
           hintStyle:
               TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
-          suffixIcon: IconButton(
-            icon: Icon(
-              // Based on passwordVisible state choose the icon
-              isPassword ? Icons.visibility : Icons.visibility_off,
-              color: Theme.of(context).primaryColorDark,
+          prefixIcon: Icon(
+            Icons.lock_rounded,
+            size: 24,
+            color: Colors.grey,
+          ),
+          suffixIcon: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
+            child: GestureDetector(
+              onTap: _toggleObscured,
+              child: Icon(
+                _obscured
+                    ? Icons.visibility_rounded
+                    : Icons.visibility_off_rounded,
+                size: 24,
+              ),
             ),
-            onPressed: () {
-              // Update the state i.e. toogle the state of passwordVisible variable
-              setState(() {
-                isPassword = !isPassword;
-              });
-            },
           ),
         ),
       ),

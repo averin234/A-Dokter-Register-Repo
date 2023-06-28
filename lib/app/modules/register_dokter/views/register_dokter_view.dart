@@ -135,7 +135,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                     },
                                   ),
                                   const Text(
-                                    'Dokter Umum',
+                                    'Dokter',
                                     style: TextStyle(),
                                   ),
                                   Radio(
