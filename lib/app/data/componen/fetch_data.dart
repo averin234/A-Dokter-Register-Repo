@@ -503,7 +503,8 @@ class API {
       required String kodeBagian}) async {
     var token = await getToken();
     final data = {
-      "nama_pasien": nama,
+      "nama": nama,
+      "no_hp": noHp,
       "email": email,
       "sip": sip,
       "kode_bagian": kodeBagian

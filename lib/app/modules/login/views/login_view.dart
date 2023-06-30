@@ -31,7 +31,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   late Animation<double> _transform;
   bool isPassword = true;
   final textFieldFocusNode = FocusNode();
-  bool _obscured = false;
+  bool _obscured = true;
 
   void _toggleObscured() {
     setState(() {
@@ -381,8 +381,8 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
               onTap: _toggleObscured,
               child: Icon(
                 _obscured
-                    ? Icons.visibility_rounded
-                    : Icons.visibility_off_rounded,
+                    ? Icons.visibility_off_rounded
+                    : Icons.visibility_rounded,
                 size: 24,
               ),
             ),
