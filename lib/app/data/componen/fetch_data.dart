@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:a_dokter_register/app/data/componen/data_regist_model.dart';
+import 'package:a_dokter_register/app/data/model/list_data.dart';
 import 'package:a_dokter_register/app/data/model/login_and_regist/akses_px.dart';
 import 'package:a_dokter_register/app/data/model/login_and_regist/local_storage.dart';
 import 'package:a_dokter_register/app/data/model/login_and_regist/token.dart';
@@ -81,12 +82,6 @@ class API {
         obj.code.toString(),
         obj.msg.toString(),
       );
-    } else {
-      Get.back();
-      Get.snackbar(
-        obj.code.toString(),
-        obj.msg.toString(),
-      );
     }
     return obj;
   }
@@ -114,8 +109,29 @@ class API {
         obj.code.toString(),
         obj.msg.toString(),
       );
-    } else {
-      Get.back();
+    }
+    return obj;
+  }
+
+  static Future<ListData> getSpesialisasi({
+    required String kode_bagian,
+  }) async {
+    var token = await getToken();
+    final data = {};
+    var response = await Dio().post(
+      _getSpesialisasi,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
         obj.msg.toString(),
@@ -147,12 +163,6 @@ class API {
         obj.code.toString(),
         obj.msg.toString(),
       );
-    } else {
-      Get.back();
-      Get.snackbar(
-        obj.code.toString(),
-        obj.msg.toString(),
-      );
     }
     return obj;
   }
@@ -176,12 +186,6 @@ class API {
     final obj = AksesPx.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
-      Get.snackbar(
-        obj.code.toString(),
-        obj.msg.toString(),
-      );
-    } else {
-      Get.back();
       Get.snackbar(
         obj.code.toString(),
         obj.msg.toString(),
@@ -243,12 +247,6 @@ class API {
         obj.code.toString(),
         obj.msg.toString(),
       );
-    } else {
-      Get.back();
-      Get.snackbar(
-        obj.code.toString(),
-        obj.msg.toString(),
-      );
     }
     return obj;
   }
@@ -272,12 +270,6 @@ class API {
     final obj = AksesPx.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
-      Get.snackbar(
-        obj.code.toString(),
-        obj.msg.toString(),
-      );
-    } else {
-      Get.back();
       Get.snackbar(
         obj.code.toString(),
         obj.msg.toString(),
@@ -309,12 +301,6 @@ class API {
         obj.code.toString(),
         obj.msg.toString(),
       );
-    } else {
-      Get.back();
-      Get.snackbar(
-        obj.code.toString(),
-        obj.msg.toString(),
-      );
     }
     return obj;
   }
@@ -338,12 +324,6 @@ class API {
     final obj = AksesPx.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
-      Get.snackbar(
-        obj.code.toString(),
-        obj.msg.toString(),
-      );
-    } else {
-      Get.back();
       Get.snackbar(
         obj.code.toString(),
         obj.msg.toString(),
@@ -375,12 +355,6 @@ class API {
         obj.code.toString(),
         obj.msg.toString(),
       );
-    } else {
-      Get.back();
-      Get.snackbar(
-        obj.code.toString(),
-        obj.msg.toString(),
-      );
     }
     return obj;
   }
@@ -404,12 +378,6 @@ class API {
     final obj = AksesPx.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
-      Get.snackbar(
-        obj.code.toString(),
-        obj.msg.toString(),
-      );
-    } else {
-      Get.back();
       Get.snackbar(
         obj.code.toString(),
         obj.msg.toString(),
@@ -442,12 +410,6 @@ class API {
     final obj = AksesPx.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
-      Get.snackbar(
-        obj.code.toString(),
-        obj.msg.toString(),
-      );
-    } else {
-      Get.back();
       Get.snackbar(
         obj.code.toString(),
         obj.msg.toString(),
@@ -500,6 +462,7 @@ class API {
       required String email,
       required String noHp,
       required String sip,
+      required String kodeSpesialis,
       required String kodeBagian}) async {
     var token = await getToken();
     final data = {
@@ -507,7 +470,8 @@ class API {
       "no_hp": noHp,
       "email": email,
       "sip": sip,
-      "kode_bagian": kodeBagian
+      "kode_bagian": kodeBagian,
+      "kode_spesialis": kodeSpesialis
     };
     var response = await Dio().post(
       _postDaftarPxBaruDokter,

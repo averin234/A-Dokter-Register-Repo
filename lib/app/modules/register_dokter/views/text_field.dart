@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../data/model/login_and_regist/poli.dart';
+import '../../../data/model/list_data.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController textEditingController;
@@ -44,14 +44,14 @@ class AppTextField extends StatelessWidget {
                             foregroundColor: Colors.black,
                             padding: const EdgeInsets.symmetric(vertical: 20)),
                         child: Text(
-                          e.namaBagian!,
+                          e.nama!,
                           style: GoogleFonts.nunito(
                             fontSize: 17.0,
                           ),
                           textAlign: TextAlign.center,
                         ),
                         onPressed: () {
-                          textEditingController.text = e.kodeBagian!;
+                          textEditingController.text = e.kode!;
                           Get.back();
                         },
                       ),
