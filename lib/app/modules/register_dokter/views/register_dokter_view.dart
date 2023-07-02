@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -185,14 +184,12 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 false,
                                 false,
                                 controller.sipController),
-                            id != 2
-                                ? dropdown(
-                                    Icons.credit_card_rounded,
-                                    'Spesialisasi...',
-                                    false,
-                                    false,
-                                    controller.kodeBagianController)
-                                : Container(),
+                            dropdown(
+                                Icons.credit_card_rounded,
+                                'Spesialisasi...',
+                                false,
+                                false,
+                                controller.spesialisController),
                             const SizedBox(),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -290,9 +287,11 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
 
   Widget dropdown(IconData icon, String hintText, bool isPassword, bool isEmail,
       TextEditingController controller) {
+    final control = Get.put(RegisterDokterController());
     Size size = MediaQuery.of(context).size;
     return FutureBuilder(
-        future: API.getPoli(),
+        future:
+            API.getSpesialisasi(kode_bagian: control.kodeBagianController.text),
         builder: (context, snapshot) {
           if (snapshot.hasData &&
               snapshot.connectionState != ConnectionState.waiting &&
@@ -397,6 +396,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             noHp: controller.noTelpController.text,
             kodeBagian: controller.kodeBagianController.text,
             sip: controller.sipController.text,
+            kodeSpesialis: controller.spesialisController.text,
           );
           if (daftarPXBaru.code != 200) {
             Get.snackbar(
@@ -404,7 +404,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
           } else {
             showModalBottomSheet(
               context: context,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(20),
                 ),
@@ -444,7 +444,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -454,14 +454,14 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Pedaftaran Register Dokter Berhasil",
                   style: TextStyle(
@@ -469,7 +469,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -485,7 +485,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                       ),
                     ),
                     children: <Widget>[
-                      Text(
+                      const Text(
                           "Silahkan cek Email yang sudah anda daftarkan untuk mendapatkan akses akun A-Dokter ",
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -497,21 +497,21 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             InkWell(
               onTap: () => _launchUrl('https://mail.google.com/'),
               child: Container(
                 height: 45,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 56, 229, 77),
+                  color: const Color.fromARGB(255, 56, 229, 77),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       "Silahkan Periksa Email",
                       style: TextStyle(
@@ -523,7 +523,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

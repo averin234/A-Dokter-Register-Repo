@@ -9,6 +9,7 @@ class RegisterDokterController extends GetxController {
   final noiizindoktenController = TextEditingController();
   final sipController = TextEditingController();
   final kodeBagianController = TextEditingController();
+  final spesialisController = TextEditingController();
   final isObscurePass = true.obs;
   final isObscureConfirmPass = true.obs;
   final gender = [
