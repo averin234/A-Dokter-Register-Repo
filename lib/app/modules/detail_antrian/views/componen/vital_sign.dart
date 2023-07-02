@@ -88,7 +88,7 @@ class _VitalSignState extends State<VitalSign> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Edit Vital Sign",
+                          "Tambah Vital Sign",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

@@ -63,9 +63,15 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.white, // <-- SEE HERE
+          statusBarIconBrightness:
+              Brightness.dark, //<-- For Android SEE HERE (dark icons)
+          statusBarBrightness:
+              Brightness.light, //<-- For iOS SEE HERE (dark icons)
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
-        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       body: SingleChildScrollView(
         child: Container(
