@@ -1,12 +1,5 @@
-import 'package:a_dokter_register/app/modules/Jadwal_Dokter/controllers/jadwal_dokter_controller.dart';
-import 'package:a_dokter_register/app/modules/isi_icd_10/views/componen/form_icd_10.dart';
-import 'package:a_dokter_register/app/modules/isi_icd_10/views/componen/hasil_icd_10.dart';
-import 'package:a_dokter_register/app/modules/isi_resep/views/componen/form_isi_resep.dart';
-import 'package:a_dokter_register/app/modules/isi_resep/views/componen/hasil_resep.dart';
-import 'package:a_dokter_register/app/modules/isi_tindakan/controllers/isi_tindakan_controller.dart';
-import 'package:a_dokter_register/app/modules/isi_tindakan/views/componen/form_isi_tindakan.dart';
-import 'package:a_dokter_register/app/modules/isi_tindakan/views/componen/hasil_tindakan.dart';
-import 'package:a_dokter_register/app/modules/isi_tindakan/views/componen/nama_pemeriksa.dart';
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -42,7 +35,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => showModalBottomSheet(
           context: context,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(20),
             ),
@@ -50,37 +43,37 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
           builder: (context) => buildSheet(),
         ),
         elevation: 0,
+        backgroundColor: Colors.tealAccent,
+        foregroundColor: Colors.black,
         child: Container(
           height: 70,
           width: 70,
           decoration: BoxDecoration(
             color: Colors.transparent,
-            borderRadius: BorderRadius.all(Radius.circular(50)),
+            borderRadius: const BorderRadius.all(Radius.circular(50)),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 3,
                 blurRadius: 3,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
-        backgroundColor: Colors.tealAccent,
-        foregroundColor: Colors.black,
       ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -93,13 +86,14 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_circle_left_rounded,
                 size: 40,
               ),
-              color: Color.fromARGB(255, 192, 192, 192),
+              color: const Color.fromARGB(255, 192, 192, 192),
             ),
-            title: Text("Atur Jadwal", style: TextStyle(color: Colors.black)),
+            title: const Text("Atur Jadwal",
+                style: TextStyle(color: Colors.black)),
             bottom: AppBar(
               toolbarHeight: 0,
               automaticallyImplyLeading: false,
@@ -110,22 +104,40 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                Column(
-                  children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 375),
-                    childAnimationBuilder: (widget) => ScaleAnimation(
-                      child: SlideAnimation(
-                        child: widget,
-                      ),
-                    ),
-                    children: <Widget>[
-                      SizedBox(
-                        height: 20,
-                      ),
-                      CardJadwal(),
-                    ],
-                  ),
-                ),
+                FutureBuilder(
+                    future: API.getJadwalDokter(
+                        kode_dokter:
+                            Publics.controller.getDataRegist.value.kode ?? ''),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData &&
+                          snapshot.connectionState != ConnectionState.waiting &&
+                          snapshot.data != null) {
+                        final data = snapshot.data!.jadwal ?? [];
+                        return data.isEmpty
+                            ? Text(snapshot.data!.msg!)
+                            : Column(
+                                children:
+                                    AnimationConfiguration.toStaggeredList(
+                                        duration:
+                                            const Duration(milliseconds: 375),
+                                        childAnimationBuilder: (widget) =>
+                                            ScaleAnimation(
+                                              child: SlideAnimation(
+                                                child: widget,
+                                              ),
+                                            ),
+                                        children: data
+                                            .map(
+                                              (e) => CardJadwal(jadwal: e),
+                                            )
+                                            .toList()),
+                              );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    }),
               ],
             ),
           ),
@@ -142,7 +154,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -152,14 +164,14 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Tambah Jadwal",
                   style: TextStyle(
@@ -167,7 +179,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -183,33 +195,34 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                       ),
                     ),
                     children: <Widget>[
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Interval *",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.only(left: 10),
+                              margin: const EdgeInsets.only(left: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border:
+                                    Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: TextFormField(
                                 keyboardType: TextInputType.text,
                                 textInputAction: TextInputAction.done,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   enabledBorder: InputBorder.none,
@@ -223,41 +236,43 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
-                          Text('Menit'),
-                          SizedBox(
+                          const Text('Menit'),
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Jam Mulai *",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin:
+                                  const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border:
+                                    Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -314,12 +329,14 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin:
+                                  const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border:
+                                    Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -374,37 +391,39 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Jam Akhir *",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin:
+                                  const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border:
+                                    Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -461,12 +480,14 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin:
+                                  const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border:
+                                    Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -521,21 +542,21 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Hari Dokter Masuk",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 17)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
@@ -549,7 +570,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Senin",
                                 style:
@@ -564,7 +585,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Selasa",
                                 style:
@@ -579,7 +600,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Rabu",
                                 style: TextStyle(
@@ -595,7 +616,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Kamis",
                                 style: TextStyle(
@@ -615,7 +636,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Sabtu",
                                 style:
@@ -630,7 +651,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Minggu",
                                 style:
@@ -643,7 +664,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             InkWell(
@@ -651,12 +672,12 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                 height: 45,
                 width: 145,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 56, 229, 77),
+                  color: const Color.fromARGB(255, 56, 229, 77),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       "Tambah",
                       style: TextStyle(
@@ -668,7 +689,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

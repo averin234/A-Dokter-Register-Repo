@@ -1,11 +1,11 @@
-class AksesPx {
+class PostUbahPassword {
   int? code;
   String? msg;
   Res? res;
 
-  AksesPx({this.code, this.res, this.msg});
+  PostUbahPassword({this.code, this.res, this.msg});
 
-  AksesPx.fromJson(Map<String, dynamic> json) {
+  PostUbahPassword.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     msg = json['msg'];
     res = json['res'] != null ? Res.fromJson(json['res']) : null;
@@ -23,23 +23,20 @@ class AksesPx {
 }
 
 class Res {
-  int? kodeKelompok;
-  String? namaKelompok;
-  String? kode;
+  int? username;
+  String? password;
 
-  Res({this.kodeKelompok, this.namaKelompok, this.kode});
+  Res({this.username, this.password});
 
   Res.fromJson(Map<String, dynamic> json) {
-    kodeKelompok = json['kode_kelompok'];
-    namaKelompok = json['nama_kelompok'];
-    kode = json['kode'];
+    username = json['username'];
+    password = json['password'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['kode_kelompok'] = kodeKelompok;
-    data['nama_kelompok'] = namaKelompok;
-    data['kode'] = kode;
+    data['username'] = username;
+    data['password'] = password;
     return data;
   }
 }

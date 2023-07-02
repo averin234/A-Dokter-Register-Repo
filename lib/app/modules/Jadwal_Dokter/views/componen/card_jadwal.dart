@@ -1,25 +1,19 @@
+import 'package:a_dokter_register/app/data/model/jadwal_dokter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 
-class CardJadwal extends StatefulWidget {
-  const CardJadwal({super.key});
+class CardJadwal extends StatelessWidget {
+  final Jadwal jadwal;
+  const CardJadwal({super.key, required this.jadwal});
 
-  @override
-  State<CardJadwal> createState() => _CardJadwalState();
-}
-
-class _CardJadwalState extends State<CardJadwal> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.only(left: 10, right: 10),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(left: 10, right: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           boxShadow: [
             BoxShadow(
               color: const Color(0xFFe0e0e0).withOpacity(0.5),
@@ -34,50 +28,51 @@ class _CardJadwalState extends State<CardJadwal> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              children: [
+              children: const [
                 Text('Jadwal Dokter ',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
-            Divider(
+            const Divider(
               color: Colors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                Text('Hari : ', style: TextStyle(fontWeight: FontWeight.bold)),
-                Text('Senin,Selasa,Rabu,Kamis,Jumat'),
+                const Text('Hari : ',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(jadwal.rangeHari ?? ''),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                Text('Jam Mulai : ',
+                const Text('Jam Mulai : ',
                     style: TextStyle(fontWeight: FontWeight.bold)),
-                Text('01:00'),
-                SizedBox(
+                Text(jadwal.jamMulai ?? ''),
+                const SizedBox(
                   width: 10,
                 ),
-                Text('Jam Akhir : ',
+                const Text('Jam Akhir : ',
                     style: TextStyle(fontWeight: FontWeight.bold)),
-                Text('23:00'),
+                Text(jadwal.jamAkhir ?? ''),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                Text('Interval : ',
+                const Text('Interval : ',
                     style: TextStyle(fontWeight: FontWeight.bold)),
-                Text('10'),
+                Text((jadwal.waktu ?? 0).toString()),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

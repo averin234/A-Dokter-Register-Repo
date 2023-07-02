@@ -1,5 +1,6 @@
 class GetDetailMR {
   int? code;
+  String? msg;
   Pasien? pasien;
   VitalSign? vitalSign;
   RiwayatPemeriksaan? riwayatPemeriksaan;
@@ -9,6 +10,7 @@ class GetDetailMR {
 
   GetDetailMR(
       {this.code,
+      this.msg,
       this.pasien,
       this.vitalSign,
       this.riwayatPemeriksaan,
@@ -18,6 +20,7 @@ class GetDetailMR {
 
   GetDetailMR.fromJson(Map<String, dynamic> json) {
     code = json['code'];
+    msg = json['msg'];
     pasien = json['pasien'] != null ? Pasien.fromJson(json['pasien']) : null;
     vitalSign = json['vital_sign'] != null
         ? VitalSign.fromJson(json['vital_sign'])
@@ -48,6 +51,7 @@ class GetDetailMR {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['code'] = code;
+    data['msg'] = msg;
     if (pasien != null) {
       data['pasien'] = pasien!.toJson();
     }

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'app/routes/app_pages.dart';
 
-void main() {
+void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.white,
     systemNavigationBarIconBrightness: Brightness.light,
@@ -13,8 +14,21 @@ void main() {
     statusBarIconBrightness: Brightness.dark,
     statusBarBrightness: Brightness.dark,
   ));
+  await GetStorage.init('token_adokter');
+  await GetStorage.init('dataRegist_adokter');
   runApp(
-    GetMaterialApp(
+    const MyApp(),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
@@ -26,6 +40,6 @@ void main() {
       title: "A-Dokter Register",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-    ),
-  );
+    );
+  }
 }

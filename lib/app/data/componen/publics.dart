@@ -1,5 +1,6 @@
-import 'package:a_dokter_register/app/data/model/login_and_regist/local_storage.dart';
 import 'package:get/get.dart';
+
+import 'local_storage.dart';
 
 class UniverseController extends GetxController {
   final getDataRegist = LocalStorages.getDataRegist.obs;
