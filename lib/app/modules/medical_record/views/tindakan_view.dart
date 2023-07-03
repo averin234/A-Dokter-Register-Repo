@@ -1,10 +1,11 @@
+import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
-import '../../riwayat_medical_record/views/componen/horizontal_calender.dart';
+import '../../../data/componen/fetch_data.dart';
 import '../../antrian_pasien/views/componen/search_medical_record.dart';
 import '../controllers/tindakan_controller.dart';
 import 'componen/listview_tindakan.dart';
@@ -64,22 +65,33 @@ class TindakanView extends GetView<TindakanController> {
                     ),
                   ],
                 ),
-                child: Column(
-                  children: AnimationConfiguration.toStaggeredList(
-                      duration: const Duration(milliseconds: 475),
-                      childAnimationBuilder: (widget) => SlideAnimation(
-                            child: FadeInAnimation(
-                              child: widget,
-                            ),
-                          ),
-                      children: <Widget>[
-                        const ListViewPasien(),
-                        const ListViewPasien(),
-                        const ListViewPasien(),
-                        const ListViewPasien(),
-                        const ListViewPasien(),
-                      ]),
-                ),
+                child: FutureBuilder(
+                    future: API.getPasienBy(
+                        kode_dokter:
+                            Publics.controller.getDataRegist.value.kode ?? ''),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData &&
+                          snapshot.connectionState != ConnectionState.waiting &&
+                          snapshot.data != null) {
+                        final data = snapshot.data!.pasien ?? [];
+                        return Column(
+                          children: AnimationConfiguration.toStaggeredList(
+                              duration: const Duration(milliseconds: 475),
+                              childAnimationBuilder: (widget) => SlideAnimation(
+                                    child: FadeInAnimation(
+                                      child: widget,
+                                    ),
+                                  ),
+                              children: data
+                                  .map((e) => ListViewPasien(pasien: e))
+                                  .toList()),
+                        );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    }),
               ),
             ]),
           ),

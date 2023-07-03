@@ -30,17 +30,31 @@ class GetPasienBy {
 class Pasien {
   String? namaPasien;
   String? tglLhr;
+  String? jenKelamin;
+  String? golDarah;
   String? noHp;
   String? noMr;
+  String? foto;
   int? no;
 
-  Pasien({this.namaPasien, this.tglLhr, this.noHp, this.noMr, this.no});
+  Pasien(
+      {this.namaPasien,
+      this.tglLhr,
+      this.noHp,
+      this.noMr,
+      this.no,
+      this.golDarah,
+      this.foto,
+      this.jenKelamin});
 
   Pasien.fromJson(Map<String, dynamic> json) {
     namaPasien = json['nama_pasien'];
     tglLhr = json['tgl_lhr'];
     noHp = json['no_hp'];
     noMr = json['no_mr'];
+    jenKelamin = json['jen_kelamin'];
+    golDarah = json['gol_darah'];
+    foto = json['foto'];
     no = json['no'];
   }
 
@@ -49,6 +63,10 @@ class Pasien {
     data['nama_pasien'] = namaPasien;
     data['tgl_lhr'] = tglLhr;
     data['no_hp'] = noHp;
+    data['no_mr'] = noMr;
+    data['jen_kelamin'] = jenKelamin;
+    data['gol_darah'] = golDarah;
+    data['foto'] = foto;
     data['no_mr'] = noMr;
     data['no'] = no;
     return data;

@@ -7,6 +7,7 @@ import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:a_dokter_register/app/data/model/get_detail_pasien.dart';
 import 'package:a_dokter_register/app/data/model/get_jenis_obat.dart';
 import 'package:a_dokter_register/app/data/model/get_list_mr.dart';
+import 'package:a_dokter_register/app/data/model/get_pasien_by.dart';
 import 'package:a_dokter_register/app/data/model/get_soap_hiss.dart';
 import 'package:a_dokter_register/app/data/model/list_data.dart';
 import 'package:a_dokter_register/app/data/model/login_and_regist/akses_px.dart';
@@ -125,9 +126,9 @@ class API {
   //   return obj;
   // }
 
-  static Future<dynamic> getPasienBy() async {
+  static Future<GetPasienBy> getPasienBy({required String kode_dokter}) async {
     var token = Publics.controller.getToken.value;
-    final data = {};
+    final data = {"kode_dokter": kode_dokter};
     var response = await Dio().post(
       _getPasienbBy,
       options: Options(
@@ -138,7 +139,15 @@ class API {
       ),
       data: data,
     );
-    final obj = response.data;
+    final datas = jsonDecode(response.data);
+    final obj = GetPasienBy.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
     return obj;
   }
 
