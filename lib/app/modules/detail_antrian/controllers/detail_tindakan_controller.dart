@@ -3,12 +3,11 @@ import 'package:get/get.dart';
 class DetailTindakanController extends GetxController {
   //TODO: Implement DetailTindakanController
 
-  final count = 0.obs;
+  final noRegistrasi = Get.parameters['no_registrasi'] as String;
   @override
   void onInit() {
     super.onInit();
   }
-
 
   @override
   void onReady() {
@@ -19,6 +18,4 @@ class DetailTindakanController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

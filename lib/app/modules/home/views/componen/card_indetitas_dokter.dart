@@ -1,3 +1,4 @@
+import 'package:a_dokter_register/app/data/model/get_detail_dokter.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -5,7 +6,11 @@ import 'package:get/get.dart';
 import '../../controllers/home_controller.dart';
 
 class CardDokter extends GetView<HomeController> {
-  const CardDokter({Key? key}) : super(key: key);
+  final Dokter dokter;
+  const CardDokter({
+    Key? key,
+    required this.dokter,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,8 +33,8 @@ class CardDokter extends GetView<HomeController> {
                             Row(
                               children: [
                                 Expanded(
-                                  child: Text(greetings(),
-                                      style: TextStyle(
+                                  child: Text(greetings,
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16)),
                                 ),
@@ -44,14 +49,14 @@ class CardDokter extends GetView<HomeController> {
                             const SizedBox(
                               height: 6,
                             ),
-                            Text("Dr. Anggi Supradi",
-                                style: TextStyle(
+                            Text(dokter.namaPegawai ?? '',
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15)),
                             const SizedBox(
                               height: 5,
                             ),
-                            Text("Spesialis : Gigi Umum",
-                                style: TextStyle(
+                            Text("Spesialis : ${dokter.namaSpesialisasi ?? ''}",
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 13,
                                     color: Colors.grey)),
@@ -67,11 +72,11 @@ class CardDokter extends GetView<HomeController> {
     );
   }
 
-  String greetings() {
-    final hour = TimeOfDay.now().hour;
+  String get greetings {
+    final hour = DateTime.now().hour;
 
     if (hour <= 12) {
-      return 'Selamat Pagi.';
+      return 'Selamat Pagi';
     } else if (hour <= 17) {
       return 'Selamat Siang';
     }

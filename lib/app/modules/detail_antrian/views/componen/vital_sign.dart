@@ -1,3 +1,4 @@
+import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -8,23 +9,19 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../routes/app_pages.dart';
 
-class VitalSign extends StatefulWidget {
-  const VitalSign({super.key});
+class VitalSignView extends StatelessWidget {
+  final VitalSign vitalSign;
+  const VitalSignView({super.key, required this.vitalSign});
 
-  @override
-  State<VitalSign> createState() => _VitalSignState();
-}
-
-class _VitalSignState extends State<VitalSign> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10),
-        padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
@@ -39,16 +36,16 @@ class _VitalSignState extends State<VitalSign> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 210,
                   child: Text("VITAL SIGN",
                       style: TextStyle(
@@ -56,13 +53,13 @@ class _VitalSignState extends State<VitalSign> {
                         fontSize: 15,
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 InkWell(
                   onTap: () => showModalBottomSheet(
                     context: context,
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(20),
                       ),
@@ -73,7 +70,7 @@ class _VitalSignState extends State<VitalSign> {
                     height: 30,
                     width: 120,
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 33, 146, 255),
+                      color: const Color.fromARGB(255, 33, 146, 255),
                       borderRadius: BorderRadius.circular(10),
                       // boxShadow: [
                       //   BoxShadow(
@@ -86,7 +83,7 @@ class _VitalSignState extends State<VitalSign> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           "Tambah Vital Sign",
                           style: TextStyle(
@@ -100,24 +97,24 @@ class _VitalSignState extends State<VitalSign> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Divider(
+            const Divider(
               height: 10,
               color: Colors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
               children: [
                 Container(
-                  padding: EdgeInsets.only(left: 0),
+                  padding: const EdgeInsets.only(left: 0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text("Keadaan Umum :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -191,15 +188,15 @@ class _VitalSignState extends State<VitalSign> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 80,
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 0),
+                  padding: const EdgeInsets.only(left: 0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text("Kesadaran :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -289,7 +286,7 @@ class _VitalSignState extends State<VitalSign> {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -299,14 +296,14 @@ class _VitalSignState extends State<VitalSign> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Edit Vital Sign",
                   style: TextStyle(
@@ -314,7 +311,7 @@ class _VitalSignState extends State<VitalSign> {
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -330,27 +327,27 @@ class _VitalSignState extends State<VitalSign> {
                       ),
                     ),
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Keadaan Umum",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -364,27 +361,27 @@ class _VitalSignState extends State<VitalSign> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Tekanan Darah",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -398,27 +395,27 @@ class _VitalSignState extends State<VitalSign> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Suhu",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -432,27 +429,27 @@ class _VitalSignState extends State<VitalSign> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Tinggi Badan",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -466,27 +463,27 @@ class _VitalSignState extends State<VitalSign> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Heart Rate",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -500,27 +497,27 @@ class _VitalSignState extends State<VitalSign> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Kesadaran",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -534,27 +531,27 @@ class _VitalSignState extends State<VitalSign> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Nadi",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -568,27 +565,27 @@ class _VitalSignState extends State<VitalSign> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Pernafasan",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -602,27 +599,27 @@ class _VitalSignState extends State<VitalSign> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Berat Badan",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -636,27 +633,27 @@ class _VitalSignState extends State<VitalSign> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Lingkar Perut",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -670,7 +667,7 @@ class _VitalSignState extends State<VitalSign> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 200,
                       ),
                     ],
@@ -678,13 +675,13 @@ class _VitalSignState extends State<VitalSign> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             InkWell(
               onTap: () => showModalBottomSheet(
-                context: context,
-                shape: RoundedRectangleBorder(
+                context: Get.context!,
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(20),
                   ),
@@ -695,7 +692,7 @@ class _VitalSignState extends State<VitalSign> {
                 height: 45,
                 width: 145,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 56, 229, 77),
+                  color: const Color.fromARGB(255, 56, 229, 77),
                   borderRadius: BorderRadius.circular(10),
                   // boxShadow: [
                   //   BoxShadow(
@@ -708,7 +705,7 @@ class _VitalSignState extends State<VitalSign> {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       "Update Vital Sign",
                       style: TextStyle(
@@ -720,7 +717,7 @@ class _VitalSignState extends State<VitalSign> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

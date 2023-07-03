@@ -18,14 +18,14 @@ class TindakanView extends GetView<TindakanController> {
         slivers: [
           SliverAppBar(
             toolbarHeight: 0,
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -36,7 +36,7 @@ class TindakanView extends GetView<TindakanController> {
             centerTitle: true,
             automaticallyImplyLeading: false,
             bottom: AppBar(
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
@@ -44,15 +44,15 @@ class TindakanView extends GetView<TindakanController> {
               toolbarHeight: 100,
               automaticallyImplyLeading: false,
               elevation: 0,
-              title: SearchTindakanDokter(),
+              title: const SearchTindakanDokter(),
             ),
           ),
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
               Container(
-                margin: EdgeInsets.only(top: 10),
-                padding: EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
@@ -65,20 +65,21 @@ class TindakanView extends GetView<TindakanController> {
                   ],
                 ),
                 child: Column(
-                  children:AnimationConfiguration.toStaggeredList(
-                duration: const Duration(milliseconds: 475),
+                  children: AnimationConfiguration.toStaggeredList(
+                      duration: const Duration(milliseconds: 475),
                       childAnimationBuilder: (widget) => SlideAnimation(
-                child: FadeInAnimation(
-                  child: widget,
+                            child: FadeInAnimation(
+                              child: widget,
+                            ),
+                          ),
+                      children: <Widget>[
+                        const ListViewPasien(),
+                        const ListViewPasien(),
+                        const ListViewPasien(),
+                        const ListViewPasien(),
+                        const ListViewPasien(),
+                      ]),
                 ),
-              ),
-              children: <Widget>[
-                  ListViewPasien(),
-                  ListViewPasien(),
-                  ListViewPasien(),
-                  ListViewPasien(),
-                  ListViewPasien(),
-                ]),),
               ),
             ]),
           ),

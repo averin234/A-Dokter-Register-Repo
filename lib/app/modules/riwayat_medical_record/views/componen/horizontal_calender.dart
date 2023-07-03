@@ -5,14 +5,9 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 import 'package:horizontal_calendar/horizontal_calendar.dart';
 
-class HorizontalCalender extends StatefulWidget {
+class HorizontalCalender extends StatelessWidget {
   const HorizontalCalender({super.key});
 
-  @override
-  State<HorizontalCalender> createState() => _HorizontalCalenderState();
-}
-
-class _HorizontalCalenderState extends State<HorizontalCalender> {
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -1,14 +1,14 @@
-import 'package:a_dokter_register/app/modules/riwayat_medical_record/views/componen/horizontal_calendermr.dart';
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
-import '../../riwayat_medical_record/views/componen/horizontal_calender.dart';
 import '../controllers/antrian_pasien_controller.dart';
+import 'componen/horizontal_calender.dart';
 import 'componen/listview_tindakan.dart';
-import 'componen/search_medical_record.dart';
 
 class AntrianPasienView extends GetView<AntrianPasienController> {
   const AntrianPasienView({Key? key}) : super(key: key);
@@ -19,14 +19,14 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
         slivers: [
           SliverAppBar(
             toolbarHeight: 0,
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -37,11 +37,11 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
             centerTitle: true,
             leading: IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_circle_left_rounded,
                   size: 40,
                 ),
-                color: Color.fromARGB(255, 192, 192, 192)),
+                color: const Color.fromARGB(255, 192, 192, 192)),
             // actions: [
             //   IconButton(
             //       onPressed: () {},
@@ -49,7 +49,7 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
             //       color: Colors.white),
             // ],
             bottom: AppBar(
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
@@ -57,15 +57,15 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
               toolbarHeight: 120,
               automaticallyImplyLeading: false,
               elevation: 0,
-              title: HorizontalCalender(),
+              title: const HorizontalCalender(),
             ),
           ),
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
               Container(
-                margin: EdgeInsets.only(top: 10),
-                padding: EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
@@ -77,23 +77,45 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
                     ),
                   ],
                 ),
-                child: Column(
-                  children: AnimationConfiguration.toStaggeredList(
-                      duration: const Duration(milliseconds: 475),
-                      childAnimationBuilder: (widget) => SlideAnimation(
-                            child: FadeInAnimation(
-                              child: widget,
-                            ),
-                          ),
-                      children: <Widget>[
-                        ListViewTindakan(),
-                        ListViewTindakan(),
-                        ListViewTindakan(),
-                        ListViewTindakan(),
-                        ListViewTindakan(),
-                        ListViewTindakan(),
-                      ]),
-                ),
+                child: Obx(() {
+                  return FutureBuilder(
+                      future: API.getAntrianPasien(
+                          tanggal: controller.date.value,
+                          kode_dokter:
+                              Publics.controller.getDataRegist.value.kode ??
+                                  ''),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData &&
+                            snapshot.connectionState !=
+                                ConnectionState.waiting &&
+                            snapshot.data != null) {
+                          final data = snapshot.data!.antrian ?? [];
+
+                          return data.isEmpty
+                              ? Text(snapshot.data!.msg ?? '')
+                              : Column(
+                                  children:
+                                      AnimationConfiguration.toStaggeredList(
+                                          duration:
+                                              const Duration(milliseconds: 475),
+                                          childAnimationBuilder: (widget) =>
+                                              SlideAnimation(
+                                                child: FadeInAnimation(
+                                                  child: widget,
+                                                ),
+                                              ),
+                                          children: data
+                                              .map((e) =>
+                                                  ListViewTindakan(antrian: e))
+                                              .toList()),
+                                );
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      });
+                }),
               ),
             ]),
           ),

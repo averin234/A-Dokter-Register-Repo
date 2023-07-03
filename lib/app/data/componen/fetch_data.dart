@@ -3,6 +3,7 @@ import 'package:a_dokter_register/app/data/componen/data_regist_model.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/data/model/checkup.dart';
 import 'package:a_dokter_register/app/data/model/get_antrian_pasien.dart';
+import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:a_dokter_register/app/data/model/get_detail_pasien.dart';
 import 'package:a_dokter_register/app/data/model/get_jenis_obat.dart';
 import 'package:a_dokter_register/app/data/model/get_list_mr.dart';
@@ -64,6 +65,7 @@ class API {
   static const _postUbahPassword = '$_baseUrl/post-ubah-password.php';
   static const _getAntrianDokter = '$_baseUrl/get-antrian-dokter.php';
   static const _getListMR = '$_baseUrl/get-list-mr.php';
+  static const _getDetailMR = '$_baseUrl/get-detail-mr.php';
   static const _cekJenisKelamin = '$_baseUrl/cek-jenis-kelamin.php';
   static const _getDetailPasien = '$_baseUrl/get-detail-pasien.php';
   static const _cetakResep = '$_baseUrl/cetak-resep.php';
@@ -380,6 +382,36 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = PostUbahPassword.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<GetDetailMR> getDetailMR({
+    required String no_registrasi,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      "no_registrasi": no_registrasi,
+      "url": _url,
+    };
+    var response = await Dio().post(
+      _getDetailMR,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = GetDetailMR.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
@@ -789,7 +821,7 @@ class API {
   static Future<ListData> getSpesialisasi({
     required String kode_bagian,
   }) async {
-    var token = Publics.controller.getToken.value;
+    var token = await getToken();
     final data = {};
     var response = await Dio().post(
       _getSpesialisasi,
@@ -1036,7 +1068,7 @@ class API {
     required String kode_dokter,
   }) async {
     var token = Publics.controller.getToken.value;
-    final data = {"kode_dokter": kode_dokter};
+    final data = {"kode_dokter": kode_dokter, "url": _url};
     var response = await Dio().post(
       _getDetailDokter,
       options: Options(
