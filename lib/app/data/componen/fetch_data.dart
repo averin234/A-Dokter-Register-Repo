@@ -50,6 +50,13 @@ class API {
   static const _getHISS = '$_baseUrl/get-soap-hiss.php';
   // static const _getTindakan = '$_baseUrl/get-tindakan-px.php';
   static const _getVitalSign = '$_baseUrl/get-vital-sign-px.php';
+
+  static const _getDataProv = '$_baseUrl/get-data-prov.php';
+  static const _getJenisDokter = '$_baseUrl/get-jenis-dokter.php';
+  static const _getKesadaranPasien = '$_baseUrl/get-kesadaran-pasien.php';
+  static const _getkeadaanumum = '$_baseUrl/get-keadaan-umum.php';
+  static const _getPasienbBy = '$_baseUrl/get-pasien-by.php';
+  static const _getStatusDokter = '$_baseUrl/get-status-dokter.php';
   // penambahan lagi
   static const _getDaftarPrivy = '$_baseUrl/daftar_privyid_dr.php';
   static const _postJadwalDokter = '$_baseUrl/post-jadwal-dokter.php';
@@ -82,6 +89,125 @@ class API {
   }
 
   // Tambahan Baru
+  static Future<dynamic> getStatusDokter() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getDaftarPrivy,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final obj = response.data;
+    return obj;
+  }
+
+  // static Future<dynamic> getSpesialisasi() async {
+  //   var token = Publics.controller.getToken.value;
+  //   final data = {};
+  //   var response = await Dio().post(
+  //     _getStatusDokter,
+  //     options: Options(
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "X-Api-Token": token.token,
+  //       },
+  //     ),
+  //     data: data,
+  //   );
+  //   final obj = response.data;
+  //   return obj;
+  // }
+
+  static Future<dynamic> getPasienBy() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getPasienbBy,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final obj = response.data;
+    return obj;
+  }
+
+  static Future<dynamic> getkeadaanUmum() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getkeadaanumum,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final obj = response.data;
+    return obj;
+  }
+
+  static Future<dynamic> getKesadaranPasien() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getKesadaranPasien,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final obj = response.data;
+    return obj;
+  }
+
+  static Future<dynamic> getJenisDokter() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getJenisDokter,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final obj = response.data;
+    return obj;
+  }
+
+  static Future<dynamic> getDataProv() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getDataProv,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final obj = response.data;
+    return obj;
+  }
+
   static Future<dynamic> getDaftarPrivy({
     required String kode_dokter,
   }) async {
