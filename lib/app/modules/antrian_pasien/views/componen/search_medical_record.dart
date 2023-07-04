@@ -20,7 +20,7 @@ class _SearchTindakanDokterState extends State<SearchTindakanDokter> {
           height: 10,
         ),
         Padding(padding: EdgeInsets.only(left: 10),
-        child : Text('Medical Record Pasien'),
+        child : Text('List Pasien'),
         ),
         SizedBox(
           height: 5,

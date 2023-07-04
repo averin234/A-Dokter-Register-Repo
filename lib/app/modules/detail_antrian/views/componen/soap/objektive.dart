@@ -72,9 +72,8 @@ class _objektiveState extends State<objektive> {
             ),
             TextField(
               keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
+              textInputAction: TextInputAction.none,
               maxLines: 7,
-              readOnly: true,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,

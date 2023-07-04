@@ -48,6 +48,8 @@ import '../modules/register_dosen/bindings/register_dosen_binding.dart';
 import '../modules/register_dosen/views/register_dosen_view.dart';
 import '../modules/register_mahasiswa/bindings/register_mahasiswa_binding.dart';
 import '../modules/register_mahasiswa/views/register_mahasiswa_view.dart';
+import '../modules/registrasi_pasien/bindings/registrasi_pasien_binding.dart';
+import '../modules/registrasi_pasien/views/registrasi_pasien_view.dart';
 import '../modules/riwayat_jabatan/bindings/riwayat_jabatan_binding.dart';
 import '../modules/riwayat_jabatan/views/riwayat_jabatan_view.dart';
 import '../modules/riwayat_keluarga/bindings/riwayat_keluarga_binding.dart';
@@ -101,7 +103,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.HISS,
-      page: () => const HissView(),
+      page: () => HissView(),
       binding: HissBinding(),
     ),
     GetPage(
@@ -218,6 +220,11 @@ class AppPages {
       name: _Paths.CETAKAN,
       page: () => CetakanView(),
       binding: CetakanBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTRASI_PASIEN,
+      page: () => const RegistrasiPasienView(),
+      binding: RegistrasiPasienBinding(),
     ),
   ];
 }

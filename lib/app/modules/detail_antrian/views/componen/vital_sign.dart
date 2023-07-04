@@ -123,7 +123,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("Sedang",
+                      Text("",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -137,7 +137,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("120/6",
+                      Text("",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -151,7 +151,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("38",
+                      Text("",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -165,7 +165,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("158",
+                      Text("",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -179,7 +179,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("1",
+                      Text("",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -205,7 +205,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("Compos Menthis",
+                      Text("",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -219,7 +219,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("95",
+                      Text("",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -233,7 +233,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("15",
+                      Text("",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -247,7 +247,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("50",
+                      Text("",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -261,7 +261,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("0",
+                      Text("",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(

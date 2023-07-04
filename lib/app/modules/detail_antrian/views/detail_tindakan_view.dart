@@ -1,4 +1,5 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/surat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -82,21 +83,16 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                             const SizedBox(
                               height: 10,
                             ),
-                            data.pasien == null
-                                ? Container()
-                                : const ProfilePasienTindakan(),
+                            ProfilePasienTindakan(),
                             const SizedBox(
                               height: 10,
                             ),
-                            data.vitalSign == null
-                                ? Container()
-                                : VitalSignView(vitalSign: data.vitalSign!),
+                            VitalSignView(
+                                vitalSign: data.vitalSign ?? VitalSign()),
                             const SizedBox(
                               height: 10,
                             ),
-                            data.riwayatPemeriksaan == null
-                                ? Container()
-                                : const Soap(),
+                            Soap(),
                             const SizedBox(
                               height: 10,
                             ),

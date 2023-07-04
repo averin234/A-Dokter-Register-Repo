@@ -26,6 +26,14 @@ class _PendapatanState extends State<Pendapatan> {
           border: Border.all(color: Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              spreadRadius: 0,
+              blurRadius: 10,
+              offset: const Offset(2, 1),
+            ),
+          ],
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Column(
@@ -33,9 +41,11 @@ class _PendapatanState extends State<Pendapatan> {
             children: [
               Row(
                 children: [
-                  Text('No Registrasi ',style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text(': ',style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text('98008734 ',style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('No Registrasi ',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text(': ', style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('98008734 ',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
               SizedBox(
@@ -43,9 +53,11 @@ class _PendapatanState extends State<Pendapatan> {
               ),
               Row(
                 children: [
-                  Text('Tanggal Masuk ',style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('Tanggal Masuk ',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(': '),
-                  Text('12-06-2023 09:20',style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('12-06-2023 09:20',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
               SizedBox(
@@ -55,7 +67,8 @@ class _PendapatanState extends State<Pendapatan> {
                 children: [
                   Text('Nama Pasien '),
                   Text(': '),
-                  Text('Adni Maulidin ',style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('Adni Maulidin ',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
               SizedBox(
@@ -81,20 +94,22 @@ class _PendapatanState extends State<Pendapatan> {
               SizedBox(
                 height: 10,
               ),
-              Divider(
-                  color: Colors.black
-              ),
+              Divider(color: Colors.black),
               SizedBox(
                 height: 10,
               ),
-              Padding(padding: EdgeInsets.only(right: 10,left: 10),
-                child : Column(
+              Padding(
+                padding: EdgeInsets.only(right: 10, left: 10),
+                child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
                           Expanded(
-                            child: Text("Billing",style: TextStyle(fontWeight: FontWeight.bold),),
+                            child: Text(
+                              "Billing",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ),
                           const SizedBox(
                             width: 10,
@@ -104,9 +119,11 @@ class _PendapatanState extends State<Pendapatan> {
                               // Get.toNamed(Routes.ANTRIAN_PASIEN);
                             },
                             child: Text(
-                              "700.000,00",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue),
+                              "700.000,00",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue),
                               textAlign: TextAlign.center,
-
                             ),
                           ),
                           const SizedBox(
@@ -114,8 +131,8 @@ class _PendapatanState extends State<Pendapatan> {
                           ),
                         ],
                       ),
-                    ]
-                ),),
+                    ]),
+              ),
             ],
           ),
         ]),

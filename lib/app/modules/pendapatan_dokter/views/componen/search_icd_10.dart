@@ -17,7 +17,7 @@ class _SearchPendapatanState extends State<SearchPendapatan> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: 50,
+          height: 40,
           decoration: BoxDecoration(
             color: Color.fromARGB(255, 233, 231, 253),
             borderRadius: BorderRadius.circular(22),

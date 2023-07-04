@@ -49,7 +49,7 @@ class _AssestmentState extends State<Assestment> {
                 ),
                 SizedBox(
                   width: 270,
-                  child: Text("Subyektif",
+                  child: Text("Assessment",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
@@ -75,9 +75,8 @@ class _AssestmentState extends State<Assestment> {
             ),
             TextField(
               keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
+              textInputAction: TextInputAction.none,
               maxLines: 7,
-              readOnly: true,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,

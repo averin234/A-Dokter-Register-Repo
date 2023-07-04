@@ -1,4 +1,5 @@
 import 'package:a_dokter_register/app/modules/pendapatan_dokter/views/componen/search_icd_10.dart';
+import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -33,17 +34,8 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
             floating: true,
             pinned: true,
             snap: true,
-            centerTitle: true,
             title: Text('Pendapatan'),
-            leading: IconButton(
-                onPressed: () {
-                  Get.back();
-                },
-                icon: Icon(
-                  Icons.arrow_circle_left_rounded,
-                  size: 40,
-                ),
-                color: Color.fromARGB(255, 192, 192, 192)),
+
             // actions: [
             //   IconButton(
             //       onPressed: () {},
@@ -56,7 +48,15 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
                   bottom: Radius.circular(30),
                 ),
               ),
-              toolbarHeight: 0,
+              toolbarHeight: 50,
+              title: Column(
+                children: [
+                  SearchPendapatan(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
               automaticallyImplyLeading: false,
               elevation: 0,
             ),
@@ -74,15 +74,38 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
                   ),
                   children: <Widget>[
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
-                    BarChartSample2(),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10),
-                      child: SearchPendapatan(),
+                    InkWell(
+                      onTap: () => Get.toNamed(Routes.REGISTER_DOKTER),
+                      child: Container(
+                        height: 45,
+                        width: 305,
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.green.withOpacity(0.5),
+                              spreadRadius: 0,
+                              blurRadius: 10,
+                              offset: const Offset(2, 1),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text(
+                              "Kasir",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14),
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: 20,

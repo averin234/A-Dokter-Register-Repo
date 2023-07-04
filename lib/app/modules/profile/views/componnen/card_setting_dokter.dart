@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../../data/model/get_detail_dokter.dart';
 import '../../controllers/profile_controller.dart';
 
 class CardDokterSetting extends GetView<ProfileController> {
-  const CardDokterSetting({Key? key}) : super(key: key);
+  final Dokter dokter;
+  const CardDokterSetting({
+    Key? key,
+    required this.dokter,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,8 +26,7 @@ class CardDokterSetting extends GetView<ProfileController> {
                 height: 70.0,
                 decoration: BoxDecoration(
                   image: new DecorationImage(
-                    image: NetworkImage(
-                        'https://thumb.tvonenews.com/thumbnail/2023/03/06/64055b6094a39-dokter-cantik-di-indonesia_375_211.jpg'),
+                    image: NetworkImage(dokter.foto ?? ''),
                     fit: BoxFit.cover,
                   ),
                   boxShadow: [
@@ -52,7 +56,7 @@ class CardDokterSetting extends GetView<ProfileController> {
                             Row(
                               children: [
                                 Expanded(
-                                  child: Text("Dr. Anggi Supradi",
+                                  child: Text(dokter.namaPegawai ?? '',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 14)),
@@ -78,7 +82,7 @@ class CardDokterSetting extends GetView<ProfileController> {
                             const SizedBox(
                               height: 10,
                             ),
-                            Text("Spesialis : Gigi Umum",
+                            Text("Spesialis : ${dokter.namaSpesialisasi ?? ''}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16)),
                           ]),

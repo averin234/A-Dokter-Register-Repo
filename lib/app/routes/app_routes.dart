@@ -38,6 +38,7 @@ abstract class Routes {
   static const MAHASISWA = _Paths.MAHASISWA;
   static const DOSEN = _Paths.DOSEN;
   static const CETAKAN = _Paths.CETAKAN;
+  static const REGISTRASI_PASIEN = _Paths.REGISTRASI_PASIEN;
 }
 
 abstract class _Paths {
@@ -77,4 +78,5 @@ abstract class _Paths {
   static const MAHASISWA = '/mahasiswa';
   static const DOSEN = '/dosen';
   static const CETAKAN = '/cetakan';
+  static const REGISTRASI_PASIEN = '/registrasi-pasien';
 }

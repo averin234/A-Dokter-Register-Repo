@@ -48,9 +48,13 @@ class ListViewPasien extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Text(pasien.namaPasien ?? '',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 13)),
+                            SizedBox(
+                              width: 70,
+                              child: Text(pasien.namaPasien ?? '',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13)),
+                            ),
                             const SizedBox(
                               width: 100,
                             ),
