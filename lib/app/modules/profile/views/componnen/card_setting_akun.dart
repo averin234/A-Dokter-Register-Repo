@@ -20,7 +20,7 @@ class CardSettingAkun extends GetView<ProfileController> {
         ),
         children: <Widget>[
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           Container(
             margin: EdgeInsets.only(top: 10, left: 10, right: 10),
@@ -39,15 +39,23 @@ class CardSettingAkun extends GetView<ProfileController> {
             ),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                'Pengaturan Akun',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
+              // Text(
+              //   'Pengaturan Akun',
+              //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              // ),
               SizedBox(
-                height: 40,
+                height: 10,
               ),
               InkWell(
-                onTap: () => Get.toNamed(Routes.JADWAL_DOKTER),
+                onTap: () => showModalBottomSheet(
+                  context: context,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                  ),
+                  builder: (context) => UbahPassword(),
+                ),
                 child: Row(
                   children: [
                     Icon(
@@ -63,12 +71,12 @@ class CardSettingAkun extends GetView<ProfileController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Jadwal Dokter',
+                            'Ubah Password',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 15),
                           ),
                           Text(
-                            'Menambahkan Jadwal Prakter, Jam Mulai, Jam Akhir, Interval',
+                            'Mengubah Password agar kerahasiaan akun',
                             style: TextStyle(
                                 fontWeight: FontWeight.normal, fontSize: 12),
                           ),
@@ -377,6 +385,219 @@ class CardSettingAkun extends GetView<ProfileController> {
         ],
       ),
     );
+  }
+
+  Widget UbahPassword() {
+    return Container(
+        height: 380,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+          color: Colors.transparent,
+        ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 4,
+              margin: EdgeInsets.only(
+                right: Get.width / 2 - 40,
+                left: Get.width / 2 - 40,
+              ),
+              decoration: BoxDecoration(
+                color: Color(0xFFe0e0e0),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SingleChildScrollView(
+                child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Text("Password Lama",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Expanded(
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: const Color(0x6cc7d1db)),
+                          ),
+                          child: TextFormField(
+                            keyboardType: TextInputType.text,
+                            textInputAction: TextInputAction.done,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                              contentPadding: EdgeInsets.only(
+                                  left: 15, bottom: 11, top: 13, right: 15),
+                              filled: true,
+                              fillColor: Colors.transparent,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Text("Password Baru",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Expanded(
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: const Color(0x6cc7d1db)),
+                          ),
+                          child: TextFormField(
+                            keyboardType: TextInputType.text,
+                            textInputAction: TextInputAction.done,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                              contentPadding: EdgeInsets.only(
+                                  left: 15, bottom: 11, top: 13, right: 15),
+                              filled: true,
+                              fillColor: Colors.transparent,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Text("Comfirm Password Baru",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Expanded(
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: const Color(0x6cc7d1db)),
+                          ),
+                          child: TextFormField(
+                            keyboardType: TextInputType.text,
+                            textInputAction: TextInputAction.done,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                              contentPadding: EdgeInsets.only(
+                                  left: 15, bottom: 11, top: 13, right: 15),
+                              filled: true,
+                              fillColor: Colors.transparent,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 10, left: 10, top: 20),
+                  child: GestureDetector(
+                    onTap: () => Get.toNamed(Routes.LOGIN),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(7),
+                        color: Colors.blue,
+                      ),
+                      child: Column(
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Text("Ubah Password",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ));
   }
 
   Widget buildSheet() {

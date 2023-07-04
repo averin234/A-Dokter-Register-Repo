@@ -90,7 +90,7 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
                                 ConnectionState.waiting &&
                             snapshot.data != null) {
                           final data = snapshot.data!.antrian ?? [];
-
+                          print(snapshot.data!.toJson());
                           return data.isEmpty
                               ? Text(snapshot.data!.msg ?? '')
                               : Column(

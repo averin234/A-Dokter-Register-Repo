@@ -15,7 +15,6 @@ import 'package:a_dokter_register/app/data/model/login_and_regist/token.dart';
 import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-
 import '../model/get_detail_dokter.dart';
 import '../model/get_nama_obat.dart';
 import '../model/get_racikan.dart';
@@ -52,7 +51,6 @@ class API {
   static const _getHISS = '$_baseUrl/get-soap-hiss.php';
   // static const _getTindakan = '$_baseUrl/get-tindakan-px.php';
   static const _getVitalSign = '$_baseUrl/get-vital-sign-px.php';
-
   static const _getDataProv = '$_baseUrl/get-data-prov.php';
   static const _getJenisDokter = '$_baseUrl/get-jenis-dokter.php';
   static const _getKesadaranPasien = '$_baseUrl/get-kesadaran-pasien.php';

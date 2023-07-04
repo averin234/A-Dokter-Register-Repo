@@ -1,22 +1,20 @@
+import 'package:a_dokter_register/app/modules/registrasi_pasien/views/componen/form_registrasi_pasien.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
-import '../../home/views/componen/card_indetitas_dokter.dart';
-import '../controllers/profile_controller.dart';
-import 'componnen/card_setting_akun.dart';
-import 'componnen/card_setting_dokter.dart';
+import '../controllers/registrasi_pasien_controller.dart';
 
-class ProfileView extends GetView<ProfileController> {
-  const ProfileView({Key? key}) : super(key: key);
+class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
+  const RegistrasiPasienView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            title: Text('Daftar Pasien Baru'),
             systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor:
                   Color.fromARGB(255, 255, 255, 255), // <-- SEE HERE
@@ -30,16 +28,18 @@ class ProfileView extends GetView<ProfileController> {
                 bottom: Radius.circular(10),
               ),
             ),
+            leading: IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Icon(
+                  Icons.arrow_circle_left_rounded,
+                  size: 40,
+                ),
+                color: Color.fromARGB(255, 192, 192, 192)),
             floating: true,
             pinned: true,
             snap: true,
-            title: Text('Pengaturan Akun'),
-            // actions: [
-            //   IconButton(
-            //       onPressed: () {},
-            //       icon: Icon(Icons.notifications_active),
-            //       color: Colors.white),
-            // ],
             bottom: AppBar(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
@@ -55,7 +55,10 @@ class ProfileView extends GetView<ProfileController> {
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
-              CardSettingAkun(),
+              SizedBox(
+                height: 10,
+              ),
+              FormRegistrasiPasien(),
             ]),
           ),
         ],

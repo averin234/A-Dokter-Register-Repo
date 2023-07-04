@@ -47,11 +47,14 @@ class ListViewTindakan extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Text(
-                              antrian.namaPasien ?? '',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 13,
+                            SizedBox(
+                              width: 40,
+                              child: Text(
+                                antrian.namaPasien ?? '',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13,
+                                ),
                               ),
                             ),
                             const SizedBox(
@@ -111,7 +114,7 @@ class ListViewTindakan extends StatelessWidget {
                       ),
                       Container(
                         padding: const EdgeInsets.only(
-                            right: 120, left: 7, top: 7, bottom: 7),
+                            right: 40, left: 7, top: 7, bottom: 7),
                         decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 219, 246, 253),
                             borderRadius: BorderRadius.circular(10)),
@@ -255,9 +258,9 @@ class ListViewTindakan extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 15),
-              child: Text("Pasien Adni Maulidin",
+              child: Text("Data Pasien Adni Maulidin",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,

@@ -1,6 +1,8 @@
 import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/modules/antrian_pasien/views/antrian_pasien_view.dart';
 import 'package:a_dokter_register/app/modules/antrian_pasien/views/componen/listview_tindakan.dart';
+import 'package:a_dokter_register/app/modules/pendapatan_dokter/views/pendapatan_dokter_view.dart';
+import 'package:a_dokter_register/app/modules/profile/views/componnen/card_setting_dokter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -24,43 +26,294 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => showModalBottomSheet(
+          context: context,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(20),
+            ),
+          ),
+          builder: (context) => buildSheet(),
+        ),
+        child: Icon(Icons.add),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.yellow,
+        elevation: 0,
+        // shape: BeveledRectangleBorder(
+        //     // borderRadius: BorderRadius.circular(20.0),
+        //     // side: BorderSide(color: Colors.blue, width: 2.0, style: BorderStyle.solid)
+        //     ),
+        // mini: true,
+      ),
       bottomNavigationBar: Obx(() {
-        return BottomNavigationBar(
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.grey,
-          backgroundColor: Colors.white,
-          currentIndex: controller.currentIndex.value,
-          onTap: (value) => controller.currentIndex.value = value,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.people_alt_rounded),
-              label: 'Pasien',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.medical_information_rounded),
-              label: 'Medical Record',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_box_outlined),
-              label: 'Profile',
-            ),
-          ],
+        return BottomAppBar(
+          notchMargin: 5.0,
+          shape: CircularNotchedRectangle(),
+          color: Colors.white,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: GestureDetector(
+                  onTap: () {
+                    controller.currentIndex.value = 0;
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.home,
+                          color: controller.currentIndex.value != 0
+                              ? Colors.grey
+                              : Colors.blue),
+                      Text(
+                        "Home",
+                        style: TextStyle(color: Colors.black),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(right: 20.0, top: 10.0, bottom: 10.0),
+                child: GestureDetector(
+                  onTap: () {
+                    controller.currentIndex.value = 1;
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.add_chart_rounded,
+                        color: controller.currentIndex.value != 1
+                            ? Colors.grey
+                            : Colors.blue,
+                      ),
+                      Text(
+                        "Pendapatan",
+                        style: TextStyle(color: Colors.black),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
+                child: GestureDetector(
+                  onTap: () {
+                    controller.currentIndex.value = 2;
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.people_outline_rounded,
+                          color: controller.currentIndex.value != 2
+                              ? Colors.grey
+                              : Colors.blue),
+                      Text(
+                        "Pasien",
+                        style: TextStyle(color: Colors.black),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: GestureDetector(
+                  onTap: () {
+                    controller.currentIndex.value = 3;
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.settings,
+                          color: controller.currentIndex.value != 3
+                              ? Colors.grey
+                              : Colors.blue),
+                      Text(
+                        "Setting",
+                        style: TextStyle(color: Colors.black),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       }),
       body: Obx(() {
         return controller.currentIndex.value == 0
             ? Home(controller: controller)
             : controller.currentIndex.value == 1
-                ? const AntrianPasienView()
+                ? const PendapatanDokterView()
                 : controller.currentIndex.value == 2
                     ? const TindakanView()
                     : const ProfileView();
       }),
     );
+  }
+
+  Widget buildSheet() {
+    return Container(
+        height: 360,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+          color: Colors.transparent,
+        ),
+        child: Column(children: [
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 4,
+            margin: EdgeInsets.only(
+              right: Get.width / 2 - 40,
+              left: Get.width / 2 - 40,
+            ),
+            decoration: BoxDecoration(
+              color: const Color(0xFFe0e0e0),
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          // const Padding(
+          //   padding: EdgeInsets.only(left: 15),
+          //   child: Text("Tambah",
+          //       style: TextStyle(
+          //           fontWeight: FontWeight.bold,
+          //           fontSize: 16,
+          //           color: Colors.blue)),
+          // ),
+          const SizedBox(
+            height: 10,
+          ),
+          Expanded(
+              child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: AnimationConfiguration.toStaggeredList(
+                        duration: const Duration(milliseconds: 275),
+                        childAnimationBuilder: (widget) => SlideAnimation(
+                          child: FadeInAnimation(
+                            child: widget,
+                          ),
+                        ),
+                        children: <Widget>[
+                          InkWell(
+                            onTap: () => Get.toNamed(Routes.JADWAL_DOKTER),
+                            child: Container(
+                              width: 305,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/tambahjadwal.jpg',
+                                        width: 90,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        "Atur Jadwal Dokter",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          InkWell(
+                            onTap: () => Get.toNamed(Routes.REGISTRASI_PASIEN),
+                            child: Container(
+                              width: 305,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/tambahpasien.jpg',
+                                        width: 90,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        "Tamabah Pasien Baru",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          InkWell(
+                            onTap: () => Get.toNamed(Routes.REGISTRASI_PASIEN),
+                            child: Container(
+                              width: 305,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/tambahpasien.jpg',
+                                        width: 90,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        "Tamabah Pasien Lama",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ))))
+        ]));
   }
 }
 
@@ -108,7 +361,7 @@ class Home extends StatelessWidget {
                         snapshot.connectionState != ConnectionState.waiting &&
                         snapshot.data != null) {
                       final data = snapshot.data!.dokter![0];
-                      return CardDokter(dokter: data);
+                      return CardDokterSetting(dokter: data);
                     } else {
                       return const Center(
                         child: CircularProgressIndicator(),
@@ -133,49 +386,49 @@ class Home extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      const MenuHome(),
+                      // const MenuHome(),
                       const SizedBox(),
                       Padding(
                         padding: const EdgeInsets.only(right: 10, left: 10),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                children: [
-                                  const Expanded(
-                                    child: Text(
-                                      "Pendapatan Mingguan",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Get.toNamed(Routes.PENDAPATAN_DOKTER);
-                                    },
-                                    child: const Text(
-                                      "Lihat Semua",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.normal,
-                                          color: Colors.blue),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                ],
-                              ),
+                              // Row(
+                              //   children: [
+                              //     const Expanded(
+                              //       child: Text(
+                              //         "Pendapatan Mingguan",
+                              //         style: TextStyle(
+                              //             fontWeight: FontWeight.bold,
+                              //             fontSize: 18),
+                              //       ),
+                              //     ),
+                              //     const SizedBox(
+                              //       width: 10,
+                              //     ),
+                              //     GestureDetector(
+                              //       onTap: () {
+                              //         Get.toNamed(Routes.PENDAPATAN_DOKTER);
+                              //       },
+                              //       child: const Text(
+                              //         "Lihat Semua",
+                              //         style: TextStyle(
+                              //             fontWeight: FontWeight.normal,
+                              //             color: Colors.blue),
+                              //         textAlign: TextAlign.center,
+                              //       ),
+                              //     ),
+                              //     const SizedBox(
+                              //       width: 10,
+                              //     ),
+                              //   ],
+                              // ),
                             ]),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      BarChartSample2(),
+                      // BarChartSample2(),
                       const SizedBox(
                         height: 10,
                       ),
