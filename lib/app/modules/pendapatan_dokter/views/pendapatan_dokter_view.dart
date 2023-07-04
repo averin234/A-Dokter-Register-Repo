@@ -1,4 +1,4 @@
-import 'package:a_dokter_register/app/modules/pendapatan_dokter/views/componen/search_icd_10.dart';
+import 'package:a_dokter_register/app/modules/pendapatan_dokter/views/componen/searchpendapatan.dart';
 import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -51,7 +51,7 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
               toolbarHeight: 50,
               title: Column(
                 children: [
-                  SearchPendapatan(),
+                  SearchPendapatan1(),
                   SizedBox(
                     height: 10,
                   ),
@@ -74,39 +74,39 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
                   ),
                   children: <Widget>[
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
-                    InkWell(
-                      onTap: () => Get.toNamed(Routes.REGISTER_DOKTER),
-                      child: Container(
-                        height: 45,
-                        width: 305,
-                        decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.green.withOpacity(0.5),
-                              spreadRadius: 0,
-                              blurRadius: 10,
-                              offset: const Offset(2, 1),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text(
-                              "Kasir",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+                    // InkWell(
+                    //   onTap: () => Get.toNamed(Routes.REGISTER_DOKTER),
+                    //   child: Container(
+                    //     height: 45,
+                    //     width: 305,
+                    //     decoration: BoxDecoration(
+                    //       color: Colors.green,
+                    //       borderRadius: BorderRadius.circular(10),
+                    //       boxShadow: [
+                    //         BoxShadow(
+                    //           color: Colors.green.withOpacity(0.5),
+                    //           spreadRadius: 0,
+                    //           blurRadius: 10,
+                    //           offset: const Offset(2, 1),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //     child: Column(
+                    //       mainAxisAlignment: MainAxisAlignment.center,
+                    //       children: const [
+                    //         Text(
+                    //           "Kasir",
+                    //           style: TextStyle(
+                    //               color: Colors.white,
+                    //               fontWeight: FontWeight.bold,
+                    //               fontSize: 14),
+                    //         )
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                     SizedBox(
                       height: 20,
                     ),

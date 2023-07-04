@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
-import '../../pendapatan_dokter/views/componen/search_icd_10.dart';
 import '../controllers/hiss_controller.dart';
 import 'componen/search_hiss.dart';
 
@@ -28,38 +27,39 @@ class HissViewState extends State<HissView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+      appBar: AppBar(
           elevation: 0,
           toolbarHeight: 100,
-          title:  Column(children: [
-            SearchHISS(),
-          TabBar(
-            labelColor: Colors.black,
-            controller: _tabController,
-            isScrollable: true,
-            tabs: [
-              Tab(text: "ICD X & Diagnosa"),
-              Tab(text: "Gejala"),
-              Tab(text: "Penyebab"),
-              Tab(text: "Penunjang"),
-              Tab(text: "Pengobatan"),
-              Tab(text: "Komplikasi"),
-              Tab(text: "Differensial"),
-              Tab(text: "Catatan"),
-              Tab(text: "Pre Existing"),
+          title: Column(
+            children: [
+              SearchHISS(),
+              TabBar(
+                labelColor: Colors.black,
+                controller: _tabController,
+                isScrollable: true,
+                tabs: [
+                  Tab(text: "ICD X & Diagnosa"),
+                  Tab(text: "Gejala"),
+                  Tab(text: "Penyebab"),
+                  Tab(text: "Penunjang"),
+                  Tab(text: "Pengobatan"),
+                  Tab(text: "Komplikasi"),
+                  Tab(text: "Differensial"),
+                  Tab(text: "Catatan"),
+                  Tab(text: "Pre Existing"),
+                ],
+              ),
             ],
-          ),
-          ],)
-        ),
-        body: TabBarView(
-          controller: _tabController,
-          children: [
-            // these are your pages
-            // TaskListPage(),
-            // TestPage(),
-          ],
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          )),
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          // these are your pages
+          // TaskListPage(),
+          // TestPage(),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

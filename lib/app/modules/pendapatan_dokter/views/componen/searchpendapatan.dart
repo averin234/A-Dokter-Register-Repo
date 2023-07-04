@@ -3,14 +3,14 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 
-class SearchPendapatan extends StatefulWidget {
-  const SearchPendapatan({super.key});
+class SearchPendapatan1 extends StatefulWidget {
+  const SearchPendapatan1({super.key});
 
   @override
-  State<SearchPendapatan> createState() => _SearchPendapatanState();
+  State<SearchPendapatan1> createState() => _SearchPendapatan1State();
 }
 
-class _SearchPendapatanState extends State<SearchPendapatan> {
+class _SearchPendapatan1State extends State<SearchPendapatan1> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,7 +38,7 @@ class _SearchPendapatanState extends State<SearchPendapatan> {
                 },
               ),
               filled: true,
-              hintText: "Cari Pasien ",
+              hintText: "Pencarian ",
               fillColor: Colors.transparent,
             ),
           ),

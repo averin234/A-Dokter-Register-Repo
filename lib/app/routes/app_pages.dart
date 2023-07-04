@@ -62,6 +62,8 @@ import '../modules/riwayat_praktek/bindings/riwayat_praktek_binding.dart';
 import '../modules/riwayat_praktek/views/riwayat_praktek_view.dart';
 import '../modules/splashscreen/bindings/splashscreen_binding.dart';
 import '../modules/splashscreen/views/splashscreen_view.dart';
+import '../modules/tambah_pasien_lama/bindings/tambah_pasien_lama_binding.dart';
+import '../modules/tambah_pasien_lama/views/tambah_pasien_lama_view.dart';
 
 part 'app_routes.dart';
 
@@ -225,6 +227,11 @@ class AppPages {
       name: _Paths.REGISTRASI_PASIEN,
       page: () => const RegistrasiPasienView(),
       binding: RegistrasiPasienBinding(),
+    ),
+    GetPage(
+      name: _Paths.TAMBAH_PASIEN_LAMA,
+      page: () => const TambahPasienLamaView(),
+      binding: TambahPasienLamaBinding(),
     ),
   ];
 }

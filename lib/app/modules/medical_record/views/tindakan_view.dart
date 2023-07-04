@@ -18,7 +18,6 @@ class TindakanView extends GetView<TindakanController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            toolbarHeight: 0,
             systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
@@ -34,19 +33,25 @@ class TindakanView extends GetView<TindakanController> {
             floating: true,
             pinned: true,
             snap: true,
-            centerTitle: true,
             automaticallyImplyLeading: false,
+            title: Text('List Pasien'),
             bottom: AppBar(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(30),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    bottom: Radius.circular(30),
+                  ),
                 ),
-              ),
-              toolbarHeight: 100,
-              automaticallyImplyLeading: false,
-              elevation: 0,
-              title: const SearchTindakanDokter(),
-            ),
+                toolbarHeight: 50,
+                automaticallyImplyLeading: false,
+                elevation: 0,
+                title: Column(
+                  children: [
+                    const SearchTindakanDokter(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                )),
           ),
           // Other Sliver Widgets
           SliverList(

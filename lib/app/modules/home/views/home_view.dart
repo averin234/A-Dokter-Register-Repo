@@ -28,8 +28,10 @@ class HomeView extends GetView<HomeController> {
       backgroundColor: Colors.white,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        enableFeedback: true,
         onPressed: () => showModalBottomSheet(
           context: context,
+          backgroundColor: Colors.white,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(20),
@@ -40,7 +42,7 @@ class HomeView extends GetView<HomeController> {
         child: Icon(Icons.add),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.yellow,
-        elevation: 0,
+        elevation: 20,
         // shape: BeveledRectangleBorder(
         //     // borderRadius: BorderRadius.circular(20.0),
         //     // side: BorderSide(color: Colors.blue, width: 2.0, style: BorderStyle.solid)
@@ -162,10 +164,10 @@ class HomeView extends GetView<HomeController> {
 
   Widget buildSheet() {
     return Container(
-        height: 360,
+        height: 330,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          color: Colors.transparent,
+          color: Colors.white,
         ),
         child: Column(children: [
           const SizedBox(
@@ -222,21 +224,37 @@ class HomeView extends GetView<HomeController> {
                                   Row(
                                     children: [
                                       Image.asset(
-                                        'assets/images/tambahjadwal.jpg',
-                                        width: 90,
+                                        'assets/images/timetable.png',
+                                        width: 60,
                                       ),
                                       SizedBox(
-                                        width: 10,
+                                        width: 20,
                                       ),
-                                      Text(
-                                        "Atur Jadwal Dokter",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Atur Jadwal Dokter",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            "Menambahkan jadwal praktik dokter",
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 10),
+                                          )
+                                        ],
                                       )
                                     ],
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
@@ -257,19 +275,35 @@ class HomeView extends GetView<HomeController> {
                                   Row(
                                     children: [
                                       Image.asset(
-                                        'assets/images/tambahpasien.jpg',
-                                        width: 90,
+                                        'assets/images/pasienbaru.png',
+                                        width: 60,
                                       ),
                                       SizedBox(
-                                        width: 10,
+                                        width: 20,
                                       ),
-                                      Text(
-                                        "Tamabah Pasien Baru",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14),
-                                      )
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Tamabah Pasien Baru",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            "Menambahkan Pasien baru ke daftar antrian",
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 10),
+                                          )
+                                        ],
+                                      ),
                                     ],
                                   )
                                 ],
@@ -280,7 +314,7 @@ class HomeView extends GetView<HomeController> {
                             height: 10,
                           ),
                           InkWell(
-                            onTap: () => Get.toNamed(Routes.REGISTRASI_PASIEN),
+                            onTap: () => Get.toNamed(Routes.TAMBAH_PASIEN_LAMA),
                             child: Container(
                               width: 305,
                               decoration: BoxDecoration(
@@ -292,19 +326,35 @@ class HomeView extends GetView<HomeController> {
                                   Row(
                                     children: [
                                       Image.asset(
-                                        'assets/images/tambahpasien.jpg',
-                                        width: 90,
+                                        'assets/images/pasienlama.png',
+                                        width: 60,
                                       ),
                                       SizedBox(
-                                        width: 10,
+                                        width: 20,
                                       ),
-                                      Text(
-                                        "Tamabah Pasien Lama",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14),
-                                      )
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Tamabah Pasien Lama",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            "Membuat Antrian/priksa ulang untuk pasien lama",
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 10),
+                                          )
+                                        ],
+                                      ),
                                     ],
                                   )
                                 ],
@@ -392,38 +442,7 @@ class Home extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 10, left: 10),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Row(
-                              //   children: [
-                              //     const Expanded(
-                              //       child: Text(
-                              //         "Pendapatan Mingguan",
-                              //         style: TextStyle(
-                              //             fontWeight: FontWeight.bold,
-                              //             fontSize: 18),
-                              //       ),
-                              //     ),
-                              //     const SizedBox(
-                              //       width: 10,
-                              //     ),
-                              //     GestureDetector(
-                              //       onTap: () {
-                              //         Get.toNamed(Routes.PENDAPATAN_DOKTER);
-                              //       },
-                              //       child: const Text(
-                              //         "Lihat Semua",
-                              //         style: TextStyle(
-                              //             fontWeight: FontWeight.normal,
-                              //             color: Colors.blue),
-                              //         textAlign: TextAlign.center,
-                              //       ),
-                              //     ),
-                              //     const SizedBox(
-                              //       width: 10,
-                              //     ),
-                              //   ],
-                              // ),
-                            ]),
+                            children: []),
                       ),
                       const SizedBox(
                         height: 10,
@@ -441,7 +460,7 @@ class Home extends StatelessWidget {
                               children: [
                                 const Expanded(
                                   child: Text(
-                                    "Daftar Online",
+                                    "Antrian Pasien",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18),

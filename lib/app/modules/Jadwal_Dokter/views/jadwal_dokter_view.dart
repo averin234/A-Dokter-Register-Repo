@@ -81,7 +81,6 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
             floating: true,
             pinned: true,
             snap: true,
-            centerTitle: true,
             leading: IconButton(
               onPressed: () {
                 Get.back();
@@ -104,6 +103,9 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
           SliverList(
             delegate: SliverChildListDelegate(
               [
+                SizedBox(
+                  height: 10,
+                ),
                 FutureBuilder(
                     future: API.getJadwalDokter(
                         kode_dokter:

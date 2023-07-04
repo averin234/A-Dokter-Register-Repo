@@ -35,6 +35,7 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
             pinned: true,
             snap: true,
             centerTitle: true,
+
             leading: IconButton(
                 onPressed: () {},
                 icon: const Icon(
