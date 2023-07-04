@@ -137,7 +137,11 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                       setState(() {
                                         controller.kodeBagianController.text =
                                             '010011';
-                                        id = 1;
+                                        id = val ?? 1;
+                                        controller.spesialisController.text =
+                                            '';
+                                        controller
+                                            .namaSpesialisController.text = '';
                                       });
                                     },
                                   ),
@@ -152,7 +156,11 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                       setState(() {
                                         controller.kodeBagianController.text =
                                             '010001';
-                                        id = 2;
+                                        id = val ?? 2;
+                                        controller.spesialisController.text =
+                                            '';
+                                        controller
+                                            .namaSpesialisController.text = '';
                                       });
                                     },
                                   ),
@@ -178,7 +186,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 false,
                                 false,
                                 controller.noTelpController),
-                            componentnamber(
+                            component1(
                                 Icons.credit_card_rounded,
                                 'Surat Izin Praktek...',
                                 false,
@@ -189,7 +197,8 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 'Spesialisasi...',
                                 false,
                                 false,
-                                controller.spesialisController),
+                                controller.spesialisController,
+                                controller.namaSpesialisController),
                             const SizedBox(),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -286,7 +295,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
   }
 
   Widget dropdown(IconData icon, String hintText, bool isPassword, bool isEmail,
-      TextEditingController controller) {
+      TextEditingController controller, TextEditingController controller1) {
     final control = Get.put(RegisterDokterController());
     Size size = MediaQuery.of(context).size;
     return FutureBuilder(
@@ -299,7 +308,8 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             final data = snapshot.data!;
             return AppTextField(
               textEditingController: controller,
-              hint: "Cari Dokter/Spesialisasi",
+              textEditingController1: controller1,
+              hint: "Spesialisasi...",
               isCitySelected: true,
               lists: data.list!,
               title: '',
@@ -380,16 +390,18 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
     final controller = Get.put(RegisterDokterController());
     return InkWell(
       onTap: () async {
-        // print(controller.namaController.text +
-        //     controller.emailController.text +
-        //     controller.noTelpController.text +
-        //     controller.kodeBagianController.text +
-        //     controller.sipController.text);
+        print(controller.namaController.text +
+            controller.emailController.text +
+            controller.noTelpController.text +
+            controller.kodeBagianController.text +
+            controller.sipController.text +
+            controller.spesialisController.text);
         if (controller.namaController.text.isNotEmpty &&
             controller.emailController.text.isNotEmpty &&
             controller.noTelpController.text.isNotEmpty &&
             controller.kodeBagianController.text.isNotEmpty &&
-            controller.sipController.text.isNotEmpty) {
+            controller.sipController.text.isNotEmpty &&
+            controller.spesialisController.text.isNotEmpty) {
           final daftarPXBaru = await API.postDaftarPxBaruDokter(
             nama: controller.namaController.text,
             email: controller.emailController.text,

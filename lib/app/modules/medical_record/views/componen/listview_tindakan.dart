@@ -2,6 +2,7 @@ import 'package:a_dokter_register/app/data/model/get_pasien_by.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/componen/fetch_data.dart';
 import '../../../../routes/app_pages.dart';
 
 class ListViewPasien extends StatelessWidget {
@@ -113,12 +114,24 @@ class ListViewPasien extends StatelessWidget {
                             const SizedBox(
                               width: 6,
                             ),
-                            Text(
-                                pasien.jenKelamin == 'L'
-                                    ? 'Laki-laki'
-                                    : 'Perempuan',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 13)),
+                            FutureBuilder(
+                                future: API.cekJenisKelamin(
+                                    jenis_kelamin: pasien.jenKelamin ?? ''),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData &&
+                                      snapshot.connectionState !=
+                                          ConnectionState.waiting &&
+                                      snapshot.data != null) {
+                                    return Text(snapshot.data!.msg ?? '',
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13));
+                                  } else {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }
+                                }),
                           ],
                         ),
                         const SizedBox(

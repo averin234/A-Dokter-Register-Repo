@@ -10,6 +10,7 @@ class RegisterDokterController extends GetxController {
   final sipController = TextEditingController();
   final kodeBagianController = TextEditingController();
   final spesialisController = TextEditingController();
+  final namaSpesialisController = TextEditingController();
   final isObscurePass = true.obs;
   final isObscureConfirmPass = true.obs;
   final gender = [
@@ -29,8 +30,8 @@ class RegisterDokterController extends GetxController {
   ];
 
   @override
-  void onClose() {
-    // TODO: implement onClose
-    super.onClose();
+  void onInit() {
+    kodeBagianController.text = '010011';
+    super.onInit();
   }
 }

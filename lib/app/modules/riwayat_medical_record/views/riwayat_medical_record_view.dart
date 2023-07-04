@@ -1,10 +1,12 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/componen/publics.dart';
+import 'package:a_dokter_register/app/data/model/get_detail_pasien.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import '../controllers/riwayat_medical_record_controller.dart';
-import 'componen/horizontal_calender.dart';
 import 'componen/horizontal_calendermr.dart';
 import 'componen/listview_riwayat_medis.dart';
 import 'componen/profile_pasien_riwayat_mr.dart';
@@ -17,14 +19,14 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -37,13 +39,13 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
                 onPressed: () {
                   Get.back();
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_circle_left_rounded,
                   size: 40,
                 ),
-                color: Color.fromARGB(255, 192, 192, 192)),
-            title:
-                Text("Medical Record", style: TextStyle(color: Colors.black)),
+                color: const Color.fromARGB(255, 192, 192, 192)),
+            title: const Text("Medical Record",
+                style: TextStyle(color: Colors.black)),
             // actions: [
             //   IconButton(
             //       onPressed: () {},
@@ -51,7 +53,7 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
             //       color: Colors.white),
             // ],
             bottom: AppBar(
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
@@ -60,22 +62,39 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
               automaticallyImplyLeading: false,
               elevation: 0,
               title: Container(
-                padding: EdgeInsets.all(0),
-                margin: EdgeInsets.only(top: 15),
+                padding: const EdgeInsets.all(0),
+                margin: const EdgeInsets.only(top: 15),
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                child: HorizontalCalendermr(),
+                child: const HorizontalCalendermr(),
               ),
             ),
           ),
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              ProfileRiwayat(),
-              SizedBox(
+              FutureBuilder(
+                  future: API.getDetailPasien(no_mr: controller.noMr),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData &&
+                        snapshot.connectionState != ConnectionState.waiting &&
+                        snapshot.data != null) {
+                      final data = snapshot.data!.pasien ?? Pasien();
+                      return const ProfileRiwayat();
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  }),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text("Riwayat Medical Record Pasien"),
+              const SizedBox(
                 height: 10,
               ),
               Container(
@@ -91,49 +110,41 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
                     ),
                   ],
                 ),
-                child: Column(
-                  children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 475),
-                    childAnimationBuilder: (widget) => SlideAnimation(
-                      child: FadeInAnimation(
-                        child: widget,
-                      ),
-                    ),
-                    children: <Widget>[
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text("Riwayat Medical Record Pasien"),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      ListViewRiwayat(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      ListViewRiwayat(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      ListViewRiwayat(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      ListViewRiwayat(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      ListViewRiwayat(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      ListViewRiwayat(),
-                      SizedBox(
-                        height: 40,
-                      ),
-                    ],
-                  ),
-                ),
+                child: FutureBuilder(
+                    future: API.getListMR(
+                        kode_dokter:
+                            Publics.controller.getDataRegist.value.kode ?? '',
+                        no_mr: controller.noMr),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData &&
+                          snapshot.connectionState != ConnectionState.waiting &&
+                          snapshot.data != null) {
+                        final data = snapshot.data!.listMr ?? [];
+                        return data.isEmpty
+                            ? Text(snapshot.data!.msg ?? '')
+                            : Column(
+                                children:
+                                    AnimationConfiguration.toStaggeredList(
+                                        duration:
+                                            const Duration(milliseconds: 475),
+                                        childAnimationBuilder: (widget) =>
+                                            SlideAnimation(
+                                              child: FadeInAnimation(
+                                                child: widget,
+                                              ),
+                                            ),
+                                        children: data
+                                            .map((e) => ListViewRiwayat(
+                                                  listMr: e,
+                                                ))
+                                            .toList()),
+                              );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    }),
               )
             ]),
           ),

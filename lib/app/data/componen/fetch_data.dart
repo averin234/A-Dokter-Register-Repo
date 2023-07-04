@@ -524,12 +524,11 @@ class API {
 
   static Future<GetDetailPasien> getDetailPasien({
     required String no_mr,
-    required String url,
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
       "no_mr": no_mr,
-      "url": url,
+      "url": _url,
     };
     var response = await Dio().post(
       _getDetailPasien,
@@ -831,7 +830,7 @@ class API {
     required String kode_bagian,
   }) async {
     var token = await getToken();
-    final data = {};
+    final data = {'kode_bagian': kode_bagian};
     var response = await Dio().post(
       _getSpesialisasi,
       options: Options(

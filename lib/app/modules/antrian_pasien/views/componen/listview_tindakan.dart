@@ -255,10 +255,10 @@ class ListViewTindakan extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: Text("Pasien Adni Maulidin",
-                  style: TextStyle(
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Text("Pasien ${antrian.namaPasien ?? ''}",
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: Colors.black)),

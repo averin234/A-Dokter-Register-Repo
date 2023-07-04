@@ -6,6 +6,7 @@ import '../../../data/model/list_data.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController textEditingController;
+  final TextEditingController textEditingController1;
   final String title;
   final String hint;
   final bool isCitySelected;
@@ -13,6 +14,7 @@ class AppTextField extends StatelessWidget {
 
   const AppTextField({
     required this.textEditingController,
+    required this.textEditingController1,
     required this.title,
     required this.hint,
     required this.isCitySelected,
@@ -52,6 +54,7 @@ class AppTextField extends StatelessWidget {
                         ),
                         onPressed: () {
                           textEditingController.text = e.kode!;
+                          textEditingController1.text = e.nama!;
                           Get.back();
                         },
                       ),
@@ -81,7 +84,7 @@ class AppTextField extends StatelessWidget {
       ),
       child: TextFormField(
         readOnly: true,
-        controller: textEditingController,
+        controller: textEditingController1,
         cursorColor: Colors.black,
         onTap: onTextFieldTap,
         decoration: InputDecoration(
@@ -90,6 +93,10 @@ class AppTextField extends StatelessWidget {
           contentPadding:
               const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 15),
           hintText: hint,
+          prefixIcon: Icon(
+            Icons.health_and_safety_sharp,
+            color: Colors.black.withOpacity(.7),
+          ),
           border: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,

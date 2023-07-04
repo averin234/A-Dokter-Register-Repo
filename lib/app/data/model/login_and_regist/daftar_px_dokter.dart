@@ -29,7 +29,7 @@ class Dokter {
   String? namaDokter;
   int? kodeDokter;
   String? sip;
-  int? idMtKaryawan;
+  String? idMtKaryawan;
 
   Dokter(
       {this.noInduk,
