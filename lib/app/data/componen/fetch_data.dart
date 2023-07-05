@@ -796,7 +796,7 @@ class API {
     return obj;
   }
 
-  static Future<dynamic> postSoap({
+  static Future<CheckUp> postSoap({
     required String no_registrasi,
     required String objective,
     required String subjective,
@@ -820,7 +820,7 @@ class API {
       data: data,
     );
     final datas = jsonDecode(response.data);
-    final obj = AksesPx.fromJson(datas);
+    final obj = CheckUp.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(

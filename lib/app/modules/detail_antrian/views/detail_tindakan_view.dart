@@ -116,7 +116,9 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                             const SizedBox(
                               height: 10,
                             ),
-                            PlanningResep(resep: data.resep ?? []),
+                            data.resep == null
+                                ? Container()
+                                : PlanningResep(resep: data.resep ?? []),
                             const SizedBox(
                               height: 10,
                             ),

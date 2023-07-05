@@ -1,7 +1,9 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
+import 'package:a_dokter_register/app/modules/isi_tindakan/controllers/isi_tindakan_controller.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FormIsiTindakan extends StatefulWidget {
   const FormIsiTindakan({super.key});
@@ -11,17 +13,8 @@ class FormIsiTindakan extends StatefulWidget {
 }
 
 class _FormIsiTindakanState extends State<FormIsiTindakan> {
-  // final List<String> items = [
-  //   'Item1',
-  //   'Item2',
-  //   'Item3',
-  //   'Item4',
-  //   'Item5',
-  //   'Item6',
-  //   'Item7',
-  //   'Item8',
-  // ];
   String? selectedValue;
+  final controller = Get.put(IsiTindakanController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -112,10 +105,11 @@ class _FormIsiTindakanState extends State<FormIsiTindakan> {
                                   ),
                                 ))
                             .toList(),
-                        value: selectedValue,
+                        value: controller.namaTindakanController.text,
                         onChanged: (value) {
                           setState(() {
-                            selectedValue = value as String;
+                            controller.namaTindakanController.text =
+                                value ?? '';
                           });
                         },
                       ),
@@ -146,10 +140,11 @@ class _FormIsiTindakanState extends State<FormIsiTindakan> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: const Color(0x6cc7d1db)),
             ),
-            child: const TextField(
+            child: TextField(
+              controller: controller.jumlahTindakanController,
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
@@ -235,7 +230,8 @@ class _FormIsiTindakanState extends State<FormIsiTindakan> {
                         value: selectedValue,
                         onChanged: (value) {
                           setState(() {
-                            selectedValue = value as String;
+                            controller.obatTindakanController.text =
+                                value ?? '';
                           });
                         },
                       ),
@@ -266,10 +262,11 @@ class _FormIsiTindakanState extends State<FormIsiTindakan> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: const Color(0x6cc7d1db)),
             ),
-            child: const TextField(
+            child: TextField(
+              controller: controller.jumlahObatTindakanController,
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,

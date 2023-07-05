@@ -16,4 +16,7 @@ class DetailTindakanController extends GetxController {
   final nadiController = TextEditingController();
   final pernapasanController = TextEditingController();
   final beratBadanController = TextEditingController();
+  final objectiveController = TextEditingController();
+  final subjectiveController = TextEditingController();
+  final analystController = TextEditingController();
 }

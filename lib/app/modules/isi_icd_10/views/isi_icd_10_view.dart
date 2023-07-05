@@ -1,18 +1,15 @@
 import 'package:a_dokter_register/app/modules/isi_icd_10/views/componen/form_icd_10.dart';
 import 'package:a_dokter_register/app/modules/isi_icd_10/views/componen/hasil_icd_10.dart';
-import 'package:a_dokter_register/app/modules/isi_resep/views/componen/form_isi_resep.dart';
-import 'package:a_dokter_register/app/modules/isi_resep/views/componen/hasil_resep.dart';
-import 'package:a_dokter_register/app/modules/isi_tindakan/controllers/isi_tindakan_controller.dart';
-import 'package:a_dokter_register/app/modules/isi_tindakan/views/componen/form_isi_tindakan.dart';
-import 'package:a_dokter_register/app/modules/isi_tindakan/views/componen/hasil_tindakan.dart';
-import 'package:a_dokter_register/app/modules/isi_tindakan/views/componen/nama_pemeriksa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
-class IsiIcd10View extends GetView<IsiTindakanController> {
+import '../controllers/isi_icd_10_controller.dart';
+import 'componen/nama_pemeriksa.dart';
+
+class IsiIcd10View extends GetView<IsiIcd10Controller> {
   const IsiIcd10View({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -20,14 +17,14 @@ class IsiIcd10View extends GetView<IsiTindakanController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -40,13 +37,13 @@ class IsiIcd10View extends GetView<IsiTindakanController> {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_circle_left_rounded,
                 size: 40,
               ),
-              color: Color.fromARGB(255, 192, 192, 192),
+              color: const Color.fromARGB(255, 192, 192, 192),
             ),
-            title: Text("ICD 10", style: TextStyle(color: Colors.black)),
+            title: const Text("ICD 10", style: TextStyle(color: Colors.black)),
             bottom: AppBar(
               toolbarHeight: 0,
               automaticallyImplyLeading: false,
@@ -66,28 +63,28 @@ class IsiIcd10View extends GetView<IsiTindakanController> {
                       ),
                     ),
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      NamaPemeriksa(),
-                      SizedBox(
+                      const NamaPemeriksa(),
+                      const SizedBox(
                         height: 10,
                       ),
-                      FormICD10(),
-                      SizedBox(
+                      const FormICD10(),
+                      const SizedBox(
                         height: 30,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 10),
                         child: Text('Hasil ICD-10',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 15)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      HasilICD10(),
-                      SizedBox(
+                      const HasilICD10(),
+                      const SizedBox(
                         height: 40,
                       ),
                     ],

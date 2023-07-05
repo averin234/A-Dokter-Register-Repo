@@ -143,7 +143,8 @@ class Planning extends StatelessWidget {
                 Column(
                   children: [
                     InkWell(
-                      onTap: () => Get.toNamed(Routes.CETAKAN),
+                      onTap: () =>
+                          Get.toNamed(Routes.CETAKAN, arguments: {'file': ''}),
                       child: Container(
                         width: 80.0,
                         height: 80.0,
@@ -188,7 +189,8 @@ class Planning extends StatelessWidget {
                 Column(
                   children: [
                     InkWell(
-                      onTap: () => Get.toNamed(Routes.ISI_RESEP),
+                      onTap: () =>
+                          Get.toNamed(Routes.ISI_RESEP, arguments: getDetailMR),
                       child: Container(
                         width: 80.0,
                         height: 80.0,
@@ -224,7 +226,8 @@ class Planning extends StatelessWidget {
                 Column(
                   children: [
                     InkWell(
-                      onTap: () => Get.toNamed(Routes.ISI_ICD_10),
+                      onTap: () => Get.toNamed(Routes.ISI_ICD_10,
+                          arguments: getDetailMR),
                       child: Container(
                         width: 80.0,
                         height: 80.0,
@@ -260,7 +263,8 @@ class Planning extends StatelessWidget {
                 Column(
                   children: [
                     InkWell(
-                      onTap: () => Get.toNamed(Routes.PEMERIKSAAN),
+                      onTap: () => Get.toNamed(Routes.PEMERIKSAAN,
+                          arguments: getDetailMR),
                       child: Container(
                         width: 80.0,
                         height: 80.0,
@@ -438,7 +442,7 @@ class Planning extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () => showModalBottomSheet(
-                    context: context,
+                    context: Get.context!,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(20),
@@ -480,7 +484,7 @@ class Planning extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () => showModalBottomSheet(
-                    context: context,
+                    context: Get.context!,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(20),

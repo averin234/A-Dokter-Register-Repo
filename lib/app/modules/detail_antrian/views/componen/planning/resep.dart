@@ -1,13 +1,6 @@
 import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/list_resep.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/assestment.dart';
-import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/objektive.dart';
 
 class PlanningResep extends StatelessWidget {
   final List<Resep> resep;
@@ -77,7 +70,11 @@ class PlanningResep extends StatelessWidget {
               )
             ],
           ),
-          Column(children: resep.map((e) => const ListResep()).toList()),
+          Column(
+              children: resep
+                  .map((e) =>
+                      e.idResep != null ? ListResep(resep: e) : Container())
+                  .toList()),
         ],
       ),
     );

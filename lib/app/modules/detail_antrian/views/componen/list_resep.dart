@@ -1,7 +1,9 @@
+import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:flutter/material.dart';
 
 class ListResep extends StatelessWidget {
-  const ListResep({super.key});
+  final Resep resep;
+  const ListResep({super.key, required this.resep});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,9 @@ class ListResep extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Row(
-              children: const [
-                Text('No. 1 ', style: TextStyle(fontWeight: FontWeight.bold)),
+              children: [
+                Text('No. ${resep.no ?? 0}',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
             const Divider(
@@ -36,27 +39,27 @@ class ListResep extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const Text('Nama Obat : Alpara '),
+            Text('Nama Obat : ${resep.namaBrg ?? ''}'),
             const SizedBox(
               height: 10,
             ),
-            const Text('Status : Satuan '),
+            Text('Status : ${resep.satuan ?? ''}'),
             const SizedBox(
               height: 20,
             ),
-            const Text('Jumlah : 2 '),
+            Text('Jumlah : ${resep.jumlahPesan ?? ''}'),
             const SizedBox(
               height: 20,
             ),
-            const Text('Aturan Pakai : 2x1 '),
+            Text('Aturan Pakai : ${resep.namaDosis ?? ''}'),
             const SizedBox(
               height: 20,
             ),
-            const Text('Note : Cepat Sembuh '),
+            Text('Note : ${resep.note ?? ''}'),
             const SizedBox(
               height: 20,
             ),
-            const Text('Keterangan : Sesudah Makan '),
+            Text('Keterangan : ${resep.ket ?? ''}'),
             const SizedBox(
               height: 20,
             ),
