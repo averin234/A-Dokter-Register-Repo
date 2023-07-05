@@ -34,9 +34,9 @@ class ListViewRiwayat extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(listMr.namaPegawai ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16)),
+                      // Text(listMr.namaPegawai ?? '',
+                      //     style: const TextStyle(
+                      //         fontWeight: FontWeight.bold, fontSize: 16)),
                       const SizedBox(
                         height: 10,
                       ),

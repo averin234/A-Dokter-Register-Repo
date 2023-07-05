@@ -337,7 +337,7 @@ class HomeView extends GetView<HomeController> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Tamabah Pasien Lama",
+                                            "Registrasi Pasien Lama",
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.bold,

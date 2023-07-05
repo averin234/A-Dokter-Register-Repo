@@ -40,7 +40,7 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
             pinned: true,
             snap: true,
             automaticallyImplyLeading: false,
-            title: Text('Cari Pasien'),
+            title: Text('Daftar Pasien'),
             bottom: AppBar(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(

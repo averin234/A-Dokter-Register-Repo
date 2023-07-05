@@ -93,7 +93,11 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
               const SizedBox(
                 height: 10,
               ),
-              const Text("Riwayat Medical Record Pasien"),
+              Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: const Text("Riwayat Medical Record Pasien",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ),
               const SizedBox(
                 height: 10,
               ),
