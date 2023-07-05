@@ -19,12 +19,12 @@ class _PlanningState extends State<Planning> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
+      onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN, parameters: {}),
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10),
-        padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
@@ -39,12 +39,12 @@ class _PlanningState extends State<Planning> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: const [
                 SizedBox(
                   height: 10,
                 ),
@@ -58,7 +58,7 @@ class _PlanningState extends State<Planning> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -69,7 +69,7 @@ class _PlanningState extends State<Planning> {
                     InkWell(
                       onTap: () => showModalBottomSheet(
                         context: context,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(20),
                           ),
@@ -80,8 +80,8 @@ class _PlanningState extends State<Planning> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: new DecorationImage(
-                            image: new AssetImage("assets/consultation.png"),
+                          image: DecorationImage(
+                            image: const AssetImage("assets/consultation.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
@@ -98,13 +98,13 @@ class _PlanningState extends State<Planning> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text("Penunjang Medis")
+                    const Text("Penunjang Medis")
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Column(
@@ -115,8 +115,8 @@ class _PlanningState extends State<Planning> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: new DecorationImage(
-                            image: new AssetImage("assets/prescription.png"),
+                          image: DecorationImage(
+                            image: const AssetImage("assets/prescription.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
@@ -131,19 +131,19 @@ class _PlanningState extends State<Planning> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text("Tindakan")
+                    const Text("Tindakan")
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Column(
@@ -154,8 +154,8 @@ class _PlanningState extends State<Planning> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: new DecorationImage(
-                            image: new AssetImage("assets/print.png"),
+                          image: DecorationImage(
+                            image: const AssetImage("assets/print.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
@@ -170,21 +170,21 @@ class _PlanningState extends State<Planning> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text("Cetakan")
+                    const Text("Cetakan")
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 60,
               height: 30,
             ),
@@ -199,9 +199,9 @@ class _PlanningState extends State<Planning> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: new DecorationImage(
-                            image:
-                                new AssetImage("assets/medical-equipment.png"),
+                          image: DecorationImage(
+                            image: const AssetImage(
+                                "assets/medical-equipment.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
@@ -216,16 +216,16 @@ class _PlanningState extends State<Planning> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text("Isi Resep")
+                    const Text("Isi Resep")
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Column(
@@ -236,8 +236,8 @@ class _PlanningState extends State<Planning> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: new DecorationImage(
-                            image: new AssetImage("assets/monitoring.png"),
+                          image: DecorationImage(
+                            image: const AssetImage("assets/monitoring.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
@@ -252,16 +252,16 @@ class _PlanningState extends State<Planning> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text("Isi ICD 10")
+                    const Text("Isi ICD 10")
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Column(
@@ -272,8 +272,8 @@ class _PlanningState extends State<Planning> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: new DecorationImage(
-                            image: new AssetImage("assets/monitoring.png"),
+                          image: DecorationImage(
+                            image: const AssetImage("assets/monitoring.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
@@ -288,16 +288,16 @@ class _PlanningState extends State<Planning> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text("Pemeriksaan")
+                    const Text("Pemeriksaan")
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
               ],
@@ -316,7 +316,7 @@ class _PlanningState extends State<Planning> {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -326,14 +326,14 @@ class _PlanningState extends State<Planning> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Surat Rujukan Penunjang Medis",
                   style: TextStyle(
@@ -341,7 +341,7 @@ class _PlanningState extends State<Planning> {
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -357,27 +357,27 @@ class _PlanningState extends State<Planning> {
                       ),
                     ),
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Kepada Yth.",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -391,27 +391,27 @@ class _PlanningState extends State<Planning> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Pemeriksaan Penujang",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         height: 120,
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
+                          color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: TextField(
+                        child: const TextField(
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.done,
                           maxLines: 7,
@@ -428,7 +428,7 @@ class _PlanningState extends State<Planning> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 200,
                       ),
                     ],
@@ -436,7 +436,7 @@ class _PlanningState extends State<Planning> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -446,7 +446,7 @@ class _PlanningState extends State<Planning> {
                 InkWell(
                   onTap: () => showModalBottomSheet(
                     context: context,
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(20),
                       ),
@@ -457,7 +457,7 @@ class _PlanningState extends State<Planning> {
                     height: 45,
                     width: 145,
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 56, 229, 77),
+                      color: const Color.fromARGB(255, 56, 229, 77),
                       borderRadius: BorderRadius.circular(10),
                       // boxShadow: [
                       //   BoxShadow(
@@ -470,7 +470,7 @@ class _PlanningState extends State<Planning> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           "Simpan",
                           style: TextStyle(
@@ -482,13 +482,13 @@ class _PlanningState extends State<Planning> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 InkWell(
                   onTap: () => showModalBottomSheet(
                     context: context,
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(20),
                       ),
@@ -512,7 +512,7 @@ class _PlanningState extends State<Planning> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           "Cetak",
                           style: TextStyle(
@@ -526,7 +526,7 @@ class _PlanningState extends State<Planning> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

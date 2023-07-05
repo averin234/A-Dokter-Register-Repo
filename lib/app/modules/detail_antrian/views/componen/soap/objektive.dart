@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../routes/app_pages.dart';
 
-class objektive extends StatefulWidget {
-  const objektive({super.key});
+class Objektive extends StatefulWidget {
+  const Objektive({super.key});
 
   @override
-  State<objektive> createState() => _objektiveState();
+  State<Objektive> createState() => _ObjektiveState();
 }
 
-class _objektiveState extends State<objektive> {
+class _ObjektiveState extends State<Objektive> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10),
-        padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
@@ -38,12 +34,12 @@ class _objektiveState extends State<objektive> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: const [
                 SizedBox(
                   height: 10,
                 ),
@@ -63,14 +59,14 @@ class _objektiveState extends State<objektive> {
                 // ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Divider(
+            const Divider(
               height: 3,
               color: Colors.grey,
             ),
-            TextField(
+            const TextField(
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.none,
               maxLines: 7,

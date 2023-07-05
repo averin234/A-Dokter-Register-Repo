@@ -1,3 +1,5 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -6,8 +8,6 @@ import 'package:get/get.dart';
 
 import '../controllers/detail_riwayat_controller.dart';
 import 'componen/riwayat.vitalsign.dart';
-import 'componen/riwayat_laboratorium.dart';
-import 'componen/riwayat_radiologi.dart';
 import 'componen/riwayat_resep.dart';
 import 'componen/riwayat_soap/soap.dart';
 
@@ -20,14 +20,14 @@ class DetailRiwayatView extends GetView<DetailRiwayatController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -40,13 +40,13 @@ class DetailRiwayatView extends GetView<DetailRiwayatController> {
                 onPressed: () {
                   Get.back();
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_circle_left_rounded,
                   size: 40,
                 ),
-                color: Color.fromARGB(255, 192, 192, 192)),
-            title:
-                Text("Detail Riwayat", style: TextStyle(color: Colors.black)),
+                color: const Color.fromARGB(255, 192, 192, 192)),
+            title: const Text("Detail Riwayat",
+                style: TextStyle(color: Colors.black)),
             // actions: [
             //   IconButton(
             //       onPressed: () {},
@@ -54,7 +54,7 @@ class DetailRiwayatView extends GetView<DetailRiwayatController> {
             //       color: Colors.white),
             // ],
             bottom: AppBar(
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
@@ -62,45 +62,70 @@ class DetailRiwayatView extends GetView<DetailRiwayatController> {
               toolbarHeight: 0,
               automaticallyImplyLeading: false,
               elevation: 0,
-              backgroundColor: Color.fromARGB(255, 35, 163, 223),
+              backgroundColor: const Color.fromARGB(255, 35, 163, 223),
               // title: SearchMedicalRecord(),
             ),
           ),
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
-              Column(
-                children: AnimationConfiguration.toStaggeredList(
-                  duration: const Duration(milliseconds: 375),
-                  childAnimationBuilder: (widget) => ScaleAnimation(
-                    child: FadeInAnimation(
-                      child: widget,
-                    ),
-                  ),
-                  children: <Widget>[
-                    SizedBox(
-                      height: 15,
-                    ),
-                    RiwayatVitalSign(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    RiwayatSoap(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    RiwayatResep(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    RiwayatRadiologi(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    RiwayatLaboratorium(),
-                  ],
-                ),
-              ),
+              FutureBuilder(
+                  future:
+                      API.getDetailMR(no_registrasi: controller.noRegistrasi),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData &&
+                        snapshot.connectionState != ConnectionState.waiting &&
+                        snapshot.data != null) {
+                      final data = snapshot.data!;
+                      return Column(
+                        children: AnimationConfiguration.toStaggeredList(
+                          duration: const Duration(milliseconds: 375),
+                          childAnimationBuilder: (widget) => ScaleAnimation(
+                            child: FadeInAnimation(
+                              child: widget,
+                            ),
+                          ),
+                          children: <Widget>[
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            data.vitalSign == null
+                                ? Container()
+                                : RiwayatVitalSign(
+                                    vitalSign: data.vitalSign ?? VitalSign()),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            data.riwayatPemeriksaan == null
+                                ? Container()
+                                : RiwayatSoap(
+                                    soap: data.riwayatPemeriksaan ??
+                                        RiwayatPemeriksaan()),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            data.resep == null
+                                ? Container()
+                                : RiwayatResep(
+                                    resep: data.resep ?? [],
+                                  ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            // const RiwayatRadiologi(),
+                            // const SizedBox(
+                            //   height: 10,
+                            // ),
+                            // const RiwayatLaboratorium(),
+                          ],
+                        ),
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  }),
             ]),
           ),
         ],

@@ -1,27 +1,21 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../routes/app_pages.dart';
 
-class ProfilePasienTindakan extends StatefulWidget {
-  const ProfilePasienTindakan({super.key});
+class ProfilePasienTindakan extends StatelessWidget {
+  final Pasien pasien;
+  const ProfilePasienTindakan({super.key, required this.pasien});
 
-  @override
-  State<ProfilePasienTindakan> createState() => _ProfilePasienTindakanState();
-}
-
-class _ProfilePasienTindakanState extends State<ProfilePasienTindakan> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
-      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0x6cc7d1db)),
+        border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
@@ -36,49 +30,49 @@ class _ProfilePasienTindakanState extends State<ProfilePasienTindakan> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               SizedBox(
                 width: 270,
-                child: Text("Taufik fik",
-                    style: TextStyle(
+                child: Text(pasien.namaPasien ?? '',
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               CircleAvatar(
                 radius: 30.0,
-                backgroundImage: NetworkImage(
+                backgroundImage: NetworkImage(pasien.foto ??
                     'https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'),
                 backgroundColor: Colors.transparent,
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Divider(
+          const Divider(
             height: 3,
             color: Colors.grey,
           ),
           Row(
             children: [
               Container(
-                padding: EdgeInsets.only(left: 0),
+                padding: const EdgeInsets.only(left: 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text("No MR",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 13)),
@@ -110,77 +104,92 @@ class _ProfilePasienTindakanState extends State<ProfilePasienTindakan> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(left: 10, top: 10),
+                padding: const EdgeInsets.only(left: 10, top: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        Text(":",
+                        const Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        SizedBox(
+                        const SizedBox(
                           width: 6,
                         ),
-                        Text("9754856765",
-                            style: TextStyle(
+                        Text(pasien.noMr ?? '',
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        Text(":",
+                        const Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        SizedBox(
+                        const SizedBox(
                           width: 6,
                         ),
-                        Text("12 tahun",
-                            style: TextStyle(
+                        Text("${pasien.umur ?? ''} tahun",
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        Text(":",
+                        const Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        SizedBox(
+                        const SizedBox(
                           width: 6,
                         ),
-                        Text("A+",
-                            style: TextStyle(
+                        Text(pasien.golDarah ?? '',
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        Text(":",
+                        const Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        SizedBox(
+                        const SizedBox(
                           width: 6,
                         ),
-                        Text("Laki - Laki",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 13)),
+                        FutureBuilder(
+                            future: API.cekJenisKelamin(
+                                jenis_kelamin: pasien.jenKelamin ?? ''),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData &&
+                                  snapshot.connectionState !=
+                                      ConnectionState.waiting &&
+                                  snapshot.data != null) {
+                                return Text(snapshot.data!.msg ?? '',
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 13));
+                              } else {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                            }),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
@@ -192,7 +201,7 @@ class _ProfilePasienTindakanState extends State<ProfilePasienTindakan> {
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],
@@ -200,7 +209,7 @@ class _ProfilePasienTindakanState extends State<ProfilePasienTindakan> {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Column(
@@ -210,25 +219,26 @@ class _ProfilePasienTindakanState extends State<ProfilePasienTindakan> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD),
+                    onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
+                        parameters: {'no_mr': pasien.noMr ?? ''}),
                     child: Container(
                       height: 45,
                       width: 230,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 56, 229, 77),
+                        color: const Color.fromARGB(255, 56, 229, 77),
                         borderRadius: BorderRadius.circular(10),
-                         // boxShadow: [
-                         //   BoxShadow(
-                         //     color: Colors.green.withOpacity(0.5),
-                         //     spreadRadius: 0,
-                         //     blurRadius: 10,
-                         //     offset: const Offset(6, 6),
-                         //   ),
-                         // ],
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //     color: Colors.green.withOpacity(0.5),
+                        //     spreadRadius: 0,
+                        //     blurRadius: 10,
+                        //     offset: const Offset(6, 6),
+                        //   ),
+                        // ],
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           Text(
                             "Lihat Riwayat MR",
                             style: TextStyle(

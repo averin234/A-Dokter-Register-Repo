@@ -11,7 +11,8 @@ class ListViewRiwayat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.toNamed(Routes.DETAIL_RIWAYAT),
+      onTap: () => Get.toNamed(Routes.DETAIL_RIWAYAT,
+          parameters: {'no_registrasi': listMr.noRegistrasi ?? ''}),
       child: Container(
         margin: const EdgeInsets.only(right: 10, left: 10),
         padding: const EdgeInsets.only(right: 0, left: 10, bottom: 10),

@@ -12,8 +12,10 @@ class ListViewTindakan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN,
-          parameters: {'no_registrasi': antrian.noRegistrasi ?? ''}),
+      onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN, parameters: {
+        'no_registrasi': antrian.noRegistrasi ?? '',
+        'no_mr': antrian.noMr ?? ''
+      }),
       child: Container(
         margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
         padding: const EdgeInsets.only(right: 0, left: 10, bottom: 10),
@@ -111,7 +113,7 @@ class ListViewTindakan extends StatelessWidget {
                       ),
                       Container(
                         padding: const EdgeInsets.only(
-                            right: 120, left: 7, top: 7, bottom: 7),
+                            right: 40, left: 7, top: 7, bottom: 7),
                         decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 219, 246, 253),
                             borderRadius: BorderRadius.circular(10)),
@@ -194,7 +196,11 @@ class ListViewTindakan extends StatelessWidget {
                             ),
                           ),
                           InkWell(
-                            onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
+                            onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN,
+                                parameters: {
+                                  'no_registrasi': antrian.noRegistrasi ?? '',
+                                  'no_mr': antrian.noMr ?? ''
+                                }),
                             child: Container(
                               width: 90,
                               padding: const EdgeInsets.only(

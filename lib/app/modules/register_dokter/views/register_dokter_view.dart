@@ -59,7 +59,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
   String? selectedValue;
 
   // Group Value for Radio Button.
-  int id = 1;
+  int id = 0;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -131,17 +131,13 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   Radio(
-                                    value: 1,
+                                    value: 0,
                                     groupValue: id,
                                     onChanged: (val) {
                                       setState(() {
+                                        id = val ?? 0;
                                         controller.kodeBagianController.text =
-                                            '010011';
-                                        id = val ?? 1;
-                                        controller.spesialisController.text =
                                             '';
-                                        controller
-                                            .namaSpesialisController.text = '';
                                       });
                                     },
                                   ),
@@ -150,17 +146,13 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                     style: TextStyle(),
                                   ),
                                   Radio(
-                                    value: 2,
+                                    value: 1,
                                     groupValue: id,
                                     onChanged: (val) {
                                       setState(() {
+                                        id = val ?? 1;
                                         controller.kodeBagianController.text =
-                                            '010001';
-                                        id = val ?? 2;
-                                        controller.spesialisController.text =
                                             '';
-                                        controller
-                                            .namaSpesialisController.text = '';
                                       });
                                     },
                                   ),
@@ -193,11 +185,12 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 false,
                                 controller.sipController),
                             dropdown(
+                                id,
                                 Icons.credit_card_rounded,
                                 'Spesialisasi...',
                                 false,
                                 false,
-                                controller.spesialisController,
+                                controller.kodeBagianController,
                                 controller.namaSpesialisController),
                             const SizedBox(),
                             Column(
@@ -294,13 +287,18 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
     );
   }
 
-  Widget dropdown(IconData icon, String hintText, bool isPassword, bool isEmail,
-      TextEditingController controller, TextEditingController controller1) {
+  Widget dropdown(
+      int perubahan,
+      IconData icon,
+      String hintText,
+      bool isPassword,
+      bool isEmail,
+      TextEditingController controller,
+      TextEditingController controller1) {
     final control = Get.put(RegisterDokterController());
     Size size = MediaQuery.of(context).size;
     return FutureBuilder(
-        future:
-            API.getSpesialisasi(kode_bagian: control.kodeBagianController.text),
+        future: API.getSpesialisasi(id: perubahan.toString()),
         builder: (context, snapshot) {
           if (snapshot.hasData &&
               snapshot.connectionState != ConnectionState.waiting &&
@@ -311,7 +309,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
               textEditingController1: controller1,
               hint: "Spesialisasi...",
               isCitySelected: true,
-              lists: data.list!,
+              lists: data.list ?? [],
               title: '',
             );
           } else {
@@ -394,21 +392,18 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             controller.emailController.text +
             controller.noTelpController.text +
             controller.kodeBagianController.text +
-            controller.sipController.text +
-            controller.spesialisController.text);
+            controller.sipController.text);
         if (controller.namaController.text.isNotEmpty &&
             controller.emailController.text.isNotEmpty &&
             controller.noTelpController.text.isNotEmpty &&
             controller.kodeBagianController.text.isNotEmpty &&
-            controller.sipController.text.isNotEmpty &&
-            controller.spesialisController.text.isNotEmpty) {
+            controller.sipController.text.isNotEmpty) {
           final daftarPXBaru = await API.postDaftarPxBaruDokter(
             nama: controller.namaController.text,
             email: controller.emailController.text,
             noHp: controller.noTelpController.text,
             kodeBagian: controller.kodeBagianController.text,
             sip: controller.sipController.text,
-            kodeSpesialis: controller.spesialisController.text,
           );
           if (daftarPXBaru.code != 200) {
             Get.snackbar(

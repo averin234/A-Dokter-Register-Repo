@@ -24,6 +24,7 @@ class GetDetailPasien {
 
 class Pasien {
   String? noMr;
+  String? namaPasien;
   String? alamat;
   String? golDarah;
   String? alergi;
@@ -44,10 +45,12 @@ class Pasien {
       this.urlFotoPasien,
       this.namaKelompok,
       this.tglLhr,
-      this.umur});
+      this.umur,
+      this.namaPasien});
 
   Pasien.fromJson(Map<String, dynamic> json) {
     noMr = json['no_mr'];
+    namaPasien = json['nama_pasien'];
     alamat = json['alamat'];
     golDarah = json['gol_darah'];
     alergi = json['alergi'];
@@ -62,6 +65,7 @@ class Pasien {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['no_mr'] = noMr;
+    data['nama_pasien'] = namaPasien;
     data['alamat'] = alamat;
     data['gol_darah'] = golDarah;
     data['alergi'] = alergi;

@@ -53,9 +53,11 @@ android {
         multiDexEnabled true
     }
 
+    // C:/Users/ekoaj/Documents/Kantor/JKS/Averin_dev.jks
+    
      signingConfigs {
         release {
-             storeFile file('C:/Users/irwan/Averin_dev.jks')
+            storeFile file('C:/Users/ekoaj/Documents/Kantor/JKS/Averin_dev.jks')
             storePassword '48family'
             keyAlias = 'Averin2023'
             keyPassword '48family'

@@ -149,7 +149,7 @@ class API {
     return obj;
   }
 
-  static Future<dynamic> getkeadaanUmum() async {
+  static Future<ListData> getkeadaanUmum() async {
     var token = Publics.controller.getToken.value;
     final data = {};
     var response = await Dio().post(
@@ -162,11 +162,19 @@ class API {
       ),
       data: data,
     );
-    final obj = response.data;
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
     return obj;
   }
 
-  static Future<dynamic> getKesadaranPasien() async {
+  static Future<ListData> getKesadaranPasien() async {
     var token = Publics.controller.getToken.value;
     final data = {};
     var response = await Dio().post(
@@ -179,11 +187,19 @@ class API {
       ),
       data: data,
     );
-    final obj = response.data;
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
     return obj;
   }
 
-  static Future<dynamic> getJenisDokter() async {
+  static Future<ListData> getJenisDokter() async {
     var token = Publics.controller.getToken.value;
     final data = {};
     var response = await Dio().post(
@@ -196,11 +212,19 @@ class API {
       ),
       data: data,
     );
-    final obj = response.data;
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
     return obj;
   }
 
-  static Future<dynamic> getDataProv() async {
+  static Future<ListData> getDataProv() async {
     var token = Publics.controller.getToken.value;
     final data = {};
     var response = await Dio().post(
@@ -213,7 +237,15 @@ class API {
       ),
       data: data,
     );
-    final obj = response.data;
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
     return obj;
   }
 
@@ -825,10 +857,10 @@ class API {
   }
 
   static Future<ListData> getSpesialisasi({
-    required String kode_bagian,
+    required String id,
   }) async {
     var token = await getToken();
-    final data = {'kode_bagian': kode_bagian};
+    final data = {'id': id};
     var response = await Dio().post(
       _getSpesialisasi,
       options: Options(
@@ -1174,7 +1206,6 @@ class API {
       required String email,
       required String noHp,
       required String sip,
-      required String kodeSpesialis,
       required String kodeBagian}) async {
     var token = Publics.controller.getToken.value;
     final data = {
@@ -1183,7 +1214,6 @@ class API {
       "email": email,
       "sip": sip,
       "kode_bagian": kodeBagian,
-      "kode_spesialis": kodeSpesialis
     };
     var response = await Dio().post(
       _postDaftarPxBaruDokter,

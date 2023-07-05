@@ -27,10 +27,10 @@ class _SoapState extends State<Soap> {
     return InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10),
-        padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
@@ -45,16 +45,16 @@ class _SoapState extends State<Soap> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 210,
                   child: Text("SOAP",
                       style: TextStyle(
@@ -62,7 +62,7 @@ class _SoapState extends State<Soap> {
                         fontSize: 15,
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 InkWell(
@@ -84,7 +84,7 @@ class _SoapState extends State<Soap> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           "Dictionary HISS",
                           style: TextStyle(
@@ -98,26 +98,26 @@ class _SoapState extends State<Soap> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Divider(
+            const Divider(
               height: 3,
               color: Colors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Subyektif(),
-            SizedBox(
+            const Subyektif(),
+            const SizedBox(
               height: 10,
             ),
-            objektive(),
-            SizedBox(
+            const Objektive(),
+            const SizedBox(
               height: 10,
             ),
-            Assestment(),
-            SizedBox(
+            const Assestment(),
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -141,7 +141,7 @@ class _SoapState extends State<Soap> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           "Submit",
                           style: TextStyle(
@@ -169,7 +169,7 @@ class _SoapState extends State<Soap> {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -179,11 +179,11 @@ class _SoapState extends State<Soap> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
@@ -197,24 +197,24 @@ class _SoapState extends State<Soap> {
                       ),
                     ),
                     children: <Widget>[
-                      Text("Update Soap",
+                      const Text("Update Soap",
                           style: TextStyle(
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
                               fontSize: 17)),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      UpdateSubyektif(),
-                      SizedBox(
+                      const UpdateSubyektif(),
+                      const SizedBox(
                         height: 10,
                       ),
-                      Updateobjektive(),
-                      SizedBox(
+                      const Updateobjektive(),
+                      const SizedBox(
                         height: 10,
                       ),
-                      UpdateAssestment(),
-                      SizedBox(
+                      const UpdateAssestment(),
+                      const SizedBox(
                         height: 10,
                       ),
                     ],
@@ -222,13 +222,13 @@ class _SoapState extends State<Soap> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             InkWell(
               onTap: () => showModalBottomSheet(
                 context: context,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(20),
                   ),
@@ -252,7 +252,7 @@ class _SoapState extends State<Soap> {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       "Update Soap",
                       style: TextStyle(
@@ -264,7 +264,7 @@ class _SoapState extends State<Soap> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

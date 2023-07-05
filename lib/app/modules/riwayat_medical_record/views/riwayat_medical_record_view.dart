@@ -83,7 +83,7 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
                         snapshot.connectionState != ConnectionState.waiting &&
                         snapshot.data != null) {
                       final data = snapshot.data!.pasien ?? Pasien();
-                      return const ProfileRiwayat();
+                      return ProfileRiwayat(pasien: data);
                     } else {
                       return const Center(
                         child: CircularProgressIndicator(),
@@ -93,9 +93,9 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
               const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 10),
-                child: const Text("Riwayat Medical Record Pasien",
+                child: Text("Riwayat Medical Record Pasien",
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ),
               const SizedBox(

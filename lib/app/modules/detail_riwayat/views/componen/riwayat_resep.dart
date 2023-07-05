@@ -1,27 +1,21 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
+import 'package:a_dokter_register/app/modules/detail_riwayat/controllers/detail_riwayat_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/assestment.dart';
-import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/objektive.dart';
 
-class RiwayatResep extends StatefulWidget {
-  const RiwayatResep({super.key});
+class RiwayatResep extends StatelessWidget {
+  final List<Resep> resep;
+  const RiwayatResep({super.key, required this.resep});
 
-  @override
-  State<RiwayatResep> createState() => _RiwayatResepState();
-}
-
-class _RiwayatResepState extends State<RiwayatResep> {
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(DetailRiwayatController());
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
-      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0x6cc7d1db)),
+        border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
@@ -36,16 +30,16 @@ class _RiwayatResepState extends State<RiwayatResep> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 210,
                 child: Text("Resep",
                     style: TextStyle(
@@ -53,35 +47,39 @@ class _RiwayatResepState extends State<RiwayatResep> {
                       fontSize: 15,
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Container(
-                height: 30,
-                width: 120,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.blue.withOpacity(0.5),
-                      spreadRadius: 0,
-                      blurRadius: 10,
-                      offset: const Offset(2, 1),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Print",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13),
-                    )
-                  ],
+              GestureDetector(
+                onTap: () async => await API.cetakResep(
+                    no_registrasi: controller.noRegistrasi),
+                child: Container(
+                  height: 30,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.blue.withOpacity(0.5),
+                        spreadRadius: 0,
+                        blurRadius: 10,
+                        offset: const Offset(2, 1),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "Print",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13),
+                      )
+                    ],
+                  ),
                 ),
               )
             ],

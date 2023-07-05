@@ -1,3 +1,4 @@
+import 'package:a_dokter_register/app/data/componen/avatar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -16,7 +17,7 @@ class CardDokterSetting extends GetView<ProfileController> {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           color: Colors.white,
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -25,8 +26,8 @@ class CardDokterSetting extends GetView<ProfileController> {
                 width: 70.0,
                 height: 70.0,
                 decoration: BoxDecoration(
-                  image: new DecorationImage(
-                    image: NetworkImage(dokter.foto ?? ''),
+                  image: DecorationImage(
+                    image: NetworkImage(dokter.foto ?? Avatar.lakiLaki),
                     fit: BoxFit.cover,
                   ),
                   boxShadow: [
@@ -41,7 +42,7 @@ class CardDokterSetting extends GetView<ProfileController> {
                   ),
                   borderRadius: BorderRadius.circular(40.0),
                 ),
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
               ),
               Expanded(
                 child: Container(
@@ -57,7 +58,7 @@ class CardDokterSetting extends GetView<ProfileController> {
                               children: [
                                 Expanded(
                                   child: Text(dokter.namaPegawai ?? '',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 14)),
                                 ),
@@ -68,7 +69,7 @@ class CardDokterSetting extends GetView<ProfileController> {
                                   onTap: () {
                                     // Get.toNamed(Routes.REGISTER_RS);
                                   },
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.settings,
                                     color: Color.fromARGB(255, 196, 196, 196),
                                     size: 24.0,
@@ -83,7 +84,7 @@ class CardDokterSetting extends GetView<ProfileController> {
                               height: 10,
                             ),
                             Text("Spesialis : ${dokter.namaSpesialisasi ?? ''}",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16)),
                           ]),
                     ],

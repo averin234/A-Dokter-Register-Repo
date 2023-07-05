@@ -1,31 +1,24 @@
+import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/assestment.dart';
-import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/objektive.dart';
+import 'assestment.dart';
+import 'objektive.dart';
 import 'subyektif.dart';
 import '../../../../../routes/app_pages.dart';
 
-class RiwayatSoap extends StatefulWidget {
-  const RiwayatSoap({super.key});
+class RiwayatSoap extends StatelessWidget {
+  final RiwayatPemeriksaan soap;
+  const RiwayatSoap({super.key, required this.soap});
 
-  @override
-  State<RiwayatSoap> createState() => _RiwayatSoapState();
-}
-
-class _RiwayatSoapState extends State<RiwayatSoap> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10),
-        padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
@@ -40,12 +33,12 @@ class _RiwayatSoapState extends State<RiwayatSoap> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: const [
                 SizedBox(
                   height: 10,
                 ),
@@ -59,26 +52,30 @@ class _RiwayatSoapState extends State<RiwayatSoap> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Divider(
+            const Divider(
               height: 3,
               color: Colors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Subyektif(),
-            SizedBox(
+            Subyektif(subyektif: soap.subyektive ?? ''),
+            const SizedBox(
               height: 10,
             ),
-            objektive(),
-            SizedBox(
+            Objektive(
+              objective: soap.objective ?? '',
+            ),
+            const SizedBox(
               height: 10,
             ),
-            Assestment(),
-            SizedBox(
+            Assestment(
+              assestment: soap.analyst ?? '',
+            ),
+            const SizedBox(
               height: 10,
             ),
           ],
