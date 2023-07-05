@@ -25,7 +25,6 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         enableFeedback: true,
@@ -164,7 +163,7 @@ class HomeView extends GetView<HomeController> {
 
   Widget buildSheet() {
     return Container(
-        height: 330,
+        height: 300,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.white,
@@ -218,7 +217,7 @@ class HomeView extends GetView<HomeController> {
                             },
                             // onTap: () => Get.toNamed(Routes.JADWAL_DOKTER),
                             child: Container(
-                              width: 305,
+                              width: 250,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -293,7 +292,7 @@ class HomeView extends GetView<HomeController> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Tamabah Pasien Baru",
+                                            "Tambah Pasien Baru",
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.bold,
@@ -499,31 +498,28 @@ class Home extends StatelessWidget {
                             const SizedBox(
                               height: 10,
                             ),
-                            FutureBuilder(
-                                future: API.getAntrianPasien(
-                                    tanggal: DateFormat('yyyy-MM-dd')
-                                        .format(DateTime.now()),
-                                    kode_dokter: Publics.controller
-                                            .getDataRegist.value.kode ??
-                                        ''),
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData &&
-                                      snapshot.connectionState !=
-                                          ConnectionState.waiting &&
-                                      snapshot.data != null) {
-                                    final data = snapshot.data!.antrian ?? [];
-                                    return data.isEmpty
-                                        ? Image.asset(
-                                            'assets/images/noantri.png',
-                                            height: 100,
-                                          )
-                                        : ListViewTindakan(antrian: data[0]);
-                                  } else {
-                                    return const Center(
-                                      child: CircularProgressIndicator(),
-                                    );
-                                  }
-                                }),
+                            // FutureBuilder(
+                            //     future: API.getAntrianPasien(
+                            //         tanggal: DateFormat('yyyy-MM-dd')
+                            //             .format(DateTime.now()),
+                            //         kode_dokter: Publics.controller
+                            //                 .getDataRegist.value.kode ??
+                            //             ''),
+                            //     builder: (context, snapshot) {
+                            //       if (snapshot.hasData &&
+                            //           snapshot.connectionState !=
+                            //               ConnectionState.waiting &&
+                            //           snapshot.data != null) {
+                            //         final data = snapshot.data!.antrian ?? [];
+                            //         return data.isEmpty
+                            //             ? Text(snapshot.data!.msg ?? '')
+                            //             : ListViewTindakan(antrian: data[0]);
+                            //       } else {
+                            //         return const Center(
+                            //           child: CircularProgressIndicator(),
+                            //         );
+                            //       }
+                            //     }),
                             const SizedBox(
                               height: 10,
                             ),
