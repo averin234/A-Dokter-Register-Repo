@@ -1,3 +1,5 @@
+import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
+import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/list_resep.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -7,21 +9,17 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/assestment.dart';
 import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/objektive.dart';
 
-class PlanningResep extends StatefulWidget {
-  const PlanningResep({super.key});
+class PlanningResep extends StatelessWidget {
+  final List<Resep> resep;
+  const PlanningResep({super.key, required this.resep});
 
-  @override
-  State<PlanningResep> createState() => _PlanningResepState();
-}
-
-class _PlanningResepState extends State<PlanningResep> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
-      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0x6cc7d1db)),
+        border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
@@ -36,16 +34,16 @@ class _PlanningResepState extends State<PlanningResep> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 210,
                 child: Text("Resep",
                     style: TextStyle(
@@ -53,7 +51,7 @@ class _PlanningResepState extends State<PlanningResep> {
                       fontSize: 15,
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
@@ -72,13 +70,14 @@ class _PlanningResepState extends State<PlanningResep> {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     // Text("Print",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 13),)
                   ],
                 ),
               )
             ],
           ),
+          Column(children: resep.map((e) => const ListResep()).toList()),
         ],
       ),
     );

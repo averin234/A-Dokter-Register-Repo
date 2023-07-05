@@ -10,8 +10,6 @@ import 'package:get/get.dart';
 import '../../../data/model/list_data.dart';
 import '../controllers/detail_tindakan_controller.dart';
 import 'componen/planning.dart';
-import 'componen/planning/laboratorium.dart';
-import 'componen/planning/radiologi.dart';
 import 'componen/planning/resep.dart';
 import 'componen/soap/soap.dart';
 import 'componen/profile_pasien.dart';
@@ -118,20 +116,20 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                             const SizedBox(
                               height: 10,
                             ),
-                            const PlanningResep(),
+                            PlanningResep(resep: data.resep ?? []),
                             const SizedBox(
                               height: 10,
                             ),
-                            const PalanningLaboratorium(),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            const PlanningRadiologi(),
+                            // const PalanningLaboratorium(),
+                            // const SizedBox(
+                            //   height: 10,
+                            // ),
+                            // const PlanningRadiologi(),
                             const Surat(),
                             const SizedBox(
                               height: 10,
                             ),
-                            const Planning(),
+                            Planning(getDetailMR: data),
                             const SizedBox(
                               height: 40,
                             ),
@@ -255,8 +253,9 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                           color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: const TextField(
-                          decoration: InputDecoration(
+                        child: TextField(
+                          controller: controller.tekananDarahController,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -289,8 +288,9 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                           color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: const TextField(
-                          decoration: InputDecoration(
+                        child: TextField(
+                          controller: controller.suhuController,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -323,8 +323,9 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                           color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: const TextField(
-                          decoration: InputDecoration(
+                        child: TextField(
+                          controller: controller.tinggiBadanController,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -337,40 +338,40 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 15),
-                        child: Text("Heart Rate",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            )),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 10, right: 10),
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: const Color(0xfff3f3f3),
-                          borderRadius: BorderRadius.circular(22),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 11, top: 13, right: 15),
-                            filled: true,
-                            fillColor: Colors.transparent,
-                          ),
-                        ),
-                      ),
+                      // const SizedBox(
+                      //   height: 10,
+                      // ),
+                      // const Padding(
+                      //   padding: EdgeInsets.only(left: 15),
+                      //   child: Text("Heart Rate",
+                      //       style: TextStyle(
+                      //         fontWeight: FontWeight.bold,
+                      //       )),
+                      // ),
+                      // const SizedBox(
+                      //   height: 10,
+                      // ),
+                      // Container(
+                      //   margin: const EdgeInsets.only(left: 10, right: 10),
+                      //   height: 50,
+                      //   decoration: BoxDecoration(
+                      //     color: const Color(0xfff3f3f3),
+                      //     borderRadius: BorderRadius.circular(22),
+                      //   ),
+                      //   child: const TextField(
+                      //     decoration: InputDecoration(
+                      //       border: InputBorder.none,
+                      //       focusedBorder: InputBorder.none,
+                      //       enabledBorder: InputBorder.none,
+                      //       errorBorder: InputBorder.none,
+                      //       disabledBorder: InputBorder.none,
+                      //       contentPadding: EdgeInsets.only(
+                      //           left: 15, bottom: 11, top: 13, right: 15),
+                      //       filled: true,
+                      //       fillColor: Colors.transparent,
+                      //     ),
+                      //   ),
+                      // ),
                       const SizedBox(
                         height: 10,
                       ),
@@ -395,10 +396,10 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                             return data.isEmpty
                                 ? Text(snapshot.data!.msg ?? '')
                                 : dropdown(
-                                    'Keadaan Umum',
+                                    'Kesadaran',
                                     data,
-                                    controller.keadaanUmumController,
-                                    controller.namaKeadaanUmumController);
+                                    controller.kesadaranController,
+                                    controller.namaKesadaranController);
                           } else {
                             return const Center(
                               child: CircularProgressIndicator(),
@@ -426,8 +427,9 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                           color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: const TextField(
-                          decoration: InputDecoration(
+                        child: TextField(
+                          controller: controller.nadiController,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -460,8 +462,9 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                           color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: const TextField(
-                          decoration: InputDecoration(
+                        child: TextField(
+                          controller: controller.pernapasanController,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -494,8 +497,9 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                           color: const Color(0xfff3f3f3),
                           borderRadius: BorderRadius.circular(22),
                         ),
-                        child: const TextField(
-                          decoration: InputDecoration(
+                        child: TextField(
+                          controller: controller.beratBadanController,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -511,40 +515,40 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                       const SizedBox(
                         height: 10,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 15),
-                        child: Text("Lingkar Perut",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            )),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 10, right: 10),
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: const Color(0xfff3f3f3),
-                          borderRadius: BorderRadius.circular(22),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 11, top: 13, right: 15),
-                            filled: true,
-                            fillColor: Colors.transparent,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 200,
-                      ),
+                      // const Padding(
+                      //   padding: EdgeInsets.only(left: 15),
+                      //   child: Text("Lingkar Perut",
+                      //       style: TextStyle(
+                      //         fontWeight: FontWeight.bold,
+                      //       )),
+                      // ),
+                      // const SizedBox(
+                      //   height: 10,
+                      // ),
+                      // Container(
+                      //   margin: const EdgeInsets.only(left: 10, right: 10),
+                      //   height: 50,
+                      //   decoration: BoxDecoration(
+                      //     color: const Color(0xfff3f3f3),
+                      //     borderRadius: BorderRadius.circular(22),
+                      //   ),
+                      //   child: const TextField(
+                      //     decoration: InputDecoration(
+                      //       border: InputBorder.none,
+                      //       focusedBorder: InputBorder.none,
+                      //       enabledBorder: InputBorder.none,
+                      //       errorBorder: InputBorder.none,
+                      //       disabledBorder: InputBorder.none,
+                      //       contentPadding: EdgeInsets.only(
+                      //           left: 15, bottom: 11, top: 13, right: 15),
+                      //       filled: true,
+                      //       fillColor: Colors.transparent,
+                      //     ),
+                      //   ),
+                      // ),
+                      // const SizedBox(
+                      //   height: 200,
+                      // ),
                     ],
                   ),
                 ),
@@ -554,15 +558,25 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
               height: 10,
             ),
             InkWell(
-              onTap: () => showModalBottomSheet(
-                context: Get.context!,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(20),
-                  ),
-                ),
-                builder: (context) => buildSheet(),
-              ),
+              onTap: () async {
+                final postVS = await API.postVitalSign(
+                    no_registrasi: controller.noRegistrasi,
+                    keadaan_umum: controller.keadaanUmumController.text,
+                    kesadaran_pasien: controller.kesadaranController.text,
+                    tekanan_darah: controller.tekananDarahController.text,
+                    nadi: controller.nadiController.text,
+                    suhu: controller.suhuController.text,
+                    pernapasan: controller.pernapasanController.text,
+                    tinggi_badan: controller.tinggiBadanController.text,
+                    berat_badan: controller.beratBadanController.text);
+                if (postVS.code != 200) {
+                } else {
+                  Get.defaultDialog(
+                    title: (postVS.code ?? 0).toString(),
+                    content: Text(postVS.msg ?? ''),
+                  );
+                }
+              },
               child: Container(
                 height: 45,
                 width: 145,

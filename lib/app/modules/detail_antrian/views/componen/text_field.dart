@@ -43,8 +43,10 @@ class AppTextField extends StatelessWidget {
                     .map(
                       (e) => TextButton(
                         style: TextButton.styleFrom(
+                            alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(vertical: 20)),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10)),
                         child: Text(
                           e.nama!,
                           style: GoogleFonts.nunito(

@@ -16,14 +16,14 @@ class IsiTindakanView extends GetView<IsiTindakanController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -36,13 +36,14 @@ class IsiTindakanView extends GetView<IsiTindakanController> {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_circle_left_rounded,
                 size: 40,
               ),
-              color: Color.fromARGB(255, 192, 192, 192),
+              color: const Color.fromARGB(255, 192, 192, 192),
             ),
-            title: Text("Isi Tindakan", style: TextStyle(color: Colors.black)),
+            title: const Text("Isi Tindakan",
+                style: TextStyle(color: Colors.black)),
             bottom: AppBar(
               toolbarHeight: 0,
               automaticallyImplyLeading: false,
@@ -62,30 +63,33 @@ class IsiTindakanView extends GetView<IsiTindakanController> {
                       ),
                     ),
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      NamaPemeriksa(),
-                      SizedBox(
+                      const NamaPemeriksa(),
+                      const SizedBox(
                         height: 10,
                       ),
-                      FormIsiTindakan(),
-                      SizedBox(
+                      const FormIsiTindakan(),
+                      const SizedBox(
                         height: 30,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 10),
                         child: Text('Hasil Tindakan',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 15)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      HasilTindakan(),
-                      SizedBox(
-                        height: 40,
-                      ),
+                      controller.detailMr.tindakan == null
+                          ? const Text('Tidak ada Tindakan')
+                          : Column(
+                              children: controller.detailMr.tindakan!
+                                  .map((e) => HasilTindakan(tindakan: e))
+                                  .toList(),
+                            ),
                     ],
                   ),
                 ),

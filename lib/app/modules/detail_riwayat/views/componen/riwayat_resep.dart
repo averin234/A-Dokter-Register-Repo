@@ -1,6 +1,7 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:a_dokter_register/app/modules/detail_riwayat/controllers/detail_riwayat_controller.dart';
+import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -51,8 +52,12 @@ class RiwayatResep extends StatelessWidget {
                 height: 10,
               ),
               GestureDetector(
-                onTap: () async => await API.cetakResep(
-                    no_registrasi: controller.noRegistrasi),
+                onTap: () async {
+                  final cetakResep = await API.cetakResep(
+                      no_registrasi: controller.noRegistrasi);
+                  print('resep : $cetakResep');
+                  Get.toNamed(Routes.CETAKAN, arguments: {'file': cetakResep});
+                },
                 child: Container(
                   height: 30,
                   width: 120,

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:a_dokter_register/app/data/componen/data_regist_model.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/data/model/checkup.dart';
@@ -9,12 +10,15 @@ import 'package:a_dokter_register/app/data/model/get_jenis_obat.dart';
 import 'package:a_dokter_register/app/data/model/get_list_mr.dart';
 import 'package:a_dokter_register/app/data/model/get_pasien_by.dart';
 import 'package:a_dokter_register/app/data/model/get_soap_hiss.dart';
+import 'package:a_dokter_register/app/data/model/get_tindakan.dart';
 import 'package:a_dokter_register/app/data/model/list_data.dart';
 import 'package:a_dokter_register/app/data/model/login_and_regist/akses_px.dart';
 import 'package:a_dokter_register/app/data/model/login_and_regist/token.dart';
 import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 import '../model/get_detail_dokter.dart';
 import '../model/get_nama_obat.dart';
 import '../model/get_racikan.dart';
@@ -582,24 +586,24 @@ class API {
     return obj;
   }
 
-  static Future<dynamic> cetakResep({
+  static Future<String> cetakResep({
     required String no_registrasi,
   }) async {
-    var token = Publics.controller.getToken.value;
+    var token = await getToken();
     final data = {
       "no_registrasi": no_registrasi,
     };
-    var response = await Dio().post(
-      _cetakResep,
-      options: Options(
-        headers: {
-          "Content-Type": "application/json",
-          "X-Api-Token": token.token,
-        },
-      ),
-      data: data,
+    var response = await http.post(
+      Uri.parse(_cetakResep),
+      headers: {
+        "X-Api-Token": token.token ?? '',
+      },
+      body: data,
     );
-    final obj = response.data;
+    var dir = await getApplicationDocumentsDirectory();
+    File file = File('${dir.path}resep.pdf');
+    await file.writeAsBytes(response.bodyBytes, flush: true);
+    final obj = file.path;
     return obj;
   }
 
@@ -632,7 +636,7 @@ class API {
     return obj;
   }
 
-  static Future<CheckUp> getEditVitalSign({
+  static Future<CheckUp> postVitalSign({
     required String no_registrasi,
     required String keadaan_umum,
     required String kesadaran_pasien,
@@ -829,7 +833,7 @@ class API {
 
   // Batas Tambahan Baru
 
-  static Future<dynamic> getTindakan({
+  static Future<GetTindakan> getTindakan({
     required String kode_dokter,
   }) async {
     var token = Publics.controller.getToken.value;
@@ -845,7 +849,7 @@ class API {
       data: data,
     );
     final datas = jsonDecode(response.data);
-    final obj = AksesPx.fromJson(datas);
+    final obj = GetTindakan.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(

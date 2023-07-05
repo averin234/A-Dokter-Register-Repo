@@ -1,21 +1,14 @@
+import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../routes/app_pages.dart';
 
-class Planning extends StatefulWidget {
-  const Planning({super.key});
+class Planning extends StatelessWidget {
+  final GetDetailMR getDetailMR;
+  const Planning({super.key, required this.getDetailMR});
 
-  @override
-  State<Planning> createState() => _PlanningState();
-}
-
-class _PlanningState extends State<Planning> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -80,8 +73,8 @@ class _PlanningState extends State<Planning> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: const AssetImage("assets/consultation.png"),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/consultation.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
@@ -110,13 +103,14 @@ class _PlanningState extends State<Planning> {
                 Column(
                   children: [
                     InkWell(
-                      onTap: () => Get.toNamed(Routes.ISI_TINDAKAN),
+                      onTap: () => Get.toNamed(Routes.ISI_TINDAKAN,
+                          arguments: getDetailMR),
                       child: Container(
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: const AssetImage("assets/prescription.png"),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/prescription.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
@@ -154,8 +148,8 @@ class _PlanningState extends State<Planning> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: const AssetImage("assets/print.png"),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/print.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
@@ -199,9 +193,8 @@ class _PlanningState extends State<Planning> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: const AssetImage(
-                                "assets/medical-equipment.png"),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/medical-equipment.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
@@ -236,8 +229,8 @@ class _PlanningState extends State<Planning> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: const AssetImage("assets/monitoring.png"),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/monitoring.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
@@ -272,8 +265,8 @@ class _PlanningState extends State<Planning> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: const AssetImage("assets/monitoring.png"),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/monitoring.png"),
                             fit: BoxFit.fill,
                           ),
                           boxShadow: [
