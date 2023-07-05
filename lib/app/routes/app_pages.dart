@@ -10,6 +10,8 @@ import '../modules/cv/bindings/cv_binding.dart';
 import '../modules/cv/views/cv_view.dart';
 import '../modules/detail_antrian/bindings/detail_tindakan_binding.dart';
 import '../modules/detail_antrian/views/detail_tindakan_view.dart';
+import '../modules/detail_regist_pasien_lama/bindings/detail_regist_pasien_lama_binding.dart';
+import '../modules/detail_regist_pasien_lama/views/detail_regist_pasien_lama_view.dart';
 import '../modules/detail_riwayat/bindings/detail_riwayat_binding.dart';
 import '../modules/detail_riwayat/views/detail_riwayat_view.dart';
 import '../modules/dosen/bindings/dosen_binding.dart';
@@ -232,6 +234,11 @@ class AppPages {
       name: _Paths.TAMBAH_PASIEN_LAMA,
       page: () => const TambahPasienLamaView(),
       binding: TambahPasienLamaBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_REGIST_PASIEN_LAMA,
+      page: () => const DetailRegistPasienLamaView(),
+      binding: DetailRegistPasienLamaBinding(),
     ),
   ];
 }

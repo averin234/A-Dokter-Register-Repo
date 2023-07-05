@@ -212,7 +212,11 @@ class HomeView extends GetView<HomeController> {
                         ),
                         children: <Widget>[
                           InkWell(
-                            onTap: () => Get.toNamed(Routes.JADWAL_DOKTER),
+                            onTap: () {
+                              Get.back();
+                              Get.toNamed(Routes.JADWAL_DOKTER);
+                            },
+                            // onTap: () => Get.toNamed(Routes.JADWAL_DOKTER),
                             child: Container(
                               width: 305,
                               decoration: BoxDecoration(
@@ -263,7 +267,10 @@ class HomeView extends GetView<HomeController> {
                             height: 10,
                           ),
                           InkWell(
-                            onTap: () => Get.toNamed(Routes.REGISTRASI_PASIEN),
+                            onTap: () {
+                              Get.back();
+                              Get.toNamed(Routes.REGISTRASI_PASIEN);
+                            },
                             child: Container(
                               width: 305,
                               decoration: BoxDecoration(
@@ -314,7 +321,10 @@ class HomeView extends GetView<HomeController> {
                             height: 10,
                           ),
                           InkWell(
-                            onTap: () => Get.toNamed(Routes.TAMBAH_PASIEN_LAMA),
+                            onTap: () {
+                              Get.back();
+                              Get.toNamed(Routes.TAMBAH_PASIEN_LAMA);
+                            },
                             child: Container(
                               width: 305,
                               decoration: BoxDecoration(
@@ -503,7 +513,10 @@ class Home extends StatelessWidget {
                                       snapshot.data != null) {
                                     final data = snapshot.data!.antrian ?? [];
                                     return data.isEmpty
-                                        ? Text(snapshot.data!.msg ?? '')
+                                        ? Image.asset(
+                                            'assets/images/noantri.png',
+                                            height: 100,
+                                          )
                                         : ListViewTindakan(antrian: data[0]);
                                   } else {
                                     return const Center(

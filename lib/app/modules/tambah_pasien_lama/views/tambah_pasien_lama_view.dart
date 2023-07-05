@@ -1,6 +1,11 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/modules/antrian_pasien/views/componen/search_medical_record.dart';
+import 'package:a_dokter_register/app/modules/medical_record/views/componen/listview_tindakan.dart';
+import 'package:a_dokter_register/app/modules/tambah_pasien_lama/views/componen/listview_pasien_lama.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
@@ -62,7 +67,38 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
           ),
           // Other Sliver Widgets
           SliverList(
-            delegate: SliverChildListDelegate([]),
+            delegate: SliverChildListDelegate([
+              SizedBox(
+                height: 10,
+              ),
+              FutureBuilder(
+                  future: API.getPasienBy(
+                      kode_dokter:
+                          Publics.controller.getDataRegist.value.kode ?? ''),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData &&
+                        snapshot.connectionState != ConnectionState.waiting &&
+                        snapshot.data != null) {
+                      final data = snapshot.data!.pasien ?? [];
+                      return Column(
+                        children: AnimationConfiguration.toStaggeredList(
+                            duration: const Duration(milliseconds: 475),
+                            childAnimationBuilder: (widget) => SlideAnimation(
+                                  child: FadeInAnimation(
+                                    child: widget,
+                                  ),
+                                ),
+                            children: data
+                                .map((e) => ListViewPasienLama(pasien: e))
+                                .toList()),
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  }),
+            ]),
           ),
         ],
       ),

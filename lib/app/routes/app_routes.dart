@@ -40,6 +40,7 @@ abstract class Routes {
   static const CETAKAN = _Paths.CETAKAN;
   static const REGISTRASI_PASIEN = _Paths.REGISTRASI_PASIEN;
   static const TAMBAH_PASIEN_LAMA = _Paths.TAMBAH_PASIEN_LAMA;
+  static const DETAIL_REGIST_PASIEN_LAMA = _Paths.DETAIL_REGIST_PASIEN_LAMA;
 }
 
 abstract class _Paths {
@@ -81,4 +82,5 @@ abstract class _Paths {
   static const CETAKAN = '/cetakan';
   static const REGISTRASI_PASIEN = '/registrasi-pasien';
   static const TAMBAH_PASIEN_LAMA = '/tambah-pasien-lama';
+  static const DETAIL_REGIST_PASIEN_LAMA = '/detail-regist-pasien-lama';
 }
