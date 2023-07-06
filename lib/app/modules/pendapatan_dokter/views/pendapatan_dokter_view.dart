@@ -1,13 +1,12 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/modules/pendapatan_dokter/views/componen/searchpendapatan.dart';
-import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
-import '../../home/views/componen/chart.dart';
-import '../../antrian_pasien/views/componen/search_medical_record.dart';
 import '../controllers/pendapatan_dokter_controller.dart';
 import 'componen/tabel_pendapatan.dart';
 
@@ -19,14 +18,14 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -34,7 +33,7 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
             floating: true,
             pinned: true,
             snap: true,
-            title: Text('Pendapatan'),
+            title: const Text('Pendapatan'),
 
             // actions: [
             //   IconButton(
@@ -43,14 +42,14 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
             //       color: Colors.white),
             // ],
             bottom: AppBar(
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
               ),
               toolbarHeight: 50,
               title: Column(
-                children: [
+                children: const [
                   SearchPendapatan1(),
                   SizedBox(
                     height: 10,
@@ -64,75 +63,37 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
-              Column(
-                children: AnimationConfiguration.toStaggeredList(
-                  duration: const Duration(milliseconds: 375),
-                  childAnimationBuilder: (widget) => ScaleAnimation(
-                    child: SlideAnimation(
-                      child: widget,
-                    ),
-                  ),
-                  children: <Widget>[
-                    SizedBox(
-                      height: 5,
-                    ),
-                    // InkWell(
-                    //   onTap: () => Get.toNamed(Routes.REGISTER_DOKTER),
-                    //   child: Container(
-                    //     height: 45,
-                    //     width: 305,
-                    //     decoration: BoxDecoration(
-                    //       color: Colors.green,
-                    //       borderRadius: BorderRadius.circular(10),
-                    //       boxShadow: [
-                    //         BoxShadow(
-                    //           color: Colors.green.withOpacity(0.5),
-                    //           spreadRadius: 0,
-                    //           blurRadius: 10,
-                    //           offset: const Offset(2, 1),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //     child: Column(
-                    //       mainAxisAlignment: MainAxisAlignment.center,
-                    //       children: const [
-                    //         Text(
-                    //           "Kasir",
-                    //           style: TextStyle(
-                    //               color: Colors.white,
-                    //               fontWeight: FontWeight.bold,
-                    //               fontSize: 14),
-                    //         )
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Pendapatan(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Pendapatan(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Pendapatan(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Pendapatan(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Pendapatan(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ),
+              FutureBuilder(
+                  future: API.getListKasir(
+                      kode_dokter:
+                          Publics.controller.getDataRegist.value.kode ?? ''),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData &&
+                        snapshot.connectionState != ConnectionState.waiting &&
+                        snapshot.data != null) {
+                      final data = snapshot.data!.kasir ?? [];
+                      return data.isEmpty
+                          ? Text(snapshot.data!.msg ?? '')
+                          : Column(
+                              children: AnimationConfiguration.toStaggeredList(
+                                duration: const Duration(milliseconds: 375),
+                                childAnimationBuilder: (widget) =>
+                                    ScaleAnimation(
+                                  child: SlideAnimation(
+                                    child: widget,
+                                  ),
+                                ),
+                                children: data
+                                    .map((e) => Pendapatan(kasir: e))
+                                    .toList(),
+                              ),
+                            );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  }),
             ]),
           ),
         ],

@@ -7,6 +7,7 @@ import 'package:a_dokter_register/app/data/model/get_antrian_pasien.dart';
 import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:a_dokter_register/app/data/model/get_detail_pasien.dart';
 import 'package:a_dokter_register/app/data/model/get_jenis_obat.dart';
+import 'package:a_dokter_register/app/data/model/get_list_kasir.dart';
 import 'package:a_dokter_register/app/data/model/get_list_mr.dart';
 import 'package:a_dokter_register/app/data/model/get_pasien_by.dart';
 import 'package:a_dokter_register/app/data/model/get_soap_hiss.dart';
@@ -68,6 +69,7 @@ class API {
   static const _postUbahPassword = '$_baseUrl/post-ubah-password.php';
   static const _getAntrianDokter = '$_baseUrl/get-antrian-dokter.php';
   static const _getListMR = '$_baseUrl/get-list-mr.php';
+  static const _getListKasir = '$_baseUrl/get-list-kasir.php';
   static const _getDetailMR = '$_baseUrl/get-detail-mr.php';
   static const _cekJenisKelamin = '$_baseUrl/cek-jenis-kelamin.php';
   static const _getDetailPasien = '$_baseUrl/get-detail-pasien.php';
@@ -218,6 +220,32 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<GetListKasir> getListKasir(
+      {required String kode_dokter}) async {
+    var token = Publics.controller.getToken.value;
+    final data = {'kode_dokter': kode_dokter};
+    var response = await Dio().post(
+      _getListKasir,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = GetListKasir.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(

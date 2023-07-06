@@ -1,3 +1,4 @@
+import 'package:a_dokter_register/app/data/model/get_list_kasir.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -7,14 +8,10 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../routes/app_pages.dart';
 
-class Pendapatan extends StatefulWidget {
-  const Pendapatan({super.key});
+class Pendapatan extends StatelessWidget {
+  final Kasir kasir;
+  const Pendapatan({super.key, required this.kasir});
 
-  @override
-  State<Pendapatan> createState() => _PendapatanState();
-}
-
-class _PendapatanState extends State<Pendapatan> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -44,7 +41,7 @@ class _PendapatanState extends State<Pendapatan> {
                   Text('No Registrasi ',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(': ', style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text('98008734 ',
+                  Text(kasir.noRegistrasi ?? '',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
@@ -56,7 +53,7 @@ class _PendapatanState extends State<Pendapatan> {
                   Text('Tanggal Masuk ',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(': '),
-                  Text('12-06-2023 09:20',
+                  Text(kasir.jamMasuk ?? '',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
@@ -67,7 +64,7 @@ class _PendapatanState extends State<Pendapatan> {
                 children: [
                   Text('Nama Pasien '),
                   Text(': '),
-                  Text('Adni Maulidin ',
+                  Text(kasir.namaPasien ?? '',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
@@ -78,7 +75,7 @@ class _PendapatanState extends State<Pendapatan> {
                 children: [
                   Text('Nasabah '),
                   Text(': '),
-                  Text('Umum'),
+                  Text(kasir.namaKelompok ?? ''),
                 ],
               ),
               SizedBox(
@@ -88,7 +85,7 @@ class _PendapatanState extends State<Pendapatan> {
                 children: [
                   Text('Nama Bagian '),
                   Text(': '),
-                  Text('Politeknik Umum'),
+                  Text(kasir.namaBagian ?? ''),
                 ],
               ),
               SizedBox(
@@ -119,7 +116,7 @@ class _PendapatanState extends State<Pendapatan> {
                               // Get.toNamed(Routes.ANTRIAN_PASIEN);
                             },
                             child: Text(
-                              "700.000,00",
+                              "Rp ${kasir.billing}",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.blue),
