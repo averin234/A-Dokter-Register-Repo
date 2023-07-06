@@ -78,11 +78,11 @@ class AppTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: Get.width / 8,
-      width: Get.width / 1.22,
+      width: Get.width / 1,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(.05),
-        borderRadius: BorderRadius.circular(10),
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(20),
       ),
       child: TextFormField(
         readOnly: true,
@@ -93,19 +93,15 @@ class AppTextField extends StatelessWidget {
           filled: true,
           suffixIcon: const Icon(Icons.arrow_drop_down_circle),
           contentPadding:
-              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 15),
+              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          prefixIcon: Icon(
-            Icons.health_and_safety_sharp,
-            color: Colors.black.withOpacity(.7),
-          ),
           border: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,
             ),
             borderRadius: BorderRadius.all(
-              Radius.circular(8.0),
+              Radius.circular(20),
             ),
           ),
         ),

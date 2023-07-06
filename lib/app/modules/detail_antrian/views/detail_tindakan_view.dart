@@ -213,7 +213,9 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                       const SizedBox(
                         height: 10,
                       ),
-                      FutureBuilder(
+                        Container(
+                          margin: EdgeInsets.only(left: 10,right: 10),
+                      child : FutureBuilder(
                         future: API.getkeadaanUmum(),
                         builder: (context, snapshot) {
                           if (snapshot.hasData &&
@@ -234,7 +236,7 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                             );
                           }
                         },
-                      ),
+                      ),),
                       const SizedBox(
                         height: 10,
                       ),
@@ -387,7 +389,9 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                       const SizedBox(
                         height: 10,
                       ),
-                      FutureBuilder(
+                  Container(
+                    margin: EdgeInsets.only(left: 10,right: 10),
+                     child : FutureBuilder(
                         future: API.getKesadaranPasien(),
                         builder: (context, snapshot) {
                           if (snapshot.hasData &&
@@ -408,7 +412,7 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                             );
                           }
                         },
-                      ),
+                      ),),
                       const SizedBox(
                         height: 10,
                       ),

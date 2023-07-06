@@ -11,11 +11,11 @@ class icdx extends StatefulWidget {
 class _icdxState extends State<icdx> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
-      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+    return  Container(
+      margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+      padding: const EdgeInsets.only(
+          top: 10, left: 10, right: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
@@ -28,26 +28,206 @@ class _icdxState extends State<icdx> {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 10,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Kode ICD-10',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                              ':',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(
-                width: 210,
-                child : Text("ICD-X",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,)),),
-              SizedBox(
-                height: 10,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            InkWell(
+              // onTap: () => Get.toNamed(Routes.CV),
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Diagnosa',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            const SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              ':',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],),
-        ],
-      ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            InkWell(
+              // onTap: () => Get.toNamed(Routes.PRIVYID),
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Kelompok',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            const SizedBox(
+                              width: 36,
+                            ),
+                            Text(
+                              ':',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            InkWell(
+              // onTap: () => Get.toNamed(Routes.PRIVYID),
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Rawat Inap',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            const SizedBox(
+                              width: 30,
+                            ),
+                            Text(
+                              ':',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ]),
     );
   }
 }
