@@ -23,7 +23,7 @@ class PostUbahPassword {
 }
 
 class Res {
-  int? username;
+  String? username;
   String? password;
 
   Res({this.username, this.password});

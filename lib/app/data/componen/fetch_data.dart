@@ -431,6 +431,9 @@ class API {
         obj.code.toString(),
         obj.msg.toString(),
       );
+    } else {
+      LocalStorages.setDataRegist(
+          DataRegist(email: obj.res!.username, password: obj.res!.password));
     }
     return obj;
   }

@@ -1,3 +1,5 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
@@ -19,12 +21,13 @@ class CardSettingAkun extends GetView<ProfileController> {
           ),
         ),
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-            margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-            padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
+            margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+            padding:
+                const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
@@ -43,13 +46,13 @@ class CardSettingAkun extends GetView<ProfileController> {
               //   'Pengaturan Akun',
               //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               // ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               InkWell(
                 onTap: () => showModalBottomSheet(
                   context: context,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(20),
                     ),
@@ -58,25 +61,25 @@ class CardSettingAkun extends GetView<ProfileController> {
                 ),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.history_edu,
                       color: Colors.grey,
                       size: 24.0,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
                             'Ubah Password',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 15),
                           ),
                           Text(
-                            'Mengubah Password agar kerahasiaan akun',
+                            'Mengubah Password agar kerahasiaan akun terjaga',
                             style: TextStyle(
                                 fontWeight: FontWeight.normal, fontSize: 12),
                           ),
@@ -86,7 +89,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               // InkWell(
@@ -223,18 +226,18 @@ class CardSettingAkun extends GetView<ProfileController> {
                 onTap: () => Get.toNamed(Routes.CV),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.history_edu,
                       color: Colors.grey,
                       size: 24.0,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
                             'CV',
                             style: TextStyle(
@@ -251,7 +254,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               // InkWell(
@@ -293,18 +296,18 @@ class CardSettingAkun extends GetView<ProfileController> {
                 onTap: () => Get.toNamed(Routes.PRIVYID),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.history_edu,
                       color: Colors.grey,
                       size: 24.0,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
                             'Privyid',
                             style: TextStyle(
@@ -321,14 +324,15 @@ class CardSettingAkun extends GetView<ProfileController> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ]),
           ),
           Container(
-            margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-            padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
+            margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+            padding:
+                const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
             decoration: BoxDecoration(
               color: Colors.redAccent,
               borderRadius: BorderRadius.circular(10),
@@ -346,7 +350,7 @@ class CardSettingAkun extends GetView<ProfileController> {
               InkWell(
                 onTap: () => showModalBottomSheet(
                   context: context,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(20),
                     ),
@@ -355,18 +359,18 @@ class CardSettingAkun extends GetView<ProfileController> {
                 ),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.logout,
                       color: Colors.white,
                       size: 24.0,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
                             'Logout',
                             style: TextStyle(
@@ -388,6 +392,7 @@ class CardSettingAkun extends GetView<ProfileController> {
   }
 
   Widget UbahPassword() {
+    final controller = Get.put(ProfileController());
     return Container(
         height: 380,
         decoration: BoxDecoration(
@@ -396,7 +401,7 @@ class CardSettingAkun extends GetView<ProfileController> {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -406,14 +411,14 @@ class CardSettingAkun extends GetView<ProfileController> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SingleChildScrollView(
@@ -445,6 +450,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                             border: Border.all(color: const Color(0x6cc7d1db)),
                           ),
                           child: TextFormField(
+                            controller: controller.pwlamaController,
                             keyboardType: TextInputType.text,
                             textInputAction: TextInputAction.done,
                             decoration: const InputDecoration(
@@ -493,6 +499,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                             border: Border.all(color: const Color(0x6cc7d1db)),
                           ),
                           child: TextFormField(
+                            controller: controller.pwbaruController,
                             keyboardType: TextInputType.text,
                             textInputAction: TextInputAction.done,
                             decoration: const InputDecoration(
@@ -541,6 +548,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                             border: Border.all(color: const Color(0x6cc7d1db)),
                           ),
                           child: TextFormField(
+                            controller: controller.confirmpwbaruController,
                             keyboardType: TextInputType.text,
                             textInputAction: TextInputAction.done,
                             decoration: const InputDecoration(
@@ -574,7 +582,28 @@ class CardSettingAkun extends GetView<ProfileController> {
                 Padding(
                   padding: const EdgeInsets.only(right: 10, left: 10, top: 20),
                   child: GestureDetector(
-                    onTap: () => Get.toNamed(Routes.LOGIN),
+                    onTap: () async {
+                      if (controller.pwbaruController.text.isNotEmpty &&
+                          controller.confirmpwbaruController.text.isNotEmpty) {
+                        final postUbahPassword = await API.postUbahPassword(
+                          email: Publics.controller.getDataRegist.value.email ??
+                              '',
+                          pw_baru: controller.pwbaruController.text,
+                          pw_lama: controller.pwlamaController.text,
+                        );
+                        if (postUbahPassword.code == 200) {
+                          Get.back();
+                        } else {
+                          Get.defaultDialog(
+                            title: (postUbahPassword.code ?? 0).toString(),
+                            content: Text(postUbahPassword.msg ?? ''),
+                          );
+                        }
+                      } else {
+                        Get.snackbar(
+                            '500', 'Password dan Confirm Password harus sama');
+                      }
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
@@ -609,7 +638,7 @@ class CardSettingAkun extends GetView<ProfileController> {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -619,14 +648,14 @@ class CardSettingAkun extends GetView<ProfileController> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SingleChildScrollView(
