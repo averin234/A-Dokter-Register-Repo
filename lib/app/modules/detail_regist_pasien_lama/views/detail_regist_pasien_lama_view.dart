@@ -27,6 +27,72 @@ class _DetailRegistPasienLamaViewState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              spreadRadius: 0,
+              blurRadius: 10,
+              offset: const Offset(2, 1),
+            ),
+          ],
+        ),
+        height: 75,
+        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        child: Row(
+          children: <Widget>[
+            Container(
+              width: 230,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text("Pastikan Data Pasien Sudah Benar Sebelum Di Daftarkan",
+                          style: TextStyle(color: Colors.black))),
+                ],
+              ),
+            ),
+            Expanded(
+              child: InkWell(
+                onTap: ()  {
+
+                },
+                child: Container(
+                  margin: EdgeInsets.only(
+                      right: 15, left: 15, top: 10, bottom: 10),
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: Colors.white12,
+                        offset: Offset(2, 1),
+                        blurRadius: 1,
+                        spreadRadius: 2,
+                      )
+                    ],
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [Color(0xff4babe7), Color(0xff4babe7)],
+                    ),
+                  ),
+                  child: Text(
+                    "Kirim",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(

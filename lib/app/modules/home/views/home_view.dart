@@ -25,6 +25,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         enableFeedback: true,
@@ -80,7 +81,7 @@ class HomeView extends GetView<HomeController> {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(right: 20.0, top: 10.0, bottom: 10.0),
+                const EdgeInsets.only(right: 20.0, top: 10.0, bottom: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 1;
@@ -104,7 +105,7 @@ class HomeView extends GetView<HomeController> {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
+                const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 2;
@@ -153,17 +154,17 @@ class HomeView extends GetView<HomeController> {
         return controller.currentIndex.value == 0
             ? Home(controller: controller)
             : controller.currentIndex.value == 1
-                ? const PendapatanDokterView()
-                : controller.currentIndex.value == 2
-                    ? const TindakanView()
-                    : const ProfileView();
+            ? const PendapatanDokterView()
+            : controller.currentIndex.value == 2
+            ? const TindakanView()
+            : const ProfileView();
       }),
     );
   }
 
   Widget buildSheet() {
     return Container(
-        height: 300,
+        height: 330,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.white,
@@ -217,7 +218,7 @@ class HomeView extends GetView<HomeController> {
                             },
                             // onTap: () => Get.toNamed(Routes.JADWAL_DOKTER),
                             child: Container(
-                              width: 250,
+                              width: 305,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -235,7 +236,7 @@ class HomeView extends GetView<HomeController> {
                                       ),
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             "Atur Jadwal Dokter",
@@ -289,10 +290,10 @@ class HomeView extends GetView<HomeController> {
                                       ),
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Tambah Pasien Baru",
+                                            "Tamabah Pasien Baru",
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.bold,
@@ -343,7 +344,7 @@ class HomeView extends GetView<HomeController> {
                                       ),
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             "Registrasi Pasien Lama",
@@ -395,9 +396,9 @@ class Home extends StatelessWidget {
             systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
-                  Brightness.dark, //<-- For Android SEE HERE (dark icons)
+              Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
-                  Brightness.light, //<-- For iOS SEE HERE (dark icons)
+              Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
             stretch: false,
             backgroundColor: Colors.white,
@@ -414,7 +415,7 @@ class Home extends StatelessWidget {
               title: FutureBuilder(
                   future: API.getDetailDokter(
                       kode_dokter:
-                          Publics.controller.getDataRegist.value.kode ?? ''),
+                      Publics.controller.getDataRegist.value.kode ?? ''),
                   builder: (context, snapshot) {
                     if (snapshot.hasData &&
                         snapshot.connectionState != ConnectionState.waiting &&
@@ -498,28 +499,31 @@ class Home extends StatelessWidget {
                             const SizedBox(
                               height: 10,
                             ),
-                            // FutureBuilder(
-                            //     future: API.getAntrianPasien(
-                            //         tanggal: DateFormat('yyyy-MM-dd')
-                            //             .format(DateTime.now()),
-                            //         kode_dokter: Publics.controller
-                            //                 .getDataRegist.value.kode ??
-                            //             ''),
-                            //     builder: (context, snapshot) {
-                            //       if (snapshot.hasData &&
-                            //           snapshot.connectionState !=
-                            //               ConnectionState.waiting &&
-                            //           snapshot.data != null) {
-                            //         final data = snapshot.data!.antrian ?? [];
-                            //         return data.isEmpty
-                            //             ? Text(snapshot.data!.msg ?? '')
-                            //             : ListViewTindakan(antrian: data[0]);
-                            //       } else {
-                            //         return const Center(
-                            //           child: CircularProgressIndicator(),
-                            //         );
-                            //       }
-                            //     }),
+                            FutureBuilder(
+                                future: API.getAntrianPasien(
+                                    tanggal: DateFormat('yyyy-MM-dd')
+                                        .format(DateTime.now()),
+                                    kode_dokter: Publics.controller
+                                        .getDataRegist.value.kode ??
+                                        ''),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData &&
+                                      snapshot.connectionState !=
+                                          ConnectionState.waiting &&
+                                      snapshot.data != null) {
+                                    final data = snapshot.data!.antrian ?? [];
+                                    return data.isEmpty
+                                        ? Image.asset(
+                                      'assets/images/noantri.png',
+                                      height: 100,
+                                    )
+                                        : ListViewTindakan(antrian: data[0]);
+                                  } else {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }
+                                }),
                             const SizedBox(
                               height: 10,
                             ),
