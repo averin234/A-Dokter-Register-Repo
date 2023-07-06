@@ -4,6 +4,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../controllers/hiss_controller.dart';
+import 'componen/search_dropdown_hiss.dart';
 import 'componen/search_hiss.dart';
 
 class HissView extends StatefulWidget {
@@ -21,7 +22,7 @@ class HissViewState extends State<HissView>
   void initState() {
     super.initState();
     _tabController =
-        TabController(length: 10, vsync: this); // initialise it here
+        TabController(length: 9, vsync: this); // initialise it here
   }
 
   @override
@@ -29,10 +30,15 @@ class HissViewState extends State<HissView>
     return Scaffold(
       appBar: AppBar(
           elevation: 0,
-          toolbarHeight: 100,
+          toolbarHeight: 160,
+          automaticallyImplyLeading: false,
           title: Column(
             children: [
               SearchHISS(),
+              SizedBox(
+                height: 10,
+              ),
+              SearchHISSdropdowmn(),
               TabBar(
                 labelColor: Colors.black,
                 controller: _tabController,
@@ -54,9 +60,16 @@ class HissViewState extends State<HissView>
       body: TabBarView(
         controller: _tabController,
         children: [
-          // these are your pages
-          // TaskListPage(),
-          // TestPage(),
+          Container(),
+          Container(),
+          Container(),
+          Container(),
+          Container(),
+          Container(),
+          Container(),
+          Container(),
+          Container(),
+
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

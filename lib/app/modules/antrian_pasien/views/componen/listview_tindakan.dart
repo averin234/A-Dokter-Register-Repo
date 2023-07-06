@@ -17,7 +17,7 @@ class ListViewTindakan extends StatelessWidget {
         'no_mr': antrian.noMr ?? ''
       }),
       child: Container(
-        margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
+        margin: const EdgeInsets.only(right: 5, left: 5, bottom: 5),
         padding: const EdgeInsets.only(right: 0, left: 10, bottom: 10),
         decoration: BoxDecoration(
           border: Border.all(color: const Color(0x6cc7d1db)),
@@ -47,18 +47,19 @@ class ListViewTindakan extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+
                         Row(
                           children: [
-                            Text(
+                            SizedBox(
+                              width: 160,
+                            child : Text(
                               antrian.namaPasien ?? '',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 13,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 85,
-                            ),
+                            ),),
+
                             Container(
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
@@ -289,7 +290,7 @@ class ListViewTindakan extends StatelessWidget {
                         children: [
                           Container(
                             margin: const EdgeInsets.only(
-                                left: 10, bottom: 10, top: 10),
+                                left: 0, bottom: 10, top: 10),
                             child: CircleAvatar(
                               radius: 30.0,
                               backgroundImage:
