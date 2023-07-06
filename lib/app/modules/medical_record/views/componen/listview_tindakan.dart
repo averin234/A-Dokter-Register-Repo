@@ -1,3 +1,4 @@
+import 'package:a_dokter_register/app/data/componen/avatar.dart';
 import 'package:a_dokter_register/app/data/model/get_pasien_by.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,7 +34,10 @@ class ListViewPasien extends StatelessWidget {
                         const EdgeInsets.only(left: 10, bottom: 10, top: 10),
                     child: CircleAvatar(
                       radius: 30.0,
-                      backgroundImage: NetworkImage(pasien.foto ?? ''),
+                      backgroundImage: NetworkImage(pasien.foto ??
+                          (pasien.jenKelamin == '2'
+                              ? Avatar.perempuan
+                              : Avatar.lakiLaki)),
                       backgroundColor: Colors.transparent,
                     ),
                   ),

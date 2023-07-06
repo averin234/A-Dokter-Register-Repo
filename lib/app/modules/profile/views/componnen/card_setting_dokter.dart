@@ -65,16 +65,16 @@ class CardDokterSetting extends GetView<ProfileController> {
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                GestureDetector(
-                                  onTap: () {
-                                    // Get.toNamed(Routes.REGISTER_RS);
-                                  },
-                                  child: const Icon(
-                                    Icons.settings,
-                                    color: Color.fromARGB(255, 196, 196, 196),
-                                    size: 24.0,
-                                  ),
-                                ),
+                                // GestureDetector(
+                                //   onTap: () {
+                                //     // Get.toNamed(Routes.REGISTER_RS);
+                                //   },
+                                //   child: const Icon(
+                                //     Icons.settings,
+                                //     color: Color.fromARGB(255, 196, 196, 196),
+                                //     size: 24.0,
+                                //   ),
+                                // ),
                                 const SizedBox(
                                   width: 10,
                                 ),

@@ -2,13 +2,14 @@ import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/modules/antrian_pasien/views/componen/search_medical_record.dart';
 import 'package:a_dokter_register/app/modules/medical_record/views/componen/listview_tindakan.dart';
-import 'package:a_dokter_register/app/modules/tambah_pasien_lama/views/componen/listview_pasien_lama.dart';
+import 'package:a_dokter_register/app/modules/regist_pasien_lama/views/componen/listview_pasien_lama.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
+import '../../detail_regist_pasien_lama/views/detail_regist_pasien_lama_view.dart';
 import '../controllers/tambah_pasien_lama_controller.dart';
 
 class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
@@ -98,6 +99,7 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
                       );
                     }
                   }),
+              // DetailRegistPasienLamaView(),
             ]),
           ),
         ],

@@ -28,16 +28,12 @@ class ListViewPasienLama extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    margin:
-                        const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                    child: CircleAvatar(
-                      radius: 30.0,
-                      backgroundImage: NetworkImage(pasien.foto ?? ''),
-                      backgroundColor: Colors.transparent,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
+                    margin: const EdgeInsets.only(left: 0, bottom: 5, top: 5),
+                    // child: CircleAvatar(
+                    //   radius: 30.0,
+                    //   backgroundImage: NetworkImage(pasien.foto ?? ''),
+                    //   backgroundColor: Colors.transparent,
+                    // ),
                   ),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,16 +42,15 @@ class ListViewPasienLama extends StatelessWidget {
                           height: 10,
                         ),
                         Container(
-                            padding: EdgeInsets.all(5),
+                            padding: EdgeInsets.all(0),
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 233, 231, 253),
                                 borderRadius: BorderRadius.circular(10)),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
                                   children: [
-                                    const Text("No MR :",
+                                    const Text("Nama :",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),

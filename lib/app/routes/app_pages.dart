@@ -64,8 +64,8 @@ import '../modules/riwayat_praktek/bindings/riwayat_praktek_binding.dart';
 import '../modules/riwayat_praktek/views/riwayat_praktek_view.dart';
 import '../modules/splashscreen/bindings/splashscreen_binding.dart';
 import '../modules/splashscreen/views/splashscreen_view.dart';
-import '../modules/tambah_pasien_lama/bindings/tambah_pasien_lama_binding.dart';
-import '../modules/tambah_pasien_lama/views/tambah_pasien_lama_view.dart';
+import '../modules/regist_pasien_lama/bindings/tambah_pasien_lama_binding.dart';
+import '../modules/regist_pasien_lama/views/tambah_pasien_lama_view.dart';
 
 part 'app_routes.dart';
 
@@ -237,7 +237,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAIL_REGIST_PASIEN_LAMA,
-      page: () => const DetailRegistPasienLamaView(),
+      page: () => DetailRegistPasienLamaView(),
       binding: DetailRegistPasienLamaBinding(),
     ),
   ];

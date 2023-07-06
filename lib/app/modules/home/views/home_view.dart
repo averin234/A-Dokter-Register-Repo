@@ -81,7 +81,7 @@ class HomeView extends GetView<HomeController> {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(right: 20.0, top: 10.0, bottom: 10.0),
+                const EdgeInsets.only(right: 20.0, top: 10.0, bottom: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 1;
@@ -105,7 +105,7 @@ class HomeView extends GetView<HomeController> {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
+                const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 2;
@@ -154,10 +154,10 @@ class HomeView extends GetView<HomeController> {
         return controller.currentIndex.value == 0
             ? Home(controller: controller)
             : controller.currentIndex.value == 1
-                ? const PendapatanDokterView()
-                : controller.currentIndex.value == 2
-                    ? const TindakanView()
-                    : const ProfileView();
+            ? const PendapatanDokterView()
+            : controller.currentIndex.value == 2
+            ? const TindakanView()
+            : const ProfileView();
       }),
     );
   }
@@ -236,7 +236,7 @@ class HomeView extends GetView<HomeController> {
                                       ),
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             "Atur Jadwal Dokter",
@@ -290,7 +290,7 @@ class HomeView extends GetView<HomeController> {
                                       ),
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             "Tamabah Pasien Baru",
@@ -344,7 +344,7 @@ class HomeView extends GetView<HomeController> {
                                       ),
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             "Registrasi Pasien Lama",
@@ -396,9 +396,9 @@ class Home extends StatelessWidget {
             systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
-                  Brightness.dark, //<-- For Android SEE HERE (dark icons)
+              Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
-                  Brightness.light, //<-- For iOS SEE HERE (dark icons)
+              Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
             stretch: false,
             backgroundColor: Colors.white,
@@ -415,7 +415,7 @@ class Home extends StatelessWidget {
               title: FutureBuilder(
                   future: API.getDetailDokter(
                       kode_dokter:
-                          Publics.controller.getDataRegist.value.kode ?? ''),
+                      Publics.controller.getDataRegist.value.kode ?? ''),
                   builder: (context, snapshot) {
                     if (snapshot.hasData &&
                         snapshot.connectionState != ConnectionState.waiting &&
@@ -504,7 +504,7 @@ class Home extends StatelessWidget {
                                     tanggal: DateFormat('yyyy-MM-dd')
                                         .format(DateTime.now()),
                                     kode_dokter: Publics.controller
-                                            .getDataRegist.value.kode ??
+                                        .getDataRegist.value.kode ??
                                         ''),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData &&
@@ -514,9 +514,9 @@ class Home extends StatelessWidget {
                                     final data = snapshot.data!.antrian ?? [];
                                     return data.isEmpty
                                         ? Image.asset(
-                                            'assets/images/noantri.png',
-                                            height: 100,
-                                          )
+                                      'assets/images/noantri.png',
+                                      height: 100,
+                                    )
                                         : ListViewTindakan(antrian: data[0]);
                                   } else {
                                     return const Center(

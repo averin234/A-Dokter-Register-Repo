@@ -34,7 +34,6 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
             floating: true,
             pinned: true,
             snap: true,
-            centerTitle: true,
             leading: IconButton(
                 onPressed: () {
                   Get.back();
@@ -58,16 +57,16 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
                   bottom: Radius.circular(30),
                 ),
               ),
-              toolbarHeight: 100,
+              toolbarHeight: 0,
               automaticallyImplyLeading: false,
               elevation: 0,
-              title: Container(
-                padding: const EdgeInsets.all(0),
-                margin: const EdgeInsets.only(top: 15),
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                child: const HorizontalCalendermr(),
-              ),
+              // title: Container(
+              //   padding: const EdgeInsets.all(0),
+              //   margin: const EdgeInsets.only(top: 15),
+              //   decoration:
+              //       BoxDecoration(borderRadius: BorderRadius.circular(10)),
+              //   child: const HorizontalCalendermr(),
+              // ),
             ),
           ),
           // Other Sliver Widgets
@@ -104,7 +103,6 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: const Color(0xFFe0e0e0).withOpacity(0.5),
@@ -149,7 +147,7 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
                         );
                       }
                     }),
-              )
+              ),
             ]),
           ),
         ],
