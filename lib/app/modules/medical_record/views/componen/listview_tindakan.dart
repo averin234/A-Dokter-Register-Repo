@@ -26,7 +26,6 @@ class ListViewPasien extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Row(
                 children: [
                   Container(
@@ -50,18 +49,22 @@ class ListViewPasien extends StatelessWidget {
                         const SizedBox(
                           height: 10,
                         ),
+
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SizedBox(
-                              width: 70,
+                              width: 160,
                               child: Text(pasien.namaPasien ?? '',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 13)),
                             ),
-                            const SizedBox(
-                              width: 100,
-                            ),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
                             Container(
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
@@ -72,7 +75,7 @@ class ListViewPasien extends StatelessWidget {
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
-                            ),
+                            ),],)
                           ],
                         ),
                         const SizedBox(
@@ -166,7 +169,6 @@ class ListViewPasien extends StatelessWidget {
                   ),
                 ],
               ),
-            ]),
             Row(
               children: [
                 Container(

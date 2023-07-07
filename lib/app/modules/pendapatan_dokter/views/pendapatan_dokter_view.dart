@@ -7,6 +7,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
+import '../../loading_summer/loading.pendapatan.dart';
 import '../controllers/pendapatan_dokter_controller.dart';
 import 'componen/tabel_pendapatan.dart';
 
@@ -97,8 +98,15 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
                               ),
                             );
                     } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
+                      return SingleChildScrollView(
+                        child: Column(children: [
+                          shimmerPendapatan(),
+                          shimmerPendapatan(),
+                          shimmerPendapatan(),
+                          shimmerPendapatan(),
+                          shimmerPendapatan(),
+                          shimmerPendapatan(),
+                        ],),
                       );
                     }
                   }),
