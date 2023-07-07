@@ -1,36 +1,34 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/modules/hiss/views/componen/card_hiss/catatan.dart';
+import 'package:a_dokter_register/app/modules/hiss/views/componen/card_hiss/differensial.dart';
+import 'package:a_dokter_register/app/modules/hiss/views/componen/card_hiss/icdx.dart';
+import 'package:a_dokter_register/app/modules/hiss/views/componen/card_hiss/komplikasi.dart';
+import 'package:a_dokter_register/app/modules/hiss/views/componen/card_hiss/pengobatan.dart';
+import 'package:a_dokter_register/app/modules/hiss/views/componen/card_hiss/penunjang.dart';
+import 'package:a_dokter_register/app/modules/hiss/views/componen/card_hiss/penyebab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../controllers/hiss_controller.dart';
+import 'componen/card_hiss/gejala.dart';
 import 'componen/hiss_soap/assestment.dart';
 import 'componen/hiss_soap/objektive.dart';
 import 'componen/hiss_soap/subyektif.dart';
 import 'componen/search_dropdown_hiss.dart';
 import 'componen/search_hiss.dart';
 
-class HissView extends StatelessWidget {
+class HissView extends StatefulWidget {
   const HissView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
-class HissView1 extends StatefulWidget {
-  const HissView1({super.key});
-
-  @override
   State<StatefulWidget> createState() {
-    return HissView1State();
+    return HissViewState();
   }
 }
 
-class HissView1State extends State<HissView1>
-    with SingleTickerProviderStateMixin {
+class HissViewState extends State<HissView> {
+  final controller = Get.put(HissController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,16 +63,28 @@ class HissView1State extends State<HissView1>
             ),
             Expanded(
               child: InkWell(
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(20),
-                      ),
-                    ),
-                    builder: (context) => buildSheetberhasil(),
+                onTap: () async {
+                  final soap = await API.postSoap(
+                    no_registrasi: controller.noRegistrasi,
+                    subjective: controller.subjectiveController.text,
+                    analyst: controller.analystController.text,
+                    objective: controller.objectiveController.text,
                   );
+                  soap.code == 200
+                      ? showModalBottomSheet(
+                          context: context,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(20),
+                            ),
+                          ),
+                          builder: (context) =>
+                              buildSheetberhasil(title: soap.msg ?? ''),
+                        )
+                      : Get.defaultDialog(
+                          title: (soap.code ?? 0).toString(),
+                          content: Text(soap.msg ?? ''),
+                        );
                 },
                 child: Container(
                   margin: const EdgeInsets.only(
@@ -121,75 +131,172 @@ class HissView1State extends State<HissView1>
               ),
               const SearchHISSdropdowmn(),
               SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(children: [
-                  TextButton(
-                      onPressed: () {}, child: const Text('ICD X & Diagnosa')),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextButton(onPressed: () {}, child: const Text('Gejala')),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextButton(onPressed: () {}, child: const Text('Penyebab')),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextButton(onPressed: () {}, child: const Text('Penunjang')),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextButton(onPressed: () {}, child: const Text('Pengobatan')),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextButton(onPressed: () {}, child: const Text('Komplikasi')),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextButton(
-                      onPressed: () {}, child: const Text('Differensial')),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextButton(onPressed: () {}, child: const Text('Catatan')),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextButton(
-                      onPressed: () {}, child: const Text('Pre Existing')),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                ]),
-              ),
+                  scrollDirection: Axis.horizontal,
+                  child: Obx(
+                    () => Row(children: [
+                      TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: controller.initialValue.value == 0
+                                ? Colors.blue
+                                : Colors.black,
+                          ),
+                          onPressed: () {
+                            controller.initialValue.value = 0;
+                          },
+                          child: const Text('Gejala')),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: controller.initialValue.value == 1
+                                ? Colors.blue
+                                : Colors.black,
+                          ),
+                          onPressed: () {
+                            controller.initialValue.value = 1;
+                          },
+                          child: const Text('ICD X & Diagnosa')),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: controller.initialValue.value == 2
+                                ? Colors.blue
+                                : Colors.black,
+                          ),
+                          onPressed: () {
+                            controller.initialValue.value = 2;
+                          },
+                          child: const Text('Penyebab')),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: controller.initialValue.value == 3
+                                ? Colors.blue
+                                : Colors.black,
+                          ),
+                          onPressed: () {
+                            controller.initialValue.value = 3;
+                          },
+                          child: const Text('Penunjang')),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: controller.initialValue.value == 4
+                                ? Colors.blue
+                                : Colors.black,
+                          ),
+                          onPressed: () {
+                            controller.initialValue.value = 4;
+                          },
+                          child: const Text('Pengobatan')),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: controller.initialValue.value == 5
+                                ? Colors.blue
+                                : Colors.black,
+                          ),
+                          onPressed: () {
+                            controller.initialValue.value = 5;
+                          },
+                          child: const Text('Komplikasi')),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: controller.initialValue.value == 6
+                                ? Colors.blue
+                                : Colors.black,
+                          ),
+                          onPressed: () {
+                            controller.initialValue.value = 6;
+                          },
+                          child: const Text('Differensial')),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: controller.initialValue.value == 7
+                                ? Colors.blue
+                                : Colors.black,
+                          ),
+                          onPressed: () {
+                            controller.initialValue.value = 7;
+                          },
+                          child: const Text('Catatan')),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      // TextButton(
+                      //     style: TextButton.styleFrom(
+                      //       foregroundColor: controller.initialValue.value == 8
+                      //           ? Colors.blue
+                      //           : Colors.black,
+                      //     ),
+                      //     onPressed: () {
+                      //       controller.initialValue.value = 8;
+                      //     },
+                      //     child: const Text('Pre Existing')),
+                      // const SizedBox(
+                      //   width: 10,
+                      // ),
+                    ]),
+                  )),
             ],
           )),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: const [
-              SizedBox(
+      body: SingleChildScrollView(
+        child: Obx(() {
+          return Column(
+            children: [
+              const SizedBox(
                 height: 10,
               ),
-              Subyektifhiss(),
-              SizedBox(
+              controller.initialValue.value == 0
+                  ? const Gejala()
+                  : controller.initialValue.value == 1
+                      ? const Icdx()
+                      : controller.initialValue.value == 2
+                          ? const Penyebab()
+                          : controller.initialValue.value == 3
+                              ? const Penunjang()
+                              : controller.initialValue.value == 4
+                                  ? const Pengobatan()
+                                  : controller.initialValue.value == 5
+                                      ? const Komplikasi()
+                                      : controller.initialValue.value == 6
+                                          ? const Differensial()
+                                          : const Catatan(),
+              const SizedBox(
                 height: 10,
               ),
-              objektivehiss(),
-              SizedBox(
+              const Subyektifhiss(),
+              const SizedBox(
                 height: 10,
               ),
-              Assestmenthiss(),
+              const Objektivehiss(),
+              const SizedBox(
+                height: 10,
+              ),
+              const Assestmenthiss(),
             ],
-          ),
-        ),
+          );
+        }),
       ),
     );
   }
 
-  Widget buildSheetberhasil() {
+  Widget buildSheetberhasil({required String title}) {
     return Container(
         height: 200,
         decoration: BoxDecoration(
@@ -215,10 +322,10 @@ class HissView1State extends State<HissView1>
             const SizedBox(
               height: 25,
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: Text("Berhasil Kirim Ke Soap",
-                  style: TextStyle(
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Text(title,
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: Colors.blue)),

@@ -1,3 +1,4 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/modules/isi_tindakan/controllers/isi_tindakan_controller.dart';
 import 'package:a_dokter_register/app/modules/isi_tindakan/views/componen/form_isi_tindakan.dart';
 import 'package:a_dokter_register/app/modules/isi_tindakan/views/componen/hasil_tindakan.dart';
@@ -83,13 +84,39 @@ class IsiTindakanView extends GetView<IsiTindakanController> {
                       const SizedBox(
                         height: 10,
                       ),
-                      controller.detailMr.tindakan == null
-                          ? const Text('Tidak ada Tindakan')
-                          : Column(
-                              children: controller.detailMr.tindakan!
-                                  .map((e) => HasilTindakan(tindakan: e))
-                                  .toList(),
-                            ),
+                      FutureBuilder(
+                          future: API.getDetailMR(
+                              no_registrasi: controller.noRegistrasi),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData &&
+                                snapshot.connectionState !=
+                                    ConnectionState.waiting &&
+                                snapshot.data != null) {
+                              final data = snapshot.data!.tindakan ?? [];
+                              return data.isEmpty
+                                  ? const Text('Tidak Ada Tindakan')
+                                  : Column(
+                                      children: AnimationConfiguration
+                                          .toStaggeredList(
+                                              duration: const Duration(
+                                                  milliseconds: 475),
+                                              childAnimationBuilder: (widget) =>
+                                                  SlideAnimation(
+                                                    child: FadeInAnimation(
+                                                      child: widget,
+                                                    ),
+                                                  ),
+                                              children: data
+                                                  .map((e) => HasilTindakan(
+                                                      tindakan: e))
+                                                  .toList()),
+                                    );
+                            } else {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                          }),
                     ],
                   ),
                 ),

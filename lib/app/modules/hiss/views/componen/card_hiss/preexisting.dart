@@ -1,20 +1,22 @@
+import 'package:a_dokter_register/app/modules/hiss/controllers/hiss_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class preexisting extends StatefulWidget {
-  const preexisting({super.key});
+class Preexisting extends StatefulWidget {
+  const Preexisting({super.key});
 
   @override
-  State<preexisting> createState() => _preexistingState();
+  State<Preexisting> createState() => _PreexistingState();
 }
 
-class _preexistingState extends State<preexisting> {
+class _PreexistingState extends State<Preexisting> {
+  final controller = Get.put(HissController());
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       margin: const EdgeInsets.only(right: 10, left: 10),
-      padding:
-      const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
         border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
@@ -64,6 +66,7 @@ class _preexistingState extends State<preexisting> {
             color: Colors.grey,
           ),
           TextField(
+            controller: controller.subjectiveController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.none,
             maxLines: 7,
@@ -74,8 +77,8 @@ class _preexistingState extends State<preexisting> {
               errorBorder: InputBorder.none,
               enabled: true,
               disabledBorder: InputBorder.none,
-              contentPadding: EdgeInsets.only(
-                  left: 15, bottom: 11, top: 13, right: 15),
+              contentPadding:
+                  EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
               filled: true,
               fillColor: Colors.transparent,
             ),

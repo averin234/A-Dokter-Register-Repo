@@ -16,7 +16,6 @@ class Assestmenthiss extends StatefulWidget {
 }
 
 class _AssestmenthissState extends State<Assestmenthiss> {
-
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HissController());
@@ -75,6 +74,7 @@ class _AssestmenthissState extends State<Assestmenthiss> {
             color: Colors.grey,
           ),
           TextField(
+            controller: controller.analystController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.none,
             maxLines: 7,
@@ -86,7 +86,7 @@ class _AssestmenthissState extends State<Assestmenthiss> {
               enabled: true,
               disabledBorder: InputBorder.none,
               contentPadding:
-              EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
+                  EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
               filled: true,
               fillColor: Colors.transparent,
             ),

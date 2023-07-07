@@ -54,7 +54,13 @@ class Soap extends StatelessWidget {
                 height: 10,
               ),
               InkWell(
-                onTap: () => Get.toNamed(Routes.HISS),
+                onTap: () => Get.toNamed(
+                  Routes.HISS,
+                  parameters: {
+                    'no_registrasi': controller.noRegistrasi,
+                    'no_mr': controller.noMr,
+                  },
+                ),
                 child: Container(
                   height: 30,
                   width: 120,

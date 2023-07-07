@@ -1,20 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class penunjang extends StatefulWidget {
-  const penunjang({super.key});
+import '../../../controllers/hiss_controller.dart';
+
+class Penunjang extends StatefulWidget {
+  const Penunjang({super.key});
 
   @override
-  State<penunjang> createState() => _penunjangState();
+  State<Penunjang> createState() => _PenunjangState();
 }
 
-class _penunjangState extends State<penunjang> {
+class _PenunjangState extends State<Penunjang> {
+  final controller = Get.put(HissController());
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       margin: const EdgeInsets.only(right: 10, left: 10),
-      padding:
-      const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
         border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
@@ -40,7 +43,7 @@ class _penunjangState extends State<penunjang> {
               SizedBox(
                 height: 10,
               ),
-              Text("Pemeriksaan ;ab/Penunjang Diagnostic",
+              Text("Pemeriksaan Lab/Penunjang Diagnostic",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -64,6 +67,7 @@ class _penunjangState extends State<penunjang> {
             color: Colors.grey,
           ),
           TextField(
+            controller: controller.penunjangController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.none,
             maxLines: 7,
@@ -74,8 +78,8 @@ class _penunjangState extends State<penunjang> {
               errorBorder: InputBorder.none,
               enabled: true,
               disabledBorder: InputBorder.none,
-              contentPadding: EdgeInsets.only(
-                  left: 15, bottom: 11, top: 13, right: 15),
+              contentPadding:
+                  EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
               filled: true,
               fillColor: Colors.transparent,
             ),

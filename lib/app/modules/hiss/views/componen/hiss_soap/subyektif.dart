@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-import '../../../../../routes/app_pages.dart';
 import '../../../controllers/hiss_controller.dart';
 
 class Subyektifhiss extends StatefulWidget {
-  const  Subyektifhiss({super.key});
+  const Subyektifhiss({super.key});
 
   @override
-  State< Subyektifhiss> createState() => _SubyektifhissState();
+  State<Subyektifhiss> createState() => _SubyektifhissState();
 }
 
-class _SubyektifhissState extends State< Subyektifhiss> {
+class _SubyektifhissState extends State<Subyektifhiss> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HissController());
@@ -74,6 +69,7 @@ class _SubyektifhissState extends State< Subyektifhiss> {
             color: Colors.grey,
           ),
           TextField(
+            controller: controller.subjectiveController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.none,
             maxLines: 7,
@@ -86,7 +82,7 @@ class _SubyektifhissState extends State< Subyektifhiss> {
               enabled: true,
               disabledBorder: InputBorder.none,
               contentPadding:
-              EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
+                  EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
               filled: true,
               fillColor: Colors.transparent,
             ),

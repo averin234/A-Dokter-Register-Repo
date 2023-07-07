@@ -1,20 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class gejala extends StatefulWidget {
-  const gejala({super.key});
+import '../../../controllers/hiss_controller.dart';
+
+class Gejala extends StatefulWidget {
+  const Gejala({super.key});
 
   @override
-  State<gejala> createState() => _gejalaState();
+  State<Gejala> createState() => _GejalaState();
 }
 
-class _gejalaState extends State<gejala> {
+class _GejalaState extends State<Gejala> {
+  final controller = Get.put(HissController());
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(right: 10, left: 10),
-      padding:
-      const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
         border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
@@ -64,6 +67,7 @@ class _gejalaState extends State<gejala> {
             color: Colors.grey,
           ),
           TextField(
+            controller: controller.subjectiveController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.none,
             maxLines: 7,
@@ -74,8 +78,8 @@ class _gejalaState extends State<gejala> {
               errorBorder: InputBorder.none,
               enabled: true,
               disabledBorder: InputBorder.none,
-              contentPadding: EdgeInsets.only(
-                  left: 15, bottom: 11, top: 13, right: 15),
+              contentPadding:
+                  EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
               filled: true,
               fillColor: Colors.transparent,
             ),

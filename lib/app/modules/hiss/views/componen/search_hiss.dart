@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+
+import '../../controllers/hiss_controller.dart';
 
 class SearchHISS extends StatefulWidget {
   const SearchHISS({super.key});
@@ -11,6 +11,7 @@ class SearchHISS extends StatefulWidget {
 }
 
 class _SearchHISSState extends State<SearchHISS> {
+  final controller = Get.put(HissController());
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,28 +20,25 @@ class _SearchHISSState extends State<SearchHISS> {
         Container(
           height: 40,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 233, 231, 253),
+            color: const Color.fromARGB(255, 233, 231, 253),
             borderRadius: BorderRadius.circular(22),
           ),
           child: TextField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,
               errorBorder: InputBorder.none,
               disabledBorder: InputBorder.none,
               contentPadding:
-              EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
-              suffixIcon: IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  print('sesarch');
-                },
-              ),
+                  EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
               filled: true,
               hintText: "Penyakit",
               fillColor: Colors.transparent,
             ),
+            onSubmitted: (value) {
+              controller.namaPenyakit.value = value;
+            },
           ),
         ),
       ],

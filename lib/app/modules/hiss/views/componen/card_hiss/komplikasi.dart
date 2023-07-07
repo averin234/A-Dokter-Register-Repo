@@ -1,20 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class komplikasi extends StatefulWidget {
-  const komplikasi({super.key});
+import '../../../controllers/hiss_controller.dart';
+
+class Komplikasi extends StatefulWidget {
+  const Komplikasi({super.key});
 
   @override
-  State<komplikasi> createState() => _komplikasiState();
+  State<Komplikasi> createState() => _KomplikasiState();
 }
 
-class _komplikasiState extends State<komplikasi> {
+class _KomplikasiState extends State<Komplikasi> {
+  final controller = Get.put(HissController());
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(right: 10, left: 10),
-      padding:
-      const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
         border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
@@ -64,6 +67,7 @@ class _komplikasiState extends State<komplikasi> {
             color: Colors.grey,
           ),
           TextField(
+            controller: controller.komplikasiController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.none,
             maxLines: 7,
@@ -74,8 +78,8 @@ class _komplikasiState extends State<komplikasi> {
               errorBorder: InputBorder.none,
               enabled: true,
               disabledBorder: InputBorder.none,
-              contentPadding: EdgeInsets.only(
-                  left: 15, bottom: 11, top: 13, right: 15),
+              contentPadding:
+                  EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
               filled: true,
               fillColor: Colors.transparent,
             ),

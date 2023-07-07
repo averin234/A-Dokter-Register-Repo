@@ -76,7 +76,7 @@ class _HISSSoapState extends State<HISSSoap> {
             SizedBox(
               height: 10,
             ),
-            objektivehiss(),
+            Objektivehiss(),
             SizedBox(
               height: 10,
             ),

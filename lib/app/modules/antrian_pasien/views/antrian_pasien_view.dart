@@ -93,12 +93,12 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
                           final data = snapshot.data!.antrian ?? [];
                           print(snapshot.data!.toJson());
                           return data.isEmpty
-                              ?  Center(
-                            child: Image.asset(
-                              'assets/images/noantri.png',
-                              height: 100,
-                            ),
-                          )
+                              ? Center(
+                                  child: Image.asset(
+                                    'assets/images/noantri.png',
+                                    height: 100,
+                                  ),
+                                )
                               : Column(
                                   children:
                                       AnimationConfiguration.toStaggeredList(

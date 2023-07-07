@@ -1,20 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class differensial extends StatefulWidget {
-  const differensial({super.key});
+import '../../../controllers/hiss_controller.dart';
+
+class Differensial extends StatefulWidget {
+  const Differensial({super.key});
 
   @override
-  State<differensial> createState() => _differensialState();
+  State<Differensial> createState() => _DifferensialState();
 }
 
-class _differensialState extends State<differensial> {
+class _DifferensialState extends State<Differensial> {
+  final controller = Get.put(HissController());
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(right: 10, left: 10),
-      padding:
-      const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
         border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
@@ -74,8 +77,8 @@ class _differensialState extends State<differensial> {
               errorBorder: InputBorder.none,
               enabled: true,
               disabledBorder: InputBorder.none,
-              contentPadding: EdgeInsets.only(
-                  left: 15, bottom: 11, top: 13, right: 15),
+              contentPadding:
+                  EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
               filled: true,
               fillColor: Colors.transparent,
             ),

@@ -63,7 +63,7 @@ class API {
   static const _getKota = '$_baseUrl/get-kota.php';
   static const _deleteJadwalDokter = '$_baseUrl/delete-jadwal-dokter.php';
   static const _getEditDokter = '$_baseUrl/edit-dokter.php';
-  static const _getNamaPenyakit = '$_baseUrl/get-nama-penyakit.php';
+  static const _getNamaPenyakit = '$_baseUrl/get-nama-penyakit-hiss.php';
   static const _getHISS = '$_baseUrl/get-soap-hiss.php';
   // static const _getTindakan = '$_baseUrl/get-tindakan-px.php';
   static const _getVitalSign = '$_baseUrl/get-vital-sign-px.php';

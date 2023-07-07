@@ -1,6 +1,7 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/modules/isi_tindakan/controllers/isi_tindakan_controller.dart';
+import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -287,24 +288,41 @@ class _FormIsiTindakanState extends State<FormIsiTindakan> {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Container(
-                height: 45,
-                width: 345,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Submit",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14),
-                    )
-                  ],
+              GestureDetector(
+                onTap: () async {
+                  final postTindakan = await API.postTindakan(
+                    no_registrasi: controller.noRegistrasi,
+                    kode_tarif: controller.tindakanController.text,
+                    jumlah_tindakan: controller.jumlahTindakanController.text,
+                    kode_brg: controller.obatTindakanController.text,
+                    jumlah_obat: controller.jumlahObatTindakanController.text,
+                  );
+                  if (postTindakan.code == 200) {
+                    Get.toNamed(Routes.DETAIL_TINDAKAN, parameters: {
+                      'no_mr': controller.noMr,
+                      'no_registrasi': controller.noRegistrasi,
+                    });
+                  }
+                },
+                child: Container(
+                  height: 45,
+                  width: 345,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "Submit",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],

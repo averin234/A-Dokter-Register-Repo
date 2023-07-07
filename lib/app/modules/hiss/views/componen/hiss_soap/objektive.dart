@@ -8,15 +8,14 @@ import 'package:get/get_core/src/get_main.dart';
 import '../../../../../routes/app_pages.dart';
 import '../../../controllers/hiss_controller.dart';
 
-class objektivehiss extends StatefulWidget {
-  const objektivehiss({super.key});
+class Objektivehiss extends StatefulWidget {
+  const Objektivehiss({super.key});
 
   @override
-  State<objektivehiss> createState() => _objektivehissState();
+  State<Objektivehiss> createState() => _ObjektivehissState();
 }
 
-class _objektivehissState extends State<objektivehiss> {
-
+class _ObjektivehissState extends State<Objektivehiss> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HissController());
@@ -72,6 +71,7 @@ class _objektivehissState extends State<objektivehiss> {
             color: Colors.grey,
           ),
           TextField(
+            controller: controller.objectiveController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.none,
             maxLines: 7,
@@ -83,7 +83,7 @@ class _objektivehissState extends State<objektivehiss> {
               enabled: true,
               disabledBorder: InputBorder.none,
               contentPadding:
-              EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
+                  EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
               filled: true,
               fillColor: Colors.transparent,
             ),
