@@ -29,6 +29,8 @@ class shimmerPendapatan extends StatelessWidget {
               children: [
                 SizedBox(width: 10,),
                 Column(children: [
+                  Shimmer(
+                    child:
                   Container(
                     height: 10,
                     decoration: BoxDecoration(
@@ -37,10 +39,12 @@ class shimmerPendapatan extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(10),
                     constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-                  ),
+                  ),),
                   SizedBox(
                     height: 10,
                   ),
+                  Shimmer(
+                    child:
                   Container(
                     height: 10,
                     decoration: BoxDecoration(
@@ -49,10 +53,12 @@ class shimmerPendapatan extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(10),
                     constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-                  ),
+                  ),),
                   SizedBox(
                     height: 20,
                   ),
+                  Shimmer(
+                    child:
                   Container(
                     height: 10,
                     decoration: BoxDecoration(
@@ -61,10 +67,12 @@ class shimmerPendapatan extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(10),
                     constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-                  ),
+                  ),),
                   SizedBox(
                     height: 10,
                   ),
+                  Shimmer(
+                    child:
                   Container(
                     height: 10,
                     decoration: BoxDecoration(
@@ -73,10 +81,12 @@ class shimmerPendapatan extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(10),
                     constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-                  ),
+                  ),),
                   SizedBox(
                     height: 10,
                   ),
+                  Shimmer(
+                    child:
                   Container(
                     height: 10,
                     decoration: BoxDecoration(
@@ -85,7 +95,7 @@ class shimmerPendapatan extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(10),
                     constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-                  ),
+                  ),),
                   SizedBox(
                     height: 10,
                   ),
@@ -96,6 +106,8 @@ class shimmerPendapatan extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
+              Shimmer(
+              child:
               Container(
                 height: 2,
                 decoration: BoxDecoration(
@@ -104,14 +116,15 @@ class shimmerPendapatan extends StatelessWidget {
                 ),
                 padding: EdgeInsets.all(10),
                 constraints: BoxConstraints(minWidth: 120, maxWidth: 495),
-              ),
+              ),),
               SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
                    Expanded(
-                    child:   Container(
+    child : Shimmer(
+    child: Container(
                       height: 10,
                       decoration: BoxDecoration(
                         color: Color(0xFFBACDDB),
@@ -119,7 +132,7 @@ class shimmerPendapatan extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                       constraints: BoxConstraints(minWidth: 20, maxWidth: 35),
-                    ),
+                    ),),
                   ),
                   const SizedBox(
                     width: 10,
@@ -127,7 +140,8 @@ class shimmerPendapatan extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                     },
-                    child: Container(
+                    child : Shimmer(
+                      child: Container(
                       height: 10,
                       decoration: BoxDecoration(
                         color: Color(0xFFBACDDB),
@@ -135,7 +149,7 @@ class shimmerPendapatan extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                       constraints: BoxConstraints(minWidth: 20, maxWidth: 35),
-                    ),
+                    ),),
                   ),
                   const SizedBox(
                     width: 10,

@@ -9,6 +9,10 @@ import 'package:get/get.dart';
 
 import '../../../data/model/list_data.dart';
 import '../../../routes/app_pages.dart';
+import '../../loading_summer/loading.surat.dart';
+import '../../loading_summer/loading_card_profile.dart';
+import '../../loading_summer/loading_soap.dart';
+import '../../loading_summer/loading_vital_sign.dart';
 import '../controllers/detail_tindakan_controller.dart';
 import 'componen/planning.dart';
 import 'componen/planning/resep.dart';
@@ -914,9 +918,12 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                         ),
                       );
                     } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
+                      return Column(children: [
+                        shimmerCardProfile(),
+                        shimmerVitalSign(),
+                        shimmerSoap(),
+                        shimmerSurat(),
+                      ],);
                     }
                   }),
             ]),

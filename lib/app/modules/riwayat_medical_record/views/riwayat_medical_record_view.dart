@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import '../../loading_summer/loading.listmr.dart';
+import '../../loading_summer/loading_card_profile.dart';
 import '../controllers/riwayat_medical_record_controller.dart';
 import 'componen/horizontal_calendermr.dart';
 import 'componen/listview_riwayat_medis.dart';
@@ -84,9 +86,9 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
                       final data = snapshot.data!.pasien ?? Pasien();
                       return ProfileRiwayat(pasien: data);
                     } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
+                      return Column(children: [
+                        shimmerCardProfile(),
+                      ],);
                     }
                   }),
               const SizedBox(
@@ -142,9 +144,15 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
                                             .toList()),
                               );
                       } else {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
+                        return Column(children: [
+                          shimmerListMr(),
+                          shimmerListMr(),
+                          shimmerListMr(),
+                          shimmerListMr(),
+                          shimmerListMr(),
+                          shimmerListMr(),
+                          shimmerListMr(),
+                        ],);
                       }
                     }),
               ),

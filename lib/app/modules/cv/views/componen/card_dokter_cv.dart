@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../../../../data/componen/avatar.dart';
 import '../../../../data/model/get_detail_dokter.dart';
 
 class CardDokterCV extends StatelessWidget {
@@ -30,8 +31,9 @@ class CardDokterCV extends StatelessWidget {
                     margin: EdgeInsets.only(left: 10, bottom: 10, top: 10),
                     child: CircleAvatar(
                       radius: 30.0,
+
                       backgroundImage: NetworkImage(
-                          'https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'),
+                          dokter.foto ?? Avatar.lakiLaki),
                       backgroundColor: Colors.transparent,
                     ),
                   ),

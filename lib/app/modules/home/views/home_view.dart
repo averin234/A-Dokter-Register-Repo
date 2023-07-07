@@ -11,6 +11,8 @@ import 'package:intl/intl.dart';
 
 import '../../../data/componen/fetch_data.dart';
 import '../../../routes/app_pages.dart';
+import '../../loading_summer/loading.home.dart';
+import '../../loading_summer/loading_profile_home.dart';
 import '../../profile/views/profile_view.dart';
 import '../../medical_record/views/tindakan_view.dart';
 import '../controllers/home_controller.dart';
@@ -416,7 +418,7 @@ class Home extends StatelessWidget {
                       return CardDokterSetting(dokter: data);
                     } else {
                       return const Center(
-                        child: CircularProgressIndicator(),
+                        child: shimmerProfile(),
                       );
                     }
                   }),
@@ -429,7 +431,7 @@ class Home extends StatelessWidget {
                 Column(
                   children: AnimationConfiguration.toStaggeredList(
                     duration: const Duration(milliseconds: 375),
-                    childAnimationBuilder: (widget) => ScaleAnimation(
+                    childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
                       ),
@@ -450,6 +452,7 @@ class Home extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+
                             Row(
                               children: [
                                 const Expanded(
@@ -510,8 +513,15 @@ class Home extends StatelessWidget {
                                               .toList(),
                                         );
                                 } else {
-                                  return const Center(
-                                    child: CircularProgressIndicator(),
+                                  return SingleChildScrollView(
+                                    child: Column(children: [
+                                      shimmerHome(),
+                                      shimmerHome(),
+                                      shimmerHome(),
+                                      shimmerHome(),
+                                      shimmerHome(),
+                                      shimmerHome(),
+                                    ],),
                                   );
                                 }
                               },

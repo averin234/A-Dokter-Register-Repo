@@ -38,6 +38,8 @@ class shimmerListPasien extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Row(children: [
+    Shimmer(
+    child:
                   Container(
                     height: 10,
                     decoration: BoxDecoration(
@@ -46,10 +48,12 @@ class shimmerListPasien extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(10),
                     constraints: BoxConstraints(minWidth: 120, maxWidth: 175),
-                  ),
+                  ),),
                       SizedBox(
                         width: 17,
                       ),
+                        Shimmer(
+                        child:
                       Container(
                         height: 30,
                         decoration: BoxDecoration(
@@ -58,11 +62,13 @@ class shimmerListPasien extends StatelessWidget {
                         ),
                         padding: EdgeInsets.all(10),
                         constraints: BoxConstraints(minWidth: 20, maxWidth: 65),
-                      ),
+                      ),),
                     ],),
                   SizedBox(
                     height: 10,
                   ),
+                    Shimmer(
+                    child:
                     Container(
                       height: 10,
                       decoration: BoxDecoration(
@@ -71,10 +77,12 @@ class shimmerListPasien extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                       constraints: BoxConstraints(minWidth: 120, maxWidth: 175),
-                    ),
+                    ),),
                   SizedBox(
                     height: 10,
                   ),
+                  Shimmer(
+                  child:
                     Container(
                       height: 10,
                       decoration: BoxDecoration(
@@ -83,10 +91,12 @@ class shimmerListPasien extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                       constraints: BoxConstraints(minWidth: 120, maxWidth: 175),
-                    ),
+                    ),),
                   SizedBox(
                     height: 10,
                   ),
+                  Shimmer(
+    child:
                     Container(
                       height: 10,
                       decoration: BoxDecoration(
@@ -95,10 +105,12 @@ class shimmerListPasien extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                       constraints: BoxConstraints(minWidth: 120, maxWidth: 175),
-                    ),
+                    ),),
                   SizedBox(
                     height: 10,
                   ),
+    Shimmer(
+    child:
                     Container(
                       height: 10,
                       decoration: BoxDecoration(
@@ -107,7 +119,7 @@ class shimmerListPasien extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                       constraints: BoxConstraints(minWidth: 120, maxWidth: 175),
-                    ),
+                    ),),
                   SizedBox(
                     height: 10,
                   ),

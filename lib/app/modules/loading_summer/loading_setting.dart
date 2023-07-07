@@ -35,6 +35,8 @@ class shimmerSetting extends StatelessWidget {
         ),
             SizedBox(width: 10,),
             Column(children: [
+              Shimmer(
+                child:
               Container(
                 decoration: BoxDecoration(
                   color: Color(0xFFBACDDB),
@@ -42,10 +44,12 @@ class shimmerSetting extends StatelessWidget {
                 ),
                 padding: EdgeInsets.all(10),
                 constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-              ),
+              ),),
               SizedBox(
                 height: 10,
               ),
+              Shimmer(
+                child:
               Container(
                 decoration: BoxDecoration(
                   color: Color(0xFFBACDDB),
@@ -53,10 +57,12 @@ class shimmerSetting extends StatelessWidget {
                 ),
                 padding: EdgeInsets.all(10),
                 constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-              ),
+              ),),
               SizedBox(
                 height: 10,
               ),
+              Shimmer(
+                child:
               Container(
                 decoration: BoxDecoration(
                   color: Color(0xFFBACDDB),
@@ -64,10 +70,12 @@ class shimmerSetting extends StatelessWidget {
                 ),
                 padding: EdgeInsets.all(10),
                 constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-              ),
+              ),),
               SizedBox(
                 height: 10,
               ),
+              Shimmer(
+                child:
               Container(
                 decoration: BoxDecoration(
                   color: Color(0xFFBACDDB),
@@ -75,10 +83,12 @@ class shimmerSetting extends StatelessWidget {
                 ),
                 padding: EdgeInsets.all(10),
                 constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-              ),
+              ),),
               SizedBox(
                 height: 10,
               ),
+              Shimmer(
+                child:
               Container(
                 decoration: BoxDecoration(
                   color: Color(0xFFBACDDB),
@@ -86,7 +96,7 @@ class shimmerSetting extends StatelessWidget {
                 ),
                 padding: EdgeInsets.all(10),
                 constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-              ),
+              ),),
               SizedBox(
                 height: 10,
               ),

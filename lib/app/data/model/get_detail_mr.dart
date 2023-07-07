@@ -76,7 +76,7 @@ class GetDetailMR {
 
 class Pasien {
   String? noMr;
-  String? foto;
+  String? urlFotoPasien;
   String? namaPasien;
   String? golDarah;
   String? jenKelamin;
@@ -92,7 +92,7 @@ class Pasien {
 
   Pasien(
       {this.noMr,
-      this.foto,
+      this.urlFotoPasien,
       this.namaPasien,
       this.golDarah,
       this.jenKelamin,
@@ -108,7 +108,7 @@ class Pasien {
 
   Pasien.fromJson(Map<String, dynamic> json) {
     noMr = json['no_mr'];
-    foto = json['foto'];
+    urlFotoPasien = json['foto'];
     namaPasien = json['nama_pasien'];
     golDarah = json['gol_darah'];
     jenKelamin = json['jen_kelamin'];
@@ -126,7 +126,7 @@ class Pasien {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['no_mr'] = noMr;
-    data['foto'] = foto;
+    data['foto'] = urlFotoPasien;
     data['nama_pasien'] = namaPasien;
     data['gol_darah'] = golDarah;
     data['jen_kelamin'] = jenKelamin;

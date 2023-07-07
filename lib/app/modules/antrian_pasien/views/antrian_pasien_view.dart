@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import '../../loading_summer/loading.home.dart';
 import '../controllers/antrian_pasien_controller.dart';
 import 'componen/horizontal_calender.dart';
 import 'componen/listview_tindakan.dart';
@@ -108,8 +109,15 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
                                               .toList()),
                                 );
                         } else {
-                          return const Center(
-                            child: CircularProgressIndicator(),
+                          return SingleChildScrollView(
+                            child: Column(children: [
+                              shimmerHome(),
+                              shimmerHome(),
+                              shimmerHome(),
+                              shimmerHome(),
+                              shimmerHome(),
+                              shimmerHome(),
+                            ],),
                           );
                         }
                       });

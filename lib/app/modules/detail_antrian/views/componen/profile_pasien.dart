@@ -3,6 +3,7 @@ import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/componen/avatar.dart';
 import '../../../../routes/app_pages.dart';
 
 class ProfilePasienTindakan extends StatelessWidget {
@@ -52,8 +53,10 @@ class ProfilePasienTindakan extends StatelessWidget {
               ),
               CircleAvatar(
                 radius: 30.0,
-                backgroundImage: NetworkImage(pasien.foto ??
-                    'https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'),
+                backgroundImage: NetworkImage(pasien.urlFotoPasien ??
+                    (pasien.jenKelamin == '3'
+                        ? Avatar.perempuan
+                        : Avatar.lakiLaki)),
                 backgroundColor: Colors.transparent,
               ),
             ],
