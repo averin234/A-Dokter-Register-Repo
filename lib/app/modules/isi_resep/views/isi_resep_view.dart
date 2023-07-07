@@ -10,6 +10,8 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
+import '../../../data/componen/fetch_data.dart';
+
 class IsiResepView extends GetView<IsiTindakanController> {
   const IsiResepView({Key? key}) : super(key: key);
   @override
@@ -18,14 +20,14 @@ class IsiResepView extends GetView<IsiTindakanController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -38,13 +40,13 @@ class IsiResepView extends GetView<IsiTindakanController> {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_circle_left_rounded,
                 size: 40,
               ),
-              color: Color.fromARGB(255, 192, 192, 192),
+              color: const Color.fromARGB(255, 192, 192, 192),
             ),
-            title: Text("Resep", style: TextStyle(color: Colors.black)),
+            title: const Text("Resep", style: TextStyle(color: Colors.black)),
             bottom: AppBar(
               toolbarHeight: 0,
               automaticallyImplyLeading: false,
@@ -64,28 +66,60 @@ class IsiResepView extends GetView<IsiTindakanController> {
                       ),
                     ),
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      NamaPemeriksa(),
-                      SizedBox(
+                      const NamaPemeriksa(),
+                      const SizedBox(
                         height: 10,
                       ),
-                      FormIsiResep(),
-                      SizedBox(
+                      const FormIsiResep(),
+                      const SizedBox(
                         height: 30,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 10),
                         child: Text('Hasil Resep',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 15)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      HasilResep(),
-                      SizedBox(
+                      FutureBuilder(
+                          future: API.getDetailMR(
+                              no_registrasi: controller.noRegistrasi),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData &&
+                                snapshot.connectionState !=
+                                    ConnectionState.waiting &&
+                                snapshot.data != null) {
+                              final data = snapshot.data!.resep ?? [];
+                              return data.isEmpty
+                                  ? const Text('Tidak Ada Tindakan')
+                                  : Column(
+                                      children: AnimationConfiguration
+                                          .toStaggeredList(
+                                              duration: const Duration(
+                                                  milliseconds: 475),
+                                              childAnimationBuilder: (widget) =>
+                                                  SlideAnimation(
+                                                    child: FadeInAnimation(
+                                                      child: widget,
+                                                    ),
+                                                  ),
+                                              children: data
+                                                  .map((e) =>
+                                                      HasilResep(resep: e))
+                                                  .toList()),
+                                    );
+                            } else {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                          }),
+                      const SizedBox(
                         height: 40,
                       ),
                     ],

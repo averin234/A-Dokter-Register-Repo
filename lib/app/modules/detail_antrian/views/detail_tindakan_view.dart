@@ -96,26 +96,32 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                 ? ElevatedButton.icon(
                                     onPressed: () {
                                       showModalBottomSheet(
-                                        context: context,
+                                          context: context,
                                           isScrollControlled: true,
                                           isDismissible: true,
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.vertical(
-                                            top: Radius.circular(20),
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.vertical(
+                                              top: Radius.circular(20),
+                                            ),
                                           ),
-                                        ),
                                           builder: (BuildContext context) {
                                             return DraggableScrollableSheet(
-                                                initialChildSize: 0.95, //set this as you want
-                                                maxChildSize: 0.95, //set this as you want
-                                                minChildSize: 0.95, //set this as you want
+                                                initialChildSize:
+                                                    0.95, //set this as you want
+                                                maxChildSize:
+                                                    0.95, //set this as you want
+                                                minChildSize:
+                                                    0.95, //set this as you want
                                                 expand: true,
-
-                                                builder: (context, scrollController) {
+                                                builder: (context,
+                                                    scrollController) {
                                                   return Container(
                                                       decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(50),
-                                                        color: Colors.transparent,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(50),
+                                                        color:
+                                                            Colors.transparent,
                                                       ),
                                                       child: Column(
                                                         children: [
@@ -124,181 +130,312 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                           ),
                                                           Container(
                                                             height: 4,
-                                                            margin: EdgeInsets.only(
-                                                              right: Get.width / 2 - 40,
-                                                              left: Get.width / 2 - 40,
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                              right: Get.width /
+                                                                      2 -
+                                                                  40,
+                                                              left: Get.width /
+                                                                      2 -
+                                                                  40,
                                                             ),
-                                                            decoration: BoxDecoration(
-                                                              color: const Color(0xFFe0e0e0),
-                                                              borderRadius: BorderRadius.circular(10),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: const Color(
+                                                                  0xFFe0e0e0),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
                                                             ),
                                                           ),
                                                           const SizedBox(
                                                             height: 25,
                                                           ),
                                                           const Padding(
-                                                            padding: EdgeInsets.only(left: 15),
-                                                            child: Text("Tambah Vital Sign",
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 15),
+                                                            child: Text(
+                                                                "Tambah Vital Sign",
                                                                 style: TextStyle(
-                                                                    fontWeight: FontWeight.bold,
-                                                                    fontSize: 16,
-                                                                    color: Colors.blue)),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        16,
+                                                                    color: Colors
+                                                                        .blue)),
                                                           ),
                                                           const SizedBox(
                                                             height: 10,
                                                           ),
                                                           Expanded(
-                                                            child: SingleChildScrollView(
+                                                            child:
+                                                                SingleChildScrollView(
                                                               child: Column(
-                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                                children: AnimationConfiguration.toStaggeredList(
-                                                                  duration: const Duration(milliseconds: 275),
-                                                                  childAnimationBuilder: (widget) => SlideAnimation(
-                                                                    child: FadeInAnimation(
-                                                                      child: widget,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                children:
+                                                                    AnimationConfiguration
+                                                                        .toStaggeredList(
+                                                                  duration: const Duration(
+                                                                      milliseconds:
+                                                                          275),
+                                                                  childAnimationBuilder:
+                                                                      (widget) =>
+                                                                          SlideAnimation(
+                                                                    child:
+                                                                        FadeInAnimation(
+                                                                      child:
+                                                                          widget,
                                                                     ),
                                                                   ),
-                                                                  children: <Widget>[
+                                                                  children: <
+                                                                      Widget>[
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     const Padding(
-                                                                      padding: EdgeInsets.only(left: 15),
-                                                                      child: Text("Keadaan Umum",
-                                                                          style: TextStyle(
-                                                                            fontWeight: FontWeight.bold,
+                                                                      padding: EdgeInsets.only(
+                                                                          left:
+                                                                              15),
+                                                                      child: Text(
+                                                                          "Keadaan Umum",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           )),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     Container(
-                                                                      margin: EdgeInsets.only(left: 10,right: 10),
-                                                                      child : FutureBuilder(
-                                                                        future: API.getkeadaanUmum(),
-                                                                        builder: (context, snapshot) {
+                                                                      margin: const EdgeInsets
+                                                                              .only(
+                                                                          left:
+                                                                              10,
+                                                                          right:
+                                                                              10),
+                                                                      child:
+                                                                          FutureBuilder(
+                                                                        future:
+                                                                            API.getkeadaanUmum(),
+                                                                        builder:
+                                                                            (context,
+                                                                                snapshot) {
                                                                           if (snapshot.hasData &&
-                                                                              snapshot.connectionState !=
-                                                                                  ConnectionState.waiting &&
+                                                                              snapshot.connectionState != ConnectionState.waiting &&
                                                                               snapshot.data != null) {
-                                                                            final data = snapshot.data!.list ?? [];
+                                                                            final data =
+                                                                                snapshot.data!.list ?? [];
                                                                             return data.isEmpty
                                                                                 ? Text(snapshot.data!.msg ?? '')
-                                                                                : dropdown(
-                                                                                'Keadaan Umum',
-                                                                                data,
-                                                                                controller.keadaanUmumController,
-                                                                                controller.namaKeadaanUmumController);
+                                                                                : dropdown('Keadaan Umum', data, controller.keadaanUmumController, controller.namaKeadaanUmumController);
                                                                           } else {
                                                                             return const Center(
                                                                               child: CircularProgressIndicator(),
                                                                             );
                                                                           }
                                                                         },
-                                                                      ),),
+                                                                      ),
+                                                                    ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     const Padding(
-                                                                      padding: EdgeInsets.only(left: 15),
-                                                                      child: Text("Tekanan Darah",
-                                                                          style: TextStyle(
-                                                                            fontWeight: FontWeight.bold,
+                                                                      padding: EdgeInsets.only(
+                                                                          left:
+                                                                              15),
+                                                                      child: Text(
+                                                                          "Tekanan Darah",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           )),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     Container(
-                                                                      margin: const EdgeInsets.only(left: 10, right: 10),
-                                                                      height: 50,
-                                                                      decoration: BoxDecoration(
-                                                                        color: const Color(0xfff3f3f3),
-                                                                        borderRadius: BorderRadius.circular(22),
+                                                                      margin: const EdgeInsets
+                                                                              .only(
+                                                                          left:
+                                                                              10,
+                                                                          right:
+                                                                              10),
+                                                                      height:
+                                                                          50,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: const Color(
+                                                                            0xfff3f3f3),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(22),
                                                                       ),
-                                                                      child: TextField(
-                                                                        controller: controller.tekananDarahController,
-                                                                        decoration: const InputDecoration(
-                                                                          border: InputBorder.none,
-                                                                          focusedBorder: InputBorder.none,
-                                                                          enabledBorder: InputBorder.none,
-                                                                          errorBorder: InputBorder.none,
-                                                                          disabledBorder: InputBorder.none,
+                                                                      child:
+                                                                          TextField(
+                                                                        controller:
+                                                                            controller.tekananDarahController,
+                                                                        decoration:
+                                                                            const InputDecoration(
+                                                                          border:
+                                                                              InputBorder.none,
+                                                                          focusedBorder:
+                                                                              InputBorder.none,
+                                                                          enabledBorder:
+                                                                              InputBorder.none,
+                                                                          errorBorder:
+                                                                              InputBorder.none,
+                                                                          disabledBorder:
+                                                                              InputBorder.none,
                                                                           contentPadding: EdgeInsets.only(
-                                                                              left: 15, bottom: 11, top: 13, right: 15),
-                                                                          filled: true,
-                                                                          fillColor: Colors.transparent,
+                                                                              left: 15,
+                                                                              bottom: 11,
+                                                                              top: 13,
+                                                                              right: 15),
+                                                                          filled:
+                                                                              true,
+                                                                          fillColor:
+                                                                              Colors.transparent,
                                                                         ),
                                                                       ),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     const Padding(
-                                                                      padding: EdgeInsets.only(left: 15),
-                                                                      child: Text("Suhu",
-                                                                          style: TextStyle(
-                                                                            fontWeight: FontWeight.bold,
+                                                                      padding: EdgeInsets.only(
+                                                                          left:
+                                                                              15),
+                                                                      child: Text(
+                                                                          "Suhu",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           )),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     Container(
-                                                                      margin: const EdgeInsets.only(left: 10, right: 10),
-                                                                      height: 50,
-                                                                      decoration: BoxDecoration(
-                                                                        color: const Color(0xfff3f3f3),
-                                                                        borderRadius: BorderRadius.circular(22),
+                                                                      margin: const EdgeInsets
+                                                                              .only(
+                                                                          left:
+                                                                              10,
+                                                                          right:
+                                                                              10),
+                                                                      height:
+                                                                          50,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: const Color(
+                                                                            0xfff3f3f3),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(22),
                                                                       ),
-                                                                      child: TextField(
-                                                                        controller: controller.suhuController,
-                                                                        decoration: const InputDecoration(
-                                                                          border: InputBorder.none,
-                                                                          focusedBorder: InputBorder.none,
-                                                                          enabledBorder: InputBorder.none,
-                                                                          errorBorder: InputBorder.none,
-                                                                          disabledBorder: InputBorder.none,
+                                                                      child:
+                                                                          TextField(
+                                                                        controller:
+                                                                            controller.suhuController,
+                                                                        decoration:
+                                                                            const InputDecoration(
+                                                                          border:
+                                                                              InputBorder.none,
+                                                                          focusedBorder:
+                                                                              InputBorder.none,
+                                                                          enabledBorder:
+                                                                              InputBorder.none,
+                                                                          errorBorder:
+                                                                              InputBorder.none,
+                                                                          disabledBorder:
+                                                                              InputBorder.none,
                                                                           contentPadding: EdgeInsets.only(
-                                                                              left: 15, bottom: 11, top: 13, right: 15),
-                                                                          filled: true,
-                                                                          fillColor: Colors.transparent,
+                                                                              left: 15,
+                                                                              bottom: 11,
+                                                                              top: 13,
+                                                                              right: 15),
+                                                                          filled:
+                                                                              true,
+                                                                          fillColor:
+                                                                              Colors.transparent,
                                                                         ),
                                                                       ),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     const Padding(
-                                                                      padding: EdgeInsets.only(left: 15),
-                                                                      child: Text("Tinggi Badan",
-                                                                          style: TextStyle(
-                                                                            fontWeight: FontWeight.bold,
+                                                                      padding: EdgeInsets.only(
+                                                                          left:
+                                                                              15),
+                                                                      child: Text(
+                                                                          "Tinggi Badan",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           )),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     Container(
-                                                                      margin: const EdgeInsets.only(left: 10, right: 10),
-                                                                      height: 50,
-                                                                      decoration: BoxDecoration(
-                                                                        color: const Color(0xfff3f3f3),
-                                                                        borderRadius: BorderRadius.circular(22),
+                                                                      margin: const EdgeInsets
+                                                                              .only(
+                                                                          left:
+                                                                              10,
+                                                                          right:
+                                                                              10),
+                                                                      height:
+                                                                          50,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: const Color(
+                                                                            0xfff3f3f3),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(22),
                                                                       ),
-                                                                      child: TextField(
-                                                                        controller: controller.tinggiBadanController,
-                                                                        decoration: const InputDecoration(
-                                                                          border: InputBorder.none,
-                                                                          focusedBorder: InputBorder.none,
-                                                                          enabledBorder: InputBorder.none,
-                                                                          errorBorder: InputBorder.none,
-                                                                          disabledBorder: InputBorder.none,
+                                                                      child:
+                                                                          TextField(
+                                                                        controller:
+                                                                            controller.tinggiBadanController,
+                                                                        decoration:
+                                                                            const InputDecoration(
+                                                                          border:
+                                                                              InputBorder.none,
+                                                                          focusedBorder:
+                                                                              InputBorder.none,
+                                                                          enabledBorder:
+                                                                              InputBorder.none,
+                                                                          errorBorder:
+                                                                              InputBorder.none,
+                                                                          disabledBorder:
+                                                                              InputBorder.none,
                                                                           contentPadding: EdgeInsets.only(
-                                                                              left: 15, bottom: 11, top: 13, right: 15),
-                                                                          filled: true,
-                                                                          fillColor: Colors.transparent,
+                                                                              left: 15,
+                                                                              bottom: 11,
+                                                                              top: 13,
+                                                                              right: 15),
+                                                                          filled:
+                                                                              true,
+                                                                          fillColor:
+                                                                              Colors.transparent,
                                                                         ),
                                                                       ),
                                                                     ),
@@ -337,149 +474,250 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                                     //   ),
                                                                     // ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     const Padding(
-                                                                      padding: EdgeInsets.only(left: 15),
-                                                                      child: Text("Kesadaran",
-                                                                          style: TextStyle(
-                                                                            fontWeight: FontWeight.bold,
+                                                                      padding: EdgeInsets.only(
+                                                                          left:
+                                                                              15),
+                                                                      child: Text(
+                                                                          "Kesadaran",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           )),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     Container(
-                                                                      margin: EdgeInsets.only(left: 10,right: 10),
-                                                                      child : FutureBuilder(
-                                                                        future: API.getKesadaranPasien(),
-                                                                        builder: (context, snapshot) {
+                                                                      margin: const EdgeInsets
+                                                                              .only(
+                                                                          left:
+                                                                              10,
+                                                                          right:
+                                                                              10),
+                                                                      child:
+                                                                          FutureBuilder(
+                                                                        future:
+                                                                            API.getKesadaranPasien(),
+                                                                        builder:
+                                                                            (context,
+                                                                                snapshot) {
                                                                           if (snapshot.hasData &&
-                                                                              snapshot.connectionState !=
-                                                                                  ConnectionState.waiting &&
+                                                                              snapshot.connectionState != ConnectionState.waiting &&
                                                                               snapshot.data != null) {
-                                                                            final data = snapshot.data!.list ?? [];
+                                                                            final data =
+                                                                                snapshot.data!.list ?? [];
                                                                             return data.isEmpty
                                                                                 ? Text(snapshot.data!.msg ?? '')
-                                                                                : dropdown(
-                                                                                'Kesadaran',
-                                                                                data,
-                                                                                controller.kesadaranController,
-                                                                                controller.namaKesadaranController);
+                                                                                : dropdown('Kesadaran', data, controller.kesadaranController, controller.namaKesadaranController);
                                                                           } else {
                                                                             return const Center(
                                                                               child: CircularProgressIndicator(),
                                                                             );
                                                                           }
                                                                         },
-                                                                      ),),
+                                                                      ),
+                                                                    ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     const Padding(
-                                                                      padding: EdgeInsets.only(left: 15),
-                                                                      child: Text("Nadi",
-                                                                          style: TextStyle(
-                                                                            fontWeight: FontWeight.bold,
+                                                                      padding: EdgeInsets.only(
+                                                                          left:
+                                                                              15),
+                                                                      child: Text(
+                                                                          "Nadi",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           )),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     Container(
-                                                                      margin: const EdgeInsets.only(left: 10, right: 10),
-                                                                      height: 50,
-                                                                      decoration: BoxDecoration(
-                                                                        color: const Color(0xfff3f3f3),
-                                                                        borderRadius: BorderRadius.circular(22),
+                                                                      margin: const EdgeInsets
+                                                                              .only(
+                                                                          left:
+                                                                              10,
+                                                                          right:
+                                                                              10),
+                                                                      height:
+                                                                          50,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: const Color(
+                                                                            0xfff3f3f3),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(22),
                                                                       ),
-                                                                      child: TextField(
-                                                                        controller: controller.nadiController,
-                                                                        decoration: const InputDecoration(
-                                                                          border: InputBorder.none,
-                                                                          focusedBorder: InputBorder.none,
-                                                                          enabledBorder: InputBorder.none,
-                                                                          errorBorder: InputBorder.none,
-                                                                          disabledBorder: InputBorder.none,
+                                                                      child:
+                                                                          TextField(
+                                                                        controller:
+                                                                            controller.nadiController,
+                                                                        decoration:
+                                                                            const InputDecoration(
+                                                                          border:
+                                                                              InputBorder.none,
+                                                                          focusedBorder:
+                                                                              InputBorder.none,
+                                                                          enabledBorder:
+                                                                              InputBorder.none,
+                                                                          errorBorder:
+                                                                              InputBorder.none,
+                                                                          disabledBorder:
+                                                                              InputBorder.none,
                                                                           contentPadding: EdgeInsets.only(
-                                                                              left: 15, bottom: 11, top: 13, right: 15),
-                                                                          filled: true,
-                                                                          fillColor: Colors.transparent,
+                                                                              left: 15,
+                                                                              bottom: 11,
+                                                                              top: 13,
+                                                                              right: 15),
+                                                                          filled:
+                                                                              true,
+                                                                          fillColor:
+                                                                              Colors.transparent,
                                                                         ),
                                                                       ),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     const Padding(
-                                                                      padding: EdgeInsets.only(left: 15),
-                                                                      child: Text("Pernafasan",
-                                                                          style: TextStyle(
-                                                                            fontWeight: FontWeight.bold,
+                                                                      padding: EdgeInsets.only(
+                                                                          left:
+                                                                              15),
+                                                                      child: Text(
+                                                                          "Pernafasan",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           )),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     Container(
-                                                                      margin: const EdgeInsets.only(left: 10, right: 10),
-                                                                      height: 50,
-                                                                      decoration: BoxDecoration(
-                                                                        color: const Color(0xfff3f3f3),
-                                                                        borderRadius: BorderRadius.circular(22),
+                                                                      margin: const EdgeInsets
+                                                                              .only(
+                                                                          left:
+                                                                              10,
+                                                                          right:
+                                                                              10),
+                                                                      height:
+                                                                          50,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: const Color(
+                                                                            0xfff3f3f3),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(22),
                                                                       ),
-                                                                      child: TextField(
-                                                                        controller: controller.pernapasanController,
-                                                                        decoration: const InputDecoration(
-                                                                          border: InputBorder.none,
-                                                                          focusedBorder: InputBorder.none,
-                                                                          enabledBorder: InputBorder.none,
-                                                                          errorBorder: InputBorder.none,
-                                                                          disabledBorder: InputBorder.none,
+                                                                      child:
+                                                                          TextField(
+                                                                        controller:
+                                                                            controller.pernapasanController,
+                                                                        decoration:
+                                                                            const InputDecoration(
+                                                                          border:
+                                                                              InputBorder.none,
+                                                                          focusedBorder:
+                                                                              InputBorder.none,
+                                                                          enabledBorder:
+                                                                              InputBorder.none,
+                                                                          errorBorder:
+                                                                              InputBorder.none,
+                                                                          disabledBorder:
+                                                                              InputBorder.none,
                                                                           contentPadding: EdgeInsets.only(
-                                                                              left: 15, bottom: 11, top: 13, right: 15),
-                                                                          filled: true,
-                                                                          fillColor: Colors.transparent,
+                                                                              left: 15,
+                                                                              bottom: 11,
+                                                                              top: 13,
+                                                                              right: 15),
+                                                                          filled:
+                                                                              true,
+                                                                          fillColor:
+                                                                              Colors.transparent,
                                                                         ),
                                                                       ),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     const Padding(
-                                                                      padding: EdgeInsets.only(left: 15),
-                                                                      child: Text("Berat Badan",
-                                                                          style: TextStyle(
-                                                                            fontWeight: FontWeight.bold,
+                                                                      padding: EdgeInsets.only(
+                                                                          left:
+                                                                              15),
+                                                                      child: Text(
+                                                                          "Berat Badan",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           )),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     Container(
-                                                                      margin: const EdgeInsets.only(left: 10, right: 10),
-                                                                      height: 50,
-                                                                      decoration: BoxDecoration(
-                                                                        color: const Color(0xfff3f3f3),
-                                                                        borderRadius: BorderRadius.circular(22),
+                                                                      margin: const EdgeInsets
+                                                                              .only(
+                                                                          left:
+                                                                              10,
+                                                                          right:
+                                                                              10),
+                                                                      height:
+                                                                          50,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: const Color(
+                                                                            0xfff3f3f3),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(22),
                                                                       ),
-                                                                      child: TextField(
-                                                                        controller: controller.beratBadanController,
-                                                                        decoration: const InputDecoration(
-                                                                          border: InputBorder.none,
-                                                                          focusedBorder: InputBorder.none,
-                                                                          enabledBorder: InputBorder.none,
-                                                                          errorBorder: InputBorder.none,
-                                                                          disabledBorder: InputBorder.none,
+                                                                      child:
+                                                                          TextField(
+                                                                        controller:
+                                                                            controller.beratBadanController,
+                                                                        decoration:
+                                                                            const InputDecoration(
+                                                                          border:
+                                                                              InputBorder.none,
+                                                                          focusedBorder:
+                                                                              InputBorder.none,
+                                                                          enabledBorder:
+                                                                              InputBorder.none,
+                                                                          errorBorder:
+                                                                              InputBorder.none,
+                                                                          disabledBorder:
+                                                                              InputBorder.none,
                                                                           contentPadding: EdgeInsets.only(
-                                                                              left: 15, bottom: 11, top: 13, right: 15),
-                                                                          filled: true,
-                                                                          fillColor: Colors.transparent,
+                                                                              left: 15,
+                                                                              bottom: 11,
+                                                                              top: 13,
+                                                                              right: 15),
+                                                                          filled:
+                                                                              true,
+                                                                          fillColor:
+                                                                              Colors.transparent,
                                                                         ),
                                                                       ),
                                                                     ),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
                                                                     // const Padding(
                                                                     //   padding: EdgeInsets.only(left: 15),
@@ -515,8 +753,9 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                                     // const SizedBox(
                                                                     //   height: 200,
                                                                     // ),
-                                                                    SizedBox(
-                                                                      height: 400,
+                                                                    const SizedBox(
+                                                                      height:
+                                                                          400,
                                                                     ),
                                                                   ],
                                                                 ),
@@ -529,25 +768,58 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                           InkWell(
                                                             onTap: () async {
                                                               final postVS = await API.postVitalSign(
-                                                                  no_registrasi: controller.noRegistrasi,
-                                                                  keadaan_umum: controller.keadaanUmumController.text,
-                                                                  kesadaran_pasien: controller.kesadaranController.text,
-                                                                  tekanan_darah: controller.tekananDarahController.text,
-                                                                  nadi: controller.nadiController.text,
-                                                                  suhu: controller.suhuController.text,
-                                                                  pernapasan: controller.pernapasanController.text,
-                                                                  tinggi_badan: controller.tinggiBadanController.text,
-                                                                  berat_badan: controller.beratBadanController.text);
-                                                              if (postVS.code != 200) {
+                                                                  no_registrasi:
+                                                                      controller
+                                                                          .noRegistrasi,
+                                                                  keadaan_umum:
+                                                                      controller
+                                                                          .keadaanUmumController
+                                                                          .text,
+                                                                  kesadaran_pasien:
+                                                                      controller
+                                                                          .kesadaranController
+                                                                          .text,
+                                                                  tekanan_darah:
+                                                                      controller
+                                                                          .tekananDarahController
+                                                                          .text,
+                                                                  nadi: controller
+                                                                      .nadiController
+                                                                      .text,
+                                                                  suhu: controller
+                                                                      .suhuController
+                                                                      .text,
+                                                                  pernapasan:
+                                                                      controller
+                                                                          .pernapasanController
+                                                                          .text,
+                                                                  tinggi_badan:
+                                                                      controller
+                                                                          .tinggiBadanController
+                                                                          .text,
+                                                                  berat_badan:
+                                                                      controller
+                                                                          .beratBadanController
+                                                                          .text);
+                                                              if (postVS.code !=
+                                                                  200) {
                                                               } else {
                                                                 showModalBottomSheet(
-                                                                  context: context,
-                                                                  shape: const RoundedRectangleBorder(
-                                                                    borderRadius: BorderRadius.vertical(
-                                                                      top: Radius.circular(20),
+                                                                  context:
+                                                                      context,
+                                                                  shape:
+                                                                      const RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .vertical(
+                                                                      top: Radius
+                                                                          .circular(
+                                                                              20),
                                                                     ),
                                                                   ),
-                                                                  builder: (context) => buildSheet(),
+                                                                  builder:
+                                                                      (context) =>
+                                                                          buildSheet(),
                                                                 );
                                                                 // Get.defaultDialog(
                                                                 //   title: (postVS.code ?? 0).toString(),
@@ -558,9 +830,18 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                             child: Container(
                                                               height: 45,
                                                               width: 145,
-                                                              decoration: BoxDecoration(
-                                                                color: const Color.fromARGB(255, 56, 229, 77),
-                                                                borderRadius: BorderRadius.circular(10),
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: const Color
+                                                                        .fromARGB(
+                                                                    255,
+                                                                    56,
+                                                                    229,
+                                                                    77),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10),
                                                                 // boxShadow: [
                                                                 //   BoxShadow(
                                                                 //     color: Colors.green.withOpacity(0.5),
@@ -571,14 +852,20 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                                 // ],
                                                               ),
                                                               child: Column(
-                                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
                                                                 children: const [
                                                                   Text(
                                                                     "Submit",
                                                                     style: TextStyle(
-                                                                        color: Colors.white,
-                                                                        fontWeight: FontWeight.bold,
-                                                                        fontSize: 14),
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .bold,
+                                                                        fontSize:
+                                                                            14),
                                                                   )
                                                                 ],
                                                               ),
@@ -589,10 +876,8 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                           ),
                                                         ],
                                                       )); //whatever you're returning, does not have to be a Container
-                                                }
-                                            );
-                                          }
-                                      );
+                                                });
+                                          });
                                     },
                                     icon: const Icon(Icons.add),
                                     label: const Text("Tambah Vital Sign"),
@@ -621,7 +906,7 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                             const SizedBox(
                               height: 10,
                             ),
-                            Planning(getDetailMR: data),
+                            const Planning(),
                             const SizedBox(
                               height: 40,
                             ),
@@ -672,62 +957,62 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
             ),
             SingleChildScrollView(
                 child: Center(
-                  child: Column(
-                    children: [
-                      Text('Data Berhasil Di Tambahkan',
-                          style: TextStyle(
-                              color: Colors.black45,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      // Image.asset(
-                      //   "assets/images/login_sukses.png",
-                      //   gaplessPlayback: true,
-                      //   fit: BoxFit.fitHeight,
-                      //   width: 200,
-                      //   height: 200,
-                      // ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.center,
-                      //   children: [
-                      //     Padding(
-                      //       padding:
-                      //       const EdgeInsets.only(right: 10, left: 10, top: 20),
-                      //       child: GestureDetector(
-                      //         onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
-                      //         child: Container(
-                      //           decoration: BoxDecoration(
-                      //             borderRadius: BorderRadius.circular(7),
-                      //             color: Colors.redAccent,
-                      //           ),
-                      //           child: Column(
-                      //             children: const [
-                      //               Padding(
-                      //                 padding: EdgeInsets.all(16),
-                      //                 child: Text("Kembali",
-                      //                     style: TextStyle(
-                      //                         color: Colors.white,
-                      //                         fontWeight: FontWeight.bold)),
-                      //               ),
-                      //             ],
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                    ],
+              child: Column(
+                children: const [
+                  Text('Data Berhasil Di Tambahkan',
+                      style: TextStyle(
+                          color: Colors.black45,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center),
+                  SizedBox(
+                    height: 5,
                   ),
-                )),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  // Image.asset(
+                  //   "assets/images/login_sukses.png",
+                  //   gaplessPlayback: true,
+                  //   fit: BoxFit.fitHeight,
+                  //   width: 200,
+                  //   height: 200,
+                  // ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     Padding(
+                  //       padding:
+                  //       const EdgeInsets.only(right: 10, left: 10, top: 20),
+                  //       child: GestureDetector(
+                  //         onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
+                  //         child: Container(
+                  //           decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(7),
+                  //             color: Colors.redAccent,
+                  //           ),
+                  //           child: Column(
+                  //             children: const [
+                  //               Padding(
+                  //                 padding: EdgeInsets.all(16),
+                  //                 child: Text("Kembali",
+                  //                     style: TextStyle(
+                  //                         color: Colors.white,
+                  //                         fontWeight: FontWeight.bold)),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                ],
+              ),
+            )),
           ],
         ));
   }

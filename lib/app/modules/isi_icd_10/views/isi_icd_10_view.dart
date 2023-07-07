@@ -6,6 +6,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
+import '../../../data/componen/fetch_data.dart';
 import '../controllers/isi_icd_10_controller.dart';
 import 'componen/nama_pemeriksa.dart';
 
@@ -83,7 +84,39 @@ class IsiIcd10View extends GetView<IsiIcd10Controller> {
                       const SizedBox(
                         height: 10,
                       ),
-                      const HasilICD10(),
+                      FutureBuilder(
+                          future: API.getDetailMR(
+                              no_registrasi: controller.noRegistrasi),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData &&
+                                snapshot.connectionState !=
+                                    ConnectionState.waiting &&
+                                snapshot.data != null) {
+                              final data = snapshot.data!.icd10 ?? [];
+                              return data.isEmpty
+                                  ? const Text('Tidak Ada Tindakan')
+                                  : Column(
+                                      children: AnimationConfiguration
+                                          .toStaggeredList(
+                                              duration: const Duration(
+                                                  milliseconds: 475),
+                                              childAnimationBuilder: (widget) =>
+                                                  SlideAnimation(
+                                                    child: FadeInAnimation(
+                                                      child: widget,
+                                                    ),
+                                                  ),
+                                              children: data
+                                                  .map((e) =>
+                                                      HasilICD10(icd10: e))
+                                                  .toList()),
+                                    );
+                            } else {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                          }),
                       const SizedBox(
                         height: 40,
                       ),
