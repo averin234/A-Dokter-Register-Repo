@@ -16,6 +16,7 @@ class shimmerSetting extends StatelessWidget {
           margin: EdgeInsets.only(left: 10, right: 10 ),
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
+            color: Colors.white,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Color(0x6cc7d1db)),
           ),
