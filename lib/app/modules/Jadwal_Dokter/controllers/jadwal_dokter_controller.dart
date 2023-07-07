@@ -1,23 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class JadwalDokterController extends GetxController {
-  //TODO: Implement JadwalDokterController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  final seninController = TextEditingController();
+  final selasaController = TextEditingController();
+  final rabuController = TextEditingController();
+  final kamisController = TextEditingController();
+  final jumatController = TextEditingController();
+  final sabtuController = TextEditingController();
+  final mingguController = TextEditingController();
+  final intervalController = TextEditingController();
 }

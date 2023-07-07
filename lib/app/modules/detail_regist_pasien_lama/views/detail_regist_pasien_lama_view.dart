@@ -1,15 +1,12 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
-import 'package:a_dokter_register/app/modules/detail_regist_pasien_lama/views/componen/form_asuransi_perusahaan.dart';
-import 'package:a_dokter_register/app/modules/detail_regist_pasien_lama/views/componen/form_bpjs.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
-import '../../../data/model/get_detail_mr.dart';
-import '../../../data/model/get_detail_pasien.dart';
 import '../controllers/detail_regist_pasien_lama_controller.dart';
 import 'componen/card_profile_pasien.dart';
 import 'componen/form_pasien_lama.dart';
@@ -24,6 +21,7 @@ class DetailRegistPasienLamaView extends StatefulWidget {
 
 class _DetailRegistPasienLamaViewState
     extends State<DetailRegistPasienLamaView> {
+  final controller = Get.put(DetailRegistPasienLamaController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,36 +38,62 @@ class _DetailRegistPasienLamaViewState
           ],
         ),
         height: 75,
-        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Row(
           children: <Widget>[
-            Container(
+            SizedBox(
               width: 230,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
+                children: const <Widget>[
                   Padding(
                       padding: EdgeInsets.only(left: 10),
-                      child: Text("Pastikan Data Pasien Sudah Benar Sebelum Di Daftarkan",
+                      child: Text(
+                          "Pastikan Data Pasien Sudah Benar Sebelum Di Daftarkan",
                           style: TextStyle(color: Colors.black))),
                 ],
               ),
             ),
             Expanded(
               child: InkWell(
-                onTap: ()  {
-                  showModalBottomSheet(
-                    context: context,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(20),
-                      ),
-                    ),
-                    builder: (context) => buildSheetberhasil(),
+                onTap: () async {
+                  final postAntrian = await API.postDaftarPx(
+                    no_antrian: controller.antrianController.text,
+                    kode_dokter:
+                        Publics.controller.getDataRegist.value.kode ?? '',
+                    jam_awal: controller.jadwalController.text,
+                    no_mr: controller.noMr,
+                    durasi: controller.durasiController.text,
+                    nasabah: controller.nasabahController.text,
+                    no_polis: controller.noPolisController.text,
+                    no_bpjs: controller.noBPJSController.text,
+                    yankes: controller.yankesController.text,
+                    jadwal: DateFormat('yyyy-MM-dd').format(DateTime.now()),
                   );
+                  if (postAntrian.code == 200) {
+                    await showModalBottomSheet(
+                      context: context,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
+                      builder: (context) => buildSheetberhasil(),
+                    );
+                  } else {
+                    await showModalBottomSheet(
+                      context: context,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
+                      builder: (context) => buildSheetGagal(),
+                    );
+                  }
                 },
                 child: Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                       right: 15, left: 15, top: 10, bottom: 10),
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
@@ -88,7 +112,7 @@ class _DetailRegistPasienLamaViewState
                       colors: [Color(0xff4babe7), Color(0xff4babe7)],
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     "Kirim",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -157,18 +181,18 @@ class _DetailRegistPasienLamaViewState
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              ProfileLama(),
-              SizedBox(
+              const ProfileLama(),
+              const SizedBox(
                 height: 5,
               ),
               // VitalSignPasienLama(),
               // FormPasienLama(),
-              FormRegisPasienLama(),
+              const FormRegisPasienLama(),
               // FormPasienLama()
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               // AuransiPerusahaan1(),
@@ -185,6 +209,7 @@ class _DetailRegistPasienLamaViewState
       ),
     );
   }
+
   Widget buildSheetGagal() {
     return Container(
         height: 200,
@@ -236,12 +261,16 @@ class _DetailRegistPasienLamaViewState
                     ),
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.only(right: 20, left: 20, top: 20),
-                        child : Center(
-                          child: Text('Periksa Kembali Data yang di inputkan apakah sudah sesuai atau belum ada yang di inputkan',
+                        margin:
+                            const EdgeInsets.only(right: 20, left: 20, top: 20),
+                        child: const Center(
+                          child: Text(
+                            'Periksa Kembali Data yang di inputkan apakah sudah sesuai atau belum ada yang di inputkan',
                             textAlign: TextAlign.center,
                             style: TextStyle(),
-                          ),),),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -278,6 +307,7 @@ class _DetailRegistPasienLamaViewState
           ],
         ));
   }
+
   Widget buildSheetberhasil() {
     return Container(
         height: 200,
@@ -329,12 +359,16 @@ class _DetailRegistPasienLamaViewState
                     ),
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.only(right: 20, left: 20, top: 20),
-                      child : Center(
-                        child: Text('Lanjut untuk melakukan pemeriksaan pasien yang sudah di daftarkan',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(),
-                      ),),),
+                        margin:
+                            const EdgeInsets.only(right: 20, left: 20, top: 20),
+                        child: const Center(
+                          child: Text(
+                            'Lanjut untuk melakukan pemeriksaan pasien yang sudah di daftarkan',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

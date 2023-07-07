@@ -748,11 +748,10 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                             id_yankes: controller.yankesController.text,
                           );
                           if (postPasien.code == 200) {
-                            Get.defaultDialog(
-                              title: (postPasien.code ?? 0).toString(),
-                              content: Text(postPasien.msg ?? ''),
-                            );
-                            Get.toNamed(Routes.PERJANJIAN_DOKTER);
+                            Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA,
+                                parameters: {
+                                  'no_mr': postPasien.pasien!.noMr ?? ''
+                                });
                           } else {
                             Get.defaultDialog(
                               title: (postPasien.code ?? 0).toString(),

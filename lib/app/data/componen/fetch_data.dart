@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:a_dokter_register/app/data/componen/data_regist_model.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/data/model/checkup.dart';
+import 'package:a_dokter_register/app/data/model/get_antrian_dokter.dart';
 import 'package:a_dokter_register/app/data/model/get_antrian_pasien.dart';
 import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:a_dokter_register/app/data/model/get_detail_pasien.dart';
@@ -30,6 +31,7 @@ import '../model/login_and_regist/daftar_px_dosen.dart';
 import '../model/login_and_regist/daftar_px_mahasiswa.dart';
 import '../model/login_and_regist/poli.dart';
 import '../model/login_and_regist/post_ubah_password.dart';
+import '../model/post_pasien_baru.dart';
 import 'local_storage.dart';
 
 class API {
@@ -41,6 +43,7 @@ class API {
   static const _postDaftarPxBaruDokter =
       '$_baseUrl/post-daftar-px-baru-dokter.php';
   static const _getPoli = '$_baseUrl/get-poli.php';
+  static const _postDaftarPx = '$_baseUrl/post-antrian-pasien.php';
   static const _getSpesialisasi = '$_baseUrl/get-spesialisasi.php';
   static const _getJenisKelamin = '$_baseUrl/get-jenis-kelamin.php';
   static const _getPekerjaan = '$_baseUrl/get-pekerjaan.php';
@@ -180,6 +183,53 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<CheckUp> postDaftarPx({
+    required String kode_dokter,
+    required String jam_awal,
+    required String no_mr,
+    required String durasi,
+    required String nasabah,
+    required String no_polis,
+    required String no_antrian,
+    required String no_bpjs,
+    required String yankes,
+    required String jadwal,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      'kode_dokter': kode_dokter,
+      'jam_awal': jam_awal,
+      'no_antrian': no_antrian,
+      'no_mr': no_mr,
+      'durasi': durasi,
+      'nasabah': nasabah,
+      'no_polis': no_polis,
+      'no_bpjs': no_bpjs,
+      'yankes': yankes,
+      'jadwal': jadwal,
+    };
+    var response = await Dio().post(
+      _postDaftarPx,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = CheckUp.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
@@ -563,7 +613,7 @@ class API {
     return obj;
   }
 
-  static Future<CheckUp> postPasienBaru({
+  static Future<PostPasienBaru> postPasienBaru({
     required String kode_dokter,
     required String nama_pasien,
     required String nasabah,
@@ -629,7 +679,7 @@ class API {
       data: data,
     );
     final datas = jsonDecode(response.data);
-    final obj = CheckUp.fromJson(datas);
+    final obj = PostPasienBaru.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
@@ -706,7 +756,7 @@ class API {
     return obj;
   }
 
-  static Future<dynamic> getAntrianDokter({
+  static Future<GetAntrianDokter> getAntrianDokter({
     required String kode_dokter,
     required String tgl_daftar,
   }) async {
@@ -726,7 +776,7 @@ class API {
       data: data,
     );
     final datas = jsonDecode(response.data);
-    final obj = AksesPx.fromJson(datas);
+    final obj = GetAntrianDokter.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(

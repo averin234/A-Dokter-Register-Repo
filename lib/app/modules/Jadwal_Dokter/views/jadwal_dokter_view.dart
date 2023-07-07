@@ -40,7 +40,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
               top: Radius.circular(20),
             ),
           ),
-          builder: (context) => buildSheetJadwal(context),
+          builder: (context) => buildSheetJadwal(),
         ),
         elevation: 0,
         backgroundColor: Colors.tealAccent,
@@ -103,7 +103,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 FutureBuilder(
@@ -148,10 +148,8 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
     );
   }
 
-  Widget buildSheetJadwal(context) {
-    final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return
-      Container(
+  Widget buildSheetJadwal() {
+    return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.transparent,
