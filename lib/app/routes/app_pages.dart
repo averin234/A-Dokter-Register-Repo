@@ -44,6 +44,8 @@ import '../modules/privyid/bindings/privyid_binding.dart';
 import '../modules/privyid/views/privyid_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
+import '../modules/regist_pasien_lama/bindings/tambah_pasien_lama_binding.dart';
+import '../modules/regist_pasien_lama/views/tambah_pasien_lama_view.dart';
 import '../modules/register_dokter/bindings/register_dokter_binding.dart';
 import '../modules/register_dokter/views/register_dokter_view.dart';
 import '../modules/register_dosen/bindings/register_dosen_binding.dart';
@@ -64,8 +66,6 @@ import '../modules/riwayat_praktek/bindings/riwayat_praktek_binding.dart';
 import '../modules/riwayat_praktek/views/riwayat_praktek_view.dart';
 import '../modules/splashscreen/bindings/splashscreen_binding.dart';
 import '../modules/splashscreen/views/splashscreen_view.dart';
-import '../modules/regist_pasien_lama/bindings/tambah_pasien_lama_binding.dart';
-import '../modules/regist_pasien_lama/views/tambah_pasien_lama_view.dart';
 
 part 'app_routes.dart';
 
@@ -240,5 +240,6 @@ class AppPages {
       page: () => DetailRegistPasienLamaView(),
       binding: DetailRegistPasienLamaBinding(),
     ),
+
   ];
 }

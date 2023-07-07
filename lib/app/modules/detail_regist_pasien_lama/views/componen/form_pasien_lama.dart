@@ -361,7 +361,7 @@ class AppTextField extends StatelessWidget {
       width: Get.width / 1,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
       child: TextFormField(
@@ -370,6 +370,7 @@ class AppTextField extends StatelessWidget {
         cursorColor: Colors.black,
         onTap: onTextFieldTap,
         decoration: InputDecoration(
+          fillColor: Colors.white,
           filled: true,
           suffixIcon: const Icon(Icons.arrow_drop_down_circle),
           contentPadding:

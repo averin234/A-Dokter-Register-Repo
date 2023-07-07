@@ -65,7 +65,7 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
           SliverList(
             delegate: SliverChildListDelegate([
               Container(
-                margin: const EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10, right: 10, left: 10),
                 padding: const EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -93,7 +93,12 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
                           final data = snapshot.data!.antrian ?? [];
                           print(snapshot.data!.toJson());
                           return data.isEmpty
-                              ? Text(snapshot.data!.msg ?? '')
+                              ?  Center(
+                            child: Image.asset(
+                              'assets/images/noantri.png',
+                              height: 100,
+                            ),
+                          )
                               : Column(
                                   children:
                                       AnimationConfiguration.toStaggeredList(

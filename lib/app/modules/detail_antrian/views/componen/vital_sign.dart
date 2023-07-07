@@ -16,7 +16,6 @@ class VitalSignView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
         margin: const EdgeInsets.only(right: 10, left: 10),
         padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
@@ -59,12 +58,467 @@ class VitalSignView extends StatelessWidget {
                 InkWell(
                   onTap: () => showModalBottomSheet(
                     context: context,
+                    isScrollControlled: true,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(20),
                       ),
                     ),
-                    builder: (context) => buildSheet(),
+        builder: (BuildContext context) {
+          return DraggableScrollableSheet(
+              initialChildSize: 0.95, //set this as you want
+              maxChildSize: 0.95, //set this as you want
+              minChildSize: 0.95, //set this as you want
+              expand: true,
+
+              builder: (context, scrollController) {
+                return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.transparent,
+                    ),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          height: 4,
+                          margin: EdgeInsets.only(
+                            right: Get.width / 2 - 40,
+                            left: Get.width / 2 - 40,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFe0e0e0),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 15),
+                          child: Text("Edit Vital Sign",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: Colors.blue)),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: AnimationConfiguration.toStaggeredList(
+                              duration: const Duration(milliseconds: 275),
+                              childAnimationBuilder: (widget) => SlideAnimation(
+                                child: FadeInAnimation(
+                                  child: widget,
+                                ),
+                              ),
+                              children: <Widget>[
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text("Keadaan Umum",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
+
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xfff3f3f3),
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: 15, bottom: 11, top: 13, right: 15),
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text("Tekanan Darah",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xfff3f3f3),
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: 15, bottom: 11, top: 13, right: 15),
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text("Suhu",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xfff3f3f3),
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: 15, bottom: 11, top: 13, right: 15),
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text("Tinggi Badan",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xfff3f3f3),
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: 15, bottom: 11, top: 13, right: 15),
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text("Heart Rate",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xfff3f3f3),
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: 15, bottom: 11, top: 13, right: 15),
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text("Kesadaran",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xfff3f3f3),
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: 15, bottom: 11, top: 13, right: 15),
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text("Nadi",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xfff3f3f3),
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: 15, bottom: 11, top: 13, right: 15),
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text("Pernafasan",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xfff3f3f3),
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: 15, bottom: 11, top: 13, right: 15),
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text("Berat Badan",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xfff3f3f3),
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: 15, bottom: 11, top: 13, right: 15),
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text("Lingkar Perut",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xfff3f3f3),
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                  child: const TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      contentPadding: EdgeInsets.only(
+                                          left: 15, bottom: 11, top: 13, right: 15),
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 200,
+                                ),
+                              ],
+                            ),
+                          ),
+
+                        ),
+                ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        InkWell(
+                          // onTap: () => showModalBottomSheet(
+                          //   context: Get.context!,
+                          //   shape: const RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.vertical(
+                          //       top: Radius.circular(20),
+                          //     ),
+                          //   ),
+                          //   builder: (context) => buildSheet(context),
+                          // ),
+                          child: Container(
+                            height: 45,
+                            width: 145,
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 56, 229, 77),
+                              borderRadius: BorderRadius.circular(10),
+                              // boxShadow: [
+                              //   BoxShadow(
+                              //     color: Colors.green.withOpacity(0.5),
+                              //     spreadRadius: 0,
+                              //     blurRadius: 10,
+                              //     offset: const Offset(2, 1),
+                              //   ),
+                              // ],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  "Update Vital Sign",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ));}
+          );}
                   ),
                   child: Container(
                     height: 30,
@@ -85,7 +539,7 @@ class VitalSignView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Text(
-                          "Tambah Vital Sign",
+                          "Update Vital Sign",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -114,7 +568,7 @@ class VitalSignView extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text("Keadaan Umum :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -123,7 +577,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("",
+                      Text(vitalSign.keadaanUmum ?? '',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -137,7 +591,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("",
+                      Text(vitalSign.tekananDarah ?? '',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -151,7 +605,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("",
+                      Text(vitalSign.suhu ?? '',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -165,7 +619,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("",
+                      Text(vitalSign.tinggiBadan?? '',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -196,7 +650,7 @@ class VitalSignView extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children:  [
                       Text("Kesadaran :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -205,7 +659,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("",
+                      Text(vitalSign.kesadaranPasien?? '',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -219,7 +673,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("",
+                      Text(vitalSign.nadi ?? '',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -233,7 +687,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("",
+                      Text(vitalSign.pernafasan ?? '',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -247,7 +701,7 @@ class VitalSignView extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text("",
+                      Text(vitalSign.beratBadan?? '',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
@@ -278,8 +732,11 @@ class VitalSignView extends StatelessWidget {
     );
   }
 
-  Widget buildSheet() {
-    return Container(
+  Widget buildSheet(context) {
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return Padding(padding: mediaQueryData.viewInsets,
+      child : Container(
+        height: 400,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.transparent,
@@ -314,8 +771,7 @@ class VitalSignView extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Expanded(
-              child: SingleChildScrollView(
+             SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -674,20 +1130,19 @@ class VitalSignView extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
             const SizedBox(
               height: 10,
             ),
             InkWell(
-              onTap: () => showModalBottomSheet(
-                context: Get.context!,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(20),
-                  ),
-                ),
-                builder: (context) => buildSheet(),
-              ),
+              // onTap: () => showModalBottomSheet(
+              //   context: Get.context!,
+              //   shape: const RoundedRectangleBorder(
+              //     borderRadius: BorderRadius.vertical(
+              //       top: Radius.circular(20),
+              //     ),
+              //   ),
+              //   builder: (context) => buildSheet(context),
+              // ),
               child: Container(
                 height: 45,
                 width: 145,
@@ -721,6 +1176,6 @@ class VitalSignView extends StatelessWidget {
               height: 10,
             ),
           ],
-        ));
+        )));
   }
 }

@@ -442,19 +442,11 @@ class Home extends StatelessWidget {
                       ),
                       // const MenuHome(),
                       const SizedBox(),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10, left: 10),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const []),
-                      ),
+
                       const SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
-                      // BarChartSample2(),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      // BarChartSample2()
                       Padding(
                         padding: const EdgeInsets.only(right: 10, left: 10),
                         child: Column(
