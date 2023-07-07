@@ -76,7 +76,12 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
                         snapshot.data != null) {
                       final data = snapshot.data!.kasir ?? [];
                       return data.isEmpty
-                          ? Text(snapshot.data!.msg ?? '')
+                          ? Center(
+                        child: Image.asset(
+                          'assets/images/tidakadapendapatan.png',
+                          height: 100,
+                        ),
+                      )
                           : Column(
                               children: AnimationConfiguration.toStaggeredList(
                                 duration: const Duration(milliseconds: 375),

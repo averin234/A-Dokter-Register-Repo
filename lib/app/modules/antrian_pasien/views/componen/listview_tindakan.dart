@@ -51,7 +51,7 @@ class ListViewTindakan extends StatelessWidget {
                         Row(
                           children: [
                             SizedBox(
-                              width: 140,
+                              width: 150,
                             child : Text(
                               antrian.namaPasien ?? '',
                               style: const TextStyle(
@@ -382,16 +382,19 @@ class ListViewTindakan extends StatelessWidget {
                                 Row(
                                   children: [
                                     const Text("Alamat :",
+
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),
                                     const SizedBox(
                                       width: 6,
                                     ),
-                                    Text(antrian.alamat ?? '',
+                                    SizedBox(
+                                    width: 170,
+                                    child : Text(antrian.alamat ?? '',
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 13)),
+                                            fontSize: 13)),),
                                   ],
                                 ),
                               ]),

@@ -61,6 +61,7 @@ class Planning extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () => showModalBottomSheet(
+                        isScrollControlled: true,
                         context: context,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
@@ -309,6 +310,7 @@ class Planning extends StatelessWidget {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Padding(padding: mediaQueryData.viewInsets,
       child : Container(
+        height: 400,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.transparent,
@@ -343,8 +345,7 @@ class Planning extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Expanded(
-              child: SingleChildScrollView(
+           SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -428,12 +429,11 @@ class Planning extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        height: 200,
+                        height: 20,
                       ),
                     ],
                   ),
                 ),
-              ),
             ),
             const SizedBox(
               height: 10,

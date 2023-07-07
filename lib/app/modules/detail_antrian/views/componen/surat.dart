@@ -30,6 +30,7 @@ class Surat extends StatelessWidget {
           children: [
             InkWell(
               onTap: () => showModalBottomSheet(
+                isScrollControlled: true,
                 context: context,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
@@ -60,6 +61,7 @@ class Surat extends StatelessWidget {
             ),
             InkWell(
               onTap: () => showModalBottomSheet(
+                isScrollControlled: true,
                 context: context,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
@@ -94,10 +96,12 @@ class Surat extends StatelessWidget {
     );
   }
 
+
   Widget suratsehat(context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Padding(padding: mediaQueryData.viewInsets,
       child : Container(
+        height: 340,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.transparent,
@@ -132,8 +136,8 @@ class Surat extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Expanded(
-              child: SingleChildScrollView(
+            SingleChildScrollView(
+              child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -181,6 +185,7 @@ class Surat extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
+
                       Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Keperluan",
@@ -213,16 +218,13 @@ class Surat extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 200,
-                      ),
+
                     ],
                   ),
-                ),
+                ),),
               ),
-            ),
             SizedBox(
-              height: 10,
+              height: 40,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -304,6 +306,7 @@ class Surat extends StatelessWidget {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Padding(padding: mediaQueryData.viewInsets,
       child : Container(
+        height: 340,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.transparent,
@@ -338,8 +341,8 @@ class Surat extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Expanded(
-              child: SingleChildScrollView(
+            SingleChildScrollView(
+              child : Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -419,16 +422,14 @@ class Surat extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 200,
-                      ),
+
                     ],
                   ),
                 ),
+                ),
               ),
-            ),
             SizedBox(
-              height: 10,
+              height: 40,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
