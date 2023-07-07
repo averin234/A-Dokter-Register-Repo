@@ -231,6 +231,11 @@ class _FormIsiTindakanState extends State<FormIsiTindakan> {
                       'no_mr': controller.noMr,
                       'no_registrasi': controller.noRegistrasi,
                     });
+                  } else {
+                    Get.defaultDialog(
+                      title: postTindakan.code.toString(),
+                      content: Text(postTindakan.msg ?? ''),
+                    );
                   }
                 },
                 child: Container(
