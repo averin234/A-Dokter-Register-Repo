@@ -17,15 +17,15 @@ class TindakanView extends GetView<TindakanController> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            systemOverlayStyle: const SystemUiOverlayStyle(
+          const SliverAppBar(
+            systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: const RoundedRectangleBorder(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -35,23 +35,23 @@ class TindakanView extends GetView<TindakanController> {
             snap: true,
             automaticallyImplyLeading: false,
             title: Text('List Pasien'),
-            bottom: AppBar(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    bottom: Radius.circular(30),
-                  ),
-                ),
-                toolbarHeight: 50,
-                automaticallyImplyLeading: false,
-                elevation: 0,
-                title: Column(
-                  children: [
-                    const SearchTindakanDokter(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                )),
+            // bottom: AppBar(
+            //     shape: const RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.vertical(
+            //         bottom: Radius.circular(30),
+            //       ),
+            //     ),
+            //     toolbarHeight: 50,
+            //     automaticallyImplyLeading: false,
+            //     elevation: 0,
+            //     title: Column(
+            //       children: [
+            //         const SearchTindakanDokter(),
+            //         SizedBox(
+            //           height: 10,
+            //         ),
+            //       ],
+            //     )),
           ),
           // Other Sliver Widgets
           SliverList(

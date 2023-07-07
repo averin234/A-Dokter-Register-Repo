@@ -92,6 +92,7 @@ class API {
   static const _getResep = '$_baseUrl/get-resep.php';
   static const _getObatTindakan = '$_baseUrl/get-obat-tindakan.php';
   static const _getTindakan = '$_baseUrl/get-tindakan.php';
+  static const _postTindakan = '$_baseUrl/post-tindakan.php';
   static const _postSoap = '$_baseUrl/post-soap.php';
 
   static Future<Token> getToken() async {
@@ -220,6 +221,78 @@ class API {
     };
     var response = await Dio().post(
       _postDaftarPx,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = CheckUp.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<CheckUp> postTindakan({
+    required String no_registrasi,
+    required String kode_tarif,
+    required String jumlah_tindakan,
+    required String kode_brg,
+    required String jumlah_obat,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      'no_registrasi': no_registrasi,
+      'kode_tarif': kode_tarif,
+      'jumlah_tindakan': jumlah_tindakan,
+      'kode_brg': kode_brg,
+      'jumlah_obat': jumlah_obat,
+    };
+    var response = await Dio().post(
+      _postTindakan,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = CheckUp.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<CheckUp> postSoap({
+    required String no_registrasi,
+    required String subjective,
+    required String analyst,
+    required String objective,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      'no_registrasi': no_registrasi,
+      'subjective': subjective,
+      'objective': objective,
+      'analyst': analyst,
+    };
+    var response = await Dio().post(
+      _postSoap,
       options: Options(
         headers: {
           "Content-Type": "application/json",
@@ -1077,41 +1150,6 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
-      Get.offAllNamed(Routes.LOGIN);
-      Get.snackbar(
-        obj.code.toString(),
-        obj.msg.toString(),
-      );
-    }
-    return obj;
-  }
-
-  static Future<CheckUp> postSoap({
-    required String no_registrasi,
-    required String objective,
-    required String subjective,
-    required String analyst,
-  }) async {
-    var token = Publics.controller.getToken.value;
-    final data = {
-      "no_registrasi": no_registrasi,
-      "objective": objective,
-      "subjective": subjective,
-      "analyst": analyst,
-    };
-    var response = await Dio().post(
-      _getTindakan,
-      options: Options(
-        headers: {
-          "Content-Type": "application/json",
-          "X-Api-Token": token.token,
-        },
-      ),
-      data: data,
-    );
-    final datas = jsonDecode(response.data);
-    final obj = CheckUp.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(

@@ -1,23 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HissController extends GetxController {
   //TODO: Implement HissController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  final noRegistrasi = Get.parameters['no_registrasi'] as String;
+  final noMr = Get.parameters['no_mr'] as String;
+  final subjectiveController = TextEditingController();
+  final objectiveController = TextEditingController();
+  final analystController = TextEditingController();
 }

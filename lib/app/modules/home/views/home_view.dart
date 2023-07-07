@@ -380,8 +380,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
-    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -513,7 +511,12 @@ class Home extends StatelessWidget {
                                             height: 100,
                                           ),
                                         )
-                                      : ListViewTindakan(antrian: data[0]);
+                                      : Column(
+                                          children: data
+                                              .map((e) =>
+                                                  ListViewTindakan(antrian: e))
+                                              .toList(),
+                                        );
                                 } else {
                                   return const Center(
                                     child: CircularProgressIndicator(),

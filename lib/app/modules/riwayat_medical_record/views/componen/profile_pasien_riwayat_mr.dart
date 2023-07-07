@@ -51,7 +51,7 @@ class ProfileRiwayat extends StatelessWidget {
               CircleAvatar(
                 radius: 30.0,
                 backgroundImage: NetworkImage(pasien.urlFotoPasien ??
-                    (pasien.jenKelamin == '2'
+                    (pasien.jenKelamin == '3'
                         ? Avatar.perempuan
                         : Avatar.lakiLaki)),
                 backgroundColor: Colors.transparent,

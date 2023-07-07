@@ -395,238 +395,245 @@ class CardSettingAkun extends GetView<ProfileController> {
   Widget UbahPassword(context) {
     final controller = Get.put(ProfileController());
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return Padding(padding: mediaQueryData.viewInsets,
-      child : Container(
-        height: 400,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50),
-          color: Colors.transparent,
-        ),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 10,
+    return Padding(
+        padding: mediaQueryData.viewInsets,
+        child: Container(
+            height: 400,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.transparent,
             ),
-            Container(
-              height: 4,
-              margin: EdgeInsets.only(
-                right: Get.width / 2 - 40,
-                left: Get.width / 2 - 40,
-              ),
-              decoration: BoxDecoration(
-                color: const Color(0xFFe0e0e0),
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            SingleChildScrollView(
-                child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 15),
-                    child: Text("Password Lama",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: const Color(0x6cc7d1db)),
-                          ),
-                          child: TextFormField(
-                            controller: controller.pwlamaController,
-                            keyboardType: TextInputType.text,
-                            textInputAction: TextInputAction.done,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                              contentPadding: EdgeInsets.only(
-                                  left: 15, bottom: 11, top: 13, right: 15),
-                              filled: true,
-                              fillColor: Colors.transparent,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 15),
-                    child: Text("Password Baru",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: const Color(0x6cc7d1db)),
-                          ),
-                          child: TextFormField(
-                            controller: controller.pwbaruController,
-                            keyboardType: TextInputType.text,
-                            textInputAction: TextInputAction.done,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                              contentPadding: EdgeInsets.only(
-                                  left: 15, bottom: 11, top: 13, right: 15),
-                              filled: true,
-                              fillColor: Colors.transparent,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 15),
-                    child: Text("Comfirm Password Baru",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: const Color(0x6cc7d1db)),
-                          ),
-                          child: TextFormField(
-                            controller: controller.confirmpwbaruController,
-                            keyboardType: TextInputType.text,
-                            textInputAction: TextInputAction.done,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                              contentPadding: EdgeInsets.only(
-                                  left: 15, bottom: 11, top: 13, right: 15),
-                              filled: true,
-                              fillColor: Colors.transparent,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                ],
-              ),
-            )),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 10, left: 10, top: 20),
-                  child: GestureDetector(
-                    onTap: () async {
-                      if (controller.pwbaruController.text.isNotEmpty &&
-                          controller.confirmpwbaruController.text.isNotEmpty) {
-                        final postUbahPassword = await API.postUbahPassword(
-                          email: Publics.controller.getDataRegist.value.email ??
-                              '',
-                          pw_baru: controller.pwbaruController.text,
-                          pw_lama: controller.pwlamaController.text,
-                        );
-                        if (postUbahPassword.code == 200) {
-                          Get.back();
-                        } else {
-                          Get.defaultDialog(
-                            title: (postUbahPassword.code ?? 0).toString(),
-                            content: Text(postUbahPassword.msg ?? ''),
-                          );
-                        }
-                      } else {
-                        Get.snackbar(
-                            '500', 'Password dan Confirm Password harus sama');
-                      }
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color: Colors.blue,
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 4,
+                  margin: EdgeInsets.only(
+                    right: Get.width / 2 - 40,
+                    left: Get.width / 2 - 40,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFe0e0e0),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                SingleChildScrollView(
+                    child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(left: 15),
+                        child: Text("Password Lama",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            )),
                       ),
-                      child: Column(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.all(16),
-                            child: Text("Ubah Password",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold)),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                border:
+                                    Border.all(color: const Color(0x6cc7d1db)),
+                              ),
+                              child: TextFormField(
+                                controller: controller.pwlamaController,
+                                keyboardType: TextInputType.text,
+                                textInputAction: TextInputAction.done,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(
+                                      left: 15, bottom: 11, top: 13, right: 15),
+                                  filled: true,
+                                  fillColor: Colors.transparent,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
                           ),
                         ],
                       ),
-                    ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 15),
+                        child: Text("Password Baru",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                border:
+                                    Border.all(color: const Color(0x6cc7d1db)),
+                              ),
+                              child: TextFormField(
+                                controller: controller.pwbaruController,
+                                keyboardType: TextInputType.text,
+                                textInputAction: TextInputAction.done,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(
+                                      left: 15, bottom: 11, top: 13, right: 15),
+                                  filled: true,
+                                  fillColor: Colors.transparent,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 15),
+                        child: Text("Comfirm Password Baru",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                border:
+                                    Border.all(color: const Color(0x6cc7d1db)),
+                              ),
+                              child: TextFormField(
+                                controller: controller.confirmpwbaruController,
+                                keyboardType: TextInputType.text,
+                                textInputAction: TextInputAction.done,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(
+                                      left: 15, bottom: 11, top: 13, right: 15),
+                                  filled: true,
+                                  fillColor: Colors.transparent,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   ),
+                )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(right: 10, left: 10, top: 20),
+                      child: GestureDetector(
+                        onTap: () async {
+                          if (controller.pwbaruController.text.isNotEmpty &&
+                              controller
+                                  .confirmpwbaruController.text.isNotEmpty) {
+                            final postUbahPassword = await API.postUbahPassword(
+                              email: Publics
+                                      .controller.getDataRegist.value.email ??
+                                  '',
+                              pw_baru: controller.pwbaruController.text,
+                              pw_lama: controller.pwlamaController.text,
+                            );
+                            if (postUbahPassword.code == 200) {
+                              Get.back();
+                            } else {
+                              Get.defaultDialog(
+                                title: (postUbahPassword.code ?? 0).toString(),
+                                content: Text(postUbahPassword.msg ?? ''),
+                              );
+                            }
+                          } else {
+                            Get.snackbar('500',
+                                'Password dan Confirm Password harus sama');
+                          }
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(7),
+                            color: Colors.blue,
+                          ),
+                          child: Column(
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.all(16),
+                                child: Text("Ubah Password",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
-            ),
-          ],
-        )));
+            )));
   }
 
   Widget buildSheet() {
@@ -691,7 +698,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                         padding:
                             const EdgeInsets.only(right: 10, left: 10, top: 20),
                         child: GestureDetector(
-                          onTap: () => Get.toNamed(Routes.LOGIN),
+                          onTap: () => Get.offAllNamed(Routes.LOGIN),
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(7),

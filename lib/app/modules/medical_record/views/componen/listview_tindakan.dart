@@ -36,8 +36,8 @@ class ListViewPasien extends StatelessWidget {
                       radius: 30.0,
                       backgroundImage: NetworkImage(pasien.foto ??
                           (pasien.jenKelamin == '2'
-                              ? Avatar.perempuan
-                              : Avatar.lakiLaki)),
+                              ? Avatar.lakiLaki
+                              : Avatar.perempuan)),
                       backgroundColor: Colors.transparent,
                     ),
                   ),

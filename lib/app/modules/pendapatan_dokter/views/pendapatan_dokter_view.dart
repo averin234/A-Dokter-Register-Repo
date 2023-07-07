@@ -17,15 +17,15 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            systemOverlayStyle: const SystemUiOverlayStyle(
+          const SliverAppBar(
+            systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: const RoundedRectangleBorder(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -33,7 +33,7 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
             floating: true,
             pinned: true,
             snap: true,
-            title: const Text('Pendapatan'),
+            title: Text('Pendapatan'),
 
             // actions: [
             //   IconButton(
@@ -41,29 +41,29 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
             //       icon: Icon(Icons.notifications_active),
             //       color: Colors.white),
             // ],
-            bottom: AppBar(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(30),
-                ),
-              ),
-              toolbarHeight: 50,
-              title: Column(
-                children: const [
-                  SearchPendapatan1(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                ],
-              ),
-              automaticallyImplyLeading: false,
-              elevation: 0,
-            ),
+            // bottom: AppBar(
+            //   shape: const RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.vertical(
+            //       bottom: Radius.circular(30),
+            //     ),
+            //   ),
+            //   toolbarHeight: 50,
+            //   title: Column(
+            //     children: const [
+            //       SearchPendapatan1(),
+            //       SizedBox(
+            //         height: 10,
+            //       ),
+            //     ],
+            //   ),
+            //   automaticallyImplyLeading: false,
+            //   elevation: 0,
+            // ),
           ),
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               FutureBuilder(
