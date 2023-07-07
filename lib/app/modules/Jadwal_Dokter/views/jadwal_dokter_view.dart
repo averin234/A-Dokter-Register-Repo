@@ -40,7 +40,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
               top: Radius.circular(20),
             ),
           ),
-          builder: (context) => buildSheetJadwal(),
+          builder: (context) => buildSheetJadwal(context),
         ),
         elevation: 0,
         backgroundColor: Colors.tealAccent,
@@ -148,8 +148,10 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
     );
   }
 
-  Widget buildSheetJadwal() {
-    return Container(
+  Widget buildSheetJadwal(context) {
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return
+      Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.transparent,

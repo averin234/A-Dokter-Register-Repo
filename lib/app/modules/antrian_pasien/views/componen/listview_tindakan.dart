@@ -51,7 +51,7 @@ class ListViewTindakan extends StatelessWidget {
                         Row(
                           children: [
                             SizedBox(
-                              width: 160,
+                              width: 140,
                             child : Text(
                               antrian.namaPasien ?? '',
                               style: const TextStyle(

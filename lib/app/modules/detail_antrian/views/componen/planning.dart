@@ -67,7 +67,7 @@ class Planning extends StatelessWidget {
                             top: Radius.circular(20),
                           ),
                         ),
-                        builder: (context) => buildSheet(),
+                        builder: (context) => buildSheet(context),
                       ),
                       child: Container(
                         width: 80.0,
@@ -305,8 +305,10 @@ class Planning extends StatelessWidget {
     );
   }
 
-  Widget buildSheet() {
-    return Container(
+  Widget buildSheet(context) {
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return Padding(padding: mediaQueryData.viewInsets,
+      child : Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.transparent,
@@ -448,7 +450,7 @@ class Planning extends StatelessWidget {
                         top: Radius.circular(20),
                       ),
                     ),
-                    builder: (context) => buildSheet(),
+                    builder: (context) => buildSheet(context),
                   ),
                   child: Container(
                     height: 45,
@@ -490,7 +492,7 @@ class Planning extends StatelessWidget {
                         top: Radius.circular(20),
                       ),
                     ),
-                    builder: (context) => buildSheet(),
+                    builder: (context) => buildSheet(context),
                   ),
                   child: Container(
                     height: 45,
@@ -527,6 +529,6 @@ class Planning extends StatelessWidget {
               height: 10,
             ),
           ],
-        ));
+        )));
   }
 }
