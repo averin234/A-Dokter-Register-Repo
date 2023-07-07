@@ -599,6 +599,11 @@ class _FormIsiResepState extends State<FormIsiResep> {
                       'no_mr': controller.noMr,
                       'no_registrasi': controller.noRegistrasi
                     });
+                  } else {
+                    Get.defaultDialog(
+                      title: postResep.code.toString(),
+                      content: Text(postResep.msg ?? ''),
+                    );
                   }
                 },
                 child: Container(
