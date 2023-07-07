@@ -29,7 +29,7 @@ class RiwayatResep extends StatelessWidget {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
             height: 10,
@@ -89,6 +89,158 @@ class RiwayatResep extends StatelessWidget {
               )
             ],
           ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+           child: Column(
+             mainAxisAlignment: MainAxisAlignment.start,
+             children: [
+               Row(children: [
+               Text('no',style: TextStyle(fontWeight: FontWeight.bold)),
+                 SizedBox(
+                   width: 10,
+                 ),
+                 Text('no',style: TextStyle(fontWeight: FontWeight.bold)),
+               ]),
+             ],
+           ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    const Expanded(
+                      child: Text(
+                        "Nama Obat",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,color: Colors.blue),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.ANTRIAN_PASIEN);
+                      },
+                      child: const Text(
+                        "Lihat Semua",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.blue),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    const Expanded(
+                      child: Text(
+                        "Jumlah",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,color: Colors.blue),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.ANTRIAN_PASIEN);
+                      },
+                      child: const Text(
+                        "Lihat Semua",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.blue),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    const Expanded(
+                      child: Text(
+                        "Aturan Pemakaian",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,color: Colors.blue),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.ANTRIAN_PASIEN);
+                      },
+                      child: const Text(
+                        "Lihat Semua",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.blue),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    const Expanded(
+                      child: Text(
+                        "Note",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,color: Colors.blue),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.ANTRIAN_PASIEN);
+                      },
+                      child: const Text(
+                        "Lihat Semua",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.blue),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

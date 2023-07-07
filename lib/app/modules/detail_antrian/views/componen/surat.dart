@@ -36,7 +36,7 @@ class Surat extends StatelessWidget {
                     top: Radius.circular(20),
                   ),
                 ),
-                builder: (context) => suratsakit(),
+                builder: (context) => suratsakit(context),
               ),
               child: Container(
                 width: 140,
@@ -66,7 +66,7 @@ class Surat extends StatelessWidget {
                     top: Radius.circular(20),
                   ),
                 ),
-                builder: (context) => suratsehat(),
+                builder: (context) => suratsehat(context),
               ),
               child: Container(
                 width: 140,
@@ -94,8 +94,10 @@ class Surat extends StatelessWidget {
     );
   }
 
-  Widget suratsehat() {
-    return Container(
+  Widget suratsehat(context) {
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return Padding(padding: mediaQueryData.viewInsets,
+      child : Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.transparent,
@@ -295,11 +297,13 @@ class Surat extends StatelessWidget {
               height: 10,
             ),
           ],
-        ));
+        )));
   }
 
-  Widget suratsakit() {
-    return Container(
+  Widget suratsakit(context) {
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return Padding(padding: mediaQueryData.viewInsets,
+      child : Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.transparent,
@@ -499,6 +503,6 @@ class Surat extends StatelessWidget {
               height: 10,
             ),
           ],
-        ));
+        )));
   }
 }

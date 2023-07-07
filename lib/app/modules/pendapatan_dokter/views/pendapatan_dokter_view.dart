@@ -63,6 +63,9 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
+              SizedBox(
+                height: 20,
+              ),
               FutureBuilder(
                   future: API.getListKasir(
                       kode_dokter:

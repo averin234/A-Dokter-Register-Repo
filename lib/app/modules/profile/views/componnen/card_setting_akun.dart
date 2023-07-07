@@ -51,13 +51,14 @@ class CardSettingAkun extends GetView<ProfileController> {
               ),
               InkWell(
                 onTap: () => showModalBottomSheet(
+                  isScrollControlled: true,
                   context: context,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(20),
                     ),
                   ),
-                  builder: (context) => UbahPassword(),
+                  builder: (context) => UbahPassword(context),
                 ),
                 child: Row(
                   children: [
@@ -391,10 +392,12 @@ class CardSettingAkun extends GetView<ProfileController> {
     );
   }
 
-  Widget UbahPassword() {
+  Widget UbahPassword(context) {
     final controller = Get.put(ProfileController());
-    return Container(
-        height: 380,
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return Padding(padding: mediaQueryData.viewInsets,
+      child : Container(
+        height: 400,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.transparent,
@@ -417,9 +420,6 @@ class CardSettingAkun extends GetView<ProfileController> {
             ),
             const SizedBox(
               height: 25,
-            ),
-            const SizedBox(
-              height: 10,
             ),
             SingleChildScrollView(
                 child: Center(
@@ -626,7 +626,7 @@ class CardSettingAkun extends GetView<ProfileController> {
               ],
             ),
           ],
-        ));
+        )));
   }
 
   Widget buildSheet() {
