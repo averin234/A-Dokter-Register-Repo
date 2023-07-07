@@ -12,7 +12,8 @@ class ListViewPasienLama extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA),
+      onTap: () => Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA,
+          parameters: {'no_mr': pasien.noMr ?? ''}),
       child: Container(
         margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
         padding: const EdgeInsets.only(right: 0, left: 10, bottom: 10),
@@ -42,7 +43,7 @@ class ListViewPasienLama extends StatelessWidget {
                           height: 10,
                         ),
                         Container(
-                            padding: EdgeInsets.all(0),
+                            padding: const EdgeInsets.all(0),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10)),
                             child: Column(

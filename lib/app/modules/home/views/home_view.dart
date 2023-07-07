@@ -1,5 +1,4 @@
 import 'package:a_dokter_register/app/data/componen/publics.dart';
-import 'package:a_dokter_register/app/modules/antrian_pasien/views/antrian_pasien_view.dart';
 import 'package:a_dokter_register/app/modules/antrian_pasien/views/componen/listview_tindakan.dart';
 import 'package:a_dokter_register/app/modules/pendapatan_dokter/views/pendapatan_dokter_view.dart';
 import 'package:a_dokter_register/app/modules/profile/views/componnen/card_setting_dokter.dart';
@@ -15,9 +14,6 @@ import '../../../routes/app_pages.dart';
 import '../../profile/views/profile_view.dart';
 import '../../medical_record/views/tindakan_view.dart';
 import '../controllers/home_controller.dart';
-import 'componen/card_indetitas_dokter.dart';
-import 'componen/chart.dart';
-import 'componen/menu.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -39,10 +35,10 @@ class HomeView extends GetView<HomeController> {
           ),
           builder: (context) => buildSheet(),
         ),
-        child: Icon(Icons.add),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.yellow,
         elevation: 20,
+        child: const Icon(Icons.add),
         // shape: BeveledRectangleBorder(
         //     // borderRadius: BorderRadius.circular(20.0),
         //     // side: BorderSide(color: Colors.blue, width: 2.0, style: BorderStyle.solid)
@@ -52,7 +48,7 @@ class HomeView extends GetView<HomeController> {
       bottomNavigationBar: Obx(() {
         return BottomAppBar(
           notchMargin: 5.0,
-          shape: CircularNotchedRectangle(),
+          shape: const CircularNotchedRectangle(),
           color: Colors.white,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -71,7 +67,7 @@ class HomeView extends GetView<HomeController> {
                           color: controller.currentIndex.value != 0
                               ? Colors.grey
                               : Colors.blue),
-                      Text(
+                      const Text(
                         "Home",
                         style: TextStyle(color: Colors.black),
                       )
@@ -81,7 +77,7 @@ class HomeView extends GetView<HomeController> {
               ),
               Padding(
                 padding:
-                const EdgeInsets.only(right: 20.0, top: 10.0, bottom: 10.0),
+                    const EdgeInsets.only(right: 20.0, top: 10.0, bottom: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 1;
@@ -95,7 +91,7 @@ class HomeView extends GetView<HomeController> {
                             ? Colors.grey
                             : Colors.blue,
                       ),
-                      Text(
+                      const Text(
                         "Pendapatan",
                         style: TextStyle(color: Colors.black),
                       )
@@ -105,7 +101,7 @@ class HomeView extends GetView<HomeController> {
               ),
               Padding(
                 padding:
-                const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
+                    const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 2;
@@ -117,7 +113,7 @@ class HomeView extends GetView<HomeController> {
                           color: controller.currentIndex.value != 2
                               ? Colors.grey
                               : Colors.blue),
-                      Text(
+                      const Text(
                         "Pasien",
                         style: TextStyle(color: Colors.black),
                       )
@@ -138,7 +134,7 @@ class HomeView extends GetView<HomeController> {
                           color: controller.currentIndex.value != 3
                               ? Colors.grey
                               : Colors.blue),
-                      Text(
+                      const Text(
                         "Setting",
                         style: TextStyle(color: Colors.black),
                       )
@@ -152,12 +148,12 @@ class HomeView extends GetView<HomeController> {
       }),
       body: Obx(() {
         return controller.currentIndex.value == 0
-            ? Home(controller: controller)
+            ? const Home()
             : controller.currentIndex.value == 1
-            ? const PendapatanDokterView()
-            : controller.currentIndex.value == 2
-            ? const TindakanView()
-            : const ProfileView();
+                ? const PendapatanDokterView()
+                : controller.currentIndex.value == 2
+                    ? const TindakanView()
+                    : const ProfileView();
       }),
     );
   }
@@ -231,13 +227,13 @@ class HomeView extends GetView<HomeController> {
                                         'assets/images/timetable.png',
                                         width: 60,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
+                                            CrossAxisAlignment.start,
+                                        children: const [
                                           Text(
                                             "Atur Jadwal Dokter",
                                             style: TextStyle(
@@ -263,7 +259,7 @@ class HomeView extends GetView<HomeController> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           InkWell(
@@ -285,13 +281,13 @@ class HomeView extends GetView<HomeController> {
                                         'assets/images/pasienbaru.png',
                                         width: 60,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
+                                            CrossAxisAlignment.start,
+                                        children: const [
                                           Text(
                                             "Tamabah Pasien Baru",
                                             style: TextStyle(
@@ -317,7 +313,7 @@ class HomeView extends GetView<HomeController> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           InkWell(
@@ -339,13 +335,13 @@ class HomeView extends GetView<HomeController> {
                                         'assets/images/pasienlama.png',
                                         width: 60,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
+                                            CrossAxisAlignment.start,
+                                        children: const [
                                           Text(
                                             "Registrasi Pasien Lama",
                                             style: TextStyle(
@@ -380,13 +376,11 @@ class HomeView extends GetView<HomeController> {
 class Home extends StatelessWidget {
   const Home({
     super.key,
-    required this.controller,
   });
-
-  final HomeController controller;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(HomeController());
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: CustomScrollView(
@@ -396,9 +390,9 @@ class Home extends StatelessWidget {
             systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
-              Brightness.dark, //<-- For Android SEE HERE (dark icons)
+                  Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
-              Brightness.light, //<-- For iOS SEE HERE (dark icons)
+                  Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
             stretch: false,
             backgroundColor: Colors.white,
@@ -415,7 +409,7 @@ class Home extends StatelessWidget {
               title: FutureBuilder(
                   future: API.getDetailDokter(
                       kode_dokter:
-                      Publics.controller.getDataRegist.value.kode ?? ''),
+                          Publics.controller.getDataRegist.value.kode ?? ''),
                   builder: (context, snapshot) {
                     if (snapshot.hasData &&
                         snapshot.connectionState != ConnectionState.waiting &&
@@ -452,7 +446,7 @@ class Home extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 10, left: 10),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: []),
+                            children: const []),
                       ),
                       const SizedBox(
                         height: 10,
@@ -500,30 +494,33 @@ class Home extends StatelessWidget {
                               height: 10,
                             ),
                             FutureBuilder(
-                                future: API.getAntrianPasien(
-                                    tanggal: DateFormat('yyyy-MM-dd')
-                                        .format(DateTime.now()),
-                                    kode_dokter: Publics.controller
-                                        .getDataRegist.value.kode ??
-                                        ''),
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData &&
-                                      snapshot.connectionState !=
-                                          ConnectionState.waiting &&
-                                      snapshot.data != null) {
-                                    final data = snapshot.data!.antrian ?? [];
-                                    return data.isEmpty
-                                        ? Image.asset(
-                                      'assets/images/noantri.png',
-                                      height: 100,
-                                    )
-                                        : ListViewTindakan(antrian: data[0]);
-                                  } else {
-                                    return const Center(
-                                      child: CircularProgressIndicator(),
-                                    );
-                                  }
-                                }),
+                              future: API.getAntrianPasien(
+                                  tanggal: DateFormat('yyyy-MM-dd')
+                                      .format(DateTime.now()),
+                                  kode_dokter: Publics.controller.getDataRegist
+                                          .value.kode ??
+                                      ''),
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData &&
+                                    snapshot.connectionState !=
+                                        ConnectionState.waiting &&
+                                    snapshot.data != null) {
+                                  final data = snapshot.data!.antrian ?? [];
+                                  return data.isEmpty
+                                      ? Center(
+                                          child: Image.asset(
+                                            'assets/images/noantri.png',
+                                            height: 100,
+                                          ),
+                                        )
+                                      : ListViewTindakan(antrian: data[0]);
+                                } else {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+                              },
+                            ),
                             const SizedBox(
                               height: 10,
                             ),

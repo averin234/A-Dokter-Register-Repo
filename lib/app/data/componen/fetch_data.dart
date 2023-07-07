@@ -12,6 +12,7 @@ import 'package:a_dokter_register/app/data/model/get_list_mr.dart';
 import 'package:a_dokter_register/app/data/model/get_pasien_by.dart';
 import 'package:a_dokter_register/app/data/model/get_soap_hiss.dart';
 import 'package:a_dokter_register/app/data/model/get_tindakan.dart';
+import 'package:a_dokter_register/app/data/model/kelurahan.dart';
 import 'package:a_dokter_register/app/data/model/list_data.dart';
 import 'package:a_dokter_register/app/data/model/login_and_regist/akses_px.dart';
 import 'package:a_dokter_register/app/data/model/login_and_regist/token.dart';
@@ -32,7 +33,8 @@ import '../model/login_and_regist/post_ubah_password.dart';
 import 'local_storage.dart';
 
 class API {
-  static const _url = 'https://a-dokter.id/';
+  // static const _url = 'https://a-dokter.id/';
+  static const _url = 'https://demo.a-dokter.id/';
   static const _baseUrl = '${_url}api/v1';
   static const _getToken = '$_baseUrl/get-token.php';
   static const _getAksesPx = '$_baseUrl/px-akses.php';
@@ -40,6 +42,12 @@ class API {
       '$_baseUrl/post-daftar-px-baru-dokter.php';
   static const _getPoli = '$_baseUrl/get-poli.php';
   static const _getSpesialisasi = '$_baseUrl/get-spesialisasi.php';
+  static const _getJenisKelamin = '$_baseUrl/get-jenis-kelamin.php';
+  static const _getPekerjaan = '$_baseUrl/get-pekerjaan.php';
+  static const _getKawin = '$_baseUrl/get-kawin.php';
+  static const _getGolDarah = '$_baseUrl/get-gol-darah.php';
+  static const _getAgama = '$_baseUrl/get-agama.php';
+  static const _getNasabah = '$_baseUrl/get-nasabah.php';
   static const _postDaftarPxBaruDosen =
       '$_baseUrl/post-daftar-px-baru-dosen.php';
   static const _postDaftarPxBaruMahasiswa =
@@ -56,7 +64,9 @@ class API {
   static const _getHISS = '$_baseUrl/get-soap-hiss.php';
   // static const _getTindakan = '$_baseUrl/get-tindakan-px.php';
   static const _getVitalSign = '$_baseUrl/get-vital-sign-px.php';
-  static const _getDataProv = '$_baseUrl/get-data-prov.php';
+  static const _getProvinsi = '$_baseUrl/get-provinsi.php';
+  static const _getKecamatan = '$_baseUrl/get-kecamatan.php';
+  static const _getKelurahan = '$_baseUrl/get-kelurahan.php';
   static const _getJenisDokter = '$_baseUrl/get-jenis-dokter.php';
   static const _getKesadaranPasien = '$_baseUrl/get-kesadaran-pasien.php';
   static const _getkeadaanumum = '$_baseUrl/get-keadaan-umum.php';
@@ -180,6 +190,106 @@ class API {
     return obj;
   }
 
+  static Future<ListData> getAgama() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getAgama,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<ListData> getNasabah() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getNasabah,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<ListData> getPekerjaan() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getPekerjaan,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<ListData> getKawin() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getKawin,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
   static Future<ListData> getKesadaranPasien() async {
     var token = Publics.controller.getToken.value;
     final data = {};
@@ -205,11 +315,61 @@ class API {
     return obj;
   }
 
+  static Future<ListData> getGolonganDarah() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getGolDarah,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
   static Future<ListData> getJenisDokter() async {
     var token = Publics.controller.getToken.value;
     final data = {};
     var response = await Dio().post(
       _getJenisDokter,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<ListData> getJenisKelamin() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getJenisKelamin,
       options: Options(
         headers: {
           "Content-Type": "application/json",
@@ -256,11 +416,11 @@ class API {
     return obj;
   }
 
-  static Future<ListData> getDataProv() async {
+  static Future<ListData> getProvinsi() async {
     var token = Publics.controller.getToken.value;
     final data = {};
     var response = await Dio().post(
-      _getDataProv,
+      _getProvinsi,
       options: Options(
         headers: {
           "Content-Type": "application/json",
@@ -271,6 +431,56 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<ListData> getKecamatan({required String id}) async {
+    var token = Publics.controller.getToken.value;
+    final data = {'id_kota': id};
+    var response = await Dio().post(
+      _getKecamatan,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<GetKelurahan> getKelurahan({required String id}) async {
+    var token = Publics.controller.getToken.value;
+    final data = {'id_kecamatan': id};
+    var response = await Dio().post(
+      _getKelurahan,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = GetKelurahan.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
@@ -1057,10 +1267,10 @@ class API {
   }
 
   static Future<ListData> getKota({
-    required String id_kota,
+    required String id_prov,
   }) async {
     var token = Publics.controller.getToken.value;
-    final data = {"id_kota": id_kota};
+    final data = {"id_provinsi": id_prov};
     var response = await Dio().post(
       _getKota,
       options: Options(

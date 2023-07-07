@@ -1,11 +1,13 @@
 class GetKelurahan {
   int? code;
+  String? msg;
   List<Kelurahan>? kelurahan;
 
   GetKelurahan({this.code, this.kelurahan});
 
   GetKelurahan.fromJson(Map<String, dynamic> json) {
     code = json['code'];
+    msg = json['msg'];
     if (json['kelurahan'] != null) {
       kelurahan = <Kelurahan>[];
       json['kelurahan'].forEach((v) {
@@ -17,6 +19,7 @@ class GetKelurahan {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['code'] = code;
+    data['msg'] = msg;
     if (kelurahan != null) {
       data['kelurahan'] = kelurahan!.map((v) => v.toJson()).toList();
     }

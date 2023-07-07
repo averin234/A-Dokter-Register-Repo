@@ -46,30 +46,30 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
             pinned: true,
             snap: true,
             automaticallyImplyLeading: false,
-            title: Text('Daftar Pasien'),
-            bottom: AppBar(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(30),
-                ),
-              ),
-              toolbarHeight: 50,
-              automaticallyImplyLeading: false,
-              elevation: 0,
-              title: Column(
-                children: [
-                  SearchTindakanDokter(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                ],
-              ),
-            ),
+            title: const Text('Daftar Pasien'),
+            // bottom: AppBar(
+            //   shape: const RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.vertical(
+            //       bottom: Radius.circular(30),
+            //     ),
+            //   ),
+            //   toolbarHeight: 50,
+            //   automaticallyImplyLeading: false,
+            //   elevation: 0,
+            //   title: Column(
+            //     children: [
+            //       SearchTindakanDokter(),
+            //       SizedBox(
+            //         height: 10,
+            //       ),
+            //     ],
+            //   ),
+            // ),
           ),
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FutureBuilder(
