@@ -1,5 +1,6 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
+import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -378,6 +379,7 @@ class _DetailRegistPasienLamaViewState
               height: 10,
             ),
             InkWell(
+              onTap: () => Get.toNamed(Routes.ANTRIAN_PASIEN),
               child: Container(
                 height: 45,
                 width: 145,

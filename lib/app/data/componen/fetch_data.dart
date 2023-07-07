@@ -12,7 +12,6 @@ import 'package:a_dokter_register/app/data/model/get_list_kasir.dart';
 import 'package:a_dokter_register/app/data/model/get_list_mr.dart';
 import 'package:a_dokter_register/app/data/model/get_pasien_by.dart';
 import 'package:a_dokter_register/app/data/model/get_soap_hiss.dart';
-import 'package:a_dokter_register/app/data/model/get_tindakan.dart';
 import 'package:a_dokter_register/app/data/model/kelurahan.dart';
 import 'package:a_dokter_register/app/data/model/list_data.dart';
 import 'package:a_dokter_register/app/data/model/login_and_regist/akses_px.dart';
@@ -51,6 +50,7 @@ class API {
   static const _getGolDarah = '$_baseUrl/get-gol-darah.php';
   static const _getAgama = '$_baseUrl/get-agama.php';
   static const _getNasabah = '$_baseUrl/get-nasabah.php';
+  static const _getIcd10 = '$_baseUrl/get-icd10.php';
   static const _postDaftarPxBaruDosen =
       '$_baseUrl/post-daftar-px-baru-dosen.php';
   static const _postDaftarPxBaruMahasiswa =
@@ -66,7 +66,7 @@ class API {
   static const _getNamaPenyakit = '$_baseUrl/get-nama-penyakit-hiss.php';
   static const _getHISS = '$_baseUrl/get-soap-hiss.php';
   // static const _getTindakan = '$_baseUrl/get-tindakan-px.php';
-  static const _getVitalSign = '$_baseUrl/get-vital-sign-px.php';
+  // static const _getVitalSign = '$_baseUrl/get-vital-sign-px.php';
   static const _getProvinsi = '$_baseUrl/get-provinsi.php';
   static const _getKecamatan = '$_baseUrl/get-kecamatan.php';
   static const _getKelurahan = '$_baseUrl/get-kelurahan.php';
@@ -94,6 +94,8 @@ class API {
   static const _getTindakan = '$_baseUrl/get-tindakan.php';
   static const _postTindakan = '$_baseUrl/post-tindakan.php';
   static const _postSoap = '$_baseUrl/post-soap.php';
+  static const _postIcd10 = '$_baseUrl/post-icd10.php';
+  static const _postResep = '$_baseUrl/post-resep.php';
 
   static Future<Token> getToken() async {
     var response = await Dio().post(
@@ -174,6 +176,159 @@ class API {
     final data = {};
     var response = await Dio().post(
       _getkeadaanumum,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<ListData> getAsterix({required String src_icd}) async {
+    var token = Publics.controller.getToken.value;
+    final data = {'act': 'get_asterix', 'src_icd': src_icd};
+    var response = await Dio().post(
+      _getIcd10,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<ListData> getIcd10({required String src_icd}) async {
+    var token = Publics.controller.getToken.value;
+    final data = {'act': 'get_icd10', 'src_icd': src_icd};
+    var response = await Dio().post(
+      _getIcd10,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<CheckUp> postIcd10({
+    required String no_registrasi,
+    required String icd_10,
+    required String icd_asterik,
+    required String kasus_pasien,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      'no_registrasi': no_registrasi,
+      'icd_10': icd_10,
+      'icd_asterik': icd_asterik,
+      'kasus_pasien': kasus_pasien,
+    };
+    var response = await Dio().post(
+      _postIcd10,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = CheckUp.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<CheckUp> postResep({
+    required String no_registrasi,
+    required String id_dc_kesediaan_obat,
+    required String kode_brg,
+    required String kode_brg_racikan,
+    required String id_dd_dosis,
+    required String txt_jumlah,
+    required String id_stok,
+    required String flag_dosis,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      'no_registrasi': no_registrasi,
+      'id_dc_kesediaan_obat': id_dc_kesediaan_obat,
+      'kode_brg': kode_brg,
+      'kode_brg_racikan': kode_brg_racikan,
+      'id_dd_dosis': id_dd_dosis,
+      'txt_jumlah': txt_jumlah,
+      'id_stok': id_stok,
+      'flag_dosis': flag_dosis,
+    };
+    var response = await Dio().post(
+      _postResep,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = CheckUp.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    return obj;
+  }
+
+  static Future<ListData> getAturanPakai({required String kesediaan}) async {
+    var token = Publics.controller.getToken.value;
+    final data = {'act': 'get_aturan_pakai', 'id_kesediaan_obat': kesediaan};
+    var response = await Dio().post(
+      _getResep,
       options: Options(
         headers: {
           "Content-Type": "application/json",
@@ -972,11 +1127,11 @@ class API {
   }
 
   static Future<CheckUp> cekDaftarPasien({
-    required String no_registrasi,
+    required String no_mr,
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "no_registrasi": no_registrasi,
+      "no_mr": no_mr,
     };
     var response = await Dio().post(
       _cekDaftarPasien,
@@ -1162,7 +1317,7 @@ class API {
 
   // Batas Tambahan Baru
 
-  static Future<GetTindakan> getTindakan({
+  static Future<ListData> getTindakan({
     required String kode_dokter,
   }) async {
     var token = Publics.controller.getToken.value;
@@ -1178,7 +1333,7 @@ class API {
       data: data,
     );
     final datas = jsonDecode(response.data);
-    final obj = GetTindakan.fromJson(datas);
+    final obj = ListData.fromJson(datas);
     if (obj.msg == 'Invalid token: Expired') {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(

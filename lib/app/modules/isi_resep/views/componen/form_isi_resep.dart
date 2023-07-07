@@ -1,8 +1,12 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/componen/publics.dart';
+import 'package:a_dokter_register/app/data/model/get_jenis_obat.dart';
+import 'package:a_dokter_register/app/modules/isi_resep/controllers/isi_resep_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../../../../data/model/list_data.dart';
 
 class FormIsiResep extends StatefulWidget {
   const FormIsiResep({super.key});
@@ -29,15 +33,16 @@ class _FormIsiResepState extends State<FormIsiResep> {
 
   // Group Value for Radio Button.
   int id = 1;
+  final controller = Get.put(IsiResepController());
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.only(left: 10, right: 10),
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Color(0x6cc7d1db)),
+        border: Border.all(color: const Color(0x6cc7d1db)),
         boxShadow: [
           BoxShadow(
             color: const Color(0xFFe0e0e0).withOpacity(0.5),
@@ -51,164 +56,94 @@ class _FormIsiResepState extends State<FormIsiResep> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Form isi Resep',
             textAlign: TextAlign.center,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Nama Obat/Kode Obat",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          SizedBox(
+          // Padding(
+          //   padding: EdgeInsets.only(left: 15),
+          //   child: Text("Nama Obat/Kode Obat",
+          //       style: TextStyle(fontWeight: FontWeight.normal)),
+          // ),
+          // SizedBox(
+          //   height: 10,
+          // ),
+          // FutureBuilder(
+          //   future: API.ge,
+          //   builder: (context, snapshot) {
+          //     return Container(
+          //       padding: EdgeInsets.only(right: 10),
+          //       margin: EdgeInsets.only(left: 10, right: 10),
+          //       decoration: BoxDecoration(
+          //         color: Color(0xfff3f3f3),
+          //         borderRadius: BorderRadius.circular(10),
+          //         border: Border.all(color: Color(0x6cc7d1db)),
+          //       ),
+          //       child: dropdown('Nama Obat', listData, controller, controller1)
+          //     );
+          //   }
+          // ),
+          const SizedBox(
             height: 10,
           ),
-          Container(
-            padding: EdgeInsets.only(right: 10),
-            margin: EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Color(0x6cc7d1db)),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                DropdownButtonHideUnderline(
-                  child: DropdownButton2(
-                    isExpanded: true,
-                    hint: Row(
-                      children: const [
-                        SizedBox(
-                          width: 4,
-                        ),
-                        Expanded(
-                          child: Text(
-                            '--pilih Nama Obat--',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.black,
-                            ),
-                            overflow: TextOverflow.ellipsis,
+          FutureBuilder(
+              future: API.getObatTindakan(
+                  kode_dokter:
+                      Publics.controller.getDataRegist.value.kode ?? ''),
+              builder: (context, snapshot) {
+                if (snapshot.hasData &&
+                    snapshot.data != null &&
+                    snapshot.connectionState != ConnectionState.waiting) {
+                  final data = snapshot.data!.list ?? [];
+                  return data.isEmpty
+                      ? Text(snapshot.data!.msg ?? 'Tidak Ada Obat')
+                      : Container(
+                          padding: const EdgeInsets.only(right: 10),
+                          margin: const EdgeInsets.only(left: 10, right: 10),
+                          decoration: BoxDecoration(
+                            color: const Color(0xfff3f3f3),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: const Color(0x6cc7d1db)),
                           ),
-                        ),
-                      ],
-                    ),
-                    items: items
-                        .map((item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(
-                                item,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ))
-                        .toList(),
-                    value: selectedValue,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedValue = value as String;
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
+                          child: dropdown(
+                              'Cari Obat',
+                              data,
+                              controller.obatController,
+                              controller.namaObatController));
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              }),
+          const SizedBox(
             height: 10,
           ),
-          Container(
-            padding: EdgeInsets.only(right: 10),
-            margin: EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Color(0x6cc7d1db)),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                DropdownButtonHideUnderline(
-                  child: DropdownButton2(
-                    isExpanded: true,
-                    hint: Row(
-                      children: const [
-                        SizedBox(
-                          width: 4,
-                        ),
-                        Expanded(
-                          child: Text(
-                            '--Cari Obat--',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.black,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                    items: items
-                        .map((item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(
-                                item,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ))
-                        .toList(),
-                    value: selectedValue,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedValue = value as String;
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 15),
             child:
                 Text("Jumlah", style: TextStyle(fontWeight: FontWeight.normal)),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.only(right: 10),
-            margin: EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(right: 10),
+            margin: const EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
-              color: Color(0xfff3f3f3),
+              color: const Color(0xfff3f3f3),
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Color(0x6cc7d1db)),
+              border: Border.all(color: const Color(0x6cc7d1db)),
             ),
             child: TextField(
+              controller: controller.jumlahController,
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
@@ -221,303 +156,252 @@ class _FormIsiResepState extends State<FormIsiResep> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Divider(
+          const Divider(
             color: Colors.grey,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Jenis Kesediaan",
                 style: TextStyle(fontWeight: FontWeight.normal)),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Container(
-            padding: EdgeInsets.only(right: 10),
-            margin: EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Color(0x6cc7d1db)),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                DropdownButtonHideUnderline(
-                  child: DropdownButton2(
-                    isExpanded: true,
-                    hint: Row(
-                      children: const [
-                        SizedBox(
-                          width: 4,
-                        ),
-                        Expanded(
-                          child: Text(
-                            '--pilih nama obat--',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.black,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
+          FutureBuilder(
+              future: API.getJenisObat(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData &&
+                    snapshot.connectionState != ConnectionState.waiting &&
+                    snapshot.data != null) {
+                  final data = snapshot.data!.jenisObat ?? [];
+                  return Container(
+                    padding: const EdgeInsets.only(right: 10),
+                    margin: const EdgeInsets.only(left: 10, right: 10),
+                    decoration: BoxDecoration(
+                      color: const Color(0xfff3f3f3),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: const Color(0x6cc7d1db)),
                     ),
-                    items: items
-                        .map((item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(
-                                item,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ))
-                        .toList(),
-                    value: selectedValue,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedValue = value as String;
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
+                    child: dropdown1(
+                      'Jenis Kesediaan',
+                      data,
+                      controller.kesediaanController,
+                      controller.namaKesediaanController,
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              }),
+          const SizedBox(
             height: 10,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Aturan Pemakaian",
                 style: TextStyle(fontWeight: FontWeight.normal)),
           ),
           Container(
-              padding: EdgeInsets.only(right: 10),
-              margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+              padding: const EdgeInsets.only(right: 10),
+              margin: const EdgeInsets.only(
+                  left: 10, right: 10, top: 10, bottom: 10),
               decoration: BoxDecoration(
-                color: Color(0xfff3f3f3),
+                color: const Color(0xfff3f3f3),
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Color(0x6cc7d1db)),
+                border: Border.all(color: const Color(0x6cc7d1db)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    padding: EdgeInsets.only(right: 10),
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Color(0x6cc7d1db)),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        DropdownButtonHideUnderline(
-                          child: DropdownButton2(
-                            isExpanded: true,
-                            hint: Row(
-                              children: const [
-                                SizedBox(
-                                  width: 4,
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    '3x1',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black,
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
+                  Obx(() {
+                    return controller.idKesediaan.value.isEmpty
+                        ? Container()
+                        : FutureBuilder(
+                            future: API.getAturanPakai(
+                                kesediaan: controller.idKesediaan.value),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData &&
+                                  snapshot.connectionState !=
+                                      ConnectionState.waiting &&
+                                  snapshot.data != null) {
+                                final data = snapshot.data!.list ?? [];
+                                return Container(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  margin: const EdgeInsets.only(
+                                      left: 10, right: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                        color: const Color(0x6cc7d1db)),
                                   ),
-                                ),
-                              ],
-                            ),
-                            items: items
-                                .map((item) => DropdownMenuItem<String>(
-                                      value: item,
-                                      child: Text(
-                                        item,
-                                        style: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ))
-                                .toList(),
-                            value: selectedValue,
-                            onChanged: (value) {
-                              setState(() {
-                                selectedValue = value as String;
-                              });
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: Text('/'),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(left: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Color(0x6cc7d1db)),
-                          ),
-                          child: TextFormField(
-                            keyboardType: TextInputType.text,
-                            textInputAction: TextInputAction.done,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                              contentPadding: EdgeInsets.only(
-                                  left: 15, bottom: 11, top: 13, right: 15),
-                              filled: true,
-                              fillColor: Colors.transparent,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text('X'),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(right: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Color(0x6cc7d1db)),
-                          ),
-                          child: TextFormField(
-                            keyboardType: TextInputType.text,
-                            textInputAction: TextInputAction.done,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                              contentPadding: EdgeInsets.only(
-                                  left: 15, bottom: 11, top: 13, right: 15),
-                              filled: true,
-                              fillColor: Colors.transparent,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 15),
-                    child: Text("ggt",
-                        style: TextStyle(fontWeight: FontWeight.normal)),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(right: 10),
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Color(0x6cc7d1db)),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        DropdownButtonHideUnderline(
-                          child: DropdownButton2(
-                            isExpanded: true,
-                            hint: Row(
-                              children: const [
-                                SizedBox(
-                                  width: 4,
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    'ODS',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black,
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
+                                  child: dropdown(
+                                    'Aturan Pemakaian',
+                                    data,
+                                    controller.aturanPakaiController,
+                                    controller.namaAturanPakaiController,
                                   ),
-                                ),
-                              ],
-                            ),
-                            items: items
-                                .map((item) => DropdownMenuItem<String>(
-                                      value: item,
-                                      child: Text(
-                                        item,
-                                        style: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ))
-                                .toList(),
-                            value: selectedValue,
-                            onChanged: (value) {
-                              setState(() {
-                                selectedValue = value as String;
-                              });
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
+                                );
+                              } else {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                            });
+                  }),
+                  const SizedBox(
+                    height: 10,
                   ),
-                  SizedBox(
+                  // Row(
+                  //   children: [
+                  //     const SizedBox(
+                  //       width: 5,
+                  //     ),
+                  //     const Padding(
+                  //       padding: EdgeInsets.only(left: 10),
+                  //       child: Text('/'),
+                  //     ),
+                  //     Expanded(
+                  //       child: Container(
+                  //         margin: const EdgeInsets.only(left: 10),
+                  //         decoration: BoxDecoration(
+                  //           color: Colors.white,
+                  //           borderRadius: BorderRadius.circular(10),
+                  //           border: Border.all(color: const Color(0x6cc7d1db)),
+                  //         ),
+                  //         child: TextFormField(
+                  //           keyboardType: TextInputType.text,
+                  //           textInputAction: TextInputAction.done,
+                  //           decoration: const InputDecoration(
+                  //             border: InputBorder.none,
+                  //             focusedBorder: InputBorder.none,
+                  //             enabledBorder: InputBorder.none,
+                  //             errorBorder: InputBorder.none,
+                  //             disabledBorder: InputBorder.none,
+                  //             contentPadding: EdgeInsets.only(
+                  //                 left: 15, bottom: 11, top: 13, right: 15),
+                  //             filled: true,
+                  //             fillColor: Colors.transparent,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     const SizedBox(
+                  //       width: 5,
+                  //     ),
+                  //     const Text('X'),
+                  //     const SizedBox(
+                  //       width: 5,
+                  //     ),
+                  //     Expanded(
+                  //       child: Container(
+                  //         margin: const EdgeInsets.only(right: 10),
+                  //         decoration: BoxDecoration(
+                  //           color: Colors.white,
+                  //           borderRadius: BorderRadius.circular(10),
+                  //           border: Border.all(color: const Color(0x6cc7d1db)),
+                  //         ),
+                  //         child: TextFormField(
+                  //           keyboardType: TextInputType.text,
+                  //           textInputAction: TextInputAction.done,
+                  //           decoration: const InputDecoration(
+                  //             border: InputBorder.none,
+                  //             focusedBorder: InputBorder.none,
+                  //             enabledBorder: InputBorder.none,
+                  //             errorBorder: InputBorder.none,
+                  //             disabledBorder: InputBorder.none,
+                  //             contentPadding: EdgeInsets.only(
+                  //                 left: 15, bottom: 11, top: 13, right: 15),
+                  //             filled: true,
+                  //             fillColor: Colors.transparent,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // const SizedBox(
+                  //   height: 10,
+                  // ),
+                  // const Padding(
+                  //   padding: EdgeInsets.only(left: 15),
+                  //   child: Text("ggt",
+                  //       style: TextStyle(fontWeight: FontWeight.normal)),
+                  // ),
+                  // const SizedBox(
+                  //   height: 10,
+                  // ),
+                  // Container(
+                  //   padding: const EdgeInsets.only(right: 10),
+                  //   margin: const EdgeInsets.only(left: 10, right: 10),
+                  //   decoration: BoxDecoration(
+                  //     color: Colors.white,
+                  //     borderRadius: BorderRadius.circular(10),
+                  //     border: Border.all(color: const Color(0x6cc7d1db)),
+                  //   ),
+                  //   child: Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       DropdownButtonHideUnderline(
+                  //         child: DropdownButton2(
+                  //           isExpanded: true,
+                  //           hint: Row(
+                  //             children: const [
+                  //               SizedBox(
+                  //                 width: 4,
+                  //               ),
+                  //               Expanded(
+                  //                 child: Text(
+                  //                   'ODS',
+                  //                   style: TextStyle(
+                  //                     fontSize: 14,
+                  //                     fontWeight: FontWeight.normal,
+                  //                     color: Colors.black,
+                  //                   ),
+                  //                   overflow: TextOverflow.ellipsis,
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //           items: items
+                  //               .map((item) => DropdownMenuItem<String>(
+                  //                     value: item,
+                  //                     child: Text(
+                  //                       item,
+                  //                       style: const TextStyle(
+                  //                         fontSize: 14,
+                  //                         fontWeight: FontWeight.bold,
+                  //                         color: Colors.black,
+                  //                       ),
+                  //                       overflow: TextOverflow.ellipsis,
+                  //                     ),
+                  //                   ))
+                  //               .toList(),
+                  //           value: selectedValue,
+                  //           onChanged: (value) {
+                  //             setState(() {
+                  //               selectedValue = value as String;
+                  //             });
+                  //           },
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  const SizedBox(
                     height: 10,
                   ),
                   SizedBox(
@@ -525,33 +409,33 @@ class _FormIsiResepState extends State<FormIsiResep> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
+                        Radio(
+                          value: 0,
+                          groupValue: id,
+                          onChanged: (val) {
+                            setState(() {
+                              radioButtonItem = 'ONE';
+                              id = 0;
+                            });
+                          },
+                        ),
+                        const Text(
+                          'Sebelum Makan',
+                          style: TextStyle(),
+                        ),
                         Radio(
                           value: 1,
                           groupValue: id,
                           onChanged: (val) {
                             setState(() {
-                              radioButtonItem = 'ONE';
+                              radioButtonItem = 'TWO';
                               id = 1;
                             });
                           },
                         ),
-                        Text(
-                          'Sebelum Makan',
-                          style: new TextStyle(),
-                        ),
-                        Radio(
-                          value: 2,
-                          groupValue: id,
-                          onChanged: (val) {
-                            setState(() {
-                              radioButtonItem = 'TWO';
-                              id = 2;
-                            });
-                          },
-                        ),
-                        Text(
+                        const Text(
                           'Sesudah Makan',
-                          style: new TextStyle(),
+                          style: TextStyle(),
                         ),
                       ],
                     ),
@@ -562,18 +446,32 @@ class _FormIsiResepState extends State<FormIsiResep> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Radio(
-                          value: 3,
+                          value: 2,
                           groupValue: id,
                           onChanged: (val) {
                             setState(() {
                               radioButtonItem = 'ONE';
+                              id = 2;
+                            });
+                          },
+                        ),
+                        const Text(
+                          'Saat Makan',
+                          style: TextStyle(),
+                        ),
+                        Radio(
+                          value: 3,
+                          groupValue: id,
+                          onChanged: (val) {
+                            setState(() {
+                              radioButtonItem = 'TWO';
                               id = 3;
                             });
                           },
                         ),
-                        Text(
-                          'Saat Makan',
-                          style: new TextStyle(),
+                        const Text(
+                          'Tetes',
+                          style: TextStyle(),
                         ),
                         Radio(
                           value: 4,
@@ -585,23 +483,9 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
-                          'Tetes',
-                          style: new TextStyle(),
-                        ),
-                        Radio(
-                          value: 5,
-                          groupValue: id,
-                          onChanged: (val) {
-                            setState(() {
-                              radioButtonItem = 'TWO';
-                              id = 5;
-                            });
-                          },
-                        ),
-                        Text(
+                        const Text(
                           'Oles',
-                          style: new TextStyle(),
+                          style: TextStyle(),
                         ),
                       ],
                     ),
@@ -612,18 +496,32 @@ class _FormIsiResepState extends State<FormIsiResep> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Radio(
-                          value: 6,
+                          value: 5,
                           groupValue: id,
                           onChanged: (val) {
                             setState(() {
                               radioButtonItem = 'ONE';
+                              id = 5;
+                            });
+                          },
+                        ),
+                        const Text(
+                          'Sprey',
+                          style: TextStyle(),
+                        ),
+                        Radio(
+                          value: 6,
+                          groupValue: id,
+                          onChanged: (val) {
+                            setState(() {
+                              radioButtonItem = 'TWO';
                               id = 6;
                             });
                           },
                         ),
-                        Text(
-                          'Sprey',
-                          style: new TextStyle(),
+                        const Text(
+                          'UC',
+                          style: TextStyle(),
                         ),
                         Radio(
                           value: 7,
@@ -635,23 +533,9 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
-                          'UC',
-                          style: new TextStyle(),
-                        ),
-                        Radio(
-                          value: 8,
-                          groupValue: id,
-                          onChanged: (val) {
-                            setState(() {
-                              radioButtonItem = 'TWO';
-                              id = 8;
-                            });
-                          },
-                        ),
-                        Text(
+                        const Text(
                           'Anus',
-                          style: new TextStyle(),
+                          style: TextStyle(),
                         ),
                       ],
                     ),
@@ -662,32 +546,32 @@ class _FormIsiResepState extends State<FormIsiResep> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Radio(
-                          value: 9,
+                          value: 8,
                           groupValue: id,
                           onChanged: (val) {
                             setState(() {
                               radioButtonItem = 'TWO';
-                              id = 9;
+                              id = 8;
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'Vagina',
-                          style: new TextStyle(),
+                          style: TextStyle(),
                         ),
                         Radio(
-                          value: 10,
+                          value: 9,
                           groupValue: id,
                           onChanged: (val) {
                             setState(() {
                               radioButtonItem = 'ONE';
-                              id = 10;
+                              id = 9;
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'Lainnya',
-                          style: new TextStyle(),
+                          style: TextStyle(),
                         ),
                       ],
                     ),
@@ -698,29 +582,280 @@ class _FormIsiResepState extends State<FormIsiResep> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                height: 45,
-                width: 345,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Submit",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14),
-                    )
-                  ],
+              GestureDetector(
+                onTap: () async {
+                  final postResep = await API.postResep(
+                      no_registrasi: controller.noRegistrasi,
+                      id_dc_kesediaan_obat: controller.idKesediaan.value,
+                      kode_brg: controller.obatController.text,
+                      kode_brg_racikan: '',
+                      id_dd_dosis: controller.aturanPakaiController.text,
+                      txt_jumlah: controller.jumlahController.text,
+                      id_stok: '',
+                      flag_dosis: id.toString());
+                },
+                child: Container(
+                  height: 45,
+                  width: 345,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "Submit",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+Widget dropdown(String hintText, List<Lists> listData,
+    TextEditingController controller, TextEditingController controller1) {
+  return AppTextField(
+    textEditingController: controller,
+    textEditingController1: controller1,
+    hint: hintText,
+    isCitySelected: true,
+    lists: listData,
+    title: '',
+  );
+}
+
+Widget dropdown1(String hintText, List<JenisObat> listData,
+    TextEditingController controller, TextEditingController controller1) {
+  return AppTextField1(
+    textEditingController: controller,
+    textEditingController1: controller1,
+    hint: hintText,
+    isCitySelected: true,
+    lists: listData,
+    title: '',
+  );
+}
+
+class AppTextField extends StatelessWidget {
+  final TextEditingController textEditingController;
+  final TextEditingController textEditingController1;
+  final String title;
+  final String hint;
+  final bool isCitySelected;
+  final List<Lists> lists;
+
+  const AppTextField({
+    required this.textEditingController,
+    required this.textEditingController1,
+    required this.title,
+    required this.hint,
+    required this.isCitySelected,
+    required this.lists,
+    Key? key,
+  }) : super(key: key);
+
+  /// This is on text changed method which will display on city text field on changed.
+  void onTextFieldTap() {
+    showModalBottomSheet<void>(
+      context: Get.context!,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      builder: (context) {
+        return Column(
+          children: [
+            Divider(
+              thickness: 5,
+              endIndent: Get.width * 0.4,
+              indent: Get.width * 0.4,
+              height: 25,
+            ),
+            Expanded(
+              child: ListView(
+                children: lists
+                    .map(
+                      (e) => TextButton(
+                        style: TextButton.styleFrom(
+                            alignment: Alignment.centerLeft,
+                            foregroundColor: Colors.black,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10)),
+                        child: Text(
+                          e.nama!,
+                          style: GoogleFonts.nunito(
+                            fontSize: 17.0,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        onPressed: () {
+                          textEditingController.text = e.kode!;
+                          textEditingController1.text = e.nama!;
+                          Get.back();
+                        },
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showSnackBar(String message) {
+    Get.snackbar(title, message);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: Get.width / 8,
+      width: Get.width / 1,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: TextFormField(
+        readOnly: true,
+        controller: textEditingController1,
+        cursorColor: Colors.black,
+        onTap: onTextFieldTap,
+        decoration: InputDecoration(
+          filled: true,
+          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
+          contentPadding:
+              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          hintText: hint,
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(
+              width: 0,
+              style: BorderStyle.none,
+            ),
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class AppTextField1 extends StatelessWidget {
+  final TextEditingController textEditingController;
+  final TextEditingController textEditingController1;
+  final String title;
+  final String hint;
+  final bool isCitySelected;
+  final List<JenisObat> lists;
+
+  const AppTextField1({
+    required this.textEditingController,
+    required this.textEditingController1,
+    required this.title,
+    required this.hint,
+    required this.isCitySelected,
+    required this.lists,
+    Key? key,
+  }) : super(key: key);
+
+  /// This is on text changed method which will display on city text field on changed.
+  void onTextFieldTap() {
+    final controller = Get.put(IsiResepController());
+    showModalBottomSheet<void>(
+      context: Get.context!,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      builder: (context) {
+        return Column(
+          children: [
+            Divider(
+              thickness: 5,
+              endIndent: Get.width * 0.4,
+              indent: Get.width * 0.4,
+              height: 25,
+            ),
+            Expanded(
+              child: ListView(
+                children: lists
+                    .map(
+                      (e) => TextButton(
+                        style: TextButton.styleFrom(
+                            alignment: Alignment.centerLeft,
+                            foregroundColor: Colors.black,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10)),
+                        child: Text(
+                          e.namaKesediaan!,
+                          style: GoogleFonts.nunito(
+                            fontSize: 17.0,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        onPressed: () {
+                          textEditingController.text = e.idDcKesediaanObat!;
+                          textEditingController1.text = e.namaKesediaan!;
+                          controller.idKesediaan.value = e.idDcKesediaanObat!;
+                          Get.back();
+                        },
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showSnackBar(String message) {
+    Get.snackbar(title, message);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: Get.width / 8,
+      width: Get.width / 1,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: TextFormField(
+        readOnly: true,
+        controller: textEditingController1,
+        cursorColor: Colors.black,
+        onTap: onTextFieldTap,
+        decoration: InputDecoration(
+          filled: true,
+          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
+          contentPadding:
+              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          hintText: hint,
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(
+              width: 0,
+              style: BorderStyle.none,
+            ),
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
+        ),
       ),
     );
   }

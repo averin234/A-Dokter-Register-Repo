@@ -7,8 +7,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../data/componen/fetch_data.dart';
+import '../../../data/model/list_data.dart';
 
 class IsiResepView extends GetView<IsiResepController> {
   const IsiResepView({Key? key}) : super(key: key);
@@ -94,7 +96,7 @@ class IsiResepView extends GetView<IsiResepController> {
                                 snapshot.data != null) {
                               final data = snapshot.data!.resep ?? [];
                               return data.isEmpty
-                                  ? const Text('Tidak Ada Tindakan')
+                                  ? const Text('Tidak Ada Resep')
                                   : Column(
                                       children: AnimationConfiguration
                                           .toStaggeredList(

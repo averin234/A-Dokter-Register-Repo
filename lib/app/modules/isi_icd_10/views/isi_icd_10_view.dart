@@ -94,7 +94,7 @@ class IsiIcd10View extends GetView<IsiIcd10Controller> {
                                 snapshot.data != null) {
                               final data = snapshot.data!.icd10 ?? [];
                               return data.isEmpty
-                                  ? const Text('Tidak Ada Tindakan')
+                                  ? const Text('Tidak Ada ICD 10')
                                   : Column(
                                       children: AnimationConfiguration
                                           .toStaggeredList(
