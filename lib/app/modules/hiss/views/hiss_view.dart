@@ -11,24 +11,26 @@ import 'componen/hiss_soap/subyektif.dart';
 import 'componen/search_dropdown_hiss.dart';
 import 'componen/search_hiss.dart';
 
-class HissView extends StatefulWidget {
+class HissView extends StatelessWidget {
+  const HissView({super.key});
+
   @override
-  State<StatefulWidget> createState() {
-    return new HissViewState();
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
 
-class HissViewState extends State<HissView>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
+class HissView1 extends StatefulWidget {
+  const HissView1({super.key});
 
   @override
-  void initState() {
-    super.initState();
-    _tabController =
-        TabController(length: 9, vsync: this); // initialise it here
+  State<StatefulWidget> createState() {
+    return HissView1State();
   }
+}
 
+class HissView1State extends State<HissView1>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,24 +47,25 @@ class HissViewState extends State<HissView>
           ],
         ),
         height: 75,
-        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Row(
           children: <Widget>[
-            Container(
+            SizedBox(
               width: 230,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
+                children: const <Widget>[
                   Padding(
                       padding: EdgeInsets.only(left: 10),
-                      child: Text("Pastikan Data yang di cari sudah sesuai sebelum melakukan ",
+                      child: Text(
+                          "Pastikan Data yang di cari sudah sesuai sebelum melakukan ",
                           style: TextStyle(color: Colors.black))),
                 ],
               ),
             ),
             Expanded(
               child: InkWell(
-                onTap: ()  {
+                onTap: () {
                   showModalBottomSheet(
                     context: context,
                     shape: const RoundedRectangleBorder(
@@ -74,7 +77,7 @@ class HissViewState extends State<HissView>
                   );
                 },
                 child: Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                       right: 15, left: 15, top: 10, bottom: 10),
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
@@ -93,7 +96,7 @@ class HissViewState extends State<HissView>
                       colors: [Color(0xff4babe7), Color(0xff4babe7)],
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     "Kirim",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -112,79 +115,80 @@ class HissViewState extends State<HissView>
           automaticallyImplyLeading: false,
           title: Column(
             children: [
-              SearchHISS(),
-              SizedBox(
+              const SearchHISS(),
+              const SizedBox(
                 height: 10,
               ),
-              SearchHISSdropdowmn(),
+              const SearchHISSdropdowmn(),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                    children: [
-                      TextButton(onPressed: () {}, child: Text('ICD X & Diagnosa')),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TextButton(onPressed: () {}, child: Text('Gejala')),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TextButton(onPressed: () {}, child: Text('Penyebab')),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TextButton(onPressed: () {}, child: Text('Penunjang')),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TextButton(onPressed: () {}, child: Text('Pengobatan')),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TextButton(onPressed: () {}, child: Text('Komplikasi')),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TextButton(onPressed: () {}, child: Text('Differensial')),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TextButton(onPressed: () {}, child: Text('Catatan')),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TextButton(onPressed: () {}, child: Text('Pre Existing')),
-                      SizedBox(
-                        width: 10,
-                      ),
-                    ]
-                ),
+                child: Row(children: [
+                  TextButton(
+                      onPressed: () {}, child: const Text('ICD X & Diagnosa')),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  TextButton(onPressed: () {}, child: const Text('Gejala')),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  TextButton(onPressed: () {}, child: const Text('Penyebab')),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  TextButton(onPressed: () {}, child: const Text('Penunjang')),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  TextButton(onPressed: () {}, child: const Text('Pengobatan')),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  TextButton(onPressed: () {}, child: const Text('Komplikasi')),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  TextButton(
+                      onPressed: () {}, child: const Text('Differensial')),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  TextButton(onPressed: () {}, child: const Text('Catatan')),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  TextButton(
+                      onPressed: () {}, child: const Text('Pre Existing')),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                ]),
               ),
             ],
           )),
       body: Container(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Subyektifhiss(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  objektivehiss(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Assestmenthiss(),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: const [
+              SizedBox(
+                height: 10,
               ),
-            ),
+              Subyektifhiss(),
+              SizedBox(
+                height: 10,
+              ),
+              objektivehiss(),
+              SizedBox(
+                height: 10,
+              ),
+              Assestmenthiss(),
+            ],
+          ),
+        ),
       ),
-
     );
   }
+
   Widget buildSheetberhasil() {
     return Container(
         height: 200,
@@ -236,12 +240,16 @@ class HissViewState extends State<HissView>
                     ),
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.only(right: 20, left: 20, top: 20),
-                        child : Center(
-                          child: Text('Pastikan Data yang di inputkan sudah benar',
+                        margin:
+                            const EdgeInsets.only(right: 20, left: 20, top: 20),
+                        child: const Center(
+                          child: Text(
+                            'Pastikan Data yang di inputkan sudah benar',
                             textAlign: TextAlign.center,
                             style: TextStyle(),
-                          ),),),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
