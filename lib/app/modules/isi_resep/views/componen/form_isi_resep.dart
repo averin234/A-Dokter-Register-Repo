@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../data/model/list_data.dart';
+import '../../../../routes/app_pages.dart';
 
 class FormIsiResep extends StatefulWidget {
   const FormIsiResep({super.key});
@@ -593,6 +594,12 @@ class _FormIsiResepState extends State<FormIsiResep> {
                       txt_jumlah: controller.jumlahController.text,
                       id_stok: '',
                       flag_dosis: id.toString());
+                  if (postResep.code == 200) {
+                    Get.toNamed(Routes.DETAIL_TINDAKAN, parameters: {
+                      'no_mr': controller.noMr,
+                      'no_registrasi': controller.noRegistrasi
+                    });
+                  }
                 },
                 child: Container(
                   height: 45,

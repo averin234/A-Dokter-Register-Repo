@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/hiss_controller.dart';
 import 'componen/card_hiss/gejala.dart';
 import 'componen/hiss_soap/assestment.dart';
@@ -366,6 +367,12 @@ class HissViewState extends State<HissView> {
               height: 10,
             ),
             InkWell(
+              onTap: () {
+                Get.toNamed(Routes.DETAIL_TINDAKAN, parameters: {
+                  'no_mr': controller.noMr,
+                  'no_registrasi': controller.noRegistrasi
+                });
+              },
               child: Container(
                 height: 45,
                 width: 145,
