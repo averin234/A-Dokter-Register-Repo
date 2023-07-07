@@ -1,8 +1,6 @@
+import 'package:a_dokter_register/app/modules/isi_resep/controllers/isi_resep_controller.dart';
 import 'package:a_dokter_register/app/modules/isi_resep/views/componen/form_isi_resep.dart';
 import 'package:a_dokter_register/app/modules/isi_resep/views/componen/hasil_resep.dart';
-import 'package:a_dokter_register/app/modules/isi_tindakan/controllers/isi_tindakan_controller.dart';
-import 'package:a_dokter_register/app/modules/isi_tindakan/views/componen/form_isi_tindakan.dart';
-import 'package:a_dokter_register/app/modules/isi_tindakan/views/componen/hasil_tindakan.dart';
 import 'package:a_dokter_register/app/modules/isi_tindakan/views/componen/nama_pemeriksa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +10,7 @@ import 'package:get/get.dart';
 
 import '../../../data/componen/fetch_data.dart';
 
-class IsiResepView extends GetView<IsiTindakanController> {
+class IsiResepView extends GetView<IsiResepController> {
   const IsiResepView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
