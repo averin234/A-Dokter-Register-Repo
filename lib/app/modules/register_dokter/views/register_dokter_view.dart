@@ -295,8 +295,6 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
       bool isEmail,
       TextEditingController controller,
       TextEditingController controller1) {
-    final control = Get.put(RegisterDokterController());
-    Size size = MediaQuery.of(context).size;
     return FutureBuilder(
         future: API.getSpesialisasi(id: perubahan.toString()),
         builder: (context, snapshot) {

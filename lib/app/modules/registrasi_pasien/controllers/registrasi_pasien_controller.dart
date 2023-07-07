@@ -3,22 +3,22 @@ import 'package:get/get.dart';
 
 class RegistrasiPasienController extends GetxController {
   //TODO: Implement RegistrasiPasienController
-
+  final berubah = ''.obs;
   final namaController = TextEditingController();
   final keluargaController = TextEditingController();
   final ktpController = TextEditingController();
   final tempatLahirController = TextEditingController();
   final tanggalLahirController = TextEditingController();
   final alamatController = TextEditingController();
-  final provinsiController = TextEditingController();
+  final provinsiController = TextEditingController().obs;
   final namaProvinsiController = TextEditingController();
-  final kotaController = TextEditingController();
+  final kotaController = TextEditingController().obs;
   final namaKotaController = TextEditingController();
-  final kecamatanController = TextEditingController();
+  final kecamatanController = TextEditingController().obs;
   final namaKecamatanController = TextEditingController();
-  final kelurahanController = TextEditingController();
+  final kelurahanController = TextEditingController().obs;
   final namaKelurahanController = TextEditingController();
-  final nasabahController = TextEditingController();
+  final nasabahController = TextEditingController().obs;
   final namaNasabahController = TextEditingController();
   final agamaController = TextEditingController();
   final namaAgamaController = TextEditingController();

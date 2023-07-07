@@ -34,7 +34,7 @@ import 'local_storage.dart';
 
 class API {
   // static const _url = 'https://a-dokter.id/';
-  static const _url = 'https://demo.a-dokter.id/';
+  static const _url = 'https://a-dokter.id/';
   static const _baseUrl = '${_url}api/v1';
   static const _getToken = '$_baseUrl/get-token.php';
   static const _getAksesPx = '$_baseUrl/px-akses.php';

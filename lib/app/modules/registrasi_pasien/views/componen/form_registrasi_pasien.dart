@@ -21,303 +21,433 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.only(left: 10, right: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: const Color(0x6cc7d1db)),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFFe0e0e0).withOpacity(0.5),
-            spreadRadius: 0,
-            blurRadius: 10,
-            offset: const Offset(2, 1),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const Text(
-            'Daftar Pasien',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Nama Pasien*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(left: 10, right: 10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: const Color(0x6cc7d1db)),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              spreadRadius: 0,
+              blurRadius: 10,
+              offset: const Offset(2, 1),
             ),
-            child: TextField(
-              controller: controller.namaController,
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                enabled: true,
-                disabledBorder: InputBorder.none,
-                contentPadding:
-                    EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
-                filled: true,
-                fillColor: Colors.transparent,
+          ],
+        ),
+        child: Obx(
+          () => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const Text(
+                'Daftar Pasien',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Nama Keluarga*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
-            ),
-            child: TextField(
-              controller: controller.keluargaController,
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                enabled: true,
-                disabledBorder: InputBorder.none,
-                contentPadding:
-                    EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
-                filled: true,
-                fillColor: Colors.transparent,
+              const SizedBox(
+                height: 30,
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("NO KTP/KTA*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
-            ),
-            child: TextField(
-              controller: controller.ktpController,
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                enabled: true,
-                disabledBorder: InputBorder.none,
-                contentPadding:
-                    EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
-                filled: true,
-                fillColor: Colors.transparent,
+              const SizedBox(
+                height: 10,
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Tempat Lahir*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
-            ),
-            child: TextField(
-              controller: controller.tempatLahirController,
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                enabled: true,
-                disabledBorder: InputBorder.none,
-                contentPadding:
-                    EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
-                filled: true,
-                fillColor: Colors.transparent,
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Nama Pasien*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Tanggal Lahir*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
-            ),
-            child: TextField(
-              controller: controller.tanggalLahirController,
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                enabled: true,
-                disabledBorder: InputBorder.none,
-                contentPadding:
-                    EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
-                filled: true,
-                fillColor: Colors.transparent,
+              const SizedBox(
+                height: 10,
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Alamat*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
-            ),
-            child: TextField(
-              controller: controller.alamatController,
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
-              maxLines: 3,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                enabled: true,
-                disabledBorder: InputBorder.none,
-                contentPadding:
-                    EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
-                filled: true,
-                fillColor: Colors.transparent,
+              Container(
+                padding: const EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  color: const Color(0xfff3f3f3),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0x6cc7d1db)),
+                ),
+                child: TextField(
+                  controller: controller.namaController,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    enabled: true,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 13, right: 15),
+                    filled: true,
+                    fillColor: Colors.transparent,
+                  ),
+                ),
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Propinsi*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          FutureBuilder(
-              future: API.getProvinsi(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData &&
-                    snapshot.connectionState != ConnectionState.waiting &&
-                    snapshot.data != null) {
-                  final data = snapshot.data!.list ?? [];
-                  return data.isEmpty
-                      ? Container()
-                      : dropdown(
-                          'Provinsi',
-                          data,
-                          controller.provinsiController,
-                          controller.namaProvinsiController);
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              }),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child:
-                Text("Kota*", style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          controller.provinsiController.text.isEmpty
-              ? Container()
-              : FutureBuilder(
-                  future:
-                      API.getKota(id_prov: controller.provinsiController.text),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Nama Keluarga*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: const EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  color: const Color(0xfff3f3f3),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0x6cc7d1db)),
+                ),
+                child: TextField(
+                  controller: controller.keluargaController,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    enabled: true,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 13, right: 15),
+                    filled: true,
+                    fillColor: Colors.transparent,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("NO KTP/KTA*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: const EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  color: const Color(0xfff3f3f3),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0x6cc7d1db)),
+                ),
+                child: TextField(
+                  controller: controller.ktpController,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    enabled: true,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 13, right: 15),
+                    filled: true,
+                    fillColor: Colors.transparent,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Tempat Lahir*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: const EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  color: const Color(0xfff3f3f3),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0x6cc7d1db)),
+                ),
+                child: TextField(
+                  controller: controller.tempatLahirController,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    enabled: true,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 13, right: 15),
+                    filled: true,
+                    fillColor: Colors.transparent,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Tanggal Lahir*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: const EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  color: const Color(0xfff3f3f3),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0x6cc7d1db)),
+                ),
+                child: TextField(
+                  controller: controller.tanggalLahirController,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    enabled: true,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 13, right: 15),
+                    filled: true,
+                    fillColor: Colors.transparent,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Alamat*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: const EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  color: const Color(0xfff3f3f3),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0x6cc7d1db)),
+                ),
+                child: TextField(
+                  controller: controller.alamatController,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
+                  maxLines: 3,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    enabled: true,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 13, right: 15),
+                    filled: true,
+                    fillColor: Colors.transparent,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              // FutureBuilder(
+              //     future: API.getProvinsi(),
+              //     builder: (context, snapshot) {
+              //       if (snapshot.hasData &&
+              //           snapshot.connectionState != ConnectionState.waiting &&
+              //           snapshot.data != null) {
+              //         final data = snapshot.data!.list ?? [];
+              //         return data.isEmpty
+              //             ? Container()
+              //             : dropdown(
+              //                 'Provinsi',
+              //                 data,
+              //                 controller.provinsiController.value,
+              //                 controller.namaProvinsiController);
+              //       } else {
+              //         return const Center(
+              //           child: CircularProgressIndicator(),
+              //         );
+              //       }
+              //     }),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              // controller.provinsiController.value.text.isEmpty
+              //     ? Container()
+              //     : FutureBuilder(
+              //         future: API.getKota(
+              //             id_prov: controller.provinsiController.value.text),
+              //         builder: (context, snapshot) {
+              //           if (snapshot.hasData &&
+              //               snapshot.connectionState !=
+              //                   ConnectionState.waiting &&
+              //               snapshot.data != null) {
+              //             final data = snapshot.data!.list ?? [];
+              //             return data.isEmpty
+              //                 ? Container()
+              //                 : dropdown(
+              //                     'Kota',
+              //                     data,
+              //                     controller.kotaController.value,
+              //                     controller.namaKotaController);
+              //           } else {
+              //             return const Center(
+              //               child: CircularProgressIndicator(),
+              //             );
+              //           }
+              //         }),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              // controller.kotaController.value.text.isEmpty
+              //     ? Container()
+              //     : FutureBuilder(
+              //         future: API.getKecamatan(
+              //             id: controller.kotaController.value.text),
+              //         builder: (context, snapshot) {
+              //           if (snapshot.hasData &&
+              //               snapshot.connectionState !=
+              //                   ConnectionState.waiting &&
+              //               snapshot.data != null) {
+              //             final data = snapshot.data!.list ?? [];
+              //             return data.isEmpty
+              //                 ? Container()
+              //                 : dropdown(
+              //                     'Kecamatan',
+              //                     data,
+              //                     controller.kecamatanController.value,
+              //                     controller.namaKecamatanController);
+              //           } else {
+              //             return const Center(
+              //               child: CircularProgressIndicator(),
+              //             );
+              //           }
+              //         }),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              // controller.kecamatanController.value.text.isEmpty
+              //     ? Container()
+              //     : FutureBuilder(
+              //         future: API.getKelurahan(
+              //             id: controller.kecamatanController.value.text),
+              //         builder: (context, snapshot) {
+              //           if (snapshot.hasData &&
+              //               snapshot.connectionState !=
+              //                   ConnectionState.waiting &&
+              //               snapshot.data != null) {
+              //             final data = snapshot.data!.kelurahan ?? [];
+              //             return data.isEmpty
+              //                 ? Container()
+              //                 : dropdown1(
+              //                     'Keadaan Umum',
+              //                     data,
+              //                     controller.provinsiController.value,
+              //                     controller.namaProvinsiController,
+              //                     controller.kodePosController);
+              //           } else {
+              //             return const Center(
+              //               child: CircularProgressIndicator(),
+              //             );
+              //           }
+              //         }),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              // FutureBuilder(
+              //     future: API.getNasabah(),
+              //     builder: (context, snapshot) {
+              //       if (snapshot.hasData &&
+              //           snapshot.connectionState != ConnectionState.waiting &&
+              //           snapshot.data != null) {
+              //         final data = snapshot.data!.list ?? [];
+              //         return data.isEmpty
+              //             ? Container()
+              //             : dropdown(
+              //                 'Nasabah',
+              //                 data,
+              //                 controller.nasabahController.value,
+              //                 controller.namaNasabahController);
+              //       } else {
+              //         return const Center(
+              //           child: CircularProgressIndicator(),
+              //         );
+              //       }
+              //     }),
+              // const Padding(
+              //   padding: EdgeInsets.only(left: 15),
+              //   child: Text("Kode Pos*",
+              //       style: TextStyle(fontWeight: FontWeight.normal)),
+              // ),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              // Container(
+              //   padding: const EdgeInsets.only(right: 10),
+              //   margin: const EdgeInsets.only(left: 10, right: 10),
+              //   decoration: BoxDecoration(
+              //     color: const Color(0xfff3f3f3),
+              //     borderRadius: BorderRadius.circular(10),
+              //     border: Border.all(color: const Color(0x6cc7d1db)),
+              //   ),
+              //   child: TextField(
+              //     controller: controller.kodePosController,
+              //     keyboardType: TextInputType.text,
+              //     readOnly: true,
+              //     textInputAction: TextInputAction.done,
+              //     decoration: const InputDecoration(
+              //       border: InputBorder.none,
+              //       focusedBorder: InputBorder.none,
+              //       enabledBorder: InputBorder.none,
+              //       errorBorder: InputBorder.none,
+              //       enabled: true,
+              //       disabledBorder: InputBorder.none,
+              //       contentPadding: EdgeInsets.only(
+              //           left: 15, bottom: 11, top: 13, right: 15),
+              //       filled: true,
+              //       fillColor: Colors.transparent,
+              //     ),
+              //   ),
+              // ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Agama*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              FutureBuilder(
+                  future: API.getAgama(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData &&
                         snapshot.connectionState != ConnectionState.waiting &&
@@ -325,29 +455,64 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                       final data = snapshot.data!.list ?? [];
                       return data.isEmpty
                           ? Container()
-                          : dropdown('Kota', data, controller.kotaController,
-                              controller.namaKotaController);
+                          : dropdown('Agama', data, controller.agamaController,
+                              controller.namaAgamaController);
                     } else {
                       return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
                   }),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Kecamatan*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          controller.kotaController.text.isEmpty
-              ? Container()
-              : FutureBuilder(
-                  future: API.getKecamatan(id: controller.kotaController.text),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("No HP*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: const EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  color: const Color(0xfff3f3f3),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0x6cc7d1db)),
+                ),
+                child: TextField(
+                  controller: controller.noHPController,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    enabled: true,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 13, right: 15),
+                    filled: true,
+                    fillColor: Colors.transparent,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Pekerjaan*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              FutureBuilder(
+                  future: API.getPekerjaan(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData &&
                         snapshot.connectionState != ConnectionState.waiting &&
@@ -356,486 +521,297 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                       return data.isEmpty
                           ? Container()
                           : dropdown(
-                              'Kecamatan',
+                              'Pekerjaan',
                               data,
-                              controller.kecamatanController,
-                              controller.namaKecamatanController);
+                              controller.pekerjaanController,
+                              controller.namaPekerjaanController);
                     } else {
                       return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
                   }),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Kelurahan*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          controller.kecamatanController.text.isEmpty
-              ? Container()
-              : FutureBuilder(
-                  future:
-                      API.getKelurahan(id: controller.kecamatanController.text),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Email*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: const EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  color: const Color(0xfff3f3f3),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0x6cc7d1db)),
+                ),
+                child: TextField(
+                  controller: controller.emailController,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    enabled: true,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 13, right: 15),
+                    filled: true,
+                    fillColor: Colors.transparent,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Jenis Kelamin*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              FutureBuilder(
+                  future: API.getJenisKelamin(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData &&
                         snapshot.connectionState != ConnectionState.waiting &&
                         snapshot.data != null) {
-                      final data = snapshot.data!.kelurahan ?? [];
+                      final data = snapshot.data!.list ?? [];
                       return data.isEmpty
                           ? Container()
-                          : dropdown1(
-                              'Keadaan Umum',
+                          : dropdown(
+                              'Jenis Kelamin',
                               data,
-                              controller.provinsiController,
-                              controller.namaProvinsiController,
-                              controller.kodePosController);
+                              controller.jenisKelaminController,
+                              controller.namaJenisKelaminController);
                     } else {
                       return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
                   }),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Nasabah*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          FutureBuilder(
-              future: API.getNasabah(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData &&
-                    snapshot.connectionState != ConnectionState.waiting &&
-                    snapshot.data != null) {
-                  final data = snapshot.data!.list ?? [];
-                  return data.isEmpty
-                      ? Container()
-                      : dropdown('Nasabah', data, controller.nasabahController,
-                          controller.namaNasabahController);
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              }),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child:
-                Text("Agama*", style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          FutureBuilder(
-              future: API.getAgama(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData &&
-                    snapshot.connectionState != ConnectionState.waiting &&
-                    snapshot.data != null) {
-                  final data = snapshot.data!.list ?? [];
-                  return data.isEmpty
-                      ? Container()
-                      : dropdown('Agama', data, controller.agamaController,
-                          controller.namaAgamaController);
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              }),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child:
-                Text("No HP*", style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
-            ),
-            child: TextField(
-              controller: controller.noHPController,
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                enabled: true,
-                disabledBorder: InputBorder.none,
-                contentPadding:
-                    EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
-                filled: true,
-                fillColor: Colors.transparent,
+              const SizedBox(
+                height: 10,
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Pekerjaan*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          FutureBuilder(
-              future: API.getPekerjaan(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData &&
-                    snapshot.connectionState != ConnectionState.waiting &&
-                    snapshot.data != null) {
-                  final data = snapshot.data!.list ?? [];
-                  return data.isEmpty
-                      ? Container()
-                      : dropdown(
-                          'Pekerjaan',
-                          data,
-                          controller.pekerjaanController,
-                          controller.namaPekerjaanController);
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              }),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child:
-                Text("Email*", style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
-            ),
-            child: TextField(
-              controller: controller.emailController,
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                enabled: true,
-                disabledBorder: InputBorder.none,
-                contentPadding:
-                    EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
-                filled: true,
-                fillColor: Colors.transparent,
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Status Kawin*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Jenis Kelamin*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          FutureBuilder(
-              future: API.getJenisKelamin(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData &&
-                    snapshot.connectionState != ConnectionState.waiting &&
-                    snapshot.data != null) {
-                  final data = snapshot.data!.list ?? [];
-                  return data.isEmpty
-                      ? Container()
-                      : dropdown(
-                          'Jenis Kelamin',
-                          data,
-                          controller.jenisKelaminController,
-                          controller.namaJenisKelaminController);
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              }),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Status Kawin*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          FutureBuilder(
-              future: API.getKawin(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData &&
-                    snapshot.connectionState != ConnectionState.waiting &&
-                    snapshot.data != null) {
-                  final data = snapshot.data!.list ?? [];
-                  return data.isEmpty
-                      ? Container()
-                      : dropdown(
-                          'Status Kawin',
-                          data,
-                          controller.statusKawinController,
-                          controller.namaStatusKawinController);
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              }),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Golongan Darah*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          FutureBuilder(
-              future: API.getGolonganDarah(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData &&
-                    snapshot.connectionState != ConnectionState.waiting &&
-                    snapshot.data != null) {
-                  final data = snapshot.data!.list ?? [];
-                  return data.isEmpty
-                      ? Container()
-                      : dropdown(
-                          'Golongan Darah',
-                          data,
-                          controller.golonganDarahController,
-                          controller.namaGolonganDarahController);
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              }),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Alergi*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
-            ),
-            child: TextField(
-              controller: controller.alergiController,
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                enabled: true,
-                disabledBorder: InputBorder.none,
-                contentPadding:
-                    EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
-                filled: true,
-                fillColor: Colors.transparent,
+              const SizedBox(
+                height: 10,
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Kode Pos*",
-                style: TextStyle(fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
-            ),
-            child: TextField(
-              controller: controller.kodePosController,
-              keyboardType: TextInputType.text,
-              readOnly: true,
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                enabled: true,
-                disabledBorder: InputBorder.none,
-                contentPadding:
-                    EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
-                filled: true,
-                fillColor: Colors.transparent,
+              FutureBuilder(
+                  future: API.getKawin(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData &&
+                        snapshot.connectionState != ConnectionState.waiting &&
+                        snapshot.data != null) {
+                      final data = snapshot.data!.list ?? [];
+                      return data.isEmpty
+                          ? Container()
+                          : dropdown(
+                              'Status Kawin',
+                              data,
+                              controller.statusKawinController,
+                              controller.namaStatusKawinController);
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  }),
+              const SizedBox(
+                height: 10,
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Golongan Darah*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              FutureBuilder(
+                  future: API.getGolonganDarah(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData &&
+                        snapshot.connectionState != ConnectionState.waiting &&
+                        snapshot.data != null) {
+                      final data = snapshot.data!.list ?? [];
+                      return data.isEmpty
+                          ? Container()
+                          : dropdown(
+                              'Golongan Darah',
+                              data,
+                              controller.golonganDarahController,
+                              controller.namaGolonganDarahController);
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  }),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Alergi*",
+                    style: TextStyle(fontWeight: FontWeight.normal)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: const EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  color: const Color(0xfff3f3f3),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0x6cc7d1db)),
+                ),
+                child: TextField(
+                  controller: controller.alergiController,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    enabled: true,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 13, right: 15),
+                    filled: true,
+                    fillColor: Colors.transparent,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+
+              const SizedBox(
+                height: 40,
+              ),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GestureDetector(
-                    onTap: () async {
-                      final postPasien = await API.postPasienBaru(
-                        kode_dokter:
-                            Publics.controller.getDataRegist.value.kode ?? '',
-                        nama_pasien: controller.namaController.text,
-                        nasabah: controller.nasabahController.text,
-                        id_agama: controller.agamaController.text,
-                        nama_keluarga: controller.keluargaController.text,
-                        no_hp: controller.noHPController.text,
-                        no_ktp: controller.ktpController.text,
-                        id_kerja: controller.pekerjaanController.text,
-                        tempat_lahir: controller.tempatLahirController.text,
-                        email: controller.emailController.text,
-                        tgl_lahir: controller.tanggalLahirController.text,
-                        jenis_kelamin: controller.jenisKelaminController.text,
-                        alamat: controller.alamatController.text,
-                        id_kawin: controller.statusKawinController.text,
-                        id_prov: controller.provinsiController.text,
-                        id_goldar: controller.golonganDarahController.text,
-                        id_kota: controller.kotaController.text,
-                        id_kecamatan: controller.kecamatanController.text,
-                        alergi: controller.alergiController.text,
-                        kode_pos: controller.kodePosController.text,
-                        id_kelurahan: controller.kelurahanController.text,
-                        foto_pasien: controller.fotoController.text,
-                        no_bpjs: controller.noBPJSController.text,
-                        no_polis: controller.noPolisController.text,
-                        id_yankes: controller.yankesController.text,
-                      );
-                      if (postPasien.code == 200) {
-                        Get.defaultDialog(
-                          title: (postPasien.code ?? 0).toString(),
-                          content: Text(postPasien.msg ?? ''),
-                        );
-                        Get.toNamed(Routes.PERJANJIAN_DOKTER);
-                      } else {
-                        Get.defaultDialog(
-                          title: (postPasien.code ?? 0).toString(),
-                          content: Text(postPasien.msg ?? ''),
-                        );
-                      }
-                    },
-                    child: Container(
-                      height: 45,
-                      width: 105,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(10),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () async {
+                          final postPasien = await API.postPasienBaru(
+                            kode_dokter:
+                                Publics.controller.getDataRegist.value.kode ??
+                                    '',
+                            nama_pasien: controller.namaController.text,
+                            nasabah: controller.nasabahController.value.text,
+                            id_agama: controller.agamaController.text,
+                            nama_keluarga: controller.keluargaController.text,
+                            no_hp: controller.noHPController.text,
+                            no_ktp: controller.ktpController.text,
+                            id_kerja: controller.pekerjaanController.text,
+                            tempat_lahir: controller.tempatLahirController.text,
+                            email: controller.emailController.text,
+                            tgl_lahir: controller.tanggalLahirController.text,
+                            jenis_kelamin:
+                                controller.jenisKelaminController.text,
+                            alamat: controller.alamatController.text,
+                            id_kawin: controller.statusKawinController.text,
+                            id_prov: controller.provinsiController.value.text,
+                            id_goldar: controller.golonganDarahController.text,
+                            id_kota: controller.kotaController.value.text,
+                            id_kecamatan:
+                                controller.kecamatanController.value.text,
+                            alergi: controller.alergiController.text,
+                            kode_pos: controller.kodePosController.text,
+                            id_kelurahan:
+                                controller.kelurahanController.value.text,
+                            foto_pasien: controller.fotoController.text,
+                            no_bpjs: controller.noBPJSController.text,
+                            no_polis: controller.noPolisController.text,
+                            id_yankes: controller.yankesController.text,
+                          );
+                          if (postPasien.code == 200) {
+                            Get.defaultDialog(
+                              title: (postPasien.code ?? 0).toString(),
+                              content: Text(postPasien.msg ?? ''),
+                            );
+                            Get.toNamed(Routes.PERJANJIAN_DOKTER);
+                          } else {
+                            Get.defaultDialog(
+                              title: (postPasien.code ?? 0).toString(),
+                              content: Text(postPasien.msg ?? ''),
+                            );
+                          }
+                        },
+                        child: Container(
+                          height: 45,
+                          width: 105,
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: const [
+                              Text(
+                                "Kirim",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "Kirim",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14),
-                          )
-                        ],
+                      const SizedBox(
+                        width: 10,
                       ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    height: 45,
-                    width: 105,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          "batal",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14),
-                        )
-                      ],
-                    ),
+                      Container(
+                        height: 45,
+                        width: 105,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text(
+                              "batal",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
-              ),
+              )
             ],
-          )
-        ],
-      ),
-    );
+          ),
+        ));
   }
 }
 
