@@ -78,10 +78,16 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
                       final data = snapshot.data!.kasir ?? [];
                       return data.isEmpty
                           ? Center(
-                        child: Image.asset(
-                          'assets/images/tidakadapendapatan.png',
-                          height: 100,
+                        child: Column(children: [
+                          Text('Belum Ada Teransaksi Saat ini'),
+                        SizedBox(
+                          height: 10,
                         ),
+                        Image.asset(
+                          'assets/images/nopendapatan.png',
+                          height: 300,
+                        ),
+                        ],),
                       )
                           : Column(
                               children: AnimationConfiguration.toStaggeredList(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../data/model/get_detail_dokter.dart';
+import '../../../../routes/app_pages.dart';
 import '../../controllers/profile_controller.dart';
 
 class CardDokterSetting extends GetView<ProfileController> {
@@ -72,8 +73,25 @@ class CardDokterSetting extends GetView<ProfileController> {
                                 const SizedBox(
                                   width: 10,
                                 ),
-
-
+                                InkWell(
+                                  onTap: () {
+                                    showModalBottomSheet(
+                                      context: context,
+                                      backgroundColor: Colors.white,
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(20),
+                                        ),
+                                      ),
+                                      builder: (context) => buildSheet(),
+                                    );
+                                  },
+                                  child : Column(children: [
+                                Icon(Icons.add_card),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text('Kasir',style: TextStyle(fontSize: 14)),],),),
                               ],
                             ),
 
@@ -90,6 +108,97 @@ class CardDokterSetting extends GetView<ProfileController> {
         ),
       ],
     );
+  }
+
+  Widget buildSheet() {
+    return Container(
+        height: 270,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+          color: Colors.transparent,
+        ),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 4,
+              margin: EdgeInsets.only(
+                right: Get.width / 2 - 40,
+                left: Get.width / 2 - 40,
+              ),
+              decoration: BoxDecoration(
+                color: const Color(0xFFe0e0e0),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            SingleChildScrollView(
+                child: Center(
+                  child: Column(
+                    children: [
+                      const Text("Sedang Dalam Pengembangan\nMohon maaf atas ketidak nyamanannya\nlakukan update pada aplikasi untuk menikmati fitur-fitur baru nantinya",
+                          style: TextStyle(
+                              color: Colors.black45,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      // Image.asset(
+                      //   "assets/images/login_sukses.png",
+                      //   gaplessPlayback: true,
+                      //   fit: BoxFit.fitHeight,
+                      //   width: 200,
+                      //   height: 200,
+                      // ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding:
+                            const EdgeInsets.only(right: 10, left: 10, top: 20),
+                            child: GestureDetector(
+                              onTap: () => Get.offAllNamed(Routes.HOME),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(7),
+                                  color: Colors.blue,
+                                ),
+                                child: Column(
+                                  children: const [
+                                    Padding(
+                                      padding: EdgeInsets.all(16),
+                                      child: Text("OKE",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )),
+          ],
+        ));
   }
 
   String greetings() {

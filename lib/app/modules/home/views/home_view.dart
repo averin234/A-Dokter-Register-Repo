@@ -486,6 +486,7 @@ class Home extends StatelessWidget {
                             const SizedBox(
                               height: 10,
                             ),
+
                             FutureBuilder(
                               future: API.getAntrianPasien(
                                   tanggal: DateFormat('yyyy-MM-dd')
@@ -501,10 +502,12 @@ class Home extends StatelessWidget {
                                   final data = snapshot.data!.antrian ?? [];
                                   return data.isEmpty
                                       ? Center(
-                                          child: Image.asset(
+                                          child: Column(children: [
+                                              Text('Tidak ada Antrian Saat ini'),
+                                          Image.asset(
                                             'assets/images/noantri.png',
-                                            height: 100,
-                                          ),
+                                            height: 200,
+                                          ),]),
                                         )
                                       : Column(
                                           children: data

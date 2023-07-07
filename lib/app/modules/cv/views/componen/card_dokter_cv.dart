@@ -31,7 +31,6 @@ class CardDokterCV extends StatelessWidget {
                     margin: EdgeInsets.only(left: 10, bottom: 10, top: 10),
                     child: CircleAvatar(
                       radius: 30.0,
-
                       backgroundImage: NetworkImage(
                           dokter.foto ?? Avatar.lakiLaki),
                       backgroundColor: Colors.transparent,
