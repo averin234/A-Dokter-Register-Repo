@@ -203,7 +203,7 @@ class _FormIsiTindakanState extends State<FormIsiTindakan> {
                             ),
                             Expanded(
                               child: Text(
-                                '--pilih nama tindakan--',
+                                '--pilih obat tindakan--',
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
