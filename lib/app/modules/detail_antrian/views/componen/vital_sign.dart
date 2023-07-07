@@ -828,20 +828,6 @@ class VitalSignView extends GetView<DetailTindakanController> {
                       SizedBox(
                         height: 10,
                       ),
-                      Text("Heart Rate :",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                              color: Colors.blue)),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text("",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
-                      SizedBox(
-                        height: 10,
-                      ),
                     ],
                   ),
                 ),
@@ -905,20 +891,6 @@ class VitalSignView extends GetView<DetailTindakanController> {
                         height: 5,
                       ),
                       Text(vitalSign.beratBadan ?? '',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text("Lingkar Perut :",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
-                              color: Colors.blue)),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text("",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(
