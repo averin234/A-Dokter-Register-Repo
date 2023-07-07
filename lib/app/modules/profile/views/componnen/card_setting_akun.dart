@@ -25,10 +25,11 @@ class CardSettingAkun extends GetView<ProfileController> {
             height: 10,
           ),
           Container(
-            margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+            margin: const EdgeInsets.only(top: 0, left: 10, right: 10),
             padding:
                 const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
             decoration: BoxDecoration(
+              border: Border.all(color: Color(0x6cc7d1db)),
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
@@ -223,40 +224,40 @@ class CardSettingAkun extends GetView<ProfileController> {
               // SizedBox(
               //   height: 20,
               // ),
-              InkWell(
-                onTap: () => Get.toNamed(Routes.CV),
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.history_edu,
-                      color: Colors.grey,
-                      size: 24.0,
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'CV',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          Text(
-                            'Melihat Riwayat CV',
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal, fontSize: 12),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // InkWell(
+              //   onTap: () => Get.toNamed(Routes.CV),
+              //   child: Row(
+              //     children: [
+              //       const Icon(
+              //         Icons.history_edu,
+              //         color: Colors.grey,
+              //         size: 24.0,
+              //       ),
+              //       const SizedBox(
+              //         width: 10,
+              //       ),
+              //       Expanded(
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: const [
+              //             Text(
+              //               'CV',
+              //               style: TextStyle(
+              //                   fontWeight: FontWeight.bold, fontSize: 15),
+              //             ),
+              //             Text(
+              //               'Melihat Riwayat CV',
+              //               style: TextStyle(
+              //                   fontWeight: FontWeight.normal, fontSize: 12),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               // InkWell(
               //   onTap: () => Get.toNamed(Routes.PERJANJIAN_DOKTER),

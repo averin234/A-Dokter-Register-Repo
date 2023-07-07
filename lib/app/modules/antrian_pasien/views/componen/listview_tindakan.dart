@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/componen/avatar.dart';
+import '../../../../data/model/get_detail_mr.dart';
 import '../../../../routes/app_pages.dart';
 
 class ListViewTindakan extends StatelessWidget {
@@ -37,7 +39,10 @@ class ListViewTindakan extends StatelessWidget {
                           const EdgeInsets.only(left: 10, bottom: 10, top: 10),
                       child: CircleAvatar(
                         radius: 30.0,
-                        backgroundImage: NetworkImage(antrian.fotoPasien ?? ''),
+                        backgroundImage: NetworkImage(antrian.fotoPasien ??
+                            (antrian.jenisKelamin == '2'
+                                ? Avatar.lakiLaki
+                                : Avatar.perempuan)),
                         backgroundColor: Colors.transparent,
                       ),
                     ),

@@ -1,3 +1,4 @@
+import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/modules/cv/views/componen/card_dokter_cv.dart';
 import 'package:a_dokter_register/app/modules/riwayat_jabatan/views/componen/card_riwayat_jabatan.dart';
 import 'package:a_dokter_register/app/modules/riwayat_keluarga/views/componen/card_riwayat_keluarga.dart';
@@ -9,12 +10,15 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
+import '../../../data/componen/fetch_data.dart';
+import '../../../data/model/get_detail_dokter.dart';
 import '../controllers/cv_controller.dart';
 
 class CvView extends GetView<CvController> {
   const CvView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -65,26 +69,52 @@ class CvView extends GetView<CvController> {
                       ),
                     ),
                     children: <Widget>[
-                      SizedBox(
-                        height: 20,
-                      ),
-                      CardDokterCV(),
+                      FutureBuilder(
+                          future: API.getDetailDokter(
+                              kode_dokter:
+                              Publics.controller.getDataRegist.value.kode ?? ''),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData &&
+                                snapshot.connectionState != ConnectionState.waiting &&
+                                snapshot.data != null) {
+                              final data = snapshot.data!.dokter![0];
+                    return Column(
+                    children: AnimationConfiguration.toStaggeredList(
+                    duration: const Duration(milliseconds: 375),
+                    childAnimationBuilder: (widget) => ScaleAnimation(
+                    child: SlideAnimation(
+                    child: widget,
+                    ),
+                    ),
+                    children: <Widget>[
+                    const SizedBox(
+                    height: 10,
+                    ),
+                      CardDokterCV( dokter: data),
                       SizedBox(
                         height: 10,
                       ),
-                      CardRiwayatPeraktekDokter(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      CardRiwayatPendidikankDokter(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      CardRiwayatJabatankDokter(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      CardRiwayatKeluargakDokter(),
+                      ]));
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    }
+                    ),
+                      // CardRiwayatPeraktekDokter(),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+                      // CardRiwayatPendidikankDokter(),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+                      // CardRiwayatJabatankDokter(),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+                      // CardRiwayatKeluargakDokter(),
                     ],
                   ),
                 ),

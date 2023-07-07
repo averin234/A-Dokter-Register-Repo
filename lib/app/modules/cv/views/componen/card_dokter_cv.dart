@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../../../../data/model/get_detail_dokter.dart';
+
 class CardDokterCV extends StatelessWidget {
-  const CardDokterCV({super.key});
+  Dokter dokter;
+  CardDokterCV({super.key, required this.dokter});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10, bottom: 5),
+        margin: EdgeInsets.only(right: 10, left: 10, bottom: 0),
         padding: EdgeInsets.only(right: 0, left: 10, bottom: 10),
         decoration: BoxDecoration(
           border: Border.all(color: Color(0x6cc7d1db)),
@@ -65,7 +68,7 @@ class CardDokterCV extends StatelessWidget {
                             SizedBox(
                               width: 6,
                             ),
-                            Text("Dr. Anggi Supradi",
+                            Text(dokter.namaPegawai?? '',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
                           ],
@@ -81,7 +84,7 @@ class CardDokterCV extends StatelessWidget {
                             SizedBox(
                               width: 6,
                             ),
-                            Text("opik@gmail.com",
+                            Text(dokter.email?? '',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
                           ],
@@ -97,7 +100,7 @@ class CardDokterCV extends StatelessWidget {
                             SizedBox(
                               width: 6,
                             ),
-                            Text("0877349348",
+                            Text(dokter.telp?? '',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
                           ],
@@ -113,7 +116,7 @@ class CardDokterCV extends StatelessWidget {
                             SizedBox(
                               width: 6,
                             ),
-                            Text("",
+                            Text(dokter.alamat?? '',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
                           ],

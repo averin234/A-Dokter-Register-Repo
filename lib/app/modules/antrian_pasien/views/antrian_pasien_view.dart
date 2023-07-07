@@ -3,9 +3,7 @@ import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/antrian_pasien_controller.dart';
 import 'componen/horizontal_calender.dart';
 import 'componen/listview_tindakan.dart';
@@ -43,12 +41,7 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
                   size: 40,
                 ),
                 color: const Color.fromARGB(255, 192, 192, 192)),
-            // actions: [
-            //   IconButton(
-            //       onPressed: () {},
-            //       icon: Icon(Icons.notifications_active),
-            //       color: Colors.white),
-            // ],
+
             bottom: AppBar(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
@@ -91,7 +84,6 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
                                 ConnectionState.waiting &&
                             snapshot.data != null) {
                           final data = snapshot.data!.antrian ?? [];
-                          print(snapshot.data!.toJson());
                           return data.isEmpty
                               ? Center(
                                   child: Image.asset(

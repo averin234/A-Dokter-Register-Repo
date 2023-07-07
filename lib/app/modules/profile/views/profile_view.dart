@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
+import '../../../data/componen/fetch_data.dart';
+import '../../../data/componen/publics.dart';
+import '../../cv/views/componen/card_dokter_cv.dart';
+import '../../loading_summer/loading_setting.dart';
 import '../controllers/profile_controller.dart';
 import 'componnen/card_setting_akun.dart';
 
@@ -31,12 +36,6 @@ class ProfileView extends GetView<ProfileController> {
             pinned: true,
             snap: true,
             title: const Text('Pengaturan Akun'),
-            // actions: [
-            //   IconButton(
-            //       onPressed: () {},
-            //       icon: Icon(Icons.notifications_active),
-            //       color: Colors.white),
-            // ],
             bottom: AppBar(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
@@ -52,6 +51,36 @@ class ProfileView extends GetView<ProfileController> {
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
+              FutureBuilder(
+                  future: API.getDetailDokter(
+                      kode_dokter:
+                      Publics.controller.getDataRegist.value.kode ?? ''),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData &&
+                        snapshot.connectionState != ConnectionState.waiting &&
+                        snapshot.data != null) {
+                      final data = snapshot.data!.dokter![0];
+                      return Column(
+                          children: AnimationConfiguration.toStaggeredList(
+                              duration: const Duration(milliseconds: 375),
+                              childAnimationBuilder: (widget) => ScaleAnimation(
+                                child: SlideAnimation(
+                                  child: widget,
+                                ),
+                              ),
+                              children: <Widget>[
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                CardDokterCV( dokter: data),
+                              ]));
+                    } else {
+                      return const Center(
+                        child: shimmerSetting(),
+                      );
+                    }
+                  }
+              ),
               const CardSettingAkun(),
             ]),
           ),
