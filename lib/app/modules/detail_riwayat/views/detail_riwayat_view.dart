@@ -107,7 +107,7 @@ class DetailRiwayatView extends GetView<DetailRiwayatController> {
                             data.resep == null
                                 ? Container()
                                 : RiwayatResep(
-                                    resep: data.resep ?? [],
+                                    resep: data.resep ?? [], resepi: Resep(),
                                   ),
                             const SizedBox(
                               height: 10,

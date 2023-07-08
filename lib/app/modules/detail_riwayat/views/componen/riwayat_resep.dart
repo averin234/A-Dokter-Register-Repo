@@ -7,7 +7,8 @@ import 'package:get/get.dart';
 
 class RiwayatResep extends StatelessWidget {
   final List<Resep> resep;
-  const RiwayatResep({super.key, required this.resep});
+  Resep resepi;
+  RiwayatResep({super.key, required this.resep, required this.resepi});
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +102,8 @@ class RiwayatResep extends StatelessWidget {
                  SizedBox(
                    width: 10,
                  ),
-                 Text('no',style: TextStyle(fontWeight: FontWeight.bold)),
+                 Text('',
+                     style: TextStyle(fontWeight: FontWeight.bold)),
                ]),
              ],
            ),
@@ -127,10 +129,10 @@ class RiwayatResep extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(Routes.ANTRIAN_PASIEN);
+                        // Get.toNamed(Routes.ANTRIAN_PASIEN);
                       },
-                      child: const Text(
-                        "Lihat Semua",
+                      child: Text(
+                          resepi.namaBrg?? '',
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
                             color: Colors.blue),
@@ -159,10 +161,10 @@ class RiwayatResep extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(Routes.ANTRIAN_PASIEN);
+                        // Get.toNamed(Routes.ANTRIAN_PASIEN);
                       },
-                      child: const Text(
-                        "Lihat Semua",
+                      child: Text(
+                      resepi.jumlahPesan?? '',
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
                             color: Colors.blue),
@@ -193,8 +195,8 @@ class RiwayatResep extends StatelessWidget {
                       onTap: () {
                         Get.toNamed(Routes.ANTRIAN_PASIEN);
                       },
-                      child: const Text(
-                        "Lihat Semua",
+                      child: Text(
+                      resepi.namaDosis?? '',
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
                             color: Colors.blue),
@@ -225,8 +227,8 @@ class RiwayatResep extends StatelessWidget {
                       onTap: () {
                         Get.toNamed(Routes.ANTRIAN_PASIEN);
                       },
-                      child: const Text(
-                        "Lihat Semua",
+                      child: Text(
+                      resepi.note?? '',
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
                             color: Colors.blue),
