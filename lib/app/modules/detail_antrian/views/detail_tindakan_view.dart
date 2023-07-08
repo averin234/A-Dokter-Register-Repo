@@ -8,7 +8,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../../data/model/list_data.dart';
-import '../../../routes/app_pages.dart';
 import '../../loading_summer/loading.surat.dart';
 import '../../loading_summer/loading_card_profile.dart';
 import '../../loading_summer/loading_soap.dart';
@@ -79,6 +78,14 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                         snapshot.connectionState != ConnectionState.waiting &&
                         snapshot.data != null) {
                       final data = snapshot.data!;
+                      if (data.riwayatPemeriksaan != null) {
+                        controller.analystController.text =
+                            data.riwayatPemeriksaan!.analyst ?? '';
+                        controller.subjectiveController.text =
+                            data.riwayatPemeriksaan!.subyektive ?? '';
+                        controller.objectiveController.text =
+                            data.riwayatPemeriksaan!.objective ?? '';
+                      }
                       return Column(
                         children: AnimationConfiguration.toStaggeredList(
                           duration: const Duration(milliseconds: 375),
@@ -928,7 +935,7 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                       );
                     } else {
                       return Column(
-                        children: [
+                        children: const [
                           shimmerCardProfile(),
                           shimmerVitalSign(),
                           shimmerSoap(),

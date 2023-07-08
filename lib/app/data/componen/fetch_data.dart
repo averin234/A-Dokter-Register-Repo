@@ -1739,7 +1739,7 @@ class API {
       required String universitas,
       required String fakultas,
       required String noInduk}) async {
-    var token = Publics.controller.getToken.value;
+    var token = await getToken();
     final data = {
       "nama_pasien": nama,
       "email": email,
@@ -1787,7 +1787,7 @@ class API {
       required String tahunMasuk,
       required String semester,
       required String fakultas}) async {
-    var token = Publics.controller.getToken.value;
+    var token = await getToken();
     final data = {
       "nama": nama,
       "email": email,

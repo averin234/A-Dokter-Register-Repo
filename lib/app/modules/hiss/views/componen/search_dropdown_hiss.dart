@@ -27,7 +27,7 @@ class SearchHISSdropdowmn extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       dropdown(
-                        'Keadaan Umum',
+                        'Pilih Penyakit',
                         data,
                         controller.idController,
                         controller.namaController,
