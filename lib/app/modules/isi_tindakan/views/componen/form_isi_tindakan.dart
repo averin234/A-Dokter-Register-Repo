@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../loading_summer/loading_screen_animed.dart';
+
 class FormIsiTindakan extends StatefulWidget {
   const FormIsiTindakan({super.key});
 
@@ -220,8 +222,10 @@ class _FormIsiTindakanState extends State<FormIsiTindakan> {
               GestureDetector(
                 onTap: () async {
                   Get.defaultDialog(
-                    content: const CircularProgressIndicator(),
-                    title: 'Loading..',
+                    backgroundColor: Color(0xe0e0e0),
+                    content:
+                    Loading(),
+                    title: '',
                     barrierDismissible: false,
                   );
                   final postTindakan = await API.postTindakan(

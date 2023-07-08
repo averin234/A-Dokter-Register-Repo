@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../data/model/list_data.dart';
+import '../../../loading_summer/loading_screen_animed.dart';
 
 class FormICD10 extends StatefulWidget {
   const FormICD10({super.key});
@@ -212,8 +213,10 @@ class _FormICD10State extends State<FormICD10> {
               GestureDetector(
                 onTap: () async {
                   Get.defaultDialog(
-                    content: const CircularProgressIndicator(),
-                    title: 'Loading..',
+                    backgroundColor: Color(0xe0e0e0),
+                    content:
+                    Loading(),
+                    title: '',
                     barrierDismissible: false,
                   );
                   final postIcd = await API.postIcd10(

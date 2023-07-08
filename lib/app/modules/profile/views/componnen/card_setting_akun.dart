@@ -6,6 +6,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../../../routes/app_pages.dart';
+import '../../../loading_summer/loading_screen_animed.dart';
 import '../../controllers/profile_controller.dart';
 
 class CardSettingAkun extends GetView<ProfileController> {
@@ -593,8 +594,10 @@ class CardSettingAkun extends GetView<ProfileController> {
                               controller
                                   .confirmpwbaruController.text.isNotEmpty) {
                             Get.defaultDialog(
-                              content: const CircularProgressIndicator(),
-                              title: 'Loading..',
+                              backgroundColor: Color(0xe0e0e0),
+                              content:
+                              Loading(),
+                              title: '',
                               barrierDismissible: false,
                             );
                             final postUbahPassword = await API.postUbahPassword(

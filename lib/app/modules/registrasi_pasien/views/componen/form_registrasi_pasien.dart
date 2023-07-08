@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../data/componen/fetch_data.dart';
+import '../../../loading_summer/loading_screen_animed.dart';
 
 class FormRegistrasiPasien extends StatefulWidget {
   const FormRegistrasiPasien({super.key});
@@ -716,8 +717,10 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                       GestureDetector(
                         onTap: () async {
                           Get.defaultDialog(
-                            content: const CircularProgressIndicator(),
-                            title: 'Loading..',
+                            backgroundColor: Color(0xe0e0e0),
+                            content:
+                            Loading(),
+                            title: '',
                             barrierDismissible: false,
                           );
                           final postPasien = await API.postPasienBaru(

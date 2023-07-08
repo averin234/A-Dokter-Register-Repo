@@ -10,6 +10,7 @@ import 'package:intl/intl.dart';
 
 import '../../../data/model/get_detail_pasien.dart';
 import '../../loading_summer/loading_card_profile.dart';
+import '../../loading_summer/loading_screen_animed.dart';
 import '../controllers/detail_regist_pasien_lama_controller.dart';
 import 'componen/card_profile_pasien.dart';
 import 'componen/form_pasien_lama.dart';
@@ -52,8 +53,10 @@ class DetailRegistPasienLamaView extends GetView<DetailRegistPasienLamaControlle
               child: InkWell(
                 onTap: () async {
                   Get.defaultDialog(
-                    content: const CircularProgressIndicator(),
-                    title: 'Loading..',
+                    backgroundColor: Color(0xe0e0e0),
+                    content:
+                    Loading(),
+                    title: '',
                     barrierDismissible: false,
                   );
                   final postAntrian = await API.postDaftarPx(

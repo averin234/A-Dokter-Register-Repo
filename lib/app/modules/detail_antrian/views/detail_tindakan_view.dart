@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import '../../../data/model/list_data.dart';
 import '../../loading_summer/loading.surat.dart';
 import '../../loading_summer/loading_card_profile.dart';
+import '../../loading_summer/loading_screen_animed.dart';
 import '../../loading_summer/loading_soap.dart';
 import '../../loading_summer/loading_vital_sign.dart';
 import '../controllers/detail_tindakan_controller.dart';
@@ -832,10 +833,10 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                           InkWell(
                                                             onTap: () async {
                                                               Get.defaultDialog(
+                                                                backgroundColor: Color(0xe0e0e0),
                                                                 content:
-                                                                    const CircularProgressIndicator(),
-                                                                title:
-                                                                    'Loading..',
+                                                                Loading(),
+                                                                title: '',
                                                                 barrierDismissible:
                                                                     false,
                                                               );

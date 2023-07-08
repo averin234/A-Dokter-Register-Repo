@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../data/model/list_data.dart';
 import '../../../../routes/app_pages.dart';
+import '../../../loading_summer/loading_screen_animed.dart';
 
 class FormIsiResep extends StatefulWidget {
   const FormIsiResep({super.key});
@@ -586,8 +587,10 @@ class _FormIsiResepState extends State<FormIsiResep> {
               GestureDetector(
                 onTap: () async {
                   Get.defaultDialog(
-                    content: const CircularProgressIndicator(),
-                    title: 'Loading..',
+                    backgroundColor: Color(0xe0e0e0),
+                    content:
+                    Loading(),
+                    title: '',
                     barrierDismissible: false,
                   );
                   final postResep = await API.postResep(

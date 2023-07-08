@@ -5,6 +5,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/assestment.dart';
 import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/objektive.dart';
+import '../../../../loading_summer/loading_screen_animed.dart';
 import 'subyektif.dart';
 import '../../../../../routes/app_pages.dart';
 
@@ -120,8 +121,10 @@ class Soap extends StatelessWidget {
               InkWell(
                 onTap: () async {
                   Get.defaultDialog(
-                    content: const CircularProgressIndicator(),
-                    title: 'Loading..',
+                    backgroundColor: Color(0xe0e0e0),
+                    content:
+                    Loading(),
+                    title: '',
                     barrierDismissible: false,
                   );
                   final data = await API.postSoap(

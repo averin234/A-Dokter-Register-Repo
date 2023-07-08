@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../data/model/login_and_regist/akses_px.dart';
 import '../../../routes/app_pages.dart';
+import '../../loading_summer/loading_screen_animed.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({Key? key}) : super(key: key);
@@ -186,9 +187,9 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                         controller.passwordController.text
                                             .isNotEmpty) {
                                       Get.defaultDialog(
+                                        backgroundColor: Color(0xe0e0e0),
                                         content:
-                                            const CircularProgressIndicator(),
-                                        title: 'Loading..',
+                                        Loading(),
                                         barrierDismissible: false,
                                       );
                                       AksesPx aksesPX = await API.getAksesPx(

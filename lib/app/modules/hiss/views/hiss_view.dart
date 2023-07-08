@@ -11,6 +11,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../../routes/app_pages.dart';
+import '../../loading_summer/loading_screen_animed.dart';
 import '../controllers/hiss_controller.dart';
 import 'componen/card_hiss/gejala.dart';
 import 'componen/hiss_soap/assestment.dart';
@@ -66,8 +67,10 @@ class HissViewState extends State<HissView> {
               child: InkWell(
                 onTap: () async {
                   Get.defaultDialog(
-                    content: const CircularProgressIndicator(),
-                    title: 'Loading..',
+                    backgroundColor: Color(0xe0e0e0),
+                    content:
+                    Loading(),
+                    title: '',
                     barrierDismissible: false,
                   );
                   final soap = await API.postSoap(
