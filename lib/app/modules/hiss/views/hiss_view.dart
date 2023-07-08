@@ -65,27 +65,47 @@ class HissViewState extends State<HissView> {
             Expanded(
               child: InkWell(
                 onTap: () async {
+                  Get.defaultDialog(
+                    content: const CircularProgressIndicator(),
+                    title: 'Loading..',
+                    barrierDismissible: false,
+                  );
                   final soap = await API.postSoap(
                     no_registrasi: controller.noRegistrasi,
                     subjective: controller.subjectiveController.text,
                     analyst: controller.analystController.text,
                     objective: controller.objectiveController.text,
                   );
-                  soap.code == 200
-                      ? showModalBottomSheet(
-                          context: context,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(20),
+                  if (soap.code == 200) {
+                    final icd10 = await API.postIcd10(
+                      no_registrasi: controller.noRegistrasi,
+                      icd_10: controller.icd10Controller.text,
+                      icd_asterik: '',
+                      kasus_pasien: '1',
+                    );
+                    Get.back();
+                    icd10.code == 200
+                        ? showModalBottomSheet(
+                            context: context,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(20),
+                              ),
                             ),
-                          ),
-                          builder: (context) =>
-                              buildSheetberhasil(title: soap.msg ?? ''),
-                        )
-                      : Get.defaultDialog(
-                          title: (soap.code ?? 0).toString(),
-                          content: Text(soap.msg ?? ''),
-                        );
+                            builder: (context) =>
+                                buildSheetberhasil(title: soap.msg ?? ''),
+                          )
+                        : Get.defaultDialog(
+                            title: (icd10.code ?? 0).toString(),
+                            content: Text(icd10.msg ?? ''),
+                          );
+                  } else {
+                    Get.back();
+                    Get.defaultDialog(
+                      title: (soap.code ?? 0).toString(),
+                      content: Text(soap.msg ?? ''),
+                    );
+                  }
                 },
                 child: Container(
                   margin: const EdgeInsets.only(

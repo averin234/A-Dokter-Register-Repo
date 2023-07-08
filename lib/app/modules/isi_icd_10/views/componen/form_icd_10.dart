@@ -211,12 +211,18 @@ class _FormICD10State extends State<FormICD10> {
             children: [
               GestureDetector(
                 onTap: () async {
+                  Get.defaultDialog(
+                    content: const CircularProgressIndicator(),
+                    title: 'Loading..',
+                    barrierDismissible: false,
+                  );
                   final postIcd = await API.postIcd10(
                     no_registrasi: controller.noRegistrasi,
                     icd_10: controller.icd10Controller.text,
                     icd_asterik: controller.asterixController.text,
                     kasus_pasien: id.toString(),
                   );
+                  Get.back();
                   if (postIcd.code == 200) {
                     Get.toNamed(Routes.DETAIL_TINDAKAN, parameters: {
                       'no_mr': controller.noMr,

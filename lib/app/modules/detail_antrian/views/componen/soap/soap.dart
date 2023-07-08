@@ -119,12 +119,18 @@ class Soap extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () async {
+                  Get.defaultDialog(
+                    content: const CircularProgressIndicator(),
+                    title: 'Loading..',
+                    barrierDismissible: false,
+                  );
                   final data = await API.postSoap(
                     no_registrasi: controller.noRegistrasi,
                     objective: controller.objectiveController.text,
                     subjective: controller.subjectiveController.text,
                     analyst: controller.analystController.text,
                   );
+                  Get.back();
                   if (data.code != 200) {
                     Get.defaultDialog(
                       title: (data.code ?? 0).toString(),

@@ -310,6 +310,11 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
             controller.falkultasController.text.isNotEmpty &&
             controller.noindukdosenController.text.isNotEmpty &&
             controller.universitasController.text.isNotEmpty) {
+          Get.defaultDialog(
+            content: const CircularProgressIndicator(),
+            title: 'Loading..',
+            barrierDismissible: false,
+          );
           final daftarPXBaru = await API.postDaftarPxBaruDosen(
             nama: controller.namaController.text,
             email: controller.emailController.text,
@@ -318,13 +323,14 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
             noInduk: controller.noindukdosenController.text,
             universitas: controller.universitasController.text,
           );
+          Get.back();
           if (daftarPXBaru.code != 200) {
             Get.snackbar(
                 daftarPXBaru.code.toString(), daftarPXBaru.msg.toString());
           } else {
             showModalBottomSheet(
               context: context,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(20),
                 ),
@@ -364,7 +370,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -374,14 +380,14 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Pedaftaran Register Dosen Berhasil",
                   style: TextStyle(
@@ -389,7 +395,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -405,7 +411,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                       ),
                     ),
                     children: <Widget>[
-                      Text(
+                      const Text(
                           "Silahkan cek Email yang sudah anda daftarkan untuk mendapatkan akses akun A-Dokter ",
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -417,21 +423,21 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             InkWell(
               onTap: () => _launchUrl('https://mail.google.com/'),
               child: Container(
                 height: 45,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 56, 229, 77),
+                  color: const Color.fromARGB(255, 56, 229, 77),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       "Silahkan Periksa Email",
                       style: TextStyle(
@@ -443,7 +449,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

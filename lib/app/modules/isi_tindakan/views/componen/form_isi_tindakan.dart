@@ -219,6 +219,11 @@ class _FormIsiTindakanState extends State<FormIsiTindakan> {
             children: [
               GestureDetector(
                 onTap: () async {
+                  Get.defaultDialog(
+                    content: const CircularProgressIndicator(),
+                    title: 'Loading..',
+                    barrierDismissible: false,
+                  );
                   final postTindakan = await API.postTindakan(
                     no_registrasi: controller.noRegistrasi,
                     kode_tarif: controller.tindakanController.text,
@@ -226,6 +231,7 @@ class _FormIsiTindakanState extends State<FormIsiTindakan> {
                     kode_brg: controller.obatTindakanController.text,
                     jumlah_obat: controller.jumlahObatTindakanController.text,
                   );
+                  Get.back();
                   if (postTindakan.code == 200) {
                     Get.toNamed(Routes.DETAIL_TINDAKAN, parameters: {
                       'no_mr': controller.noMr,

@@ -58,6 +58,11 @@ class _DetailRegistPasienLamaViewState
             Expanded(
               child: InkWell(
                 onTap: () async {
+                  Get.defaultDialog(
+                    content: const CircularProgressIndicator(),
+                    title: 'Loading..',
+                    barrierDismissible: false,
+                  );
                   final postAntrian = await API.postDaftarPx(
                     no_antrian: controller.antrianController.text,
                     kode_dokter:
@@ -71,6 +76,7 @@ class _DetailRegistPasienLamaViewState
                     yankes: controller.yankesController.text,
                     jadwal: DateFormat('yyyy-MM-dd').format(DateTime.now()),
                   );
+                  Get.back();
                   if (postAntrian.code == 200) {
                     await showModalBottomSheet(
                       context: context,

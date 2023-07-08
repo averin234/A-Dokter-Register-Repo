@@ -715,6 +715,11 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                     children: [
                       GestureDetector(
                         onTap: () async {
+                          Get.defaultDialog(
+                            content: const CircularProgressIndicator(),
+                            title: 'Loading..',
+                            barrierDismissible: false,
+                          );
                           final postPasien = await API.postPasienBaru(
                             kode_dokter:
                                 Publics.controller.getDataRegist.value.kode ??
@@ -747,6 +752,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                             no_polis: controller.noPolisController.text,
                             id_yankes: controller.yankesController.text,
                           );
+                          Get.back();
                           if (postPasien.code == 200) {
                             Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA,
                                 parameters: {
@@ -784,24 +790,27 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                       const SizedBox(
                         width: 10,
                       ),
-                      Container(
-                        height: 45,
-                        width: 105,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text(
-                              "batal",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
-                            )
-                          ],
+                      GestureDetector(
+                        onTap: () => Get.back(),
+                        child: Container(
+                          height: 45,
+                          width: 105,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text(
+                                "batal",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ],

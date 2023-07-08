@@ -396,6 +396,11 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             controller.noTelpController.text.isNotEmpty &&
             controller.kodeBagianController.text.isNotEmpty &&
             controller.sipController.text.isNotEmpty) {
+          Get.defaultDialog(
+            content: const CircularProgressIndicator(),
+            title: 'Loading..',
+            barrierDismissible: false,
+          );
           final daftarPXBaru = await API.postDaftarPxBaruDokter(
             nama: controller.namaController.text,
             email: controller.emailController.text,
@@ -403,6 +408,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             kodeBagian: controller.kodeBagianController.text,
             sip: controller.sipController.text,
           );
+          Get.back();
           if (daftarPXBaru.code != 200) {
             Get.snackbar(
                 daftarPXBaru.code.toString(), daftarPXBaru.msg.toString());

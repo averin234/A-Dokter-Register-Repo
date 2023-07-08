@@ -771,6 +771,14 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                           ),
                                                           InkWell(
                                                             onTap: () async {
+                                                              Get.defaultDialog(
+                                                                content:
+                                                                    const CircularProgressIndicator(),
+                                                                title:
+                                                                    'Loading..',
+                                                                barrierDismissible:
+                                                                    false,
+                                                              );
                                                               final postVS = await API.postVitalSign(
                                                                   no_registrasi:
                                                                       controller
@@ -805,6 +813,7 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                                       controller
                                                                           .beratBadanController
                                                                           .text);
+                                                              Get.back();
                                                               if (postVS.code !=
                                                                   200) {
                                                               } else {
@@ -918,12 +927,14 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                         ),
                       );
                     } else {
-                      return Column(children: [
-                        shimmerCardProfile(),
-                        shimmerVitalSign(),
-                        shimmerSoap(),
-                        shimmerSurat(),
-                      ],);
+                      return Column(
+                        children: [
+                          shimmerCardProfile(),
+                          shimmerVitalSign(),
+                          shimmerSoap(),
+                          shimmerSurat(),
+                        ],
+                      );
                     }
                   }),
             ]),

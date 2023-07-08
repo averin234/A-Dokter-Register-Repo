@@ -585,6 +585,11 @@ class _FormIsiResepState extends State<FormIsiResep> {
             children: [
               GestureDetector(
                 onTap: () async {
+                  Get.defaultDialog(
+                    content: const CircularProgressIndicator(),
+                    title: 'Loading..',
+                    barrierDismissible: false,
+                  );
                   final postResep = await API.postResep(
                       no_registrasi: controller.noRegistrasi,
                       id_dc_kesediaan_obat: controller.idKesediaan.value,
@@ -594,6 +599,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                       txt_jumlah: controller.jumlahController.text,
                       id_stok: '',
                       flag_dosis: id.toString());
+                  Get.back();
                   if (postResep.code == 200) {
                     Get.toNamed(Routes.DETAIL_TINDAKAN, parameters: {
                       'no_mr': controller.noMr,

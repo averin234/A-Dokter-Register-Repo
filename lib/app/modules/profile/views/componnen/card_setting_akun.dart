@@ -592,6 +592,11 @@ class CardSettingAkun extends GetView<ProfileController> {
                           if (controller.pwbaruController.text.isNotEmpty &&
                               controller
                                   .confirmpwbaruController.text.isNotEmpty) {
+                            Get.defaultDialog(
+                              content: const CircularProgressIndicator(),
+                              title: 'Loading..',
+                              barrierDismissible: false,
+                            );
                             final postUbahPassword = await API.postUbahPassword(
                               email: Publics
                                       .controller.getDataRegist.value.email ??
@@ -599,6 +604,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                               pw_baru: controller.pwbaruController.text,
                               pw_lama: controller.pwlamaController.text,
                             );
+                            Get.back();
                             if (postUbahPassword.code == 200) {
                               Get.back();
                             } else {
