@@ -11,4 +11,5 @@ class DetailRegistPasienLamaController extends GetxController {
   final noBPJSController = TextEditingController();
   final noPolisController = TextEditingController();
   final nasabahController = TextEditingController();
+  final count = 0.obs;
 }

@@ -30,6 +30,7 @@ dependencies:
   dropdown_button2: ^1.4.0
   dropdown_search: ^5.0.6
   email_validator: ^2.1.17
+  flutter_speed_dial: ^3.0.5
   fl_chart: ^0.62.0
   flutter:
     sdk: flutter

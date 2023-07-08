@@ -8,21 +8,14 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../../data/model/get_detail_pasien.dart';
+import '../../loading_summer/loading_card_profile.dart';
 import '../controllers/detail_regist_pasien_lama_controller.dart';
 import 'componen/card_profile_pasien.dart';
 import 'componen/form_pasien_lama.dart';
+class DetailRegistPasienLamaView extends GetView<DetailRegistPasienLamaController> {
+  const DetailRegistPasienLamaView({Key? key}) : super(key: key);
 
-class DetailRegistPasienLamaView extends StatefulWidget {
-  const DetailRegistPasienLamaView({super.key});
-
-  @override
-  State<DetailRegistPasienLamaView> createState() =>
-      _DetailRegistPasienLamaViewState();
-}
-
-class _DetailRegistPasienLamaViewState
-    extends State<DetailRegistPasienLamaView> {
-  final controller = Get.put(DetailRegistPasienLamaController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -191,7 +184,20 @@ class _DetailRegistPasienLamaViewState
               const SizedBox(
                 height: 10,
               ),
-              const ProfileLama(),
+              FutureBuilder(
+                  future: API.getDetailPasien(no_mr: controller.noMr),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData &&
+                        snapshot.connectionState != ConnectionState.waiting &&
+                        snapshot.data != null) {
+                      final data = snapshot.data!.pasien ?? Pasien();
+                      return ProfilePasienLama(pasien: data);
+                    } else {
+                      return Column(children: [
+                        shimmerCardProfile(),
+                      ],);
+                    }
+                  }),
               const SizedBox(
                 height: 5,
               ),

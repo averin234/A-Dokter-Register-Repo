@@ -225,8 +225,8 @@ class ProfilePasienTindakan extends StatelessWidget {
                     onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
                         parameters: {'no_mr': pasien.noMr ?? ''}),
                     child: Container(
+                      padding: EdgeInsets.all(10),
                       height: 45,
-                      width: 230,
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 56, 229, 77),
                         borderRadius: BorderRadius.circular(10),
@@ -244,6 +244,41 @@ class ProfilePasienTindakan extends StatelessWidget {
                         children: const [
                           Text(
                             "Lihat Riwayat MR",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  InkWell(
+                    onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
+                        parameters: {'no_mr': pasien.noMr ?? ''}),
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      height: 45,
+                      decoration: BoxDecoration(
+                        color:  Colors.redAccent,
+                        borderRadius: BorderRadius.circular(10),
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //     color: Colors.green.withOpacity(0.5),
+                        //     spreadRadius: 0,
+                        //     blurRadius: 10,
+                        //     offset: const Offset(6, 6),
+                        //   ),
+                        // ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Text(
+                            "Privy Sign",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

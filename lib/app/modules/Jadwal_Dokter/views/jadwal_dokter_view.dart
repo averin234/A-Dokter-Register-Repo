@@ -7,6 +7,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
+import '../../loading_summer/loading_atur_jadwal_dokter.dart';
 import 'componen/card_jadwal.dart';
 
 class JadwalDokterView extends StatefulWidget {
@@ -135,9 +136,17 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                             .toList()),
                               );
                       } else {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
+                        return Column(children: [
+                          shimmerAturJadwal(),
+                          shimmerAturJadwal(),
+                          shimmerAturJadwal(),
+                          shimmerAturJadwal(),
+                          shimmerAturJadwal(),
+                          shimmerAturJadwal(),
+                          shimmerAturJadwal(),
+                          shimmerAturJadwal(),
+                          shimmerAturJadwal(),
+                        ],);
                       }
                     }),
               ],

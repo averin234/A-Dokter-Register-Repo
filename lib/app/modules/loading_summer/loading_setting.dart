@@ -38,6 +38,21 @@ class shimmerSetting extends StatelessWidget {
               Shimmer(
                 child:
               Container(
+                height: 10,
+                decoration: BoxDecoration(
+                  color: Color(0xFFBACDDB),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding: EdgeInsets.all(10),
+                constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
+              ),),
+              SizedBox(
+                height: 20,
+              ),
+              Shimmer(
+                child:
+              Container(
+                height: 10,
                 decoration: BoxDecoration(
                   color: Color(0xFFBACDDB),
                   borderRadius: BorderRadius.circular(10),
@@ -51,6 +66,7 @@ class shimmerSetting extends StatelessWidget {
               Shimmer(
                 child:
               Container(
+                height: 10,
                 decoration: BoxDecoration(
                   color: Color(0xFFBACDDB),
                   borderRadius: BorderRadius.circular(10),
@@ -64,6 +80,7 @@ class shimmerSetting extends StatelessWidget {
               Shimmer(
                 child:
               Container(
+                height: 10,
                 decoration: BoxDecoration(
                   color: Color(0xFFBACDDB),
                   borderRadius: BorderRadius.circular(10),
@@ -77,19 +94,7 @@ class shimmerSetting extends StatelessWidget {
               Shimmer(
                 child:
               Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFFBACDDB),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                padding: EdgeInsets.all(10),
-                constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-              ),),
-              SizedBox(
                 height: 10,
-              ),
-              Shimmer(
-                child:
-              Container(
                 decoration: BoxDecoration(
                   color: Color(0xFFBACDDB),
                   borderRadius: BorderRadius.circular(10),

@@ -71,6 +71,7 @@ class _PenunjangState extends State<Penunjang> {
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.none,
             maxLines: 7,
+            readOnly: true,
             decoration: const InputDecoration(
               border: InputBorder.none,
               focusedBorder: InputBorder.none,

@@ -10,6 +10,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../detail_regist_pasien_lama/views/detail_regist_pasien_lama_view.dart';
+import '../../loading_summer/loading_pasien_lama.dart';
 import '../controllers/tambah_pasien_lama_controller.dart';
 
 class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
@@ -46,7 +47,7 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
             pinned: true,
             snap: true,
             automaticallyImplyLeading: false,
-            title: const Text('Daftar Pasien'),
+            title: const Text('Daftar Pasien Lama'),
             // bottom: AppBar(
             //   shape: const RoundedRectangleBorder(
             //     borderRadius: BorderRadius.vertical(
@@ -69,6 +70,7 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
+
               const SizedBox(
                 height: 10,
               ),
@@ -94,9 +96,20 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
                                 .toList()),
                       );
                     } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
+                      return Column(children: [
+                        shimmerPasienLama(),
+                        shimmerPasienLama(),
+                        shimmerPasienLama(),
+                        shimmerPasienLama(),
+                        shimmerPasienLama(),
+                        shimmerPasienLama(),
+                        shimmerPasienLama(),
+                        shimmerPasienLama(),
+                        shimmerPasienLama(),
+                        shimmerPasienLama(),
+                        shimmerPasienLama(),
+                        shimmerPasienLama(),
+                      ],);
                     }
                   }),
               // DetailRegistPasienLamaView(),

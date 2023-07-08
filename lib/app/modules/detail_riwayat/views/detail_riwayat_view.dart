@@ -6,6 +6,9 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
+import '../../loading_summer/loading.pendapatan.dart';
+import '../../loading_summer/loading_soap.dart';
+import '../../loading_summer/loading_vital_sign.dart';
 import '../controllers/detail_riwayat_controller.dart';
 import 'componen/riwayat.vitalsign.dart';
 import 'componen/riwayat_resep.dart';
@@ -121,9 +124,11 @@ class DetailRiwayatView extends GetView<DetailRiwayatController> {
                         ),
                       );
                     } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
+                      return Column(children: [
+                        shimmerVitalSign(),
+                        shimmerSoap(),
+                        shimmerPendapatan(),
+                      ],);
                     }
                   }),
             ]),
