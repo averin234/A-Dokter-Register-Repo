@@ -32,7 +32,6 @@ class IsiTindakanView extends GetView<IsiTindakanController> {
             floating: true,
             pinned: true,
             snap: true,
-            centerTitle: true,
             leading: IconButton(
               onPressed: () {
                 Get.back();

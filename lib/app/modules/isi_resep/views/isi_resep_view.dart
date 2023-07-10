@@ -11,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../data/componen/fetch_data.dart';
 import '../../../data/model/list_data.dart';
+import '../../bottomsheet/bottomsheet_tambah_data_obat.dart';
 
 class IsiResepView extends GetView<IsiResepController> {
   const IsiResepView({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class IsiResepView extends GetView<IsiResepController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            toolbarHeight: 70,
             systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
@@ -35,7 +37,6 @@ class IsiResepView extends GetView<IsiResepController> {
             floating: true,
             pinned: true,
             snap: true,
-            centerTitle: true,
             leading: IconButton(
               onPressed: () {
                 Get.back();
@@ -46,6 +47,24 @@ class IsiResepView extends GetView<IsiResepController> {
               ),
               color: const Color.fromARGB(255, 192, 192, 192),
             ),
+            actions: [
+              Column(children: [
+              IconButton(
+                onPressed: () {
+                  bottomSheetTambahDataObat();
+                },
+                icon: const Icon(
+                  Icons.medication_liquid_rounded,
+                  size: 30,
+                ),
+                color: Colors.blueAccent,
+              ),
+                Text('Master Obat'),
+              ],),
+              SizedBox(
+                width: 10,
+              ),
+            ],
             title: const Text("Resep", style: TextStyle(color: Colors.black)),
             bottom: AppBar(
               toolbarHeight: 0,

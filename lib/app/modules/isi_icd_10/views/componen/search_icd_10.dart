@@ -23,7 +23,6 @@ class _SearchICD10State extends State<SearchICD10> {
           margin: const EdgeInsets.only(left: 10, right: 10),
           height: 50,
           decoration: BoxDecoration(
-            color: const Color(0xfff3f3f3),
             border: Border.all(color: const Color(0x6cc7d1db)),
             borderRadius: BorderRadius.circular(10),
           ),

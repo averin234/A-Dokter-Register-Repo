@@ -165,8 +165,8 @@ class Surat extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(left: 10, right: 10),
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
-                          borderRadius: BorderRadius.circular(22),
+                          border: Border.all(color: const Color(0x6cc7d1db)),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextField(
                           decoration: InputDecoration(
@@ -199,8 +199,8 @@ class Surat extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(left: 10, right: 10),
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
-                          borderRadius: BorderRadius.circular(22),
+                          border: Border.all(color: const Color(0x6cc7d1db)),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextField(
                           keyboardType: TextInputType.text,
@@ -371,8 +371,8 @@ class Surat extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(left: 10, right: 10),
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
-                          borderRadius: BorderRadius.circular(22),
+                          border: Border.all(color: const Color(0x6cc7d1db)),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextField(
                           decoration: InputDecoration(
@@ -404,8 +404,8 @@ class Surat extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(left: 10, right: 10),
                         decoration: BoxDecoration(
-                          color: Color(0xfff3f3f3),
-                          borderRadius: BorderRadius.circular(22),
+                          border: Border.all(color: const Color(0x6cc7d1db)),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextField(
                           keyboardType: TextInputType.text,

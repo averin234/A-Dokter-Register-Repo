@@ -60,7 +60,7 @@ class CardDokterSetting extends GetView<ProfileController> {
                                     fontWeight: FontWeight.bold,color: Colors.blue,
                                     fontSize: 16)),
                             const SizedBox(
-                              height: 10,
+                              height: 5,
                             ),
                             Row(
                               children: [
@@ -73,28 +73,11 @@ class CardDokterSetting extends GetView<ProfileController> {
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                InkWell(
-                                  onTap: () {
-                                    showModalBottomSheet(
-                                      context: context,
-                                      backgroundColor: Colors.white,
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(20),
-                                        ),
-                                      ),
-                                      builder: (context) => buildSheet(),
-                                    );
-                                  },
-                                  child : Column(children: [
-                                Icon(Icons.add_card),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text('Kasir',style: TextStyle(fontSize: 14)),],),),
                               ],
                             ),
-
+                            const SizedBox(
+                              height: 5,
+                            ),
                             Text("Spesialis : ${dokter.namaSpesialisasi ?? ''}",
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16)),

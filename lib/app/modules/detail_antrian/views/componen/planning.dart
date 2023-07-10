@@ -392,8 +392,8 @@ class Planning extends StatelessWidget {
                           margin: const EdgeInsets.only(left: 10, right: 10),
                           height: 50,
                           decoration: BoxDecoration(
-                            color: const Color(0xfff3f3f3),
-                            borderRadius: BorderRadius.circular(22),
+                            border: Border.all(color: const Color(0x6cc7d1db)),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           child: const TextField(
                             decoration: InputDecoration(
@@ -426,8 +426,8 @@ class Planning extends StatelessWidget {
                           margin: const EdgeInsets.only(left: 10, right: 10),
                           height: 120,
                           decoration: BoxDecoration(
-                            color: const Color(0xfff3f3f3),
-                            borderRadius: BorderRadius.circular(22),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: const Color(0x6cc7d1db)),
                           ),
                           child: const TextField(
                             keyboardType: TextInputType.text,

@@ -48,8 +48,8 @@ android {
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
        minSdkVersion 24
         targetSdkVersion 32
-        versionCode 21
-        versionName "1.1.2"
+        versionCode 22
+        versionName "1.1.3"
         multiDexEnabled true
     }
 
@@ -58,7 +58,7 @@ android {
     
      signingConfigs {
         release {
-            storeFile file('C:/Users/ekoaj/Documents/Kantor/JKS/Averin_dev.jks')
+            storeFile file('C:/Users/irwan/Averin_dev.jks')
             storePassword '48family'
             keyAlias = 'Averin2023'
             keyPassword '48family'

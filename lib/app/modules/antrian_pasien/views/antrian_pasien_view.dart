@@ -17,7 +17,6 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            toolbarHeight: 0,
             systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
@@ -33,8 +32,7 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
             floating: true,
             pinned: true,
             snap: true,
-            centerTitle: true,
-
+            title: Text('Antrian Pasien'),
             leading: IconButton(
                 onPressed: () {},
                 icon: const Icon(
@@ -42,14 +40,13 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
                   size: 40,
                 ),
                 color: const Color.fromARGB(255, 192, 192, 192)),
-
             bottom: AppBar(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
               ),
-              toolbarHeight: 120,
+              toolbarHeight: 85,
               automaticallyImplyLeading: false,
               elevation: 0,
               title: const HorizontalCalender(),

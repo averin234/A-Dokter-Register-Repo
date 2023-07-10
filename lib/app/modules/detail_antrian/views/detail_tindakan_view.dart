@@ -93,7 +93,6 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
             floating: true,
             pinned: true,
             snap: true,
-            centerTitle: true,
             leading: IconButton(
               onPressed: () {
                 Get.back();

@@ -89,7 +89,6 @@ class _FormICD10State extends State<FormICD10> {
             padding: const EdgeInsets.only(right: 10),
             margin: const EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: const Color(0x6cc7d1db)),
             ),
@@ -135,7 +134,6 @@ class _FormICD10State extends State<FormICD10> {
             padding: const EdgeInsets.only(right: 10),
             margin: const EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
-              color: const Color(0xfff3f3f3),
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: const Color(0x6cc7d1db)),
             ),
@@ -365,6 +363,7 @@ class AppTextField extends StatelessWidget {
         cursorColor: Colors.black,
         onTap: onTextFieldTap,
         decoration: InputDecoration(
+          fillColor: Colors.transparent,
           filled: true,
           suffixIcon: const Icon(Icons.arrow_drop_down_circle),
           contentPadding:
@@ -487,6 +486,7 @@ class AppTextFieldIcd10 extends StatelessWidget {
         onTap: onTextFieldTap,
         decoration: InputDecoration(
           filled: true,
+          fillColor: Colors.transparent,
           suffixIcon: const Icon(Icons.arrow_drop_down_circle),
           contentPadding:
               const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),

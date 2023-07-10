@@ -19,12 +19,19 @@ class ListViewTindakan extends StatelessWidget {
         'no_mr': antrian.noMr ?? ''
       }),
       child: Container(
-        margin: const EdgeInsets.only(right: 5, left: 5, bottom: 5),
         padding: const EdgeInsets.only(right: 0, left: 10, bottom: 10),
         decoration: BoxDecoration(
           border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              spreadRadius: 0,
+              blurRadius: 10,
+              offset: const Offset(2, 1),
+            ),
+          ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,6 +40,7 @@ class ListViewTindakan extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                       margin:
@@ -46,70 +54,121 @@ class ListViewTindakan extends StatelessWidget {
                         backgroundColor: Colors.transparent,
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 150,
-                            child : Text(
-                              antrian.namaPasien ?? '',
+                    SizedBox(
+                      child : Text(
+                        antrian.namaPasien ?? '',
+                        textAlign: TextAlign.start,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                        ),
+                      ),),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("No MR :",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 13)),
+                          const SizedBox(
+                            width: 6,
+                          ),
+                          Text(antrian.noMr ?? '',
                               style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 13)),
+                        ],
+                      ),
+                    ],),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(right: 10,top: 10,bottom: 10),
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 233, 231, 253),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(children: [
+                            Text(
+                              "Antrian .${antrian.noAntrian ?? ''}",
+                              style: const TextStyle(
+                                color: Colors.black,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 13,
                               ),
-                            ),),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Image.asset(
+                              'assets/images/ngantri.png',
+                              height: 40,
+                            ),
+                          ],)
 
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 233, 231, 253),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Text(
-                                "Antrian .${antrian.noAntrian ?? ''}",
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Row(
-                          children: [
-                            const Text("No MR :",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 13)),
-                            const SizedBox(
-                              width: 6,
-                            ),
-                            Text(antrian.noMr ?? '',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 13)),
-                          ],
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
                   ],
                 ),
+
               ],
+            ),
+            Container(
+              padding: const EdgeInsets.only(right: 7,left: 7, top: 7, bottom: 7),
+              margin: EdgeInsets.only(right: 10),
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 219, 246, 253),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Pendaftaran",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 12),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.calendar_month_rounded,
+                        color: Color.fromARGB(255, 35, 163, 223),
+                        size: 24.0,
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Text(antrian.tglJamPoli ?? ''),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Icon(
+                        Icons.access_time_filled_rounded,
+                        color: Color.fromARGB(255, 35, 163, 223),
+                        size: 24.0,
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      const Text("20:00:00"),
+                    ],
+                  ),
+                ],
+              ),
             ),
             Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.only(left: 10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,58 +176,10 @@ class ListViewTindakan extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      Container(
-                        padding: const EdgeInsets.only(
-                            right: 40, left: 7, top: 7, bottom: 7),
-                        decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 219, 246, 253),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Pendaftaran",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 12),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.calendar_month_rounded,
-                                  color: Color.fromARGB(255, 35, 163, 223),
-                                  size: 24.0,
-                                ),
-                                const SizedBox(
-                                  width: 4,
-                                ),
-                                Text(antrian.tglJamPoli ?? ''),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                const Icon(
-                                  Icons.access_time_filled_rounded,
-                                  color: Color.fromARGB(255, 35, 163, 223),
-                                  size: 24.0,
-                                ),
-                                const SizedBox(
-                                  width: 4,
-                                ),
-                                const Text("20:00:00"),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
                       const SizedBox(
                         height: 10,
                       ),
                       Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
                             onTap: () => showModalBottomSheet(
