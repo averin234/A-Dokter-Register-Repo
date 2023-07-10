@@ -94,7 +94,7 @@ class HomeView extends GetView<HomeController> {
                             : Colors.blue,
                       ),
                       const Text(
-                        "Pendapatan",
+                        "Kasir",
                         style: TextStyle(color: Colors.black),
                       )
                     ],

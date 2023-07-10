@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
+import 'bottomsheet_bayar_kasir.dart';
 import 'bottomsheet_pulang.dart';
 
 Future bottomSheetBayar (){
@@ -813,13 +814,13 @@ Future bottomSheetBayar (){
                           children: [
                             InkWell(
                               onTap: () {
-                                bottomSheetPulang();
+                                bottomSheetBayarKasir();
                               },
                               child: Container(
                                 height: 45,
                                 width: 145,
                                 decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 56, 229, 77),
+                                  color: Colors.blue,
                                   borderRadius: BorderRadius.circular(10),
                                   // boxShadow: [
                                   //   BoxShadow(

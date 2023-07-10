@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../routes/app_pages.dart';
+import '../../../bottomsheet/bottomshet_bayar.dart';
 
 class Pendapatan extends StatelessWidget {
   final Kasir kasir;
@@ -36,6 +37,33 @@ class Pendapatan extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Padding(padding: EdgeInsets.only(right: 10, left: 10),
+              child :
+              InkWell(
+                onTap: () {
+                  bottomSheetBayar();
+                },
+                child : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Selesai Periksa',style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold)),
+                  Container(
+                    padding: EdgeInsets.only(right: 5,left: 5, top: 10, bottom: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.blue,
+                    ),
+                  child : Row(children: [
+                    Icon(Icons.monetization_on_rounded,color: Colors.white),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text('Cek Pembayaran Pasien',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white)),],),),
+                ],
+              ),),),
+              SizedBox(
+                height: 20,
+              ),
               Row(
                 children: [
                   Text('No Registrasi ',

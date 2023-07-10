@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
+import 'bottomsheet_selesai_pemeriksaan.dart';
+
 
 Future bottomSheetPulang (){
   return  showModalBottomSheet(
@@ -69,7 +71,7 @@ Future bottomSheetPulang (){
                       children: [
                         InkWell(
                           onTap: () {
-                            bottomSheetPulang();
+                            bottomSheetSelesaiPemeriksaan();
                           },
                           child: Container(
                             height: 45,

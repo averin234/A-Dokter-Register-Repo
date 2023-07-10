@@ -34,7 +34,7 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
             floating: true,
             pinned: true,
             snap: true,
-            title: Text('Pendapatan'),
+            title: Text('Kasir'),
 
             // actions: [
             //   IconButton(
