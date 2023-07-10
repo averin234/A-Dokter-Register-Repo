@@ -79,7 +79,6 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
       ),
       body: SingleChildScrollView(
         child: SizedBox(
-          height: size.height,
           child: Container(
             alignment: Alignment.center,
             decoration: const BoxDecoration(),
@@ -102,7 +101,6 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                       ),
                       Container(
                         width: size.width * .9,
-                        height: size.width * 1.4,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(15),
@@ -116,7 +114,9 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            const SizedBox(),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             Text(
                               'Register Dokter',
                               style: TextStyle(
@@ -170,20 +170,32 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 false,
                                 false,
                                 controller.namaController),
+                            SizedBox(
+                              height: 10,
+                            ),
                             component1(Icons.email_outlined, 'Email...', false,
                                 true, controller.emailController),
+                            SizedBox(
+                              height: 10,
+                            ),
                             componentnamber(
                                 Icons.phone_android_rounded,
                                 'No HP...',
                                 false,
                                 false,
                                 controller.noTelpController),
+                            SizedBox(
+                              height: 10,
+                            ),
                             component1(
                                 Icons.credit_card_rounded,
                                 'Surat Izin Praktek...',
                                 false,
                                 false,
                                 controller.sipController),
+                            SizedBox(
+                              height: 10,
+                            ),
                             dropdown(
                                 id,
                                 Icons.credit_card_rounded,
@@ -192,7 +204,47 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 false,
                                 controller.kodeBagianController,
                                 controller.namaSpesialisController),
-                            const SizedBox(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            component1(
+                                Icons.add_card_outlined,
+                                'No Rekening...',
+                                false,
+                                false,
+                                controller.sipController),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            dropdown(
+                                id,
+                                Icons.comment_bank,
+                                'Nama Bank...',
+                                false,
+                                false,
+                                controller.kodeBagianController,
+                                controller.namaSpesialisController),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            component1(
+                                Icons.credit_card_rounded,
+                                'Nama Pemilik...',
+                                false,
+                                false,
+                                controller.sipController),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            component1(
+                                Icons.credit_card_rounded,
+                                'Referensi...',
+                                false,
+                                false,
+                                controller.sipController),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -206,7 +258,9 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 SizedBox(width: size.width / 25),
                               ],
                             ),
-                            const SizedBox(),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             InkWell(
                               onTap: () => Get.toNamed(Routes.LOGIN),
                               child: RichText(
@@ -219,7 +273,9 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                     recognizer: TapGestureRecognizer()),
                               ),
                             ),
-                            const SizedBox(),
+                            const SizedBox(
+                              height: 10,
+                            ),
                           ],
                         ),
                       ),

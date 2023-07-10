@@ -304,7 +304,8 @@ class Surat extends StatelessWidget {
 
   Widget suratsakit(context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return Padding(padding: mediaQueryData.viewInsets,
+    return Padding(
+        padding: mediaQueryData.viewInsets,
       child : Container(
         height: 340,
         decoration: BoxDecoration(
