@@ -190,6 +190,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                         backgroundColor: Color(0xe0e0e0),
                                         content:
                                         Loading(),
+                                        title: '',
                                         barrierDismissible: false,
                                       );
                                       AksesPx aksesPX = await API.getAksesPx(
