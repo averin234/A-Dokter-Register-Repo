@@ -1174,6 +1174,7 @@ class API {
       "tekanan_darah": tekanan_darah,
       "nadi": nadi,
       "suhu": suhu,
+      "pernafasan": pernapasan,
       "tinggi_badan": tinggi_badan,
       "berat_badan": berat_badan,
     };
