@@ -1,8 +1,5 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 
 class DropdownHISS extends StatefulWidget {
   const DropdownHISS({super.key});
@@ -18,15 +15,14 @@ class _DropdownHISSState extends State<DropdownHISS> {
       height: 50,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius:  BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(22),
       ),
       child: Row(
         children: [
           Expanded(
             child: DropdownSearch<int>(
               items: List.generate(50, (i) => i),
-              popupProps: PopupProps.bottomSheet(
-
+              popupProps: const PopupProps.bottomSheet(
                 showSearchBox: true,
                 fit: FlexFit.tight,
                 title: Text('Pencarian'),
@@ -36,7 +32,6 @@ class _DropdownHISSState extends State<DropdownHISS> {
           ),
         ],
       ),
-
     );
   }
 }

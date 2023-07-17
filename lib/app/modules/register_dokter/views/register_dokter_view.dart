@@ -170,12 +170,12 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 false,
                                 false,
                                 controller.namaController),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             component1(Icons.email_outlined, 'Email...', false,
                                 true, controller.emailController),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             componentnamber(
@@ -184,7 +184,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 false,
                                 false,
                                 controller.noTelpController),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             component1(
@@ -193,38 +193,63 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 false,
                                 false,
                                 controller.sipController),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                            dropdown(
-                                id,
-                                Icons.credit_card_rounded,
-                                'Spesialisasi...',
-                                false,
-                                false,
-                                controller.kodeBagianController,
-                                controller.namaSpesialisController),
-                            SizedBox(
-                              height: 10,
-                            ),
+                            FutureBuilder(
+                                future: API.getSpesialisasi(id: id.toString()),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData &&
+                                      snapshot.connectionState !=
+                                          ConnectionState.waiting &&
+                                      snapshot.data != null) {
+                                    final data = snapshot.data!;
+                                    return AppTextField(
+                                      textEditingController:
+                                          controller.kodeBagianController,
+                                      textEditingController1:
+                                          controller.namaSpesialisController,
+                                      hint: "Pilih Spesialisasi...",
+                                      isCitySelected: true,
+                                      lists: data.list ?? [],
+                                      title: '',
+                                    );
+                                  } else {
+                                    return Container();
+                                  }
+                                }),
                             component1(
                                 Icons.add_card_outlined,
                                 'No Rekening...',
                                 false,
                                 false,
                                 controller.sipController),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                            dropdown(
-                                id,
-                                Icons.comment_bank,
-                                'Nama Bank...',
-                                false,
-                                false,
-                                controller.kodeBagianController,
-                                controller.namaSpesialisController),
-                            SizedBox(
+                            FutureBuilder(
+                                future: API.getBank(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData &&
+                                      snapshot.connectionState !=
+                                          ConnectionState.waiting &&
+                                      snapshot.data != null) {
+                                    final data = snapshot.data!;
+                                    return AppTextField(
+                                      textEditingController:
+                                          controller.kodeBagianController,
+                                      textEditingController1:
+                                          controller.namaSpesialisController,
+                                      hint: "Pilih Bank...",
+                                      isCitySelected: true,
+                                      lists: data.list ?? [],
+                                      title: '',
+                                    );
+                                  } else {
+                                    return Container();
+                                  }
+                                }),
+                            const SizedBox(
                               height: 10,
                             ),
                             component1(
@@ -233,31 +258,39 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 false,
                                 false,
                                 controller.sipController),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            component1(
-                                Icons.credit_card_rounded,
-                                'Referensi...',
-                                false,
-                                false,
-                                controller.sipController),
                             const SizedBox(
                               height: 10,
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                component2(
-                                  'Register',
-                                  2.6,
-                                  () {
-                                    HapticFeedback.lightImpact();
-                                  },
-                                ),
-                                SizedBox(width: size.width / 25),
-                              ],
+                            FutureBuilder(
+                                future: API.getReferensi(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData &&
+                                      snapshot.connectionState !=
+                                          ConnectionState.waiting &&
+                                      snapshot.data != null) {
+                                    final data = snapshot.data!;
+                                    return AppTextField(
+                                      textEditingController:
+                                          controller.referensiController,
+                                      textEditingController1:
+                                          controller.namaReferensiController,
+                                      hint: "Pilih Referensi...",
+                                      isCitySelected: true,
+                                      lists: data.list ?? [],
+                                      title: '',
+                                    );
+                                  } else {
+                                    return Container();
+                                  }
+                                }),
+                            const SizedBox(
+                              height: 10,
                             ),
+                            component2(
+                              'Register',
+                              2.6,
+                            ),
+                            SizedBox(width: size.width / 25),
                             const SizedBox(
                               height: 10,
                             ),
@@ -343,35 +376,6 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
     );
   }
 
-  Widget dropdown(
-      int perubahan,
-      IconData icon,
-      String hintText,
-      bool isPassword,
-      bool isEmail,
-      TextEditingController controller,
-      TextEditingController controller1) {
-    return FutureBuilder(
-        future: API.getSpesialisasi(id: perubahan.toString()),
-        builder: (context, snapshot) {
-          if (snapshot.hasData &&
-              snapshot.connectionState != ConnectionState.waiting &&
-              snapshot.data != null) {
-            final data = snapshot.data!;
-            return AppTextField(
-              textEditingController: controller,
-              textEditingController1: controller1,
-              hint: "Spesialisasi...",
-              isCitySelected: true,
-              lists: data.list ?? [],
-              title: '',
-            );
-          } else {
-            return Container();
-          }
-        });
-  }
-
   Widget component1(IconData icon, String hintText, bool isPassword,
       bool isEmail, TextEditingController controller) {
     Size size = MediaQuery.of(context).size;
@@ -437,11 +441,12 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
     );
   }
 
-  Widget component2(String string, double width, VoidCallback voidCallback) {
+  Widget component2(String string, double width) {
     Size size = MediaQuery.of(context).size;
     final controller = Get.put(RegisterDokterController());
     return InkWell(
       onTap: () async {
+        HapticFeedback.lightImpact();
         print(controller.namaController.text +
             controller.emailController.text +
             controller.noTelpController.text +
@@ -576,9 +581,9 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                   color: const Color.fromARGB(255, 56, 229, 77),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "Silahkan Periksa Email",
                       style: TextStyle(

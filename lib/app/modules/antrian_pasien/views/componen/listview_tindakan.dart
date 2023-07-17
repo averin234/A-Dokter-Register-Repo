@@ -4,7 +4,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../../../data/componen/avatar.dart';
-import '../../../../data/model/get_detail_mr.dart';
 import '../../../../routes/app_pages.dart';
 
 class ListViewTindakan extends StatelessWidget {
@@ -58,71 +57,74 @@ class ListViewTindakan extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                    SizedBox(
-                      child : Text(
-                        antrian.namaPasien ?? '',
-                        textAlign: TextAlign.start,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
-                        ),
-                      ),),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("No MR :",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 13)),
-                          const SizedBox(
-                            width: 6,
+                        SizedBox(
+                          child: Text(
+                            antrian.namaPasien ?? '',
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                            ),
                           ),
-                          Text(antrian.noMr ?? '',
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 13)),
-                        ],
-                      ),
-                    ],),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text("No MR :",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 13)),
+                            const SizedBox(
+                              width: 6,
+                            ),
+                            Text(antrian.noMr ?? '',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 13)),
+                          ],
+                        ),
+                      ],
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          margin: EdgeInsets.only(right: 10,top: 10,bottom: 10),
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 233, 231, 253),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(children: [
-                            Text(
-                              "Antrian .${antrian.noAntrian ?? ''}",
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            margin: const EdgeInsets.only(
+                                right: 10, top: 10, bottom: 10),
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 233, 231, 253),
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Image.asset(
-                              'assets/images/ngantri.png',
-                              height: 40,
-                            ),
-                          ],)
-
-                        ),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Antrian .${antrian.noAntrian ?? ''}",
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Image.asset(
+                                  'assets/images/ngantri.png',
+                                  height: 40,
+                                ),
+                              ],
+                            )),
                       ],
                     ),
                   ],
                 ),
-
               ],
             ),
             Container(
-              padding: const EdgeInsets.only(right: 7,left: 7, top: 7, bottom: 7),
-              margin: EdgeInsets.only(right: 10),
+              padding:
+                  const EdgeInsets.only(right: 7, left: 7, top: 7, bottom: 7),
+              margin: const EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 219, 246, 253),
                   borderRadius: BorderRadius.circular(10)),
@@ -132,8 +134,7 @@ class ListViewTindakan extends StatelessWidget {
                 children: [
                   const Text(
                     "Pendaftaran",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 12),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                   ),
                   const SizedBox(
                     height: 10,
@@ -398,7 +399,6 @@ class ListViewTindakan extends StatelessWidget {
                                 Row(
                                   children: [
                                     const Text("Alamat :",
-
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),
@@ -406,11 +406,12 @@ class ListViewTindakan extends StatelessWidget {
                                       width: 6,
                                     ),
                                     SizedBox(
-                                    width: 170,
-                                    child : Text(antrian.alamat ?? '',
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 13)),),
+                                      width: 170,
+                                      child: Text(antrian.alamat ?? '',
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 13)),
+                                    ),
                                   ],
                                 ),
                               ]),

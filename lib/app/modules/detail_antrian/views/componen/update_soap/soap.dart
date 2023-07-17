@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/assestment.dart';
-import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/objektive.dart';
 import 'assestment.dart';
 import 'objektive.dart';
 import 'subyektif.dart';
@@ -24,10 +18,10 @@ class _UpdateSoapState extends State<UpdateSoap> {
     return InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10),
-        padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
@@ -39,7 +33,7 @@ class _UpdateSoapState extends State<UpdateSoap> {
             ),
           ],
         ),
-        child: Column(
+        child: const Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(

@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/assestment.dart';
-import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/soap/objektive.dart';
 
 class PlanningRadiologi extends StatefulWidget {
   const PlanningRadiologi({super.key});
@@ -18,10 +11,10 @@ class _PlanningRadiologiState extends State<PlanningRadiologi> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
-      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0x6cc7d1db)),
+        border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
@@ -36,16 +29,16 @@ class _PlanningRadiologiState extends State<PlanningRadiologi> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 210,
                 child: Text("Radiologi",
                     style: TextStyle(
@@ -53,7 +46,7 @@ class _PlanningRadiologiState extends State<PlanningRadiologi> {
                       fontSize: 15,
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
@@ -70,7 +63,7 @@ class _PlanningRadiologiState extends State<PlanningRadiologi> {
                   //   ),
                   // ],
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Text("Print",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 13),)

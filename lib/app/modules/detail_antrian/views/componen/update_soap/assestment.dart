@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../routes/app_pages.dart';
 
@@ -20,10 +16,10 @@ class _UpdateAssestmentState extends State<UpdateAssestment> {
     return InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10),
-        padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
@@ -38,10 +34,10 @@ class _UpdateAssestmentState extends State<UpdateAssestment> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
@@ -66,19 +62,19 @@ class _UpdateAssestmentState extends State<UpdateAssestment> {
                 // ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Divider(
+            const Divider(
               height: 3,
               color: Colors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: TextField(
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
@@ -101,11 +97,11 @@ class _UpdateAssestmentState extends State<UpdateAssestment> {
                   children: [
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.volume_up),
+                      icon: const Icon(Icons.volume_up),
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.clear_sharp),
+                      icon: const Icon(Icons.clear_sharp),
                     ),
                   ],
                 ),

@@ -33,9 +33,9 @@ class Planning extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               SizedBox(
                 height: 10,
               ),
@@ -485,9 +485,9 @@ class Planning extends StatelessWidget {
                           //   ),
                           // ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Text(
                               "Simpan",
                               style: TextStyle(
@@ -527,9 +527,9 @@ class Planning extends StatelessWidget {
                           //   ),
                           // ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Text(
                               "Cetak",
                               style: TextStyle(

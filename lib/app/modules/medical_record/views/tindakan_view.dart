@@ -6,7 +6,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../../data/componen/fetch_data.dart';
-import '../../antrian_pasien/views/componen/search_medical_record.dart';
 import '../../loading_summer/loading_listpasien.dart';
 import '../controllers/tindakan_controller.dart';
 import 'componen/listview_tindakan.dart';
@@ -57,7 +56,6 @@ class TindakanView extends GetView<TindakanController> {
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
-
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 padding: const EdgeInsets.only(top: 10),
@@ -94,16 +92,17 @@ class TindakanView extends GetView<TindakanController> {
                                   .toList()),
                         );
                       } else {
-                        return SingleChildScrollView(
-                          child : Column(
-                          children: [
-                            shimmerListPasien(),
-                            shimmerListPasien(),
-                            shimmerListPasien(),
-                            shimmerListPasien(),
-                            shimmerListPasien(),
-                          ],
-                        ),);
+                        return const SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              shimmerListPasien(),
+                              shimmerListPasien(),
+                              shimmerListPasien(),
+                              shimmerListPasien(),
+                              shimmerListPasien(),
+                            ],
+                          ),
+                        );
                       }
                     }),
               ),

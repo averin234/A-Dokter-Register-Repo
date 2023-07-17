@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
-
-Future bottomSheetBayarKasir (){
-  return  showModalBottomSheet(
+Future bottomSheetBayarKasir() {
+  return showModalBottomSheet(
       context: Get.context!,
       isScrollControlled: true,
       isDismissible: true,
@@ -22,7 +21,7 @@ Future bottomSheetBayarKasir (){
             ),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -32,16 +31,18 @@ Future bottomSheetBayarKasir (){
                     left: Get.width / 2 - 40,
                   ),
                   decoration: BoxDecoration(
-                    color: Color(0xFFe0e0e0),
+                    color: const Color(0xFFe0e0e0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
-                Text('Bayar Kasir',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue)),
+                const Text('Bayar Kasir',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.blue)),
                 SingleChildScrollView(
-                  child : Center(
+                  child: Center(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -53,16 +54,17 @@ Future bottomSheetBayarKasir (){
                           ),
                         ),
                         children: <Widget>[
-                          SizedBox(
+                          const SizedBox(
                             height: 25,
                           ),
-                        Text('Apakah yakin data yang diimput sudah benar ?'),
-                         ],
+                          const Text(
+                              'Apakah yakin data yang diimput sudah benar ?'),
+                        ],
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Row(
@@ -70,8 +72,7 @@ Future bottomSheetBayarKasir (){
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InkWell(
-                      onTap: () {
-                      },
+                      onTap: () {},
                       child: Container(
                         height: 45,
                         width: 145,
@@ -87,7 +88,7 @@ Future bottomSheetBayarKasir (){
                           //   ),
                           // ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -101,7 +102,7 @@ Future bottomSheetBayarKasir (){
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     InkWell(
@@ -120,7 +121,7 @@ Future bottomSheetBayarKasir (){
                           //   ),
                           // ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(

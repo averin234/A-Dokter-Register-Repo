@@ -11,6 +11,8 @@ class RegisterDokterController extends GetxController {
   final kodeBagianController = TextEditingController();
   final spesialisController = TextEditingController();
   final namaSpesialisController = TextEditingController();
+  final referensiController = TextEditingController();
+  final namaReferensiController = TextEditingController();
   final isObscurePass = true.obs;
   final isObscureConfirmPass = true.obs;
   final gender = [

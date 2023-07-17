@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 
 class RiwayatResep extends StatelessWidget {
   final List<Resep> resep;
-  Resep resepi;
-  RiwayatResep({super.key, required this.resep, required this.resepi});
+  final Resep resepi;
+  const RiwayatResep({super.key, required this.resep, required this.resepi});
 
   @override
   Widget build(BuildContext context) {
@@ -74,9 +74,9 @@ class RiwayatResep extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
                         "Print",
                         style: TextStyle(
@@ -90,25 +90,24 @@ class RiwayatResep extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-           child: Column(
-             mainAxisAlignment: MainAxisAlignment.start,
-             children: [
-               Row(children: [
-               Text('no',style: TextStyle(fontWeight: FontWeight.bold)),
-                 SizedBox(
-                   width: 10,
-                 ),
-                 Text('',
-                     style: TextStyle(fontWeight: FontWeight.bold)),
-               ]),
-             ],
-           ),
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(children: [
+                  Text('no', style: TextStyle(fontWeight: FontWeight.bold)),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text('', style: TextStyle(fontWeight: FontWeight.bold)),
+                ]),
+              ],
+            ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -121,7 +120,7 @@ class RiwayatResep extends StatelessWidget {
                       child: Text(
                         "Nama Obat",
                         style: TextStyle(
-                            fontWeight: FontWeight.normal,color: Colors.blue),
+                            fontWeight: FontWeight.normal, color: Colors.blue),
                       ),
                     ),
                     const SizedBox(
@@ -132,10 +131,9 @@ class RiwayatResep extends StatelessWidget {
                         // Get.toNamed(Routes.ANTRIAN_PASIEN);
                       },
                       child: Text(
-                          resepi.namaBrg?? '',
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            color: Colors.blue),
+                        resepi.namaBrg ?? '',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.blue),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -144,7 +142,7 @@ class RiwayatResep extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -153,7 +151,7 @@ class RiwayatResep extends StatelessWidget {
                       child: Text(
                         "Jumlah",
                         style: TextStyle(
-                            fontWeight: FontWeight.normal,color: Colors.blue),
+                            fontWeight: FontWeight.normal, color: Colors.blue),
                       ),
                     ),
                     const SizedBox(
@@ -164,10 +162,9 @@ class RiwayatResep extends StatelessWidget {
                         // Get.toNamed(Routes.ANTRIAN_PASIEN);
                       },
                       child: Text(
-                      resepi.jumlahPesan?? '',
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            color: Colors.blue),
+                        resepi.jumlahPesan ?? '',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.blue),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -176,7 +173,7 @@ class RiwayatResep extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -185,7 +182,7 @@ class RiwayatResep extends StatelessWidget {
                       child: Text(
                         "Aturan Pemakaian",
                         style: TextStyle(
-                            fontWeight: FontWeight.normal,color: Colors.blue),
+                            fontWeight: FontWeight.normal, color: Colors.blue),
                       ),
                     ),
                     const SizedBox(
@@ -196,10 +193,9 @@ class RiwayatResep extends StatelessWidget {
                         Get.toNamed(Routes.ANTRIAN_PASIEN);
                       },
                       child: Text(
-                      resepi.namaDosis?? '',
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            color: Colors.blue),
+                        resepi.namaDosis ?? '',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.blue),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -208,7 +204,7 @@ class RiwayatResep extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -217,7 +213,7 @@ class RiwayatResep extends StatelessWidget {
                       child: Text(
                         "Note",
                         style: TextStyle(
-                            fontWeight: FontWeight.normal,color: Colors.blue),
+                            fontWeight: FontWeight.normal, color: Colors.blue),
                       ),
                     ),
                     const SizedBox(
@@ -228,10 +224,9 @@ class RiwayatResep extends StatelessWidget {
                         Get.toNamed(Routes.ANTRIAN_PASIEN);
                       },
                       child: Text(
-                      resepi.note?? '',
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            color: Colors.blue),
+                        resepi.note ?? '',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.blue),
                         textAlign: TextAlign.center,
                       ),
                     ),

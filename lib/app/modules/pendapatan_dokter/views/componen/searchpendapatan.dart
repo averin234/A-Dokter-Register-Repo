@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 
 class SearchPendapatan1 extends StatefulWidget {
   const SearchPendapatan1({super.key});
@@ -19,7 +16,7 @@ class _SearchPendapatan1State extends State<SearchPendapatan1> {
         Container(
           height: 40,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 233, 231, 253),
+            color: const Color.fromARGB(255, 233, 231, 253),
             borderRadius: BorderRadius.circular(22),
           ),
           child: TextField(
@@ -29,10 +26,10 @@ class _SearchPendapatan1State extends State<SearchPendapatan1> {
               enabledBorder: InputBorder.none,
               errorBorder: InputBorder.none,
               disabledBorder: InputBorder.none,
-              contentPadding:
-                  EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
+              contentPadding: const EdgeInsets.only(
+                  left: 15, bottom: 11, top: 13, right: 15),
               suffixIcon: IconButton(
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 onPressed: () {
                   print('sesarch');
                 },

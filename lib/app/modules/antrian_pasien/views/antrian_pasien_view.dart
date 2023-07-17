@@ -32,7 +32,7 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
             floating: true,
             pinned: true,
             snap: true,
-            title: Text('Antrian Pasien'),
+            title: const Text('Antrian Pasien'),
             leading: IconButton(
                 onPressed: () {},
                 icon: const Icon(
@@ -106,15 +106,17 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
                                               .toList()),
                                 );
                         } else {
-                          return SingleChildScrollView(
-                            child: Column(children: [
-                              shimmerHome(),
-                              shimmerHome(),
-                              shimmerHome(),
-                              shimmerHome(),
-                              shimmerHome(),
-                              shimmerHome(),
-                            ],),
+                          return const SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                shimmerHome(),
+                                shimmerHome(),
+                                shimmerHome(),
+                                shimmerHome(),
+                                shimmerHome(),
+                                shimmerHome(),
+                              ],
+                            ),
                           );
                         }
                       });

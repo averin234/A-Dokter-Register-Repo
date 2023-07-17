@@ -1,6 +1,5 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
-import 'package:a_dokter_register/app/modules/pendapatan_dokter/views/componen/searchpendapatan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -78,17 +77,19 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
                       final data = snapshot.data!.kasir ?? [];
                       return data.isEmpty
                           ? Center(
-                        child: Column(children: [
-                          Text('Belum Ada Teransaksi Saat ini'),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Image.asset(
-                          'assets/images/nopendapatan.png',
-                          height: 300,
-                        ),
-                        ],),
-                      )
+                              child: Column(
+                                children: [
+                                  const Text('Belum Ada Teransaksi Saat ini'),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Image.asset(
+                                    'assets/images/nopendapatan.png',
+                                    height: 300,
+                                  ),
+                                ],
+                              ),
+                            )
                           : Column(
                               children: AnimationConfiguration.toStaggeredList(
                                 duration: const Duration(milliseconds: 375),
@@ -104,15 +105,17 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
                               ),
                             );
                     } else {
-                      return SingleChildScrollView(
-                        child: Column(children: [
-                          shimmerPendapatan(),
-                          shimmerPendapatan(),
-                          shimmerPendapatan(),
-                          shimmerPendapatan(),
-                          shimmerPendapatan(),
-                          shimmerPendapatan(),
-                        ],),
+                      return const SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            shimmerPendapatan(),
+                            shimmerPendapatan(),
+                            shimmerPendapatan(),
+                            shimmerPendapatan(),
+                            shimmerPendapatan(),
+                            shimmerPendapatan(),
+                          ],
+                        ),
                       );
                     }
                   }),

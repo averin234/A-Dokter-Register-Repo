@@ -1,4 +1,3 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 class FormBPJS extends StatefulWidget {
@@ -25,9 +24,9 @@ class _FormBPJSState extends State<FormBPJS> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 233, 231, 253),
+        color: const Color.fromARGB(255, 233, 231, 253),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -92,7 +91,7 @@ class _FormBPJSState extends State<FormBPJS> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
         ],

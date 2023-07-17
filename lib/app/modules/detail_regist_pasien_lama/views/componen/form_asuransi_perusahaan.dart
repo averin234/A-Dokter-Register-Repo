@@ -25,9 +25,9 @@ class _AuransiPerusahaan1State extends State<AuransiPerusahaan1> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 254, 228, 203),
+        color: const Color.fromARGB(255, 254, 228, 203),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -74,8 +74,8 @@ class _AuransiPerusahaan1State extends State<AuransiPerusahaan1> {
                     DropdownButtonHideUnderline(
                       child: DropdownButton2(
                         isExpanded: true,
-                        hint: Row(
-                          children: const [
+                        hint: const Row(
+                          children: [
                             SizedBox(
                               width: 4,
                             ),
@@ -173,7 +173,7 @@ class _AuransiPerusahaan1State extends State<AuransiPerusahaan1> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
         ],

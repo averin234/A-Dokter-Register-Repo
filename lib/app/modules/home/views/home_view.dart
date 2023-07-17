@@ -232,10 +232,10 @@ class HomeView extends GetView<HomeController> {
                                       const SizedBox(
                                         width: 20,
                                       ),
-                                      Column(
+                                      const Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        children: const [
+                                        children: [
                                           Text(
                                             "Atur Jadwal Dokter",
                                             style: TextStyle(
@@ -286,10 +286,10 @@ class HomeView extends GetView<HomeController> {
                                       const SizedBox(
                                         width: 20,
                                       ),
-                                      Column(
+                                      const Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        children: const [
+                                        children: [
                                           Text(
                                             "Tambah Pasien Baru",
                                             style: TextStyle(
@@ -340,10 +340,10 @@ class HomeView extends GetView<HomeController> {
                                       const SizedBox(
                                         width: 20,
                                       ),
-                                      Column(
+                                      const Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        children: const [
+                                        children: [
                                           Text(
                                             "Registrasi Pasien Lama",
                                             style: TextStyle(
@@ -452,7 +452,6 @@ class Home extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-
                             Row(
                               children: [
                                 const Expanded(
@@ -486,7 +485,6 @@ class Home extends StatelessWidget {
                             const SizedBox(
                               height: 10,
                             ),
-
                             FutureBuilder(
                               future: API.getAntrianPasien(
                                   tanggal: DateFormat('yyyy-MM-dd')
@@ -503,11 +501,13 @@ class Home extends StatelessWidget {
                                   return data.isEmpty
                                       ? Center(
                                           child: Column(children: [
-                                              Text('Tidak ada Antrian Saat ini'),
-                                          Image.asset(
-                                            'assets/images/noantri.png',
-                                            height: 200,
-                                          ),]),
+                                            const Text(
+                                                'Tidak ada Antrian Saat ini'),
+                                            Image.asset(
+                                              'assets/images/noantri.png',
+                                              height: 200,
+                                            ),
+                                          ]),
                                         )
                                       : Column(
                                           children: data
@@ -516,15 +516,17 @@ class Home extends StatelessWidget {
                                               .toList(),
                                         );
                                 } else {
-                                  return SingleChildScrollView(
-                                    child: Column(children: [
-                                      shimmerHome(),
-                                      shimmerHome(),
-                                      shimmerHome(),
-                                      shimmerHome(),
-                                      shimmerHome(),
-                                      shimmerHome(),
-                                    ],),
+                                  return const SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        shimmerHome(),
+                                        shimmerHome(),
+                                        shimmerHome(),
+                                        shimmerHome(),
+                                        shimmerHome(),
+                                        shimmerHome(),
+                                      ],
+                                    ),
                                   );
                                 }
                               },

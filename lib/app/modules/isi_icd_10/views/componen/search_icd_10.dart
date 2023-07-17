@@ -1,8 +1,5 @@
 import 'package:a_dokter_register/app/modules/isi_icd_10/controllers/isi_icd_10_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class SearchICD10 extends StatefulWidget {

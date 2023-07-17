@@ -1,7 +1,3 @@
-import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
-import 'package:buttons_tabbar/buttons_tabbar.dart';
-import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Tabbar extends StatefulWidget {
@@ -28,22 +24,23 @@ class _TabbarState extends State<Tabbar> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-        child : Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Row(
             children: menuHiss
                 .map((e) => Container(
-              margin: EdgeInsets.only(right: 10,left: 5),
-              child:ElevatedButton(
-                onPressed: () {},
-                child: Text(e),
-              ),) )
+                      margin: const EdgeInsets.only(right: 10, left: 5),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text(e),
+                      ),
+                    ))
                 .toList(),
           ),
-        ],),
+        ],
+      ),
     );
   }
-
 }

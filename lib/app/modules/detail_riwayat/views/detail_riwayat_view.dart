@@ -110,7 +110,8 @@ class DetailRiwayatView extends GetView<DetailRiwayatController> {
                             data.resep == null
                                 ? Container()
                                 : RiwayatResep(
-                                    resep: data.resep ?? [], resepi: Resep(),
+                                    resep: data.resep ?? [],
+                                    resepi: Resep(),
                                   ),
                             const SizedBox(
                               height: 10,
@@ -124,11 +125,13 @@ class DetailRiwayatView extends GetView<DetailRiwayatController> {
                         ),
                       );
                     } else {
-                      return Column(children: [
-                        shimmerVitalSign(),
-                        shimmerSoap(),
-                        shimmerPendapatan(),
-                      ],);
+                      return const Column(
+                        children: [
+                          shimmerVitalSign(),
+                          shimmerSoap(),
+                          shimmerPendapatan(),
+                        ],
+                      );
                     }
                   }),
             ]),

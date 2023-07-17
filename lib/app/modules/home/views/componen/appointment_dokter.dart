@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 
 class CardAppointment extends StatefulWidget {
   const CardAppointment({super.key});
@@ -23,7 +20,7 @@ class _CardAppointmentState extends State<CardAppointment> {
             color: Colors.grey.withOpacity(0.1),
             spreadRadius: 5,
             blurRadius: 4,
-            offset: Offset(0, 0), // changes position of shadow
+            offset: const Offset(0, 0), // changes position of shadow
           ),
         ],
       ),
@@ -31,26 +28,27 @@ class _CardAppointmentState extends State<CardAppointment> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Text("Kunjungan",style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(
+            const Text("Kunjungan",
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(
               height: 10,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
                 Container(
                   width: 90,
                   height: 80,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 35, 163, 223),
-                    borderRadius: BorderRadius.only(
+                    color: const Color.fromARGB(255, 35, 163, 223),
+                    borderRadius: const BorderRadius.only(
                         bottomRight: Radius.circular(5),
                         topLeft: Radius.circular(5),
                         topRight: Radius.circular(20),
@@ -62,7 +60,7 @@ class _CardAppointmentState extends State<CardAppointment> {
                           spreadRadius: 3)
                     ],
                   ),
-                  child: Column(
+                  child: const Column(
                     children: [
                       SizedBox(
                         height: 10,
@@ -88,15 +86,15 @@ class _CardAppointmentState extends State<CardAppointment> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
                 Container(
                   width: 90,
                   height: 80,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 35, 163, 223),
-                    borderRadius: BorderRadius.only(
+                    color: const Color.fromARGB(255, 35, 163, 223),
+                    borderRadius: const BorderRadius.only(
                         bottomRight: Radius.circular(5),
                         topLeft: Radius.circular(5),
                         topRight: Radius.circular(20),
@@ -108,7 +106,7 @@ class _CardAppointmentState extends State<CardAppointment> {
                           spreadRadius: 3)
                     ],
                   ),
-                  child: Column(
+                  child: const Column(
                     children: [
                       SizedBox(
                         height: 10,
@@ -134,15 +132,15 @@ class _CardAppointmentState extends State<CardAppointment> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
                 Container(
                   width: 90,
                   height: 80,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 35, 163, 223),
-                    borderRadius: BorderRadius.only(
+                    color: const Color.fromARGB(255, 35, 163, 223),
+                    borderRadius: const BorderRadius.only(
                         bottomRight: Radius.circular(5),
                         topLeft: Radius.circular(5),
                         topRight: Radius.circular(20),
@@ -154,7 +152,7 @@ class _CardAppointmentState extends State<CardAppointment> {
                           spreadRadius: 3)
                     ],
                   ),
-                  child: Column(
+                  child: const Column(
                     children: [
                       SizedBox(
                         height: 10,

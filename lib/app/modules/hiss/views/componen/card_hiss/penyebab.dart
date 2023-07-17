@@ -36,9 +36,9 @@ class _PenyebabState extends State<Penyebab> {
           const SizedBox(
             height: 10,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               SizedBox(
                 height: 10,
               ),

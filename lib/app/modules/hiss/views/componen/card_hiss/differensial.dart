@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,15 +30,15 @@ class _DifferensialState extends State<Differensial> {
           ),
         ],
       ),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               SizedBox(
                 height: 10,
               ),
@@ -59,10 +58,10 @@ class _DifferensialState extends State<Differensial> {
               // ),
             ],
           ),
-          const SizedBox(
+          SizedBox(
             height: 5,
           ),
-          const Divider(
+          Divider(
             height: 3,
             color: Colors.grey,
           ),
@@ -71,7 +70,7 @@ class _DifferensialState extends State<Differensial> {
             textInputAction: TextInputAction.none,
             maxLines: 7,
             readOnly: true,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,

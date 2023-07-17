@@ -14,7 +14,9 @@ import '../../loading_summer/loading_screen_animed.dart';
 import '../controllers/detail_regist_pasien_lama_controller.dart';
 import 'componen/card_profile_pasien.dart';
 import 'componen/form_pasien_lama.dart';
-class DetailRegistPasienLamaView extends GetView<DetailRegistPasienLamaController> {
+
+class DetailRegistPasienLamaView
+    extends GetView<DetailRegistPasienLamaController> {
   const DetailRegistPasienLamaView({Key? key}) : super(key: key);
 
   @override
@@ -36,11 +38,11 @@ class DetailRegistPasienLamaView extends GetView<DetailRegistPasienLamaControlle
         margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Row(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               width: 230,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[
+                children: <Widget>[
                   Padding(
                       padding: EdgeInsets.only(left: 10),
                       child: Text(
@@ -53,9 +55,8 @@ class DetailRegistPasienLamaView extends GetView<DetailRegistPasienLamaControlle
               child: InkWell(
                 onTap: () async {
                   Get.defaultDialog(
-                    backgroundColor: Color(0xe0e0e0),
-                    content:
-                    Loading(),
+                    backgroundColor: const Color(0x00e0e0e0),
+                    content: Loading(),
                     title: '',
                     barrierDismissible: false,
                   );
@@ -196,9 +197,11 @@ class DetailRegistPasienLamaView extends GetView<DetailRegistPasienLamaControlle
                       final data = snapshot.data!.pasien ?? Pasien();
                       return ProfilePasienLama(pasien: data);
                     } else {
-                      return Column(children: [
-                        shimmerCardProfile(),
-                      ],);
+                      return const Column(
+                        children: [
+                          shimmerCardProfile(),
+                        ],
+                      );
                     }
                   }),
               const SizedBox(
@@ -402,9 +405,9 @@ class DetailRegistPasienLamaView extends GetView<DetailRegistPasienLamaControlle
                   color: Colors.greenAccent,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "Lihat Antrian",
                       style: TextStyle(

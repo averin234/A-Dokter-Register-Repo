@@ -7,10 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../data/componen/fetch_data.dart';
-import '../../../data/model/list_data.dart';
 import '../../bottomsheet/bottomsheet_tambah_data_obat.dart';
 
 class IsiResepView extends GetView<IsiResepController> {
@@ -48,20 +46,22 @@ class IsiResepView extends GetView<IsiResepController> {
               color: const Color.fromARGB(255, 192, 192, 192),
             ),
             actions: [
-              Column(children: [
-              IconButton(
-                onPressed: () {
-                  bottomSheetTambahDataObat();
-                },
-                icon: const Icon(
-                  Icons.medication_liquid_rounded,
-                  size: 30,
-                ),
-                color: Colors.blueAccent,
+              Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      bottomSheetTambahDataObat();
+                    },
+                    icon: const Icon(
+                      Icons.medication_liquid_rounded,
+                      size: 30,
+                    ),
+                    color: Colors.blueAccent,
+                  ),
+                  const Text('Master Obat'),
+                ],
               ),
-                Text('Master Obat'),
-              ],),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
             ],

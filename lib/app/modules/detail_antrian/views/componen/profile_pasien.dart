@@ -73,10 +73,10 @@ class ProfilePasienTindakan extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.only(left: 0),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text("No MR",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 13)),
@@ -192,8 +192,8 @@ class ProfilePasienTindakan extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
@@ -226,7 +226,7 @@ class ProfilePasienTindakan extends StatelessWidget {
                     onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
                         parameters: {'no_mr': pasien.noMr ?? ''}),
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       height: 45,
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 56, 229, 77),
@@ -240,9 +240,9 @@ class ProfilePasienTindakan extends StatelessWidget {
                         //   ),
                         // ],
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
                             "Lihat Riwayat MR",
                             style: TextStyle(
@@ -254,7 +254,7 @@ class ProfilePasienTindakan extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   InkWell(
@@ -270,22 +270,15 @@ class ProfilePasienTindakan extends StatelessWidget {
                           ),
                           builder: (BuildContext context) {
                             return DraggableScrollableSheet(
-                                initialChildSize:
-                                0.95, //set this as you want
-                                maxChildSize:
-                                0.95, //set this as you want
-                                minChildSize:
-                                0.95, //set this as you want
+                                initialChildSize: 0.95, //set this as you want
+                                maxChildSize: 0.95, //set this as you want
+                                minChildSize: 0.95, //set this as you want
                                 expand: true,
-                                builder: (context,
-                                    scrollController) {
+                                builder: (context, scrollController) {
                                   return Container(
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius
-                                            .circular(50),
-                                        color:
-                                        Colors.transparent,
+                                        borderRadius: BorderRadius.circular(50),
+                                        color: Colors.transparent,
                                       ),
                                       child: Column(
                                         children: [
@@ -294,179 +287,275 @@ class ProfilePasienTindakan extends StatelessWidget {
                                           ),
                                           Container(
                                             height: 4,
-                                            margin:
-                                            EdgeInsets.only(
-                                              right: Get.width /
-                                                  2 -
-                                                  40,
-                                              left: Get.width /
-                                                  2 -
-                                                  40,
+                                            margin: EdgeInsets.only(
+                                              right: Get.width / 2 - 40,
+                                              left: Get.width / 2 - 40,
                                             ),
-                                            decoration:
-                                            BoxDecoration(
-                                              color: const Color(
-                                                  0xFFe0e0e0),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xFFe0e0e0),
                                               borderRadius:
-                                              BorderRadius
-                                                  .circular(
-                                                  10),
+                                                  BorderRadius.circular(10),
                                             ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 4,
                                           ),
-                                          Text('Geser Kebawah',style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
+                                          const Text('Geser Kebawah',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.grey)),
                                           const SizedBox(
                                             height: 25,
                                           ),
                                           const Padding(
-                                            padding:
-                                            EdgeInsets.only(
-                                                left: 0),
-                                            child: Text(
-                                                "Privy Sign",
+                                            padding: EdgeInsets.only(left: 0),
+                                            child: Text("Privy Sign",
                                                 style: TextStyle(
-                                                    fontWeight:
-                                                    FontWeight
-                                                        .bold,
-                                                    fontSize:
-                                                    16,
-                                                    color: Colors
-                                                        .blue)),
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16,
+                                                    color: Colors.blue)),
                                           ),
                                           const SizedBox(
                                             height: 10,
                                           ),
                                           Expanded(
-                                            child:
-                                            SingleChildScrollView(
+                                            child: SingleChildScrollView(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment
-                                                    .start,
+                                                    CrossAxisAlignment.start,
                                                 mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .start,
-                                                children:
-                                                AnimationConfiguration
+                                                    MainAxisAlignment.start,
+                                                children: AnimationConfiguration
                                                     .toStaggeredList(
                                                   duration: const Duration(
-                                                      milliseconds:
-                                                      275),
+                                                      milliseconds: 275),
                                                   childAnimationBuilder:
                                                       (widget) =>
-                                                      SlideAnimation(
-                                                        child:
-                                                        FadeInAnimation(
-                                                          child:
-                                                          widget,
-                                                        ),
+                                                          SlideAnimation(
+                                                    child: FadeInAnimation(
+                                                      child: widget,
+                                                    ),
+                                                  ),
+                                                  children: <Widget>[
+                                                    Container(
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        color: Color.fromARGB(
+                                                            255, 233, 231, 253),
                                                       ),
-                                                  children: <
-                                                      Widget>[
-                                                        Container(
-                                                          decoration: BoxDecoration(
-                                                            color: Color.fromARGB(255, 233, 231, 253),
+                                                      child: const Row(
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 30,
+                                                              child: Text('no',
+                                                                  style: TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold)),
+                                                            ),
                                                           ),
-                                                          child: Row(children: [
-                                                          Padding(padding: EdgeInsets.only(left: 10),
-                                                          child : SizedBox(
-                                                            width: 30,
-                                                          child : Text('no',style: TextStyle(fontWeight: FontWeight.bold)),),),
-                                                          Padding(padding: EdgeInsets.only(left: 10),
-                                                            child : SizedBox(
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
                                                               width: 140,
-                                                              child : Text('Nama Dokumen', style: TextStyle(fontWeight: FontWeight.bold)),),),
-                                                          Padding(padding: EdgeInsets.only(left: 10),
-                                                            child : SizedBox(
+                                                              child: Text(
+                                                                  'Nama Dokumen',
+                                                                  style: TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold)),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
                                                               width: 140,
-                                                              child : Text('#', style: TextStyle(fontWeight: FontWeight.bold)),),),
-                                                        ],),),
-                                                    SizedBox(
+                                                              child: Text('#',
+                                                                  style: TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold)),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
                                                       height: 10,
                                                     ),
                                                     Container(
-                                                      decoration: BoxDecoration(
+                                                      decoration:
+                                                          const BoxDecoration(
                                                         color: Colors.white,
                                                       ),
-                                                      child: Row(children: [
-                                                      Padding(padding: EdgeInsets.only(left: 10),
-                                                        child : SizedBox(
-                                                          width: 30,
-                                                          child : Text('1'),),),
-                                                      Padding(padding: EdgeInsets.only(left: 10),
-                                                        child : SizedBox(
-                                                          width: 140,
-                                                          child : Text('E-Resep'),),),
-                                                      Padding(padding: EdgeInsets.only(left: 10),
-                                                        child : SizedBox(
-                                                          width: 140,
-                                                          child : Text('Belum Terbit'),),),
-                                                    ],),),
-                                                    SizedBox(
+                                                      child: const Row(
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 30,
+                                                              child: Text('1'),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 140,
+                                                              child: Text(
+                                                                  'E-Resep'),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 140,
+                                                              child: Text(
+                                                                  'Belum Terbit'),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
                                                       height: 10,
                                                     ),
                                                     Container(
-                                                      decoration: BoxDecoration(
+                                                      decoration:
+                                                          const BoxDecoration(
                                                         color: Colors.white,
                                                       ),
-                                                      child: Row(children: [
-                                                        Padding(padding: EdgeInsets.only(left: 10),
-                                                          child : SizedBox(
-                                                            width: 30,
-                                                            child : Text('2'),),),
-                                                        Padding(padding: EdgeInsets.only(left: 10),
-                                                          child : SizedBox(
-                                                            width: 140,
-                                                            child : Text('Surat Sakit'),),),
-                                                        Padding(padding: EdgeInsets.only(left: 10),
-                                                          child : SizedBox(
-                                                            width: 140,
-                                                            child : Text('Belum Terbit'),),),
-                                                      ],),),
-                                                    SizedBox(
+                                                      child: const Row(
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 30,
+                                                              child: Text('2'),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 140,
+                                                              child: Text(
+                                                                  'Surat Sakit'),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 140,
+                                                              child: Text(
+                                                                  'Belum Terbit'),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
                                                       height: 10,
                                                     ),
                                                     Container(
-                                                      decoration: BoxDecoration(
+                                                      decoration:
+                                                          const BoxDecoration(
                                                         color: Colors.white,
                                                       ),
-                                                      child: Row(children: [
-                                                        Padding(padding: EdgeInsets.only(left: 10),
-                                                          child : SizedBox(
-                                                            width: 30,
-                                                            child : Text('3'),),),
-                                                        Padding(padding: EdgeInsets.only(left: 10),
-                                                          child : SizedBox(
-                                                            width: 140,
-                                                            child : Text('Surat Sehat'),),),
-                                                        Padding(padding: EdgeInsets.only(left: 10),
-                                                          child : SizedBox(
-                                                            width: 140,
-                                                            child : Text('Belum Terbit'),),),
-                                                      ],),),
-                                                    SizedBox(
+                                                      child: const Row(
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 30,
+                                                              child: Text('3'),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 140,
+                                                              child: Text(
+                                                                  'Surat Sehat'),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 140,
+                                                              child: Text(
+                                                                  'Belum Terbit'),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
                                                       height: 10,
                                                     ),
                                                     Container(
-                                                      decoration: BoxDecoration(
+                                                      decoration:
+                                                          const BoxDecoration(
                                                         color: Colors.white,
                                                       ),
-                                                      child: Row(children: [
-                                                        Padding(padding: EdgeInsets.only(left: 10),
-                                                          child : SizedBox(
-                                                            width: 30,
-                                                            child : Text('3'),),),
-                                                        Padding(padding: EdgeInsets.only(left: 10),
-                                                          child : SizedBox(
-                                                            width: 140,
-                                                            child : Text('Surat Rujukan'),),),
-                                                        Padding(padding: EdgeInsets.only(left: 10),
-                                                          child : SizedBox(
-                                                            width: 140,
-                                                            child : Text('Belum Terbit'),),),
-                                                      ],),),
+                                                      child: const Row(
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 30,
+                                                              child: Text('3'),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 140,
+                                                              child: Text(
+                                                                  'Surat Rujukan'),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10),
+                                                            child: SizedBox(
+                                                              width: 140,
+                                                              child: Text(
+                                                                  'Belum Terbit'),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -486,10 +575,10 @@ class ProfilePasienTindakan extends StatelessWidget {
                     // onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
                     //     parameters: {'no_mr': pasien.noMr ?? ''}),
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       height: 45,
                       decoration: BoxDecoration(
-                        color:  Colors.redAccent,
+                        color: Colors.redAccent,
                         borderRadius: BorderRadius.circular(10),
                         // boxShadow: [
                         //   BoxShadow(
@@ -500,9 +589,9 @@ class ProfilePasienTindakan extends StatelessWidget {
                         //   ),
                         // ],
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
                             "Privy Sign",
                             style: TextStyle(

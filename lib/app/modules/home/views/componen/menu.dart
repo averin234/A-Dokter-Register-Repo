@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../routes/app_pages.dart';
 
@@ -42,7 +38,7 @@ class _MenuHomeState extends State<MenuHome> {
                   // ],
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(0),
+                  padding: const EdgeInsets.all(0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +47,7 @@ class _MenuHomeState extends State<MenuHome> {
                         width: 50.0,
                         height: 50.0,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 254, 228, 203),
+                          color: const Color.fromARGB(255, 254, 228, 203),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black.withOpacity(.1),
@@ -64,24 +60,24 @@ class _MenuHomeState extends State<MenuHome> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: EdgeInsets.only(top: 15),
-                        child: Text(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: const Text(
                           '1',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      const Text(
                         "register \npasien",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 12),
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                     ],
@@ -89,7 +85,7 @@ class _MenuHomeState extends State<MenuHome> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             InkWell(
@@ -110,7 +106,7 @@ class _MenuHomeState extends State<MenuHome> {
                   // ],
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -119,7 +115,7 @@ class _MenuHomeState extends State<MenuHome> {
                         width: 50.0,
                         height: 50.0,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 233, 231, 253),
+                          color: const Color.fromARGB(255, 233, 231, 253),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black.withOpacity(.1),
@@ -132,24 +128,24 @@ class _MenuHomeState extends State<MenuHome> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: EdgeInsets.only(top: 15),
-                        child: Text(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: const Text(
                           '17',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      const Text(
                         "antrian \npasien",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 12),
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                     ],
@@ -157,7 +153,7 @@ class _MenuHomeState extends State<MenuHome> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             InkWell(
@@ -170,7 +166,7 @@ class _MenuHomeState extends State<MenuHome> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -178,7 +174,7 @@ class _MenuHomeState extends State<MenuHome> {
                         width: 50.0,
                         height: 50.0,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 219, 246, 253),
+                          color: const Color.fromARGB(255, 219, 246, 253),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black.withOpacity(.1),
@@ -191,24 +187,24 @@ class _MenuHomeState extends State<MenuHome> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: EdgeInsets.only(top: 15),
-                        child: Text(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: const Text(
                           '27',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      const Text(
                         "list \npasien ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 12),
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                     ],
@@ -216,7 +212,7 @@ class _MenuHomeState extends State<MenuHome> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             InkWell(
@@ -237,7 +233,7 @@ class _MenuHomeState extends State<MenuHome> {
                   // ],
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -246,7 +242,7 @@ class _MenuHomeState extends State<MenuHome> {
                         width: 50.0,
                         height: 50.0,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 254, 228, 203),
+                          color: const Color.fromARGB(255, 254, 228, 203),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black.withOpacity(.1),
@@ -259,24 +255,24 @@ class _MenuHomeState extends State<MenuHome> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: EdgeInsets.only(top: 15),
-                        child: Text(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: const Text(
                           '1',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
-                      Text(
+                      const Text(
                         "Pendapatan",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 12),
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                     ],
@@ -286,7 +282,7 @@ class _MenuHomeState extends State<MenuHome> {
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         // Row(
@@ -486,7 +482,7 @@ class _MenuHomeState extends State<MenuHome> {
         //     ),
         //   ],
         // ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
       ],

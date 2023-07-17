@@ -1,12 +1,6 @@
 import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/list_resep.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
-import '../../../../../data/componen/fetch_data.dart';
-import '../../../../../routes/app_pages.dart';
-import '../../../../detail_riwayat/controllers/detail_riwayat_controller.dart';
 
 class PlanningResep extends StatelessWidget {
   final List<Resep> resep;
@@ -14,7 +8,6 @@ class PlanningResep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(DetailRiwayatController());
     return Container(
       margin: const EdgeInsets.only(right: 10, left: 10),
       padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
@@ -37,13 +30,13 @@ class PlanningResep extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
-              const SizedBox(
+              SizedBox(
                 width: 210,
                 child: Text("Resep",
                     style: TextStyle(
@@ -51,7 +44,7 @@ class PlanningResep extends StatelessWidget {
                       fontSize: 15,
                     )),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
               // GestureDetector(
@@ -90,7 +83,6 @@ class PlanningResep extends StatelessWidget {
               //     ),
               //   ),
               // ),
-
             ],
           ),
           Column(

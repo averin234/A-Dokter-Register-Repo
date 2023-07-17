@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 
 class SearchTindakanDokter extends StatefulWidget {
   const SearchTindakanDokter({super.key});
@@ -16,13 +13,13 @@ class _SearchTindakanDokterState extends State<SearchTindakanDokter> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
           height: 40,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 254, 228, 203),
+            color: const Color.fromARGB(255, 254, 228, 203),
             borderRadius: BorderRadius.circular(22),
           ),
           child: TextField(
@@ -32,10 +29,10 @@ class _SearchTindakanDokterState extends State<SearchTindakanDokter> {
               enabledBorder: InputBorder.none,
               errorBorder: InputBorder.none,
               disabledBorder: InputBorder.none,
-              contentPadding:
-                  EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
+              contentPadding: const EdgeInsets.only(
+                  left: 15, bottom: 11, top: 13, right: 15),
               suffixIcon: IconButton(
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 onPressed: () {
                   print('sesarch');
                 },

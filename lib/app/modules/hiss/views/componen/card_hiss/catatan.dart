@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,9 +36,9 @@ class _CatatanState extends State<Catatan> {
           const SizedBox(
             height: 10,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               SizedBox(
                 height: 10,
               ),
@@ -72,7 +71,7 @@ class _CatatanState extends State<Catatan> {
             textInputAction: TextInputAction.none,
             maxLines: 7,
             readOnly: true,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,

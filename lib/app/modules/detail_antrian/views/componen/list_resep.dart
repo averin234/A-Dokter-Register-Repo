@@ -30,7 +30,7 @@ class ListResep extends StatelessWidget {
             Row(
               children: [
                 Text('No. ${resep.no ?? 0}',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
             const Divider(

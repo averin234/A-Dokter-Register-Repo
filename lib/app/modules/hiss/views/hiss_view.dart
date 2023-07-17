@@ -50,11 +50,11 @@ class HissViewState extends State<HissView> {
         margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Row(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               width: 230,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[
+                children: <Widget>[
                   Padding(
                       padding: EdgeInsets.only(left: 10),
                       child: Text(
@@ -67,9 +67,8 @@ class HissViewState extends State<HissView> {
               child: InkWell(
                 onTap: () async {
                   Get.defaultDialog(
-                    backgroundColor: Color(0xe0e0e0),
-                    content:
-                    Loading(),
+                    backgroundColor: const Color(0x00e0e0e0),
+                    content: Loading(),
                     title: '',
                     barrierDismissible: false,
                   );
@@ -403,9 +402,9 @@ class HissViewState extends State<HissView> {
                   color: Colors.greenAccent,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "Pergi Ke Soap",
                       style: TextStyle(

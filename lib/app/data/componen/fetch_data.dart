@@ -44,6 +44,7 @@ class API {
   static const _getPoli = '$_baseUrl/get-poli.php';
   static const _postDaftarPx = '$_baseUrl/post-antrian-pasien.php';
   static const _getSpesialisasi = '$_baseUrl/get-spesialisasi.php';
+  static const _getBank = '$_baseUrl/get-bank.php';
   static const _getJenisKelamin = '$_baseUrl/get-jenis-kelamin.php';
   static const _getPekerjaan = '$_baseUrl/get-pekerjaan.php';
   static const _getKawin = '$_baseUrl/get-kawin.php';
@@ -74,7 +75,7 @@ class API {
   static const _getKesadaranPasien = '$_baseUrl/get-kesadaran-pasien.php';
   static const _getkeadaanumum = '$_baseUrl/get-keadaan-umum.php';
   static const _getPasienbBy = '$_baseUrl/get-pasien-by.php';
-  static const _getStatusDokter = '$_baseUrl/get-status-dokter.php';
+  // static const _getStatusDokter = '$_baseUrl/get-status-dokter.php';
   // penambahan lagi
   static const _getDaftarPrivy = '$_baseUrl/daftar_privyid_dr.php';
   static const _postJadwalDokter = '$_baseUrl/post-jadwal-dokter.php';
@@ -91,6 +92,7 @@ class API {
   static const _editVitalSign = '$_baseUrl/edit-vital-sign.php';
   static const _getResep = '$_baseUrl/get-resep.php';
   static const _getObatTindakan = '$_baseUrl/get-obat-tindakan.php';
+  static const _getReferensi = '$_baseUrl/get-referensi.php';
   static const _getTindakan = '$_baseUrl/get-tindakan.php';
   static const _postTindakan = '$_baseUrl/post-tindakan.php';
   static const _postSoap = '$_baseUrl/post-soap.php';
@@ -100,14 +102,12 @@ class API {
   static Future<Token> getToken() async {
     var response = await Dio().post(
       _getToken,
-      data: {
-        "KeyCode":
-            "d40f936a3c8b8d077aae49fe8046c647822f4d692891de690ea4cfb24fa27d97",
-      },
+      data: {"KeyCode": "MeTiRs"},
     );
     final data = jsonDecode(response.data);
     final obj = Token.fromJson(data);
     await LocalStorages.setToken(obj);
+    print(obj.toJson());
     return obj;
   }
 
@@ -126,6 +126,7 @@ class API {
       data: data,
     );
     final obj = response.data;
+    print(obj.toJson());
     return obj;
   }
 
@@ -143,7 +144,8 @@ class API {
   //     data: data,
   //   );
   //   final obj = response.data;
-  //   return obj;
+  //print(obj.toJson());
+  //return obj;
   // }
 
   static Future<GetPasienBy> getPasienBy({required String kode_dokter}) async {
@@ -168,6 +170,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -193,6 +196,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -218,6 +222,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -243,6 +248,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -278,6 +284,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -321,6 +328,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -346,6 +354,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -393,6 +402,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -430,6 +440,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -465,6 +476,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -490,6 +502,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -515,6 +528,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -540,6 +554,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -565,6 +580,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -590,6 +606,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -615,6 +632,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -640,6 +658,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -665,6 +684,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -691,6 +711,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -716,6 +737,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -741,6 +763,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -766,6 +789,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -787,6 +811,7 @@ class API {
       data: data,
     );
     final obj = response.data;
+    print(obj.toJson());
     return obj;
   }
 
@@ -838,6 +863,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -915,6 +941,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -951,6 +978,7 @@ class API {
       LocalStorages.setDataRegist(
           DataRegist(email: obj.res!.username, password: obj.res!.password));
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -981,6 +1009,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1012,6 +1041,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1043,6 +1073,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1072,6 +1103,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1102,6 +1134,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1152,6 +1185,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1197,6 +1231,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1227,6 +1262,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1254,6 +1290,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1284,6 +1321,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1313,6 +1351,33 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
+    return obj;
+  }
+
+  static Future<ListData> getReferensi() async {
+    var token = Publics.controller.getToken.value;
+    final data = {};
+    var response = await Dio().post(
+      _getReferensi,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1342,6 +1407,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1369,6 +1435,33 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
+    return obj;
+  }
+
+  static Future<ListData> getBank() async {
+    var token = await getToken();
+    final data = {};
+    var response = await Dio().post(
+      _getBank,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = ListData.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1396,6 +1489,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1423,6 +1517,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1480,6 +1575,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1507,6 +1603,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1534,6 +1631,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1561,6 +1659,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1588,6 +1687,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1615,6 +1715,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1646,6 +1747,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1686,6 +1788,7 @@ class API {
         ));
       }
     }
+    print(obj.toJson());
     print(obj.toJson());
     return obj;
   }
@@ -1730,6 +1833,7 @@ class API {
         );
       }
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1775,6 +1879,7 @@ class API {
         );
       }
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1829,6 +1934,7 @@ class API {
             email: obj.mahasiswa!.email, password: obj.mahasiswa!.password));
       }
     }
+    print(obj.toJson());
     return obj;
   }
 
@@ -1850,6 +1956,7 @@ class API {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(obj.code.toString(), obj.msg.toString());
     }
+    print(obj.toJson());
     return obj;
   }
 }

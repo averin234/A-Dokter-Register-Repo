@@ -1,6 +1,5 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
-import 'package:a_dokter_register/app/modules/bottomsheet/bottomshet_bayar.dart';
 import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/surat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import '../../../data/model/list_data.dart';
 import '../../bottomsheet/bottomsheet_pulang.dart';
-import '../../detail_regist_pasien_lama/views/componen/card_profile_pasien.dart';
 import '../../loading_summer/loading.surat.dart';
 import '../../loading_summer/loading_card_profile.dart';
 import '../../loading_summer/loading_screen_animed.dart';
@@ -29,13 +27,15 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: SpeedDial( //Speed dial menu
+      floatingActionButton: SpeedDial(
+        //Speed dial menu
         marginBottom: 10, //margin bottom
         icon: Icons.menu, //icon on Floating action button
         activeIcon: Icons.close, //icon when menu is expanded on button
         backgroundColor: Colors.deepOrangeAccent, //background color of button
         foregroundColor: Colors.white, //font color, icon color in button
-        activeBackgroundColor: Colors.deepPurpleAccent, //background color when menu is expanded
+        activeBackgroundColor:
+            Colors.deepPurpleAccent, //background color when menu is expanded
         activeForegroundColor: Colors.white,
         buttonSize: 56.0, //button size
         visible: true,
@@ -47,26 +47,27 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
         onClose: () => print('DIAL CLOSED'), //action when menu closes
 
         elevation: 8.0, //shadow elevation of button
-        shape: CircleBorder(), //shape of button
+        shape: const CircleBorder(), //shape of button
 
         children: [
-          SpeedDialChild( //speed dial child
-            child: Icon(Icons.accessibility),
-            backgroundColor: Color(0xffFFA800),
+          SpeedDialChild(
+            //speed dial child
+            child: const Icon(Icons.accessibility),
+            backgroundColor: const Color(0xffFFA800),
             foregroundColor: Colors.white,
             label: 'Charge Slip',
             labelBackgroundColor: Colors.white,
-            labelStyle: TextStyle(fontSize: 18.0),
+            labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () => print('FIRST CHILD'),
             onLongPress: () => print('FIRST CHILD LONG PRESS'),
           ),
           SpeedDialChild(
-            child: Icon(Icons.exit_to_app_outlined),
-            backgroundColor: Color(0xffF64E60),
+            child: const Icon(Icons.exit_to_app_outlined),
+            backgroundColor: const Color(0xffF64E60),
             foregroundColor: Colors.white,
             labelBackgroundColor: Colors.white,
             label: 'Pulang',
-            labelStyle: TextStyle(fontSize: 18.0),
+            labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () {
               bottomSheetPulang();
             },
@@ -209,10 +210,17 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                                           10),
                                                             ),
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             height: 4,
                                                           ),
-                                                          Text('Geser Kebawah',style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
+                                                          const Text(
+                                                              'Geser Kebawah',
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: Colors
+                                                                      .grey)),
                                                           const SizedBox(
                                                             height: 25,
                                                           ),
@@ -259,8 +267,7 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                                           widget,
                                                                     ),
                                                                   ),
-                                                                  children: <
-                                                                      Widget>[
+                                                                  children: <Widget>[
                                                                     const SizedBox(
                                                                       height:
                                                                           10,
@@ -798,9 +805,11 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                           InkWell(
                                                             onTap: () async {
                                                               Get.defaultDialog(
-                                                                backgroundColor: Color(0xe0e0e0),
+                                                                backgroundColor:
+                                                                    const Color(
+                                                                        0x00e0e0e0),
                                                                 content:
-                                                                Loading(),
+                                                                    Loading(),
                                                                 title: '',
                                                                 barrierDismissible:
                                                                     false,
@@ -890,11 +899,12 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                                 //   ),
                                                                 // ],
                                                               ),
-                                                              child: Column(
+                                                              child:
+                                                                  const Column(
                                                                 mainAxisAlignment:
                                                                     MainAxisAlignment
                                                                         .center,
-                                                                children: const [
+                                                                children: [
                                                                   Text(
                                                                     "Submit",
                                                                     style: TextStyle(
@@ -953,8 +963,8 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                         ),
                       );
                     } else {
-                      return Column(
-                        children: const [
+                      return const Column(
+                        children: [
                           shimmerCardProfile(),
                           shimmerVitalSign(),
                           shimmerSoap(),
@@ -999,10 +1009,10 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
             const SizedBox(
               height: 10,
             ),
-            SingleChildScrollView(
+            const SingleChildScrollView(
                 child: Center(
               child: Column(
-                children: const [
+                children: [
                   Text('Data Berhasil Di Tambahkan',
                       style: TextStyle(
                           color: Colors.black45,

@@ -1,12 +1,6 @@
 import 'package:a_dokter_register/app/data/model/get_list_kasir.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-import '../../../../routes/app_pages.dart';
 import '../../../bottomsheet/bottomshet_bayar.dart';
 
 class Pendapatan extends StatelessWidget {
@@ -18,10 +12,10 @@ class Pendapatan extends StatelessWidget {
     return InkWell(
       // onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10, bottom: 5),
-        padding: EdgeInsets.only(right: 0, left: 10, bottom: 10, top: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
+        padding: const EdgeInsets.only(right: 0, left: 10, bottom: 10, top: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
@@ -37,100 +31,115 @@ class Pendapatan extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(padding: EdgeInsets.only(right: 10, left: 10),
-              child :
-              InkWell(
-                onTap: () {
-                  bottomSheetBayar();
-                },
-                child : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Selesai Periksa',style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold)),
-                  Container(
-                    padding: EdgeInsets.only(right: 5,left: 5, top: 10, bottom: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.blue,
-                    ),
-                  child : Row(children: [
-                    Icon(Icons.monetization_on_rounded,color: Colors.white),
-                  SizedBox(
-                    width: 10,
+              Padding(
+                padding: const EdgeInsets.only(right: 10, left: 10),
+                child: InkWell(
+                  onTap: () {
+                    bottomSheetBayar();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('Selesai Periksa',
+                          style: TextStyle(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold)),
+                      Container(
+                        padding: const EdgeInsets.only(
+                            right: 5, left: 5, top: 10, bottom: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.blue,
+                        ),
+                        child: const Row(
+                          children: [
+                            Icon(Icons.monetization_on_rounded,
+                                color: Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text('Cek Pembayaran Pasien',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white)),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  Text('Cek Pembayaran Pasien',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white)),],),),
-                ],
-              ),),),
-              SizedBox(
+                ),
+              ),
+              const SizedBox(
                 height: 20,
               ),
               Row(
                 children: [
-                  Text('No Registrasi ',
+                  const Text('No Registrasi ',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text(': ', style: TextStyle(fontWeight: FontWeight.bold)),
+                  const Text(': ',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(kasir.noRegistrasi ?? '',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Row(
                 children: [
-                  Text('Tanggal Masuk ',
+                  const Text('Tanggal Masuk ',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text(': '),
+                  const Text(': '),
                   Text(kasir.jamMasuk ?? '',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
                 children: [
-                  Text('Nama Pasien '),
-                  Text(': '),
+                  const Text('Nama Pasien '),
+                  const Text(': '),
                   Text(kasir.namaPasien ?? '',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
-                  Text('Nasabah '),
-                  Text(': '),
+                  const Text('Nasabah '),
+                  const Text(': '),
                   Text(kasir.namaKelompok ?? ''),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
-                  Text('Nama Bagian '),
-                  Text(': '),
+                  const Text('Nama Bagian '),
+                  const Text(': '),
                   Text(kasir.namaBagian ?? ''),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Divider(color: Colors.black),
-              SizedBox(
+              const Divider(color: Colors.black),
+              const SizedBox(
                 height: 10,
               ),
               Padding(
-                padding: EdgeInsets.only(right: 10, left: 10),
+                padding: const EdgeInsets.only(right: 10, left: 10),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          Expanded(
+                          const Expanded(
                             child: Text(
                               "Billing",
                               style: TextStyle(fontWeight: FontWeight.bold),
@@ -145,7 +154,7 @@ class Pendapatan extends StatelessWidget {
                             },
                             child: Text(
                               "Rp ${kasir.billing}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.blue),
                               textAlign: TextAlign.center,
