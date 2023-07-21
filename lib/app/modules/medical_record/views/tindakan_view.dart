@@ -21,9 +21,9 @@ class TindakanView extends GetView<TindakanController> {
             systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
-                  Brightness.dark, //<-- For Android SEE HERE (dark icons)
+              Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
-                  Brightness.light, //<-- For iOS SEE HERE (dark icons)
+              Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
@@ -73,20 +73,32 @@ class TindakanView extends GetView<TindakanController> {
                 child: FutureBuilder(
                     future: API.getPasienBy(
                         kode_dokter:
-                            Publics.controller.getDataRegist.value.kode ?? ''),
+                        Publics.controller.getDataRegist.value.kode ?? ''),
                     builder: (context, snapshot) {
                       if (snapshot.hasData &&
                           snapshot.connectionState != ConnectionState.waiting &&
                           snapshot.data != null) {
                         final data = snapshot.data!.pasien ?? [];
-                        return Column(
+                        return data.isEmpty
+                            ?  Center(
+                          child: Column(
+                            children: [
+                              const Text('Belum Ada Pasien yang diperiksa'),
+                              Image.asset(
+                                'assets/images/pasien.jpg',
+                                height: 300,
+                              ),
+                            ],
+                          ),
+                        )
+                            :Column(
                           children: AnimationConfiguration.toStaggeredList(
                               duration: const Duration(milliseconds: 475),
                               childAnimationBuilder: (widget) => SlideAnimation(
-                                    child: FadeInAnimation(
-                                      child: widget,
-                                    ),
-                                  ),
+                                child: FadeInAnimation(
+                                  child: widget,
+                                ),
+                              ),
                               children: data
                                   .map((e) => ListViewPasien(pasien: e))
                                   .toList()),

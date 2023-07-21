@@ -218,6 +218,9 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                     return Container();
                                   }
                                 }),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             component1(
                                 Icons.add_card_outlined,
                                 'No Rekening...',
@@ -425,6 +428,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         controller: controller,
         style: TextStyle(color: Colors.black.withOpacity(.8)),
         obscureText: isPassword,
+        // maxLength: 13,
         keyboardType: isEmail ? TextInputType.number : TextInputType.number,
         decoration: InputDecoration(
           prefixIcon: Icon(

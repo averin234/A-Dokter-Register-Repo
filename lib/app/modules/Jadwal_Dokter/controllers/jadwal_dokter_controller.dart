@@ -10,4 +10,5 @@ class JadwalDokterController extends GetxController {
   final sabtuController = TextEditingController();
   final mingguController = TextEditingController();
   final intervalController = TextEditingController();
+  final jamulaiController = TextEditingController();
 }
