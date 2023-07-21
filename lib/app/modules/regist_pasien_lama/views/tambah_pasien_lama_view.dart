@@ -83,7 +83,25 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
                         snapshot.connectionState != ConnectionState.waiting &&
                         snapshot.data != null) {
                       final data = snapshot.data!.pasien ?? [];
-                      return Column(
+                      return data.isEmpty
+                          ? Center(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 20,
+                            ),
+                            const Text('Belum ada Pasien yg terdaftar sebagai Pasien Lama', style: TextStyle(fontWeight: FontWeight.bold)),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Image.asset(
+                              'assets/images/pasienlama.png',
+                              height: 200,
+                            ),
+                          ],
+                        ),
+                      )
+                        :Column(
                         children: AnimationConfiguration.toStaggeredList(
                             duration: const Duration(milliseconds: 475),
                             childAnimationBuilder: (widget) => SlideAnimation(

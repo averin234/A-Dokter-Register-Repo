@@ -48,67 +48,14 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
   ];
   final List<String> jadawal2 = [
     '00',
-    '01',
-    '02',
-    '03',
-    '04',
-    '05',
-    '06',
-    '07',
-    '08',
-    '09',
-    '10',
-    '11',
-    '12',
-    '13',
-    '14',
     '15',
-    '16',
-    '17',
-    '18',
-    '19',
-    '20',
-    '21',
-    '22',
-    '23',
-    '24',
-    '25',
-    '26',
-    '27',
-    '28',
-    '29',
     '30',
-    '31',
-    '32',
-    '33',
-    '34',
-    '35',
-    '36',
-    '37',
-    '38',
-    '39',
-    '40',
-    '41',
-    '42',
-    '43',
-    '44',
     '45',
-    '46',
-    '47',
-    '48',
-    '49',
-    '50',
-    '51',
-    '52',
-    '53',
-    '54',
-    '55',
-    '56',
-    '57',
-    '58',
-    '59',
   ];
-  String? selectedValue;
+  String? selectedValue1;
+  String? selectedValue2;
+  String? selectedValue3;
+  String? selectedValue4;
   bool isChecked = false;
 
   @override
@@ -123,7 +70,12 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
               top: Radius.circular(20),
             ),
           ),
-          builder: (context) => buildSheetJadwal(),
+          builder: (BuildContext context) {
+            return StatefulBuilder(
+                builder: (BuildContext context, StateSetter state) {
+                  return buildSheetJadwal();
+                });
+          }
         ),
         elevation: 0,
         backgroundColor: Colors.tealAccent,
@@ -199,7 +151,18 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                           snapshot.data != null) {
                         final data = snapshot.data!.jadwal ?? [];
                         return data.isEmpty
-                            ? Text(snapshot.data!.msg!)
+                            ?  Column(children: [
+                          SizedBox(
+                            height: 40,
+                          ),
+                              Text('Tidak ada jadwal Dokter',style: TextStyle(fontWeight: FontWeight.bold), ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Center(child: Image.asset(
+                          'assets/images/timetable.png',
+                          width: 150,
+                        ),)],)
                             : Column(
                                 children:
                                     AnimationConfiguration.toStaggeredList(
@@ -382,7 +345,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                           ),
                                           Expanded(
                                             child: Text(
-                                              selectedValue ?? '0',
+                                              selectedValue1 ?? '0',
                                               style: TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
@@ -409,10 +372,10 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                                 ),
                                               ))
                                           .toList(),
-                                      value: selectedValue,
+                                      value: selectedValue1,
                                       onChanged: (value) {
                                         setState(() {
-                                          selectedValue = value as String;
+                                          selectedValue1 = value as String;
                                         });
                                       },
                                     ),
@@ -446,7 +409,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                           ),
                                           Expanded(
                                             child: Text(
-                                              selectedValue ?? '00',
+                                              selectedValue2 ?? '00',
                                               style: TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
@@ -473,9 +436,9 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                                 ),
                                               ))
                                           .toList(),
-                                      value: selectedValue,
+                                      value: selectedValue2,
                                       onChanged: (value) {
-                                          selectedValue = value as String;
+                                          selectedValue2 = value as String;
                                           setState(() {
 
                                           });
@@ -545,7 +508,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                           ),
                                         ],
                                       ),
-                                      items: jadawal2
+                                      items: jadawal1
                                           .map((item) =>
                                               DropdownMenuItem<String>(
                                                 value: item,
@@ -561,10 +524,10 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                                 ),
                                               ))
                                           .toList(),
-                                      value: selectedValue,
+                                      value: selectedValue3,
                                       onChanged: (value) {
                                         setState(() {
-                                          selectedValue = value as String;
+                                          selectedValue3 = value as String;
                                         });
                                       },
                                     ),
@@ -625,10 +588,10 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                                 ),
                                               ))
                                           .toList(),
-                                      value: selectedValue,
+                                      value: selectedValue4,
                                       onChanged: (value) {
                                         setState(() {
-                                          selectedValue = value as String;
+                                          selectedValue4 = value as String;
                                         });
                                       },
                                     ),
