@@ -60,14 +60,14 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
                 padding: const EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xFFe0e0e0).withOpacity(0.5),
-                      spreadRadius: 0,
-                      blurRadius: 10,
-                      offset: const Offset(2, 1),
-                    ),
-                  ],
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: const Color(0xFFe0e0e0).withOpacity(0.5),
+                  //     spreadRadius: 0,
+                  //     blurRadius: 10,
+                  //     offset: const Offset(2, 1),
+                  //   ),
+                  // ],
                 ),
                 child: Obx(() {
                   return FutureBuilder(
@@ -83,12 +83,14 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
                             snapshot.data != null) {
                           final data = snapshot.data!.antrian ?? [];
                           return data.isEmpty
-                              ? Center(
-                                  child: Image.asset(
-                                    'assets/images/noantri.png',
-                                    height: 100,
-                                  ),
-                                )
+                              ? Column(
+                            children: [
+                              Text('Tidak ada Antrian Pasien Hari ini'),
+                            Image.asset(
+                              'assets/images/noantri.png',
+                              height: 200,
+                            ),
+                          ],)
                               : Column(
                                   children:
                                       AnimationConfiguration.toStaggeredList(

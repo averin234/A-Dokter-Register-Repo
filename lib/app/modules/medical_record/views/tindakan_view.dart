@@ -61,14 +61,14 @@ class TindakanView extends GetView<TindakanController> {
                 padding: const EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xFFe0e0e0).withOpacity(0.5),
-                      spreadRadius: 0,
-                      blurRadius: 10,
-                      offset: const Offset(2, 1),
-                    ),
-                  ],
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: const Color(0xFFe0e0e0).withOpacity(0.5),
+                  //     spreadRadius: 0,
+                  //     blurRadius: 10,
+                  //     offset: const Offset(2, 1),
+                  //   ),
+                  // ],
                 ),
                 child: FutureBuilder(
                     future: API.getPasienBy(
@@ -85,7 +85,7 @@ class TindakanView extends GetView<TindakanController> {
                             children: [
                               const Text('Belum Ada Pasien yang diperiksa'),
                               Image.asset(
-                                'assets/images/pasien.jpg',
+                                'assets/images/pasient.jpg',
                                 height: 300,
                               ),
                             ],
