@@ -6,7 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
-
+import '../../../data/model/list_data.dart';
+import '../../detail_antrian/views/componen/text_field.dart';
 import '../../loading_summer/loading_atur_jadwal_dokter.dart';
 import 'componen/card_jadwal.dart';
 
@@ -56,7 +57,9 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
   String? selectedValue2;
   String? selectedValue3;
   String? selectedValue4;
-  bool isChecked = false;
+  bool isChecked = true;
+  String _selected = '';
+  List<String> _items = ['A', 'B', 'C', 'D'];
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +76,8 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
           builder: (BuildContext context) {
             return StatefulBuilder(
                 builder: (BuildContext context, StateSetter state) {
-                  return buildSheetJadwal();
+                  return
+                    buildSheetJadwal();
                 });
           }
         ),
@@ -754,3 +758,5 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
         ));
   }
 }
+
+
