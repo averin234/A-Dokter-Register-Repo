@@ -20,6 +20,7 @@ class _SearchPendapatan1State extends State<SearchPendapatan1> {
             borderRadius: BorderRadius.circular(22),
           ),
           child: TextField(
+            readOnly: true,
             decoration: InputDecoration(
               border: InputBorder.none,
               focusedBorder: InputBorder.none,

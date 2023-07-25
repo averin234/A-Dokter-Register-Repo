@@ -248,7 +248,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                             aksesPX.msg.toString());
                                       } else {
                                         aksesPX.res!.kodeKelompok == 1
-                                            ? Get.offAllNamed(Routes.HOME)
+                                            ? Get.offAllNamed(Routes.VERIFIKASI_AKUN)
                                             : aksesPX.res!.kodeKelompok == 2
                                                 ? Get.offAllNamed(Routes.DOSEN)
                                                 : Get.offAllNamed(
@@ -622,7 +622,7 @@ Widget buildSheet() {
           // Padding(padding: EdgeInsets.only(right: 100, left: 100),
           // child : ),
 
-          Text('Lupa Password',textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey)),
+          Text('Lupa Password',textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black)),
           const SizedBox(
             height: 20,
           ),

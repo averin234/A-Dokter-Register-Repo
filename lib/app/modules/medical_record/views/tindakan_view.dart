@@ -6,6 +6,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../../data/componen/fetch_data.dart';
+import '../../antrian_pasien/views/componen/search_medical_record.dart';
 import '../../loading_summer/loading_listpasien.dart';
 import '../controllers/tindakan_controller.dart';
 import 'componen/listview_tindakan.dart';
@@ -17,7 +18,7 @@ class TindakanView extends GetView<TindakanController> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const SliverAppBar(
+          SliverAppBar(
             systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
@@ -35,23 +36,23 @@ class TindakanView extends GetView<TindakanController> {
             snap: true,
             automaticallyImplyLeading: false,
             title: Text('List Pasien'),
-            // bottom: AppBar(
-            //     shape: const RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.vertical(
-            //         bottom: Radius.circular(30),
-            //       ),
-            //     ),
-            //     toolbarHeight: 50,
-            //     automaticallyImplyLeading: false,
-            //     elevation: 0,
-            //     title: Column(
-            //       children: [
-            //         const SearchTindakanDokter(),
-            //         SizedBox(
-            //           height: 10,
-            //         ),
-            //       ],
-            //     )),
+            bottom: AppBar(
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    bottom: Radius.circular(30),
+                  ),
+                ),
+                toolbarHeight: 50,
+                automaticallyImplyLeading: false,
+                elevation: 0,
+                title: Column(
+                  children: [
+                    const SearchTindakanDokter(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                )),
           ),
           // Other Sliver Widgets
           SliverList(

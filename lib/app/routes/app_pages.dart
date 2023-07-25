@@ -66,6 +66,8 @@ import '../modules/riwayat_praktek/bindings/riwayat_praktek_binding.dart';
 import '../modules/riwayat_praktek/views/riwayat_praktek_view.dart';
 import '../modules/splashscreen/bindings/splashscreen_binding.dart';
 import '../modules/splashscreen/views/splashscreen_view.dart';
+import '../modules/verifikasi_akun/bindings/verifikasi_akun_binding.dart';
+import '../modules/verifikasi_akun/views/verifikasi_akun_view.dart';
 
 part 'app_routes.dart';
 
@@ -240,6 +242,10 @@ class AppPages {
       page: () => DetailRegistPasienLamaView(),
       binding: DetailRegistPasienLamaBinding(),
     ),
-
+    GetPage(
+      name: _Paths.VERIFIKASI_AKUN,
+      page: () => const VerifikasiAkunView(),
+      binding: VerifikasiAkunBinding(),
+    ),
   ];
 }

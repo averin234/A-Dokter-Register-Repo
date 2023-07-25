@@ -23,6 +23,7 @@ class _SearchTindakanDokterState extends State<SearchTindakanDokter> {
             borderRadius: BorderRadius.circular(22),
           ),
           child: TextField(
+            readOnly: true,
             decoration: InputDecoration(
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
