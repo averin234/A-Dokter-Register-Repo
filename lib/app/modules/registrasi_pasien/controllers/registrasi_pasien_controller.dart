@@ -39,4 +39,22 @@ class RegistrasiPasienController extends GetxController {
   final namaGolonganDarahController = TextEditingController();
   final alergiController = TextEditingController();
   final kodePosController = TextEditingController();
+  int umur(String tanggalLahir) {
+    // Mendapatkan tanggal saat ini
+    DateTime tanggalSekarang = DateTime.now();
+
+    // Mengonversi tanggal lahir menjadi objek DateTime
+    DateTime tanggalLahirObjek = DateTime.parse(tanggalLahir);
+
+    // Menghitung selisih tahun antara tanggal lahir dan tanggal saat ini
+    int selisihTahun = tanggalSekarang.year - tanggalLahirObjek.year;
+
+    // Memeriksa apakah tanggal lahir sudah lewat hari ulang tahun di tahun ini
+    if (tanggalSekarang.month < tanggalLahirObjek.month ||
+        (tanggalSekarang.month == tanggalLahirObjek.month &&
+            tanggalSekarang.day < tanggalLahirObjek.day)) {
+      selisihTahun--;
+    }
+    return selisihTahun;
+  }
 }

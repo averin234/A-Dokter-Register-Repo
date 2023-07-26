@@ -115,9 +115,11 @@ class CardDokterCV extends StatelessWidget {
                             const SizedBox(
                               width: 6,
                             ),
-                            Text(dokter.alamat ?? '',
+                            SizedBox(
+                              width: 190,
+                            child : Text(dokter.alamat ?? '',
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 13)),
+                                    fontWeight: FontWeight.bold, fontSize: 13)),),
                           ],
                         ),
                       ]),

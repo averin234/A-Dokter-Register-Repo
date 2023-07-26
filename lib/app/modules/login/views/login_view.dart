@@ -174,9 +174,53 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                 isPassword,
                                 false,
                                 controller.passwordController),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                            InkWell(
+                              onTap: () {
+                              },
+                              child: RichText(
+                                text: const TextSpan(
+                                  text: '',
+                                  style: TextStyle(
+                                    color: Colors.blueAccent,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ),
+                            ),
+                              InkWell(
+                                onTap: () => showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  showDragHandle: true,
+                                  context: context,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(20),
+                                    ),
+                                  ),
+                                  builder: (context) => LupaPassword(context),
+                                ),
+                                child: Padding( padding: EdgeInsets.only(right: 20),
+                                child : RichText(
+                                  text: const TextSpan(
+                                    text: 'Lupa Password ?',
+                                    style: TextStyle(
+                                      color: Colors.blueAccent,
+                                      fontSize: 15,
+                                    ),
+                                  ),),
+                                ),
+                              ),
+
+                            ],),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 component2(
                                   'LOGIN',
                                   2.6,
@@ -204,7 +248,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                             aksesPX.msg.toString());
                                       } else {
                                         aksesPX.res!.kodeKelompok == 1
-                                            ? Get.offAllNamed(Routes.HOME)
+                                            ? Get.offAllNamed(Routes.VERIFIKASI_AKUN)
                                             : aksesPX.res!.kodeKelompok == 2
                                                 ? Get.offAllNamed(Routes.DOSEN)
                                                 : Get.offAllNamed(
@@ -419,6 +463,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
 }
 
 Widget buildSheet() {
+
   return Container(
     height: 220,
     decoration: BoxDecoration(
@@ -547,3 +592,117 @@ Widget buildSheet() {
     ),
   );
 }
+
+  Widget LupaPassword(context) {
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return  Padding(
+        padding: mediaQueryData.viewInsets,
+      child : Container(
+      height: 290,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50),
+        color: Colors.transparent,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Container(
+          //   height: 4,
+          //   margin: EdgeInsets.only(
+          //     right: Get.width / 2 - 40,
+          //     left: Get.width / 2 - 40,
+          //   ),
+          //   decoration: BoxDecoration(
+          //     color: const Color(0xFFe0e0e0),
+          //     borderRadius: BorderRadius.circular(10),
+          //   ),
+          //   child : Text('Lupa Password', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey)),
+          // ),
+          // Padding(padding: EdgeInsets.only(right: 100, left: 100),
+          // child : ),
+
+          Text('Lupa Password',textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black)),
+          const SizedBox(
+            height: 20,
+          ),
+        Padding(padding: EdgeInsets.only(right: 10, left: 10),
+          child : Text('kami akan mengirimkan email berisi Default Password untuk menyetel ulang sandi Anda'),),
+          const SizedBox(
+            height: 30,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment:  MainAxisAlignment.start,
+            children: [
+          const Padding(
+            padding: EdgeInsets.only(left: 15),
+            child: Text("Masukan Email Anda",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                )),
+          ),],),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              const SizedBox(
+                width: 5,
+              ),
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border:
+                    Border.all(color: const Color(0x6cc7d1db)),
+                  ),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.done,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding: EdgeInsets.only(
+                          left: 15, bottom: 11, top: 13, right: 15),
+                      filled: true,
+                      fillColor: Colors.transparent,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+
+        SizedBox(
+          width: double.infinity,
+          height: 50,
+          child : Container(
+            margin: EdgeInsets.only(right: 10, left: 10),
+            height: 60,
+            decoration: BoxDecoration(
+              color: Colors.green,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+            Text("Submit", style: TextStyle(fontWeight:  FontWeight.bold, color: Colors.white)),],)
+          ),),
+        ],
+      ),
+    ),);
+  }

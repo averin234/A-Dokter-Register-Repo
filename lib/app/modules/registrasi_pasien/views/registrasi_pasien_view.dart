@@ -59,6 +59,9 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                 height: 10,
               ),
               FormRegistrasiPasien(),
+              SizedBox(
+                height: 20,
+              ),
             ]),
           ),
         ],

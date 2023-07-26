@@ -6,6 +6,7 @@ import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../data/componen/fetch_data.dart';
 import '../../../loading_summer/loading_screen_animed.dart';
@@ -62,20 +63,26 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                 height: 10,
               ),
               Container(
-                padding: const EdgeInsets.only(right: 10),
                 margin: const EdgeInsets.only(left: 10, right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
-                ),
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(10),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
+                // ),
                 child: TextField(
                   controller: controller.namaController,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                      borderSide: BorderSide(
+                        color: Color(0x6cc7d1db),
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
                     errorBorder: InputBorder.none,
                     enabled: true,
                     disabledBorder: InputBorder.none,
@@ -98,20 +105,26 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                 height: 10,
               ),
               Container(
-                padding: const EdgeInsets.only(right: 10),
                 margin: const EdgeInsets.only(left: 10, right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
-                ),
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(10),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
+                // ),
                 child: TextField(
                   controller: controller.keluargaController,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                      borderSide: BorderSide(
+                        color: Color(0x6cc7d1db),
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
                     errorBorder: InputBorder.none,
                     enabled: true,
                     disabledBorder: InputBorder.none,
@@ -134,20 +147,27 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                 height: 10,
               ),
               Container(
-                padding: const EdgeInsets.only(right: 10),
                 margin: const EdgeInsets.only(left: 10, right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
-                ),
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(10),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
+                // ),
                 child: TextField(
                   controller: controller.ktpController,
-                  keyboardType: TextInputType.text,
+                  maxLength: 16,
+                  keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                      borderSide: BorderSide(
+                        color: Color(0x6cc7d1db),
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
                     errorBorder: InputBorder.none,
                     enabled: true,
                     disabledBorder: InputBorder.none,
@@ -170,20 +190,26 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                 height: 10,
               ),
               Container(
-                padding: const EdgeInsets.only(right: 10),
                 margin: const EdgeInsets.only(left: 10, right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
-                ),
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(10),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
+                // ),
                 child: TextField(
                   controller: controller.tempatLahirController,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                      borderSide: BorderSide(
+                        color: Color(0x6cc7d1db),
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
                     errorBorder: InputBorder.none,
                     enabled: true,
                     disabledBorder: InputBorder.none,
@@ -206,22 +232,48 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                 height: 10,
               ),
               Container(
-                padding: const EdgeInsets.only(right: 10),
                 margin: const EdgeInsets.only(left: 10, right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
-                ),
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(10),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
+                // ),
                 child: TextField(
                   controller: controller.tanggalLahirController,
                   keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.done,
+                  readOnly: true,
+                  onTap: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                        context: context, initialDate: DateTime.now(),
+                        firstDate: DateTime(1000), //DateTime.now() - not to allow to choose before today.
+                        lastDate: DateTime(2101)
+                    );
+                    if(pickedDate != null ){
+                      print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
+                      String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+                      print(formattedDate); //formatted date output using intl package =>  2021-03-16
+                      //you can implement different kind of Date Format here according to your requirement
+
+                      setState(() {
+                        controller.tanggalLahirController.text = formattedDate; //set output date to TextField value.
+                      });
+                    }else{
+                      print("Date is not selected");
+                    }
+                  },
                   decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                      borderSide: BorderSide(
+                        color: Color(0x6cc7d1db),
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
                     errorBorder: InputBorder.none,
                     enabled: true,
+                    suffixIcon: Icon(Icons.calendar_month_rounded),
                     disabledBorder: InputBorder.none,
                     contentPadding: EdgeInsets.only(
                         left: 15, bottom: 11, top: 13, right: 15),
@@ -242,21 +294,27 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                 height: 10,
               ),
               Container(
-                padding: const EdgeInsets.only(right: 10),
                 margin: const EdgeInsets.only(left: 10, right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
-                ),
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(10),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
+                // ),
                 child: TextField(
                   controller: controller.alamatController,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   maxLines: 3,
                   decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                      borderSide: BorderSide(
+                        color: Color(0x6cc7d1db),
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
                     errorBorder: InputBorder.none,
                     enabled: true,
                     disabledBorder: InputBorder.none,
@@ -470,20 +528,27 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                 height: 10,
               ),
               Container(
-                padding: const EdgeInsets.only(right: 10),
                 margin: const EdgeInsets.only(left: 10, right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
-                ),
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(10),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
+                // ),
                 child: TextField(
                   controller: controller.noHPController,
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.number,
+                  maxLength: 13,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                      borderSide: BorderSide(
+                        color: Color(0x6cc7d1db),
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
                     errorBorder: InputBorder.none,
                     enabled: true,
                     disabledBorder: InputBorder.none,
@@ -537,20 +602,26 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                 height: 10,
               ),
               Container(
-                padding: const EdgeInsets.only(right: 10),
                 margin: const EdgeInsets.only(left: 10, right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
-                ),
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(10),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
+                // ),
                 child: TextField(
                   controller: controller.emailController,
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                      borderSide: BorderSide(
+                        color: Color(0x6cc7d1db),
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
                     errorBorder: InputBorder.none,
                     enabled: true,
                     disabledBorder: InputBorder.none,
@@ -666,20 +737,26 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                 height: 10,
               ),
               Container(
-                padding: const EdgeInsets.only(right: 10),
                 margin: const EdgeInsets.only(left: 10, right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
-                ),
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(10),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
+                // ),
                 child: TextField(
                   controller: controller.alergiController,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                      borderSide: BorderSide(
+                        color: Color(0x6cc7d1db),
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
                     errorBorder: InputBorder.none,
                     enabled: true,
                     disabledBorder: InputBorder.none,
@@ -1076,33 +1153,36 @@ class AppTextField extends StatelessWidget {
       height: Get.width / 7,
       width: Get.width / 1,
       alignment: Alignment.center,
-      decoration: BoxDecoration(
-        border:
-        Border.all(color: const Color(0x6cc7d1db)),
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(10),
-      ),
+      // decoration: BoxDecoration(
+      //   border:
+      //   Border.all(color: const Color(0x6cc7d1db)),
+      //   color: Colors.transparent,
+      //   borderRadius: BorderRadius.circular(10),
+      // ),
       child: TextFormField(
         readOnly: true,
         controller: textEditingController1,
         cursorColor: Colors.black,
         onTap: onTextFieldTap,
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.transparent,
-          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
-          contentPadding:
-              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
-          hintText: hint,
-          border: const OutlineInputBorder(
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              const Radius.circular(10.0),
+            ),
             borderSide: BorderSide(
+              color: Color(0x6cc7d1db),
               width: 0,
               style: BorderStyle.none,
             ),
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
           ),
+          errorBorder: InputBorder.none,
+          enabled: true,
+          suffixIcon: Icon(Icons.arrow_drop_down_circle_rounded),
+          disabledBorder: InputBorder.none,
+          contentPadding: EdgeInsets.only(
+              left: 15, bottom: 11, top: 13, right: 15),
+          filled: true,
+          fillColor: Colors.transparent,
         ),
       ),
     );

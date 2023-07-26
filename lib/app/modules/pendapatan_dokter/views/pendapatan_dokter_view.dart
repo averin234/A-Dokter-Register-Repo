@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 
 import '../../loading_summer/loading.pendapatan.dart';
 import '../controllers/pendapatan_dokter_controller.dart';
+import 'componen/searchpendapatan.dart';
 import 'componen/tabel_pendapatan.dart';
 
 class PendapatanDokterView extends GetView<PendapatanDokterController> {
@@ -17,7 +18,7 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const SliverAppBar(
+           SliverAppBar(
             systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
@@ -34,31 +35,30 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
             pinned: true,
             snap: true,
             title: Text('Kasir'),
-
             // actions: [
             //   IconButton(
             //       onPressed: () {},
             //       icon: Icon(Icons.notifications_active),
             //       color: Colors.white),
             // ],
-            // bottom: AppBar(
-            //   shape: const RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.vertical(
-            //       bottom: Radius.circular(30),
-            //     ),
-            //   ),
-            //   toolbarHeight: 50,
-            //   title: Column(
-            //     children: const [
-            //       SearchPendapatan1(),
-            //       SizedBox(
-            //         height: 10,
-            //       ),
-            //     ],
-            //   ),
-            //   automaticallyImplyLeading: false,
-            //   elevation: 0,
-            // ),
+            bottom: AppBar(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(30),
+                ),
+              ),
+              toolbarHeight: 50,
+              title: Column(
+                children: const [
+                  SearchPendapatan1(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+              automaticallyImplyLeading: false,
+              elevation: 0,
+            ),
           ),
           // Other Sliver Widgets
           SliverList(
