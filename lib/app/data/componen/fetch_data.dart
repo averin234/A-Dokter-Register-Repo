@@ -103,7 +103,7 @@ class API {
   static Future<Token> getToken() async {
     var response = await Dio().post(
       _getToken,
-      data: {"KeyCode": "MeTiRs", "v": "1"},
+      data: {"KeyCode": "MeTiRs", "v": "1.0"},
     );
     final data = jsonDecode(response.data);
     final obj = Token.fromJson(data);
@@ -842,7 +842,7 @@ class API {
       "sabtu": sabtu,
       "minggu": minggu,
       "jw": jam_awal,
-      "jk": jam_akhir,
+      "jh": jam_akhir,
       "wp": waktu_periksa,
     };
     var response = await Dio().post(
