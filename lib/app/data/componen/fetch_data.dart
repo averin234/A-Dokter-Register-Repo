@@ -102,7 +102,7 @@ class API {
   static Future<Token> getToken() async {
     var response = await Dio().post(
       _getToken,
-      data: {"KeyCode": "MeTiRs"},
+      data: {"KeyCode": "MeTiRs", "v": "1"},
     );
     final data = jsonDecode(response.data);
     final obj = Token.fromJson(data);
@@ -120,7 +120,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -138,7 +138,7 @@ class API {
   //     options: Options(
   //       headers: {
   //         "Content-Type": "application/json",
-  //         "X-Api-Token": token.token,
+  //         "MTR": token.token,
   //       },
   //     ),
   //     data: data,
@@ -150,13 +150,13 @@ class API {
 
   static Future<GetPasienBy> getPasienBy({required String kode_dokter}) async {
     var token = Publics.controller.getToken.value;
-    final data = {"kode_dokter": kode_dokter};
+    final data = {"kd": kode_dokter};
     var response = await Dio().post(
       _getPasienbBy,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -182,7 +182,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -202,13 +202,13 @@ class API {
 
   static Future<ListData> getAsterix({required String src_icd}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'act': 'get_asterix', 'src_icd': src_icd};
+    final data = {'ac': 'get_asterix', 'sd': src_icd};
     var response = await Dio().post(
       _getIcd10,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -228,13 +228,13 @@ class API {
 
   static Future<ListData> getIcd10({required String src_icd}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'act': 'get_icd10', 'src_icd': src_icd};
+    final data = {'ac': 'get_icd10', 'sd': src_icd};
     var response = await Dio().post(
       _getIcd10,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -260,17 +260,17 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      'no_registrasi': no_registrasi,
-      'icd_10': icd_10,
-      'icd_asterik': icd_asterik,
-      'kasus_pasien': kasus_pasien,
+      'mr': no_registrasi,
+      'i10': icd_10,
+      'iri': icd_asterik,
+      'kp': kasus_pasien,
     };
     var response = await Dio().post(
       _postIcd10,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -300,21 +300,21 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      'no_registrasi': no_registrasi,
-      'id_dc_kesediaan_obat': id_dc_kesediaan_obat,
-      'kode_brg': kode_brg,
-      'kode_brg_racikan': kode_brg_racikan,
-      'id_dd_dosis': id_dd_dosis,
-      'txt_jumlah': txt_jumlah,
-      'id_stok': id_stok,
-      'flag_dosis': flag_dosis,
+      'nr': no_registrasi,
+      'ko': id_dc_kesediaan_obat,
+      'kb': kode_brg,
+      'kbc': kode_brg_racikan,
+      'dos': id_dd_dosis,
+      'tj': txt_jumlah,
+      'st': id_stok,
+      'fd': flag_dosis,
     };
     var response = await Dio().post(
       _postResep,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -334,13 +334,13 @@ class API {
 
   static Future<ListData> getAturanPakai({required String kesediaan}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'act': 'get_aturan_pakai', 'id_kesediaan_obat': kesediaan};
+    final data = {'ac': 'get_aturan_pakai', 'id_kesediaan_obat': kesediaan};
     var response = await Dio().post(
       _getResep,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -372,7 +372,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      'kode_dokter': kode_dokter,
+      'kd': kode_dokter,
       'jam_awal': jam_awal,
       'no_antrian': no_antrian,
       'no_mr': no_mr,
@@ -388,7 +388,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -415,10 +415,10 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      'no_registrasi': no_registrasi,
+      'nr': no_registrasi,
       'kode_tarif': kode_tarif,
       'jumlah_tindakan': jumlah_tindakan,
-      'kode_brg': kode_brg,
+      'kb': kode_brg,
       'jumlah_obat': jumlah_obat,
     };
     var response = await Dio().post(
@@ -426,7 +426,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -452,7 +452,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      'no_registrasi': no_registrasi,
+      'nr': no_registrasi,
       'subjective': subjective,
       'objective': objective,
       'analyst': analyst,
@@ -462,7 +462,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -488,7 +488,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -514,7 +514,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -540,7 +540,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -566,7 +566,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -592,7 +592,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -618,7 +618,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -644,7 +644,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -670,7 +670,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -691,13 +691,13 @@ class API {
   static Future<GetListKasir> getListKasir(
       {required String kode_dokter}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'kode_dokter': kode_dokter};
+    final data = {'kd': kode_dokter};
     var response = await Dio().post(
       _getListKasir,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -723,7 +723,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -743,13 +743,13 @@ class API {
 
   static Future<ListData> getKecamatan({required String id}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'id_kota': id};
+    final data = {'kt': id};
     var response = await Dio().post(
       _getKecamatan,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -769,13 +769,13 @@ class API {
 
   static Future<GetKelurahan> getKelurahan({required String id}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'id_kecamatan': id};
+    final data = {'kec': id};
     var response = await Dio().post(
       _getKelurahan,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -798,14 +798,14 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "kode_dokter": kode_dokter,
+      "kd": kode_dokter,
     };
     var response = await Dio().post(
       _getDaftarPrivy,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -831,8 +831,8 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "id_jadwal_dokter": id_jadwal_dokter,
-      "kode_dokter": kode_dokter,
+      "jd": id_jadwal_dokter,
+      "kd": kode_dokter,
       "senin": senin,
       "selasa": selasa,
       "rabu": rabu,
@@ -840,16 +840,16 @@ class API {
       "jumat": jumat,
       "sabtu": sabtu,
       "minggu": minggu,
-      "jam_awal": jam_awal,
-      "jam_akhir": jam_akhir,
-      "waktu_periksa": waktu_periksa,
+      "jw": jam_awal,
+      "jk": jam_akhir,
+      "wp": waktu_periksa,
     };
     var response = await Dio().post(
       _postJadwalDokter,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -896,7 +896,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "kode_dokter": kode_dokter,
+      "kd": kode_dokter,
       "nama_pasien": nama_pasien,
       "nasabah": nasabah,
       "id_agama": id_agama,
@@ -905,18 +905,18 @@ class API {
       "no_ktp": no_ktp,
       "id_kerja": id_kerja,
       "tempat_lahir": tempat_lahir,
-      "email": email,
+      "em": email,
       "tgl_lahir": tgl_lahir,
       "jenis_kelamin": jenis_kelamin,
       "alamat": alamat,
       "id_kawin": id_kawin,
       "id_prov": id_prov,
       "id_goldar": id_goldar,
-      "id_kota": id_kota,
-      "id_kecamatan": id_kecamatan,
+      "kt": id_kota,
+      "kec": id_kecamatan,
       "alergi": alergi,
       "kode_pos": kode_pos,
-      "id_kelurahan": id_kelurahan,
+      "kel": id_kelurahan,
       "foto_pasien": foto_pasien,
       "no_bpjs": no_bpjs,
       "no_polis": no_polis,
@@ -927,7 +927,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -952,7 +952,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "email": email,
+      "em": email,
       "pw_baru": pw_baru,
       "pw_lama": pw_lama,
     };
@@ -961,7 +961,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -987,7 +987,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "no_registrasi": no_registrasi,
+      "nr": no_registrasi,
       "url": _url,
     };
     var response = await Dio().post(
@@ -995,7 +995,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1019,7 +1019,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "kode_dokter": kode_dokter,
+      "kd": kode_dokter,
       "tgl_daftar": tgl_daftar,
     };
     var response = await Dio().post(
@@ -1027,7 +1027,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1051,15 +1051,15 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "kode_dokter": kode_dokter,
-      "no_mr": no_mr,
+      "kd": kode_dokter,
+      "nm": no_mr,
     };
     var response = await Dio().post(
       _getListMR,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1082,14 +1082,14 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "jenis_kelamin": jenis_kelamin,
+      "jk": jenis_kelamin,
     };
     var response = await Dio().post(
       _cekJenisKelamin,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1112,7 +1112,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "no_mr": no_mr,
+      "nm": no_mr,
       "url": _url,
     };
     var response = await Dio().post(
@@ -1120,7 +1120,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1143,12 +1143,12 @@ class API {
   }) async {
     var token = await getToken();
     final data = {
-      "no_registrasi": no_registrasi,
+      "nr": no_registrasi,
     };
     var response = await http.post(
       Uri.parse(_cetakResep),
       headers: {
-        "X-Api-Token": token.token ?? '',
+        "MTR": token.token ?? '',
       },
       body: data,
     );
@@ -1164,14 +1164,14 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "no_mr": no_mr,
+      "nm": no_mr,
     };
     var response = await Dio().post(
       _cekDaftarPasien,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1202,7 +1202,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "no_registrasi": no_registrasi,
+      "nr": no_registrasi,
       "keadaan_umum": keadaan_umum,
       "kesadaran_pasien": kesadaran_pasien,
       "tekanan_darah": tekanan_darah,
@@ -1217,7 +1217,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1240,7 +1240,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "act": 'get_nama_obat',
+      "ac": 'get_nama_obat',
       "src_obat": src_obat,
     };
     var response = await Dio().post(
@@ -1248,7 +1248,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1269,14 +1269,14 @@ class API {
   static Future<GetJenisObat> getJenisObat() async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "act": 'get_jenis_obat',
+      "ac": 'get_jenis_obat',
     };
     var response = await Dio().post(
       _getResep,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1299,7 +1299,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "act": 'get_racikan',
+      "ac": 'get_racikan',
       "src_racikan": src_racikan,
     };
     var response = await Dio().post(
@@ -1307,7 +1307,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1330,14 +1330,14 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "kode_dokter": kode_dokter,
+      "kd": kode_dokter,
     };
     var response = await Dio().post(
       _getObatTindakan,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1363,7 +1363,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1387,13 +1387,13 @@ class API {
     required String kode_dokter,
   }) async {
     var token = Publics.controller.getToken.value;
-    final data = {"kode_dokter": kode_dokter};
+    final data = {"kd": kode_dokter};
     var response = await Dio().post(
       _getTindakan,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1421,7 +1421,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1447,7 +1447,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1475,7 +1475,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1503,7 +1503,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1540,7 +1540,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "kode_dokter": kode_dokter,
+      "kd": kode_dokter,
       "nama": nama,
       "nik": nik,
       "tgl_lhr": tgl_lhr,
@@ -1551,7 +1551,7 @@ class API {
       "provinsi": provinsi,
       "kota": kota,
       "telp": telp,
-      "email": email,
+      "em": email,
       "alamat": alamat,
       "foto_ktp": foto_ktp,
       "foto_dokter": foto_dokter,
@@ -1561,7 +1561,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1589,7 +1589,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1617,7 +1617,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1639,13 +1639,13 @@ class API {
     required String kode_dokter,
   }) async {
     var token = Publics.controller.getToken.value;
-    final data = {"kode_dokter": kode_dokter};
+    final data = {"kd": kode_dokter};
     var response = await Dio().post(
       _getRiwayatPraktek,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1667,13 +1667,13 @@ class API {
     required String kode_dokter,
   }) async {
     var token = Publics.controller.getToken.value;
-    final data = {"kode_dokter": kode_dokter};
+    final data = {"kd": kode_dokter};
     var response = await Dio().post(
       _getJadwalDokter,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1695,13 +1695,13 @@ class API {
     required String kode_dokter,
   }) async {
     var token = Publics.controller.getToken.value;
-    final data = {"kode_dokter": kode_dokter, "url": _url};
+    final data = {"kd": kode_dokter, "url": _url};
     var response = await Dio().post(
       _getDetailDokter,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1726,14 +1726,14 @@ class API {
     var token = Publics.controller.getToken.value;
     final data = {
       "tanggal": tanggal,
-      "kode_dokter": kode_dokter,
+      "kd": kode_dokter,
     };
     var response = await Dio().post(
       _getAntrianPasien,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1760,7 +1760,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1803,7 +1803,7 @@ class API {
     final data = {
       "nama": nama,
       "no_hp": noHp,
-      "email": email,
+      "em": email,
       "sip": sip,
       "kode_bagian": kodeBagian,
     };
@@ -1812,7 +1812,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1847,7 +1847,7 @@ class API {
     var token = await getToken();
     final data = {
       "nama_pasien": nama,
-      "email": email,
+      "em": email,
       "no_hp": noHp,
       "universitas": universitas,
       "fakultas": fakultas,
@@ -1858,7 +1858,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1896,7 +1896,7 @@ class API {
     var token = await getToken();
     final data = {
       "nama": nama,
-      "email": email,
+      "em": email,
       "no_hp": noHp,
       "universitas": universitas,
       "no_induk_mahasiswa": noInduk,
@@ -1910,7 +1910,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token,
+          "MTR": token.token,
         },
       ),
       data: data,
@@ -1946,7 +1946,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token ?? '',
+          "MTR": token.token ?? '',
         },
       ),
       data: data,
