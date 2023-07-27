@@ -76,7 +76,7 @@ class API {
   static const _getKesadaranPasien = '$_baseUrl/get-kesadaran-pasien.php';
   static const _getkeadaanumum = '$_baseUrl/get-keadaan-umum.php';
   static const _getPasienbBy = '$_baseUrl/get-pasien-by.php';
-  static const _getLupaPassword = '$_baseUrl/cek-lupa_password.php';
+  static const _getLupaPassword = '$_baseUrl/cek-lupa-password.php';
   // static const _getStatusDokter = '$_baseUrl/get-status-dokter.php';
   // penambahan lagi
   static const _getDaftarPrivy = '$_baseUrl/daftar_privyid_dr.php';
@@ -1108,12 +1108,12 @@ class API {
     print(obj.toJson());
     return obj;
   }
-  static Future<CheckUp> cekCekLupaPassword({
-    required String jenis_kelamin,
+  static Future<CheckUp> CekLupaPassword({
+    required String email,
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "jk": jenis_kelamin,
+      "em": email,
     };
     var response = await Dio().post(
       _getLupaPassword,
