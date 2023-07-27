@@ -76,7 +76,7 @@ class API {
   static const _getKesadaranPasien = '$_baseUrl/get-kesadaran-pasien.php';
   static const _getkeadaanumum = '$_baseUrl/get-keadaan-umum.php';
   static const _getPasienbBy = '$_baseUrl/get-pasien-by.php';
-  static const _getLupaPassword ='$_baseUrl/cek-lupa_password.php';
+  static const _getLupaPassword = '$_baseUrl/cek-lupa_password.php';
   // static const _getStatusDokter = '$_baseUrl/get-status-dokter.php';
   // penambahan lagi
   static const _getDaftarPrivy = '$_baseUrl/daftar_privyid_dr.php';
@@ -375,10 +375,10 @@ class API {
     var token = Publics.controller.getToken.value;
     final data = {
       'kd': kode_dokter,
-      'jam_awal': jam_awal,
+      'jw': jam_awal,
       'no_antrian': no_antrian,
-      'no_mr': no_mr,
-      'durasi': durasi,
+      'nm': no_mr,
+      'dr': durasi,
       'nasabah': nasabah,
       'no_polis': no_polis,
       'no_bpjs': no_bpjs,
@@ -899,18 +899,18 @@ class API {
     var token = Publics.controller.getToken.value;
     final data = {
       "kd": kode_dokter,
-      "nama_pasien": nama_pasien,
+      "np": nama_pasien,
       "nasabah": nasabah,
       "id_agama": id_agama,
       "nama_keluarga": nama_keluarga,
-      "no_hp": no_hp,
-      "no_ktp": no_ktp,
+      "nh": no_hp,
+      "nt": no_ktp,
       "id_kerja": id_kerja,
       "tempat_lahir": tempat_lahir,
       "em": email,
       "tgl_lahir": tgl_lahir,
-      "jenis_kelamin": jenis_kelamin,
-      "alamat": alamat,
+      "jk": jenis_kelamin,
+      "al": alamat,
       "id_kawin": id_kawin,
       "id_prov": id_prov,
       "id_goldar": id_goldar,
@@ -955,8 +955,8 @@ class API {
     var token = Publics.controller.getToken.value;
     final data = {
       "em": email,
-      "pw_baru": pw_baru,
-      "pw_lama": pw_lama,
+      "pb": pw_baru,
+      "pl": pw_lama,
     };
     var response = await Dio().post(
       _postUbahPassword,
@@ -1022,7 +1022,7 @@ class API {
     var token = Publics.controller.getToken.value;
     final data = {
       "kd": kode_dokter,
-      "tgl_daftar": tgl_daftar,
+      "td": tgl_daftar,
     };
     var response = await Dio().post(
       _getAntrianDokter,
@@ -1108,6 +1108,7 @@ class API {
     print(obj.toJson());
     return obj;
   }
+
   static Future<CheckUp> cekCekLupaPassword({
     required String jenis_kelamin,
   }) async {
@@ -1583,7 +1584,7 @@ class API {
       "kota": kota,
       "telp": telp,
       "em": email,
-      "alamat": alamat,
+      "al": alamat,
       "foto_ktp": foto_ktp,
       "foto_dokter": foto_dokter,
     };
@@ -1756,7 +1757,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "tanggal": tanggal,
+      "tgl": tanggal,
       "kd": kode_dokter,
     };
     var response = await Dio().post(
@@ -1833,7 +1834,7 @@ class API {
     var token = Publics.controller.getToken.value;
     final data = {
       "nama": nama,
-      "no_hp": noHp,
+      "nh": noHp,
       "em": email,
       "sip": sip,
       "kode_bagian": kodeBagian,
@@ -1877,9 +1878,9 @@ class API {
       required String noInduk}) async {
     var token = await getToken();
     final data = {
-      "nama_pasien": nama,
+      "np": nama,
       "em": email,
-      "no_hp": noHp,
+      "nh": noHp,
       "universitas": universitas,
       "fakultas": fakultas,
       "no_induk": noInduk,
@@ -1928,7 +1929,7 @@ class API {
     final data = {
       "nama": nama,
       "em": email,
-      "no_hp": noHp,
+      "nh": noHp,
       "universitas": universitas,
       "no_induk_mahasiswa": noInduk,
       "jenjang_pendidikan": jenjang,
