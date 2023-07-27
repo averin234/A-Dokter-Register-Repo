@@ -1108,12 +1108,12 @@ class API {
     print(obj.toJson());
     return obj;
   }
-  static Future<CheckUp> cekCekLupaPassword({
-    required String jenis_kelamin,
+  static Future<CheckUp> CekLupaPassword({
+    required String email,
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "jk": jenis_kelamin,
+      "email": email,
     };
     var response = await Dio().post(
       _getLupaPassword,

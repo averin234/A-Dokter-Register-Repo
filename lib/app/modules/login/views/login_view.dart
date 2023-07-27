@@ -673,8 +673,32 @@ Widget buildSheet() {
             height: 30,
           ),
         InkWell(
-          onTap: () {
-
+          onTap: () async {
+            if (controller.lupapassword.text.isNotEmpty) {
+              Get.defaultDialog(
+                backgroundColor: Color(0xe0e0e0),
+                content:
+                Loading(),
+                title: '',
+                barrierDismissible: false,
+              );
+              final postLupaPassword = await API.CekLupaPassword(email: ''
+              );
+              Get.back();
+              if (postLupaPassword.code == 200) {
+                Get.snackbar('500',
+                    'Password baru sudah berhasil di kirim ke alamat email');
+                Get.back();
+              } else {
+                Get.defaultDialog(
+                  title: (postLupaPassword.code ?? 0).toString(),
+                  content: Text(postLupaPassword.msg ?? ''),
+                );
+              }
+            } else {
+              Get.snackbar('500',
+                  'Email yg di masukan harus sesuai dengan akun yang sudah terdaftar di Aplikasi A-Dokter');
+            }
           },
         child : SizedBox(
           width: double.infinity,
