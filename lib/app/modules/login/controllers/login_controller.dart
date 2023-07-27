@@ -9,6 +9,7 @@ class LoginController extends GetxController {
   final isObscurePass = true.obs;
   final isObscureConfirmPass = true.obs;
   final ingatSaya = false.obs;
+  final lupapassword = TextEditingController();
 
   @override
   void onInit() {

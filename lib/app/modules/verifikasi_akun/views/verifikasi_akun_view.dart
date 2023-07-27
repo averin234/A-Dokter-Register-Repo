@@ -50,7 +50,7 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                           ))),
                   Padding(
                       padding: EdgeInsets.only(left: 10),
-                      child: Text("Pastikan data yang di input sudah bener",
+                      child: Text("Pastikan data yang di input sudah benar",
                           style: TextStyle(color: Colors.black))),
                 ],
               ),
@@ -181,8 +181,6 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                     //   border: Border.all(color: const Color(0x6cc7d1db)),
                     // ),
                     child: TextField(
-                      // controller: controller.ktpController,
-                      // maxLength: 16,
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.done,
                       decoration: const InputDecoration(
@@ -250,7 +248,6 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                           print(
                               formattedDate); //formatted date output using intl package =>  2021-03-16
                           //you can implement different kind of Date Format here according to your requirement
-
                           setState(() {
                             controller.tanggalMulaiBerlakuController.text =
                                 formattedDate; //set output date to TextField value.

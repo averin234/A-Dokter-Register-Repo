@@ -595,6 +595,7 @@ Widget buildSheet() {
 
   Widget LupaPassword(context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    final controller = Get.put(LoginController());
     return  Padding(
         padding: mediaQueryData.viewInsets,
       child : Container(
@@ -607,21 +608,6 @@ Widget buildSheet() {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Container(
-          //   height: 4,
-          //   margin: EdgeInsets.only(
-          //     right: Get.width / 2 - 40,
-          //     left: Get.width / 2 - 40,
-          //   ),
-          //   decoration: BoxDecoration(
-          //     color: const Color(0xFFe0e0e0),
-          //     borderRadius: BorderRadius.circular(10),
-          //   ),
-          //   child : Text('Lupa Password', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey)),
-          // ),
-          // Padding(padding: EdgeInsets.only(right: 100, left: 100),
-          // child : ),
-
           Text('Lupa Password',textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black)),
           const SizedBox(
             height: 20,
@@ -661,6 +647,7 @@ Widget buildSheet() {
                     Border.all(color: const Color(0x6cc7d1db)),
                   ),
                   child: TextFormField(
+                    controller: controller.lupapassword,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
                     decoration: const InputDecoration(
@@ -685,8 +672,11 @@ Widget buildSheet() {
           const SizedBox(
             height: 30,
           ),
+        InkWell(
+          onTap: () {
 
-        SizedBox(
+          },
+        child : SizedBox(
           width: double.infinity,
           height: 50,
           child : Container(
@@ -701,7 +691,7 @@ Widget buildSheet() {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
             Text("Submit", style: TextStyle(fontWeight:  FontWeight.bold, color: Colors.white)),],)
-          ),),
+          ),),),
         ],
       ),
     ),);

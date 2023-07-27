@@ -226,7 +226,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 'No Rekening...',
                                 false,
                                 false,
-                                controller.sipController),
+                                controller.norekening),
                             const SizedBox(
                               height: 10,
                             ),
@@ -242,7 +242,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                       textEditingController:
                                           controller.kodeBagianController,
                                       textEditingController1:
-                                          controller.namaSpesialisController,
+                                          controller.namabank,
                                       hint: "Pilih Bank...",
                                       isCitySelected: true,
                                       lists: data.list ?? [],
@@ -260,7 +260,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 'Nama Pemilik...',
                                 false,
                                 false,
-                                controller.sipController),
+                                controller.namapemilik),
                             const SizedBox(
                               height: 10,
                             ),

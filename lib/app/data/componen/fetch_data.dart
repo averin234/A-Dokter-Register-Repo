@@ -76,6 +76,7 @@ class API {
   static const _getKesadaranPasien = '$_baseUrl/get-kesadaran-pasien.php';
   static const _getkeadaanumum = '$_baseUrl/get-keadaan-umum.php';
   static const _getPasienbBy = '$_baseUrl/get-pasien-by.php';
+  static const _getLupaPassword ='$_baseUrl/cek-lupa_password.php';
   // static const _getStatusDokter = '$_baseUrl/get-status-dokter.php';
   // penambahan lagi
   static const _getDaftarPrivy = '$_baseUrl/daftar_privyid_dr.php';
@@ -1087,6 +1088,35 @@ class API {
     };
     var response = await Dio().post(
       _cekJenisKelamin,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = CheckUp.fromJson(datas);
+    if (obj.msg == 'Invalid token: Expired') {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    print(obj.toJson());
+    return obj;
+  }
+  static Future<CheckUp> cekCekLupaPassword({
+    required String jenis_kelamin,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      "jk": jenis_kelamin,
+    };
+    var response = await Dio().post(
+      _getLupaPassword,
       options: Options(
         headers: {
           "Content-Type": "application/json",
