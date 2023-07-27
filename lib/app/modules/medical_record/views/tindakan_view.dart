@@ -42,17 +42,18 @@ class TindakanView extends GetView<TindakanController> {
                     bottom: Radius.circular(30),
                   ),
                 ),
-                toolbarHeight: 50,
+                toolbarHeight: 0,
                 automaticallyImplyLeading: false,
-                elevation: 0,
-                title: Column(
-                  children: [
-                    const SearchTindakanDokter(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                )),
+                // elevation: 0,
+                // title: Column(
+                //   children: [
+                //     const SearchTindakanDokter(),
+                //     SizedBox(
+                //       height: 10,
+                //     ),
+                //   ],
+                // )
+            ),
           ),
           // Other Sliver Widgets
           SliverList(

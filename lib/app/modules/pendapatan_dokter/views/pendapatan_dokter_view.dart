@@ -19,6 +19,7 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
       body: CustomScrollView(
         slivers: [
            SliverAppBar(
+             automaticallyImplyLeading: false,
             systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
@@ -47,15 +48,15 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
                   bottom: Radius.circular(30),
                 ),
               ),
-              toolbarHeight: 50,
-              title: Column(
-                children: const [
-                  SearchPendapatan1(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                ],
-              ),
+               toolbarHeight: 0,
+              // title: Column(
+              //   children: const [
+              //     SearchPendapatan1(),
+              //     SizedBox(
+              //       height: 10,
+              //     ),
+              //   ],
+              // ),
               automaticallyImplyLeading: false,
               elevation: 0,
             ),

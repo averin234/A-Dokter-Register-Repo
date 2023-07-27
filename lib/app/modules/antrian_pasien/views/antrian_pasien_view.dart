@@ -1,5 +1,6 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
+import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -34,7 +35,7 @@ class AntrianPasienView extends GetView<AntrianPasienController> {
             snap: true,
             title: const Text('Antrian Pasien'),
             leading: IconButton(
-                onPressed: () {},
+                onPressed: () => Get.back(),
                 icon: const Icon(
                   Icons.arrow_circle_left_rounded,
                   size: 40,

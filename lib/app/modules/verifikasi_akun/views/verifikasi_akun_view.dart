@@ -359,36 +359,6 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                   SizedBox(
                     height: 30,
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 10, left: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Text("Upload SIP ",
-                                style: TextStyle(fontWeight: FontWeight.bold)),
-                            Text("(*)",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.redAccent)),
-                          ],
-                        ),
-                        Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Text(
-                              'Upload Dokumen',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ))
-                      ],
-                    ),
-                  ),
                   buildFilePicker()
                 ],
               ),
@@ -424,7 +394,7 @@ Widget buildFilePicker() {
                       Radius.circular(5.0),
                     ),
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                hintText: 'Upload File',
+                hintText: 'Upload SIP',
                 contentPadding: EdgeInsets.all(10.0),
               ),
               style: const TextStyle(fontSize: 16.0)),

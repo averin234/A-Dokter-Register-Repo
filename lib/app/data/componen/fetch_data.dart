@@ -121,7 +121,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -139,7 +139,7 @@ class API {
   //     options: Options(
   //       headers: {
   //         "Content-Type": "application/json",
-  //         "MTR": token.token,
+  //         "X-Api-Token": token.token,
   //       },
   //     ),
   //     data: data,
@@ -157,7 +157,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -183,7 +183,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -209,7 +209,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -235,7 +235,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -271,7 +271,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -315,7 +315,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -341,7 +341,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -389,7 +389,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -427,7 +427,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -463,7 +463,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -489,7 +489,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -515,7 +515,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -541,7 +541,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -567,7 +567,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -593,7 +593,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -619,7 +619,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -645,7 +645,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -671,7 +671,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -698,7 +698,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -724,7 +724,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -750,7 +750,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -776,7 +776,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -806,7 +806,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -850,7 +850,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -928,7 +928,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -962,7 +962,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -996,7 +996,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1028,7 +1028,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1060,7 +1060,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1090,7 +1090,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1121,7 +1121,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1149,7 +1149,7 @@ class API {
     var response = await http.post(
       Uri.parse(_cetakResep),
       headers: {
-        "MTR": token.token ?? '',
+        "X-Api-Token": token.token ?? '',
       },
       body: data,
     );
@@ -1172,7 +1172,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1218,7 +1218,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1249,7 +1249,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1277,7 +1277,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1308,7 +1308,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1338,7 +1338,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1364,7 +1364,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1394,7 +1394,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1422,7 +1422,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1448,7 +1448,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1476,7 +1476,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1504,7 +1504,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1562,7 +1562,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1590,7 +1590,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1618,7 +1618,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1646,7 +1646,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1674,7 +1674,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1702,7 +1702,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1734,7 +1734,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1755,13 +1755,13 @@ class API {
   static Future<AksesPx> getAksesPx(
       {required String user, required String pass}) async {
     var token = await getToken();
-    final data = {"User": user, "Pass": pass};
+    final data = {"us": user, "pw": pass};
     var response = await Dio().post(
       _getAksesPx,
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1813,7 +1813,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1859,7 +1859,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1911,7 +1911,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token,
+          "X-Api-Token": token.token,
         },
       ),
       data: data,
@@ -1947,7 +1947,7 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "MTR": token.token ?? '',
+          "X-Api-Token": token.token ?? '',
         },
       ),
       data: data,

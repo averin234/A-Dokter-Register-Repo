@@ -19,6 +19,7 @@ class ProfileView extends GetView<ProfileController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor:
                   Color.fromARGB(255, 255, 255, 255), // <-- SEE HERE
