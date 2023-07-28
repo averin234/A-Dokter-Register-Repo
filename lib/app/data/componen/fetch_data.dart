@@ -132,24 +132,6 @@ class API {
     return obj;
   }
 
-  // static Future<dynamic> getSpesialisasi() async {
-  //   var token = Publics.controller.getToken.value;
-  //   final data = {};
-  //   var response = await Dio().post(
-  //     _getStatusDokter,
-  //     options: Options(
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "X-Api-Token": token.token,
-  //       },
-  //     ),
-  //     data: data,
-  //   );
-  //   final obj = response.data;
-  //print(obj.toJson());
-  //return obj;
-  // }
-
   static Future<GetPasienBy> getPasienBy({required String kode_dokter}) async {
     var token = Publics.controller.getToken.value;
     final data = {"kd": kode_dokter};

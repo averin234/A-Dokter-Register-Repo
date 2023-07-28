@@ -15,7 +15,9 @@ class VerifikasiAkunView extends StatefulWidget {
   State<VerifikasiAkunView> createState() => _VerifikasiAkunViewState();
 }
 
+
 class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
+
   final controller = Get.put(VerifikasiAkunController());
   @override
   Widget build(BuildContext context) {
@@ -55,36 +57,22 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                 ],
               ),
             ),
-            Expanded(
-              child: InkWell(
-                onTap: () async {},
-                child: Container(
-                  margin: const EdgeInsets.only(
-                      right: 15, left: 15, top: 15, bottom: 15),
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        color: Colors.white12,
-                        offset: Offset(2, 1),
-                        blurRadius: 1,
-                        spreadRadius: 2,
-                      )
-                    ],
-                    gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [Color(0xff4babe7), Color(0xff4babe7)],
-                    ),
-                  ),
-                  child: const Text(
-                    "Submit",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Colors.white),
-                  ),
+            ElevatedButton.icon(
+              icon: const Icon(
+                Icons.send_rounded,
+                color: Colors.white,
+                size: 24.0,
+              ),
+              label: const Text('Submit', style: TextStyle(fontSize: 16.0)),
+              onPressed: () {
+              },
+              style: ElevatedButton.styleFrom(
+                shadowColor: Colors.blue,
+                primary: Colors.lightBlue,
+                minimumSize: const Size(122, 48),
+                maximumSize: const Size(122, 48),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
             ),
@@ -138,6 +126,14 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
             SizedBox(
               height: 10,
             ),
+            Center(child:
+            Image.asset(
+              'assets/images/uploaddocument.jpg',
+              width: 250,
+            ),),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.only(right: 10, left: 10),
@@ -176,26 +172,20 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(left: 10, right: 10),
-                    // decoration: BoxDecoration(
-                    //   borderRadius: BorderRadius.circular(10),
-                    //   border: Border.all(color: const Color(0x6cc7d1db)),
-                    // ),
-                    child: TextField(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border:
+                      Border.all(color: const Color(0x6cc7d1db)),
+                    ),
+                    child: TextFormField(
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.done,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                            const Radius.circular(10.0),
-                          ),
-                          borderSide: BorderSide(
-                            color: Color(0x6cc7d1db),
-                            width: 0,
-                            style: BorderStyle.none,
-                          ),
-                        ),
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
                         errorBorder: InputBorder.none,
-                        enabled: true,
                         disabledBorder: InputBorder.none,
                         contentPadding: EdgeInsets.only(
                             left: 15, bottom: 11, top: 13, right: 15),
@@ -225,11 +215,13 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(left: 10, right: 10),
-                    // decoration: BoxDecoration(
-                    //   borderRadius: BorderRadius.circular(10),
-                    //   border: Border.all(color: const Color(0x6cc7d1db)),
-                    // ),
-                    child: TextField(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border:
+                      Border.all(color: const Color(0x6cc7d1db)),
+                    ),
+                    child: TextFormField(
                       controller: controller.tanggalMulaiBerlakuController,
                       keyboardType: TextInputType.text,
                       readOnly: true,
@@ -257,20 +249,12 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                         }
                       },
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                            const Radius.circular(10.0),
-                          ),
-                          borderSide: BorderSide(
-                            color: Color(0x6cc7d1db),
-                            width: 0,
-                            style: BorderStyle.none,
-                          ),
-                        ),
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
                         errorBorder: InputBorder.none,
-                        enabled: true,
-                        suffixIcon: Icon(Icons.calendar_month_rounded),
                         disabledBorder: InputBorder.none,
+                        suffixIcon: Icon(Icons.calendar_month_rounded),
                         contentPadding: EdgeInsets.only(
                             left: 15, bottom: 11, top: 13, right: 15),
                         filled: true,
@@ -299,10 +283,12 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(left: 10, right: 10),
-                    // decoration: BoxDecoration(
-                    //   borderRadius: BorderRadius.circular(10),
-                    //   border: Border.all(color: const Color(0x6cc7d1db)),
-                    // ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border:
+                      Border.all(color: const Color(0x6cc7d1db)),
+                    ),
                     child: TextField(
                       controller: controller.tanggalAkhirBerlakuController,
                       keyboardType: TextInputType.text,
@@ -332,20 +318,12 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                         }
                       },
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                            const Radius.circular(10.0),
-                          ),
-                          borderSide: BorderSide(
-                            color: Color(0x6cc7d1db),
-                            width: 0,
-                            style: BorderStyle.none,
-                          ),
-                        ),
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
                         errorBorder: InputBorder.none,
-                        enabled: true,
-                        suffixIcon: Icon(Icons.calendar_month_rounded),
                         disabledBorder: InputBorder.none,
+                        suffixIcon: Icon(Icons.calendar_month_rounded),
                         contentPadding: EdgeInsets.only(
                             left: 15, bottom: 11, top: 13, right: 15),
                         filled: true,
@@ -353,82 +331,104 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 30,
+                SizedBox(
+                  height: 10,
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Row(
+                    children: [
+                      Text("Upload Document SIP",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text("(*)",
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.redAccent)),
+                    ],
                   ),
-                  buildFilePicker()
+                ),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child:
+                Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  border:
+                  Border.all(color: const Color(0x6cc7d1db)),
+                ),
+                      child : TextFormField(
+                          readOnly: true,
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return 'File harus diupload';
+                            } else {
+                              return null;
+                            }
+                          },
+                          controller: controller.txtFilePicker,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            contentPadding: EdgeInsets.only(
+                                left: 15, bottom: 11, top: 13, right: 15),
+                            filled: true,
+                            fillColor: Colors.transparent,
+                          ),
+                          style: const TextStyle(fontSize: 16.0)),),
+                    ),
+                    const SizedBox(width: 5),
+                    ElevatedButton.icon(
+                      icon: const Icon(
+                        Icons.upload_file,
+                        color: Colors.white,
+                        size: 24.0,
+                      ),
+                      label: const Text('Pilih File', style: TextStyle(fontSize: 16.0)),
+                      onPressed: () {
+                        selectFile();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        shadowColor: Colors.blue,
+                        primary: Colors.lightBlue,
+                        minimumSize: const Size(122, 48),
+                        maximumSize: const Size(122, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: 30,
             ),
           ],
         ),
       ),
     );
   }
+  selectFile() async {
+    FilePickerResult? result = await FilePicker.platform
+        .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
+    if (result != null) {
+      setState(() {
+        controller.txtFilePicker.text = result.files.single.name;
+      });
+    } else {
+      // User canceled the picker
+    }
+  }
 }
 
-Widget buildFilePicker() {
-  return Padding(
-    padding: const EdgeInsets.all(8),
-    child: Row(
-      children: [
-        Expanded(
-          child: TextFormField(
-              readOnly: true,
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'File harus diupload';
-                } else {
-                  return null;
-                }
-              },
-              // controller: txtFilePicker,
-              decoration: const InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5.0),
-                    ),
-                    borderSide: BorderSide(color: Colors.white, width: 2)),
-                hintText: 'Upload SIP',
-                contentPadding: EdgeInsets.all(10.0),
-              ),
-              style: const TextStyle(fontSize: 16.0)),
-        ),
-        const SizedBox(width: 5),
-        ElevatedButton.icon(
-          icon: const Icon(
-            Icons.upload_file,
-            color: Colors.white,
-            size: 24.0,
-          ),
-          label: const Text('Pilih File', style: TextStyle(fontSize: 16.0)),
-          onPressed: () {
-            // selectFile();
-          },
-          style: ElevatedButton.styleFrom(
-            primary: Colors.lightBlue,
-            minimumSize: const Size(122, 48),
-            maximumSize: const Size(122, 48),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-// selectFile() async {
-//   FilePickerResult? result = await FilePicker.platform
-//       .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
-//   if (result != null) {
-//     setState(() {
-//       txtFilePicker.text = result.files.single.name;
-//       filePickerVal = File(result.files.single.path.toString());
-//     });
-//   } else {
-//     // User canceled the picker
-//   }
-// }

@@ -686,7 +686,7 @@ Widget buildSheet() {
               );
               Get.back();
               if (postLupaPassword.code == 200) {
-                Get.snackbar('500',
+                Get.snackbar('200',
                     'Password baru sudah berhasil di kirim ke alamat email');
                 Get.back();
               } else {

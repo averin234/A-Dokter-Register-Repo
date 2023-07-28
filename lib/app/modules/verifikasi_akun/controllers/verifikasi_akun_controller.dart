@@ -5,4 +5,5 @@ class VerifikasiAkunController extends GetxController {
   //TODO: Implement VerifikasiAkunController
   final tanggalMulaiBerlakuController = TextEditingController();
   final tanggalAkhirBerlakuController = TextEditingController();
+  final txtFilePicker = TextEditingController();
 }
