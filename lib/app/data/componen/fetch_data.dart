@@ -1,105 +1,105 @@
-import 'dart:convert';
-import 'dart:io';
-import 'package:a_dokter_register/app/data/componen/data_regist_model.dart';
-import 'package:a_dokter_register/app/data/componen/publics.dart';
-import 'package:a_dokter_register/app/data/model/checkup.dart';
-import 'package:a_dokter_register/app/data/model/get_antrian_dokter.dart';
-import 'package:a_dokter_register/app/data/model/get_antrian_pasien.dart';
-import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
-import 'package:a_dokter_register/app/data/model/get_detail_pasien.dart';
-import 'package:a_dokter_register/app/data/model/get_jenis_obat.dart';
-import 'package:a_dokter_register/app/data/model/get_list_kasir.dart';
-import 'package:a_dokter_register/app/data/model/get_list_mr.dart';
-import 'package:a_dokter_register/app/data/model/get_pasien_by.dart';
-import 'package:a_dokter_register/app/data/model/get_soap_hiss.dart';
-import 'package:a_dokter_register/app/data/model/kelurahan.dart';
-import 'package:a_dokter_register/app/data/model/list_data.dart';
-import 'package:a_dokter_register/app/data/model/login_and_regist/akses_px.dart';
-import 'package:a_dokter_register/app/data/model/login_and_regist/token.dart';
-import 'package:a_dokter_register/app/routes/app_pages.dart';
-import 'package:dio/dio.dart';
-import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
-import '../model/get_detail_dokter.dart';
-import '../model/get_nama_obat.dart';
-import '../model/get_racikan.dart';
-import '../model/jadwal_dokter.dart';
-import '../model/login_and_regist/daftar_px_dokter.dart';
-import '../model/login_and_regist/daftar_px_dosen.dart';
-import '../model/login_and_regist/daftar_px_mahasiswa.dart';
-import '../model/login_and_regist/poli.dart';
-import '../model/login_and_regist/post_ubah_password.dart';
-import '../model/post_pasien_baru.dart';
-import 'local_storage.dart';
+import "dart:convert";
+import "dart:io";
+import "package:a_dokter_register/app/data/componen/data_regist_model.dart";
+import "package:a_dokter_register/app/data/componen/publics.dart";
+import "package:a_dokter_register/app/data/model/checkup.dart";
+import "package:a_dokter_register/app/data/model/get_antrian_dokter.dart";
+import "package:a_dokter_register/app/data/model/get_antrian_pasien.dart";
+import "package:a_dokter_register/app/data/model/get_detail_mr.dart";
+import "package:a_dokter_register/app/data/model/get_detail_pasien.dart";
+import "package:a_dokter_register/app/data/model/get_jenis_obat.dart";
+import "package:a_dokter_register/app/data/model/get_list_kasir.dart";
+import "package:a_dokter_register/app/data/model/get_list_mr.dart";
+import "package:a_dokter_register/app/data/model/get_pasien_by.dart";
+import "package:a_dokter_register/app/data/model/get_soap_hiss.dart";
+import "package:a_dokter_register/app/data/model/kelurahan.dart";
+import "package:a_dokter_register/app/data/model/list_data.dart";
+import "package:a_dokter_register/app/data/model/login_and_regist/akses_px.dart";
+import "package:a_dokter_register/app/data/model/login_and_regist/token.dart";
+import "package:a_dokter_register/app/routes/app_pages.dart";
+import "package:dio/dio.dart";
+import "package:get/get.dart";
+import "package:http/http.dart" as http;
+import "package:path_provider/path_provider.dart";
+import "../model/get_detail_dokter.dart";
+import "../model/get_nama_obat.dart";
+import "../model/get_racikan.dart";
+import "../model/jadwal_dokter.dart";
+import "../model/login_and_regist/daftar_px_dokter.dart";
+import "../model/login_and_regist/daftar_px_dosen.dart";
+import "../model/login_and_regist/daftar_px_mahasiswa.dart";
+import "../model/login_and_regist/poli.dart";
+import "../model/login_and_regist/post_ubah_password.dart";
+import "../model/post_pasien_baru.dart";
+import "local_storage.dart";
 
 class API {
-  static const _url = 'https://a-dokter.id/';
-  // static const _url = 'https://adokter.d-medis.id/';
-  // static const _url = 'https://demo.a-dokter.id/';
-  static const _baseUrl = '${_url}api/v1';
-  static const _getToken = '$_baseUrl/get-token.php';
-  static const _getAksesPx = '$_baseUrl/px-akses.php';
+  static const _url = "https://a-dokter.id/";
+  // static const _url = "https://adokter.d-medis.id/";
+  // static const _url = "https://demo.a-dokter.id/";
+  static const _baseUrl = "${_url}api/v1";
+  static const _getToken = "$_baseUrl/get-token.php";
+  static const _getAksesPx = "$_baseUrl/px-akses.php";
   static const _postDaftarPxBaruDokter =
-      '$_baseUrl/post-daftar-px-baru-dokter.php';
-  static const _getPoli = '$_baseUrl/get-poli.php';
-  static const _postDaftarPx = '$_baseUrl/post-antrian-pasien.php';
-  static const _getSpesialisasi = '$_baseUrl/get-spesialisasi.php';
-  static const _getBank = '$_baseUrl/get-bank.php';
-  static const _getJenisKelamin = '$_baseUrl/get-jenis-kelamin.php';
-  static const _getPekerjaan = '$_baseUrl/get-pekerjaan.php';
-  static const _getKawin = '$_baseUrl/get-kawin.php';
-  static const _getGolDarah = '$_baseUrl/get-gol-darah.php';
-  static const _getAgama = '$_baseUrl/get-agama.php';
-  static const _getNasabah = '$_baseUrl/get-nasabah.php';
-  static const _getIcd10 = '$_baseUrl/get-icd10.php';
+      "$_baseUrl/post-daftar-px-baru-dokter.php";
+  static const _getPoli = "$_baseUrl/get-poli.php";
+  static const _postDaftarPx = "$_baseUrl/post-antrian-pasien.php";
+  static const _getSpesialisasi = "$_baseUrl/get-spesialisasi.php";
+  static const _getBank = "$_baseUrl/get-bank.php";
+  static const _getJenisKelamin = "$_baseUrl/get-jenis-kelamin.php";
+  static const _getPekerjaan = "$_baseUrl/get-pekerjaan.php";
+  static const _getKawin = "$_baseUrl/get-kawin.php";
+  static const _getGolDarah = "$_baseUrl/get-gol-darah.php";
+  static const _getAgama = "$_baseUrl/get-agama.php";
+  static const _getNasabah = "$_baseUrl/get-nasabah.php";
+  static const _getIcd10 = "$_baseUrl/get-icd10.php";
   static const _postDaftarPxBaruDosen =
-      '$_baseUrl/post-daftar-px-baru-dosen.php';
+      "$_baseUrl/post-daftar-px-baru-dosen.php";
   static const _postDaftarPxBaruMahasiswa =
-      '$_baseUrl/post-daftar-px-baru-mahasiswa.php';
+      "$_baseUrl/post-daftar-px-baru-mahasiswa.php";
   // baru di tambah kan
-  static const _getAntrianPasien = '$_baseUrl/get-antrian-pasien.php';
-  static const _getDetailDokter = '$_baseUrl/get-detail-dokter.php';
-  static const _getJadwalDokter = '$_baseUrl/get-jadwal-dokter.php';
-  static const _getRiwayatPraktek = '$_baseUrl/get-riwayat-praktek.php';
-  static const _getKota = '$_baseUrl/get-kota.php';
-  static const _deleteJadwalDokter = '$_baseUrl/delete-jadwal-dokter.php';
-  static const _getEditDokter = '$_baseUrl/edit-dokter.php';
-  static const _getNamaPenyakit = '$_baseUrl/get-nama-penyakit-hiss.php';
-  static const _getHISS = '$_baseUrl/get-soap-hiss.php';
-  // static const _getTindakan = '$_baseUrl/get-tindakan-px.php';
-  // static const _getVitalSign = '$_baseUrl/get-vital-sign-px.php';
-  static const _getProvinsi = '$_baseUrl/get-provinsi.php';
-  static const _getKecamatan = '$_baseUrl/get-kecamatan.php';
-  static const _getKelurahan = '$_baseUrl/get-kelurahan.php';
-  static const _getJenisDokter = '$_baseUrl/get-jenis-dokter.php';
-  static const _getKesadaranPasien = '$_baseUrl/get-kesadaran-pasien.php';
-  static const _getkeadaanumum = '$_baseUrl/get-keadaan-umum.php';
-  static const _getPasienbBy = '$_baseUrl/get-pasien-by.php';
-  static const _getLupaPassword = '$_baseUrl/cek-lupa-password.php';
-  // static const _getStatusDokter = '$_baseUrl/get-status-dokter.php';
+  static const _getAntrianPasien = "$_baseUrl/get-antrian-pasien.php";
+  static const _getDetailDokter = "$_baseUrl/get-detail-dokter.php";
+  static const _getJadwalDokter = "$_baseUrl/get-jadwal-dokter.php";
+  static const _getRiwayatPraktek = "$_baseUrl/get-riwayat-praktek.php";
+  static const _getKota = "$_baseUrl/get-kota.php";
+  static const _deleteJadwalDokter = "$_baseUrl/delete-jadwal-dokter.php";
+  static const _getEditDokter = "$_baseUrl/edit-dokter.php";
+  static const _getNamaPenyakit = "$_baseUrl/get-nama-penyakit-hiss.php";
+  static const _getHISS = "$_baseUrl/get-soap-hiss.php";
+  // static const _getTindakan = "$_baseUrl/get-tindakan-px.php";
+  // static const _getVitalSign = "$_baseUrl/get-vital-sign-px.php";
+  static const _getProvinsi = "$_baseUrl/get-provinsi.php";
+  static const _getKecamatan = "$_baseUrl/get-kecamatan.php";
+  static const _getKelurahan = "$_baseUrl/get-kelurahan.php";
+  static const _getJenisDokter = "$_baseUrl/get-jenis-dokter.php";
+  static const _getKesadaranPasien = "$_baseUrl/get-kesadaran-pasien.php";
+  static const _getkeadaanumum = "$_baseUrl/get-keadaan-umum.php";
+  static const _getPasienbBy = "$_baseUrl/get-pasien-by.php";
+  static const _getLupaPassword = "$_baseUrl/cek-lupa-password.php";
+  // static const _getStatusDokter = "$_baseUrl/get-status-dokter.php";
   // penambahan lagi
-  static const _getDaftarPrivy = '$_baseUrl/daftar_privyid_dr.php';
-  static const _postJadwalDokter = '$_baseUrl/post-jadwal-dokter.php';
-  static const _postPasienBaru = '$_baseUrl/post-pasien-baru.php';
-  static const _postUbahPassword = '$_baseUrl/post-ubah-password.php';
-  static const _getAntrianDokter = '$_baseUrl/get-antrian-dokter.php';
-  static const _getListMR = '$_baseUrl/get-list-mr.php';
-  static const _getListKasir = '$_baseUrl/get-list-kasir.php';
-  static const _getDetailMR = '$_baseUrl/get-detail-mr.php';
-  static const _cekJenisKelamin = '$_baseUrl/cek-jenis-kelamin.php';
-  static const _getDetailPasien = '$_baseUrl/get-detail-pasien.php';
-  static const _cetakResep = '$_baseUrl/cetak-resep.php';
-  static const _cekDaftarPasien = '$_baseUrl/cek-daftar-pasien.php';
-  static const _editVitalSign = '$_baseUrl/edit-vital-sign.php';
-  static const _getResep = '$_baseUrl/get-resep.php';
-  static const _getObatTindakan = '$_baseUrl/get-obat-tindakan.php';
-  static const _getReferensi = '$_baseUrl/get-referensi.php';
-  static const _getTindakan = '$_baseUrl/get-tindakan.php';
-  static const _postTindakan = '$_baseUrl/post-tindakan.php';
-  static const _postSoap = '$_baseUrl/post-soap.php';
-  static const _postIcd10 = '$_baseUrl/post-icd10.php';
-  static const _postResep = '$_baseUrl/post-resep.php';
+  static const _getDaftarPrivy = "$_baseUrl/daftar_privyid_dr.php";
+  static const _postJadwalDokter = "$_baseUrl/post-jadwal-dokter.php";
+  static const _postPasienBaru = "$_baseUrl/post-pasien-baru.php";
+  static const _postUbahPassword = "$_baseUrl/post-ubah-password.php";
+  static const _getAntrianDokter = "$_baseUrl/get-antrian-dokter.php";
+  static const _getListMR = "$_baseUrl/get-list-mr.php";
+  static const _getListKasir = "$_baseUrl/get-list-kasir.php";
+  static const _getDetailMR = "$_baseUrl/get-detail-mr.php";
+  static const _cekJenisKelamin = "$_baseUrl/cek-jenis-kelamin.php";
+  static const _getDetailPasien = "$_baseUrl/get-detail-pasien.php";
+  static const _cetakResep = "$_baseUrl/cetak-resep.php";
+  static const _cekDaftarPasien = "$_baseUrl/cek-daftar-pasien.php";
+  static const _editVitalSign = "$_baseUrl/edit-vital-sign.php";
+  static const _getResep = "$_baseUrl/get-resep.php";
+  static const _getObatTindakan = "$_baseUrl/get-obat-tindakan.php";
+  static const _getReferensi = "$_baseUrl/get-referensi.php";
+  static const _getTindakan = "$_baseUrl/get-tindakan.php";
+  static const _postTindakan = "$_baseUrl/post-tindakan.php";
+  static const _postSoap = "$_baseUrl/post-soap.php";
+  static const _postIcd10 = "$_baseUrl/post-icd10.php";
+  static const _postResep = "$_baseUrl/post-resep.php";
 
   static Future<Token> getToken() async {
     var response = await Dio().post(
@@ -147,7 +147,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetPasienBy.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -173,7 +173,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -186,7 +186,7 @@ class API {
 
   static Future<ListData> getAsterix({required String src_icd}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'ac': 'get_asterix', 'sd': src_icd};
+    final data = {"ac": "get_asterix", "sd": src_icd};
     var response = await Dio().post(
       _getIcd10,
       options: Options(
@@ -199,7 +199,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -212,7 +212,7 @@ class API {
 
   static Future<ListData> getIcd10({required String src_icd}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'ac': 'get_icd10', 'sd': src_icd};
+    final data = {"ac": "get_icd10", "sd": src_icd};
     var response = await Dio().post(
       _getIcd10,
       options: Options(
@@ -225,7 +225,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -244,10 +244,10 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      'mr': no_registrasi,
-      'i10': icd_10,
-      'iri': icd_asterik,
-      'kp': kasus_pasien,
+      "mr": no_registrasi,
+      "i10": icd_10,
+      "iri": icd_asterik,
+      "kp": kasus_pasien,
     };
     var response = await Dio().post(
       _postIcd10,
@@ -261,7 +261,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -284,14 +284,14 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      'nr': no_registrasi,
-      'ko': id_dc_kesediaan_obat,
-      'kb': kode_brg,
-      'kbc': kode_brg_racikan,
-      'dos': id_dd_dosis,
-      'tj': txt_jumlah,
-      'st': id_stok,
-      'fd': flag_dosis,
+      "nr": no_registrasi,
+      "ko": id_dc_kesediaan_obat,
+      "kb": kode_brg,
+      "kbc": kode_brg_racikan,
+      "dos": id_dd_dosis,
+      "tj": txt_jumlah,
+      "st": id_stok,
+      "fd": flag_dosis,
     };
     var response = await Dio().post(
       _postResep,
@@ -305,7 +305,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -318,7 +318,7 @@ class API {
 
   static Future<ListData> getAturanPakai({required String kesediaan}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'ac': 'get_aturan_pakai', 'id_kesediaan_obat': kesediaan};
+    final data = {"ac": "get_aturan_pakai", "id_kesediaan_obat": kesediaan};
     var response = await Dio().post(
       _getResep,
       options: Options(
@@ -331,7 +331,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -356,16 +356,16 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      'kd': kode_dokter,
-      'jam_awal': jam_awal,
-      'no_antrian': no_antrian,
-      'no_mr': no_mr,
-      'durasi': durasi,
-      'nasabah': nasabah,
-      'no_polis': no_polis,
-      'no_bpjs': no_bpjs,
-      'yankes': yankes,
-      'jadwal': jadwal,
+      "kd": kode_dokter,
+      "jw": jam_awal,
+      "no_antrian": no_antrian,
+      "nm": no_mr,
+      "durasi": durasi,
+      "nasabah": nasabah,
+      "no_polis": no_polis,
+      "no_bpjs": no_bpjs,
+      "yankes": yankes,
+      "jadwal": jadwal,
     };
     var response = await Dio().post(
       _postDaftarPx,
@@ -379,7 +379,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -399,11 +399,11 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      'nr': no_registrasi,
-      'kode_tarif': kode_tarif,
-      'jumlah_tindakan': jumlah_tindakan,
-      'kb': kode_brg,
-      'jumlah_obat': jumlah_obat,
+      "nr": no_registrasi,
+      "kode_tarif": kode_tarif,
+      "jumlah_tindakan": jumlah_tindakan,
+      "kb": kode_brg,
+      "jumlah_obat": jumlah_obat,
     };
     var response = await Dio().post(
       _postTindakan,
@@ -417,7 +417,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -436,10 +436,10 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      'nr': no_registrasi,
-      'subjective': subjective,
-      'objective': objective,
-      'analyst': analyst,
+      "nr": no_registrasi,
+      "subjective": subjective,
+      "objective": objective,
+      "analyst": analyst,
     };
     var response = await Dio().post(
       _postSoap,
@@ -453,7 +453,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -479,7 +479,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -505,7 +505,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -531,7 +531,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -557,7 +557,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -583,7 +583,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -609,7 +609,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -635,7 +635,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -661,7 +661,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -675,7 +675,7 @@ class API {
   static Future<GetListKasir> getListKasir(
       {required String kode_dokter}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'kd': kode_dokter};
+    final data = {"kd": kode_dokter};
     var response = await Dio().post(
       _getListKasir,
       options: Options(
@@ -688,7 +688,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetListKasir.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -714,7 +714,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -727,7 +727,7 @@ class API {
 
   static Future<ListData> getKecamatan({required String id}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'kt': id};
+    final data = {"kt": id};
     var response = await Dio().post(
       _getKecamatan,
       options: Options(
@@ -740,7 +740,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -753,7 +753,7 @@ class API {
 
   static Future<GetKelurahan> getKelurahan({required String id}) async {
     var token = Publics.controller.getToken.value;
-    final data = {'kec': id};
+    final data = {"kec": id};
     var response = await Dio().post(
       _getKelurahan,
       options: Options(
@@ -766,7 +766,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetKelurahan.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -840,7 +840,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -886,13 +886,13 @@ class API {
       "id_agama": id_agama,
       "nama_keluarga": nama_keluarga,
       "nh": no_hp,
-      "no_ktp": no_ktp,
+      "nt": no_ktp,
       "id_kerja": id_kerja,
       "tempat_lahir": tempat_lahir,
       "em": email,
       "tgl_lahir": tgl_lahir,
-      "jenis_kelamin": jenis_kelamin,
-      "alamat": alamat,
+      "jk": jenis_kelamin,
+      "al": alamat,
       "id_kawin": id_kawin,
       "id_prov": id_prov,
       "id_goldar": id_goldar,
@@ -918,7 +918,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = PostPasienBaru.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -937,8 +937,8 @@ class API {
     var token = Publics.controller.getToken.value;
     final data = {
       "em": email,
-      "pw_baru": pw_baru,
-      "pw_lama": pw_lama,
+      "pb": pw_baru,
+      "pl": pw_lama,
     };
     var response = await Dio().post(
       _postUbahPassword,
@@ -952,7 +952,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = PostUbahPassword.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -986,7 +986,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetDetailMR.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1004,7 +1004,7 @@ class API {
     var token = Publics.controller.getToken.value;
     final data = {
       "kd": kode_dokter,
-      "tgl_daftar": tgl_daftar,
+      "td": tgl_daftar,
     };
     var response = await Dio().post(
       _getAntrianDokter,
@@ -1018,7 +1018,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetAntrianDokter.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1050,7 +1050,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetListMR.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1080,7 +1080,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1110,7 +1110,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1141,7 +1141,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetDetailPasien.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1162,12 +1162,12 @@ class API {
     var response = await http.post(
       Uri.parse(_cetakResep),
       headers: {
-        "X-Api-Token": token.token ?? '',
+        "X-Api-Token": token.token ?? "",
       },
       body: data,
     );
     var dir = await getApplicationDocumentsDirectory();
-    File file = File('${dir.path}resep.pdf');
+    File file = File("${dir.path}resep.pdf");
     await file.writeAsBytes(response.bodyBytes, flush: true);
     final obj = file.path;
     return obj;
@@ -1192,7 +1192,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1238,7 +1238,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1254,7 +1254,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "ac": 'get_nama_obat',
+      "ac": "get_nama_obat",
       "src_obat": src_obat,
     };
     var response = await Dio().post(
@@ -1269,7 +1269,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetNamaObat.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1283,7 +1283,7 @@ class API {
   static Future<GetJenisObat> getJenisObat() async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "ac": 'get_jenis_obat',
+      "ac": "get_jenis_obat",
     };
     var response = await Dio().post(
       _getResep,
@@ -1297,7 +1297,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetJenisObat.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1313,7 +1313,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "ac": 'get_racikan',
+      "ac": "get_racikan",
       "src_racikan": src_racikan,
     };
     var response = await Dio().post(
@@ -1328,7 +1328,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetRacikan.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1358,7 +1358,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1384,7 +1384,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1414,7 +1414,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1429,7 +1429,7 @@ class API {
     required String id,
   }) async {
     var token = await getToken();
-    final data = {'id': id};
+    final data = {"id": id};
     var response = await Dio().post(
       _getSpesialisasi,
       options: Options(
@@ -1442,7 +1442,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1468,7 +1468,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1496,7 +1496,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetSoapHiss.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1524,7 +1524,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1566,7 +1566,7 @@ class API {
       "kota": kota,
       "telp": telp,
       "em": email,
-      "alamat": alamat,
+      "al": alamat,
       "foto_ktp": foto_ktp,
       "foto_dokter": foto_dokter,
     };
@@ -1582,7 +1582,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1610,7 +1610,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = CheckUp.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1638,7 +1638,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = ListData.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1666,7 +1666,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = AksesPx.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1694,7 +1694,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetJadwalDokter.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1722,7 +1722,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetDetailDokter.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1739,7 +1739,7 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "tanggal": tanggal,
+      "tg": tanggal,
       "kd": kode_dokter,
     };
     var response = await Dio().post(
@@ -1754,7 +1754,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = GetAntrianPasien.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1781,7 +1781,7 @@ class API {
     );
     final datas = jsonDecode(response.data);
     final obj = AksesPx.fromJson(datas);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1833,7 +1833,7 @@ class API {
     );
     final json = jsonDecode(response.data);
     final obj = DaftarPxDokter.fromJson(json);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1879,7 +1879,7 @@ class API {
     );
     final json = jsonDecode(response.data);
     final obj = DaftarPxDosen.fromJson(json);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1931,7 +1931,7 @@ class API {
     );
     final json = jsonDecode(response.data);
     final obj = DaftarPxMahasiswa.fromJson(json);
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
         obj.code.toString(),
@@ -1960,13 +1960,13 @@ class API {
       options: Options(
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Token": token.token ?? '',
+          "X-Api-Token": token.token ?? "",
         },
       ),
       data: data,
     );
     final obj = Poli.fromJson(jsonDecode(response.data));
-    if (obj.msg == 'Invalid token: Expired') {
+    if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(obj.code.toString(), obj.msg.toString());
     }
