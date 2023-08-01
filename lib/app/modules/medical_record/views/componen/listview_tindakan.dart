@@ -8,7 +8,7 @@ import '../../../../routes/app_pages.dart';
 
 class ListViewPasien extends StatelessWidget {
   final Pasien pasien;
-  const ListViewPasien({super.key, required this.pasien});
+  const ListViewPasien({super.key,required this.pasien});
 
   @override
   Widget build(BuildContext context) {

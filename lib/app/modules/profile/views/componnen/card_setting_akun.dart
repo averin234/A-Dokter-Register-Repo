@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
+import 'package:launch_review/launch_review.dart';
 
 import '../../../../routes/app_pages.dart';
 import '../../../loading_summer/loading_screen_animed.dart';
@@ -93,208 +94,11 @@ class CardSettingAkun extends GetView<ProfileController> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
-              // InkWell(
-              //     onTap: () => Get.toNamed(Routes.RIWAYAT_PRAKTEK),
-              //     child :
-              //       Row(
-              //         children: [
-              //           Icon(
-              //             Icons.history_edu,
-              //             color: Colors.grey,
-              //             size: 24.0,
-              //           ),
-              //           SizedBox(
-              //             width: 10,
-              //           ),
-              //           Expanded(child:
-              //           Column(
-              //             crossAxisAlignment: CrossAxisAlignment.start,
-              //             children: [
-              //               Text('Riwayat Praktek',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
-              //               Text('Menambahkan Nomer Izin Peraktek, Provinsi, Kota, Status',style: TextStyle(fontWeight: FontWeight.normal,fontSize: 12),),
-              //             ],),),
-              //         ],),),
-              // SizedBox(
-              //   height: 20,
-              // ),
-              // InkWell(
-              //   onTap: () => Get.toNamed(Routes.RIWAYAT_PENDIDIKAN),
-              //   child: Row(
-              //     children: [
-              //       Icon(
-              //         Icons.history_edu,
-              //         color: Colors.grey,
-              //         size: 24.0,
-              //       ),
-              //       SizedBox(
-              //         width: 10,
-              //       ),
-              //       Expanded(
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: [
-              //             Text(
-              //               'Riwayat Pendidikan',
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.bold, fontSize: 15),
-              //             ),
-              //             Text(
-              //               'Menambahkan Nama Instansi, Tahun Mulai, Tahun Lulus, Jurusan, Gelar',
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.normal, fontSize: 12),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-
-              // SizedBox(
-              //   height: 20,
-              // ),
-              // InkWell(
-              //   onTap: () => Get.toNamed(Routes.RIWAYAT_JABATAN),
-              //   child: Row(
-              //     children: [
-              //       Icon(
-              //         Icons.history_edu,
-              //         color: Colors.grey,
-              //         size: 24.0,
-              //       ),
-              //       SizedBox(
-              //         width: 10,
-              //       ),
-              //       Expanded(
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: [
-              //             Text(
-              //               'Riwayat Jabatan',
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.bold, fontSize: 15),
-              //             ),
-              //             Text(
-              //               'Menambahkan Nama Instansi, Spesialisasi, Tahun Jabatan',
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.normal, fontSize: 12),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // SizedBox(
-              //   height: 20,
-              // ),
-              // InkWell(
-              //   onTap: () => Get.toNamed(Routes.RIWAYAT_KELUARGA),
-              //   child: Row(
-              //     children: [
-              //       Icon(
-              //         Icons.history_edu,
-              //         color: Colors.grey,
-              //         size: 24.0,
-              //       ),
-              //       SizedBox(
-              //         width: 10,
-              //       ),
-              //       Expanded(
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: [
-              //             Text(
-              //               'Riwayat Keluarga',
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.bold, fontSize: 15),
-              //             ),
-              //             Text(
-              //               'Menambahkan Nama Keluarga, Status Keluarga, Tanggal Lahir',
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.normal, fontSize: 12),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // SizedBox(
-              //   height: 20,
-              // ),
-              // InkWell(
-              //   onTap: () => Get.toNamed(Routes.CV),
-              //   child: Row(
-              //     children: [
-              //       const Icon(
-              //         Icons.history_edu,
-              //         color: Colors.grey,
-              //         size: 24.0,
-              //       ),
-              //       const SizedBox(
-              //         width: 10,
-              //       ),
-              //       Expanded(
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: const [
-              //             Text(
-              //               'CV',
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.bold, fontSize: 15),
-              //             ),
-              //             Text(
-              //               'Melihat Riwayat CV',
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.normal, fontSize: 12),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
               const SizedBox(
                 height: 10,
               ),
-              // InkWell(
-              //   onTap: () => Get.toNamed(Routes.PERJANJIAN_DOKTER),
-              //   child: Row(
-              //     children: [
-              //       Icon(
-              //         Icons.history_edu,
-              //         color: Colors.grey,
-              //         size: 24.0,
-              //       ),
-              //       SizedBox(
-              //         width: 10,
-              //       ),
-              //       Expanded(
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: [
-              //             Text(
-              //               'Perjanjian Dokter',
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.bold, fontSize: 15),
-              //             ),
-              //             Text(
-              //               'Menambahkan Nomer STR, Nomer Kontrak, Masa Berlaku',
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.normal, fontSize: 12),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // SizedBox(
-              //   height: 20,
-              // ),
               InkWell(
                 onTap: () => Get.toNamed(Routes.PRIVYID),
                 child: Row(
@@ -330,65 +134,78 @@ class CardSettingAkun extends GetView<ProfileController> {
               const SizedBox(
                 height: 20,
               ),
-            ]),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
-            padding:
-                const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
-            decoration: BoxDecoration(
-              color: Colors.redAccent,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFFe0e0e0).withOpacity(0.5),
-                  spreadRadius: 0,
-                  blurRadius: 10,
-                  offset: const Offset(2, 1),
-                ),
-              ],
-            ),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              InkWell(
-                onTap: () => showModalBottomSheet(
-                  context: context,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(20),
+                  InkWell(
+                    onTap: () =>LaunchReview.launch(
+                      androidAppId: "com.adokterregister.a_dokter_register",
+                      // iOSAppId: "585027354",
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.system_security_update,
+                          color: Colors.grey,
+                          size: 24.0,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Cek Update A-Dokter',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                              Text(
+                                'Update Aplikasi A-Dokter, Nikmati fitur baru dan performa yang lebih baik',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal, fontSize: 12),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  builder: (context) => buildSheet(),
-                ),
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.logout,
-                      color: Colors.white,
-                      size: 24.0,
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'Logout',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  SizedBox(
+                    height: 20,
+                  ),
             ]),
           ),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(padding: EdgeInsets.only(right: 10, left: 10),
+          child : ElevatedButton.icon(
+            icon: const Icon(
+              Icons.logout_rounded,
+              color: Colors.white,
+              size: 24.0,
+            ),
+            label: const Text('Logout', style: TextStyle(fontSize: 14.0)),
+            onPressed: () {
+              showModalBottomSheet(
+                          context: context,
+                          showDragHandle: true,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(20),
+                            ),
+                          ),
+                          builder: (context) => buildSheet(),
+                        );
+            },
+            style: ElevatedButton.styleFrom(
+              elevation: 0,
+              primary: Colors.redAccent,
+              minimumSize: const Size.fromHeight(40),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),),
         ],
       ),
     );
@@ -648,33 +465,13 @@ class CardSettingAkun extends GetView<ProfileController> {
 
   Widget buildSheet() {
     return Container(
-        height: 200,
+        height: 300,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.transparent,
         ),
         child: Column(
           children: [
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 4,
-              margin: EdgeInsets.only(
-                right: Get.width / 2 - 40,
-                left: Get.width / 2 - 40,
-              ),
-              decoration: BoxDecoration(
-                color: const Color(0xFFe0e0e0),
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
             SingleChildScrollView(
                 child: Center(
               child: Column(
@@ -691,45 +488,31 @@ class CardSettingAkun extends GetView<ProfileController> {
                   const SizedBox(
                     height: 20,
                   ),
-                  // Image.asset(
-                  //   "assets/images/login_sukses.png",
-                  //   gaplessPlayback: true,
-                  //   fit: BoxFit.fitHeight,
-                  //   width: 200,
-                  //   height: 200,
-                  // ),
+                  Image.asset(
+                    'assets/images/logout.jpg',
+                    height: 150,
+                  ),
                   const SizedBox(
                     height: 30,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(right: 10, left: 10, top: 20),
-                        child: GestureDetector(
-                          onTap: () => Get.offAllNamed(Routes.LOGIN),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(7),
-                              color: Colors.redAccent,
-                            ),
-                            child: Column(
-                              children: const [
-                                Padding(
-                                  padding: EdgeInsets.all(16),
-                                  child: Text("Logout",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                              ],
-                            ),
-                          ),
+                  Padding(padding: EdgeInsets.only(right: 10, left: 10),
+                    child : ElevatedButton.icon(
+                      icon: const Icon(
+                        Icons.logout_rounded,
+                        color: Colors.white,
+                        size: 24.0,
+                      ),
+                      label: const Text('Logout', style: TextStyle(fontSize: 14.0)),
+                      onPressed: () => Get.offAllNamed(Routes.LOGIN),
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        primary: Colors.redAccent,
+                        minimumSize: const Size.fromHeight(40),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                    ],
-                  ),
+                    ),),
                 ],
               ),
             )),
