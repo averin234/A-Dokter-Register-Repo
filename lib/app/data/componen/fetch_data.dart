@@ -885,7 +885,7 @@ class API {
       "nasabah": nasabah,
       "id_agama": id_agama,
       "nama_keluarga": nama_keluarga,
-      "no_hp": no_hp,
+      "nh": no_hp,
       "no_ktp": no_ktp,
       "id_kerja": id_kerja,
       "tempat_lahir": tempat_lahir,
@@ -1090,6 +1090,7 @@ class API {
     print(obj.toJson());
     return obj;
   }
+
   static Future<CheckUp> CekLupaPassword({
     required String email,
   }) async {
@@ -1815,7 +1816,7 @@ class API {
     var token = Publics.controller.getToken.value;
     final data = {
       "nama": nama,
-      "no_hp": noHp,
+      "nh": noHp,
       "em": email,
       "sip": sip,
       "kode_bagian": kodeBagian,
@@ -1861,7 +1862,7 @@ class API {
     final data = {
       "nama_pasien": nama,
       "em": email,
-      "no_hp": noHp,
+      "nh": noHp,
       "universitas": universitas,
       "fakultas": fakultas,
       "no_induk": noInduk,
@@ -1910,7 +1911,7 @@ class API {
     final data = {
       "nama": nama,
       "em": email,
-      "no_hp": noHp,
+      "nh": noHp,
       "universitas": universitas,
       "no_induk_mahasiswa": noInduk,
       "jenjang_pendidikan": jenjang,
