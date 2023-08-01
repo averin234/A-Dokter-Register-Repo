@@ -6,7 +6,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../../data/componen/fetch_data.dart';
-import '../../antrian_pasien/views/componen/search_medical_record.dart';
+import 'componen/search_medical_record.dart';
 import '../../loading_summer/loading_listpasien.dart';
 import '../controllers/tindakan_controller.dart';
 import 'componen/listview_tindakan.dart';
@@ -44,7 +44,7 @@ class TindakanView extends GetView<TindakanController> {
                 ),
                 toolbarHeight: 0,
                 automaticallyImplyLeading: false,
-                // elevation: 0,
+                elevation: 0,
                 // title: Column(
                 //   children: [
                 //     const SearchTindakanDokter(),
@@ -63,14 +63,6 @@ class TindakanView extends GetView<TindakanController> {
                 padding: const EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  // boxShadow: [
-                  //   BoxShadow(
-                  //     color: const Color(0xFFe0e0e0).withOpacity(0.5),
-                  //     spreadRadius: 0,
-                  //     blurRadius: 10,
-                  //     offset: const Offset(2, 1),
-                  //   ),
-                  // ],
                 ),
                 child: FutureBuilder(
                     future: API.getPasienBy(

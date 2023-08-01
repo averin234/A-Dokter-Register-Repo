@@ -218,52 +218,52 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                     return Container();
                                   }
                                 }),
+                            // const SizedBox(
+                            //   height: 10,
+                            // ),
+                            // component1(
+                            //     Icons.add_card_outlined,
+                            //     'No Rekening...',
+                            //     false,
+                            //     false,
+                            //     controller.norekening),
                             const SizedBox(
                               height: 10,
                             ),
-                            component1(
-                                Icons.add_card_outlined,
-                                'No Rekening...',
-                                false,
-                                false,
-                                controller.norekening),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            FutureBuilder(
-                                future: API.getBank(),
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData &&
-                                      snapshot.connectionState !=
-                                          ConnectionState.waiting &&
-                                      snapshot.data != null) {
-                                    final data = snapshot.data!;
-                                    return AppTextField(
-                                      textEditingController:
-                                          controller.kodeBagianController,
-                                      textEditingController1:
-                                          controller.namabank,
-                                      hint: "Pilih Bank...",
-                                      isCitySelected: true,
-                                      lists: data.list ?? [],
-                                      title: '',
-                                    );
-                                  } else {
-                                    return Container();
-                                  }
-                                }),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            component1(
-                                Icons.credit_card_rounded,
-                                'Nama Pemilik...',
-                                false,
-                                false,
-                                controller.namapemilik),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            // FutureBuilder(
+                            //     future: API.getBank(),
+                            //     builder: (context, snapshot) {
+                            //       if (snapshot.hasData &&
+                            //           snapshot.connectionState !=
+                            //               ConnectionState.waiting &&
+                            //           snapshot.data != null) {
+                            //         final data = snapshot.data!;
+                            //         return AppTextField(
+                            //           textEditingController:
+                            //               controller.kodeBagianController,
+                            //           textEditingController1:
+                            //               controller.namabank,
+                            //           hint: "Pilih Bank...",
+                            //           isCitySelected: true,
+                            //           lists: data.list ?? [],
+                            //           title: '',
+                            //         );
+                            //       } else {
+                            //         return Container();
+                            //       }
+                            //     }),
+                            // const SizedBox(
+                            //   height: 10,
+                            // ),
+                            // component1(
+                            //     Icons.credit_card_rounded,
+                            //     'Nama Pemilik...',
+                            //     false,
+                            //     false,
+                            //     controller.namapemilik),
+                            // const SizedBox(
+                            //   height: 10,
+                            // ),
                             FutureBuilder(
                                 future: API.getReferensi(),
                                 builder: (context, snapshot) {

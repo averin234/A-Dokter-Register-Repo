@@ -67,6 +67,7 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
               onPressed: () {
               },
               style: ElevatedButton.styleFrom(
+                elevation: 0,
                 shadowColor: Colors.blue,
                 primary: Colors.lightBlue,
                 minimumSize: const Size(122, 48),
