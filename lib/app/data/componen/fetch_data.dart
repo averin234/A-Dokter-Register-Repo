@@ -881,7 +881,7 @@ class API {
     var token = Publics.controller.getToken.value;
     final data = {
       "kd": kode_dokter,
-      "nama_pasien": nama_pasien,
+      "np": nama_pasien,
       "nasabah": nasabah,
       "id_agama": id_agama,
       "nama_keluarga": nama_keluarga,
@@ -1860,7 +1860,7 @@ class API {
       required String noInduk}) async {
     var token = await getToken();
     final data = {
-      "nama_pasien": nama,
+      "np": nama,
       "em": email,
       "nh": noHp,
       "universitas": universitas,
