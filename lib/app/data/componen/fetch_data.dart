@@ -1812,6 +1812,7 @@ class API {
       required String email,
       required String noHp,
       required String sip,
+      required String referensi,
       required String kodeBagian}) async {
     var token = Publics.controller.getToken.value;
     final data = {
@@ -1820,6 +1821,7 @@ class API {
       "em": email,
       "sip": sip,
       "kode_bagian": kodeBagian,
+      "referensi": referensi,
     };
     var response = await Dio().post(
       _postDaftarPxBaruDokter,

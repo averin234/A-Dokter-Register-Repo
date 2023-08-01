@@ -472,6 +472,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             noHp: controller.noTelpController.text,
             kodeBagian: controller.kodeBagianController.text,
             sip: controller.sipController.text,
+            referensi: controller.referensiController.text,
           );
           Get.back();
           if (daftarPXBaru.code != 200) {
