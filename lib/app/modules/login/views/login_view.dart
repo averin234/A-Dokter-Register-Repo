@@ -248,7 +248,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                             aksesPX.msg.toString());
                                       } else {
                                         aksesPX.res!.kodeKelompok == 1
-                                            ? Get.offAllNamed(Routes.VERIFIKASI_AKUN)
+                                            ? Get.offAllNamed(Routes.HOME)
                                             : aksesPX.res!.kodeKelompok == 2
                                                 ? Get.offAllNamed(Routes.DOSEN)
                                                 : Get.offAllNamed(
@@ -674,6 +674,7 @@ Widget buildSheet() {
           ),
         InkWell(
           onTap: () async {
+            Get.back();
             if (controller.lupapassword.text.isNotEmpty) {
               Get.defaultDialog(
                 backgroundColor: Color(0xe0e0e0),
@@ -682,13 +683,15 @@ Widget buildSheet() {
                 title: '',
                 barrierDismissible: false,
               );
-              final postLupaPassword = await API.CekLupaPassword(email: ''
+              final postLupaPassword = await API.CekLupaPassword(email: controller.lupapassword.text
               );
               Get.back();
               if (postLupaPassword.code == 200) {
-                Get.snackbar('200',
-                    'Password baru sudah berhasil di kirim ke alamat email');
-                Get.back();
+                print(postLupaPassword.toJson());
+                Get.defaultDialog(
+                  title: (postLupaPassword.code ?? 0).toString(),
+                  content: Text(postLupaPassword.msg ?? ''),
+                );
               } else {
                 Get.defaultDialog(
                   title: (postLupaPassword.code ?? 0).toString(),

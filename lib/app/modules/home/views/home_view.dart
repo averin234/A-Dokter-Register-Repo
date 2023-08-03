@@ -16,6 +16,7 @@ import '../../loading_summer/loading_profile_home.dart';
 import '../../profile/views/profile_view.dart';
 import '../../medical_record/views/tindakan_view.dart';
 import '../controllers/home_controller.dart';
+import 'componen/menu.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -24,29 +25,6 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        enableFeedback: true,
-        onPressed: () => showModalBottomSheet(
-          context: context,
-          backgroundColor: Colors.white,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(20),
-            ),
-          ),
-          builder: (context) => buildSheet(),
-        ),
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.yellow,
-        elevation: 20,
-        child: const Icon(Icons.add),
-        // shape: BeveledRectangleBorder(
-        //     // borderRadius: BorderRadius.circular(20.0),
-        //     // side: BorderSide(color: Colors.blue, width: 2.0, style: BorderStyle.solid)
-        //     ),
-        // mini: true,
-      ),
       bottomNavigationBar: Obx(() {
         return BottomAppBar(
           notchMargin: 5.0,
@@ -79,7 +57,7 @@ class HomeView extends GetView<HomeController> {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(right: 20.0, top: 10.0, bottom: 10.0),
+                    const EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 1;
@@ -103,7 +81,7 @@ class HomeView extends GetView<HomeController> {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
+                    const EdgeInsets.only( top: 10.0, bottom: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 2;
@@ -440,12 +418,8 @@ class Home extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      // const MenuHome(),
+                      const MenuHome(),
                       const SizedBox(),
-
-                      const SizedBox(
-                        height: 20,
-                      ),
                       // BarChartSample2()
                       Padding(
                         padding: const EdgeInsets.only(right: 10, left: 10),

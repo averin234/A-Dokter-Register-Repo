@@ -100,18 +100,22 @@ class ListViewTindakan extends StatelessWidget {
                             child: Column(
                               children: [
                                 Text(
-                                  "Antrian .${antrian.noAntrian ?? ''}",
+                                  "Antrian",
                                   style: const TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 const SizedBox(
-                                  height: 10,
+                                  height: 5,
                                 ),
-                                Image.asset(
-                                  'assets/images/ngantri.png',
-                                  height: 40,
+                                Text(
+                                  "${antrian.noAntrian ?? ''}",
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ],
                             )),
@@ -149,7 +153,7 @@ class ListViewTindakan extends StatelessWidget {
                       const SizedBox(
                         width: 4,
                       ),
-                      Text(antrian.tglJamPoli ?? ''),
+                      Text((antrian.tglJamPoli ?? '').substring(0,10)),
                       const SizedBox(
                         width: 10,
                       ),
@@ -161,7 +165,7 @@ class ListViewTindakan extends StatelessWidget {
                       const SizedBox(
                         width: 4,
                       ),
-                      const Text("20:00:00"),
+                       Text((antrian.tglJamPoli ?? '').substring(10)),
                     ],
                   ),
                 ],

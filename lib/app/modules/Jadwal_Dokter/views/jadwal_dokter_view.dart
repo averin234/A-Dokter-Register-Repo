@@ -9,6 +9,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 import '../../loading_summer/loading_atur_jadwal_dokter.dart';
+import '../../loading_summer/loading_screen_animed.dart';
 import 'componen/card_jadwal.dart';
 
 class JadwalDokterView extends StatefulWidget {
@@ -765,24 +766,37 @@ class _ModalJadwalState extends State<ModalJadwal> {
             ),
             InkWell(
               onTap: () async {
-                final postJadwal = await API.postJadwalDokter(
-                  id_jadwal_dokter: '',
-                  kode_dokter:
-                      Publics.controller.getDataRegist.value.kode ?? '',
-                  senin: isSenin == true ? '1' : '0',
-                  selasa: isSelasa == true ? '1' : '0',
-                  rabu: isRabu == true ? '1' : '0',
-                  kamis: isKamis == true ? '1' : '0',
-                  jumat: isJumat == true ? '1' : '0',
-                  sabtu: isSabtu == true ? '1' : '0',
-                  minggu: isMinggu == true ? '1' : '0',
-                  jam_awal: "${selectedValue1 ?? ''}:${selectedValue2 ?? ''}",
-                  jam_akhir: "${selectedValue3 ?? ''}:${selectedValue4 ?? ''}",
-                  waktu_periksa: controller.intervalController.text,
-                );
-                if (postJadwal.code == 200) {
-                  Get.offNamed(Routes.JADWAL_DOKTER);
-                }
+                HapticFeedback.lightImpact();
+                  Get.defaultDialog(
+                    backgroundColor: Color(0xe0e0e0),
+                    content:
+                    Loading(),
+                    title: '',
+                    barrierDismissible: false,
+                  );
+                  final postJadwal = await API.postJadwalDokter(
+                    id_jadwal_dokter: '',
+                    kode_dokter:
+                    Publics.controller.getDataRegist.value.kode ?? '',
+                    senin: isSenin == true ? '1' : '0',
+                    selasa: isSelasa == true ? '1' : '0',
+                    rabu: isRabu == true ? '1' : '0',
+                    kamis: isKamis == true ? '1' : '0',
+                    jumat: isJumat == true ? '1' : '0',
+                    sabtu: isSabtu == true ? '1' : '0',
+                    minggu: isMinggu == true ? '1' : '0',
+                    jam_awal: "${selectedValue1 ?? ''}:${selectedValue2 ?? ''}",
+                    jam_akhir: "${selectedValue3 ?? ''}:${selectedValue4 ?? ''}",
+                    waktu_periksa: controller.intervalController.text,
+                  );
+                  Get.back();
+                  if (postJadwal.code != 200) {
+                    Get.snackbar(postJadwal.code.toString(),
+                        postJadwal.msg.toString());
+                  } else {
+                    Get.offNamed(
+                        Routes.JADWAL_DOKTER);
+                  }
               },
               child: Container(
                 height: 45,

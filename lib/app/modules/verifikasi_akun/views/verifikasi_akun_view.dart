@@ -159,7 +159,7 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                     padding: EdgeInsets.only(left: 15),
                     child: Row(
                       children: [
-                        Text("No.SIP ",
+                        Text("No.XTR ",
                             style: TextStyle(fontWeight: FontWeight.bold)),
                         Text("(*)",
                             style: TextStyle(

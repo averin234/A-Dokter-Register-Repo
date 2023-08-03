@@ -45,7 +45,7 @@ class CardDokterCV extends StatelessWidget {
                         ),
                         const Row(
                           children: [
-                            Text("Profil Dokter Hisehat",
+                            Text("Profil Dokter",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15)),
                             SizedBox(

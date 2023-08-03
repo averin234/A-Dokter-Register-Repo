@@ -34,8 +34,8 @@ import "../model/post_pasien_baru.dart";
 import "local_storage.dart";
 
 class API {
-  static const _url = "https://a-dokter.id/";
-  // static const _url = "https://adokter.d-medis.id/";
+  // static const _url = "https://demo.a-dokter.id/";
+  static const _url = "https://adokter.d-medis.id/";
   // static const _url = "https://demo.a-dokter.id/";
   static const _baseUrl = "${_url}api/v1";
   static const _getToken = "$_baseUrl/get-token.php";
