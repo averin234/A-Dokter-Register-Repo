@@ -19,70 +19,20 @@ class JadwalDokterView extends StatefulWidget {
 }
 
 class _JadwalDokterViewState extends State<JadwalDokterView> {
-  final List<String> jadawal1 = [
-    '00',
-    '01',
-    '02',
-    '03',
-    '04',
-    '05',
-    '06',
-    '07',
-    '08',
-    '09',
-    '10',
-    '11',
-    '12',
-    '13',
-    '14',
-    '15',
-    '16',
-    '17',
-    '18',
-    '19',
-    '20',
-    '21',
-    '22',
-    '23',
-    '24',
-  ];
-  final List<String> jadawal2 = [
-    '00',
-    '15',
-    '30',
-    '45',
-  ];
-  String? selectedValue1;
-  String? selectedValue2;
-  String? selectedValue3;
-  String? selectedValue4;
-  bool isSenin = false;
-  bool isSelasa = false;
-  bool isRabu = false;
-  bool isKamis = false;
-  bool isJumat = false;
-  bool isSabtu = false;
-  bool isMinggu = false;
-  final controller = Get.put(JadwalDokterController());
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(20),
-              ),
+          isScrollControlled: true,
+          context: context,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(20),
             ),
-            builder: (BuildContext context) {
-              return StatefulBuilder(
-                  builder: (BuildContext context, StateSetter state) {
-                return buildSheetJadwal();
-              });
-            }),
+          ),
+          builder: (context) => const ModalJadwal(),
+        ),
         elevation: 0,
         backgroundColor: Colors.tealAccent,
         foregroundColor: Colors.black,
@@ -218,8 +168,63 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
       ),
     );
   }
+}
 
-  Widget buildSheetJadwal() {
+class ModalJadwal extends StatefulWidget {
+  const ModalJadwal({super.key});
+
+  @override
+  State<ModalJadwal> createState() => _ModalJadwalState();
+}
+
+class _ModalJadwalState extends State<ModalJadwal> {
+  final List<String> jadawal1 = [
+    '00',
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+  ];
+  final List<String> jadawal2 = [
+    '00',
+    '15',
+    '30',
+    '45',
+  ];
+  String? selectedValue1;
+  String? selectedValue2;
+  String? selectedValue3;
+  String? selectedValue4;
+  bool isSenin = false;
+  bool isSelasa = false;
+  bool isRabu = false;
+  bool isKamis = false;
+  bool isJumat = false;
+  bool isSabtu = false;
+  bool isMinggu = false;
+  final controller = Get.put(JadwalDokterController());
+  @override
+  Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
