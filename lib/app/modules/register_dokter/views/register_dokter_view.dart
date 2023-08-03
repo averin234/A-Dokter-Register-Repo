@@ -578,7 +578,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
               height: 10,
             ),
             InkWell(
-              onTap: () => _launchUrl('https://mail.google.com/'),
+              onTap: () async => await _launchUrl('https://mail.google.com/mail/u/0/#inbox'),
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.all(10),
