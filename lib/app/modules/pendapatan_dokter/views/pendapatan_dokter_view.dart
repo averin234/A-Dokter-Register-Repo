@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 
 import '../../loading_summer/loading.pendapatan.dart';
 import '../controllers/pendapatan_dokter_controller.dart';
-import 'componen/searchpendapatan.dart';
 import 'componen/tabel_pendapatan.dart';
 
 class PendapatanDokterView extends GetView<PendapatanDokterController> {
@@ -18,16 +17,16 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-           SliverAppBar(
-             automaticallyImplyLeading: false,
-            systemOverlayStyle: SystemUiOverlayStyle(
+          SliverAppBar(
+            automaticallyImplyLeading: false,
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -35,7 +34,7 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
             floating: true,
             pinned: true,
             snap: true,
-            title: Text('Kasir'),
+            title: const Text('Kasir'),
             // actions: [
             //   IconButton(
             //       onPressed: () {},
@@ -48,7 +47,7 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
                   bottom: Radius.circular(30),
                 ),
               ),
-               toolbarHeight: 0,
+              toolbarHeight: 0,
               // title: Column(
               //   children: const [
               //     SearchPendapatan1(),
@@ -101,7 +100,9 @@ class PendapatanDokterView extends GetView<PendapatanDokterController> {
                                   ),
                                 ),
                                 children: data
-                                    .map((e) => Pendapatan(kasir: e))
+                                    .map((e) => e.jamKeluar != null
+                                        ? Pendapatan(kasir: e)
+                                        : Container())
                                     .toList(),
                               ),
                             );

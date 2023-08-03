@@ -1,13 +1,13 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
+import 'package:a_dokter_register/app/modules/Jadwal_Dokter/controllers/jadwal_dokter_controller.dart';
+import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
-import '../../../data/model/list_data.dart';
-import '../../detail_antrian/views/componen/text_field.dart';
 import '../../loading_summer/loading_atur_jadwal_dokter.dart';
 import 'componen/card_jadwal.dart';
 
@@ -19,7 +19,6 @@ class JadwalDokterView extends StatefulWidget {
 }
 
 class _JadwalDokterViewState extends State<JadwalDokterView> {
-
   final List<String> jadawal1 = [
     '00',
     '01',
@@ -57,30 +56,33 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
   String? selectedValue2;
   String? selectedValue3;
   String? selectedValue4;
-  bool isChecked = true;
-  String _selected = '';
-  List<String> _items = ['A', 'B', 'C', 'D'];
+  bool isSenin = false;
+  bool isSelasa = false;
+  bool isRabu = false;
+  bool isKamis = false;
+  bool isJumat = false;
+  bool isSabtu = false;
+  bool isMinggu = false;
+  final controller = Get.put(JadwalDokterController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => showModalBottomSheet(
-          isScrollControlled: true,
-          context: context,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(20),
+            isScrollControlled: true,
+            context: context,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(20),
+              ),
             ),
-          ),
-          builder: (BuildContext context) {
-            return StatefulBuilder(
-                builder: (BuildContext context, StateSetter state) {
-                  return
-                    buildSheetJadwal();
-                });
-          }
-        ),
+            builder: (BuildContext context) {
+              return StatefulBuilder(
+                  builder: (BuildContext context, StateSetter state) {
+                return buildSheetJadwal();
+              });
+            }),
         elevation: 0,
         backgroundColor: Colors.tealAccent,
         foregroundColor: Colors.black,
@@ -155,18 +157,27 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                           snapshot.data != null) {
                         final data = snapshot.data!.jadwal ?? [];
                         return data.isEmpty
-                            ?  Column(children: [
-                          SizedBox(
-                            height: 40,
-                          ),
-                              Text('Tidak ada jadwal Dokter',style: TextStyle(fontWeight: FontWeight.bold), ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Center(child: Image.asset(
-                          'assets/images/timetable.png',
-                          width: 150,
-                        ),)],)
+                            ? Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 40,
+                                  ),
+                                  const Text(
+                                    'Tidak ada jadwal Dokter',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Center(
+                                    child: Image.asset(
+                                      'assets/images/timetable.png',
+                                      width: 150,
+                                    ),
+                                  )
+                                ],
+                              )
                             : Column(
                                 children:
                                     AnimationConfiguration.toStaggeredList(
@@ -185,17 +196,19 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                             .toList()),
                               );
                       } else {
-                        return Column(children: [
-                          shimmerAturJadwal(),
-                          shimmerAturJadwal(),
-                          shimmerAturJadwal(),
-                          shimmerAturJadwal(),
-                          shimmerAturJadwal(),
-                          shimmerAturJadwal(),
-                          shimmerAturJadwal(),
-                          shimmerAturJadwal(),
-                          shimmerAturJadwal(),
-                        ],);
+                        return const Column(
+                          children: [
+                            shimmerAturJadwal(),
+                            shimmerAturJadwal(),
+                            shimmerAturJadwal(),
+                            shimmerAturJadwal(),
+                            shimmerAturJadwal(),
+                            shimmerAturJadwal(),
+                            shimmerAturJadwal(),
+                            shimmerAturJadwal(),
+                            shimmerAturJadwal(),
+                          ],
+                        );
                       }
                     }),
               ],
@@ -228,7 +241,9 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            Text("Geser Kebawah",style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+            const Text("Geser Kebawah",
+                style:
+                    TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
             const SizedBox(
               height: 25,
             ),
@@ -281,6 +296,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                     Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: TextFormField(
+                                controller: controller.intervalController,
                                 keyboardType: TextInputType.text,
                                 textInputAction: TextInputAction.done,
                                 decoration: const InputDecoration(
@@ -343,14 +359,14 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                     child: DropdownButton2(
                                       isExpanded: true,
                                       hint: Row(
-                                        children:  [
-                                          SizedBox(
+                                        children: [
+                                          const SizedBox(
                                             width: 4,
                                           ),
                                           Expanded(
                                             child: Text(
-                                              selectedValue1 ?? '0',
-                                              style: TextStyle(
+                                              selectedValue1 ?? '00',
+                                              style: const TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                                 color: Colors.black,
@@ -408,13 +424,13 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                       isExpanded: true,
                                       hint: Row(
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 4,
                                           ),
                                           Expanded(
                                             child: Text(
                                               selectedValue2 ?? '00',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                                 color: Colors.black,
@@ -442,10 +458,8 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                           .toList(),
                                       value: selectedValue2,
                                       onChanged: (value) {
-                                          selectedValue2 = value as String;
-                                          setState(() {
-
-                                          });
+                                        selectedValue2 = value as String;
+                                        setState(() {});
                                       },
                                     ),
                                   ),
@@ -495,14 +509,14 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                     child: DropdownButton2(
                                       isExpanded: true,
                                       hint: Row(
-                                        children: const [
-                                          SizedBox(
+                                        children: [
+                                          const SizedBox(
                                             width: 4,
                                           ),
                                           Expanded(
                                             child: Text(
-                                              '0',
-                                              style: TextStyle(
+                                              selectedValue3 ?? '00',
+                                              style: const TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                                 color: Colors.black,
@@ -559,14 +573,14 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                     child: DropdownButton2(
                                       isExpanded: true,
                                       hint: Row(
-                                        children: const [
-                                          SizedBox(
+                                        children: [
+                                          const SizedBox(
                                             width: 4,
                                           ),
                                           Expanded(
                                             child: Text(
-                                              '00',
-                                              style: TextStyle(
+                                              selectedValue4 ?? '00',
+                                              style: const TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                                 color: Colors.black,
@@ -625,10 +639,10 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                         children: [
                           Checkbox(
                             checkColor: Colors.white,
-                            value: isChecked,
+                            value: isSenin,
                             onChanged: (bool? value) {
                               setState(() {
-                                isChecked = value!;
+                                isSenin = value!;
                               });
                             },
                           ),
@@ -640,10 +654,10 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                           ),
                           Checkbox(
                             checkColor: Colors.white,
-                            value: isChecked,
+                            value: isSelasa,
                             onChanged: (bool? value) {
                               setState(() {
-                                isChecked = value!;
+                                isSelasa = value!;
                               });
                             },
                           ),
@@ -655,10 +669,10 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                           ),
                           Checkbox(
                             checkColor: Colors.white,
-                            value: isChecked,
+                            value: isRabu,
                             onChanged: (bool? value) {
                               setState(() {
-                                isChecked = value!;
+                                isRabu = value!;
                               });
                             },
                           ),
@@ -671,10 +685,10 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                           ),
                           Checkbox(
                             checkColor: Colors.white,
-                            value: isChecked,
+                            value: isKamis,
                             onChanged: (bool? value) {
                               setState(() {
-                                isChecked = value!;
+                                isKamis = value!;
                               });
                             },
                           ),
@@ -691,10 +705,25 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                         children: [
                           Checkbox(
                             checkColor: Colors.white,
-                            value: isChecked,
+                            value: isJumat,
                             onChanged: (bool? value) {
                               setState(() {
-                                isChecked = value!;
+                                isJumat = value!;
+                              });
+                            },
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 0),
+                            child: Text("Jumat",
+                                style:
+                                    TextStyle(fontWeight: FontWeight.normal)),
+                          ),
+                          Checkbox(
+                            checkColor: Colors.white,
+                            value: isSabtu,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isSabtu = value!;
                               });
                             },
                           ),
@@ -706,10 +735,10 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                           ),
                           Checkbox(
                             checkColor: Colors.white,
-                            value: isChecked,
+                            value: isMinggu,
                             onChanged: (bool? value) {
                               setState(() {
-                                isChecked = value!;
+                                isMinggu = value!;
                               });
                             },
                           ),
@@ -730,6 +759,26 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
               height: 10,
             ),
             InkWell(
+              onTap: () async {
+                final postJadwal = await API.postJadwalDokter(
+                  id_jadwal_dokter: '',
+                  kode_dokter:
+                      Publics.controller.getDataRegist.value.kode ?? '',
+                  senin: isSenin == true ? '1' : '0',
+                  selasa: isSelasa == true ? '1' : '0',
+                  rabu: isRabu == true ? '1' : '0',
+                  kamis: isKamis == true ? '1' : '0',
+                  jumat: isJumat == true ? '1' : '0',
+                  sabtu: isSabtu == true ? '1' : '0',
+                  minggu: isMinggu == true ? '1' : '0',
+                  jam_awal: "${selectedValue1 ?? ''}:${selectedValue2 ?? ''}",
+                  jam_akhir: "${selectedValue3 ?? ''}:${selectedValue4 ?? ''}",
+                  waktu_periksa: controller.intervalController.text,
+                );
+                if (postJadwal.code == 200) {
+                  Get.offNamed(Routes.JADWAL_DOKTER);
+                }
+              },
               child: Container(
                 height: 45,
                 width: 145,
@@ -737,9 +786,9 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                   color: const Color.fromARGB(255, 56, 229, 77),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "Tambah",
                       style: TextStyle(
@@ -758,5 +807,3 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
         ));
   }
 }
-
-
