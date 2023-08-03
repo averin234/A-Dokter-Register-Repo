@@ -1,3 +1,5 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/modules/detail_antrian/controllers/detail_tindakan_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
@@ -5,6 +7,7 @@ import 'package:get/get.dart';
 import 'bottomsheet_selesai_pemeriksaan.dart';
 
 Future bottomSheetPulang() {
+  final controller = Get.put(DetailTindakanController());
   return showModalBottomSheet(
       context: Get.context!,
       isScrollControlled: true,
@@ -71,8 +74,18 @@ Future bottomSheetPulang() {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InkWell(
-                      onTap: () {
-                        bottomSheetSelesaiPemeriksaan();
+                      onTap: () async {
+                        final postPulang = await API.postPulang(
+                          no_registrasi: controller.noRegistrasi,
+                        );
+                        if (postPulang.code == 200) {
+                          bottomSheetSelesaiPemeriksaan();
+                        } else {
+                          Get.defaultDialog(
+                            title: postPulang.code.toString(),
+                            content: Text(postPulang.msg ?? ''),
+                          );
+                        }
                       },
                       child: Container(
                         height: 45,

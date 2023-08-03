@@ -100,6 +100,7 @@ class API {
   static const _postSoap = "$_baseUrl/post-soap.php";
   static const _postIcd10 = "$_baseUrl/post-icd10.php";
   static const _postResep = "$_baseUrl/post-resep.php";
+  static const _postPulang = "$_baseUrl/post-pulang.php";
 
   static Future<Token> getToken() async {
     var response = await Dio().post(
@@ -244,13 +245,43 @@ class API {
   }) async {
     var token = Publics.controller.getToken.value;
     final data = {
-      "mr": no_registrasi,
+      "nr": no_registrasi,
       "i10": icd_10,
       "iri": icd_asterik,
       "kp": kasus_pasien,
     };
     var response = await Dio().post(
       _postIcd10,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = CheckUp.fromJson(datas);
+    if (obj.msg == "Invalid token: Expired") {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    print(obj.toJson());
+    return obj;
+  }
+
+  static Future<CheckUp> postPulang({
+    required String no_registrasi,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      "nr": no_registrasi,
+    };
+    var response = await Dio().post(
+      _postPulang,
       options: Options(
         headers: {
           "Content-Type": "application/json",
