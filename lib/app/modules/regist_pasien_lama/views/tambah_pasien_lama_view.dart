@@ -48,29 +48,47 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
             snap: true,
             automaticallyImplyLeading: false,
             title: const Text('Daftar Pasien Lama'),
-            // bottom: AppBar(
-            //   shape: const RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.vertical(
-            //       bottom: Radius.circular(30),
-            //     ),
-            //   ),
-            //   toolbarHeight: 50,
-            //   automaticallyImplyLeading: false,
-            //   elevation: 0,
-            //   title: Column(
-            //     children: [
-            //       SearchTindakanDokter(),
-            //       SizedBox(
-            //         height: 10,
-            //       ),
-            //     ],
-            //   ),
-            // ),
+            bottom: AppBar(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(30),
+                ),
+              ),
+              toolbarHeight: 50,
+              automaticallyImplyLeading: false,
+              elevation: 0,
+              title: Column(
+                children: [
+                  SearchTindakanDokter(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ),
           ),
           // Other Sliver Widgets
           SliverList(
             delegate: SliverChildListDelegate([
-
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text("Cari/Pilih Pasien Lama yang sudah berkunjung sebelumnya untuk dapat di tangani kembali", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(padding: EdgeInsets.only(right: 10, left: 10),
+                child : Text(
+                  "List Riwayat Pasien",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),),
               const SizedBox(
                 height: 10,
               ),

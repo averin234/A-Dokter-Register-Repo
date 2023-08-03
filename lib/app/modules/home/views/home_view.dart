@@ -456,6 +456,14 @@ class Home extends StatelessWidget {
                                 ),
                               ],
                             ),
+                            Padding(padding: EdgeInsets.only(right: 10, left: 0),
+                              child : Text(
+                                "Daftar Pasien Baru-baru ini, yang langsung dapat di tangani",
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10),
+                              ),),
                             const SizedBox(
                               height: 10,
                             ),

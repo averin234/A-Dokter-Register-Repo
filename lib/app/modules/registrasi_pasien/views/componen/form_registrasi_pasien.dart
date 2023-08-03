@@ -73,6 +73,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
+                    suffixIcon: Icon(Icons.drive_file_rename_outline_rounded),
                     border: OutlineInputBorder(
                       borderRadius: const BorderRadius.all(
                         const Radius.circular(10.0),
@@ -98,7 +99,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
               ),
               const Padding(
                 padding: EdgeInsets.only(left: 15),
-                child: Text("Nama Keluarga*",
+                child: Text("Nama Keluarga",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
               const SizedBox(
@@ -115,6 +116,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
+                    suffixIcon: Icon(Icons.drive_file_rename_outline_rounded),
                     border: OutlineInputBorder(
                       borderRadius: const BorderRadius.all(
                         const Radius.circular(10.0),
@@ -158,6 +160,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
+                    suffixIcon: Icon(Icons.add_card_rounded),
                     border: OutlineInputBorder(
                       borderRadius: const BorderRadius.all(
                         const Radius.circular(10.0),
@@ -200,6 +203,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
+                    suffixIcon: Icon(Icons.location_city_rounded),
                     border: OutlineInputBorder(
                       borderRadius: const BorderRadius.all(
                         const Radius.circular(10.0),
@@ -305,6 +309,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   textInputAction: TextInputAction.done,
                   maxLines: 3,
                   decoration: const InputDecoration(
+                    suffixIcon: Icon(Icons.location_on),
                     border: OutlineInputBorder(
                       borderRadius: const BorderRadius.all(
                         const Radius.circular(10.0),
@@ -539,6 +544,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   maxLength: 13,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
+                    suffixIcon: Icon(Icons.phone_android_rounded),
                     border: OutlineInputBorder(
                       borderRadius: const BorderRadius.all(
                         const Radius.circular(10.0),
@@ -612,6 +618,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
+                    suffixIcon: Icon(Icons.alternate_email),
                     border: OutlineInputBorder(
                       borderRadius: const BorderRadius.all(
                         const Radius.circular(10.0),
@@ -747,6 +754,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
+                    suffixIcon: Icon(Icons.health_and_safety),
                     border: OutlineInputBorder(
                       borderRadius: const BorderRadius.all(
                         const Radius.circular(10.0),
@@ -774,120 +782,120 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
               const SizedBox(
                 height: 40,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        onTap: () async {
-                          Get.defaultDialog(
-                            backgroundColor: Color(0xe0e0e0),
-                            content:
-                            Loading(),
-                            title: '',
-                            barrierDismissible: false,
-                          );
-                          final postPasien = await API.postPasienBaru(
-                            kode_dokter:
-                                Publics.controller.getDataRegist.value.kode ??
-                                    '',
-                            nama_pasien: controller.namaController.text,
-                            nasabah: controller.nasabahController.value.text,
-                            id_agama: controller.agamaController.text,
-                            nama_keluarga: controller.keluargaController.text,
-                            no_hp: controller.noHPController.text,
-                            no_ktp: controller.ktpController.text,
-                            id_kerja: controller.pekerjaanController.text,
-                            tempat_lahir: controller.tempatLahirController.text,
-                            email: controller.emailController.text,
-                            tgl_lahir: controller.tanggalLahirController.text,
-                            jenis_kelamin:
-                                controller.jenisKelaminController.text,
-                            alamat: controller.alamatController.text,
-                            id_kawin: controller.statusKawinController.text,
-                            id_prov: controller.provinsiController.value.text,
-                            id_goldar: controller.golonganDarahController.text,
-                            id_kota: controller.kotaController.value.text,
-                            id_kecamatan:
-                                controller.kecamatanController.value.text,
-                            alergi: controller.alergiController.text,
-                            kode_pos: controller.kodePosController.text,
-                            id_kelurahan:
-                                controller.kelurahanController.value.text,
-                            foto_pasien: controller.fotoController.text,
-                            no_bpjs: controller.noBPJSController.text,
-                            no_polis: controller.noPolisController.text,
-                            id_yankes: controller.yankesController.text,
-                          );
-                          Get.back();
-                          if (postPasien.code == 200) {
-                            Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA,
-                                parameters: {
-                                  'no_mr': postPasien.pasien!.noMr ?? ''
-                                });
-                          } else {
-                            Get.defaultDialog(
-                              title: (postPasien.code ?? 0).toString(),
-                              content: Text(postPasien.msg ?? ''),
-                            );
-                          }
-                        },
-                        child: Container(
-                          height: 45,
-                          width: 105,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const [
-                              Text(
-                                "Kirim",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      GestureDetector(
-                        onTap: () => Get.back(),
-                        child: Container(
-                          height: 45,
-                          width: 105,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                "batal",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              )
+              // Column(
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Row(
+              //       crossAxisAlignment: CrossAxisAlignment.center,
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: [
+              //         GestureDetector(
+              //           onTap: () async {
+              //             Get.defaultDialog(
+              //               backgroundColor: Color(0xe0e0e0),
+              //               content:
+              //               Loading(),
+              //               title: '',
+              //               barrierDismissible: false,
+              //             );
+              //             final postPasien = await API.postPasienBaru(
+              //               kode_dokter:
+              //                   Publics.controller.getDataRegist.value.kode ??
+              //                       '',
+              //               nama_pasien: controller.namaController.text,
+              //               nasabah: controller.nasabahController.value.text,
+              //               id_agama: controller.agamaController.text,
+              //               nama_keluarga: controller.keluargaController.text,
+              //               no_hp: controller.noHPController.text,
+              //               no_ktp: controller.ktpController.text,
+              //               id_kerja: controller.pekerjaanController.text,
+              //               tempat_lahir: controller.tempatLahirController.text,
+              //               email: controller.emailController.text,
+              //               tgl_lahir: controller.tanggalLahirController.text,
+              //               jenis_kelamin:
+              //                   controller.jenisKelaminController.text,
+              //               alamat: controller.alamatController.text,
+              //               id_kawin: controller.statusKawinController.text,
+              //               id_prov: controller.provinsiController.value.text,
+              //               id_goldar: controller.golonganDarahController.text,
+              //               id_kota: controller.kotaController.value.text,
+              //               id_kecamatan:
+              //                   controller.kecamatanController.value.text,
+              //               alergi: controller.alergiController.text,
+              //               kode_pos: controller.kodePosController.text,
+              //               id_kelurahan:
+              //                   controller.kelurahanController.value.text,
+              //               foto_pasien: controller.fotoController.text,
+              //               no_bpjs: controller.noBPJSController.text,
+              //               no_polis: controller.noPolisController.text,
+              //               id_yankes: controller.yankesController.text,
+              //             );
+              //             Get.back();
+              //             if (postPasien.code == 200) {
+              //               Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA,
+              //                   parameters: {
+              //                     'no_mr': postPasien.pasien!.noMr ?? ''
+              //                   });
+              //             } else {
+              //               Get.defaultDialog(
+              //                 title: (postPasien.code ?? 0).toString(),
+              //                 content: Text(postPasien.msg ?? ''),
+              //               );
+              //             }
+              //           },
+              //           child: Container(
+              //             height: 45,
+              //             width: 105,
+              //             decoration: BoxDecoration(
+              //               color: Colors.blue,
+              //               borderRadius: BorderRadius.circular(10),
+              //             ),
+              //             child: Column(
+              //               mainAxisAlignment: MainAxisAlignment.center,
+              //               crossAxisAlignment: CrossAxisAlignment.center,
+              //               children: const [
+              //                 Text(
+              //                   "Kirim",
+              //                   style: TextStyle(
+              //                       color: Colors.white,
+              //                       fontWeight: FontWeight.bold,
+              //                       fontSize: 14),
+              //                 )
+              //               ],
+              //             ),
+              //           ),
+              //         ),
+              //         const SizedBox(
+              //           width: 10,
+              //         ),
+              //         GestureDetector(
+              //           onTap: () => Get.back(),
+              //           child: Container(
+              //             height: 45,
+              //             width: 105,
+              //             decoration: BoxDecoration(
+              //               color: Colors.grey[300],
+              //               borderRadius: BorderRadius.circular(10),
+              //             ),
+              //             child: Column(
+              //               mainAxisAlignment: MainAxisAlignment.center,
+              //               children: const [
+              //                 Text(
+              //                   "batal",
+              //                   style: TextStyle(
+              //                       color: Colors.black,
+              //                       fontWeight: FontWeight.bold,
+              //                       fontSize: 14),
+              //                 )
+              //               ],
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ],
+              // )
             ],
           ),
         ));

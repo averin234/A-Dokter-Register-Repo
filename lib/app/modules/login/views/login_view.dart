@@ -463,9 +463,8 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
 }
 
 Widget buildSheet() {
-
   return Container(
-    height: 220,
+    height: 300,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(50),
       color: Colors.transparent,
@@ -487,19 +486,22 @@ Widget buildSheet() {
           ),
         ),
         const SizedBox(
+          height: 10,
+        ),
+        Text('Registrasi akun anda sekarang di a-Dokter untuk mendapatkan fitur-fitur di aplikasi a-Dokter Mobile', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+        const SizedBox(
           height: 30,
         ),
         InkWell(
           onTap: () => Get.toNamed(Routes.REGISTER_DOKTER),
           child: Container(
-            height: 45,
             width: 305,
             decoration: BoxDecoration(
-              color: Colors.green,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.green.withOpacity(0.5),
+                  color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
                   offset: const Offset(2, 1),
@@ -508,14 +510,26 @@ Widget buildSheet() {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  "Register Dokter",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14),
-                )
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                  Image.asset(
+                    'assets/images/doctor.png',
+                    height: 50,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Register Dokter",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14),
+                  ),
+                ],),
               ],
             ),
           ),
@@ -525,15 +539,14 @@ Widget buildSheet() {
         ),
         InkWell(
           onTap: () => Get.toNamed(Routes.REGISTER_DOSEN),
-          child: Container(
-            height: 45,
+          child:Container(
             width: 305,
             decoration: BoxDecoration(
-              color: Colors.green,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.green.withOpacity(0.5),
+                  color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
                   offset: const Offset(2, 1),
@@ -541,15 +554,29 @@ Widget buildSheet() {
               ],
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  "Register Dosen",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14),
-                )
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Image.asset(
+                      'assets/images/dosen.png',
+                      height: 50,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Register Dosen",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14),
+                    ),
+                  ],),
               ],
             ),
           ),
@@ -560,14 +587,13 @@ Widget buildSheet() {
         InkWell(
           onTap: () => Get.toNamed(Routes.REGISTER_MAHASISWA),
           child: Container(
-            height: 45,
             width: 305,
             decoration: BoxDecoration(
-              color: Colors.green,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.green.withOpacity(0.5),
+                  color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
                   offset: const Offset(2, 1),
@@ -576,14 +602,29 @@ Widget buildSheet() {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  "Register Mahasiswa",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14),
-                )
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Image.asset(
+                      'assets/images/mahasiswa.png',
+                      height: 50,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Register Mahasiswa",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14),
+                    ),
+                  ],),
               ],
             ),
           ),

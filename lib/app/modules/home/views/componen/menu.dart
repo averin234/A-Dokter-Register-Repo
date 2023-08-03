@@ -23,6 +23,14 @@ class _MenuHomeState extends State<MenuHome> {
               fontWeight: FontWeight.bold,
               fontSize: 18),
         ),),
+        Padding(padding: EdgeInsets.only(right: 10, left: 10),
+        child : Text(
+          "Menambahkan jadwal praktik dokter, menambahkan Pasien Baru/dan juga dapat Registrasi pasien lama",
+          style: TextStyle(
+              color: Colors.grey,
+              fontWeight: FontWeight.bold,
+              fontSize: 10),
+        ),),
         SizedBox(
           height: 10,
         ),

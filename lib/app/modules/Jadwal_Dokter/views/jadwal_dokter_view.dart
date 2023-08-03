@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
+import 'package:text_scroll/text_scroll.dart';
 import '../../loading_summer/loading_atur_jadwal_dokter.dart';
 import '../../loading_summer/loading_screen_animed.dart';
 import 'componen/card_jadwal.dart';
@@ -95,6 +96,15 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
           SliverList(
             delegate: SliverChildListDelegate(
               [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blueAccent,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text("Atur Jadwal Praktik Anda terlebih dahulu agar dapat menambahkan pasien ke daftar antrian. dengan cara tekan tombol +  ", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                  ),
+                ),
                 const SizedBox(
                   height: 10,
                 ),
