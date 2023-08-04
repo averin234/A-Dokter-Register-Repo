@@ -1404,7 +1404,7 @@ class API {
   }
 
   static Future<ListData> getReferensi() async {
-    var token = Publics.controller.getToken.value;
+    var token = await getToken();
     final data = {};
     var response = await Dio().post(
       _getReferensi,
