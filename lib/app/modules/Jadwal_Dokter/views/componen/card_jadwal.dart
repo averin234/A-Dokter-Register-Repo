@@ -766,6 +766,7 @@ class _CardJadwalState extends State<CardJadwal> {
                   barrierDismissible: false,
                 );
                 final deleteJadwal = await API.deleteJadwalDokter(id: id);
+                print(id);
                 Get.back();
                 if (deleteJadwal.code != 200) {
                   Get.snackbar(deleteJadwal.code.toString(),

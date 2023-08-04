@@ -37,8 +37,9 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   void _toggleObscured() {
     setState(() {
       _obscured = !_obscured;
-      if (textFieldFocusNode.hasPrimaryFocus)
+      if (textFieldFocusNode.hasPrimaryFocus) {
         return; // If focus is on text field, dont unfocus
+      }
       textFieldFocusNode.canRequestFocus =
           false; // Prevents focus if tap on eye
     });
@@ -174,51 +175,70 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                 isPassword,
                                 false,
                                 controller.passwordController),
+                            Obx(() {
+                              return ListTile(
+                                dense: true,
+                                onTap: () => controller.ingatSaya.value == false
+                                    ? controller.ingatSaya.value = true
+                                    : controller.ingatSaya.value = false,
+                                leading: Checkbox(
+                                  splashRadius: 0,
+                                  value: controller.ingatSaya.value,
+                                  onChanged: (value) =>
+                                      controller.ingatSaya.value = value!,
+                                ),
+                                title: const Text(
+                                  "Ingat Saya",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              );
+                            }),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                            InkWell(
-                              onTap: () {
-                              },
-                              child: RichText(
-                                text: const TextSpan(
-                                  text: '',
-                                  style: TextStyle(
-                                    color: Colors.blueAccent,
-                                    fontSize: 15,
+                                InkWell(
+                                  onTap: () {},
+                                  child: RichText(
+                                    text: const TextSpan(
+                                      text: '',
+                                      style: TextStyle(
+                                        color: Colors.blueAccent,
+                                        fontSize: 15,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                                InkWell(
+                                  onTap: () => showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    showDragHandle: true,
+                                    context: context,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(20),
+                                      ),
+                                    ),
+                                    builder: (context) => LupaPassword(context),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 20),
+                                    child: RichText(
+                                      text: const TextSpan(
+                                        text: 'Lupa Password ?',
+                                        style: TextStyle(
+                                          color: Colors.blueAccent,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                              InkWell(
-                                onTap: () => showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  showDragHandle: true,
-                                  context: context,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(20),
-                                    ),
-                                  ),
-                                  builder: (context) => LupaPassword(context),
-                                ),
-                                child: Padding( padding: EdgeInsets.only(right: 20),
-                                child : RichText(
-                                  text: const TextSpan(
-                                    text: 'Lupa Password ?',
-                                    style: TextStyle(
-                                      color: Colors.blueAccent,
-                                      fontSize: 15,
-                                    ),
-                                  ),),
-                                ),
-                              ),
-
-                            ],),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 component2(
@@ -231,9 +251,9 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                         controller.passwordController.text
                                             .isNotEmpty) {
                                       Get.defaultDialog(
-                                        backgroundColor: Color(0xe0e0e0),
-                                        content:
-                                        Loading(),
+                                        backgroundColor:
+                                            const Color(0x00e0e0e0),
+                                        content: Loading(),
                                         title: '',
                                         barrierDismissible: false,
                                       );
@@ -242,13 +262,15 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                             controller.passwordController.text,
                                         user:
                                             controller.usernameController.text,
+                                        ingetSaya: controller.ingatSaya.value,
                                       );
                                       if (aksesPX.code != 200) {
                                         Get.snackbar(aksesPX.code.toString(),
                                             aksesPX.msg.toString());
                                       } else {
                                         aksesPX.res!.kodeKelompok == 1
-                                            ? Get.offAllNamed(Routes.VERIFIKASI_AKUN)
+                                            ? Get.offAllNamed(
+                                                Routes.VERIFIKASI_AKUN)
                                             : aksesPX.res!.kodeKelompok == 2
                                                 ? Get.offAllNamed(Routes.DOSEN)
                                                 : Get.offAllNamed(
@@ -377,7 +399,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
           border: InputBorder.none,
           hintMaxLines: 1,
           hintText: hintText,
-          prefixIcon: Icon(
+          prefixIcon: const Icon(
             Icons.email_rounded,
             size: 24,
             color: Colors.grey,
@@ -416,7 +438,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
           hintText: hintText,
           hintStyle:
               TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
-          prefixIcon: Icon(
+          prefixIcon: const Icon(
             Icons.lock_rounded,
             size: 24,
             color: Colors.grey,
@@ -463,7 +485,6 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
 }
 
 Widget buildSheet() {
-
   return Container(
     height: 220,
     decoration: BoxDecoration(
@@ -506,9 +527,9 @@ Widget buildSheet() {
                 ),
               ],
             ),
-            child: Column(
+            child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
                   "Register Dokter",
                   style: TextStyle(
@@ -540,9 +561,9 @@ Widget buildSheet() {
                 ),
               ],
             ),
-            child: Column(
+            child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
                   "Register Dosen",
                   style: TextStyle(
@@ -574,9 +595,9 @@ Widget buildSheet() {
                 ),
               ],
             ),
-            child: Column(
+            child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
                   "Register Mahasiswa",
                   style: TextStyle(
@@ -593,12 +614,12 @@ Widget buildSheet() {
   );
 }
 
-  Widget LupaPassword(context) {
-    final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    final controller = Get.put(LoginController());
-    return  Padding(
-        padding: mediaQueryData.viewInsets,
-      child : Container(
+Widget LupaPassword(context) {
+  final MediaQueryData mediaQueryData = MediaQuery.of(context);
+  final controller = Get.put(LoginController());
+  return Padding(
+    padding: mediaQueryData.viewInsets,
+    child: Container(
       height: 290,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
@@ -608,27 +629,35 @@ Widget buildSheet() {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text('Lupa Password',textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black)),
+          const Text('Lupa Password',
+              textAlign: TextAlign.center,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
           const SizedBox(
             height: 20,
           ),
-        Padding(padding: EdgeInsets.only(right: 10, left: 10),
-          child : Text('kami akan mengirimkan email berisi Default Password untuk menyetel ulang sandi Anda'),),
+          const Padding(
+            padding: EdgeInsets.only(right: 10, left: 10),
+            child: Text(
+                'kami akan mengirimkan email berisi Default Password untuk menyetel ulang sandi Anda'),
+          ),
           const SizedBox(
             height: 30,
           ),
-          Column(
+          const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment:  MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Text("Masukan Email Anda",
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                )),
-          ),],),
+              Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text("Masukan Email Anda",
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
+            ],
+          ),
           const SizedBox(
             height: 10,
           ),
@@ -643,8 +672,7 @@ Widget buildSheet() {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    border:
-                    Border.all(color: const Color(0x6cc7d1db)),
+                    border: Border.all(color: const Color(0x6cc7d1db)),
                   ),
                   child: TextFormField(
                     controller: controller.lupapassword,
@@ -672,51 +700,56 @@ Widget buildSheet() {
           const SizedBox(
             height: 30,
           ),
-        InkWell(
-          onTap: () async {
-            if (controller.lupapassword.text.isNotEmpty) {
-              Get.defaultDialog(
-                backgroundColor: Color(0xe0e0e0),
-                content:
-                Loading(),
-                title: '',
-                barrierDismissible: false,
-              );
-              final postLupaPassword = await API.CekLupaPassword(email: ''
-              );
-              Get.back();
-              if (postLupaPassword.code == 200) {
-                Get.snackbar('200',
-                    'Password baru sudah berhasil di kirim ke alamat email');
-                Get.back();
-              } else {
+          InkWell(
+            onTap: () async {
+              if (controller.lupapassword.text.isNotEmpty) {
                 Get.defaultDialog(
-                  title: (postLupaPassword.code ?? 0).toString(),
-                  content: Text(postLupaPassword.msg ?? ''),
+                  backgroundColor: const Color(0x00e0e0e0),
+                  content: Loading(),
+                  title: '',
+                  barrierDismissible: false,
                 );
+                final postLupaPassword = await API.CekLupaPassword(email: '');
+                Get.back();
+                if (postLupaPassword.code == 200) {
+                  Get.snackbar('200',
+                      'Password baru sudah berhasil di kirim ke alamat email');
+                  Get.back();
+                } else {
+                  Get.defaultDialog(
+                    title: (postLupaPassword.code ?? 0).toString(),
+                    content: Text(postLupaPassword.msg ?? ''),
+                  );
+                }
+              } else {
+                Get.snackbar('500',
+                    'Email yg di masukan harus sesuai dengan akun yang sudah terdaftar di Aplikasi A-Dokter');
               }
-            } else {
-              Get.snackbar('500',
-                  'Email yg di masukan harus sesuai dengan akun yang sudah terdaftar di Aplikasi A-Dokter');
-            }
-          },
-        child : SizedBox(
-          width: double.infinity,
-          height: 50,
-          child : Container(
-            margin: EdgeInsets.only(right: 10, left: 10),
-            height: 60,
-            decoration: BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(10),
+            },
+            child: SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: Container(
+                  margin: const EdgeInsets.only(right: 10, left: 10),
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Submit",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white)),
+                    ],
+                  )),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-            Text("Submit", style: TextStyle(fontWeight:  FontWeight.bold, color: Colors.white)),],)
-          ),),),
+          ),
         ],
       ),
-    ),);
-  }
+    ),
+  );
+}

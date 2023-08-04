@@ -34,9 +34,9 @@ import "../model/post_pasien_baru.dart";
 import "local_storage.dart";
 
 class API {
-  static const _url = "https://a-dokter.id/";
+  // static const _url = "https://a-dokter.id/";
   // static const _url = "https://adokter.d-medis.id/";
-  // static const _url = "https://demo.a-dokter.id/";
+  static const _url = "https://demo.a-dokter.id/";
   static const _baseUrl = "${_url}api/v1";
   static const _getToken = "$_baseUrl/get-token.php";
   static const _getAksesPx = "$_baseUrl/px-akses.php";
@@ -1797,7 +1797,7 @@ class API {
   }
 
   static Future<AksesPx> getAksesPx(
-      {required String user, required String pass}) async {
+      {required String user, required String pass, bool? ingetSaya}) async {
     var token = await getToken();
     final data = {"us": user, "pw": pass};
     var response = await Dio().post(
@@ -1830,6 +1830,7 @@ class API {
           email: user,
           password: pass,
           kode: obj.res!.kode,
+          ingatSaya: ingetSaya ?? false,
         ));
       }
     }

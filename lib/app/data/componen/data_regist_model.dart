@@ -15,14 +15,14 @@ class DataRegist {
     email = json['email'];
     password = json['password'];
     kode = json['kode'];
-    ingatSaya = json['ingatSaya'] ?? false;
+    ingatSaya = json['ingat_saya'] ?? false;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['email'] = email;
     data['password'] = password;
-    data['ingatSaya'] = ingatSaya;
+    data['ingat_saya'] = ingatSaya;
     data['kode'] = kode;
     return data;
   }

@@ -13,11 +13,11 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
+    print(dataRegist.value.toJson());
     ingatSaya.value = dataRegist.value.ingatSaya ?? false;
     if (ingatSaya.value == true) {
-      usernameController.text = dataRegist.value.email ?? 'demo123@mail.com';
-      passwordController.text =
-          dataRegist.value.password ?? '0134a762b1c7d4acab4a766061b57093';
+      usernameController.text = dataRegist.value.email ?? '';
+      passwordController.text = dataRegist.value.password ?? '';
     }
     super.onInit();
   }
