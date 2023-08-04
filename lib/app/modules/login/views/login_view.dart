@@ -269,8 +269,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                             aksesPX.msg.toString());
                                       } else {
                                         aksesPX.res!.kodeKelompok == 1
-                                            ? Get.offAllNamed(
-                                                Routes.VERIFIKASI_AKUN)
+                                            ? Get.offAllNamed(Routes.HOME)
                                             : aksesPX.res!.kodeKelompok == 2
                                                 ? Get.offAllNamed(Routes.DOSEN)
                                                 : Get.offAllNamed(
