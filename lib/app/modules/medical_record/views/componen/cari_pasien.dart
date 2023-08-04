@@ -18,6 +18,7 @@ class CariPasien extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
         FutureBuilder(
             future: API.getPasienBy(
                 kode_dokter: Publics.controller.getDataRegist.value.kode ?? ''),

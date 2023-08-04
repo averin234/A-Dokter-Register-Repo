@@ -11,12 +11,13 @@ class ListViewPasienLama extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return
+      InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA,
           parameters: {'no_mr': pasien.noMr ?? ''}),
       child: Container(
-        margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
-        padding: const EdgeInsets.only(right: 0, left: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5, top: 10),
+        padding: const EdgeInsets.only(right: 0, left: 10, bottom: 5),
         decoration: BoxDecoration(
           border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,

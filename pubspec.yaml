@@ -15,6 +15,7 @@ dependencies:
   awesome_dialog: ^2.2.0
   awesome_drawer_bar: ^1.0.0
   checkbox_grouped: ^2.0.0
+  smartrefresh: ^0.0.2
   diamond_bottom_bar: ^1.0.0
   shimmer_animation: ^2.1.0
   badges: ^2.0.3

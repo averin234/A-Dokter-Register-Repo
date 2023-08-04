@@ -1025,6 +1025,7 @@ class API {
         obj.msg.toString(),
       );
     }
+    print(no_registrasi);
     print(obj.toJson());
     return obj;
   }

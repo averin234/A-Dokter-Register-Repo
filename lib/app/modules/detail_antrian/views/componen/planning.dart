@@ -55,50 +55,48 @@ class Planning extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Column(
-                children: [
-                  InkWell(
-                    onTap: () => showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: context,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(20),
-                        ),
-                      ),
-                      builder: (context) => buildSheet(context),
-                    ),
-                    child: Container(
-                      width: 80.0,
-                      height: 80.0,
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image: AssetImage("assets/consultation.png"),
-                          fit: BoxFit.fill,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withOpacity(.1),
-                              blurRadius: 3,
-                              spreadRadius: 1)
-                        ],
-                        border: Border.all(
-                          width: 1.5,
-                          color: Colors.white,
-                        ),
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text("Penunjang Medis")
-                ],
-              ),
-              const SizedBox(
-                width: 20,
-              ),
+              // Column(
+              //   children: [
+              //     InkWell(
+              //       onTap: () => showModalBottomSheet(
+              //         isScrollControlled: true,
+              //         context: context,
+              //         shape: const RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.vertical(
+              //             top: Radius.circular(20),
+              //           ),
+              //         ),
+              //         builder: (context) => buildSheet(context),
+              //       ),
+              //       child: Container(
+              //         width: 80.0,
+              //         height: 80.0,
+              //         decoration: BoxDecoration(
+              //           image: const DecorationImage(
+              //             image: AssetImage("assets/consultation.png"),
+              //             fit: BoxFit.fill,
+              //           ),
+              //           boxShadow: [
+              //             BoxShadow(
+              //                 color: Colors.black.withOpacity(.1),
+              //                 blurRadius: 3,
+              //                 spreadRadius: 1)
+              //           ],
+              //           border: Border.all(
+              //             width: 1.5,
+              //             color: Colors.white,
+              //           ),
+              //           borderRadius: BorderRadius.circular(40.0),
+              //         ),
+              //       ),
+              //     ),
+              //     const SizedBox(
+              //       height: 10,
+              //     ),
+              //     const Text("Penunjang Medis")
+              //   ],
+              // ),
+
               Column(
                 children: [
                   InkWell(
@@ -143,6 +141,87 @@ class Planning extends StatelessWidget {
               ),
               const SizedBox(
                 width: 20,
+              ),
+              Column(
+                children: [
+                  InkWell(
+                    onTap: () => Get.toNamed(
+                      Routes.ISI_RESEP,
+                      parameters: {
+                        'no_mr': controller.noMr,
+                        'no_registrasi': controller.noRegistrasi,
+                      },
+                    ),
+                    child: Container(
+                      width: 80.0,
+                      height: 80.0,
+                      decoration: BoxDecoration(
+                        image: const DecorationImage(
+                          image: AssetImage("assets/medical-equipment.png"),
+                          fit: BoxFit.fill,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(.1),
+                              blurRadius: 3,
+                              spreadRadius: 1)
+                        ],
+                        border: Border.all(
+                          width: 1.5,
+                          color: Colors.white,
+                        ),
+                        borderRadius: BorderRadius.circular(40.0),
+                      ),
+                      padding: const EdgeInsets.all(5),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text("Isi Resep")
+                ],
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Column(
+                children: [
+                  InkWell(
+                    onTap: () => Get.toNamed(
+                      Routes.ISI_ICD_10,
+                      parameters: {
+                        'no_mr': controller.noMr,
+                        'no_registrasi': controller.noRegistrasi,
+                      },
+                    ),
+                    child: Container(
+                      width: 80.0,
+                      height: 80.0,
+                      decoration: BoxDecoration(
+                        image: const DecorationImage(
+                          image: AssetImage("assets/monitoring.png"),
+                          fit: BoxFit.fill,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(.1),
+                              blurRadius: 3,
+                              spreadRadius: 1)
+                        ],
+                        border: Border.all(
+                          width: 1.5,
+                          color: Colors.white,
+                        ),
+                        borderRadius: BorderRadius.circular(40.0),
+                      ),
+                      padding: const EdgeInsets.all(5),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text("Isi ICD 10")
+                ],
               ),
               // Column(
               //   children: [
@@ -190,129 +269,53 @@ class Planning extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Column(
-                children: [
-                  InkWell(
-                    onTap: () => Get.toNamed(
-                      Routes.ISI_RESEP,
-                      parameters: {
-                        'no_mr': controller.noMr,
-                        'no_registrasi': controller.noRegistrasi,
-                      },
-                    ),
-                    child: Container(
-                      width: 80.0,
-                      height: 80.0,
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image: AssetImage("assets/medical-equipment.png"),
-                          fit: BoxFit.fill,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withOpacity(.1),
-                              blurRadius: 3,
-                              spreadRadius: 1)
-                        ],
-                        border: Border.all(
-                          width: 1.5,
-                          color: Colors.white,
-                        ),
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                      padding: const EdgeInsets.all(5),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text("Isi Resep")
-                ],
-              ),
+
               const SizedBox(
                 width: 20,
               ),
-              Column(
-                children: [
-                  InkWell(
-                    onTap: () => Get.toNamed(
-                      Routes.ISI_ICD_10,
-                      parameters: {
-                        'no_mr': controller.noMr,
-                        'no_registrasi': controller.noRegistrasi,
-                      },
-                    ),
-                    child: Container(
-                      width: 80.0,
-                      height: 80.0,
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image: AssetImage("assets/monitoring.png"),
-                          fit: BoxFit.fill,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withOpacity(.1),
-                              blurRadius: 3,
-                              spreadRadius: 1)
-                        ],
-                        border: Border.all(
-                          width: 1.5,
-                          color: Colors.white,
-                        ),
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                      padding: const EdgeInsets.all(5),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text("Isi ICD 10")
-                ],
-              ),
+
               const SizedBox(
                 width: 20,
               ),
-              Column(
-                children: [
-                  InkWell(
-                    onTap: () => Get.toNamed(
-                      Routes.PEMERIKSAAN,
-                      parameters: {
-                        'no_mr': controller.noMr,
-                        'no_registrasi': controller.noRegistrasi,
-                      },
-                    ),
-                    child: Container(
-                      width: 80.0,
-                      height: 80.0,
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image: AssetImage("assets/monitoring.png"),
-                          fit: BoxFit.fill,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withOpacity(.1),
-                              blurRadius: 3,
-                              spreadRadius: 1)
-                        ],
-                        border: Border.all(
-                          width: 1.5,
-                          color: Colors.white,
-                        ),
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                      padding: const EdgeInsets.all(5),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text("Pemeriksaan")
-                ],
-              ),
+              // Column(
+              //   children: [
+              //     InkWell(
+              //       onTap: () => Get.toNamed(
+              //         Routes.PEMERIKSAAN,
+              //         parameters: {
+              //           'no_mr': controller.noMr,
+              //           'no_registrasi': controller.noRegistrasi,
+              //         },
+              //       ),
+              //       child: Container(
+              //         width: 80.0,
+              //         height: 80.0,
+              //         decoration: BoxDecoration(
+              //           image: const DecorationImage(
+              //             image: AssetImage("assets/monitoring.png"),
+              //             fit: BoxFit.fill,
+              //           ),
+              //           boxShadow: [
+              //             BoxShadow(
+              //                 color: Colors.black.withOpacity(.1),
+              //                 blurRadius: 3,
+              //                 spreadRadius: 1)
+              //           ],
+              //           border: Border.all(
+              //             width: 1.5,
+              //             color: Colors.white,
+              //           ),
+              //           borderRadius: BorderRadius.circular(40.0),
+              //         ),
+              //         padding: const EdgeInsets.all(5),
+              //       ),
+              //     ),
+              //     const SizedBox(
+              //       height: 10,
+              //     ),
+              //     const Text("Pemeriksaan")
+              //   ],
+              // ),
               const SizedBox(
                 height: 5,
               ),

@@ -110,134 +110,134 @@ class RiwayatResep extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    const Expanded(
-                      child: Text(
-                        "Nama Obat",
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal, color: Colors.blue),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        // Get.toNamed(Routes.ANTRIAN_PASIEN);
-                      },
-                      child: Text(
-                        resepi.namaBrg ?? '',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.normal, color: Colors.blue),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    const Expanded(
-                      child: Text(
-                        "Jumlah",
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal, color: Colors.blue),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        // Get.toNamed(Routes.ANTRIAN_PASIEN);
-                      },
-                      child: Text(
-                        resepi.jumlahPesan ?? '',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.normal, color: Colors.blue),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    const Expanded(
-                      child: Text(
-                        "Aturan Pemakaian",
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal, color: Colors.blue),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed(Routes.ANTRIAN_PASIEN);
-                      },
-                      child: Text(
-                        resepi.namaDosis ?? '',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.normal, color: Colors.blue),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    const Expanded(
-                      child: Text(
-                        "Note",
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal, color: Colors.blue),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed(Routes.ANTRIAN_PASIEN);
-                      },
-                      child: Text(
-                        resepi.note ?? '',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.normal, color: Colors.blue),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
+          // Container(
+          //   child: Column(
+          //     mainAxisAlignment: MainAxisAlignment.start,
+          //     children: [
+          //       Row(
+          //         children: [
+          //           const Expanded(
+          //             child: Text(
+          //               "Nama Obat",
+          //               style: TextStyle(
+          //                   fontWeight: FontWeight.normal, color: Colors.blue),
+          //             ),
+          //           ),
+          //           const SizedBox(
+          //             width: 10,
+          //           ),
+          //           GestureDetector(
+          //             onTap: () {
+          //               // Get.toNamed(Routes.ANTRIAN_PASIEN);
+          //             },
+          //             child: Text(
+          //               resepi.namaBrg ?? '',
+          //               style: const TextStyle(
+          //                   fontWeight: FontWeight.normal, color: Colors.blue),
+          //               textAlign: TextAlign.center,
+          //             ),
+          //           ),
+          //           const SizedBox(
+          //             width: 10,
+          //           ),
+          //         ],
+          //       ),
+          //       const SizedBox(
+          //         height: 10,
+          //       ),
+          //       Row(
+          //         children: [
+          //           const Expanded(
+          //             child: Text(
+          //               "Jumlah",
+          //               style: TextStyle(
+          //                   fontWeight: FontWeight.normal, color: Colors.blue),
+          //             ),
+          //           ),
+          //           const SizedBox(
+          //             width: 10,
+          //           ),
+          //           GestureDetector(
+          //             onTap: () {
+          //               // Get.toNamed(Routes.ANTRIAN_PASIEN);
+          //             },
+          //             child: Text(
+          //               resepi.jumlahPesan ?? '',
+          //               style: const TextStyle(
+          //                   fontWeight: FontWeight.normal, color: Colors.blue),
+          //               textAlign: TextAlign.center,
+          //             ),
+          //           ),
+          //           const SizedBox(
+          //             width: 10,
+          //           ),
+          //         ],
+          //       ),
+          //       const SizedBox(
+          //         height: 10,
+          //       ),
+          //       Row(
+          //         children: [
+          //           const Expanded(
+          //             child: Text(
+          //               "Aturan Pemakaian",
+          //               style: TextStyle(
+          //                   fontWeight: FontWeight.normal, color: Colors.blue),
+          //             ),
+          //           ),
+          //           const SizedBox(
+          //             width: 10,
+          //           ),
+          //           GestureDetector(
+          //             onTap: () {
+          //               Get.toNamed(Routes.ANTRIAN_PASIEN);
+          //             },
+          //             child: Text(
+          //               resepi.namaDosis ?? '',
+          //               style: const TextStyle(
+          //                   fontWeight: FontWeight.normal, color: Colors.blue),
+          //               textAlign: TextAlign.center,
+          //             ),
+          //           ),
+          //           const SizedBox(
+          //             width: 10,
+          //           ),
+          //         ],
+          //       ),
+          //       const SizedBox(
+          //         height: 10,
+          //       ),
+          //       Row(
+          //         children: [
+          //           const Expanded(
+          //             child: Text(
+          //               "Note",
+          //               style: TextStyle(
+          //                   fontWeight: FontWeight.normal, color: Colors.blue),
+          //             ),
+          //           ),
+          //           const SizedBox(
+          //             width: 10,
+          //           ),
+          //           GestureDetector(
+          //             onTap: () {
+          //               Get.toNamed(Routes.ANTRIAN_PASIEN);
+          //             },
+          //             child: Text(
+          //               resepi.note ?? '',
+          //               style: const TextStyle(
+          //                   fontWeight: FontWeight.normal, color: Colors.blue),
+          //               textAlign: TextAlign.center,
+          //             ),
+          //           ),
+          //           const SizedBox(
+          //             width: 10,
+          //           ),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // )
         ],
       ),
     );

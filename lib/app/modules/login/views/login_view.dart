@@ -284,6 +284,9 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                 SizedBox(width: size.width / 25),
                               ],
                             ),
+                            SizedBox(
+                              height: 10,
+                            ),
                             InkWell(
                               onTap: () => showModalBottomSheet(
                                 context: context,
@@ -303,6 +306,9 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                   ),
                                 ),
                               ),
+                            ),
+                            SizedBox(
+                              height: 10,
                             ),
                             const SizedBox(),
                           ],
@@ -514,7 +520,7 @@ Widget buildSheet() {
             style: TextStyle(fontWeight: FontWeight.bold),
             textAlign: TextAlign.center),
         const SizedBox(
-          height: 30,
+          height: 20,
         ),
         InkWell(
           onTap: () => Get.toNamed(Routes.REGISTER_DOKTER),
@@ -532,16 +538,29 @@ Widget buildSheet() {
                 ),
               ],
             ),
-            child: const Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Register Dokter",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14),
-                )
+                SizedBox(
+                  width: 10,
+                ),
+                Row(
+                  children: [
+                  Image.asset(
+                    'assets/images/doctor.png',
+                    height: 60,
+                  ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                  Text(
+                    "Register Dokter",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14),
+                  )
+                ],),
               ],
             ),
           ),
@@ -565,16 +584,29 @@ Widget buildSheet() {
                 ),
               ],
             ),
-            child: const Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Register Dosen",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14),
-                )
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Image.asset(
+                      'assets/images/dosen.png',
+                      height: 60,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      "Register Dosen",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14),
+                    )
+                  ],),
               ],
             ),
           ),
@@ -598,16 +630,29 @@ Widget buildSheet() {
                 ),
               ],
             ),
-            child: const Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Register Mahasiswa",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14),
-                )
+                SizedBox(
+                  width: 10,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/images/mahasiswa.png',
+                      height: 60,
+                    ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Text(
+                      "Register Mahasiswa",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14),
+                    )
+                  ],),
               ],
             ),
           ),

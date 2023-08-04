@@ -36,19 +36,9 @@ class TindakanView extends GetView<TindakanController> {
             snap: true,
             automaticallyImplyLeading: false,
             title: const Text('List Pasien'),
-            bottom: AppBar(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(30),
-                ),
-              ),
-              toolbarHeight: 0,
-              automaticallyImplyLeading: false,
-              elevation: 0,
-              actions: const [
-                CariPasien(),
-              ],
-            ),
+            actions: const [
+              CariPasien(),
+            ],
           ),
           // Other Sliver Widgets
           SliverList(

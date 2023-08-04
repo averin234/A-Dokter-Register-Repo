@@ -8,6 +8,7 @@ import 'package:search_page/search_page.dart';
 import '../../../../data/componen/fetch_data.dart';
 import '../../../../data/componen/publics.dart';
 import '../../../../data/model/list_data.dart';
+import '../../../regist_pasien_lama/views/componen/listview_pasien_lama.dart';
 import '../../controllers/tindakan_controller.dart';
 import 'listview_tindakan.dart';
 
@@ -32,27 +33,61 @@ class _SearchTindakanDokterState extends State<SearchTindakanDokter> {
             color: const Color.fromARGB(255, 233, 231, 253),
             borderRadius: BorderRadius.circular(22),
           ),
-          child: TextField(
-            readOnly: true,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              focusedBorder: InputBorder.none,
-              enabledBorder: InputBorder.none,
-              errorBorder: InputBorder.none,
-              disabledBorder: InputBorder.none,
-              contentPadding: const EdgeInsets.only(
-                  left: 15, bottom: 11, top: 13, right: 15),
-              suffixIcon: IconButton(
-                icon: const Icon(Icons.search),
-                onPressed: () {
-                  print('sesarch');
-                },
-              ),
-              filled: true,
-              hintText: "Pencarian ",
-              fillColor: Colors.transparent,
-            ),
-          ),
+          child:  FutureBuilder(
+              future: API.getPasienBy(
+                  kode_dokter: Publics.controller.getDataRegist.value.kode ?? ''),
+              builder: (context, snapshot) {
+                if (snapshot.hasData &&
+                    snapshot.connectionState != ConnectionState.waiting &&
+                    snapshot.data != null) {
+                  final data = snapshot.data!.pasien!;
+                  return TextField(
+                    readOnly: true,
+                    onTap: () => showSearch(
+                      context: context,
+                      delegate: SearchPage<Pasien>(
+                        items: data,
+                        searchLabel: 'Cari Nama Pasien',
+                        searchStyle: GoogleFonts.nunito(color: Colors.black),
+                        showItemsOnEmpty: true,
+                        failure: Center(
+                          child: Text(
+                            'Pasien Tidak Terdaftar :(',
+                            style: GoogleFonts.nunito(),
+                          ),
+                        ),
+                        filter: (pasien) => [
+                          pasien.namaPasien,
+                          pasien.noHp,
+                          pasien.noMr,
+                        ],
+                        builder: (pasien) => ListViewPasienLama(pasien: pasien),
+                      ),
+                    ),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding: const EdgeInsets.only(
+                          left: 15, bottom: 11, top: 13, right: 15),
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: () {
+                          print('sesarch');
+                        },
+                      ),
+                      filled: true,
+                      hintText: "Pencarian ",
+                      fillColor: Colors.transparent,
+                    ),
+                  );
+                } else {
+                  return Container();
+                }
+              }),
+
         ),
       ],
     );

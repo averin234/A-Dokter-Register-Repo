@@ -12,12 +12,17 @@ class ListViewPasien extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return Column(
+        children: [
+      SizedBox(
+      height: 10,
+    ),
+      InkWell(
       onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
           parameters: {'no_mr': pasien.noMr ?? ''}),
       child: Container(
         margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
-        padding: const EdgeInsets.only(right: 0, left: 10, bottom: 10),
+        padding: const EdgeInsets.only(right: 0, left: 10, bottom: 5),
         decoration: BoxDecoration(
           border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
@@ -174,6 +179,7 @@ class ListViewPasien extends StatelessWidget {
                 ],
               ),
       ),
-    );
+      ),
+    ]);
   }
 }

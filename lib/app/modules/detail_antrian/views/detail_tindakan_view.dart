@@ -8,6 +8,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 import '../../../data/model/list_data.dart';
+import '../../../routes/app_pages.dart';
 import '../../bottomsheet/bottomsheet_pulang.dart';
 import '../../loading_summer/loading.surat.dart';
 import '../../loading_summer/loading_card_profile.dart';
@@ -27,43 +28,69 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: SpeedDial(
-        //Speed dial menu
-        marginBottom: 10, //margin bottom
-        icon: Icons.menu, //icon on Floating action button
-        activeIcon: Icons.close, //icon when menu is expanded on button
-        backgroundColor: Colors.deepOrangeAccent, //background color of button
-        foregroundColor: Colors.white, //font color, icon color in button
-        activeBackgroundColor:
-            Colors.deepPurpleAccent, //background color when menu is expanded
-        activeForegroundColor: Colors.white,
-        buttonSize: 56.0, //button size
-        visible: true,
-        closeManually: false,
-        curve: Curves.bounceIn,
-        overlayColor: Colors.black,
-        overlayOpacity: 0.5,
-        onOpen: () => print('OPENING DIAL'), // action when menu opens
-        onClose: () => print('DIAL CLOSED'), //action when menu closes
-
-        elevation: 8.0, //shadow elevation of button
-        shape: const CircleBorder(), //shape of button
-
-        children: [
-          SpeedDialChild(
-            child: const Icon(Icons.exit_to_app_outlined),
-            backgroundColor: const Color(0xffF64E60),
-            foregroundColor: Colors.white,
-            labelBackgroundColor: Colors.white,
-            label: 'Pulang',
-            labelStyle: const TextStyle(fontSize: 18.0),
-            onTap: () {
-              bottomSheetPulang();
-            },
-            onLongPress: () => print('SECND CHILD LONG PRESS'),
-          ),
-          //add more menu item childs here
-        ],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              spreadRadius: 0,
+              blurRadius: 10,
+              offset: const Offset(2, 1),
+            ),
+          ],
+        ),
+        height: 75,
+        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        child: Row(
+          children: <Widget>[
+            const SizedBox(
+              width: 200,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Text(
+                          "Pastikan Pemeriksaan Pasien sudah benar ",
+                          style: TextStyle(color: Colors.black))),
+                ],
+              ),
+            ),
+            Expanded(
+              child: InkWell(
+                onTap: ()  {
+                  bottomSheetPulang();
+                },
+                child:
+                Container(
+                  margin: const EdgeInsets.only(
+                      right: 15, left: 5, top: 10, bottom: 10),
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    color: Colors.redAccent,
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: Colors.white12,
+                        offset: Offset(2, 1),
+                        blurRadius: 1,
+                        spreadRadius: 2,
+                      )
+                    ],
+                  ),
+                  child: const Text(
+                    "Pulang",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       body: CustomScrollView(
         slivers: [
@@ -841,6 +868,7 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                                                               if (postVS.code !=
                                                                   200) {
                                                               } else {
+                                                                Get.back();
                                                                 showModalBottomSheet(
                                                                   context:
                                                                       context,
@@ -998,7 +1026,7 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
             const SizedBox(
               height: 10,
             ),
-            const SingleChildScrollView(
+             SingleChildScrollView(
                 child: Center(
               child: Column(
                 children: [
@@ -1024,35 +1052,37 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                   SizedBox(
                     height: 30,
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: [
-                  //     Padding(
-                  //       padding:
-                  //       const EdgeInsets.only(right: 10, left: 10, top: 20),
-                  //       child: GestureDetector(
-                  //         onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
-                  //         child: Container(
-                  //           decoration: BoxDecoration(
-                  //             borderRadius: BorderRadius.circular(7),
-                  //             color: Colors.redAccent,
-                  //           ),
-                  //           child: Column(
-                  //             children: const [
-                  //               Padding(
-                  //                 padding: EdgeInsets.all(16),
-                  //                 child: Text("Kembali",
-                  //                     style: TextStyle(
-                  //                         color: Colors.white,
-                  //                         fontWeight: FontWeight.bold)),
-                  //               ),
-                  //             ],
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding:
+                         EdgeInsets.only(right: 10, left: 10, top: 20),
+                        child: GestureDetector(
+                          onTap:  () {
+                            Get.back();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: Colors.grey[100],
+                            ),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(16),
+                                  child: Text("Kembali",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             )),

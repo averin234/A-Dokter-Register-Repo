@@ -12,7 +12,12 @@ class ListViewTindakan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return Column(
+      children: [
+        SizedBox(
+          height: 10,
+        ),
+      InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN, parameters: {
         'no_registrasi': antrian.noRegistrasi ?? '',
         'no_mr': antrian.noMr ?? ''
@@ -254,7 +259,8 @@ class ListViewTindakan extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ),
+    ],);
   }
 
   Widget lihat() {

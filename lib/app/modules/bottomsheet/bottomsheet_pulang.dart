@@ -75,6 +75,7 @@ Future bottomSheetPulang() {
                   children: [
                     InkWell(
                       onTap: () async {
+                        Get.back();
                         final postPulang = await API.postPulang(
                           no_registrasi: controller.noRegistrasi,
                         );
