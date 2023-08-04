@@ -486,7 +486,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
 
 Widget buildSheet() {
   return Container(
-    height: 220,
+    height: 300,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(50),
       color: Colors.transparent,
@@ -508,19 +508,25 @@ Widget buildSheet() {
           ),
         ),
         const SizedBox(
+          height: 10,
+        ),
+        const Text(
+            'Registrasi akun anda sekarang di a-Dokter untuk mendapatkan fitur-fitur di aplikasi a-Dokter Mobile',
+            style: TextStyle(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center),
+        const SizedBox(
           height: 30,
         ),
         InkWell(
           onTap: () => Get.toNamed(Routes.REGISTER_DOKTER),
           child: Container(
-            height: 45,
             width: 305,
             decoration: BoxDecoration(
-              color: Colors.green,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.green.withOpacity(0.5),
+                  color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
                   offset: const Offset(2, 1),
@@ -547,14 +553,13 @@ Widget buildSheet() {
         InkWell(
           onTap: () => Get.toNamed(Routes.REGISTER_DOSEN),
           child: Container(
-            height: 45,
             width: 305,
             decoration: BoxDecoration(
-              color: Colors.green,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.green.withOpacity(0.5),
+                  color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
                   offset: const Offset(2, 1),
@@ -581,14 +586,13 @@ Widget buildSheet() {
         InkWell(
           onTap: () => Get.toNamed(Routes.REGISTER_MAHASISWA),
           child: Container(
-            height: 45,
             width: 305,
             decoration: BoxDecoration(
-              color: Colors.green,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.green.withOpacity(0.5),
+                  color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
                   offset: const Offset(2, 1),

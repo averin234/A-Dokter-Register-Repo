@@ -93,14 +93,98 @@ class DetailRiwayatView extends GetView<DetailRiwayatController> {
                               height: 15,
                             ),
                             data.vitalSign == null
-                                ? Container()
+                                ?  Container(
+                                margin: const EdgeInsets.only(right: 10, left: 10),
+                                padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: const Color(0x6cc7d1db)),
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: const Color(0xFFe0e0e0).withOpacity(0.5),
+                                      spreadRadius: 0,
+                                      blurRadius: 10,
+                                      offset: const Offset(2, 1),
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                  const SizedBox(
+                                  height: 10,
+                                ),
+                                const Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text("VITAL SIGN",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                        )),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                  ],
+                                ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text('Vital Sign Belum di isi',  style: TextStyle(color: Colors.redAccent),)
+                            ]),)
                                 : RiwayatVitalSign(
                                     vitalSign: data.vitalSign ?? VitalSign()),
                             const SizedBox(
                               height: 10,
                             ),
                             data.riwayatPemeriksaan == null
-                                ? Container()
+                                ? Container(
+                              margin: const EdgeInsets.only(right: 10, left: 10),
+                              padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: const Color(0x6cc7d1db)),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(0xFFe0e0e0).withOpacity(0.5),
+                                    spreadRadius: 0,
+                                    blurRadius: 10,
+                                    offset: const Offset(2, 1),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text("SOAP",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                            )),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text('Riwayat SOAP Belum di isi', style: TextStyle(color: Colors.redAccent),)
+                                  ]),)
                                 : RiwayatSoap(
                                     soap: data.riwayatPemeriksaan ??
                                         RiwayatPemeriksaan()),
@@ -108,7 +192,49 @@ class DetailRiwayatView extends GetView<DetailRiwayatController> {
                               height: 10,
                             ),
                             data.resep == null
-                                ? Container()
+                                ? Container(
+                              margin: const EdgeInsets.only(right: 10, left: 10),
+                              padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: const Color(0x6cc7d1db)),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(0xFFe0e0e0).withOpacity(0.5),
+                                    spreadRadius: 0,
+                                    blurRadius: 10,
+                                    offset: const Offset(2, 1),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text("Resep",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                            )),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text('Riwayat Resep Tidak ada', style: TextStyle(color: Colors.redAccent),)
+                                  ]),)
                                 : RiwayatResep(
                                     resep: data.resep ?? [],
                                     resepi: Resep(),
@@ -116,11 +242,6 @@ class DetailRiwayatView extends GetView<DetailRiwayatController> {
                             const SizedBox(
                               height: 10,
                             ),
-                            // const RiwayatRadiologi(),
-                            // const SizedBox(
-                            //   height: 10,
-                            // ),
-                            // const RiwayatLaboratorium(),
                           ],
                         ),
                       );

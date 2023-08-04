@@ -144,40 +144,40 @@ class Planning extends StatelessWidget {
               const SizedBox(
                 width: 20,
               ),
-              Column(
-                children: [
-                  InkWell(
-                    onTap: () =>
-                        Get.toNamed(Routes.CETAKAN, arguments: {'file': ''}),
-                    child: Container(
-                      width: 80.0,
-                      height: 80.0,
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image: AssetImage("assets/print.png"),
-                          fit: BoxFit.fill,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withOpacity(.1),
-                              blurRadius: 3,
-                              spreadRadius: 1)
-                        ],
-                        border: Border.all(
-                          width: 1.5,
-                          color: Colors.white,
-                        ),
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                      padding: const EdgeInsets.all(5),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text("Cetakan")
-                ],
-              ),
+              // Column(
+              //   children: [
+              //     // InkWell(
+              //     //   onTap: () =>
+              //     //       Get.toNamed(Routes.CETAKAN, arguments: {'file': ''}),
+              //     //   child: Container(
+              //     //     width: 80.0,
+              //     //     height: 80.0,
+              //     //     decoration: BoxDecoration(
+              //     //       image: const DecorationImage(
+              //     //         image: AssetImage("assets/print.png"),
+              //     //         fit: BoxFit.fill,
+              //     //       ),
+              //     //       boxShadow: [
+              //     //         BoxShadow(
+              //     //             color: Colors.black.withOpacity(.1),
+              //     //             blurRadius: 3,
+              //     //             spreadRadius: 1)
+              //     //       ],
+              //     //       border: Border.all(
+              //     //         width: 1.5,
+              //     //         color: Colors.white,
+              //     //       ),
+              //     //       borderRadius: BorderRadius.circular(40.0),
+              //     //     ),
+              //     //     padding: const EdgeInsets.all(5),
+              //     //   ),
+              //     // ),
+              //     const SizedBox(
+              //       height: 10,
+              //     ),
+              //     const Text("Cetakan")
+              //   ],
+              // ),
               const SizedBox(
                 height: 5,
               ),

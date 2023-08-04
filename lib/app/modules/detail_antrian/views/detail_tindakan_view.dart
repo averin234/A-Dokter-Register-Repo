@@ -51,17 +51,6 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
 
         children: [
           SpeedDialChild(
-            //speed dial child
-            child: const Icon(Icons.accessibility),
-            backgroundColor: const Color(0xffFFA800),
-            foregroundColor: Colors.white,
-            label: 'Charge Slip',
-            labelBackgroundColor: Colors.white,
-            labelStyle: const TextStyle(fontSize: 18.0),
-            onTap: () => print('FIRST CHILD'),
-            onLongPress: () => print('FIRST CHILD LONG PRESS'),
-          ),
-          SpeedDialChild(
             child: const Icon(Icons.exit_to_app_outlined),
             backgroundColor: const Color(0xffF64E60),
             foregroundColor: Colors.white,
@@ -951,7 +940,7 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                             //   height: 10,
                             // ),
                             // const PlanningRadiologi(),
-                            const Surat(),
+                            // const Surat(),
                             const SizedBox(
                               height: 10,
                             ),
