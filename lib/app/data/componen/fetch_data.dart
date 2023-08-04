@@ -20,6 +20,7 @@ import "package:a_dokter_register/app/routes/app_pages.dart";
 import "package:dio/dio.dart";
 import "package:get/get.dart";
 import "package:http/http.dart" as http;
+import "package:intl/intl.dart";
 import "package:path_provider/path_provider.dart";
 import "../model/get_detail_dokter.dart";
 import "../model/get_nama_obat.dart";
@@ -1036,6 +1037,7 @@ class API {
     final data = {
       "kd": kode_dokter,
       "td": tgl_daftar,
+      "tgl_skrng": DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now())
     };
     var response = await Dio().post(
       _getAntrianDokter,
