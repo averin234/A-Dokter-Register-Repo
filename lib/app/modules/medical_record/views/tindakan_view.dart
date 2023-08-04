@@ -1,4 +1,5 @@
 import 'package:a_dokter_register/app/data/componen/publics.dart';
+import 'package:a_dokter_register/app/modules/medical_record/views/componen/cari_pasien.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../../data/componen/fetch_data.dart';
-import 'componen/search_medical_record.dart';
 import '../../loading_summer/loading_listpasien.dart';
 import '../controllers/tindakan_controller.dart';
 import 'componen/listview_tindakan.dart';
@@ -19,14 +19,14 @@ class TindakanView extends GetView<TindakanController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
-              Brightness.dark, //<-- For Android SEE HERE (dark icons)
+                  Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
-              Brightness.light, //<-- For iOS SEE HERE (dark icons)
+                  Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -35,24 +35,19 @@ class TindakanView extends GetView<TindakanController> {
             pinned: true,
             snap: true,
             automaticallyImplyLeading: false,
-            title: Text('List Pasien'),
+            title: const Text('List Pasien'),
             bottom: AppBar(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    bottom: Radius.circular(30),
-                  ),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(30),
                 ),
-                toolbarHeight: 0,
-                automaticallyImplyLeading: false,
-                elevation: 0,
-                // title: Column(
-                //   children: [
-                //     const SearchTindakanDokter(),
-                //     SizedBox(
-                //       height: 10,
-                //     ),
-                //   ],
-                // )
+              ),
+              toolbarHeight: 0,
+              automaticallyImplyLeading: false,
+              elevation: 0,
+              actions: const [
+                CariPasien(),
+              ],
             ),
           ),
           // Other Sliver Widgets
@@ -67,36 +62,41 @@ class TindakanView extends GetView<TindakanController> {
                 child: FutureBuilder(
                     future: API.getPasienBy(
                         kode_dokter:
-                        Publics.controller.getDataRegist.value.kode ?? ''),
+                            Publics.controller.getDataRegist.value.kode ?? ''),
                     builder: (context, snapshot) {
                       if (snapshot.hasData &&
                           snapshot.connectionState != ConnectionState.waiting &&
                           snapshot.data != null) {
                         final data = snapshot.data!.pasien ?? [];
                         return data.isEmpty
-                            ?  Center(
-                          child: Column(
-                            children: [
-                              const Text('Belum Ada Pasien yang diperiksa'),
-                              Image.asset(
-                                'assets/images/pasient.jpg',
-                                height: 300,
-                              ),
-                            ],
-                          ),
-                        )
-                            :Column(
-                          children: AnimationConfiguration.toStaggeredList(
-                              duration: const Duration(milliseconds: 475),
-                              childAnimationBuilder: (widget) => SlideAnimation(
-                                child: FadeInAnimation(
-                                  child: widget,
+                            ? Center(
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                        'Belum Ada Pasien yang diperiksa'),
+                                    Image.asset(
+                                      'assets/images/pasient.jpg',
+                                      height: 300,
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              children: data
-                                  .map((e) => ListViewPasien(pasien: e))
-                                  .toList()),
-                        );
+                              )
+                            : Column(
+                                children:
+                                    AnimationConfiguration.toStaggeredList(
+                                        duration:
+                                            const Duration(milliseconds: 475),
+                                        childAnimationBuilder: (widget) =>
+                                            SlideAnimation(
+                                              child: FadeInAnimation(
+                                                child: widget,
+                                              ),
+                                            ),
+                                        children: data
+                                            .map((e) =>
+                                                ListViewPasien(pasien: e))
+                                            .toList()),
+                              );
                       } else {
                         return const SingleChildScrollView(
                           child: Column(
