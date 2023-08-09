@@ -16,8 +16,11 @@ dependencies:
   awesome_drawer_bar: ^1.0.0
   checkbox_grouped: ^2.0.0
   smartrefresh: ^0.0.2
+  pull_to_refresh_notification: ^3.0.1
   diamond_bottom_bar: ^1.0.0
   shimmer_animation: ^2.1.0
+  pull_to_refresh: ^2.0.0
+  liquid_pull_to_refresh: ^3.0.1
   badges: ^2.0.3
   bubble_tab_indicator: ^0.1.6
   build_runner: ^2.2.0

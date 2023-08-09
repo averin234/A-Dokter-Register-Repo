@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/modules/Jadwal_Dokter/controllers/jadwal_dokter_controller.dart';
@@ -8,22 +11,64 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:text_scroll/text_scroll.dart';
 import '../../loading_summer/loading_atur_jadwal_dokter.dart';
 import '../../loading_summer/loading_screen_animed.dart';
 import 'componen/card_jadwal.dart';
 
+
 class JadwalDokterView extends StatefulWidget {
-  const JadwalDokterView({super.key});
+  const JadwalDokterView({Key? key, this.title}) : super(key: key);
+
+  final String? title;
 
   @override
-  State<JadwalDokterView> createState() => _JadwalDokterViewState();
+  _JadwalDokterViewState createState() => _JadwalDokterViewState();
 }
 
 class _JadwalDokterViewState extends State<JadwalDokterView> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
+  GlobalKey<LiquidPullToRefreshState>();
+
+  static int refreshNum = 10; // number that changes when refreshed
+  Stream<int> counterStream =
+  Stream<int>.periodic(const Duration(seconds: 30), (x) => refreshNum);
+  ScrollController? _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+  Future<void> _handleRefresh() {
+    final Completer<void> completer = Completer<void>();
+    Timer(const Duration(seconds: 3), () {
+      completer.complete();
+    });
+    setState(() {
+      refreshNum = Random().nextInt(100);
+    });
+    return completer.future.then<void>((_) {
+      ScaffoldMessenger.of(_scaffoldKey.currentState!.context).showSnackBar(
+        SnackBar(
+          content: const Text('Refresh complete'),
+          action: SnackBarAction(
+            label: 'RETRY',
+            onPressed: () {
+              _refreshIndicatorKey.currentState!.show();
+            },
+          ),
+        ),
+      );
+    });
+  }
+  final controller = Get.put(JadwalDokterController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(child:
+      Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => showModalBottomSheet(
           isScrollControlled: true,
@@ -56,7 +101,17 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
           child: const Icon(Icons.add),
         ),
       ),
-      body: CustomScrollView(
+    backgroundColor: Colors.white,
+    key: _scaffoldKey,
+    body: LiquidPullToRefresh(
+    key: _refreshIndicatorKey,
+    onRefresh: _handleRefresh,
+    showChildOpacityTransition: false,
+    child: StreamBuilder<int>(
+    stream: counterStream,
+    builder: (context, snapshot)
+    {
+    return CustomScrollView(
         slivers: [
           SliverAppBar(
             systemOverlayStyle: const SystemUiOverlayStyle(
@@ -176,8 +231,9 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
             ),
           ),
         ],
-      ),
-    );
+      );
+      }),),
+      ),);
   }
 }
 

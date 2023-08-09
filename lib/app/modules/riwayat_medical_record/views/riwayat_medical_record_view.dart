@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/data/model/get_detail_pasien.dart';
@@ -6,6 +9,7 @@ import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import '../../loading_summer/loading.listmr.dart';
 import '../../loading_summer/loading_card_profile.dart';
 import '../controllers/riwayat_medical_record_controller.dart';
@@ -13,20 +17,76 @@ import 'componen/horizontal_calendermr.dart';
 import 'componen/listview_riwayat_medis.dart';
 import 'componen/profile_pasien_riwayat_mr.dart';
 
-class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
-  const RiwayatMedicalRecordView({Key? key}) : super(key: key);
+
+class RiwayatMedicalRecordView extends StatefulWidget {
+  const RiwayatMedicalRecordView({Key? key, this.title}) : super(key: key);
+
+  final String? title;
+
+  @override
+  _RiwayatMedicalRecordViewState createState() => _RiwayatMedicalRecordViewState();
+}
+
+class _RiwayatMedicalRecordViewState extends State<RiwayatMedicalRecordView> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
+  GlobalKey<LiquidPullToRefreshState>();
+
+  static int refreshNum = 10; // number that changes when refreshed
+  Stream<int> counterStream =
+  Stream<int>.periodic(const Duration(seconds: 30), (x) => refreshNum);
+  ScrollController? _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+  Future<void> _handleRefresh() {
+    final Completer<void> completer = Completer<void>();
+    Timer(const Duration(seconds: 3), () {
+      completer.complete();
+    });
+    setState(() {
+      refreshNum = Random().nextInt(100);
+    });
+    return completer.future.then<void>((_) {
+      ScaffoldMessenger.of(_scaffoldKey.currentState!.context).showSnackBar(
+        SnackBar(
+          content: const Text('Refresh complete'),
+          action: SnackBarAction(
+            label: 'RETRY',
+            onPressed: () {
+              _refreshIndicatorKey.currentState!.show();
+            },
+          ),
+        ),
+      );
+    });
+  }
+  final controller = Get.put(RiwayatMedicalRecordController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
+    return SafeArea(child:
+      Scaffold(
+        key: _scaffoldKey,
+        body: LiquidPullToRefresh(
+        key: _refreshIndicatorKey,
+        onRefresh: _handleRefresh,
+        showChildOpacityTransition: false,
+        child: StreamBuilder<int>(
+        stream: counterStream,
+        builder: (context, snapshot)
+    {
+      return CustomScrollView(
         slivers: [
           SliverAppBar(
             systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
-                  Brightness.dark, //<-- For Android SEE HERE (dark icons)
+              Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
-                  Brightness.light, //<-- For iOS SEE HERE (dark icons)
+              Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
@@ -117,7 +177,7 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
                 child: FutureBuilder(
                     future: API.getListMR(
                         kode_dokter:
-                            Publics.controller.getDataRegist.value.kode ?? '',
+                        Publics.controller.getDataRegist.value.kode ?? '',
                         no_mr: controller.noMr),
                     builder: (context, snapshot) {
                       if (snapshot.hasData &&
@@ -135,22 +195,23 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
                           ],
                         )
                             : Column(
-                                children:
-                                    AnimationConfiguration.toStaggeredList(
-                                        duration:
-                                            const Duration(milliseconds: 475),
-                                        childAnimationBuilder: (widget) =>
-                                            SlideAnimation(
-                                              child: FadeInAnimation(
-                                                child: widget,
-                                              ),
-                                            ),
-                                        children: data
-                                            .map((e) => ListViewRiwayat(
-                                                  listMr: e,
-                                                ))
-                                            .toList()),
-                              );
+                          children:
+                          AnimationConfiguration.toStaggeredList(
+                              duration:
+                              const Duration(milliseconds: 475),
+                              childAnimationBuilder: (widget) =>
+                                  SlideAnimation(
+                                    child: FadeInAnimation(
+                                      child: widget,
+                                    ),
+                                  ),
+                              children: data
+                                  .map((e) =>
+                                  ListViewRiwayat(
+                                    listMr: e,
+                                  ))
+                                  .toList()),
+                        );
                       } else {
                         return Column(children: [
                           shimmerListMr(),
@@ -167,7 +228,8 @@ class RiwayatMedicalRecordView extends GetView<RiwayatMedicalRecordController> {
             ]),
           ),
         ],
-      ),
-    );
+      );
+  }
+    ),),),);
   }
 }

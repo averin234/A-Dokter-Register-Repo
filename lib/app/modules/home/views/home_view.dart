@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/modules/antrian_pasien/views/componen/listview_tindakan.dart';
 import 'package:a_dokter_register/app/modules/pendapatan_dokter/views/pendapatan_dokter_view.dart';
@@ -8,6 +11,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 import '../../../data/componen/fetch_data.dart';
 import '../../../routes/app_pages.dart';
@@ -353,180 +357,239 @@ class HomeView extends GetView<HomeController> {
   }
 }
 
-class Home extends StatelessWidget {
-  const Home({
-    super.key,
-  });
+class Home extends StatefulWidget {
+  const Home({Key? key, this.title}) : super(key: key);
+
+  final String? title;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            toolbarHeight: 0,
-            systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarColor: Colors.white, // <-- SEE HERE
-              statusBarIconBrightness:
-                  Brightness.dark, //<-- For Android SEE HERE (dark icons)
-              statusBarBrightness:
-                  Brightness.light, //<-- For iOS SEE HERE (dark icons)
-            ),
-            stretch: false,
-            backgroundColor: Colors.white,
-            floating: true,
-            pinned: true,
-            automaticallyImplyLeading: false,
-            snap: true,
-            actions: const [],
-            bottom: AppBar(
-              toolbarHeight: 100,
-              automaticallyImplyLeading: false,
-              elevation: 0,
-              backgroundColor: Colors.white,
-              title: FutureBuilder(
-                  future: API.getDetailDokter(
-                      kode_dokter:
-                          Publics.controller.getDataRegist.value.kode ?? ''),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData &&
-                        snapshot.connectionState != ConnectionState.waiting &&
-                        snapshot.data != null) {
-                      final data = snapshot.data!.dokter![0];
-                      return CardDokterSetting(dokter: data);
-                    } else {
-                      return const Center(
-                        child: shimmerProfile(),
-                      );
-                    }
-                  }),
-            ),
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
+  GlobalKey<LiquidPullToRefreshState>();
+
+  static int refreshNum = 10; // number that changes when refreshed
+  Stream<int> counterStream =
+  Stream<int>.periodic(const Duration(seconds: 30), (x) => refreshNum);
+  ScrollController? _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+  Future<void> _handleRefresh() {
+    final Completer<void> completer = Completer<void>();
+    Timer(const Duration(seconds: 3), () {
+      completer.complete();
+    });
+    setState(() {
+      refreshNum = Random().nextInt(100);
+    });
+    return completer.future.then<void>((_) {
+      ScaffoldMessenger.of(_scaffoldKey.currentState!.context).showSnackBar(
+        SnackBar(
+          content: const Text('Refresh complete'),
+          action: SnackBarAction(
+            label: 'RETRY',
+            onPressed: () {
+              _refreshIndicatorKey.currentState!.show();
+            },
           ),
-          // Other Sliver Widgets
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                Column(
-                  children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 375),
-                    childAnimationBuilder: (widget) => SlideAnimation(
-                      child: FadeInAnimation(
-                        child: widget,
-                      ),
-                    ),
-                    children: <Widget>[
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const MenuHome(),
-                      const SizedBox(),
-                      // BarChartSample2()
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10, left: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
+        ),
+      );
+    });
+  }
+  final controller = Get.put(HomeController());
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        child: Scaffold(
+      key: _scaffoldKey,
+      body: LiquidPullToRefresh(
+        key: _refreshIndicatorKey,
+        onRefresh: _handleRefresh,
+        showChildOpacityTransition: false,
+        child: StreamBuilder<int>(
+        stream: counterStream,
+        builder: (context, snapshot) {
+          return
+            CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                toolbarHeight: 0,
+                systemOverlayStyle: const SystemUiOverlayStyle(
+                  statusBarColor: Colors.white, // <-- SEE HERE
+                  statusBarIconBrightness:
+                  Brightness.dark, //<-- For Android SEE HERE (dark icons)
+                  statusBarBrightness:
+                  Brightness.light, //<-- For iOS SEE HERE (dark icons)
+                ),
+                stretch: false,
+                backgroundColor: Colors.white,
+                floating: true,
+                pinned: true,
+                automaticallyImplyLeading: false,
+                snap: true,
+                actions: const [],
+                bottom: AppBar(
+                  toolbarHeight: 100,
+                  automaticallyImplyLeading: false,
+                  elevation: 0,
+                  backgroundColor: Colors.white,
+                  title: FutureBuilder(
+                      future: API.getDetailDokter(
+                          kode_dokter:
+                          Publics.controller.getDataRegist.value.kode ?? ''),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData &&
+                            snapshot.connectionState !=
+                                ConnectionState.waiting &&
+                            snapshot.data != null) {
+                          final data = snapshot.data!.dokter![0];
+                          return CardDokterSetting(dokter: data);
+                        } else {
+                          return const Center(
+                            child: shimmerProfile(),
+                          );
+                        }
+                      }),
+                ),
+              ),
+              // Other Sliver Widgets
+              SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    Column(
+                      children: AnimationConfiguration.toStaggeredList(
+                        duration: const Duration(milliseconds: 375),
+                        childAnimationBuilder: (widget) =>
+                            SlideAnimation(
+                              child: FadeInAnimation(
+                                child: widget,
+                              ),
+                            ),
+                        children: <Widget>[
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const MenuHome(),
+                          const SizedBox(),
+                          // BarChartSample2()
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10, left: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Expanded(
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text(
+                                        "Antrian Pasien",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.toNamed(Routes.ANTRIAN_PASIEN);
+                                      },
+                                      child: const Text(
+                                        "Lihat Semua",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.normal,
+                                            color: Colors.blue),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(right: 10, left: 0),
                                   child: Text(
-                                    "Antrian Pasien",
+                                    "Daftar Pasien Baru-baru ini, yang langsung dapat di tangani",
                                     style: TextStyle(
+                                        color: Colors.grey,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 18),
-                                  ),
-                                ),
+                                        fontSize: 10),
+                                  ),),
                                 const SizedBox(
-                                  width: 10,
+                                  height: 10,
                                 ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.toNamed(Routes.ANTRIAN_PASIEN);
+                                FutureBuilder(
+                                  future: API.getAntrianPasien(
+                                      tanggal: DateFormat('yyyy-MM-dd')
+                                          .format(DateTime.now()),
+                                      kode_dokter: Publics.controller
+                                          .getDataRegist
+                                          .value.kode ??
+                                          ''),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData &&
+                                        snapshot.connectionState !=
+                                            ConnectionState.waiting &&
+                                        snapshot.data != null) {
+                                      final data = snapshot.data!.antrian ?? [];
+                                      return data.isEmpty
+                                          ? Center(
+                                        child: Column(children: [
+                                          const Text(
+                                              'Tidak ada Antrian Saat ini'),
+                                          Image.asset(
+                                            'assets/images/noantri.png',
+                                            height: 200,
+                                          ),
+                                        ]),
+                                      )
+                                          : Column(
+                                        children: data
+                                            .map((e) =>
+                                            ListViewTindakan(antrian: e))
+                                            .toList(),
+                                      );
+                                    } else {
+                                      return const SingleChildScrollView(
+                                        child: Column(
+                                          children: [
+                                            shimmerHome(),
+                                            shimmerHome(),
+                                            shimmerHome(),
+                                            shimmerHome(),
+                                            shimmerHome(),
+                                            shimmerHome(),
+                                          ],
+                                        ),
+                                      );
+                                    }
                                   },
-                                  child: const Text(
-                                    "Lihat Semua",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.blue),
-                                    textAlign: TextAlign.center,
-                                  ),
                                 ),
                                 const SizedBox(
-                                  width: 10,
+                                  height: 10,
                                 ),
                               ],
                             ),
-                            Padding(padding: EdgeInsets.only(right: 10, left: 0),
-                              child : Text(
-                                "Daftar Pasien Baru-baru ini, yang langsung dapat di tangani",
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10),
-                              ),),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            FutureBuilder(
-                              future: API.getAntrianPasien(
-                                  tanggal: DateFormat('yyyy-MM-dd')
-                                      .format(DateTime.now()),
-                                  kode_dokter: Publics.controller.getDataRegist
-                                          .value.kode ??
-                                      ''),
-                              builder: (context, snapshot) {
-                                if (snapshot.hasData &&
-                                    snapshot.connectionState !=
-                                        ConnectionState.waiting &&
-                                    snapshot.data != null) {
-                                  final data = snapshot.data!.antrian ?? [];
-                                  return data.isEmpty
-                                      ? Center(
-                                          child: Column(children: [
-                                            const Text(
-                                                'Tidak ada Antrian Saat ini'),
-                                            Image.asset(
-                                              'assets/images/noantri.png',
-                                              height: 200,
-                                            ),
-                                          ]),
-                                        )
-                                      : Column(
-                                          children: data
-                                              .map((e) =>
-                                                  ListViewTindakan(antrian: e))
-                                              .toList(),
-                                        );
-                                } else {
-                                  return const SingleChildScrollView(
-                                    child: Column(
-                                      children: [
-                                        shimmerHome(),
-                                        shimmerHome(),
-                                        shimmerHome(),
-                                        shimmerHome(),
-                                        shimmerHome(),
-                                        shimmerHome(),
-                                      ],
-                                    ),
-                                  );
-                                }
-                              },
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-        ],
+              ),
+            ],
+          );
+        }),
       ),
+        ),
     );
   }
 }
