@@ -65,7 +65,12 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
+        child : WillPopScope(
+          onWillPop: () async {
+            Navigator.of(context).popUntil((route) => route.isFirst);
+            return true;
+          },
+          child: Scaffold(
         key: _scaffoldKey,
         body: LiquidPullToRefresh(
         key: _refreshIndicatorKey,
@@ -190,6 +195,7 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
     ),
         ),
       ),
+        ),
     );
   }
 }

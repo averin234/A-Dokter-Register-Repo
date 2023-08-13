@@ -63,7 +63,12 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
   final controller = Get.put(AntrianPasienController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+    onWillPop: () async {
+    Navigator.of(context).popUntil((route) => route.isFirst);
+    return true;
+    },
+    child: Scaffold(
         key: _scaffoldKey,
         body: LiquidPullToRefresh(
         key: _refreshIndicatorKey,
@@ -188,6 +193,7 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
         ],
       );
     }),),
+      ),
     );
   }
 }

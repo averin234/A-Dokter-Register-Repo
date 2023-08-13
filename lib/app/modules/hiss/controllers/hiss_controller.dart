@@ -7,6 +7,7 @@ class HissController extends GetxController {
   final noMr = Get.parameters['no_mr'] as String;
   final initialValue = 0.obs;
   final namaPenyakit = ''.obs;
+  final textEditingController1 = TextEditingController();
   final subjectiveController = TextEditingController();
   final objectiveController = TextEditingController();
   final analystController = TextEditingController();

@@ -155,8 +155,13 @@ class _DetailMRState extends State<DetailMR> {
   final controller = Get.put(DetailTindakanController());
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child:
-        Scaffold(
+    return SafeArea(
+      child:  WillPopScope(
+        onWillPop: () async {
+      Navigator.of(context).popUntil((route) => route.isFirst);
+      return true;
+    },
+        child : Scaffold(
         backgroundColor: Colors.white,
         key: _scaffoldKey,
         body: LiquidPullToRefresh(
@@ -1193,7 +1198,7 @@ class _DetailMRState extends State<DetailMR> {
           ),
         ],
       );
-    } ),),),
+    } ),),),),
     );
   }
 

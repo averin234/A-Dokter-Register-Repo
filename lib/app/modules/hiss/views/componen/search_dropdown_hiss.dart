@@ -30,7 +30,7 @@ class SearchHISSdropdowmn extends StatelessWidget {
                         'Pilih Penyakit',
                         data,
                         controller.idController,
-                        controller.namaController,
+                        controller.textEditingController1,
                       ),
                     ],
                   );
@@ -110,6 +110,8 @@ class AppTextField extends StatelessWidget {
                         onPressed: () async {
                           final hiss = await API.getHISS(id: e.kode ?? '');
                           final data = hiss.data!;
+                          controller.textEditingController1.text =
+                              data.namaPenyakit ?? '';
                           controller.analystController.text =
                               data.analisis ?? '';
                           controller.objectiveController.text =
@@ -153,7 +155,6 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.width / 8,
       width: Get.width / 1,
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -164,7 +165,10 @@ class AppTextField extends StatelessWidget {
         readOnly: true,
         controller: textEditingController1,
         cursorColor: Colors.black,
+        keyboardType: TextInputType.text,
         onTap: onTextFieldTap,
+        maxLines: 3, // <-- SEE HERE
+        minLines: 1,
         decoration: InputDecoration(
           filled: true,
           suffixIcon: const Icon(Icons.arrow_drop_down_circle),

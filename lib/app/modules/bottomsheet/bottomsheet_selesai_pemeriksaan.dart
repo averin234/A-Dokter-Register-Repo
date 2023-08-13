@@ -75,7 +75,6 @@ Future bottomSheetSelesaiPemeriksaan() {
                     InkWell(
                       onTap: () {
                         Get.toNamed(Routes.PENDAPATAN_DOKTER);
-                        Get.back();
                       },
                       child: Container(
                         height: 45,

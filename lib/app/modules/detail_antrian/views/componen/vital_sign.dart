@@ -100,7 +100,7 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                       ),
                                       const Padding(
                                         padding: EdgeInsets.only(left: 15),
-                                        child: Text("Tambah Vital Sign",
+                                        child: Text("Tambh Vital Sign",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 16,
