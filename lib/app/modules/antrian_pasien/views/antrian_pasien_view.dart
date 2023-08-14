@@ -98,7 +98,7 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
             snap: true,
             title: const Text('Antrian Pasien'),
             leading: IconButton(
-                onPressed: () => Get.back(),
+                onPressed: () => Get.toNamed(Routes.HOME),
                 icon: const Icon(
                   Icons.arrow_circle_left_rounded,
                   size: 40,

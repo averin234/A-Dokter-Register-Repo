@@ -90,9 +90,15 @@ class RiwayatVitalSign extends StatelessWidget {
                       const SizedBox(
                         height: 5,
                       ),
-                      Text(vitalSign.tekananDarah ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
+                      Row(children: [
+                        Text(vitalSign.tekananDarah ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('mmHg'),
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),
@@ -104,9 +110,15 @@ class RiwayatVitalSign extends StatelessWidget {
                       const SizedBox(
                         height: 5,
                       ),
-                      Text(vitalSign.suhu ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
+                      Row(children: [
+                        Text(vitalSign.suhu ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('°/Celcius')
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),
@@ -118,9 +130,15 @@ class RiwayatVitalSign extends StatelessWidget {
                       const SizedBox(
                         height: 5,
                       ),
-                      Text(vitalSign.tinggiBadan ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
+                      Row(children: [
+                        Text(vitalSign.tinggiBadan ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('Cm')
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),
@@ -158,9 +176,15 @@ class RiwayatVitalSign extends StatelessWidget {
                       const SizedBox(
                         height: 5,
                       ),
-                      Text(vitalSign.nadi ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
+                      Row(children: [
+                        Text(vitalSign.nadi ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('x/menit'),
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),
@@ -172,9 +196,15 @@ class RiwayatVitalSign extends StatelessWidget {
                       const SizedBox(
                         height: 5,
                       ),
-                      Text(vitalSign.pernafasan ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
+                      Row(children: [
+                        Text(vitalSign.pernafasan ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('x/menit')
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),
@@ -186,9 +216,15 @@ class RiwayatVitalSign extends StatelessWidget {
                       const SizedBox(
                         height: 5,
                       ),
-                      Text(vitalSign.beratBadan ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
+                      Row(children: [
+                        Text(vitalSign.beratBadan ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('kg')
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),

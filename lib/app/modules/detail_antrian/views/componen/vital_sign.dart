@@ -100,7 +100,7 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                       ),
                                       const Padding(
                                         padding: EdgeInsets.only(left: 15),
-                                        child: Text("Tambh Vital Sign",
+                                        child: Text("Tambah Vital Sign",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 16,
@@ -190,7 +190,7 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                       style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                      )),
+                                                      ),),
                                                 ),
                                                 const SizedBox(
                                                   height: 10,
@@ -211,6 +211,8 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                         .tekananDarahController,
                                                     decoration:
                                                         const InputDecoration(
+                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                            child :Text('mmHg'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
                                                           InputBorder.none,
@@ -263,6 +265,8 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                         .suhuController,
                                                     decoration:
                                                         const InputDecoration(
+                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                            child :Text('°/Celcius'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
                                                           InputBorder.none,
@@ -315,6 +319,8 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                         .tinggiBadanController,
                                                     decoration:
                                                         const InputDecoration(
+                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                            child :Text('Cm'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
                                                           InputBorder.none,
@@ -454,6 +460,8 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                         .nadiController,
                                                     decoration:
                                                         const InputDecoration(
+                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                            child :Text('x/menit'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
                                                           InputBorder.none,
@@ -506,6 +514,8 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                         .pernapasanController,
                                                     decoration:
                                                         const InputDecoration(
+                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                            child :Text('x/menit'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
                                                           InputBorder.none,
@@ -558,6 +568,8 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                         .beratBadanController,
                                                     decoration:
                                                         const InputDecoration(
+                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                            child :Text('kg'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
                                                           InputBorder.none,
@@ -776,9 +788,15 @@ class VitalSignView extends GetView<DetailTindakanController> {
                       const SizedBox(
                         height: 5,
                       ),
+                      Row(children: [
                       Text(vitalSign.tekananDarah ?? '',
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('mmHg'),
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),
@@ -790,9 +808,15 @@ class VitalSignView extends GetView<DetailTindakanController> {
                       const SizedBox(
                         height: 5,
                       ),
+                      Row(children: [
                       Text(vitalSign.suhu ?? '',
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
+                      SizedBox(
+                        width: 10,
+                      ),
+                        Text('°/Celcius')
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),
@@ -804,9 +828,15 @@ class VitalSignView extends GetView<DetailTindakanController> {
                       const SizedBox(
                         height: 5,
                       ),
+                      Row(children: [
                       Text(vitalSign.tinggiBadan ?? '',
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
+                      SizedBox(
+                        width: 10,
+                      ),
+                        Text('Cm')
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),
@@ -844,9 +874,15 @@ class VitalSignView extends GetView<DetailTindakanController> {
                       const SizedBox(
                         height: 5,
                       ),
+                      Row(children: [
                       Text(vitalSign.nadi ?? '',
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
+                      SizedBox(
+                        width: 10,
+                      ),
+                        Text('x/menit'),
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),
@@ -858,9 +894,15 @@ class VitalSignView extends GetView<DetailTindakanController> {
                       const SizedBox(
                         height: 5,
                       ),
+                      Row(children: [
                       Text(vitalSign.pernafasan ?? '',
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
+                      SizedBox(
+                        width: 10,
+                      ),
+                        Text('x/menit')
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),
@@ -872,9 +914,15 @@ class VitalSignView extends GetView<DetailTindakanController> {
                       const SizedBox(
                         height: 5,
                       ),
+                      Row(children: [
                       Text(vitalSign.beratBadan ?? '',
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
+                      SizedBox(
+                        width: 10,
+                      ),
+                        Text('kg')
+                      ],),
                       const SizedBox(
                         height: 10,
                       ),

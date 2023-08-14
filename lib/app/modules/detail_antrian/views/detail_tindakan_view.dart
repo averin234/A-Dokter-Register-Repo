@@ -11,6 +11,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../data/model/list_data.dart';
 import '../../../routes/app_pages.dart';
 import '../../bottomsheet/bottomsheet_pulang.dart';
@@ -114,43 +115,14 @@ class DetailMR extends StatefulWidget {
   @override
   _DetailMRState createState() => _DetailMRState();
 }
-
 class _DetailMRState extends State<DetailMR> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
-  GlobalKey<LiquidPullToRefreshState>();
-
-  static int refreshNum = 10; // number that changes when refreshed
-  Stream<int> counterStream =
-  Stream<int>.periodic(const Duration(seconds: 30), (x) => refreshNum);
-  ScrollController? _scrollController;
-
+  // this enable our app to able to pull down
+  late RefreshController _refreshController; // the refresh controller
+  var _scaffoldKey = GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
+    _refreshController = RefreshController(); // we have to use initState because this part of the app have to restart
     super.initState();
-    _scrollController = ScrollController();
-  }
-  Future<void> _handleRefresh() {
-    final Completer<void> completer = Completer<void>();
-    Timer(const Duration(seconds: 3), () {
-      completer.complete();
-    });
-    setState(() {
-      refreshNum = Random().nextInt(100);
-    });
-    return completer.future.then<void>((_) {
-      ScaffoldMessenger.of(_scaffoldKey.currentState!.context).showSnackBar(
-        SnackBar(
-          content: const Text('Refresh complete'),
-          action: SnackBarAction(
-            label: 'RETRY',
-            onPressed: () {
-              _refreshIndicatorKey.currentState!.show();
-            },
-          ),
-        ),
-      );
-    });
   }
   final controller = Get.put(DetailTindakanController());
   @override
@@ -163,16 +135,13 @@ class _DetailMRState extends State<DetailMR> {
     },
         child : Scaffold(
         backgroundColor: Colors.white,
-        key: _scaffoldKey,
-        body: LiquidPullToRefresh(
-        key: _refreshIndicatorKey,
-        onRefresh: _handleRefresh,
-        showChildOpacityTransition: false,
-        child: StreamBuilder<int>(
-        stream: counterStream,
-        builder: (context, snapshot)
-    {
-      return CustomScrollView(
+        body: SmartRefresher(
+        controller: _refreshController,
+        enablePullDown: true,
+        header: WaterDropHeader(),
+        onLoading: _onLoading,
+        onRefresh: _onRefresh,
+    child: CustomScrollView(
         slivers: [
           SliverAppBar(
             systemOverlayStyle: const SystemUiOverlayStyle(
@@ -192,7 +161,7 @@ class _DetailMRState extends State<DetailMR> {
             snap: true,
             leading: IconButton(
               onPressed: () {
-                Get.back();
+                Get.toNamed(Routes.HOME);
               },
               icon: const Icon(
                 Icons.arrow_circle_left_rounded,
@@ -483,12 +452,14 @@ class _DetailMRState extends State<DetailMR> {
                                                                       22),
                                                                 ),
                                                                 child:
-                                                                TextField(
+                                                                TextFormField(
                                                                   controller:
                                                                   controller
                                                                       .tekananDarahController,
                                                                   decoration:
                                                                   const InputDecoration(
+                                                                    suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                                      child :Text('mmHg'),),
                                                                     border:
                                                                     InputBorder
                                                                         .none,
@@ -565,6 +536,8 @@ class _DetailMRState extends State<DetailMR> {
                                                                       .suhuController,
                                                                   decoration:
                                                                   const InputDecoration(
+                                                                    suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                                      child :Text('°/Celcius'),),
                                                                     border:
                                                                     InputBorder
                                                                         .none,
@@ -641,6 +614,8 @@ class _DetailMRState extends State<DetailMR> {
                                                                       .tinggiBadanController,
                                                                   decoration:
                                                                   const InputDecoration(
+                                                                    suffixIcon: Padding(padding: EdgeInsets.only(top: 15),
+                                                                      child :Text('Cm'),),
                                                                     border:
                                                                     InputBorder
                                                                         .none,
@@ -680,7 +655,7 @@ class _DetailMRState extends State<DetailMR> {
                                                                     left:
                                                                     15),
                                                                 child: Text(
-                                                                    "Kesadaran",
+                                                                    "Kesadaran Pasien",
                                                                     style:
                                                                     TextStyle(
                                                                       fontWeight:
@@ -791,6 +766,8 @@ class _DetailMRState extends State<DetailMR> {
                                                                       .nadiController,
                                                                   decoration:
                                                                   const InputDecoration(
+                                                                    suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                                      child :Text('x/menit'),),
                                                                     border:
                                                                     InputBorder
                                                                         .none,
@@ -867,6 +844,8 @@ class _DetailMRState extends State<DetailMR> {
                                                                       .pernapasanController,
                                                                   decoration:
                                                                   const InputDecoration(
+                                                                    suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                                      child :Text('x/menit'),),
                                                                     border:
                                                                     InputBorder
                                                                         .none,
@@ -943,6 +922,8 @@ class _DetailMRState extends State<DetailMR> {
                                                                       .beratBadanController,
                                                                   decoration:
                                                                   const InputDecoration(
+                                                                    suffixIcon: Padding(padding: EdgeInsets.only(top: 15),
+                                                                      child :Text('kg'),),
                                                                     border:
                                                                     InputBorder
                                                                         .none,
@@ -1197,8 +1178,8 @@ class _DetailMRState extends State<DetailMR> {
             ]),
           ),
         ],
-      );
-    } ),),),),
+      )),
+     ),),
     );
   }
 
@@ -1305,5 +1286,16 @@ class _DetailMRState extends State<DetailMR> {
       lists: listData,
       title: '',
     );
+  }
+  _onLoading() {
+    _refreshController.loadComplete(); // after data returned,set the //footer state to idle
+  }
+  _onRefresh() {
+    setState(() {
+// so whatever you want to refresh it must be inside the setState
+      DetailMR();// if you only want to refresh the list you can place this, so the two can be inside setState
+      _refreshController.refreshCompleted(); // request complete,the header will enter complete state,
+// resetFooterState : it will set the footer state from noData to idle
+    });
   }
 }
