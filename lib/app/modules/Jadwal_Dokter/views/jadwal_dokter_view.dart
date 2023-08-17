@@ -41,7 +41,12 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
   final controller = Get.put(JadwalDokterController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        onWillPop: () async {
+      Navigator.of(context).popUntil((route) => route.isFirst);
+      return true;
+    },
+    child: Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => showModalBottomSheet(
           isScrollControlled: true,
@@ -204,6 +209,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
         ],
       ),
       ),
+    ),
       );
   }
   _onLoading() {
