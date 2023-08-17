@@ -25,6 +25,7 @@ class DetailRegistPasienLamaView
         onWillPop: () async {
       Navigator.of(context).popUntil((route) => route.isFirst);
       return true;
+
     },
       child : Scaffold(
       bottomNavigationBar: Container(

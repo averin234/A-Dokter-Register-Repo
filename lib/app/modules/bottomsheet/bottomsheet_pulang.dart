@@ -121,6 +121,7 @@ Future bottomSheetPulang() {
                       width: 10,
                     ),
                     InkWell(
+                      onTap: () => Get.back(),
                       child: Container(
                         height: 45,
                         width: 145,

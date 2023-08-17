@@ -2,10 +2,10 @@ import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-
 import '../../../../data/componen/fetch_data.dart';
-import '../../../registrasi_pasien/views/componen/form_registrasi_pasien.dart';
+import '../../../../data/model/list_data.dart';
 import '../../controllers/detail_tindakan_controller.dart';
 
 
@@ -94,7 +94,7 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                         decoration: BoxDecoration(
                                           color: const Color(0xFFe0e0e0),
                                           borderRadius:
-                                              BorderRadius.circular(10),
+                                          BorderRadius.circular(10),
                                         ),
                                       ),
                                       const SizedBox(
@@ -115,30 +115,30 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                         child: SingleChildScrollView(
                                           child: Column(
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                             mainAxisAlignment:
-                                                MainAxisAlignment.start,
+                                            MainAxisAlignment.start,
                                             children: AnimationConfiguration
                                                 .toStaggeredList(
                                               duration: const Duration(
                                                   milliseconds: 275),
                                               childAnimationBuilder: (widget) =>
                                                   SlideAnimation(
-                                                child: FadeInAnimation(
-                                                  child: widget,
-                                                ),
-                                              ),
+                                                    child: FadeInAnimation(
+                                                      child: widget,
+                                                    ),
+                                                  ),
                                               children: <Widget>[
                                                 const SizedBox(
                                                   height: 10,
                                                 ),
                                                 const Padding(
                                                   padding:
-                                                      EdgeInsets.only(left: 15),
+                                                  EdgeInsets.only(left: 15),
                                                   child: Text("Keadaan Umum",
                                                       style: TextStyle(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                        FontWeight.bold,
                                                       )),
                                                 ),
                                                 const SizedBox(
@@ -149,7 +149,7 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                       left: 10, right: 10),
                                                   child: FutureBuilder(
                                                     future:
-                                                        API.getkeadaanUmum(),
+                                                    API.getkeadaanUmum(),
                                                     builder:
                                                         (context, snapshot) {
                                                       if (snapshot.hasData &&
@@ -159,24 +159,24 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                           snapshot.data !=
                                                               null) {
                                                         final data = snapshot
-                                                                .data!.list ??
+                                                            .data!.list ??
                                                             [];
                                                         return data.isEmpty
                                                             ? Text(snapshot
-                                                                    .data!
-                                                                    .msg ??
-                                                                '')
+                                                            .data!
+                                                            .msg ??
+                                                            '')
                                                             : dropdown(
-                                                                'Keadaan Umum',
-                                                                data,
-                                                                controller
-                                                                    .keadaanUmumController,
-                                                                controller
-                                                                    .namaKeadaanUmumController);
+                                                            'Keadaan Umum',
+                                                            data,
+                                                            controller
+                                                                .keadaanUmumController,
+                                                            controller
+                                                                .namaKeadaanUmumController);
                                                       } else {
                                                         return const Center(
                                                           child:
-                                                              CircularProgressIndicator(),
+                                                          CircularProgressIndicator(),
                                                         );
                                                       }
                                                     },
@@ -187,12 +187,12 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                 ),
                                                 const Padding(
                                                   padding:
-                                                      EdgeInsets.only(left: 15),
+                                                  EdgeInsets.only(left: 15),
                                                   child: Text("Tekanan Darah",
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),),
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.bold,
+                                                    ),),
                                                 ),
                                                 const SizedBox(
                                                   height: 10,
@@ -203,36 +203,36 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                   height: 50,
                                                   decoration: BoxDecoration(
                                                     color:
-                                                        const Color(0xfff3f3f3),
+                                                    const Color(0xfff3f3f3),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            22),
+                                                    BorderRadius.circular(
+                                                        10),
                                                   ),
                                                   child: TextField(
                                                     controller: controller
                                                         .tekananDarahController,
                                                     decoration:
-                                                        const InputDecoration(
-                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
-                                                            child :Text('mmHg'),),
+                                                    const InputDecoration(
+                                                      suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                        child :Text('mmHg'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       enabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       errorBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       disabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       contentPadding:
-                                                          EdgeInsets.only(
-                                                              left: 15,
-                                                              bottom: 11,
-                                                              top: 13,
-                                                              right: 15),
+                                                      EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 13,
+                                                          right: 15),
                                                       filled: true,
                                                       fillColor:
-                                                          Colors.transparent,
+                                                      Colors.transparent,
                                                     ),
                                                   ),
                                                 ),
@@ -241,11 +241,11 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                 ),
                                                 const Padding(
                                                   padding:
-                                                      EdgeInsets.only(left: 15),
+                                                  EdgeInsets.only(left: 15),
                                                   child: Text("Suhu",
                                                       style: TextStyle(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                        FontWeight.bold,
                                                       )),
                                                 ),
                                                 const SizedBox(
@@ -257,36 +257,36 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                   height: 50,
                                                   decoration: BoxDecoration(
                                                     color:
-                                                        const Color(0xfff3f3f3),
+                                                    const Color(0xfff3f3f3),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            22),
+                                                    BorderRadius.circular(
+                                                        10),
                                                   ),
                                                   child: TextField(
                                                     controller: controller
                                                         .suhuController,
                                                     decoration:
-                                                        const InputDecoration(
-                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
-                                                            child :Text('°/Celcius'),),
+                                                    const InputDecoration(
+                                                      suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                        child :Text('°/Celcius'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       enabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       errorBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       disabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       contentPadding:
-                                                          EdgeInsets.only(
-                                                              left: 15,
-                                                              bottom: 11,
-                                                              top: 13,
-                                                              right: 15),
+                                                      EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 13,
+                                                          right: 15),
                                                       filled: true,
                                                       fillColor:
-                                                          Colors.transparent,
+                                                      Colors.transparent,
                                                     ),
                                                   ),
                                                 ),
@@ -295,11 +295,11 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                 ),
                                                 const Padding(
                                                   padding:
-                                                      EdgeInsets.only(left: 15),
+                                                  EdgeInsets.only(left: 15),
                                                   child: Text("Tinggi Badan",
                                                       style: TextStyle(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                        FontWeight.bold,
                                                       )),
                                                 ),
                                                 const SizedBox(
@@ -311,36 +311,36 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                   height: 50,
                                                   decoration: BoxDecoration(
                                                     color:
-                                                        const Color(0xfff3f3f3),
+                                                    const Color(0xfff3f3f3),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            22),
+                                                    BorderRadius.circular(
+                                                        10),
                                                   ),
                                                   child: TextField(
                                                     controller: controller
                                                         .tinggiBadanController,
                                                     decoration:
-                                                        const InputDecoration(
-                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
-                                                            child :Text('Cm'),),
+                                                    const InputDecoration(
+                                                      suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                        child :Text('Cm'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       enabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       errorBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       disabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       contentPadding:
-                                                          EdgeInsets.only(
-                                                              left: 15,
-                                                              bottom: 11,
-                                                              top: 13,
-                                                              right: 15),
+                                                      EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 13,
+                                                          right: 15),
                                                       filled: true,
                                                       fillColor:
-                                                          Colors.transparent,
+                                                      Colors.transparent,
                                                     ),
                                                   ),
                                                 ),
@@ -383,11 +383,11 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                 ),
                                                 const Padding(
                                                   padding:
-                                                      EdgeInsets.only(left: 15),
+                                                  EdgeInsets.only(left: 15),
                                                   child: Text("Kesadaran",
                                                       style: TextStyle(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                        FontWeight.bold,
                                                       )),
                                                 ),
                                                 const SizedBox(
@@ -408,24 +408,24 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                           snapshot.data !=
                                                               null) {
                                                         final data = snapshot
-                                                                .data!.list ??
+                                                            .data!.list ??
                                                             [];
                                                         return data.isEmpty
                                                             ? Text(snapshot
-                                                                    .data!
-                                                                    .msg ??
-                                                                '')
+                                                            .data!
+                                                            .msg ??
+                                                            '')
                                                             : dropdown(
-                                                                'Kesadaran',
-                                                                data,
-                                                                controller
-                                                                    .kesadaranController,
-                                                                controller
-                                                                    .namaKesadaranController);
+                                                            'Kesadaran',
+                                                            data,
+                                                            controller
+                                                                .kesadaranController,
+                                                            controller
+                                                                .namaKesadaranController);
                                                       } else {
                                                         return const Center(
                                                           child:
-                                                              CircularProgressIndicator(),
+                                                          CircularProgressIndicator(),
                                                         );
                                                       }
                                                     },
@@ -436,11 +436,11 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                 ),
                                                 const Padding(
                                                   padding:
-                                                      EdgeInsets.only(left: 15),
+                                                  EdgeInsets.only(left: 15),
                                                   child: Text("Nadi",
                                                       style: TextStyle(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                        FontWeight.bold,
                                                       )),
                                                 ),
                                                 const SizedBox(
@@ -452,36 +452,36 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                   height: 50,
                                                   decoration: BoxDecoration(
                                                     color:
-                                                        const Color(0xfff3f3f3),
+                                                    const Color(0xfff3f3f3),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            22),
+                                                    BorderRadius.circular(
+                                                        10),
                                                   ),
                                                   child: TextField(
                                                     controller: controller
                                                         .nadiController,
                                                     decoration:
-                                                        const InputDecoration(
-                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
-                                                            child :Text('x/menit'),),
+                                                    const InputDecoration(
+                                                      suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                        child :Text('x/menit'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       enabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       errorBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       disabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       contentPadding:
-                                                          EdgeInsets.only(
-                                                              left: 15,
-                                                              bottom: 11,
-                                                              top: 13,
-                                                              right: 15),
+                                                      EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 13,
+                                                          right: 15),
                                                       filled: true,
                                                       fillColor:
-                                                          Colors.transparent,
+                                                      Colors.transparent,
                                                     ),
                                                   ),
                                                 ),
@@ -490,11 +490,11 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                 ),
                                                 const Padding(
                                                   padding:
-                                                      EdgeInsets.only(left: 15),
+                                                  EdgeInsets.only(left: 15),
                                                   child: Text("Pernafasan",
                                                       style: TextStyle(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                        FontWeight.bold,
                                                       )),
                                                 ),
                                                 const SizedBox(
@@ -506,36 +506,36 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                   height: 50,
                                                   decoration: BoxDecoration(
                                                     color:
-                                                        const Color(0xfff3f3f3),
+                                                    const Color(0xfff3f3f3),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            22),
+                                                    BorderRadius.circular(
+                                                        10),
                                                   ),
                                                   child: TextField(
                                                     controller: controller
                                                         .pernapasanController,
                                                     decoration:
-                                                        const InputDecoration(
-                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
-                                                            child :Text('x/menit'),),
+                                                    const InputDecoration(
+                                                      suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                        child :Text('x/menit'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       enabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       errorBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       disabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       contentPadding:
-                                                          EdgeInsets.only(
-                                                              left: 15,
-                                                              bottom: 11,
-                                                              top: 13,
-                                                              right: 15),
+                                                      EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 13,
+                                                          right: 15),
                                                       filled: true,
                                                       fillColor:
-                                                          Colors.transparent,
+                                                      Colors.transparent,
                                                     ),
                                                   ),
                                                 ),
@@ -544,11 +544,11 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                 ),
                                                 const Padding(
                                                   padding:
-                                                      EdgeInsets.only(left: 15),
+                                                  EdgeInsets.only(left: 15),
                                                   child: Text("Berat Badan",
                                                       style: TextStyle(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                        FontWeight.bold,
                                                       )),
                                                 ),
                                                 const SizedBox(
@@ -560,36 +560,36 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                                   height: 50,
                                                   decoration: BoxDecoration(
                                                     color:
-                                                        const Color(0xfff3f3f3),
+                                                    const Color(0xfff3f3f3),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            22),
+                                                    BorderRadius.circular(
+                                                        10),
                                                   ),
                                                   child: TextField(
                                                     controller: controller
                                                         .beratBadanController,
                                                     decoration:
-                                                        const InputDecoration(
-                                                          suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
-                                                            child :Text('kg'),),
+                                                    const InputDecoration(
+                                                      suffixIcon: Padding(padding: EdgeInsets.only(top: 15, right: 10),
+                                                        child :Text('kg'),),
                                                       border: InputBorder.none,
                                                       focusedBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       enabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       errorBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       disabledBorder:
-                                                          InputBorder.none,
+                                                      InputBorder.none,
                                                       contentPadding:
-                                                          EdgeInsets.only(
-                                                              left: 15,
-                                                              bottom: 11,
-                                                              top: 13,
-                                                              right: 15),
+                                                      EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 13,
+                                                          right: 15),
                                                       filled: true,
                                                       fillColor:
-                                                          Colors.transparent,
+                                                      Colors.transparent,
                                                     ),
                                                   ),
                                                 ),
@@ -645,7 +645,7 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                         onTap: () async {
                                           final postVS = await API.postVitalSign(
                                               no_registrasi:
-                                                  controller.noRegistrasi,
+                                              controller.noRegistrasi,
                                               keadaan_umum: controller
                                                   .keadaanUmumController.text,
                                               kesadaran_pasien: controller
@@ -663,7 +663,9 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                               berat_badan: controller
                                                   .beratBadanController.text);
                                           if (postVS.code != 200) {
+
                                           } else {
+                                            Get.back();
                                             // showModalBottomSheet(
                                             //   context: context,
                                             //   shape: const RoundedRectangleBorder(
@@ -675,7 +677,7 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                             // );
                                             Get.defaultDialog(
                                               title:
-                                                  (postVS.code ?? 0).toString(),
+                                              (postVS.code ?? 0).toString(),
                                               content: Text(postVS.msg ?? ''),
                                             );
                                           }
@@ -687,7 +689,7 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                             color: const Color.fromARGB(
                                                 255, 56, 229, 77),
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                            BorderRadius.circular(10),
                                             // boxShadow: [
                                             //   BoxShadow(
                                             //     color: Colors.green.withOpacity(0.5),
@@ -699,7 +701,7 @@ class VitalSignView extends GetView<DetailTindakanController> {
                                           ),
                                           child: const Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: [
                                               Text(
                                                 "Submit",
@@ -791,13 +793,13 @@ class VitalSignView extends GetView<DetailTindakanController> {
                         height: 5,
                       ),
                       Row(children: [
-                      Text(vitalSign.tekananDarah ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text('mmHg'),
+                        Text(vitalSign.tekananDarah ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('mmHg'),
                       ],),
                       const SizedBox(
                         height: 10,
@@ -811,12 +813,12 @@ class VitalSignView extends GetView<DetailTindakanController> {
                         height: 5,
                       ),
                       Row(children: [
-                      Text(vitalSign.suhu ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
-                      SizedBox(
-                        width: 10,
-                      ),
+                        Text(vitalSign.suhu ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text('°/Celcius')
                       ],),
                       const SizedBox(
@@ -831,12 +833,12 @@ class VitalSignView extends GetView<DetailTindakanController> {
                         height: 5,
                       ),
                       Row(children: [
-                      Text(vitalSign.tinggiBadan ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
-                      SizedBox(
-                        width: 10,
-                      ),
+                        Text(vitalSign.tinggiBadan ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text('Cm')
                       ],),
                       const SizedBox(
@@ -877,12 +879,12 @@ class VitalSignView extends GetView<DetailTindakanController> {
                         height: 5,
                       ),
                       Row(children: [
-                      Text(vitalSign.nadi ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
-                      SizedBox(
-                        width: 10,
-                      ),
+                        Text(vitalSign.nadi ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text('x/menit'),
                       ],),
                       const SizedBox(
@@ -897,12 +899,12 @@ class VitalSignView extends GetView<DetailTindakanController> {
                         height: 5,
                       ),
                       Row(children: [
-                      Text(vitalSign.pernafasan ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
-                      SizedBox(
-                        width: 10,
-                      ),
+                        Text(vitalSign.pernafasan ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text('x/menit')
                       ],),
                       const SizedBox(
@@ -917,12 +919,12 @@ class VitalSignView extends GetView<DetailTindakanController> {
                         height: 5,
                       ),
                       Row(children: [
-                      Text(vitalSign.beratBadan ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14)),
-                      SizedBox(
-                        width: 10,
-                      ),
+                        Text(vitalSign.beratBadan ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14)),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text('kg')
                       ],),
                       const SizedBox(
@@ -934,6 +936,124 @@ class VitalSignView extends GetView<DetailTindakanController> {
               ],
             )
           ],
+        ),
+      ),
+    );
+  }
+  Widget dropdown(String hintText, List<Lists> listData,
+      TextEditingController controller, TextEditingController controller1) {
+    return AppTextField(
+      textEditingController: controller,
+      textEditingController1: controller1,
+      hint: hintText,
+      isCitySelected: true,
+      lists: listData,
+      title: '',
+    );
+  }
+}
+
+
+class AppTextField extends StatelessWidget {
+  final TextEditingController textEditingController;
+  final TextEditingController textEditingController1;
+  final String title;
+  final String hint;
+  final bool isCitySelected;
+  final List<Lists> lists;
+
+  const AppTextField({
+    required this.textEditingController,
+    required this.textEditingController1,
+    required this.title,
+    required this.hint,
+    required this.isCitySelected,
+    required this.lists,
+    Key? key,
+  }) : super(key: key);
+
+  /// This is on text changed method which will display on city text field on changed.
+  void onTextFieldTap() {
+    showModalBottomSheet<void>(
+      context: Get.context!,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      builder: (context) {
+        return Column(
+          children: [
+            Divider(
+              thickness: 5,
+              endIndent: Get.width * 0.4,
+              indent: Get.width * 0.4,
+              height: 25,
+            ),
+            Expanded(
+              child: ListView(
+                children: lists
+                    .map(
+                      (e) => TextButton(
+                    style: TextButton.styleFrom(
+                        alignment: Alignment.centerLeft,
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10)),
+                    child: Text(
+                      e.nama!,
+                      style: GoogleFonts.nunito(
+                        fontSize: 17.0,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    onPressed: () {
+                      textEditingController.text = e.kode!;
+                      textEditingController1.text = e.nama!;
+                      Get.back();
+                    },
+                  ),
+                )
+                    .toList(),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showSnackBar(String message) {
+    Get.snackbar(title, message);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: Get.width / 8,
+      width: Get.width / 1,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: TextFormField(
+        readOnly: true,
+        controller: textEditingController1,
+        cursorColor: Colors.black,
+        onTap: onTextFieldTap,
+        decoration: InputDecoration(
+          filled: true,
+          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
+          contentPadding:
+          const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          hintText: hint,
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(
+              width: 0,
+              style: BorderStyle.none,
+            ),
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+          ),
         ),
       ),
     );
