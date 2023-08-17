@@ -45,19 +45,12 @@ class RiwayatSoap extends StatelessWidget {
                 Text("SOAP",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      fontSize: 15,
                     )),
                 SizedBox(
                   height: 10,
                 ),
               ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const Divider(
-              height: 3,
-              color: Colors.grey,
             ),
             const SizedBox(
               height: 10,

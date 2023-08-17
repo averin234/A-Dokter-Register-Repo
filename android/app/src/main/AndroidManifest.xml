@@ -2,7 +2,7 @@
     package="com.adokterregister.a_dokter_register">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="A-Dokter Register"
+        android:label="A-Dokter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

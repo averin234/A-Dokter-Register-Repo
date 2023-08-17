@@ -21,7 +21,12 @@ class DetailRegistPasienLamaView
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        onWillPop: () async {
+      Navigator.of(context).popUntil((route) => route.isFirst);
+      return true;
+    },
+      child : Scaffold(
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -225,6 +230,7 @@ class DetailRegistPasienLamaView
             ]),
           ),
         ],
+      ),
       ),
     );
   }

@@ -20,13 +20,17 @@ class CariPasien extends StatelessWidget {
       children: [
 
         FutureBuilder(
-            future: API.getPasienBy(
-                kode_dokter: Publics.controller.getDataRegist.value.kode ?? ''),
-            builder: (context, snapshot) {
-              if (snapshot.hasData &&
-                  snapshot.connectionState != ConnectionState.waiting &&
-                  snapshot.data != null) {
-                final data = snapshot.data!.pasien!;
+          future: API.getPasienBy(
+              kode_dokter: Publics.controller.getDataRegist.value.kode ?? ''),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.hasData && snapshot.data != null) {
+              final data = snapshot.data!.pasien;
+
+              if (data != null && data.isNotEmpty) {
                 return IconButton(
                   onPressed: () => showSearch(
                     context: context,
@@ -56,9 +60,27 @@ class CariPasien extends StatelessWidget {
                   color: Colors.blue,
                 );
               } else {
-                return Container();
+                return Center(
+                  child: Padding(padding: EdgeInsets.only(right: 10, top: 10),child:
+                  Icon(
+                    Icons.person_search_rounded,
+                    color: Colors.blue,
+                    size: 30,
+                  ),
+                  ),
+                );
               }
-            }),
+            } else {
+              return Center(
+                child: Text(
+                  'Terjadi kesalahan saat mengambil data.',
+                  style: GoogleFonts.nunito(),
+                ),
+              );
+            }
+          },
+        )
+
       ],
     );
   }

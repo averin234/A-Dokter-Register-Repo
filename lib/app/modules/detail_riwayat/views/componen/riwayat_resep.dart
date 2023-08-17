@@ -3,7 +3,10 @@ import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:a_dokter_register/app/modules/detail_riwayat/controllers/detail_riwayat_controller.dart';
 import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+
+import '../../../isi_resep/views/componen/hasil_resep.dart';
 
 class RiwayatResep extends StatelessWidget {
   final List<Resep> resep;
@@ -52,6 +55,10 @@ class RiwayatResep extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              const Divider(
+                height: 3,
+                color: Colors.grey,
+              ),
               GestureDetector(
                 onTap: () async {
                   final cetakResep = await API.cetakResep(
@@ -94,16 +101,42 @@ class RiwayatResep extends StatelessWidget {
             height: 10,
           ),
           Container(
-            child: const Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Row(children: [
-                  Text('no', style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text('', style: TextStyle(fontWeight: FontWeight.bold)),
-                ]),
+                FutureBuilder(
+                    future: API.getDetailMR(
+                        no_registrasi: controller.noRegistrasi),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData &&
+                          snapshot.connectionState !=
+                              ConnectionState.waiting &&
+                          snapshot.data != null) {
+                        final data = snapshot.data!.resep ?? [];
+                        return data.isEmpty
+                            ? const Text('Tidak Ada Resep')
+                            : Column(
+                          children: AnimationConfiguration
+                              .toStaggeredList(
+                              duration: const Duration(
+                                  milliseconds: 475),
+                              childAnimationBuilder: (widget) =>
+                                  SlideAnimation(
+                                    child: FadeInAnimation(
+                                      child: widget,
+                                    ),
+                                  ),
+                              children: data
+                                  .map((e) =>
+                                  HasilResep(resep: e))
+                                  .toList()),
+                        );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    }),
               ],
             ),
           ),

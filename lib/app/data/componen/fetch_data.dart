@@ -41,8 +41,7 @@ class API {
   static const _baseUrl = "${_url}api/v1";
   static const _getToken = "$_baseUrl/get-token.php";
   static const _getAksesPx = "$_baseUrl/px-akses.php";
-  static const _postDaftarPxBaruDokter =
-      "$_baseUrl/post-daftar-px-baru-dokter.php";
+  static const _postDaftarPxBaruDokter = "$_baseUrl/post-daftar-px-baru-dokter.php";
   static const _getPoli = "$_baseUrl/get-poli.php";
   static const _postDaftarPx = "$_baseUrl/post-antrian-pasien.php";
   static const _getSpesialisasi = "$_baseUrl/get-spesialisasi.php";

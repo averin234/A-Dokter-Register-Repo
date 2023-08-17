@@ -305,44 +305,48 @@ class AppTextField extends StatelessWidget {
   void onTextFieldTap() {
     showModalBottomSheet<void>(
       context: Get.context!,
+      showDragHandle: true,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
           children: [
-            Divider(
-              thickness: 5,
-              endIndent: Get.width * 0.4,
-              indent: Get.width * 0.4,
-              height: 25,
-            ),
             Expanded(
               child: ListView(
-                children: lists
-                    .map(
+                children: lists.isEmpty
+                    ? [
+                  Image.asset(
+                    'assets/images/timetable.png',
+                    height: 100,
+                  ),
+                  Center(
+                    child: Text('Tidak ada waktu periksa yang tersedia.'),
+                  ),
+                ]
+                    : lists.map(
                       (e) => TextButton(
-                        style: TextButton.styleFrom(
-                            alignment: Alignment.centerLeft,
-                            foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10)),
-                        child: Text(
-                          e.jam!,
-                          style: GoogleFonts.nunito(
-                            fontSize: 17.0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        onPressed: () {
-                          textEditingController.text = e.jam!;
-                          textEditingController1.text = e.durasi!;
-                          textEditingController2.text = e.antrian!.toString();
-                          Get.back();
-                        },
+                    style: TextButton.styleFrom(
+                        alignment: Alignment.centerLeft,
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10)),
+                    child: Text(
+                      e.jam!,
+                      style: GoogleFonts.nunito(
+                        fontSize: 17.0,
                       ),
-                    )
-                    .toList(),
+                      textAlign: TextAlign.center,
+                    ),
+                    onPressed: () {
+                      textEditingController.text = e.jam!;
+                      textEditingController1.text = e.durasi!;
+                      textEditingController2.text = e.antrian!.toString();
+                      Get.back();
+                    },
+                  ),
+                ).toList(),
               ),
+
             ),
           ],
         );

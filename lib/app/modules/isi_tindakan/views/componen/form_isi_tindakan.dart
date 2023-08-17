@@ -17,6 +17,14 @@ class FormIsiTindakan extends StatefulWidget {
 }
 
 class _FormIsiTindakanState extends State<FormIsiTindakan> {
+  @override
+  void initState() {
+    super.initState();
+    controller.namaTindakanController.clear();
+    controller.jumlahTindakanController.clear();
+    controller.namaObatTindakanController.clear();
+  }
+
   String? selectedValue;
   final controller = Get.put(IsiTindakanController());
   @override

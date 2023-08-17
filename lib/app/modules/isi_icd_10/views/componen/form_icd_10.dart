@@ -17,21 +17,15 @@ class FormICD10 extends StatefulWidget {
 }
 
 class _FormICD10State extends State<FormICD10> {
-  final List<String> items = [
-    'Item1',
-    'Item2',
-    'Item3',
-    'Item4',
-    'Item5',
-    'Item6',
-    'Item7',
-    'Item8',
-  ];
+  @override
+  void initState() {
+    super.initState();
+    controller.namaIcd10Controller.clear();
+    controller.namaAsterixController.clear();
+  }
   String? selectedValue;
-
   // Default Radio Button Selected Item When App Starts.
   String radioButtonItem = 'ONE';
-
   // Group Value for Radio Button.
   int id = 0;
   final controller = Get.put(IsiIcd10Controller());

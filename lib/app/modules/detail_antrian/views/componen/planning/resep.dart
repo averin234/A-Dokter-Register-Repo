@@ -1,8 +1,14 @@
 import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/list_resep.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
-class PlanningResep extends StatelessWidget {
+import '../../../../../data/componen/fetch_data.dart';
+import '../../../../../routes/app_pages.dart';
+import '../../../controllers/detail_tindakan_controller.dart';
+
+class PlanningResep  extends GetView<DetailTindakanController> {
   final List<Resep> resep;
   const PlanningResep({super.key, required this.resep});
 
@@ -30,13 +36,13 @@ class PlanningResep extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 210,
                 child: Text("Resep",
                     style: TextStyle(
@@ -44,45 +50,49 @@ class PlanningResep extends StatelessWidget {
                       fontSize: 15,
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              // GestureDetector(
-              //   onTap: () async {
-              //     final cetakResep = await API.cetakResep(
-              //         no_registrasi: controller.noRegistrasi);
-              //     print('resep : $cetakResep');
-              //     Get.toNamed(Routes.CETAKAN, arguments: {'file': cetakResep});
-              //   },
-              //   child: Container(
-              //     height: 30,
-              //     width: 120,
-              //     decoration: BoxDecoration(
-              //       color: Colors.green,
-              //       borderRadius: BorderRadius.circular(10),
-              //       boxShadow: [
-              //         BoxShadow(
-              //           color: Colors.green.withOpacity(0.5),
-              //           spreadRadius: 0,
-              //           blurRadius: 10,
-              //           offset: const Offset(2, 1),
-              //         ),
-              //       ],
-              //     ),
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: const [
-              //         Text(
-              //           "Print",
-              //           style: TextStyle(
-              //               color: Colors.white,
-              //               fontWeight: FontWeight.bold,
-              //               fontSize: 13),
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              // ),
+              const Divider(
+                height: 3,
+                color: Colors.grey,
+              ),
+              GestureDetector(
+                onTap: () async {
+                  final cetakResep = await API.cetakResep(
+                      no_registrasi: controller.noRegistrasi);
+                  print('resep : $cetakResep');
+                  Get.toNamed(Routes.CETAKAN, arguments: {'file': cetakResep});
+                },
+                child: Container(
+                  height: 30,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.blue.withOpacity(0.5),
+                        spreadRadius: 0,
+                        blurRadius: 10,
+                        offset: const Offset(2, 1),
+                      ),
+                    ],
+                  ),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Print",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13),
+                      )
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
           Column(

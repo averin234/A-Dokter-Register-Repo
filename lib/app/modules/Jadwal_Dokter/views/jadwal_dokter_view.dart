@@ -29,19 +29,19 @@ class JadwalDokterView extends StatefulWidget {
 }
 
 class _JadwalDokterViewState extends State<JadwalDokterView> {
+
   // this enable our app to able to pull down
-  late RefreshController _refreshController; // the refresh controller
+  late final RefreshController _refreshController; // the refresh controller
   var _scaffoldKey = GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
-    _refreshController = RefreshController(); // we have to use initState because this part of the app have to restart
+    _refreshController = RefreshController();
     super.initState();
   }
   final controller = Get.put(JadwalDokterController());
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child:
-      Scaffold(
+    return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => showModalBottomSheet(
           isScrollControlled: true,
@@ -203,7 +203,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
           ),
         ],
       ),
-      ),),
+      ),
       );
   }
   _onLoading() {
@@ -227,6 +227,12 @@ class ModalJadwal extends StatefulWidget {
 }
 
 class _ModalJadwalState extends State<ModalJadwal> {
+  void initState() {
+    _refreshController = RefreshController();
+    controller.intervalController.clear();
+    super.initState();
+  }
+  late RefreshController _refreshController;
   final List<String> jadawal1 = [
     '00',
     '01',
@@ -351,7 +357,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                               ),
                               child: TextFormField(
                                 controller: controller.intervalController,
-                                keyboardType: TextInputType.text,
+                                keyboardType: TextInputType.number,
                                 textInputAction: TextInputAction.done,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
@@ -838,11 +844,15 @@ class _ModalJadwalState extends State<ModalJadwal> {
                     waktu_periksa: controller.intervalController.text,
                   );
                   Get.back();
+                Get.toNamed(
+                    Routes.JADWAL_DOKTER);
                   if (postJadwal.code != 200) {
                     Get.snackbar(postJadwal.code.toString(),
                         postJadwal.msg.toString());
                   } else {
-                    Get.offNamed(
+                    Navigator.pop(context); // Close the bottom sheet
+                    _refreshPage();
+                    Get.toNamed(
                         Routes.JADWAL_DOKTER);
                   }
               },
@@ -872,5 +882,10 @@ class _ModalJadwalState extends State<ModalJadwal> {
             ),
           ],
         ));
+  }
+  void _refreshPage() {
+    setState(() { // Melakukan perubahan pada Rx variable
+      Get.back();
+    });
   }
 }

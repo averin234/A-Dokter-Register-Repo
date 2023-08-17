@@ -34,13 +34,17 @@ class _SearchTindakanDokterState extends State<SearchTindakanDokter> {
             borderRadius: BorderRadius.circular(22),
           ),
           child:  FutureBuilder(
-              future: API.getPasienBy(
-                  kode_dokter: Publics.controller.getDataRegist.value.kode ?? ''),
-              builder: (context, snapshot) {
-                if (snapshot.hasData &&
-                    snapshot.connectionState != ConnectionState.waiting &&
-                    snapshot.data != null) {
-                  final data = snapshot.data!.pasien!;
+            future: API.getPasienBy(
+                kode_dokter: Publics.controller.getDataRegist.value.kode ?? ''),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (snapshot.hasData && snapshot.data != null) {
+                final data = snapshot.data!.pasien;
+
+                if (data != null && data.isNotEmpty) {
                   return TextField(
                     readOnly: true,
                     onTap: () => showSearch(
@@ -75,19 +79,32 @@ class _SearchTindakanDokterState extends State<SearchTindakanDokter> {
                       suffixIcon: IconButton(
                         icon: const Icon(Icons.search),
                         onPressed: () {
-                          print('sesarch');
+                          print('search');
                         },
                       ),
                       filled: true,
-                      hintText: "Pencarian ",
+                      hintText: "Pencarian",
                       fillColor: Colors.transparent,
                     ),
                   );
                 } else {
-                  return Container();
+                  return Center(
+                    child: Text(
+                      'Pencarian',
+                      style: GoogleFonts.nunito(fontSize: 16),
+                    ),
+                  );
                 }
-              }),
-
+              } else {
+                return Center(
+                  child: Text(
+                    'Terjadi kesalahan saat mengambil data.',
+                    style: GoogleFonts.nunito(),
+                  ),
+                );
+              }
+            },
+          )
         ),
       ],
     );

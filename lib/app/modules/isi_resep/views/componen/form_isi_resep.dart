@@ -18,6 +18,15 @@ class FormIsiResep extends StatefulWidget {
 }
 
 class _FormIsiResepState extends State<FormIsiResep> {
+
+  @override
+  void initState() {
+    super.initState();
+    controller.jumlahController.clear();
+    controller.namaKesediaanController.clear();
+    controller.namaAturanPakaiController.clear();
+    controller.namaObatController.clear();
+  }
   final List<String> items = [
     'Item1',
     'Item2',
@@ -29,10 +38,8 @@ class _FormIsiResepState extends State<FormIsiResep> {
     'Item8',
   ];
   String? selectedValue;
-
   // Default Radio Button Selected Item When App Starts.
   String radioButtonItem = 'ONE';
-
   // Group Value for Radio Button.
   int id = 1;
   final controller = Get.put(IsiResepController());

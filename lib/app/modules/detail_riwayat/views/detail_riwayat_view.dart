@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../isi_icd_10/views/componen/hasil_icd_10.dart';
 import '../../loading_summer/loading.pendapatan.dart';
 import '../../loading_summer/loading_soap.dart';
 import '../../loading_summer/loading_vital_sign.dart';
@@ -291,6 +292,87 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                               resepi: Resep(),
                             ),
                             const SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(right: 10, left: 10),
+                              padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: const Color(0x6cc7d1db)),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(0xFFe0e0e0).withOpacity(0.5),
+                                    spreadRadius: 0,
+                                    blurRadius: 10,
+                                    offset: const Offset(2, 1),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      SizedBox(
+                                        child: Text("ICD10",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                            )),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                    ],
+                                  ),
+                                  Column(children: [
+                                    FutureBuilder(
+                                        future: API.getDetailMR(
+                                            no_registrasi: controller.noRegistrasi),
+                                        builder: (context, snapshot) {
+                                          if (snapshot.hasData &&
+                                              snapshot.connectionState !=
+                                                  ConnectionState.waiting &&
+                                              snapshot.data != null) {
+                                            final data = snapshot.data!.icd10 ?? [];
+                                            return data.isEmpty
+                                                ? Text('Tidak Ada ICD 10')
+                                                : Column(
+                                              children: AnimationConfiguration
+                                                  .toStaggeredList(
+                                                  duration: Duration(
+                                                      milliseconds: 475),
+                                                  childAnimationBuilder: (widget) =>
+                                                      SlideAnimation(
+                                                        child: FadeInAnimation(
+                                                          child: widget,
+                                                        ),
+                                                      ),
+                                                  children: data
+                                                      .map((e) =>
+                                                      HasilICD10(icd10: e))
+                                                      .toList()),
+                                            );
+                                          } else {
+                                            return const Center(
+                                              child: CircularProgressIndicator(),
+                                            );
+                                          }
+                                        }),
+                                  ],),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
                               height: 10,
                             ),
                           ],

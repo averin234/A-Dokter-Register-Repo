@@ -2,18 +2,20 @@ import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../../data/componen/fetch_data.dart';
 import '../../../registrasi_pasien/views/componen/form_registrasi_pasien.dart';
 import '../../controllers/detail_tindakan_controller.dart';
 
+
 class VitalSignView extends GetView<DetailTindakanController> {
   final VitalSign vitalSign;
-
   const VitalSignView({super.key, required this.vitalSign});
 
   @override
   Widget build(BuildContext context) {
+    late RefreshController _refreshController;
     return InkWell(
       child: Container(
         margin: const EdgeInsets.only(right: 10, left: 10),

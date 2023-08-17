@@ -15,6 +15,7 @@ dependencies:
   awesome_dialog: ^2.2.0
   awesome_drawer_bar: ^1.0.0
   checkbox_grouped: ^2.0.0
+  in_app_update: ^4.1.4
   smartrefresh: ^0.0.2
   pull_to_refresh_notification: ^3.0.1
   diamond_bottom_bar: ^1.0.0

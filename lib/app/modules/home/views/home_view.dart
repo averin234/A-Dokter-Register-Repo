@@ -8,8 +8,9 @@ import 'package:a_dokter_register/app/modules/profile/views/componnen/card_setti
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-
+import 'package:in_app_update/in_app_update.dart';
 import 'package:get/get.dart';
+import 'package:in_app_update/in_app_update.dart';
 import 'package:intl/intl.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -370,18 +371,40 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
  // this enable our app to able to pull down
-  late RefreshController _refreshController; // the refresh controller
-  var _scaffoldKey = GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
+  AppUpdateInfo? _updateInfo;
+
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+
+  bool _flexibleUpdateAvailable = false;
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> checkForUpdate() async {
+    InAppUpdate.checkForUpdate().then((info) {
+      setState(() {
+        _updateInfo = info;
+      });
+    }).catchError((e) {
+      showSnack(e.toString());
+    });
+  }
+
+  void showSnack(String text) {
+    if (_scaffoldKey.currentContext != null) {
+      ScaffoldMessenger.of(_scaffoldKey.currentContext!)
+          .showSnackBar(SnackBar(content: Text(text)));
+    }
+  }
+  late RefreshController _refreshController;// this is our key to the scaffold widget
   @override
   void initState() {
     _refreshController = RefreshController(); // we have to use initState because this part of the app have to restart
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          key: _scaffoldKey,
       body: SmartRefresher(
           controller: _refreshController,
           enablePullDown: true,

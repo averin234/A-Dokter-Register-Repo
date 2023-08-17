@@ -15,6 +15,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../data/model/list_data.dart';
 import '../../../routes/app_pages.dart';
 import '../../bottomsheet/bottomsheet_pulang.dart';
+import '../../isi_icd_10/views/componen/hasil_icd_10.dart';
 import '../../loading_summer/loading.surat.dart';
 import '../../loading_summer/loading_card_profile.dart';
 import '../../loading_summer/loading_screen_animed.dart';
@@ -1049,8 +1050,8 @@ class _DetailMRState extends State<DetailMR> {
                                                             berat_badan:
                                                             controller
                                                                 .beratBadanController
-                                                                .text);
-                                                        Get.back();
+                                                                .text); // Close the bottom sheet
+                                                        _refreshPage();
                                                         if (postVS.code !=
                                                             200) {} else {
                                                           Get.back();
@@ -1148,6 +1149,84 @@ class _DetailMRState extends State<DetailMR> {
                             const SizedBox(
                               height: 10,
                             ),
+                          Container(
+                            margin: const EdgeInsets.only(right: 10, left: 10),
+                            padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: const Color(0x6cc7d1db)),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0xFFe0e0e0).withOpacity(0.5),
+                                  spreadRadius: 0,
+                                  blurRadius: 10,
+                                  offset: const Offset(2, 1),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    SizedBox(
+                                      child: Text("ICD10",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
+                                          )),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                  ],
+                                ),
+                                Column(children: [
+                                  FutureBuilder(
+                                      future: API.getDetailMR(
+                                          no_registrasi: controller.noRegistrasi),
+                                      builder: (context, snapshot) {
+                                        if (snapshot.hasData &&
+                                            snapshot.connectionState !=
+                                                ConnectionState.waiting &&
+                                            snapshot.data != null) {
+                                          final data = snapshot.data!.icd10 ?? [];
+                                          return data.isEmpty
+                                              ? const Text('Tidak Ada ICD 10')
+                                              : Column(
+                                            children: AnimationConfiguration
+                                                .toStaggeredList(
+                                                duration: const Duration(
+                                                    milliseconds: 475),
+                                                childAnimationBuilder: (widget) =>
+                                                    SlideAnimation(
+                                                      child: FadeInAnimation(
+                                                        child: widget,
+                                                      ),
+                                                    ),
+                                                children: data
+                                                    .map((e) =>
+                                                    HasilICD10(icd10: e))
+                                                    .toList()),
+                                          );
+                                        } else {
+                                          return const Center(
+                                            child: CircularProgressIndicator(),
+                                          );
+                                        }
+                                      }),
+                                ],),
+                              ],
+                            ),
+                          ),
                             // const PalanningLaboratorium(),
                             // const SizedBox(
                             //   height: 10,
@@ -1296,6 +1375,13 @@ class _DetailMRState extends State<DetailMR> {
       DetailMR();// if you only want to refresh the list you can place this, so the two can be inside setState
       _refreshController.refreshCompleted(); // request complete,the header will enter complete state,
 // resetFooterState : it will set the footer state from noData to idle
+    });
+  }
+  void _refreshPage() {
+    // Put your refresh logic here, e.g., fetching updated data
+    setState(() {
+      _refreshController = RefreshController(); // Melakukan perubahan pada Rx variable
+      Get.back();
     });
   }
 }
