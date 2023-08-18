@@ -959,40 +959,6 @@ class _DetailMRState extends State<DetailMR> {
                                                                         height:
                                                                         10,
                                                                       ),
-                                                                      // const Padding(
-                                                                      //   padding: EdgeInsets.only(left: 15),
-                                                                      //   child: Text("Lingkar Perut",
-                                                                      //       style: TextStyle(
-                                                                      //         fontWeight: FontWeight.bold,
-                                                                      //       )),
-                                                                      // ),
-                                                                      // const SizedBox(
-                                                                      //   height: 10,
-                                                                      // ),
-                                                                      // Container(
-                                                                      //   margin: const EdgeInsets.only(left: 10, right: 10),
-                                                                      //   height: 50,
-                                                                      //   decoration: BoxDecoration(
-                                                                      //     color: const Color(0xfff3f3f3),
-                                                                      //     borderRadius: BorderRadius.circular(22),
-                                                                      //   ),
-                                                                      //   child: const TextField(
-                                                                      //     decoration: InputDecoration(
-                                                                      //       border: InputBorder.none,
-                                                                      //       focusedBorder: InputBorder.none,
-                                                                      //       enabledBorder: InputBorder.none,
-                                                                      //       errorBorder: InputBorder.none,
-                                                                      //       disabledBorder: InputBorder.none,
-                                                                      //       contentPadding: EdgeInsets.only(
-                                                                      //           left: 15, bottom: 11, top: 13, right: 15),
-                                                                      //       filled: true,
-                                                                      //       fillColor: Colors.transparent,
-                                                                      //     ),
-                                                                      //   ),
-                                                                      // ),
-                                                                      // const SizedBox(
-                                                                      //   height: 200,
-                                                                      // ),
                                                                       const SizedBox(
                                                                         height:
                                                                         400,
@@ -1145,7 +1111,43 @@ class _DetailMRState extends State<DetailMR> {
                                       height: 10,
                                     ),
                                     data.resep == null
-                                        ? Container()
+                                        ? Container(
+                                      width: double.infinity,
+                                      margin: const EdgeInsets.only(right: 10, left: 10),
+                                      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: const Color(0x6cc7d1db)),
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: const Color(0xFFe0e0e0).withOpacity(0.5),
+                                            spreadRadius: 0,
+                                            blurRadius: 10,
+                                            offset: const Offset(2, 1),
+                                          ),
+                                        ],
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                        SizedBox(
+                                          child: Text("Resep",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15,
+                                              )),
+                                        ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text('Resep belum di isi', textAlign: TextAlign.center, style: TextStyle(color: Colors.redAccent),)
+                                      ],),
+                                    )
                                         : PlanningResep(resep: data.resep ?? []),
                                     const SizedBox(
                                       height: 10,
@@ -1167,7 +1169,7 @@ class _DetailMRState extends State<DetailMR> {
                                         ],
                                       ),
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           const SizedBox(
                                             height: 10,
@@ -1190,7 +1192,10 @@ class _DetailMRState extends State<DetailMR> {
                                               ),
                                             ],
                                           ),
-                                          Column(children: [
+                                          Column(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
                                             FutureBuilder(
                                                 future: API.getDetailMR(
                                                     no_registrasi: controller.noRegistrasi),
@@ -1201,7 +1206,15 @@ class _DetailMRState extends State<DetailMR> {
                                                       snapshot.data != null) {
                                                     final data = snapshot.data!.icd10 ?? [];
                                                     return data.isEmpty
-                                                        ? const Text('Tidak Ada ICD 10')
+                                                        ? Column(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 10,
+                                                        ),
+                                                      Text('ICD-10 Belum di isi', textAlign: TextAlign.start, style: TextStyle(color: Colors.redAccent),)
+                                                    ],)
                                                         : Column(
                                                       children: AnimationConfiguration
                                                           .toStaggeredList(
