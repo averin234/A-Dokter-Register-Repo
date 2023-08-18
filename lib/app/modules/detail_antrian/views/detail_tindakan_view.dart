@@ -1135,18 +1135,18 @@ class _DetailMRState extends State<DetailMR> {
                                           SizedBox(
                                             height: 10,
                                           ),
-                                        SizedBox(
-                                          child: Text("Resep",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15,
-                                              )),
-                                        ),
+                                          SizedBox(
+                                            child: Text("Resep",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15,
+                                                )),
+                                          ),
                                           SizedBox(
                                             height: 10,
                                           ),
                                           Text('Resep belum di isi', textAlign: TextAlign.center, style: TextStyle(color: Colors.redAccent),)
-                                      ],),
+                                        ],),
                                     )
                                         : PlanningResep(resep: data.resep ?? []),
                                     const SizedBox(
@@ -1196,48 +1196,48 @@ class _DetailMRState extends State<DetailMR> {
                                             mainAxisAlignment: MainAxisAlignment.start,
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                            FutureBuilder(
-                                                future: API.getDetailMR(
-                                                    no_registrasi: controller.noRegistrasi),
-                                                builder: (context, snapshot) {
-                                                  if (snapshot.hasData &&
-                                                      snapshot.connectionState !=
-                                                          ConnectionState.waiting &&
-                                                      snapshot.data != null) {
-                                                    final data = snapshot.data!.icd10 ?? [];
-                                                    return data.isEmpty
-                                                        ? Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        SizedBox(
-                                                          height: 10,
-                                                        ),
-                                                      Text('ICD-10 Belum di isi', textAlign: TextAlign.start, style: TextStyle(color: Colors.redAccent),)
-                                                    ],)
-                                                        : Column(
-                                                      children: AnimationConfiguration
-                                                          .toStaggeredList(
-                                                          duration: const Duration(
-                                                              milliseconds: 475),
-                                                          childAnimationBuilder: (widget) =>
-                                                              SlideAnimation(
-                                                                child: FadeInAnimation(
-                                                                  child: widget,
+                                              FutureBuilder(
+                                                  future: API.getDetailMR(
+                                                      no_registrasi: controller.noRegistrasi),
+                                                  builder: (context, snapshot) {
+                                                    if (snapshot.hasData &&
+                                                        snapshot.connectionState !=
+                                                            ConnectionState.waiting &&
+                                                        snapshot.data != null) {
+                                                      final data = snapshot.data!.icd10 ?? [];
+                                                      return data.isEmpty
+                                                          ? Column(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          SizedBox(
+                                                            height: 10,
+                                                          ),
+                                                          Text('ICD-10 Belum di isi', textAlign: TextAlign.start, style: TextStyle(color: Colors.redAccent),)
+                                                        ],)
+                                                          : Column(
+                                                        children: AnimationConfiguration
+                                                            .toStaggeredList(
+                                                            duration: const Duration(
+                                                                milliseconds: 475),
+                                                            childAnimationBuilder: (widget) =>
+                                                                SlideAnimation(
+                                                                  child: FadeInAnimation(
+                                                                    child: widget,
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                          children: data
-                                                              .map((e) =>
-                                                              HasilICD10(icd10: e))
-                                                              .toList()),
-                                                    );
-                                                  } else {
-                                                    return const Center(
-                                                      child: CircularProgressIndicator(),
-                                                    );
-                                                  }
-                                                }),
-                                          ],),
+                                                            children: data
+                                                                .map((e) =>
+                                                                HasilICD10(icd10: e))
+                                                                .toList()),
+                                                      );
+                                                    } else {
+                                                      return const Center(
+                                                        child: CircularProgressIndicator(),
+                                                      );
+                                                    }
+                                                  }),
+                                            ],),
                                         ],
                                       ),
                                     ),

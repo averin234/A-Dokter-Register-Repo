@@ -27,16 +27,6 @@ class _FormIsiResepState extends State<FormIsiResep> {
     controller.namaAturanPakaiController.clear();
     controller.namaObatController.clear();
   }
-  final List<String> items = [
-    'Item1',
-    'Item2',
-    'Item3',
-    'Item4',
-    'Item5',
-    'Item6',
-    'Item7',
-    'Item8',
-  ];
   String? selectedValue;
   // Default Radio Button Selected Item When App Starts.
   String radioButtonItem = 'ONE';

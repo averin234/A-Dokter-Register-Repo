@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../home/views/home_view.dart';
 import '../../loading_summer/loading.pendapatan.dart';
 import '../controllers/pendapatan_dokter_controller.dart';
 import 'componen/tabel_pendapatan.dart';
@@ -39,7 +40,9 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
     return SafeArea(
         child : WillPopScope(
           onWillPop: () async {
-            Navigator.of(context).popUntil((route) => route.isFirst);
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => HomeView()), // Ganti dengan halaman home Anda
+            );
             return true;
           },
           child: Scaffold(

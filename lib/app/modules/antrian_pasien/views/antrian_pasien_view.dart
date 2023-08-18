@@ -9,6 +9,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import '../../home/views/home_view.dart';
 import '../../loading_summer/loading.home.dart';
 import '../controllers/antrian_pasien_controller.dart';
 import 'componen/horizontal_calender.dart';
@@ -24,61 +26,32 @@ class AntrianPasienView extends StatefulWidget {
 }
 
 class _AntrianPasienViewState extends State<AntrianPasienView> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
-  GlobalKey<LiquidPullToRefreshState>();
-
-  static int refreshNum = 10; // number that changes when refreshed
-  Stream<int> counterStream =
-  Stream<int>.periodic(const Duration(seconds: 30), (x) => refreshNum);
-  ScrollController? _scrollController;
-
+  // this enable our app to able to pull down
+  late RefreshController _refreshController; // the refresh controller
+  var _scaffoldKey = GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
+    _refreshController = RefreshController(); // we have to use initState because this part of the app have to restart
     super.initState();
-    _scrollController = ScrollController();
-  }
-  Future<void> _handleRefresh() {
-    final Completer<void> completer = Completer<void>();
-    Timer(const Duration(seconds: 3), () {
-      completer.complete();
-    });
-    setState(() {
-      refreshNum = Random().nextInt(100);
-    });
-    return completer.future.then<void>((_) {
-      ScaffoldMessenger.of(_scaffoldKey.currentState!.context).showSnackBar(
-        SnackBar(
-          content: const Text('Refresh complete'),
-          action: SnackBarAction(
-            label: 'RETRY',
-            onPressed: () {
-              _refreshIndicatorKey.currentState!.show();
-            },
-          ),
-        ),
-      );
-    });
   }
   final controller = Get.put(AntrianPasienController());
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-    onWillPop: () async {
-    Navigator.of(context).popUntil((route) => route.isFirst);
-    return true;
-    },
-    child: Scaffold(
+      onWillPop: () async {
+        Navigator.of(context).popUntil((route) => route.isFirst);
+        return true;
+      },
+    child: SafeArea(child:
+    Scaffold(
         key: _scaffoldKey,
-        body: LiquidPullToRefresh(
-        key: _refreshIndicatorKey,
-        onRefresh: _handleRefresh,
-        showChildOpacityTransition: false,
-        child: StreamBuilder<int>(
-        stream: counterStream,
-        builder: (context, snapshot)
-    {
-      return CustomScrollView(
+        body: SmartRefresher(
+        controller: _refreshController,
+        enablePullDown: true,
+        header: WaterDropHeader(),
+        onLoading: _onLoading,
+        onRefresh: _onRefresh,
+        child: CustomScrollView(
         slivers: [
           SliverAppBar(
             systemOverlayStyle: const SystemUiOverlayStyle(
@@ -191,9 +164,19 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
             ]),
           ),
         ],
-      );
-    }),),
       ),
-    );
+    ),),),
+      );
   }
+_onLoading() {
+  _refreshController.loadComplete(); // after data returned,set the //footer state to idle
+}
+_onRefresh() {
+  setState(() {
+// so whatever you want to refresh it must be inside the setState
+    AntrianPasienView();// if you only want to refresh the list you can place this, so the two can be inside setState
+    _refreshController.refreshCompleted(); // request complete,the header will enter complete state,
+// resetFooterState : it will set the footer state from noData to idle
+  });
+}
 }
