@@ -36,6 +36,11 @@ class Kasir {
   String? jamKeluar;
   String? namaBagian;
   String? billing;
+  String? JenisKlamin;
+  String? NoMr;
+  String? Telp;
+  String? Alamat;
+  String? Tmptgllhr;
 
   Kasir(
       {this.no,
@@ -45,6 +50,11 @@ class Kasir {
       this.jamMasuk,
       this.jamKeluar,
       this.namaBagian,
+        this.JenisKlamin,
+        this.NoMr,
+      this.Telp,
+        this.Alamat,
+        this.Tmptgllhr,
       this.billing});
 
   Kasir.fromJson(Map<String, dynamic> json) {
@@ -56,6 +66,11 @@ class Kasir {
     jamKeluar = json['jam_keluar'];
     namaBagian = json['nama_bagian'];
     billing = json['billing'];
+    Tmptgllhr = json['tmptgllhr'];
+    Telp = json['telp'];
+    Alamat = json['alamat'];
+    NoMr = json ['nomr'];
+    JenisKlamin = json['jenisklamin'];
   }
 
   Map<String, dynamic> toJson() {
@@ -68,6 +83,11 @@ class Kasir {
     data['jam_keluar'] = jamKeluar;
     data['nama_bagian'] = namaBagian;
     data['billing'] = billing;
+    data['tmptgllhr'] = Tmptgllhr;
+    data['telp'] = Telp;
+    data['alamat'] = Alamat;
+    data['nomr'] = NoMr;
+    data['jenisklamin'] = JenisKlamin;
     return data;
   }
 }

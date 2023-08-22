@@ -177,11 +177,13 @@ class ListViewTindakan extends StatelessWidget {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const SizedBox(
                         height: 10,
@@ -190,6 +192,8 @@ class ListViewTindakan extends StatelessWidget {
                         height: 10,
                       ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
                             onTap: () => showModalBottomSheet(
@@ -202,7 +206,7 @@ class ListViewTindakan extends StatelessWidget {
                               builder: (context) => lihat(),
                             ),
                             child: Container(
-                              width: 90,
+                              width: 160,
                               padding: const EdgeInsets.only(
                                   right: 10, left: 10, bottom: 10, top: 10),
                               decoration: const BoxDecoration(
@@ -229,7 +233,7 @@ class ListViewTindakan extends StatelessWidget {
                                   'no_mr': antrian.noMr ?? ''
                                 }),
                             child: Container(
-                              width: 90,
+                              width: 160,
                               padding: const EdgeInsets.only(
                                   right: 10, left: 10, bottom: 10, top: 10),
                               decoration: const BoxDecoration(

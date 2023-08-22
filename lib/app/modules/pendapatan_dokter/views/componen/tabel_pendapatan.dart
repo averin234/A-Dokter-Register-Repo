@@ -35,7 +35,7 @@ class Pendapatan extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 10, left: 10),
                 child: InkWell(
                   onTap: () {
-                    bottomSheetBayar();
+                    bottomSheetBayar(kasir: kasir);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,27 +44,27 @@ class Pendapatan extends StatelessWidget {
                           style: TextStyle(
                               color: Colors.green,
                               fontWeight: FontWeight.bold)),
-                      // Container(
-                      //   padding: const EdgeInsets.only(
-                      //       right: 5, left: 5, top: 10, bottom: 10),
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(5),
-                      //     color: Colors.blue,
-                      //   ),
-                      //   child: const Row(
-                      //     children: [
-                      //       Icon(Icons.monetization_on_rounded,
-                      //           color: Colors.white),
-                      //       SizedBox(
-                      //         width: 10,
-                      //       ),
-                      //       Text('Cek Pembayaran Pasien',
-                      //           style: TextStyle(
-                      //               fontWeight: FontWeight.bold,
-                      //               color: Colors.white)),
-                      //     ],
-                      //   ),
-                      // ),
+                      Container(
+                        padding: const EdgeInsets.only(
+                            right: 5, left: 5, top: 10, bottom: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.blue,
+                        ),
+                        child: const Row(
+                          children: [
+                            Icon(Icons.monetization_on_rounded,
+                                color: Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text('Cek Pembayaran Pasien',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white)),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),

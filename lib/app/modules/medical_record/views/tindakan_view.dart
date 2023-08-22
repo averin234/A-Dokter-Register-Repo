@@ -63,9 +63,24 @@ class _TindakanViewState extends State<TindakanView> {
             snap: true,
             automaticallyImplyLeading: false,
             title: const Text('List Pasien'),
-            actions: const [
-              CariPasien(),
-            ],
+          bottom: AppBar(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(30),
+              ),
+            ),
+            toolbarHeight: 50,
+            title: Column(
+              children: const [
+                CariPasien(),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+            automaticallyImplyLeading: false,
+            elevation: 0,
+          ),
           ),
           // Other Sliver Widgets
           SliverList(
