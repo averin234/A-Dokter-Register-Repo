@@ -273,7 +273,7 @@ class API {
     return obj;
   }
 
-  static Future<CheckUp> getTunai({
+  static Future<GetTunai> getTunai({
     required String no_registrasi,
   }) async {
     var token = Publics.controller.getToken.value;
@@ -291,7 +291,7 @@ class API {
       data: data,
     );
     final datas = jsonDecode(response.data);
-    final obj = CheckUp.fromJson(datas);
+    final obj = GetTunai.fromJson(datas);
     if (obj.msg == "Invalid token: Expired") {
       Get.offAllNamed(Routes.LOGIN);
       Get.snackbar(
