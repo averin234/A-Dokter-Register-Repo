@@ -58,7 +58,11 @@ class _CariPasienState extends State<CariPasien> {
                               pasien.namaPasien,
                               pasien.noMr,
                             ],
-                          builder: (pasien) => ListViewPasien(pasien: pasien),
+                          builder: (pasien) => Column(children: [
+                            SizedBox(
+                              height: 10,
+                            ),
+                              ListViewPasien(pasien: pasien),],)
                         )
                         ),
                       decoration: InputDecoration(

@@ -41,7 +41,8 @@ class API {
   static const _baseUrl = "${_url}api/v1";
   static const _getToken = "$_baseUrl/get-token.php";
   static const _getAksesPx = "$_baseUrl/px-akses.php";
-  static const _postDaftarPxBaruDokter = "$_baseUrl/post-daftar-px-baru-dokter.php";
+  static const _postDaftarPxBaruDokter =
+      "$_baseUrl/post-daftar-px-baru-dokter.php";
   static const _getPoli = "$_baseUrl/get-poli.php";
   static const _postDaftarPx = "$_baseUrl/post-antrian-pasien.php";
   static const _getSpesialisasi = "$_baseUrl/get-spesialisasi.php";
@@ -53,10 +54,9 @@ class API {
   static const _getAgama = "$_baseUrl/get-agama.php";
   static const _getNasabah = "$_baseUrl/get-nasabah.php";
   static const _getIcd10 = "$_baseUrl/get-icd10.php";
-  static const _postDaftarPxBaruDosen =
-      "$_baseUrl/post-daftar-px-baru-dosen.php";
-  static const _postDaftarPxBaruMahasiswa =
-      "$_baseUrl/post-daftar-px-baru-mahasiswa.php";
+  static const _getTunai = "$_baseUrl/get-tunai-pasien.php";
+  static const _postDaftarPxBaruDosen = "$_baseUrl/post-daftar-px-baru-dosen.php";
+  static const _postDaftarPxBaruMahasiswa = "$_baseUrl/post-daftar-px-baru-mahasiswa.php";
   // baru di tambah kan
   static const _getAntrianPasien = "$_baseUrl/get-antrian-pasien.php";
   static const _getDetailDokter = "$_baseUrl/get-detail-dokter.php";
@@ -252,6 +252,36 @@ class API {
     };
     var response = await Dio().post(
       _postIcd10,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = CheckUp.fromJson(datas);
+    if (obj.msg == "Invalid token: Expired") {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    print(obj.toJson());
+    return obj;
+  }
+
+  static Future<CheckUp> getTunai({
+    required String no_registrasi,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      "nr": no_registrasi,
+    };
+    var response = await Dio().post(
+      _getTunai,
       options: Options(
         headers: {
           "Content-Type": "application/json",

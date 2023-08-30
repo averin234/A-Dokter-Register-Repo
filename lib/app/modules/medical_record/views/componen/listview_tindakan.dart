@@ -14,14 +14,11 @@ class ListViewPasien extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
         children: [
-      SizedBox(
-      height: 10,
-    ),
       InkWell(
       onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
           parameters: {'no_mr': pasien.noMr ?? ''}),
       child: Container(
-        margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
+        margin: const EdgeInsets.only(right: 10, left: 10, bottom: 0),
         padding: const EdgeInsets.only(right: 0, left: 10, bottom: 5),
         decoration: BoxDecoration(
           border: Border.all(color: const Color(0x6cc7d1db)),
@@ -180,6 +177,9 @@ class ListViewPasien extends StatelessWidget {
               ),
       ),
       ),
+          SizedBox(
+            height: 5,
+          ),
     ]);
   }
 }

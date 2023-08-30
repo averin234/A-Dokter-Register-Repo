@@ -1,5 +1,7 @@
+import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/model/get_list_kasir.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../bottomsheet/bottomshet_bayar.dart';
 
@@ -34,7 +36,9 @@ class Pendapatan extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 10, left: 10),
                 child: InkWell(
-                  onTap: () {
+                  onTap: () async{
+                    final tunai = await API.getTunai(no_registrasi: kasir.noRegistrasi ?? '');
+                    Get.defaultDialog(title: tunai.code.toString(), content: Text(tunai.msg ?? ''));
                     bottomSheetBayar(kasir: kasir);
                   },
                   child: Row(
