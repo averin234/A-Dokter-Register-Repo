@@ -9,6 +9,9 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../routes/app_pages.dart';
+import '../../bottomsheet/bottomsheet_selesai_daftar.dart';
+import '../../home/views/home_view.dart';
+import '../../login/views/login_view.dart';
 
 class RegisterDosenView extends StatefulWidget {
   const RegisterDosenView({Key? key}) : super(key: key);
@@ -427,7 +430,10 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
               height: 10,
             ),
             InkWell(
-              onTap: () => _launchUrl('https://mail.google.com/'),
+              onTap: () {
+                Get.toNamed(Routes.LOGIN);
+                bottomSheetSelesaiRegis();
+              },
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.all(10),

@@ -377,7 +377,6 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
       ),
     );
   }
-
   Widget component(
     IconData icon,
     String hintText,

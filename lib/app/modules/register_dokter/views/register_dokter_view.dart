@@ -9,6 +9,8 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../routes/app_pages.dart';
+import '../../bottomsheet/bottomsheet_selesai_daftar.dart';
+import '../../login/views/login_view.dart';
 
 class RegisterDokterView extends StatefulWidget {
   const RegisterDokterView({Key? key}) : super(key: key);
@@ -466,6 +468,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             title: 'Loading..',
             barrierDismissible: false,
           );
+          Get.back();
           final daftarPXBaru = await API.postDaftarPxBaruDokter(
             nama: controller.namaController.text,
             email: controller.emailController.text,
@@ -479,15 +482,8 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             Get.snackbar(
                 daftarPXBaru.code.toString(), daftarPXBaru.msg.toString());
           } else {
-            showModalBottomSheet(
-              context: context,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(20),
-                ),
-              ),
-              builder: (context) => buildSheet(),
-            );
+           Get.toNamed(Routes.LOGIN);
+           bottomSheetSelesaiRegis();
           }
         } else {
           Get.snackbar('404', 'Data Tolong diisi semua');
@@ -578,7 +574,12 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
               height: 10,
             ),
             InkWell(
-              onTap: () async => await _launchUrl('https://mail.google.com/mail/u/0/#inbox'),
+              onTap: () {
+              Navigator.pop(context); // Menutup bottom sheet
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LoginView()));
+              },
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.all(10),

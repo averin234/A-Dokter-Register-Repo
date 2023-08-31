@@ -37,9 +37,11 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
   final controller = Get.put(AntrianPasienController());
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    return  WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).popUntil((route) => route.isFirst);
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => HomeView()), // Ganti dengan halaman home Anda
+        );
         return true;
       },
     child: SafeArea(child:
