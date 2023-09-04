@@ -1,12 +1,14 @@
 class GetTunai {
   int? code;
   Pasien? pasien;
+  String? msg;
   List<Harga>? harga;
 
   GetTunai({this.code, this.pasien, this.harga});
 
   GetTunai.fromJson(Map<String, dynamic> json) {
     code = json['code'];
+    msg = json['msg'];
     pasien =
         json['pasien'] != null ? new Pasien.fromJson(json['pasien']) : null;
     if (json['harga'] != null) {
@@ -17,9 +19,12 @@ class GetTunai {
     }
   }
 
+
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['code'] = this.code;
+    data['msg'] = msg;
     if (this.pasien != null) {
       data['pasien'] = this.pasien!.toJson();
     }

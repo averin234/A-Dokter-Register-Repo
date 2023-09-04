@@ -32,6 +32,8 @@ import '../modules/mahasiswa/bindings/mahasiswa_binding.dart';
 import '../modules/mahasiswa/views/mahasiswa_view.dart';
 import '../modules/medical_record/bindings/tindakan_binding.dart';
 import '../modules/medical_record/views/tindakan_view.dart';
+import '../modules/pembayaran_tunai/bindings/pembayaran_tunai_binding.dart';
+import '../modules/pembayaran_tunai/views/pembayaran_tunai_view.dart';
 import '../modules/pemeriksaan/bindings/pemeriksaan_binding.dart';
 import '../modules/pemeriksaan/views/pemeriksaan_view.dart';
 import '../modules/pendapatan_dokter/bindings/pendapatan_dokter_binding.dart';
@@ -246,6 +248,11 @@ class AppPages {
       name: _Paths.VERIFIKASI_AKUN,
       page: () => const VerifikasiAkunView(),
       binding: VerifikasiAkunBinding(),
+    ),
+    GetPage(
+      name: _Paths.PEMBAYARAN_TUNAI,
+      page: () => const PembayaranTunaiView(),
+      binding: PembayaranTunaiBinding(),
     ),
   ];
 }

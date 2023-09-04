@@ -6,11 +6,8 @@ import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-
 import 'package:get/get.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-
 import '../../home/views/home_view.dart';
 import '../../loading_summer/loading.pendapatan.dart';
 import '../controllers/pendapatan_dokter_controller.dart';
@@ -26,7 +23,6 @@ class PendapatanDokterView extends StatefulWidget {
   _PendapatanDokterViewState createState() => _PendapatanDokterViewState();
 }
 class _PendapatanDokterViewState extends State<PendapatanDokterView> {
-  // this enable our app to able to pull down
   late RefreshController _refreshController; // the refresh controller
   var _scaffoldKey = GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
@@ -73,12 +69,6 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
                   pinned: true,
                   snap: true,
                   title: const Text('Kasir'),
-                  // actions: [
-                  //   IconButton(
-                  //       onPressed: () {},
-                  //       icon: Icon(Icons.notifications_active),
-                  //       color: Colors.white),
-                  // ],
                   bottom: AppBar(
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
@@ -87,7 +77,7 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
                     ),
                     toolbarHeight: 50,
                     title: Column(
-                      children: const [
+                      children: [
                         SearchPendapatan1(),
                         SizedBox(
                           height: 10,

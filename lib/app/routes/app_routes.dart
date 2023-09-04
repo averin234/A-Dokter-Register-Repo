@@ -43,6 +43,7 @@ abstract class Routes {
   static const DETAIL_REGIST_PASIEN_LAMA = _Paths.DETAIL_REGIST_PASIEN_LAMA;
   static const TAMBAH_VITAL_SIGN = _Paths.TAMBAH_VITAL_SIGN;
   static const VERIFIKASI_AKUN = _Paths.VERIFIKASI_AKUN;
+  static const PEMBAYARAN_TUNAI = _Paths.PEMBAYARAN_TUNAI;
 }
 
 abstract class _Paths {
@@ -87,4 +88,5 @@ abstract class _Paths {
   static const DETAIL_REGIST_PASIEN_LAMA = '/detail-regist-pasien-lama';
   static const TAMBAH_VITAL_SIGN = '/tambah-vital-sign';
   static const VERIFIKASI_AKUN = '/verifikasi-akun';
+  static const PEMBAYARAN_TUNAI = '/pembayaran-tunai';
 }

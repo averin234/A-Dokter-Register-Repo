@@ -6,6 +6,7 @@ import 'package:search_page/search_page.dart';
 
 import '../../../../data/componen/fetch_data.dart';
 import '../../../../data/componen/publics.dart';
+import '../../../../data/model/profile_pasien/get_tunai.dart';
 
 class SearchPendapatan1 extends StatefulWidget {
   const SearchPendapatan1({super.key});
@@ -15,6 +16,8 @@ class SearchPendapatan1 extends StatefulWidget {
 }
 
 class _SearchPendapatan1State extends State<SearchPendapatan1> {
+
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -62,7 +65,7 @@ class _SearchPendapatan1State extends State<SearchPendapatan1> {
                           SizedBox(
                             height: 10,
                           ),
-                            Pendapatan(kasir: kasir,),],)
+                            Pendapatan(kasir: kasir),],)
                       ),
                     ),
                     decoration: InputDecoration(
