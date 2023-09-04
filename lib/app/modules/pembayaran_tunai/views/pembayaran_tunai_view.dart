@@ -5,21 +5,21 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../../data/componen/fetch_data.dart';
+import '../../../data/componen/publics.dart';
 import '../../../data/model/profile_pasien/get_tunai.dart';
 import '../controllers/pembayaran_tunai_controller.dart';
 
 class PembayaranTunaiView extends StatefulWidget {
 
-  const PembayaranTunaiView({Key? key, this.title}) : super(key: key);
-
-  final String? title;
+  const PembayaranTunaiView();
 
   @override
   _PembayaranTunaiViewState createState() => _PembayaranTunaiViewState();
 }
 
 class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
-  late   final Harga harga;
+  late final Harga harga;
   // this enable our app to able to pull down
   late final RefreshController _refreshController; // the refresh controller
   var _scaffoldKey = GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
