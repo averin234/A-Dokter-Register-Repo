@@ -203,6 +203,7 @@ class Pendapatan extends StatelessWidget {
                     ),
                 InkWell(
                   onTap: () {
+                    Get.back();
                     Get.toNamed(Routes.PEMBAYARAN_TUNAI);
                   },
                 child : Container(
