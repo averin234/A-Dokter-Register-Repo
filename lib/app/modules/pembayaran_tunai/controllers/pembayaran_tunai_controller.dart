@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class PembayaranTunaiController extends GetxController {
   //TODO: Implement PembayaranTunaiController
-
+  final nr = Get.parameters['nr'];
   final count = 0.obs;
   @override
   void onInit() {

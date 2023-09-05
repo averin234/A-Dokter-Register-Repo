@@ -88,13 +88,13 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
                     FutureBuilder(
                         future: API.getTunai(
                             no_registrasi :
-                            '1391'),
+                            controller.nr ?? ''),
                         builder: (context, snapshot) {
                           if (snapshot.hasData &&
                               snapshot.connectionState !=
                                   ConnectionState.waiting &&
                               snapshot.data != null) {
-                            final data = snapshot.data!.harga![0];
+                            final data = snapshot.data!;
                             return Column(
                                 children:
                                 AnimationConfiguration.toStaggeredList(

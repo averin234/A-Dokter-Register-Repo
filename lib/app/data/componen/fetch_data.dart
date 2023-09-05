@@ -36,9 +36,9 @@ import "../model/profile_pasien/get_tunai.dart";
 import "local_storage.dart";
 
 class API {
-  // static const _url = "https://a-dokter.id/";
+  static const _url = "https://a-dokter.id/";
   // static const _url = "https://adokter.d-medis.id/";
-  static const _url = "https://demo.a-dokter.id/";
+  // static const _url = "https://demo.a-dokter.id/";
   static const _baseUrl = "${_url}api/v1";
   static const _getToken = "$_baseUrl/get-token.php";
   static const _getAksesPx = "$_baseUrl/px-akses.php";
@@ -99,6 +99,9 @@ class API {
   static const _getTindakan = "$_baseUrl/get-tindakan.php";
   static const _postTindakan = "$_baseUrl/post-tindakan.php";
   static const _postSoap = "$_baseUrl/post-soap.php";
+  static const _postTunai = "$_baseUrl/post-tunai.php";
+  static const _postKredit = "$_baseUrl/post-kredit.php";
+  static const _postDebet = "$_baseUrl/post-debet.php";
   static const _postIcd10 = "$_baseUrl/post-icd10.php";
   static const _postResep = "$_baseUrl/post-resep.php";
   static const _postPulang = "$_baseUrl/post-pulang.php";
@@ -313,6 +316,130 @@ class API {
     };
     var response = await Dio().post(
       _postPulang,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = CheckUp.fromJson(datas);
+    if (obj.msg == "Invalid token: Expired") {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    print(obj.toJson());
+    return obj;
+  }
+
+  static Future<CheckUp> postTunai({
+    required String no_registrasi,
+    required String pembayar,
+    required String tagihan,
+    required String tunai,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      "nr": no_registrasi,
+      "pembayar": pembayar,
+      "tagihan": tagihan,
+      "tunai": tunai,
+    };
+    var response = await Dio().post(
+      _postTunai,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = CheckUp.fromJson(datas);
+    if (obj.msg == "Invalid token: Expired") {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    print(obj.toJson());
+    return obj;
+  }
+
+  static Future<CheckUp> postDebet({
+    required String no_registrasi,
+    required String pembayar,
+    required String tagihan,
+    required String bank,
+    required String jumlah,
+    required String batch,
+    required String kartu,
+    required String pembulatan,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      "nr": no_registrasi,
+      "pembayar": pembayar,
+      "tagihan": tagihan,
+      "bankDebet": bank,
+      "jumlahDebet": jumlah,
+      "noBatchDebet": batch,
+      "noKartuDebet": kartu,
+      "pembulatan": pembulatan,
+    };
+    var response = await Dio().post(
+      _postDebet,
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Token": token.token,
+        },
+      ),
+      data: data,
+    );
+    final datas = jsonDecode(response.data);
+    final obj = CheckUp.fromJson(datas);
+    if (obj.msg == "Invalid token: Expired") {
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar(
+        obj.code.toString(),
+        obj.msg.toString(),
+      );
+    }
+    print(obj.toJson());
+    return obj;
+  }
+
+  static Future<CheckUp> postKredit({
+    required String no_registrasi,
+    required String pembayar,
+    required String tagihan,
+    required String bank,
+    required String jumlah,
+    required String batch,
+    required String kartu,
+    required String pembulatan,
+  }) async {
+    var token = Publics.controller.getToken.value;
+    final data = {
+      "nr": no_registrasi,
+      "pembayar": pembayar,
+      "tagihan": tagihan,
+      "bankKredit": bank,
+      "jumlahKredit": jumlah,
+      "noBatchKredit": batch,
+      "noKartuKredit": kartu,
+      "pembulatan": pembulatan,
+    };
+    var response = await Dio().post(
+      _postKredit,
       options: Options(
         headers: {
           "Content-Type": "application/json",

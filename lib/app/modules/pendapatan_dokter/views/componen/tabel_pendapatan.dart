@@ -47,7 +47,7 @@ class Pendapatan extends StatelessWidget {
                           top: Radius.circular(20),
                         ),
                       ),
-                      builder: (context) => Pilihpembayaran(),
+                      builder: (context) => Pilihpembayaran(kasir.noRegistrasi ?? ''),
                     );
                     // final tunai = await API.getTunai(no_registrasi: kasir.noRegistrasi ?? '');
                     // Get.defaultDialog(title: tunai.code.toString(), content: Text(tunai.msg ?? ''));
@@ -188,7 +188,7 @@ class Pendapatan extends StatelessWidget {
       ),
     );
   }
-  Widget Pilihpembayaran() {
+  Widget Pilihpembayaran(String nr) {
     return Container(
               height: 280,
               decoration: BoxDecoration(
@@ -204,7 +204,7 @@ class Pendapatan extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     Get.back();
-                    Get.toNamed(Routes.PEMBAYARAN_TUNAI);
+                    Get.toNamed(Routes.PEMBAYARAN_TUNAI, parameters: {"nr":nr});
                   },
                 child : Container(
                   padding: EdgeInsets.all(10),

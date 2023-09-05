@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class PendapatanDokterController extends GetxController {
   //TODO: Implement PendapatanDokterController
 
-  final count = 0.obs;
+  final count = TextEditingController();
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +19,4 @@ class PendapatanDokterController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
