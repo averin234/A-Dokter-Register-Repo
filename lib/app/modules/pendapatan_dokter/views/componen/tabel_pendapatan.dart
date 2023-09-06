@@ -202,7 +202,7 @@ class Pendapatan extends StatelessWidget {
                       height: 20,
                     ),
                 InkWell(
-                  onTap: () {
+                  onTap: ()  {
                     Get.back();
                     Get.toNamed(Routes.PEMBAYARAN_TUNAI, parameters: {"nr":nr});
                   },
@@ -224,13 +224,17 @@ class Pendapatan extends StatelessWidget {
                     SizedBox(
                       width: 20,
                     ),
-                    Text('Tunai', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white)),
+                    Text('       Tunai', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white)),
                   ]),
                 ),),
                     SizedBox(
                       height: 10,
                     ),
                     InkWell(
+                      onTap: () {
+                        Get.back();
+                        Get.toNamed(Routes.PEMBAYARAN_KARTU_DEBET, parameters: {"nr":nr});
+                      },
                     child : Container(
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(right: 10, left: 10),

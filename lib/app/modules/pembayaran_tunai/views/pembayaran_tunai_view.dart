@@ -36,8 +36,8 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
         Navigator.of(context).popUntil((route) => route.isFirst);
         return true;
       },
-      child: Scaffold(
-        backgroundColor: Colors.white,
+      child: SafeArea(
+      child : Scaffold(
         key: _scaffoldKey,
         body: SmartRefresher(
           controller: _refreshController,
@@ -121,10 +121,11 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
                             );
                           }
                         }),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

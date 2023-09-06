@@ -44,6 +44,7 @@ abstract class Routes {
   static const TAMBAH_VITAL_SIGN = _Paths.TAMBAH_VITAL_SIGN;
   static const VERIFIKASI_AKUN = _Paths.VERIFIKASI_AKUN;
   static const PEMBAYARAN_TUNAI = _Paths.PEMBAYARAN_TUNAI;
+  static const PEMBAYARAN_KARTU_DEBET = _Paths.PEMBAYARAN_KARTU_DEBET;
 }
 
 abstract class _Paths {
@@ -89,4 +90,5 @@ abstract class _Paths {
   static const TAMBAH_VITAL_SIGN = '/tambah-vital-sign';
   static const VERIFIKASI_AKUN = '/verifikasi-akun';
   static const PEMBAYARAN_TUNAI = '/pembayaran-tunai';
+  static const PEMBAYARAN_KARTU_DEBET = '/pembayaran-kartu-debet';
 }

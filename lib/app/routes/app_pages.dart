@@ -1,3 +1,4 @@
+import 'package:a_dokter_register/app/data/model/get_list_kasir.dart';
 import 'package:get/get.dart';
 
 import '../modules/Jadwal_Dokter/bindings/jadwal_dokter_binding.dart';
@@ -32,6 +33,8 @@ import '../modules/mahasiswa/bindings/mahasiswa_binding.dart';
 import '../modules/mahasiswa/views/mahasiswa_view.dart';
 import '../modules/medical_record/bindings/tindakan_binding.dart';
 import '../modules/medical_record/views/tindakan_view.dart';
+import '../modules/pembayaran_kartu_debet/bindings/pembayaran_kartu_debet_binding.dart';
+import '../modules/pembayaran_kartu_debet/views/pembayaran_kartu_debet_view.dart';
 import '../modules/pembayaran_tunai/bindings/pembayaran_tunai_binding.dart';
 import '../modules/pembayaran_tunai/views/pembayaran_tunai_view.dart';
 import '../modules/pemeriksaan/bindings/pemeriksaan_binding.dart';
@@ -253,6 +256,11 @@ class AppPages {
       name: _Paths.PEMBAYARAN_TUNAI,
       page: () => const PembayaranTunaiView(),
       binding: PembayaranTunaiBinding(),
+    ),
+    GetPage(
+      name: _Paths.PEMBAYARAN_KARTU_DEBET,
+      page: () => PembayaranKartuDebetView(),
+      binding: PembayaranKartuDebetBinding(),
     ),
   ];
 }

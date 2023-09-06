@@ -30,7 +30,6 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
     _refreshController = RefreshController(); // we have to use initState because this part of the app have to restart
     super.initState();
   }
-
   final controller = Get.put(PendapatanDokterController());
   @override
   Widget build(BuildContext context) {
