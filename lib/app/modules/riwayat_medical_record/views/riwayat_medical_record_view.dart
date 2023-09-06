@@ -78,12 +78,6 @@ class _RiwayatMedicalRecordViewState extends State<RiwayatMedicalRecordView> {
                 color: const Color.fromARGB(255, 192, 192, 192)),
             title: const Text("Medical Record",
                 style: TextStyle(color: Colors.black)),
-            // actions: [
-            //   IconButton(
-            //       onPressed: () {},
-            //       icon: Icon(Icons.notifications_active),
-            //       color: Colors.white),
-            // ],
             bottom: AppBar(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
@@ -93,13 +87,6 @@ class _RiwayatMedicalRecordViewState extends State<RiwayatMedicalRecordView> {
               toolbarHeight: 0,
               automaticallyImplyLeading: false,
               elevation: 0,
-              // title: Container(
-              //   padding: const EdgeInsets.all(0),
-              //   margin: const EdgeInsets.only(top: 15),
-              //   decoration:
-              //       BoxDecoration(borderRadius: BorderRadius.circular(10)),
-              //   child: const HorizontalCalendermr(),
-              // ),
             ),
           ),
           // Other Sliver Widgets
@@ -136,14 +123,6 @@ class _RiwayatMedicalRecordViewState extends State<RiwayatMedicalRecordView> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  // boxShadow: [
-                  //   BoxShadow(
-                  //     color: const Color(0xFFe0e0e0).withOpacity(0.5),
-                  //     spreadRadius: 0,
-                  //     blurRadius: 10,
-                  //     offset: const Offset(2, 1),
-                  //   ),
-                  // ],
                 ),
                 child: FutureBuilder(
                     future: API.getListMR(

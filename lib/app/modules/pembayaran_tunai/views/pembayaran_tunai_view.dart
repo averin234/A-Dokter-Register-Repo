@@ -38,6 +38,73 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
       },
       child: SafeArea(
       child : Scaffold(
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFFe0e0e0).withOpacity(0.5),
+                spreadRadius: 0,
+                blurRadius: 10,
+                offset: const Offset(2, 1),
+              ),
+            ],
+          ),
+          height: 75,
+          margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+          child: Row(
+            children: <Widget>[
+              const SizedBox(
+                width: 230,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text(
+                            "Pastikan pembayaran Tunai sudah sesuai, Mohon periksa lagi ",
+                            style: TextStyle(color: Colors.black))),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: InkWell(
+                  onTap: () async {
+
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                        right: 15, left: 15, top: 10, bottom: 10),
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: Colors.white12,
+                          offset: Offset(2, 1),
+                          blurRadius: 1,
+                          spreadRadius: 2,
+                        )
+                      ],
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [Color(0xff4babe7), Color(0xff4babe7)],
+                      ),
+                    ),
+                    child: const Text(
+                      "Bayar",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
         key: _scaffoldKey,
         body: SmartRefresher(
           controller: _refreshController,
@@ -85,42 +152,49 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
               SliverList(
                 delegate: SliverChildListDelegate(
                   [
-                    FutureBuilder(
-                        future: API.getTunai(
-                            no_registrasi :
-                            controller.nr ?? ''),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData &&
-                              snapshot.connectionState !=
-                                  ConnectionState.waiting &&
-                              snapshot.data != null) {
-                            final data = snapshot.data!;
-                            return Column(
-                                children:
-                                AnimationConfiguration.toStaggeredList(
-                                    duration:
-                                    const Duration(milliseconds: 375),
-                                    childAnimationBuilder: (widget) =>
-                                        ScaleAnimation(
-                                          child: SlideAnimation(
-                                            child: widget,
-                                          ),
-                                        ),
-                                    children: <Widget>[
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Databilling(data),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                    ]));
-                          } else {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          }
-                        }),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Databilling(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    // FutureBuilder(
+                    //     future: API.getTunai(
+                    //         no_registrasi :
+                    //         controller.nr ?? ''),
+                    //     builder: (context, snapshot) {
+                    //       if (snapshot.hasData &&
+                    //           snapshot.connectionState !=
+                    //               ConnectionState.waiting &&
+                    //           snapshot.data != null) {
+                    //         final data = snapshot.data!;
+                    //         return Column(
+                    //             children:
+                    //             AnimationConfiguration.toStaggeredList(
+                    //                 duration:
+                    //                 const Duration(milliseconds: 375),
+                    //                 childAnimationBuilder: (widget) =>
+                    //                     ScaleAnimation(
+                    //                       child: SlideAnimation(
+                    //                         child: widget,
+                    //                       ),
+                    //                     ),
+                    //                 children: <Widget>[
+                    //                   const SizedBox(
+                    //                     height: 10,
+                    //                   ),
+                    //                   Databilling(data),
+                    //                   const SizedBox(
+                    //                     height: 10,
+                    //                   ),
+                    //                 ]));
+                    //       } else {
+                    //         return const Center(
+                    //           child: CircularProgressIndicator(),
+                    //         );
+                    //       }
+                    //     }),
                     ],
                   ),
                 ),

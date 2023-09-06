@@ -1,3 +1,4 @@
+import 'package:a_dokter_register/app/modules/bottomsheet/bottomsheet_bayar_kasir.dart';
 import 'package:a_dokter_register/app/modules/pembayaran_kartu_debet/views/widgets/card_pembayaran_debet.dart';
 import 'package:a_dokter_register/app/modules/pembayaran_tunai/views/widgets/data_billing.dart';
 import 'package:flutter/material.dart';
@@ -8,12 +9,12 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../data/componen/fetch_data.dart';
+import '../../../data/componen/publics.dart';
 import '../../../data/model/get_list_kasir.dart';
 import '../controllers/pembayaran_kartu_debet_controller.dart';
 
 class PembayaranKartuDebetView extends StatefulWidget {
-
-  const PembayaranKartuDebetView({Key? key}) : super(key: key);
+  const PembayaranKartuDebetView({Key? key,}) : super(key: key);
 
   @override
   _PembayaranKartuDebetViewState createState() => _PembayaranKartuDebetViewState();
@@ -155,7 +156,43 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
                       SizedBox(
                         height: 10,
                       ),
-                      PembayaranDebet(Kasir()),
+                      PembayaranDebet(),
+                      // FutureBuilder(
+                      //     future: API.getListKasir(
+                      //         kode_dokter:
+                      //         Publics.controller.getDataRegist.value.kode ?? ''),
+                      //     builder: (context, snapshot) {
+                      //       if (snapshot.hasData &&
+                      //           snapshot.connectionState !=
+                      //               ConnectionState.waiting &&
+                      //           snapshot.data != null) {
+                      //         final data = snapshot.data!.kasir![0];
+                      //         return Column(
+                      //             children:
+                      //             AnimationConfiguration.toStaggeredList(
+                      //                 duration:
+                      //                 const Duration(milliseconds: 375),
+                      //                 childAnimationBuilder: (widget) =>
+                      //                     ScaleAnimation(
+                      //                       child: SlideAnimation(
+                      //                         child: widget,
+                      //                       ),
+                      //                     ),
+                      //                 children: <Widget>[
+                      //                   const SizedBox(
+                      //                     height: 10,
+                      //                   ),
+                      //                   PembayaranDebet(kasir: data),
+                      //                   const SizedBox(
+                      //                     height: 10,
+                      //                   ),
+                      //                 ]));
+                      //       } else {
+                      //         return const Center(
+                      //           child: CircularProgressIndicator(),
+                      //         );
+                      //       }
+                      //     }),
                       SizedBox(
                         height: 20,
                       ),

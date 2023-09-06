@@ -1,4 +1,5 @@
 import 'package:a_dokter_register/app/data/model/get_list_kasir.dart';
+import 'package:a_dokter_register/app/modules/bottomsheet/bottomsheet_bayar_kasir.dart';
 import 'package:get/get.dart';
 
 import '../modules/Jadwal_Dokter/bindings/jadwal_dokter_binding.dart';

@@ -7,8 +7,8 @@ import '../../../../data/model/profile_pasien/get_tunai.dart';
 import '../../controllers/pembayaran_kartu_debet_controller.dart';
 
 class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
-  final Kasir kasir;
-  const PembayaranDebet(this.kasir,  {Key? key}) : super(key: key);
+  PembayaranDebet({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +100,7 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                               color:
                               const Color(0x6cc7d1db)),
                         ),
-                        child: Text(kasir.namaBagian ?? '')
+                        child: Text(controller.kasir.billing ?? '')
                     ),
                   ),
                 ],
@@ -155,6 +155,7 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                             const Color(0x6cc7d1db)),
                       ),
                       child: TextFormField(
+                        controller: controller.pembayar,
                         keyboardType: TextInputType.text,
                         textInputAction:
                         TextInputAction.done,
@@ -191,7 +192,7 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                     Text('Pasien',
                         style: TextStyle(
                             fontWeight: FontWeight.bold)),
-                    Text(kasir.namaPasien ?? '',
+                    Text(controller.kasir.namaPasien ?? '',
                         style: TextStyle(
                             fontWeight: FontWeight.bold)),
                   ],
@@ -219,36 +220,18 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                   ),
                   Expanded(
                     child: Container(
-                      margin: const EdgeInsets.only(
-                          left: 10, right: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                        BorderRadius.circular(10),
-                        border: Border.all(
-                            color:
-                            const Color(0x6cc7d1db)),
-                      ),
-                      child: TextFormField(
-                        keyboardType: TextInputType.text,
-                        textInputAction:
-                        TextInputAction.done,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder:
-                          InputBorder.none,
-                          contentPadding: EdgeInsets.only(
-                              left: 15,
-                              bottom: 11,
-                              top: 13,
-                              right: 15),
-                          filled: true,
-                          fillColor: Colors.transparent,
+                        padding: EdgeInsets.only(right: 10, left: 10, top: 15, bottom: 15),
+                        margin: const EdgeInsets.only(
+                            left: 10, right: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                          BorderRadius.circular(10),
+                          border: Border.all(
+                              color:
+                              const Color(0x6cc7d1db)),
                         ),
-                      ),
+                        child: Text(controller.kasir.billing ?? '')
                     ),
                   ),
                 ],
@@ -287,6 +270,8 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                       ),
                       child: TextFormField(
                         keyboardType: TextInputType.text,
+                        controller: controller.pembulatan,
+                        style:  TextStyle(fontSize: 14),
                         textInputAction:
                         TextInputAction.done,
                         decoration: const InputDecoration(
