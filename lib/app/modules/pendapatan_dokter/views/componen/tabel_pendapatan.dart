@@ -8,8 +8,9 @@ import '../../../bottomsheet/bottomsheet_bayar_kasir.dart';
 
 class Pendapatan extends StatelessWidget {
   final Kasir kasir;
-  Pendapatan({super.key, required this.kasir,});
+  Pendapatan({super.key, required this.kasir});
   TextEditingController Pembulatan = TextEditingController(text: '0,00');
+
 
   @override
   Widget build(BuildContext context) {
@@ -259,6 +260,10 @@ class Pendapatan extends StatelessWidget {
                       height: 10,
                     ),
                     InkWell(
+                      onTap: () {
+                        Get.back();
+                        Get.toNamed(Routes.PEMBAYARAN_KARTU_KREDIT, parameters: {'nr': kasir.noRegistrasi ?? ''}, arguments: kasir);
+                      },
                     child : Container(
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(right: 10, left: 10),

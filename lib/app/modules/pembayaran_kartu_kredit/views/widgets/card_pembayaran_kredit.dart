@@ -4,10 +4,10 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../data/model/get_list_kasir.dart';
 import '../../../../data/model/profile_pasien/get_tunai.dart';
-import '../../controllers/pembayaran_kartu_debet_controller.dart';
+import '../../controllers/pembayaran_kartu_kredit_controller.dart';
 
-class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
-  PembayaranDebet({super.key});
+class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
+  PembayaranKredit({super.key});
 
 
   @override
@@ -87,8 +87,7 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                               Padding(padding: EdgeInsets.only(right: 10),
                                 child :
                                 Text(e.billRs ?? ''),),
-                            ],
-                          ),
+                            ],),
                           SizedBox(
                             height: 10,
                           ),
@@ -102,6 +101,9 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                       height: 3,
                     ),
                   ],
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 SizedBox(
                   height: 10,
@@ -395,7 +397,7 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                     decoration: const BoxDecoration(
                       color: Colors.green,
                     ),
-                    child: const Text('Kartu Debet',
+                    child: const Text('Kartu Kredit',
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
