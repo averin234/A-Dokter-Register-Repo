@@ -81,8 +81,8 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
                     );
                     final postTunai = await API.postTunai(
                       pembayar: controller.totalcontroller.text,
-                      tagihan: controller.pengambilanuangcontroller.text,
-                      tunai: controller.pembayar.text,
+                      tagihan: controller.kasir.billing!,
+                      tunai: controller.JumlahPembayarancontroller.text,
                       no_registrasi: controller.nr,
                     );
                     Get.back();
@@ -141,6 +141,7 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
           child: CustomScrollView(
             slivers: [
               SliverAppBar(
+                automaticallyImplyLeading: false,
                 systemOverlayStyle: const SystemUiOverlayStyle(
                   statusBarColor: Colors.white, // <-- SEE HERE
                   statusBarIconBrightness:

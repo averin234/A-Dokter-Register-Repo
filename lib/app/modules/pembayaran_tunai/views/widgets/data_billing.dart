@@ -535,7 +535,7 @@ import '../../controllers/pembayaran_tunai_controller.dart';
                     child: SizedBox(
                       width: 160,
                       child: Text(
-                        'Pengambilan Uang',
+                        'Pengambalian Uang',
                         style: TextStyle(
                             fontWeight:
                             FontWeight.normal),

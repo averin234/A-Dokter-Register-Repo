@@ -11,6 +11,8 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../data/componen/fetch_data.dart';
 import '../../../data/componen/publics.dart';
 import '../../../data/model/get_list_kasir.dart';
+import '../../../routes/app_pages.dart';
+import '../../loading_summer/loading_screen_animed.dart';
 import '../controllers/pembayaran_kartu_debet_controller.dart';
 
 class PembayaranKartuDebetView extends StatefulWidget {
@@ -71,7 +73,35 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
                 Expanded(
                   child: InkWell(
                     onTap: () async {
-
+                      Get.defaultDialog(
+                        backgroundColor: Color(0xe0e0e0),
+                        content:
+                        Loading(),
+                        title: '',
+                        barrierDismissible: false,
+                      );
+                      final postTunai = await API.postDebet(
+                        pembayar: controller.pembayar.text,
+                        tagihan: controller.kasir.billing!,
+                        bank: controller.kartudebetcontroller.text,
+                        batch: controller.nobatchcontroller.text,
+                        jumlah: controller.jumlahcontroller.text,
+                        kartu: controller.nokartucontroller.text,
+                        pembulatan: controller.pembulatan.text,
+                        no_registrasi: controller.nr,
+                      );
+                      Get.back();
+                      if (postTunai.code == 200) {
+                        Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA,
+                            parameters: {
+                              'nr': postTunai.msg! ?? ''
+                            });
+                      } else {
+                        Get.defaultDialog(
+                          title: (postTunai.code ?? 0).toString(),
+                          content: Text(postTunai.msg ?? ''),
+                        );
+                      }
                     },
                     child: Container(
                       margin: const EdgeInsets.only(
@@ -157,42 +187,6 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
                         height: 10,
                       ),
                       PembayaranDebet(),
-                      // FutureBuilder(
-                      //     future: API.getListKasir(
-                      //         kode_dokter:
-                      //         Publics.controller.getDataRegist.value.kode ?? ''),
-                      //     builder: (context, snapshot) {
-                      //       if (snapshot.hasData &&
-                      //           snapshot.connectionState !=
-                      //               ConnectionState.waiting &&
-                      //           snapshot.data != null) {
-                      //         final data = snapshot.data!.kasir![0];
-                      //         return Column(
-                      //             children:
-                      //             AnimationConfiguration.toStaggeredList(
-                      //                 duration:
-                      //                 const Duration(milliseconds: 375),
-                      //                 childAnimationBuilder: (widget) =>
-                      //                     ScaleAnimation(
-                      //                       child: SlideAnimation(
-                      //                         child: widget,
-                      //                       ),
-                      //                     ),
-                      //                 children: <Widget>[
-                      //                   const SizedBox(
-                      //                     height: 10,
-                      //                   ),
-                      //                   PembayaranDebet(kasir: data),
-                      //                   const SizedBox(
-                      //                     height: 10,
-                      //                   ),
-                      //                 ]));
-                      //       } else {
-                      //         return const Center(
-                      //           child: CircularProgressIndicator(),
-                      //         );
-                      //       }
-                      //     }),
                       SizedBox(
                         height: 20,
                       ),

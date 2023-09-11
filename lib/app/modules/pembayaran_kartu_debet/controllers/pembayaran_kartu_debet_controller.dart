@@ -5,11 +5,16 @@ import '../../../data/model/get_list_kasir.dart';
 
 class PembayaranKartuDebetController extends GetxController {
   //TODO: Implement PembayaranKartuDebetController
-  final nr = Get.parameters['nr'];
+  final nr = Get.parameters['nr'] as String;
   Kasir kasir = Get.arguments;
-
   final pembayar = TextEditingController();
   final pembulatan = TextEditingController();
+  final totalcontroller = TextEditingController();
+  final jumlahcontroller = TextEditingController();
+  final kartukreditcontroller = TextEditingController();
+  final kartudebetcontroller = TextEditingController();
+  final nokartucontroller = TextEditingController();
+  final nobatchcontroller = TextEditingController();
   final count = 0.obs;
   @override
   void onInit() {

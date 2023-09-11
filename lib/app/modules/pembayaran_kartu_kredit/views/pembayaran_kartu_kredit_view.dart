@@ -74,7 +74,7 @@ class _PembayaranKartuKreditViewState extends State<PembayaranKartuKreditView> {
                         title: '',
                         barrierDismissible: false,
                       );
-                      final postTunai = await API.postDebet(
+                      final postTunai = await API.postKredit(
                       tagihan: controller.totalcontroller.text,
                         bank: controller.kartudebetcontroller.text,
                         batch: controller.nobatchcontroller.text,

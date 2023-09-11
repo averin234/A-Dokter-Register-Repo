@@ -361,6 +361,7 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                               const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
+                          controller: controller.totalcontroller,
                           keyboardType: TextInputType.text,
                           textInputAction:
                           TextInputAction.done,
@@ -433,6 +434,7 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                               const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
+                          controller: controller.jumlahcontroller,
                           keyboardType: TextInputType.text,
                           textInputAction:
                           TextInputAction.done,
@@ -489,6 +491,7 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                               const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
+                          controller: controller.kartudebetcontroller,
                           keyboardType: TextInputType.text,
                           textInputAction:
                           TextInputAction.done,
@@ -545,6 +548,7 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                               const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
+                          controller: controller.nokartucontroller,
                           keyboardType: TextInputType.text,
                           textInputAction:
                           TextInputAction.done,
@@ -601,6 +605,7 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                               const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
+                          controller: controller.nobatchcontroller,
                           keyboardType: TextInputType.text,
                           textInputAction:
                           TextInputAction.done,
