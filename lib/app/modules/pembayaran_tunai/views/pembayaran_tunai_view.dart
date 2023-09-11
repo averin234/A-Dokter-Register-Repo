@@ -87,7 +87,7 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
                     );
                     Get.back();
                     if (postTunai.code == 200) {
-                      Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA,
+                      Get.toNamed(Routes.PENDAPATAN_DOKTER,
                           parameters: {
                             'nr': postTunai.msg! ?? ''
                           });

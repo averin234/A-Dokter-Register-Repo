@@ -86,7 +86,7 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                                 Text(e.namaBagian ?? ''),),
                               Padding(padding: EdgeInsets.only(right: 10),
                                 child :
-                                Text(e.billRs ?? ''),),
+                                Text(e.total ?? ''),),
                             ],),
                           SizedBox(
                             height: 10,
