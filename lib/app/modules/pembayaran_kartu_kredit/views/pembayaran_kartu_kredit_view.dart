@@ -5,6 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../../data/componen/fetch_data.dart';
+import '../../../routes/app_pages.dart';
+import '../../loading_summer/loading_screen_animed.dart';
 import '../controllers/pembayaran_kartu_kredit_controller.dart';
 
 class PembayaranKartuKreditView extends StatefulWidget {
@@ -64,6 +67,35 @@ class _PembayaranKartuKreditViewState extends State<PembayaranKartuKreditView> {
                 Expanded(
                   child: InkWell(
                     onTap: () async {
+                      Get.defaultDialog(
+                        backgroundColor: Color(0xe0e0e0),
+                        content:
+                        Loading(),
+                        title: '',
+                        barrierDismissible: false,
+                      );
+                      final postTunai = await API.postDebet(
+                      tagihan: controller.totalcontroller.text,
+                        bank: controller.kartudebetcontroller.text,
+                        batch: controller.nobatchcontroller.text,
+                        pembayar: controller.pembayar.text,
+                        pembulatan: controller.pembulatan.text,
+                        jumlah: controller.jumlahcontroller.text,
+                        kartu: controller.nokartucontroller.text,
+                        no_registrasi: controller.nr,
+                      );
+                      Get.back();
+                      if (postTunai.code == 200) {
+                        Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA,
+                            parameters: {
+                              'nr': postTunai.msg! ?? ''
+                            });
+                      } else {
+                        Get.defaultDialog(
+                          title: (postTunai.code ?? 0).toString(),
+                          content: Text(postTunai.msg ?? ''),
+                        );
+                      }
                     },
                     child: Container(
                       margin: const EdgeInsets.only(

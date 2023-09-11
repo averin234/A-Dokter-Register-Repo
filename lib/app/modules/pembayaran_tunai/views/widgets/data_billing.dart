@@ -366,6 +366,7 @@ import '../../controllers/pembayaran_tunai_controller.dart';
                             const Color(0x6cc7d1db)),
                       ),
                       child: TextFormField(
+                        controller: controller.totalcontroller,
                         keyboardType: TextInputType.text,
                         textInputAction:
                         TextInputAction.done,
@@ -440,6 +441,7 @@ import '../../controllers/pembayaran_tunai_controller.dart';
                             const Color(0x6cc7d1db)),
                       ),
                       child: TextFormField(
+                        controller: controller.uangpembayarantunaicontroller,
                         keyboardType: TextInputType.text,
                         textInputAction:
                         TextInputAction.done,
@@ -496,6 +498,7 @@ import '../../controllers/pembayaran_tunai_controller.dart';
                             const Color(0x6cc7d1db)),
                       ),
                       child: TextFormField(
+                        controller: controller.uangygdibayarkancontroller,
                         keyboardType: TextInputType.text,
                         textInputAction:
                         TextInputAction.done,
@@ -552,6 +555,7 @@ import '../../controllers/pembayaran_tunai_controller.dart';
                             const Color(0x6cc7d1db)),
                       ),
                       child: TextFormField(
+                        controller: controller.pengambilanuangcontroller,
                         keyboardType: TextInputType.text,
                         textInputAction:
                         TextInputAction.done,

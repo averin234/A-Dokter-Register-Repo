@@ -9,6 +9,8 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../data/componen/fetch_data.dart';
 import '../../../data/componen/publics.dart';
 import '../../../data/model/profile_pasien/get_tunai.dart';
+import '../../../routes/app_pages.dart';
+import '../../loading_summer/loading_screen_animed.dart';
 import '../controllers/pembayaran_tunai_controller.dart';
 
 class PembayaranTunaiView extends StatefulWidget {
@@ -70,6 +72,31 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
               Expanded(
                 child: InkWell(
                   onTap: () async {
+                    Get.defaultDialog(
+                      backgroundColor: Color(0xe0e0e0),
+                      content:
+                      Loading(),
+                      title: '',
+                      barrierDismissible: false,
+                    );
+                    final postTunai = await API.postTunai(
+                      pembayar: controller.totalcontroller.text,
+                      tagihan: controller.pengambilanuangcontroller.text,
+                      tunai: controller.pembayar.text,
+                      no_registrasi: controller.nr,
+                    );
+                    Get.back();
+                    if (postTunai.code == 200) {
+                      Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA,
+                          parameters: {
+                            'nr': postTunai.msg! ?? ''
+                          });
+                    } else {
+                      Get.defaultDialog(
+                        title: (postTunai.code ?? 0).toString(),
+                        content: Text(postTunai.msg ?? ''),
+                      );
+                    }
                   },
                   child: Container(
                     margin: const EdgeInsets.only(

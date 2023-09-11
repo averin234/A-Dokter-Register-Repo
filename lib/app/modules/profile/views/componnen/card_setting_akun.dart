@@ -56,6 +56,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                 onTap: () => showModalBottomSheet(
                   isScrollControlled: true,
                   context: context,
+                  showDragHandle: true,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(20),
@@ -226,20 +227,6 @@ class CardSettingAkun extends GetView<ProfileController> {
               children: [
                 const SizedBox(
                   height: 10,
-                ),
-                Container(
-                  height: 4,
-                  margin: EdgeInsets.only(
-                    right: Get.width / 2 - 40,
-                    left: Get.width / 2 - 40,
-                  ),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFe0e0e0),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                const SizedBox(
-                  height: 25,
                 ),
                 SingleChildScrollView(
                     child: Center(
