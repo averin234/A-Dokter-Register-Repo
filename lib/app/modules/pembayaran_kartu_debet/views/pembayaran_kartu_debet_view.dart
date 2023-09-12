@@ -1,4 +1,5 @@
 import 'package:a_dokter_register/app/modules/bottomsheet/bottomsheet_bayar_kasir.dart';
+import 'package:a_dokter_register/app/modules/pembayaran_kartu_debet/views/widgets/card_infokaryawan_kasir3.dart';
 import 'package:a_dokter_register/app/modules/pembayaran_kartu_debet/views/widgets/card_pembayaran_debet.dart';
 import 'package:a_dokter_register/app/modules/pembayaran_tunai/views/widgets/data_billing.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ import '../../../data/componen/publics.dart';
 import '../../../data/model/get_list_kasir.dart';
 import '../../../routes/app_pages.dart';
 import '../../loading_summer/loading_screen_animed.dart';
+import '../../pembayaran_tunai/views/widgets/card_infokaryawan_kasir.dart';
 import '../controllers/pembayaran_kartu_debet_controller.dart';
 
 class PembayaranKartuDebetView extends StatefulWidget {
@@ -183,6 +185,10 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
                 SliverList(
                   delegate: SliverChildListDelegate(
                     [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      CardKaryawan3(),
                       SizedBox(
                         height: 10,
                       ),

@@ -1,3 +1,4 @@
+import 'package:a_dokter_register/app/modules/pembayaran_tunai/views/widgets/card_infokaryawan_kasir.dart';
 import 'package:a_dokter_register/app/modules/pembayaran_tunai/views/widgets/data_billing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -179,6 +180,10 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
               SliverList(
                 delegate: SliverChildListDelegate(
                   [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CardKaryawan(),
                     SizedBox(
                       height: 10,
                     ),
