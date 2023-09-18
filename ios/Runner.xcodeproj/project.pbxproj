@@ -334,8 +334,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development: irwanstwn2398@gmail.com (JF5HMKPW2V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: irwanstwn2398@gmail.com (JF5HMKPW2V)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Installer: PT. AVERIN INFORMATIKA TEKNOLOGI (9SDX9HM8VY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "3rd Party Mac Developer Installer: PT. AVERIN INFORMATIKA TEKNOLOGI (9SDX9HM8VY)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -367,7 +367,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 228Z7JX9X8;
+				DEVELOPMENT_TEAM = 9SDX9HM8VY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "A-Dokter";
@@ -414,8 +414,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development: irwanstwn2398@gmail.com (JF5HMKPW2V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: irwanstwn2398@gmail.com (JF5HMKPW2V)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Installer: PT. AVERIN INFORMATIKA TEKNOLOGI (9SDX9HM8VY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "3rd Party Mac Developer Installer: PT. AVERIN INFORMATIKA TEKNOLOGI (9SDX9HM8VY)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -470,8 +470,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development: irwanstwn2398@gmail.com (JF5HMKPW2V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: irwanstwn2398@gmail.com (JF5HMKPW2V)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Installer: PT. AVERIN INFORMATIKA TEKNOLOGI (9SDX9HM8VY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "3rd Party Mac Developer Installer: PT. AVERIN INFORMATIKA TEKNOLOGI (9SDX9HM8VY)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -506,7 +506,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 228Z7JX9X8;
+				DEVELOPMENT_TEAM = 9SDX9HM8VY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "A-Dokter";
@@ -536,7 +536,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 228Z7JX9X8;
+				DEVELOPMENT_TEAM = 9SDX9HM8VY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "A-Dokter";

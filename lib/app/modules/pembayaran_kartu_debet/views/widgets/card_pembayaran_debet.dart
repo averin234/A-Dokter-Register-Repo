@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+import '../../../../data/componen/fetch_data.dart';
 import '../../../../data/model/get_list_kasir.dart';
+import '../../../../data/model/list_data.dart';
 import '../../../../data/model/profile_pasien/get_tunai.dart';
 import '../../controllers/pembayaran_kartu_debet_controller.dart';
 
@@ -490,27 +495,26 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
                               color:
                               const Color(0x6cc7d1db)),
                         ),
-                        child: TextFormField(
-                          controller: controller.kartudebetcontroller,
-                          keyboardType: TextInputType.text,
-                          textInputAction:
-                          TextInputAction.done,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            disabledBorder:
-                            InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: 15,
-                                bottom: 11,
-                                top: 13,
-                                right: 15),
-                            filled: true,
-                            fillColor: Colors.transparent,
-                          ),
-                        ),
+                        child: FutureBuilder(
+                            future: API.getBank(),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData &&
+                                  snapshot.connectionState != ConnectionState.waiting &&
+                                  snapshot.data != null) {
+                                final data = snapshot.data!.list ?? [];
+                                return data.isEmpty
+                                    ? Container()
+                                    : dropdown(
+                                    'pilih bank',
+                                    data,
+                                    controller.bankcontroller,
+                                    controller.namabankcontroller);
+                              } else {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                            }),
                       ),
                     ),
                   ],
@@ -638,4 +642,123 @@ class PembayaranDebet extends GetView<PembayaranKartuDebetController> {
         ],),
     );
   }
+  Widget dropdown(String hintText, List<Lists> listData,
+      TextEditingController bankcontroller, TextEditingController namabankcontroller) {
+    return AppTextField(
+      bankcontroller: bankcontroller,
+      namabankcontroller: namabankcontroller,
+      hint: hintText,
+      isCitySelected: true,
+      lists: listData,
+      title: '',
+    );
+  }
 }
+
+
+
+class AppTextField extends StatelessWidget {
+  final TextEditingController bankcontroller;
+  final TextEditingController namabankcontroller;
+  final String title;
+  final String hint;
+  final bool isCitySelected;
+  final List<Lists> lists;
+
+  const AppTextField({
+    required this.bankcontroller,
+    required this.namabankcontroller,
+    required this.title,
+    required this.hint,
+    required this.isCitySelected,
+    required this.lists,
+    Key? key,
+  }) : super(key: key);
+
+  /// This is on text changed method which will display on city text field on changed.
+  void onTextFieldTap() {
+    final controller = Get.put(PembayaranKartuDebetController());
+    showModalBottomSheet<void>(
+      showDragHandle: true,
+      context: Get.context!,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      builder: (context) {
+        return Column(
+          children: [
+            Expanded(
+              child: ListView(
+                children: lists
+                    .map(
+                      (e) => TextButton(
+                    style: TextButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(vertical: 20)),
+                    child: Text(
+                      e.nama!,
+                      style: GoogleFonts.nunito(
+                        fontSize: 17.0,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    onPressed: () {
+                      controller.namabankcontroller.text = e.nama!;
+                      Get.back();
+                    },
+                  ),
+                )
+                    .toList(),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showSnackBar(String message) {
+    Get.snackbar(title, message);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(right: 10,left: 10),
+      height: Get.width / 7,
+      width: Get.width / 1,
+      alignment: Alignment.center,
+      // decoration: BoxDecoration(
+      //   border:
+      //   Border.all(color: const Color(0x6cc7d1db)),
+      //   color: Colors.transparent,
+      //   borderRadius: BorderRadius.circular(10),
+      // ),
+      child: TextFormField(
+        readOnly: true,
+        controller: namabankcontroller,
+        cursorColor: Colors.black,
+        onTap: onTextFieldTap,
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              const Radius.circular(10.0),
+            ),
+            borderSide: BorderSide(
+              width: 0,
+              style: BorderStyle.none,
+            ),
+          ),
+          errorBorder: InputBorder.none,
+          enabled: true,
+          suffixIcon: Icon(Icons.arrow_drop_down_circle_rounded),
+          disabledBorder: InputBorder.none,
+          contentPadding: EdgeInsets.only(
+              left: 15, bottom: 11, top: 13, right: 15),
+          filled: true,
+          fillColor: Colors.transparent,
+        ),
+      ),
+    );
+  }
+}
+
