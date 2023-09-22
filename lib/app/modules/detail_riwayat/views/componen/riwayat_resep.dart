@@ -11,40 +11,40 @@ import '../../../isi_resep/views/componen/hasil_resep.dart';
 class RiwayatResep extends StatelessWidget {
   final List<Resep> resep;
   final Resep resepi;
-  const RiwayatResep({super.key, required this.resep, required this.resepi});
+  RiwayatResep({super.key, required this.resep, required this.resepi});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(DetailRiwayatController());
     return Container(
-      margin: const EdgeInsets.only(right: 10, left: 10),
-      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      margin: EdgeInsets.only(right: 10, left: 10),
+      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0x6cc7d1db)),
+        border: Border.all(color: Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFe0e0e0).withOpacity(0.5),
+            color: Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: const Offset(2, 1),
+            offset: Offset(2, 1),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
-              const SizedBox(
+              SizedBox(
                 width: 210,
                 child: Text("Resep",
                     style: TextStyle(
@@ -52,10 +52,10 @@ class RiwayatResep extends StatelessWidget {
                       fontSize: 15,
                     )),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
-              const Divider(
+              Divider(
                 height: 3,
                 color: Colors.grey,
               ),
@@ -77,11 +77,11 @@ class RiwayatResep extends StatelessWidget {
                         color: Colors.blue.withOpacity(0.5),
                         spreadRadius: 0,
                         blurRadius: 10,
-                        offset: const Offset(2, 1),
+                        offset: Offset(2, 1),
                       ),
                     ],
                   ),
-                  child: const Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
@@ -97,7 +97,7 @@ class RiwayatResep extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Container(
@@ -105,34 +105,31 @@ class RiwayatResep extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 FutureBuilder(
-                    future: API.getDetailMR(
-                        no_registrasi: controller.noRegistrasi),
+                    future:
+                        API.getDetailMR(no_registrasi: controller.noRegistrasi),
                     builder: (context, snapshot) {
                       if (snapshot.hasData &&
-                          snapshot.connectionState !=
-                              ConnectionState.waiting &&
+                          snapshot.connectionState != ConnectionState.waiting &&
                           snapshot.data != null) {
                         final data = snapshot.data!.resep ?? [];
                         return data.isEmpty
-                            ? const Text('Tidak Ada Resep')
+                            ? Text('Tidak Ada Resep')
                             : Column(
-                          children: AnimationConfiguration
-                              .toStaggeredList(
-                              duration: const Duration(
-                                  milliseconds: 475),
-                              childAnimationBuilder: (widget) =>
-                                  SlideAnimation(
-                                    child: FadeInAnimation(
-                                      child: widget,
-                                    ),
-                                  ),
-                              children: data
-                                  .map((e) =>
-                                  HasilResep(resep: e))
-                                  .toList()),
-                        );
+                                children:
+                                    AnimationConfiguration.toStaggeredList(
+                                        duration: Duration(milliseconds: 475),
+                                        childAnimationBuilder: (widget) =>
+                                            SlideAnimation(
+                                              child: FadeInAnimation(
+                                                child: widget,
+                                              ),
+                                            ),
+                                        children: data
+                                            .map((e) => HasilResep(resep: e))
+                                            .toList()),
+                              );
                       } else {
-                        return const Center(
+                        return Center(
                           child: CircularProgressIndicator(),
                         );
                       }
@@ -140,7 +137,7 @@ class RiwayatResep extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           // Container(
@@ -149,14 +146,14 @@ class RiwayatResep extends StatelessWidget {
           //     children: [
           //       Row(
           //         children: [
-          //           const Expanded(
+          //            Expanded(
           //             child: Text(
           //               "Nama Obat",
           //               style: TextStyle(
           //                   fontWeight: FontWeight.normal, color: Colors.blue),
           //             ),
           //           ),
-          //           const SizedBox(
+          //            SizedBox(
           //             width: 10,
           //           ),
           //           GestureDetector(
@@ -165,29 +162,29 @@ class RiwayatResep extends StatelessWidget {
           //             },
           //             child: Text(
           //               resepi.namaBrg ?? '',
-          //               style: const TextStyle(
+          //               style:  TextStyle(
           //                   fontWeight: FontWeight.normal, color: Colors.blue),
           //               textAlign: TextAlign.center,
           //             ),
           //           ),
-          //           const SizedBox(
+          //            SizedBox(
           //             width: 10,
           //           ),
           //         ],
           //       ),
-          //       const SizedBox(
+          //        SizedBox(
           //         height: 10,
           //       ),
           //       Row(
           //         children: [
-          //           const Expanded(
+          //            Expanded(
           //             child: Text(
           //               "Jumlah",
           //               style: TextStyle(
           //                   fontWeight: FontWeight.normal, color: Colors.blue),
           //             ),
           //           ),
-          //           const SizedBox(
+          //            SizedBox(
           //             width: 10,
           //           ),
           //           GestureDetector(
@@ -196,29 +193,29 @@ class RiwayatResep extends StatelessWidget {
           //             },
           //             child: Text(
           //               resepi.jumlahPesan ?? '',
-          //               style: const TextStyle(
+          //               style:  TextStyle(
           //                   fontWeight: FontWeight.normal, color: Colors.blue),
           //               textAlign: TextAlign.center,
           //             ),
           //           ),
-          //           const SizedBox(
+          //            SizedBox(
           //             width: 10,
           //           ),
           //         ],
           //       ),
-          //       const SizedBox(
+          //        SizedBox(
           //         height: 10,
           //       ),
           //       Row(
           //         children: [
-          //           const Expanded(
+          //            Expanded(
           //             child: Text(
           //               "Aturan Pemakaian",
           //               style: TextStyle(
           //                   fontWeight: FontWeight.normal, color: Colors.blue),
           //             ),
           //           ),
-          //           const SizedBox(
+          //            SizedBox(
           //             width: 10,
           //           ),
           //           GestureDetector(
@@ -227,29 +224,29 @@ class RiwayatResep extends StatelessWidget {
           //             },
           //             child: Text(
           //               resepi.namaDosis ?? '',
-          //               style: const TextStyle(
+          //               style:  TextStyle(
           //                   fontWeight: FontWeight.normal, color: Colors.blue),
           //               textAlign: TextAlign.center,
           //             ),
           //           ),
-          //           const SizedBox(
+          //            SizedBox(
           //             width: 10,
           //           ),
           //         ],
           //       ),
-          //       const SizedBox(
+          //        SizedBox(
           //         height: 10,
           //       ),
           //       Row(
           //         children: [
-          //           const Expanded(
+          //            Expanded(
           //             child: Text(
           //               "Note",
           //               style: TextStyle(
           //                   fontWeight: FontWeight.normal, color: Colors.blue),
           //             ),
           //           ),
-          //           const SizedBox(
+          //            SizedBox(
           //             width: 10,
           //           ),
           //           GestureDetector(
@@ -258,12 +255,12 @@ class RiwayatResep extends StatelessWidget {
           //             },
           //             child: Text(
           //               resepi.note ?? '',
-          //               style: const TextStyle(
+          //               style:  TextStyle(
           //                   fontWeight: FontWeight.normal, color: Colors.blue),
           //               textAlign: TextAlign.center,
           //             ),
           //           ),
-          //           const SizedBox(
+          //            SizedBox(
           //             width: 10,
           //           ),
           //         ],

@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class SplashscreenView extends StatefulWidget {
-  const SplashscreenView({super.key});
+  SplashscreenView({super.key});
 
   @override
   _SplashscreenViewState createState() => _SplashscreenViewState();
@@ -26,7 +26,7 @@ class _SplashscreenViewState extends State<SplashscreenView>
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 3));
+        AnimationController(vsync: this, duration: Duration(seconds: 3));
 
     animation1 = Tween<double>(begin: 40, end: 20).animate(CurvedAnimation(
         parent: _controller, curve: Curves.fastLinearToSlowEaseIn))
@@ -38,20 +38,20 @@ class _SplashscreenViewState extends State<SplashscreenView>
 
     _controller.forward();
 
-    Timer(const Duration(seconds: 2), () {
+    Timer(Duration(seconds: 2), () {
       setState(() {
         _fontSize = 1.06;
       });
     });
 
-    Timer(const Duration(seconds: 2), () {
+    Timer(Duration(seconds: 2), () {
       setState(() {
         _containerSize = 2;
         _containerOpacity = 1;
       });
     });
 
-    Timer(const Duration(seconds: 4), () {
+    Timer(Duration(seconds: 4), () {
       Get.offNamed(Routes.LOGIN);
     });
   }
@@ -74,11 +74,11 @@ class _SplashscreenViewState extends State<SplashscreenView>
           Column(
             children: [
               AnimatedContainer(
-                  duration: const Duration(milliseconds: 2000),
+                  duration: Duration(milliseconds: 2000),
                   curve: Curves.fastLinearToSlowEaseIn,
                   height: height / _fontSize),
               AnimatedOpacity(
-                duration: const Duration(milliseconds: 1000),
+                duration: Duration(milliseconds: 1000),
                 opacity: _textOpacity,
                 child: Text(
                   'A-Dokter',
@@ -93,11 +93,11 @@ class _SplashscreenViewState extends State<SplashscreenView>
           ),
           Center(
             child: AnimatedOpacity(
-              duration: const Duration(milliseconds: 2000),
+              duration: Duration(milliseconds: 2000),
               curve: Curves.fastLinearToSlowEaseIn,
               opacity: _containerOpacity,
               child: AnimatedContainer(
-                duration: const Duration(milliseconds: 2000),
+                duration: Duration(milliseconds: 2000),
                 curve: Curves.fastLinearToSlowEaseIn,
                 height: width / _containerSize,
                 width: width / _containerSize,

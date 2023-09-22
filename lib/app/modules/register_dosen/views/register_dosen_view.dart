@@ -14,7 +14,7 @@ import '../../home/views/home_view.dart';
 import '../../login/views/login_view.dart';
 
 class RegisterDosenView extends StatefulWidget {
-  const RegisterDosenView({Key? key}) : super(key: key);
+  RegisterDosenView({Key? key}) : super(key: key);
 
   @override
   _RegisterDosenViewState createState() => _RegisterDosenViewState();
@@ -30,7 +30,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: Duration(seconds: 3),
     );
 
     _opacity = Tween<double>(begin: 0, end: 1).animate(
@@ -66,7 +66,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        systemOverlayStyle: const SystemUiOverlayStyle(
+        systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.white, // <-- SEE HERE
           statusBarIconBrightness:
               Brightness.dark, //<-- For Android SEE HERE (dark icons)
@@ -86,14 +86,14 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     height: 100,
                   ),
                   Image.asset(
                     'assets/images/icons/logo.png',
                     width: 160,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 20,
                   ),
                   Container(
@@ -112,7 +112,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const SizedBox(),
+                        SizedBox(),
                         Text(
                           'Register Dosen',
                           style: TextStyle(
@@ -121,7 +121,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                             color: Colors.black.withOpacity(.7),
                           ),
                         ),
-                        const SizedBox(),
+                        SizedBox(),
                         component1(
                             Icons.account_circle_outlined,
                             'Nama Lengkap...',
@@ -157,20 +157,20 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                             SizedBox(width: size.width / 25),
                           ],
                         ),
-                        const SizedBox(),
+                        SizedBox(),
                         InkWell(
                           onTap: () => Get.offNamed(Routes.LOGIN),
                           child: RichText(
                             text: TextSpan(
                                 text: 'Kembali ke login',
-                                style: const TextStyle(
+                                style: TextStyle(
                                   color: Colors.blueAccent,
                                   fontSize: 15,
                                 ),
                                 recognizer: TapGestureRecognizer()),
                           ),
                         ),
-                        const SizedBox(),
+                        SizedBox(),
                       ],
                     ),
                   ),
@@ -185,22 +185,22 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              color: Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: const Offset(2, 1),
+              offset: Offset(2, 1),
             ),
           ],
         ),
         height: 75,
-        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Column(
           children: <Widget>[
-            const SizedBox(
+            SizedBox(
               height: 5,
             ),
-            const Text("Powered by"),
-            const SizedBox(
+            Text("Powered by"),
+            SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -209,21 +209,21 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_averin.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_ipg.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_privy.png',
                       width: 80,
@@ -314,7 +314,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
             controller.noindukdosenController.text.isNotEmpty &&
             controller.universitasController.text.isNotEmpty) {
           Get.defaultDialog(
-            content: const CircularProgressIndicator(),
+            content: CircularProgressIndicator(),
             title: 'Loading..',
             barrierDismissible: false,
           );
@@ -333,7 +333,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
           } else {
             showModalBottomSheet(
               context: context,
-              shape: const RoundedRectangleBorder(
+              shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(20),
                 ),
@@ -352,13 +352,12 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
         width: size.width / width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: const Color(0xff4796ff),
+          color: Color(0xff4796ff),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(
           string,
-          style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
     );
@@ -373,7 +372,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
         ),
         child: Column(
           children: [
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Container(
@@ -383,14 +382,14 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: const Color(0xFFe0e0e0),
+                color: Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 25,
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Pedaftaran Register Dosen Berhasil",
                   style: TextStyle(
@@ -398,7 +397,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Expanded(
@@ -407,14 +406,14 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 275),
+                    duration: Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
                       ),
                     ),
                     children: <Widget>[
-                      const Text(
+                      Text(
                           "Silahkan cek Email yang sudah anda daftarkan untuk mendapatkan akses akun A-Dokter ",
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -426,7 +425,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             InkWell(
@@ -436,14 +435,14 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
               },
               child: Container(
                 height: 45,
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 56, 229, 77),
+                  color: Color.fromARGB(255, 56, 229, 77),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "Silahkan Periksa Email",
                       style: TextStyle(
@@ -455,7 +454,7 @@ class _RegisterDosenViewState extends State<RegisterDosenView>
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
           ],

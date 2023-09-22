@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import '../controllers/riwayat_jabatan_controller.dart';
 
 class RiwayatJabatanView extends StatefulWidget {
-  const RiwayatJabatanView({super.key});
+  RiwayatJabatanView({super.key});
 
   @override
   State<RiwayatJabatanView> createState() => _RiwayatJabatanViewState();
@@ -105,7 +105,7 @@ class _RiwayatJabatanViewState extends State<RiwayatJabatanView> {
               [
                 Column(
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 375),
+                    duration: Duration(milliseconds: 375),
                     childAnimationBuilder: (widget) => ScaleAnimation(
                       child: SlideAnimation(
                         child: widget,
@@ -169,7 +169,7 @@ class _RiwayatJabatanViewState extends State<RiwayatJabatanView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 275),
+                    duration: Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
@@ -256,7 +256,7 @@ class _RiwayatJabatanViewState extends State<RiwayatJabatanView> {
                                     child: DropdownButton2(
                                       isExpanded: true,
                                       hint: Row(
-                                        children: const [
+                                        children: [
                                           SizedBox(
                                             width: 4,
                                           ),
@@ -279,7 +279,7 @@ class _RiwayatJabatanViewState extends State<RiwayatJabatanView> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: const TextStyle(
+                                                  style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,

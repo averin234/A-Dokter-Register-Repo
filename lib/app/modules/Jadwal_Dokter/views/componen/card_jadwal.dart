@@ -12,7 +12,7 @@ import '../jadwal_dokter_view.dart';
 
 class CardJadwal extends StatefulWidget {
   final Jadwal jadwal;
-  const CardJadwal({super.key, required this.jadwal});
+  CardJadwal({super.key, required this.jadwal});
 
   @override
   State<CardJadwal> createState() => _CardJadwalState();
@@ -26,21 +26,22 @@ class _CardJadwalState extends State<CardJadwal> {
       Get.back();
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.all(10),
-        margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.only(left: 10, right: 10, top: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: const Color(0x6cc7d1db)),
+          border: Border.all(color: Color(0x6cc7d1db)),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              color: Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: const Offset(2, 1),
+              offset: Offset(2, 1),
             ),
           ],
         ),
@@ -50,36 +51,36 @@ class _CardJadwalState extends State<CardJadwal> {
           children: [
             Row(
               children: [
-                const Expanded(
+                Expanded(
                   child: Text(
                     "Jadwal Dokter",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 10,
                 ),
                 // GestureDetector(
                 //     onTap: () => showModalBottomSheet(
                 //           context: context,
-                //           shape: const RoundedRectangleBorder(
+                //           shape:  RoundedRectangleBorder(
                 //             borderRadius: BorderRadius.vertical(
                 //               top: Radius.circular(20),
                 //             ),
                 //           ),
                 //           builder: (context) => buildSheetJadwal(),
                 //         ),
-                //     child: const Icon(
+                //     child:  Icon(
                 //       Icons.edit,
                 //       color: Colors.blueAccent,
                 //     )),
-                const SizedBox(
+                SizedBox(
                   width: 10,
                 ),
                 GestureDetector(
                     onTap: () => showModalBottomSheet(
                           context: context,
-                          shape: const RoundedRectangleBorder(
+                          shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
                               top: Radius.circular(20),
                             ),
@@ -87,55 +88,54 @@ class _CardJadwalState extends State<CardJadwal> {
                           builder: (context) =>
                               buildSheetHapus(id: widget.jadwal.id.toString()),
                         ),
-                    child: const Icon(
+                    child: Icon(
                       Icons.delete,
                       color: Colors.redAccent,
                     )),
-                const SizedBox(
+                SizedBox(
                   width: 10,
                 ),
               ],
             ),
-            const Divider(
+            Divider(
               color: Colors.grey,
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                const Text('Hari : ',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('Hari : ', style: TextStyle(fontWeight: FontWeight.bold)),
                 Text(widget.jadwal.rangeHari ?? ''),
               ],
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                const Text('Jam Mulai : ',
+                Text('Jam Mulai : ',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 Text(widget.jadwal.jamMulai ?? ''),
-                const SizedBox(
+                SizedBox(
                   width: 10,
                 ),
-                const Text('Jam Akhir : ',
+                Text('Jam Akhir : ',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 Text(widget.jadwal.jamAkhir ?? ''),
               ],
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                const Text('Interval : ',
+                Text('Interval : ',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 Text((widget.jadwal.waktu ?? 0).toString()),
               ],
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
           ],
@@ -151,7 +151,7 @@ class _CardJadwalState extends State<CardJadwal> {
         ),
         child: Column(
           children: [
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Container(
@@ -161,14 +161,14 @@ class _CardJadwalState extends State<CardJadwal> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: const Color(0xFFe0e0e0),
+                color: Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 25,
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Hapus Jadwal Dokter",
                   style: TextStyle(
@@ -176,7 +176,7 @@ class _CardJadwalState extends State<CardJadwal> {
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Expanded(
@@ -185,14 +185,14 @@ class _CardJadwalState extends State<CardJadwal> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 275),
+                    duration: Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
                       ),
                     ),
                     children: <Widget>[
-                      const Center(
+                      Center(
                         child: Text(
                             'Apakah anda ingin menghapus Jadwal Dokter ini ?'),
                       )
@@ -201,12 +201,12 @@ class _CardJadwalState extends State<CardJadwal> {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
             InkWell(
               onTap: () async {
                 HapticFeedback.lightImpact();
                 Get.defaultDialog(
-                  backgroundColor: const Color(0x00e0e0e0),
+                  backgroundColor: Color(0x00e0e0e0),
                   content: Loading(),
                   title: '',
                   barrierDismissible: false,
@@ -216,10 +216,13 @@ class _CardJadwalState extends State<CardJadwal> {
                   Get.snackbar(deleteJadwal.code.toString(),
                       deleteJadwal.msg.toString());
                 } else {
-                      Get.back();
-                      Navigator.pop(context); // Close the bottom sheet
-                      _refreshPage();
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => JadwalDokterView()));
+                  Get.back();
+                  Navigator.pop(context); // Close the bottom sheet
+                  _refreshPage();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => JadwalDokterView()));
                 }
               },
               child: Container(
@@ -229,7 +232,7 @@ class _CardJadwalState extends State<CardJadwal> {
                   color: Colors.redAccent,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -243,13 +246,10 @@ class _CardJadwalState extends State<CardJadwal> {
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
           ],
         ));
-
   }
-
 }
-

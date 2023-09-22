@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import '../controllers/riwayat_praktek_controller.dart';
 
 class RiwayatPraktekView extends StatefulWidget {
-  const RiwayatPraktekView({super.key});
+  RiwayatPraktekView({super.key});
 
   @override
   State<RiwayatPraktekView> createState() => _RiwayatPraktekViewState();
@@ -105,7 +105,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
               [
                 Column(
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 375),
+                    duration: Duration(milliseconds: 375),
                     childAnimationBuilder: (widget) => ScaleAnimation(
                       child: SlideAnimation(
                         child: widget,
@@ -169,7 +169,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 275),
+                    duration: Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
@@ -208,7 +208,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                     child: DropdownButton2(
                                       isExpanded: true,
                                       hint: Row(
-                                        children: const [
+                                        children: [
                                           SizedBox(
                                             width: 4,
                                           ),
@@ -231,7 +231,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: const TextStyle(
+                                                  style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
@@ -338,7 +338,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                     child: DropdownButton2(
                                       isExpanded: true,
                                       hint: Row(
-                                        children: const [
+                                        children: [
                                           SizedBox(
                                             width: 4,
                                           ),
@@ -361,7 +361,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: const TextStyle(
+                                                  style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
@@ -420,7 +420,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                     child: DropdownButton2(
                                       isExpanded: true,
                                       hint: Row(
-                                        children: const [
+                                        children: [
                                           SizedBox(
                                             width: 4,
                                           ),
@@ -443,7 +443,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: const TextStyle(
+                                                  style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
@@ -502,7 +502,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                     child: DropdownButton2(
                                       isExpanded: true,
                                       hint: Row(
-                                        children: const [
+                                        children: [
                                           SizedBox(
                                             width: 4,
                                           ),
@@ -525,7 +525,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: const TextStyle(
+                                                  style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,

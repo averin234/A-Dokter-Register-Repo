@@ -6,35 +6,35 @@ import '../../../../routes/app_pages.dart';
 
 class RiwayatVitalSign extends StatelessWidget {
   final VitalSign vitalSign;
-  const RiwayatVitalSign({super.key, required this.vitalSign});
+  RiwayatVitalSign({super.key, required this.vitalSign});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: const EdgeInsets.only(right: 10, left: 10),
-        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+        margin: EdgeInsets.only(right: 10, left: 10),
+        padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: const Color(0x6cc7d1db)),
+          border: Border.all(color: Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              color: Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: const Offset(2, 1),
+              offset: Offset(2, 1),
             ),
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
@@ -50,182 +50,194 @@ class RiwayatVitalSign extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
+            SizedBox(
               height: 5,
             ),
-            const Divider(
+            Divider(
               height: 10,
               color: Colors.grey,
             ),
-            const SizedBox(
+            SizedBox(
               height: 5,
             ),
             Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.only(left: 0),
+                  padding: EdgeInsets.only(left: 0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Keadaan Umum :",
+                      Text("Keadaan Umum :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
                               color: Colors.blue)),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
                       Text(vitalSign.keadaanUmum ?? '',
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
-                      const Text("Tekanan Darah :",
+                      Text("Tekanan Darah :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
                               color: Colors.blue)),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
-                      Row(children: [
-                        Text(vitalSign.tekananDarah ?? '',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 14)),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text('mmHg'),
-                      ],),
-                      const SizedBox(
+                      Row(
+                        children: [
+                          Text(vitalSign.tekananDarah ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14)),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('mmHg'),
+                        ],
+                      ),
+                      SizedBox(
                         height: 10,
                       ),
-                      const Text("Suhu :",
+                      Text("Suhu :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
                               color: Colors.blue)),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
-                      Row(children: [
-                        Text(vitalSign.suhu ?? '',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 14)),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text('°/Celcius')
-                      ],),
-                      const SizedBox(
+                      Row(
+                        children: [
+                          Text(vitalSign.suhu ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14)),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('°/Celcius')
+                        ],
+                      ),
+                      SizedBox(
                         height: 10,
                       ),
-                      const Text("Tinggi Badan :",
+                      Text("Tinggi Badan :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
                               color: Colors.blue)),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
-                      Row(children: [
-                        Text(vitalSign.tinggiBadan ?? '',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 14)),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text('Cm')
-                      ],),
-                      const SizedBox(
+                      Row(
+                        children: [
+                          Text(vitalSign.tinggiBadan ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14)),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('Cm')
+                        ],
+                      ),
+                      SizedBox(
                         height: 10,
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 80,
                 ),
                 Container(
-                  padding: const EdgeInsets.only(left: 0),
+                  padding: EdgeInsets.only(left: 0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Kesadaran :",
+                      Text("Kesadaran :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
                               color: Colors.blue)),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
                       Text(vitalSign.kesadaranPasien ?? '',
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14)),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
-                      const Text("Nadi :",
+                      Text("Nadi :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
                               color: Colors.blue)),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
-                      Row(children: [
-                        Text(vitalSign.nadi ?? '',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 14)),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text('x/menit'),
-                      ],),
-                      const SizedBox(
+                      Row(
+                        children: [
+                          Text(vitalSign.nadi ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14)),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('x/menit'),
+                        ],
+                      ),
+                      SizedBox(
                         height: 10,
                       ),
-                      const Text("Pernafasan :",
+                      Text("Pernafasan :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
                               color: Colors.blue)),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
-                      Row(children: [
-                        Text(vitalSign.pernafasan ?? '',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 14)),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text('x/menit')
-                      ],),
-                      const SizedBox(
+                      Row(
+                        children: [
+                          Text(vitalSign.pernafasan ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14)),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('x/menit')
+                        ],
+                      ),
+                      SizedBox(
                         height: 10,
                       ),
-                      const Text("Berat Badan :",
+                      Text("Berat Badan :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
                               color: Colors.blue)),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
-                      Row(children: [
-                        Text(vitalSign.beratBadan ?? '',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 14)),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text('kg')
-                      ],),
-                      const SizedBox(
+                      Row(
+                        children: [
+                          Text(vitalSign.beratBadan ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14)),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('kg')
+                        ],
+                      ),
+                      SizedBox(
                         height: 10,
                       ),
                     ],

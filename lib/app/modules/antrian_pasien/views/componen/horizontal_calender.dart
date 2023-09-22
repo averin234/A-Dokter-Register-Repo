@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:horizontal_calendar/horizontal_calendar.dart';
 
 class HorizontalCalender extends StatelessWidget {
-  const HorizontalCalender({super.key});
+  HorizontalCalender({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +18,13 @@ class HorizontalCalender extends StatelessWidget {
             color: Colors.white,
           ),
           child: Container(
-            padding: const EdgeInsets.all(0),
+            padding: EdgeInsets.all(0),
             child: HorizontalCalendar(
               date: DateTime.now(),
               initialDate: DateTime.now(),
               textColor: Colors.black,
               backgroundColor: Colors.white,
-              selectedColor: const Color.fromARGB(255, 35, 163, 223),
+              selectedColor: Color.fromARGB(255, 35, 163, 223),
               showMonth: true,
               locale: Localizations.localeOf(context),
               onDateSelected: (date) {

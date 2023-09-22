@@ -21,7 +21,7 @@ import 'componen/search_dropdown_hiss.dart';
 import 'componen/search_hiss.dart';
 
 class HissView extends StatefulWidget {
-  const HissView({super.key});
+  HissView({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -39,18 +39,18 @@ class HissViewState extends State<HissView> {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              color: Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: const Offset(2, 1),
+              offset: Offset(2, 1),
             ),
           ],
         ),
         height: 75,
-        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Row(
           children: <Widget>[
-            const SizedBox(
+            SizedBox(
               width: 230,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -67,7 +67,7 @@ class HissViewState extends State<HissView> {
               child: InkWell(
                 onTap: () async {
                   Get.defaultDialog(
-                    backgroundColor: const Color(0x00e0e0e0),
+                    backgroundColor: Color(0x00e0e0e0),
                     content: Loading(),
                     title: '',
                     barrierDismissible: false,
@@ -89,7 +89,7 @@ class HissViewState extends State<HissView> {
                     icd10.code == 200
                         ? showModalBottomSheet(
                             context: context,
-                            shape: const RoundedRectangleBorder(
+                            shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.vertical(
                                 top: Radius.circular(20),
                               ),
@@ -110,10 +110,10 @@ class HissViewState extends State<HissView> {
                   }
                 },
                 child: Container(
-                  margin: const EdgeInsets.only(
-                      right: 15, left: 15, top: 10, bottom: 10),
+                  margin:
+                      EdgeInsets.only(right: 15, left: 15, top: 10, bottom: 10),
                   alignment: Alignment.center,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(5)),
                     boxShadow: <BoxShadow>[
                       BoxShadow(
@@ -129,7 +129,7 @@ class HissViewState extends State<HissView> {
                       colors: [Color(0xff4babe7), Color(0xff4babe7)],
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     "Kirim",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -148,11 +148,11 @@ class HissViewState extends State<HissView> {
           automaticallyImplyLeading: false,
           title: Column(
             children: [
-              const SearchHISS(),
-              const SizedBox(
+              SearchHISS(),
+              SizedBox(
                 height: 10,
               ),
-              const SearchHISSdropdowmn(),
+              SearchHISSdropdowmn(),
               SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Obx(
@@ -166,8 +166,8 @@ class HissViewState extends State<HissView> {
                           onPressed: () {
                             controller.initialValue.value = 0;
                           },
-                          child: const Text('Gejala')),
-                      const SizedBox(
+                          child: Text('Gejala')),
+                      SizedBox(
                         width: 10,
                       ),
                       TextButton(
@@ -179,8 +179,8 @@ class HissViewState extends State<HissView> {
                           onPressed: () {
                             controller.initialValue.value = 1;
                           },
-                          child: const Text('ICD X & Diagnosa')),
-                      const SizedBox(
+                          child: Text('ICD X & Diagnosa')),
+                      SizedBox(
                         width: 10,
                       ),
                       TextButton(
@@ -192,8 +192,8 @@ class HissViewState extends State<HissView> {
                           onPressed: () {
                             controller.initialValue.value = 2;
                           },
-                          child: const Text('Penyebab')),
-                      const SizedBox(
+                          child: Text('Penyebab')),
+                      SizedBox(
                         width: 10,
                       ),
                       TextButton(
@@ -205,8 +205,8 @@ class HissViewState extends State<HissView> {
                           onPressed: () {
                             controller.initialValue.value = 3;
                           },
-                          child: const Text('Penunjang')),
-                      const SizedBox(
+                          child: Text('Penunjang')),
+                      SizedBox(
                         width: 10,
                       ),
                       TextButton(
@@ -218,8 +218,8 @@ class HissViewState extends State<HissView> {
                           onPressed: () {
                             controller.initialValue.value = 4;
                           },
-                          child: const Text('Pengobatan')),
-                      const SizedBox(
+                          child: Text('Pengobatan')),
+                      SizedBox(
                         width: 10,
                       ),
                       TextButton(
@@ -231,8 +231,8 @@ class HissViewState extends State<HissView> {
                           onPressed: () {
                             controller.initialValue.value = 5;
                           },
-                          child: const Text('Komplikasi')),
-                      const SizedBox(
+                          child: Text('Komplikasi')),
+                      SizedBox(
                         width: 10,
                       ),
                       TextButton(
@@ -244,8 +244,8 @@ class HissViewState extends State<HissView> {
                           onPressed: () {
                             controller.initialValue.value = 6;
                           },
-                          child: const Text('Differensial')),
-                      const SizedBox(
+                          child: Text('Differensial')),
+                      SizedBox(
                         width: 10,
                       ),
                       TextButton(
@@ -257,8 +257,8 @@ class HissViewState extends State<HissView> {
                           onPressed: () {
                             controller.initialValue.value = 7;
                           },
-                          child: const Text('Catatan')),
-                      const SizedBox(
+                          child: Text('Catatan')),
+                      SizedBox(
                         width: 10,
                       ),
                       // TextButton(
@@ -270,8 +270,8 @@ class HissViewState extends State<HissView> {
                       //     onPressed: () {
                       //       controller.initialValue.value = 8;
                       //     },
-                      //     child: const Text('Pre Existing')),
-                      // const SizedBox(
+                      //     child:  Text('Pre Existing')),
+                      //  SizedBox(
                       //   width: 10,
                       // ),
                     ]),
@@ -282,36 +282,36 @@ class HissViewState extends State<HissView> {
         child: Obx(() {
           return Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
               controller.initialValue.value == 0
-                  ? const Gejala()
+                  ? Gejala()
                   : controller.initialValue.value == 1
-                      ? const Icdx()
+                      ? Icdx()
                       : controller.initialValue.value == 2
-                          ? const Penyebab()
+                          ? Penyebab()
                           : controller.initialValue.value == 3
-                              ? const Penunjang()
+                              ? Penunjang()
                               : controller.initialValue.value == 4
-                                  ? const Pengobatan()
+                                  ? Pengobatan()
                                   : controller.initialValue.value == 5
-                                      ? const Komplikasi()
+                                      ? Komplikasi()
                                       : controller.initialValue.value == 6
-                                          ? const Differensial()
-                                          : const Catatan(),
-              const SizedBox(
+                                          ? Differensial()
+                                          : Catatan(),
+              SizedBox(
                 height: 10,
               ),
-              const Subyektifhiss(),
-              const SizedBox(
+              Subyektifhiss(),
+              SizedBox(
                 height: 10,
               ),
-              const Objektivehiss(),
-              const SizedBox(
+              Objektivehiss(),
+              SizedBox(
                 height: 10,
               ),
-              const Assestmenthiss(),
+              Assestmenthiss(),
             ],
           );
         }),
@@ -328,7 +328,7 @@ class HissViewState extends State<HissView> {
         ),
         child: Column(
           children: [
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Container(
@@ -338,22 +338,22 @@ class HissViewState extends State<HissView> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: const Color(0xFFe0e0e0),
+                color: Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 25,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15),
+              padding: EdgeInsets.only(left: 15),
               child: Text(title,
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Expanded(
@@ -362,7 +362,7 @@ class HissViewState extends State<HissView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 275),
+                    duration: Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
@@ -370,9 +370,8 @@ class HissViewState extends State<HissView> {
                     ),
                     children: <Widget>[
                       Container(
-                        margin:
-                            const EdgeInsets.only(right: 20, left: 20, top: 20),
-                        child: const Center(
+                        margin: EdgeInsets.only(right: 20, left: 20, top: 20),
+                        child: Center(
                           child: Text(
                             'Pastikan Data yang di inputkan sudah benar',
                             textAlign: TextAlign.center,
@@ -385,7 +384,7 @@ class HissViewState extends State<HissView> {
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             InkWell(
@@ -402,7 +401,7 @@ class HissViewState extends State<HissView> {
                   color: Colors.greenAccent,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -416,7 +415,7 @@ class HissViewState extends State<HissView> {
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
           ],

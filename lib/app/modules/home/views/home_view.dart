@@ -25,7 +25,7 @@ import '../controllers/home_controller.dart';
 import 'componen/menu.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({super.key});
+  HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +34,14 @@ class HomeView extends GetView<HomeController> {
       bottomNavigationBar: Obx(() {
         return BottomAppBar(
           notchMargin: 5.0,
-          shape: const CircularNotchedRectangle(),
+          shape: CircularNotchedRectangle(),
           color: Colors.white,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 10.0),
+                padding: EdgeInsets.only(left: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 0;
@@ -53,7 +53,7 @@ class HomeView extends GetView<HomeController> {
                           color: controller.currentIndex.value != 0
                               ? Colors.grey
                               : Colors.blue),
-                      const Text(
+                      Text(
                         "Home",
                         style: TextStyle(color: Colors.black),
                       )
@@ -62,8 +62,7 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 1;
@@ -77,7 +76,7 @@ class HomeView extends GetView<HomeController> {
                             ? Colors.grey
                             : Colors.blue,
                       ),
-                      const Text(
+                      Text(
                         "Kasir",
                         style: TextStyle(color: Colors.black),
                       )
@@ -86,8 +85,7 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.only( top: 10.0, bottom: 10.0),
+                padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 2;
@@ -99,7 +97,7 @@ class HomeView extends GetView<HomeController> {
                           color: controller.currentIndex.value != 2
                               ? Colors.grey
                               : Colors.blue),
-                      const Text(
+                      Text(
                         "Pasien",
                         style: TextStyle(color: Colors.black),
                       )
@@ -108,7 +106,7 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 10.0),
+                padding: EdgeInsets.only(right: 10.0),
                 child: GestureDetector(
                   onTap: () {
                     controller.currentIndex.value = 3;
@@ -120,7 +118,7 @@ class HomeView extends GetView<HomeController> {
                           color: controller.currentIndex.value != 3
                               ? Colors.grey
                               : Colors.blue),
-                      const Text(
+                      Text(
                         "Setting",
                         style: TextStyle(color: Colors.black),
                       )
@@ -136,10 +134,10 @@ class HomeView extends GetView<HomeController> {
         return controller.currentIndex.value == 0
             ? Home()
             : controller.currentIndex.value == 1
-                ? const PendapatanDokterView()
+                ? PendapatanDokterView()
                 : controller.currentIndex.value == 2
-                    ? const TindakanView()
-                    : const ProfileView();
+                    ? TindakanView()
+                    : ProfileView();
       }),
     );
   }
@@ -152,7 +150,7 @@ class HomeView extends GetView<HomeController> {
           color: Colors.white,
         ),
         child: Column(children: [
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Container(
@@ -162,14 +160,14 @@ class HomeView extends GetView<HomeController> {
               left: Get.width / 2 - 40,
             ),
             decoration: BoxDecoration(
-              color: const Color(0xFFe0e0e0),
+              color: Color(0xFFe0e0e0),
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 25,
           ),
-          // const Padding(
+          //  Padding(
           //   padding: EdgeInsets.only(left: 15),
           //   child: Text("Tambah",
           //       style: TextStyle(
@@ -177,7 +175,7 @@ class HomeView extends GetView<HomeController> {
           //           fontSize: 16,
           //           color: Colors.blue)),
           // ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Expanded(
@@ -186,7 +184,7 @@ class HomeView extends GetView<HomeController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: AnimationConfiguration.toStaggeredList(
-                        duration: const Duration(milliseconds: 275),
+                        duration: Duration(milliseconds: 275),
                         childAnimationBuilder: (widget) => SlideAnimation(
                           child: FadeInAnimation(
                             child: widget,
@@ -213,10 +211,10 @@ class HomeView extends GetView<HomeController> {
                                         'assets/images/timetable.png',
                                         width: 60,
                                       ),
-                                      const SizedBox(
+                                      SizedBox(
                                         width: 20,
                                       ),
-                                      const Column(
+                                      Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
@@ -245,7 +243,7 @@ class HomeView extends GetView<HomeController> {
                               ),
                             ),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 10,
                           ),
                           InkWell(
@@ -267,10 +265,10 @@ class HomeView extends GetView<HomeController> {
                                         'assets/images/pasienbaru.png',
                                         width: 60,
                                       ),
-                                      const SizedBox(
+                                      SizedBox(
                                         width: 20,
                                       ),
-                                      const Column(
+                                      Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
@@ -299,7 +297,7 @@ class HomeView extends GetView<HomeController> {
                               ),
                             ),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 10,
                           ),
                           InkWell(
@@ -321,10 +319,10 @@ class HomeView extends GetView<HomeController> {
                                         'assets/images/pasienlama.png',
                                         width: 60,
                                       ),
-                                      const SizedBox(
+                                      SizedBox(
                                         width: 20,
                                       ),
-                                      const Column(
+                                      Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
@@ -359,9 +357,8 @@ class HomeView extends GetView<HomeController> {
   }
 }
 
-
 class Home extends StatefulWidget {
-  const Home({Key? key, this.title}) : super(key: key);
+  Home({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
@@ -370,7 +367,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
- // this enable our app to able to pull down
+  // this enable our app to able to pull down
   AppUpdateInfo? _updateInfo;
 
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
@@ -394,33 +391,36 @@ class _HomeState extends State<Home> {
           .showSnackBar(SnackBar(content: Text(text)));
     }
   }
-  late RefreshController _refreshController;// this is our key to the scaffold widget
+
+  late RefreshController
+      _refreshController; // this is our key to the scaffold widget
   @override
   void initState() {
-    _refreshController = RefreshController(); // we have to use initState because this part of the app have to restart
+    _refreshController =
+        RefreshController(); // we have to use initState because this part of the app have to restart
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      body: SmartRefresher(
+      child: Scaffold(
+        body: SmartRefresher(
           controller: _refreshController,
           enablePullDown: true,
-        header: WaterDropHeader(),
-        onLoading: _onLoading,
-        onRefresh: _onRefresh,
+          header: WaterDropHeader(),
+          onLoading: _onLoading,
+          onRefresh: _onRefresh,
           child: CustomScrollView(
             slivers: [
               SliverAppBar(
                 toolbarHeight: 0,
-                systemOverlayStyle: const SystemUiOverlayStyle(
+                systemOverlayStyle: SystemUiOverlayStyle(
                   statusBarColor: Colors.white, // <-- SEE HERE
                   statusBarIconBrightness:
-                  Brightness.dark, //<-- For Android SEE HERE (dark icons)
+                      Brightness.dark, //<-- For Android SEE HERE (dark icons)
                   statusBarBrightness:
-                  Brightness.light, //<-- For iOS SEE HERE (dark icons)
+                      Brightness.light, //<-- For iOS SEE HERE (dark icons)
                 ),
                 stretch: false,
                 backgroundColor: Colors.white,
@@ -428,7 +428,7 @@ class _HomeState extends State<Home> {
                 pinned: true,
                 automaticallyImplyLeading: false,
                 snap: true,
-                actions: const [],
+                actions: [],
                 bottom: AppBar(
                   toolbarHeight: 100,
                   automaticallyImplyLeading: false,
@@ -437,7 +437,8 @@ class _HomeState extends State<Home> {
                   title: FutureBuilder(
                       future: API.getDetailDokter(
                           kode_dokter:
-                          Publics.controller.getDataRegist.value.kode ?? ''),
+                              Publics.controller.getDataRegist.value.kode ??
+                                  ''),
                       builder: (context, snapshot) {
                         if (snapshot.hasData &&
                             snapshot.connectionState !=
@@ -446,7 +447,7 @@ class _HomeState extends State<Home> {
                           final data = snapshot.data!.dokter![0];
                           return CardDokterSetting(dokter: data);
                         } else {
-                          return const Center(
+                          return Center(
                             child: shimmerProfile(),
                           );
                         }
@@ -459,28 +460,27 @@ class _HomeState extends State<Home> {
                   [
                     Column(
                       children: AnimationConfiguration.toStaggeredList(
-                        duration: const Duration(milliseconds: 375),
-                        childAnimationBuilder: (widget) =>
-                            SlideAnimation(
-                              child: FadeInAnimation(
-                                child: widget,
-                              ),
-                            ),
+                        duration: Duration(milliseconds: 375),
+                        childAnimationBuilder: (widget) => SlideAnimation(
+                          child: FadeInAnimation(
+                            child: widget,
+                          ),
+                        ),
                         children: <Widget>[
-                          const SizedBox(
+                          SizedBox(
                             height: 10,
                           ),
-                          const MenuHome(),
-                          const SizedBox(),
+                          MenuHome(),
+                          SizedBox(),
                           // BarChartSample2()
                           Padding(
-                            padding: const EdgeInsets.only(right: 10, left: 10),
+                            padding: EdgeInsets.only(right: 10, left: 10),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
                                   children: [
-                                    const Expanded(
+                                    Expanded(
                                       child: Text(
                                         "Antrian Pasien",
                                         style: TextStyle(
@@ -488,14 +488,14 @@ class _HomeState extends State<Home> {
                                             fontSize: 18),
                                       ),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       width: 10,
                                     ),
                                     GestureDetector(
                                       onTap: () {
                                         Get.toNamed(Routes.ANTRIAN_PASIEN);
                                       },
-                                      child: const Text(
+                                      child: Text(
                                         "Lihat Semua",
                                         style: TextStyle(
                                             fontWeight: FontWeight.normal,
@@ -503,7 +503,7 @@ class _HomeState extends State<Home> {
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       width: 10,
                                     ),
                                   ],
@@ -516,8 +516,9 @@ class _HomeState extends State<Home> {
                                         color: Colors.grey,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 10),
-                                  ),),
-                                const SizedBox(
+                                  ),
+                                ),
+                                SizedBox(
                                   height: 10,
                                 ),
                                 FutureBuilder(
@@ -525,8 +526,7 @@ class _HomeState extends State<Home> {
                                       tanggal: DateFormat('yyyy-MM-dd')
                                           .format(DateTime.now()),
                                       kode_dokter: Publics.controller
-                                          .getDataRegist
-                                          .value.kode ??
+                                              .getDataRegist.value.kode ??
                                           ''),
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData &&
@@ -536,23 +536,23 @@ class _HomeState extends State<Home> {
                                       final data = snapshot.data!.antrian ?? [];
                                       return data.isEmpty
                                           ? Center(
-                                        child: Column(children: [
-                                          const Text(
-                                              'Tidak ada Antrian Saat ini'),
-                                          Image.asset(
-                                            'assets/images/noantri.png',
-                                            height: 200,
-                                          ),
-                                        ]),
-                                      )
+                                              child: Column(children: [
+                                                Text(
+                                                    'Tidak ada Antrian Saat ini'),
+                                                Image.asset(
+                                                  'assets/images/noantri.png',
+                                                  height: 200,
+                                                ),
+                                              ]),
+                                            )
                                           : Column(
-                                        children: data
-                                            .map((e) =>
-                                            ListViewTindakan(antrian: e))
-                                            .toList(),
-                                      );
+                                              children: data
+                                                  .map((e) => ListViewTindakan(
+                                                      antrian: e))
+                                                  .toList(),
+                                            );
                                     } else {
-                                      return const SingleChildScrollView(
+                                      return SingleChildScrollView(
                                         child: Column(
                                           children: [
                                             shimmerHome(),
@@ -567,7 +567,7 @@ class _HomeState extends State<Home> {
                                     }
                                   },
                                 ),
-                                const SizedBox(
+                                SizedBox(
                                   height: 10,
                                 ),
                               ],
@@ -581,18 +581,22 @@ class _HomeState extends State<Home> {
               ),
             ],
           ),
-      ),
         ),
+      ),
     );
   }
+
   _onLoading() {
-    _refreshController.loadComplete(); // after data returned,set the //footer state to idle
+    _refreshController
+        .loadComplete(); // after data returned,set the //footer state to idle
   }
+
   _onRefresh() {
     setState(() {
 // so whatever you want to refresh it must be inside the setState
-      Home();// if you only want to refresh the list you can place this, so the two can be inside setState
-      _refreshController.refreshCompleted(); // request complete,the header will enter complete state,
+      Home(); // if you only want to refresh the list you can place this, so the two can be inside setState
+      _refreshController
+          .refreshCompleted(); // request complete,the header will enter complete state,
 // resetFooterState : it will set the footer state from noData to idle
     });
   }

@@ -5,15 +5,15 @@ import 'package:get/get.dart';
 import '../controllers/pemeriksaan_controller.dart';
 
 class PemeriksaanView extends GetView<PemeriksaanController> {
-  const PemeriksaanView({Key? key}) : super(key: key);
+  PemeriksaanView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PemeriksaanView'),
+        title: Text('PemeriksaanView'),
         centerTitle: true,
       ),
-      body: const Center(
+      body: Center(
         child: Text(
           'PemeriksaanView is working',
           style: TextStyle(fontSize: 20),

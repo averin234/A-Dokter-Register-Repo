@@ -36,8 +36,8 @@ import "../model/profile_pasien/get_tunai.dart";
 import "local_storage.dart";
 
 class API {
-  // static const _url = "https://a-dokter.id/";
-  // static const _url = "https://adokter.d-medis.id/";
+  // static  _url = "https://a-dokter.id/";
+  // static  _url = "https://adokter.d-medis.id/";
   static const _url = "https://demo.a-dokter.id/";
   static const _baseUrl = "${_url}api/v1";
   static const _getToken = "$_baseUrl/get-token.php";
@@ -68,8 +68,8 @@ class API {
   static const _getEditDokter = "$_baseUrl/edit-dokter.php";
   static const _getNamaPenyakit = "$_baseUrl/get-nama-penyakit-hiss.php";
   static const _getHISS = "$_baseUrl/get-soap-hiss.php";
-  // static const _getTindakan = "$_baseUrl/get-tindakan-px.php";
-  // static const _getVitalSign = "$_baseUrl/get-vital-sign-px.php";
+  // static  _getTindakan = "$_baseUrl/get-tindakan-px.php";
+  // static  _getVitalSign = "$_baseUrl/get-vital-sign-px.php";
   static const _getProvinsi = "$_baseUrl/get-provinsi.php";
   static const _getKecamatan = "$_baseUrl/get-kecamatan.php";
   static const _getKelurahan = "$_baseUrl/get-kelurahan.php";
@@ -78,7 +78,7 @@ class API {
   static const _getkeadaanumum = "$_baseUrl/get-keadaan-umum.php";
   static const _getPasienbBy = "$_baseUrl/get-pasien-by.php";
   static const _getLupaPassword = "$_baseUrl/cek-lupa-password.php";
-  // static const _getStatusDokter = "$_baseUrl/get-status-dokter.php";
+  // static  _getStatusDokter = "$_baseUrl/get-status-dokter.php";
   // penambahan lagi
   static const _getDaftarPrivy = "$_baseUrl/daftar_privyid_dr.php";
   static const _postJadwalDokter = "$_baseUrl/post-jadwal-dokter.php";

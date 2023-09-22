@@ -30,7 +30,7 @@ class Cetekan extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 0,
-        title: const Text('Webview Example'),
+        title: Text('Webview Example'),
       ),
       body: SizedBox(
           width: double.infinity,

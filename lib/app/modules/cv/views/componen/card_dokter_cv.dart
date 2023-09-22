@@ -5,16 +5,16 @@ import '../../../../data/model/get_detail_dokter.dart';
 
 class CardDokterCV extends StatelessWidget {
   final Dokter dokter;
-  const CardDokterCV({super.key, required this.dokter});
+  CardDokterCV({super.key, required this.dokter});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        margin: const EdgeInsets.only(right: 10, left: 10, bottom: 0),
-        padding: const EdgeInsets.only(right: 0, left: 10, bottom: 10),
+        margin: EdgeInsets.only(right: 10, left: 10, bottom: 0),
+        padding: EdgeInsets.only(right: 0, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: const Color(0x6cc7d1db)),
+          border: Border.all(color: Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
@@ -25,8 +25,7 @@ class CardDokterCV extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    margin:
-                        const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                    margin: EdgeInsets.only(left: 10, bottom: 10, top: 10),
                     child: CircleAvatar(
                       radius: 30.0,
                       backgroundImage:
@@ -34,16 +33,16 @@ class CardDokterCV extends StatelessWidget {
                       backgroundColor: Colors.transparent,
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     width: 10,
                   ),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(
+                        SizedBox(
                           height: 10,
                         ),
-                        const Row(
+                        Row(
                           children: [
                             Text("Profil Dokter",
                                 style: TextStyle(
@@ -53,77 +52,79 @@ class CardDokterCV extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const Divider(
+                        Divider(
                           color: Colors.grey,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 10,
                         ),
                         Row(
                           children: [
-                            const Text("Nama Lengkap :",
+                            Text("Nama Lengkap :",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
-                            const SizedBox(
+                            SizedBox(
                               width: 6,
                             ),
                             Text(dokter.namaPegawai ?? '',
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
                           ],
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 10,
                         ),
                         Row(
                           children: [
-                            const Text("Email :",
+                            Text("Email :",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
-                            const SizedBox(
+                            SizedBox(
                               width: 6,
                             ),
                             Text(dokter.email ?? '',
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
                           ],
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 10,
                         ),
                         Row(
                           children: [
-                            const Text("HP :",
+                            Text("HP :",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
-                            const SizedBox(
+                            SizedBox(
                               width: 6,
                             ),
                             Text(dokter.telp ?? '',
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
                           ],
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 10,
                         ),
                         Row(
                           children: [
-                            const Text("Alamat :",
+                            Text("Alamat :",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
-                            const SizedBox(
+                            SizedBox(
                               width: 6,
                             ),
                             SizedBox(
                               width: 190,
-                            child : Text(dokter.alamat ?? '',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 13)),),
+                              child: Text(dokter.alamat ?? '',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13)),
+                            ),
                           ],
                         ),
                       ]),
-                  const SizedBox(
+                  SizedBox(
                     width: 10,
                   ),
                 ],
@@ -132,8 +133,8 @@ class CardDokterCV extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: const Column(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

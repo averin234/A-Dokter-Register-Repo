@@ -11,7 +11,7 @@ import '../../loading_summer/loading_screen_animed.dart';
 import '../controllers/registrasi_pasien_controller.dart';
 
 class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
-  const RegistrasiPasienView({Key? key}) : super(key: key);
+  RegistrasiPasienView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,26 +20,25 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              color: Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: const Offset(2, 1),
+              offset: Offset(2, 1),
             ),
           ],
         ),
         height: 75,
-        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Row(
           children: <Widget>[
-            const SizedBox(
+            SizedBox(
               width: 200,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
                       padding: EdgeInsets.only(left: 0),
-                      child: Text(
-                          "Pastikan Data pasien\nsudah benar ",
+                      child: Text("Pastikan Data pasien\nsudah benar ",
                           style: TextStyle(color: Colors.black))),
                 ],
               ),
@@ -49,15 +48,13 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                 onTap: () async {
                   Get.defaultDialog(
                     backgroundColor: Color(0xe0e0e0),
-                    content:
-                    Loading(),
+                    content: Loading(),
                     title: '',
                     barrierDismissible: false,
                   );
                   final postPasien = await API.postPasienBaru(
                     kode_dokter:
-                    Publics.controller.getDataRegist.value.kode ??
-                        '',
+                        Publics.controller.getDataRegist.value.kode ?? '',
                     nama_pasien: controller.namaController.text,
                     nasabah: controller.nasabahController.value.text,
                     id_agama: controller.agamaController.text,
@@ -68,19 +65,16 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                     tempat_lahir: controller.tempatLahirController.text,
                     email: controller.emailController.text,
                     tgl_lahir: controller.tanggalLahirController.text,
-                    jenis_kelamin:
-                    controller.jenisKelaminController.text,
+                    jenis_kelamin: controller.jenisKelaminController.text,
                     alamat: controller.alamatController.text,
                     id_kawin: controller.statusKawinController.text,
                     id_prov: controller.provinsiController.value.text,
                     id_goldar: controller.golonganDarahController.text,
                     id_kota: controller.kotaController.value.text,
-                    id_kecamatan:
-                    controller.kecamatanController.value.text,
+                    id_kecamatan: controller.kecamatanController.value.text,
                     alergi: controller.alergiController.text,
                     kode_pos: controller.kodePosController.text,
-                    id_kelurahan:
-                    controller.kelurahanController.value.text,
+                    id_kelurahan: controller.kelurahanController.value.text,
                     foto_pasien: controller.fotoController.text,
                     no_bpjs: controller.noBPJSController.text,
                     no_polis: controller.noPolisController.text,
@@ -89,9 +83,7 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                   Get.back();
                   if (postPasien.code == 200) {
                     Get.toNamed(Routes.DETAIL_REGIST_PASIEN_LAMA,
-                        parameters: {
-                          'no_mr': postPasien.pasien!.noMr ?? ''
-                        });
+                        parameters: {'no_mr': postPasien.pasien!.noMr ?? ''});
                   } else {
                     Get.defaultDialog(
                       title: (postPasien.code ?? 0).toString(),
@@ -99,12 +91,11 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                     );
                   }
                 },
-                child:
-                Container(
-                  margin: const EdgeInsets.only(
-                      right: 5, left: 5, top: 10, bottom: 10),
+                child: Container(
+                  margin:
+                      EdgeInsets.only(right: 5, left: 5, top: 10, bottom: 10),
                   alignment: Alignment.center,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(5)),
                     color: Colors.greenAccent,
                     boxShadow: <BoxShadow>[
@@ -116,7 +107,7 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                       )
                     ],
                   ),
-                  child: const Text(
+                  child: Text(
                     "Kirim",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -129,10 +120,9 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
             Expanded(
               child: InkWell(
                 onTap: () => Get.back(),
-                child:
-                Container(
-                  margin: const EdgeInsets.only(
-                      right: 15, left: 5, top: 10, bottom: 10),
+                child: Container(
+                  margin:
+                      EdgeInsets.only(right: 15, left: 5, top: 10, bottom: 10),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
@@ -146,7 +136,7 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                       )
                     ],
                   ),
-                  child: const Text(
+                  child: Text(
                     "Batal",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -209,7 +199,10 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(10),
-                  child: Text("Tambahkan Pasien Baru Anda untuk masuk ke Daftar Antirian yang akan di tangani", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                  child: Text(
+                      "Tambahkan Pasien Baru Anda untuk masuk ke Daftar Antirian yang akan di tangani",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
               ),
               SizedBox(

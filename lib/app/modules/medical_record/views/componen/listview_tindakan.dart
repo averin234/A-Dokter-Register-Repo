@@ -8,31 +8,28 @@ import '../../../../routes/app_pages.dart';
 
 class ListViewPasien extends StatelessWidget {
   final Pasien pasien;
-  const ListViewPasien({super.key,required this.pasien});
+  ListViewPasien({super.key, required this.pasien});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: [
+    return Column(children: [
       InkWell(
-      onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
-          parameters: {'no_mr': pasien.noMr ?? ''}),
-      child: Container(
-        margin: const EdgeInsets.only(right: 10, left: 10, bottom: 0),
-        padding: const EdgeInsets.only(right: 0, left: 10, bottom: 5),
-        decoration: BoxDecoration(
-          border: Border.all(color: const Color(0x6cc7d1db)),
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    margin:
-                        const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                    child: Row(
-                      children: [
+        onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
+            parameters: {'no_mr': pasien.noMr ?? ''}),
+        child: Container(
+          margin: EdgeInsets.only(right: 10, left: 10, bottom: 0),
+          padding: EdgeInsets.only(right: 0, left: 10, bottom: 5),
+          decoration: BoxDecoration(
+            border: Border.all(color: Color(0x6cc7d1db)),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                  margin: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                  child: Row(children: [
                     CircleAvatar(
                       radius: 30.0,
                       backgroundImage: NetworkImage(pasien.foto ??
@@ -41,145 +38,144 @@ class ListViewPasien extends StatelessWidget {
                               : Avatar.perempuan)),
                       backgroundColor: Colors.transparent,
                     ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         SizedBox(
                           child: Text(pasien.namaPasien ?? '',
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13)),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 13)),
                         ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              const Text("No MR :",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 13)),
-                              const SizedBox(
-                                width: 6,
-                              ),
-                              Text(pasien.noMr ?? '',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 13)),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 3,
-                          ),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.phone,
-                                color: Colors.grey,
-                                size: 20.0,
-                              ),
-                              const SizedBox(
-                                width: 6,
-                              ),
-                              Text(pasien.noHp ?? '',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 13)),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 3,
-                          ),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.person,
-                                color: Colors.grey,
-                                size: 20.0,
-                              ),
-                              const SizedBox(
-                                width: 6,
-                              ),
-                              FutureBuilder(
-                                  future: API.cekJenisKelamin(
-                                      jenis_kelamin: pasien.jenKelamin ?? ''),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData &&
-                                        snapshot.connectionState !=
-                                            ConnectionState.waiting &&
-                                        snapshot.data != null) {
-                                      return Text(snapshot.data!.msg ?? '',
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 13));
-                                    } else {
-                                      return const Center(
-                                        child: CircularProgressIndicator(),
-                                      );
-                                    }
-                                  }),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 3,
-                          ),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.bloodtype,
-                                color: Colors.grey,
-                                size: 20.0,
-                              ),
-                              const SizedBox(
-                                width: 6,
-                              ),
-                              Text(pasien.golDarah ?? '',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 13)),
-                            ],
-                          ),
-                    ],),])
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(
+                        SizedBox(
                           height: 10,
                         ),
-                        Container(
-                          margin: EdgeInsets.only(right: 10),
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 219, 246, 253),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(children: [
-                          Text("Cek MR",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold)),
+                        Row(
+                          children: [
+                            Text("No MR :",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 13)),
                             SizedBox(
-                              height: 10,
+                              width: 6,
                             ),
-                            Image.asset(
-                              'assets/images/mrpoto.png',
-                              height: 40,
-                            ),
-                          ],),
+                            Text(pasien.noMr ?? '',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 13)),
+                          ],
                         ),
-
-                      ]),
-                ],
+                        SizedBox(
+                          height: 3,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.phone,
+                              color: Colors.grey,
+                              size: 20.0,
+                            ),
+                            SizedBox(
+                              width: 6,
+                            ),
+                            Text(pasien.noHp ?? '',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 13)),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.person,
+                              color: Colors.grey,
+                              size: 20.0,
+                            ),
+                            SizedBox(
+                              width: 6,
+                            ),
+                            FutureBuilder(
+                                future: API.cekJenisKelamin(
+                                    jenis_kelamin: pasien.jenKelamin ?? ''),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData &&
+                                      snapshot.connectionState !=
+                                          ConnectionState.waiting &&
+                                      snapshot.data != null) {
+                                    return Text(snapshot.data!.msg ?? '',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13));
+                                  } else {
+                                    return Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }
+                                }),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.bloodtype,
+                              color: Colors.grey,
+                              size: 20.0,
+                            ),
+                            SizedBox(
+                              width: 6,
+                            ),
+                            Text(pasien.golDarah ?? '',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 13)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ])),
+              SizedBox(
+                width: 10,
               ),
-      ),
-      ),
-          SizedBox(
-            height: 5,
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  margin: EdgeInsets.only(right: 10),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 219, 246, 253),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    children: [
+                      Text("Cek MR",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Image.asset(
+                        'assets/images/mrpoto.png',
+                        height: 40,
+                      ),
+                    ],
+                  ),
+                ),
+              ]),
+            ],
           ),
+        ),
+      ),
+      SizedBox(
+        height: 5,
+      ),
     ]);
   }
 }

@@ -8,7 +8,7 @@ Future bottomSheetSelesaiPemeriksaan() {
       context: Get.context!,
       isScrollControlled: true,
       isDismissible: true,
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20),
         ),
@@ -22,7 +22,7 @@ Future bottomSheetSelesaiPemeriksaan() {
             ),
             child: Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -32,14 +32,14 @@ Future bottomSheetSelesaiPemeriksaan() {
                     left: Get.width / 2 - 40,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFe0e0e0),
+                    color: Color(0xFFe0e0e0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 25,
                 ),
-                const Text('Penting !!',
+                Text('Penting !!',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.blue)),
                 SingleChildScrollView(
@@ -48,24 +48,24 @@ Future bottomSheetSelesaiPemeriksaan() {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: AnimationConfiguration.toStaggeredList(
-                        duration: const Duration(milliseconds: 275),
+                        duration: Duration(milliseconds: 275),
                         childAnimationBuilder: (widget) => SlideAnimation(
                           child: FadeInAnimation(
                             child: widget,
                           ),
                         ),
                         children: <Widget>[
-                          const SizedBox(
+                          SizedBox(
                             height: 25,
                           ),
-                          const Text('Pasien Selesai Pemeriksaan'),
-                          const Text('Lanjut Ke kasir untuk Pembayaran'),
+                          Text('Pasien Selesai Pemeriksaan'),
+                          Text('Lanjut Ke kasir untuk Pembayaran'),
                         ],
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 40,
                 ),
                 Row(
@@ -83,7 +83,7 @@ Future bottomSheetSelesaiPemeriksaan() {
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -97,7 +97,7 @@ Future bottomSheetSelesaiPemeriksaan() {
                         ),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 10,
                     ),
                     InkWell(
@@ -112,11 +112,11 @@ Future bottomSheetSelesaiPemeriksaan() {
                           //     color: Colors.green.withOpacity(0.5),
                           //     spreadRadius: 0,
                           //     blurRadius: 10,
-                          //     offset: const Offset(2, 1),
+                          //     offset:  Offset(2, 1),
                           //   ),
                           // ],
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -130,7 +130,7 @@ Future bottomSheetSelesaiPemeriksaan() {
                         ),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                   ],

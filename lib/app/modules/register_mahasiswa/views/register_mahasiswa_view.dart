@@ -12,7 +12,7 @@ import '../../../routes/app_pages.dart';
 import '../../bottomsheet/bottomsheet_selesai_daftar.dart';
 
 class RegisterMahasiswaView extends StatefulWidget {
-  const RegisterMahasiswaView({Key? key}) : super(key: key);
+  RegisterMahasiswaView({Key? key}) : super(key: key);
 
   @override
   _RegisterMahasiswaViewState createState() => _RegisterMahasiswaViewState();
@@ -28,7 +28,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: Duration(seconds: 3),
     );
 
     _opacity = Tween<double>(begin: 0, end: 1).animate(
@@ -66,7 +66,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        systemOverlayStyle: const SystemUiOverlayStyle(
+        systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.white, // <-- SEE HERE
           statusBarIconBrightness:
               Brightness.dark, //<-- For Android SEE HERE (dark icons)
@@ -79,7 +79,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: Opacity(
             opacity: _opacity.value,
             child: Transform.scale(
@@ -87,14 +87,14 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       height: 100,
                     ),
                     Image.asset(
                       'assets/images/icons/logo.png',
                       width: 160,
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 20,
                     ),
                     Container(
@@ -113,7 +113,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const SizedBox(),
+                          SizedBox(),
                           Text(
                             'Register Mahasiswa',
                             style: TextStyle(
@@ -122,7 +122,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                               color: Colors.black.withOpacity(.7),
                             ),
                           ),
-                          const SizedBox(),
+                          SizedBox(),
                           component1(
                               Icons.account_circle_outlined,
                               'Nama Lengkap...',
@@ -152,11 +152,11 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                           component1(Icons.school_outlined, 'Semester...',
                               false, false, controller.semesterController),
                           Padding(
-                            padding: const EdgeInsets.only(left: 15),
+                            padding: EdgeInsets.only(left: 15),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
-                                const Text("Jenjang Pendidikan :"),
+                                Text("Jenjang Pendidikan :"),
                                 Radio(
                                   value: 1,
                                   groupValue: viewId,
@@ -167,7 +167,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                                     });
                                   },
                                 ),
-                                const Text(
+                                Text(
                                   'S1',
                                   style: TextStyle(),
                                 ),
@@ -181,7 +181,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                                     });
                                   },
                                 ),
-                                const Text(
+                                Text(
                                   'S2',
                                   style: TextStyle(),
                                 ),
@@ -203,13 +203,13 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                               SizedBox(width: size.width / 25),
                             ],
                           ),
-                          const SizedBox(),
+                          SizedBox(),
                           InkWell(
                             onTap: () => Get.toNamed(Routes.LOGIN),
                             child: RichText(
                               text: TextSpan(
                                   text: 'Kembali ke login',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     color: Colors.blueAccent,
                                     fontSize: 15,
                                   ),
@@ -219,7 +219,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                         ],
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 40,
                     ),
                   ],
@@ -232,22 +232,22 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              color: Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: const Offset(2, 1),
+              offset: Offset(2, 1),
             ),
           ],
         ),
         height: 75,
-        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Column(
           children: <Widget>[
-            const SizedBox(
+            SizedBox(
               height: 5,
             ),
-            const Text("Powered by"),
-            const SizedBox(
+            Text("Powered by"),
+            SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -256,21 +256,21 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_averin.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_ipg.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_privy.png',
                       width: 80,
@@ -332,7 +332,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
             controller.tahunmasukController.text.isNotEmpty &&
             controller.universitasController.text.isNotEmpty) {
           Get.defaultDialog(
-            content: const CircularProgressIndicator(),
+            content: CircularProgressIndicator(),
             title: 'Loading..',
             barrierDismissible: false,
           );
@@ -366,13 +366,12 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
         width: size.width / width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: const Color(0xff4796ff),
+          color: Color(0xff4796ff),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(
           string,
-          style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
     );
@@ -387,7 +386,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
         ),
         child: Column(
           children: [
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Container(
@@ -397,14 +396,14 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: const Color(0xFFe0e0e0),
+                color: Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 25,
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Pedaftaran Register Mahasiswa Berhasil",
                   style: TextStyle(
@@ -412,7 +411,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Expanded(
@@ -421,14 +420,14 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 275),
+                    duration: Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
                       ),
                     ),
                     children: <Widget>[
-                      const Text(
+                      Text(
                           "Silahkan cek Email yang sudah anda daftarkan untuk mendapatkan akses akun A-Dokter ",
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -440,21 +439,21 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             InkWell(
               onTap: () => _launchUrl('https://mail.google.com/'),
               child: Container(
                 height: 45,
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 56, 229, 77),
+                  color: Color.fromARGB(255, 56, 229, 77),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "Silahkan Periksa Email",
                       style: TextStyle(
@@ -466,7 +465,7 @@ class _RegisterMahasiswaViewState extends State<RegisterMahasiswaView>
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
           ],

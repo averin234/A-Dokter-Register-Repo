@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../controllers/hiss_controller.dart';
 
 class Icdx extends StatefulWidget {
-  const Icdx({super.key});
+  Icdx({super.key});
 
   @override
   State<Icdx> createState() => _IcdxState();
@@ -15,28 +15,28 @@ class _IcdxState extends State<Icdx> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
-      padding: const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
+      margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+      padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFe0e0e0).withOpacity(0.5),
+            color: Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: const Offset(2, 1),
+            offset: Offset(2, 1),
           ),
         ],
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const SizedBox(
+        SizedBox(
           height: 10,
         ),
         InkWell(
           child: Row(
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 10,
               ),
               Expanded(
@@ -45,25 +45,25 @@ class _IcdxState extends State<Icdx> {
                   children: [
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           'Kode ICD-10',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 20,
                         ),
-                        const Text(
+                        Text(
                           ':',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 10,
                         ),
                         Text(
                           controller.icd10Controller.text,
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                       ],
@@ -74,14 +74,14 @@ class _IcdxState extends State<Icdx> {
             ],
           ),
         ),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
         InkWell(
           // onTap: () => Get.toNamed(Routes.CV),
           child: Row(
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 10,
               ),
               Expanded(
@@ -90,25 +90,25 @@ class _IcdxState extends State<Icdx> {
                   children: [
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           'Diagnosa',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 40,
                         ),
-                        const Text(
+                        Text(
                           ':',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 10,
                         ),
                         Text(
                           controller.diagnosaController.text,
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                       ],
@@ -119,14 +119,14 @@ class _IcdxState extends State<Icdx> {
             ],
           ),
         ),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
         InkWell(
           // onTap: () => Get.toNamed(Routes.PRIVYID),
           child: Row(
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 10,
               ),
               Expanded(
@@ -135,25 +135,25 @@ class _IcdxState extends State<Icdx> {
                   children: [
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           'Kelompok',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 36,
                         ),
-                        const Text(
+                        Text(
                           ':',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 10,
                         ),
                         Text(
                           controller.kelompokController.text,
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                       ],
@@ -164,14 +164,14 @@ class _IcdxState extends State<Icdx> {
             ],
           ),
         ),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
         InkWell(
           // onTap: () => Get.toNamed(Routes.PRIVYID),
           child: Row(
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 10,
               ),
               Expanded(
@@ -180,25 +180,25 @@ class _IcdxState extends State<Icdx> {
                   children: [
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           'Rawat Inap',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 30,
                         ),
-                        const Text(
+                        Text(
                           ':',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 10,
                         ),
                         Text(
                           '${controller.lamaRawatController.text} minggu',
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                       ],

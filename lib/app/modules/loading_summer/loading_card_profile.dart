@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class shimmerCardProfile extends StatelessWidget {
-  const shimmerCardProfile({super.key});
+  shimmerCardProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,99 +21,111 @@ class shimmerCardProfile extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Row(children: [
-                          Shimmer(
-                            child:
-                            Container(
-                              height: 15,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFBACDDB),
-                                borderRadius: BorderRadius.circular(10),
+                        Row(
+                          children: [
+                            Shimmer(
+                              child: Container(
+                                height: 15,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFBACDDB),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                padding: EdgeInsets.all(10),
+                                constraints: BoxConstraints(
+                                    minWidth: 120, maxWidth: 175),
                               ),
-                              padding: EdgeInsets.all(10),
-                              constraints: BoxConstraints(minWidth: 120, maxWidth: 175),
-                            ),),
-                          SizedBox(
-                            width: 77,
-                          ),
-                          Shimmer(
-                            child: Container(
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFBACDDB),
-                                borderRadius: BorderRadius.circular(100),
+                            ),
+                            SizedBox(
+                              width: 77,
+                            ),
+                            Shimmer(
+                              child: Container(
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFBACDDB),
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                padding: EdgeInsets.all(10),
+                                constraints:
+                                    BoxConstraints(minWidth: 20, maxWidth: 60),
                               ),
-                              padding: EdgeInsets.all(10),
-                              constraints: BoxConstraints(minWidth: 20, maxWidth: 60),
                             ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Shimmer(
+                          child: Container(
+                            height: 10,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFBACDDB),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            padding: EdgeInsets.all(10),
+                            constraints:
+                                BoxConstraints(minWidth: 120, maxWidth: 175),
                           ),
-                        ],),
+                        ),
                         SizedBox(
                           height: 10,
                         ),
                         Shimmer(
-                          child:
-                          Container(
+                          child: Container(
                             height: 10,
                             decoration: BoxDecoration(
                               color: Color(0xFFBACDDB),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             padding: EdgeInsets.all(10),
-                            constraints: BoxConstraints(minWidth: 120, maxWidth: 175),
-                          ),),
+                            constraints:
+                                BoxConstraints(minWidth: 120, maxWidth: 175),
+                          ),
+                        ),
                         SizedBox(
                           height: 10,
                         ),
                         Shimmer(
-                          child:
-                          Container(
+                          child: Container(
                             height: 10,
                             decoration: BoxDecoration(
                               color: Color(0xFFBACDDB),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             padding: EdgeInsets.all(10),
-                            constraints: BoxConstraints(minWidth: 120, maxWidth: 175),
-                          ),),
+                            constraints:
+                                BoxConstraints(minWidth: 120, maxWidth: 175),
+                          ),
+                        ),
                         SizedBox(
                           height: 10,
                         ),
                         Shimmer(
-                          child:
-                          Container(
+                          child: Container(
                             height: 10,
                             decoration: BoxDecoration(
                               color: Color(0xFFBACDDB),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             padding: EdgeInsets.all(10),
-                            constraints: BoxConstraints(minWidth: 120, maxWidth: 175),
-                          ),),
+                            constraints:
+                                BoxConstraints(minWidth: 120, maxWidth: 175),
+                          ),
+                        ),
                         SizedBox(
                           height: 10,
                         ),
-                        Shimmer(
-                          child:
-                          Container(
-                            height: 10,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFBACDDB),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            padding: EdgeInsets.all(10),
-                            constraints: BoxConstraints(minWidth: 120, maxWidth: 175),
-                          ),),
-                        SizedBox(
-                          height: 10,
-                        ),
-                      ],)
-                  ],)),
+                      ],
+                    )
+                  ],
+                )),
             SizedBox(
               height: 10,
             ),

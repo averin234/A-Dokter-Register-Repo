@@ -3,22 +3,22 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 class Surat extends StatelessWidget {
-  const Surat({super.key});
+  Surat({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
-      padding: const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
+      margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+      padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFe0e0e0).withOpacity(0.5),
+            color: Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: const Offset(2, 1),
+            offset: Offset(2, 1),
           ),
         ],
       ),
@@ -31,7 +31,7 @@ class Surat extends StatelessWidget {
               onTap: () => showModalBottomSheet(
                 isScrollControlled: true,
                 context: context,
-                shape: const RoundedRectangleBorder(
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(20),
                   ),
@@ -40,9 +40,9 @@ class Surat extends StatelessWidget {
               ),
               child: Container(
                 width: 140,
-                padding: const EdgeInsets.only(
-                    right: 10, left: 10, bottom: 10, top: 10),
-                decoration: const BoxDecoration(
+                padding:
+                    EdgeInsets.only(right: 10, left: 10, bottom: 10, top: 10),
+                decoration: BoxDecoration(
                   color: Colors.amberAccent,
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(0.0),
@@ -50,7 +50,7 @@ class Surat extends StatelessWidget {
                       topLeft: Radius.circular(10.0),
                       bottomLeft: Radius.circular(10.0)),
                 ),
-                child: const Text(
+                child: Text(
                   'Surat Sakit',
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
@@ -62,7 +62,7 @@ class Surat extends StatelessWidget {
               onTap: () => showModalBottomSheet(
                 isScrollControlled: true,
                 context: context,
-                shape: const RoundedRectangleBorder(
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(20),
                   ),
@@ -71,9 +71,9 @@ class Surat extends StatelessWidget {
               ),
               child: Container(
                 width: 140,
-                padding: const EdgeInsets.only(
-                    right: 10, left: 10, bottom: 10, top: 10),
-                decoration: const BoxDecoration(
+                padding:
+                    EdgeInsets.only(right: 10, left: 10, bottom: 10, top: 10),
+                decoration: BoxDecoration(
                   color: Colors.greenAccent,
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(10.0),
@@ -81,7 +81,7 @@ class Surat extends StatelessWidget {
                       topLeft: Radius.circular(0.0),
                       bottomLeft: Radius.circular(0.0)),
                 ),
-                child: const Text(
+                child: Text(
                   'Surat Sehat',
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
@@ -107,7 +107,7 @@ class Surat extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -117,14 +117,14 @@ class Surat extends StatelessWidget {
                     left: Get.width / 2 - 40,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFe0e0e0),
+                    color: Color(0xFFe0e0e0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 25,
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 15),
                   child: Text("Surat sehat",
                       style: TextStyle(
@@ -132,7 +132,7 @@ class Surat extends StatelessWidget {
                           fontSize: 16,
                           color: Colors.blue)),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 SingleChildScrollView(
@@ -141,34 +141,33 @@ class Surat extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: AnimationConfiguration.toStaggeredList(
-                        duration: const Duration(milliseconds: 275),
+                        duration: Duration(milliseconds: 275),
                         childAnimationBuilder: (widget) => SlideAnimation(
                           child: FadeInAnimation(
                             child: widget,
                           ),
                         ),
                         children: <Widget>[
-                          const SizedBox(
+                          SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.only(left: 15),
                             child: Text("Nomor ",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                 )),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 10,
                           ),
                           Container(
-                            margin: const EdgeInsets.only(left: 10, right: 10),
+                            margin: EdgeInsets.only(left: 10, right: 10),
                             decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: const Color(0x6cc7d1db)),
+                              border: Border.all(color: Color(0x6cc7d1db)),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const TextField(
+                            child: TextField(
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
@@ -182,27 +181,26 @@ class Surat extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.only(left: 15),
                             child: Text("Keperluan",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                 )),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 10,
                           ),
                           Container(
-                            margin: const EdgeInsets.only(left: 10, right: 10),
+                            margin: EdgeInsets.only(left: 10, right: 10),
                             decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: const Color(0x6cc7d1db)),
+                              border: Border.all(color: Color(0x6cc7d1db)),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const TextField(
+                            child: TextField(
                               keyboardType: TextInputType.text,
                               textInputAction: TextInputAction.done,
                               decoration: InputDecoration(
@@ -223,7 +221,7 @@ class Surat extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 40,
                 ),
                 Row(
@@ -235,18 +233,18 @@ class Surat extends StatelessWidget {
                         height: 45,
                         width: 145,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 56, 229, 77),
+                          color: Color.fromARGB(255, 56, 229, 77),
                           borderRadius: BorderRadius.circular(10),
                           // boxShadow: [
                           //   BoxShadow(
                           //     color: Colors.green.withOpacity(0.5),
                           //     spreadRadius: 0,
                           //     blurRadius: 10,
-                          //     offset: const Offset(2, 1),
+                          //     offset:  Offset(2, 1),
                           //   ),
                           // ],
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -260,7 +258,7 @@ class Surat extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 10,
                     ),
                     InkWell(
@@ -275,11 +273,11 @@ class Surat extends StatelessWidget {
                           //     color: Colors.green.withOpacity(0.5),
                           //     spreadRadius: 0,
                           //     blurRadius: 10,
-                          //     offset: const Offset(2, 1),
+                          //     offset:  Offset(2, 1),
                           //   ),
                           // ],
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -295,7 +293,7 @@ class Surat extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
               ],
@@ -314,7 +312,7 @@ class Surat extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -324,14 +322,14 @@ class Surat extends StatelessWidget {
                     left: Get.width / 2 - 40,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFe0e0e0),
+                    color: Color(0xFFe0e0e0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 25,
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 15),
                   child: Text("Surat Sakit ",
                       style: TextStyle(
@@ -339,7 +337,7 @@ class Surat extends StatelessWidget {
                           fontSize: 16,
                           color: Colors.blue)),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 SingleChildScrollView(
@@ -348,34 +346,33 @@ class Surat extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: AnimationConfiguration.toStaggeredList(
-                        duration: const Duration(milliseconds: 275),
+                        duration: Duration(milliseconds: 275),
                         childAnimationBuilder: (widget) => SlideAnimation(
                           child: FadeInAnimation(
                             child: widget,
                           ),
                         ),
                         children: <Widget>[
-                          const SizedBox(
+                          SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.only(left: 15),
                             child: Text("Nomor ",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                 )),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 10,
                           ),
                           Container(
-                            margin: const EdgeInsets.only(left: 10, right: 10),
+                            margin: EdgeInsets.only(left: 10, right: 10),
                             decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: const Color(0x6cc7d1db)),
+                              border: Border.all(color: Color(0x6cc7d1db)),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const TextField(
+                            child: TextField(
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
@@ -389,27 +386,26 @@ class Surat extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.only(left: 15),
                             child: Text("Lama Sakit",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                 )),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 10,
                           ),
                           Container(
-                            margin: const EdgeInsets.only(left: 10, right: 10),
+                            margin: EdgeInsets.only(left: 10, right: 10),
                             decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: const Color(0x6cc7d1db)),
+                              border: Border.all(color: Color(0x6cc7d1db)),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const TextField(
+                            child: TextField(
                               keyboardType: TextInputType.text,
                               textInputAction: TextInputAction.done,
                               decoration: InputDecoration(
@@ -430,7 +426,7 @@ class Surat extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 40,
                 ),
                 Row(
@@ -442,18 +438,18 @@ class Surat extends StatelessWidget {
                         height: 45,
                         width: 145,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 56, 229, 77),
+                          color: Color.fromARGB(255, 56, 229, 77),
                           borderRadius: BorderRadius.circular(10),
                           // boxShadow: [
                           //   BoxShadow(
                           //     color: Colors.green.withOpacity(0.5),
                           //     spreadRadius: 0,
                           //     blurRadius: 10,
-                          //     offset: const Offset(2, 1),
+                          //     offset:  Offset(2, 1),
                           //   ),
                           // ],
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -467,7 +463,7 @@ class Surat extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 10,
                     ),
                     InkWell(
@@ -482,11 +478,11 @@ class Surat extends StatelessWidget {
                           //     color: Colors.green.withOpacity(0.5),
                           //     spreadRadius: 0,
                           //     blurRadius: 10,
-                          //     offset: const Offset(2, 1),
+                          //     offset:  Offset(2, 1),
                           //   ),
                           // ],
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -502,7 +498,7 @@ class Surat extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
               ],

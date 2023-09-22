@@ -5,15 +5,15 @@ import 'package:get/get.dart';
 import '../controllers/penunjang_medis_controller.dart';
 
 class PenunjangMedisView extends GetView<PenunjangMedisController> {
-  const PenunjangMedisView({Key? key}) : super(key: key);
+  PenunjangMedisView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PenunjangMedisView'),
+        title: Text('PenunjangMedisView'),
         centerTitle: true,
       ),
-      body: const Center(
+      body: Center(
         child: Text(
           'PenunjangMedisView is working',
           style: TextStyle(fontSize: 20),

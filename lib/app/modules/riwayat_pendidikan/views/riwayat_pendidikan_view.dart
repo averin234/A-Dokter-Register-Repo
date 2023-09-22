@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import '../controllers/riwayat_pendidikan_controller.dart';
 
 class RiwayatPendidikanView extends GetView<RiwayatPendidikanController> {
-  const RiwayatPendidikanView({Key? key}) : super(key: key);
+  RiwayatPendidikanView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +86,7 @@ class RiwayatPendidikanView extends GetView<RiwayatPendidikanController> {
               [
                 Column(
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 375),
+                    duration: Duration(milliseconds: 375),
                     childAnimationBuilder: (widget) => ScaleAnimation(
                       child: SlideAnimation(
                         child: widget,
@@ -150,7 +150,7 @@ class RiwayatPendidikanView extends GetView<RiwayatPendidikanController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 275),
+                    duration: Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,

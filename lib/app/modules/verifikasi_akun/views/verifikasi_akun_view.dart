@@ -9,15 +9,13 @@ import '../../../routes/app_pages.dart';
 import '../controllers/verifikasi_akun_controller.dart';
 
 class VerifikasiAkunView extends StatefulWidget {
-  const VerifikasiAkunView({super.key});
+  VerifikasiAkunView({super.key});
 
   @override
   State<VerifikasiAkunView> createState() => _VerifikasiAkunViewState();
 }
 
-
 class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
-
   final controller = Get.put(VerifikasiAkunController());
   @override
   Widget build(BuildContext context) {
@@ -27,18 +25,18 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              color: Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: const Offset(2, 1),
+              offset: Offset(2, 1),
             ),
           ],
         ),
         height: 75,
-        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Row(
           children: <Widget>[
-            const SizedBox(
+            SizedBox(
               width: 230,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -58,20 +56,19 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
               ),
             ),
             ElevatedButton.icon(
-              icon: const Icon(
+              icon: Icon(
                 Icons.send_rounded,
                 color: Colors.white,
                 size: 24.0,
               ),
-              label: const Text('Submit', style: TextStyle(fontSize: 16.0)),
-              onPressed: () {
-              },
+              label: Text('Submit', style: TextStyle(fontSize: 16.0)),
+              onPressed: () {},
               style: ElevatedButton.styleFrom(
                 elevation: 0,
                 shadowColor: Colors.blue,
                 primary: Colors.lightBlue,
-                minimumSize: const Size(122, 48),
-                maximumSize: const Size(122, 48),
+                minimumSize: Size(122, 48),
+                maximumSize: Size(122, 48),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -81,7 +78,7 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
         ),
       ),
       appBar: AppBar(
-        title: const Text('Verifikasi Akun'),
+        title: Text('Verifikasi Akun'),
         elevation: 1,
         actions: [
           Padding(
@@ -127,11 +124,12 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
             SizedBox(
               height: 10,
             ),
-            Center(child:
-            Image.asset(
-              'assets/images/uploaddocument.jpg',
-              width: 250,
-            ),),
+            Center(
+              child: Image.asset(
+                'assets/images/uploaddocument.jpg',
+                width: 250,
+              ),
+            ),
             SizedBox(
               height: 10,
             ),
@@ -143,10 +141,10 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFe0e0e0).withOpacity(0.5),
+                    color: Color(0xFFe0e0e0).withOpacity(0.5),
                     spreadRadius: 0,
                     blurRadius: 10,
-                    offset: const Offset(2, 1),
+                    offset: Offset(2, 1),
                   ),
                 ],
               ),
@@ -155,7 +153,7 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                   SizedBox(
                     height: 20,
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(left: 15),
                     child: Row(
                       children: [
@@ -168,21 +166,20 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                       ],
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 10,
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 10, right: 10),
+                    margin: EdgeInsets.only(left: 10, right: 10),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
-                      border:
-                      Border.all(color: const Color(0x6cc7d1db)),
+                      border: Border.all(color: Color(0x6cc7d1db)),
                     ),
                     child: TextFormField(
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.done,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
@@ -195,10 +192,10 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                       ),
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 10,
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(left: 15),
                     child: Row(
                       children: [
@@ -211,16 +208,15 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                       ],
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 10,
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 10, right: 10),
+                    margin: EdgeInsets.only(left: 10, right: 10),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
-                      border:
-                      Border.all(color: const Color(0x6cc7d1db)),
+                      border: Border.all(color: Color(0x6cc7d1db)),
                     ),
                     child: TextFormField(
                       controller: controller.tanggalMulaiBerlakuController,
@@ -249,7 +245,7 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                           print("Date is not selected");
                         }
                       },
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
@@ -266,7 +262,7 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                   SizedBox(
                     height: 10,
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(left: 15),
                     child: Row(
                       children: [
@@ -279,16 +275,15 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                       ],
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 10,
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 10, right: 10),
+                    margin: EdgeInsets.only(left: 10, right: 10),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
-                      border:
-                      Border.all(color: const Color(0x6cc7d1db)),
+                      border: Border.all(color: Color(0x6cc7d1db)),
                     ),
                     child: TextField(
                       controller: controller.tanggalAkhirBerlakuController,
@@ -318,7 +313,7 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                           print("Date is not selected");
                         }
                       },
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
@@ -332,83 +327,83 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                       ),
                     ),
                   ),
-                SizedBox(
-                  height: 10,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 15),
-                  child: Row(
-                    children: [
-                      Text("Upload Document SIP",
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text("(*)",
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: Colors.redAccent)),
-                    ],
+                  SizedBox(
+                    height: 10,
                   ),
-                ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child:
-                Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  border:
-                  Border.all(color: const Color(0x6cc7d1db)),
-                ),
-                      child : TextFormField(
-                          readOnly: true,
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return 'File harus diupload';
-                            } else {
-                              return null;
-                            }
-                          },
-                          controller: controller.txtFilePicker,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 11, top: 13, right: 15),
-                            filled: true,
-                            fillColor: Colors.transparent,
+                  Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Row(
+                      children: [
+                        Text("Upload Document SIP",
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text("(*)",
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: Colors.redAccent)),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Color(0x6cc7d1db)),
+                            ),
+                            child: TextFormField(
+                                readOnly: true,
+                                validator: (String? value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'File harus diupload';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                controller: controller.txtFilePicker,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(
+                                      left: 15, bottom: 11, top: 13, right: 15),
+                                  filled: true,
+                                  fillColor: Colors.transparent,
+                                ),
+                                style: TextStyle(fontSize: 16.0)),
                           ),
-                          style: const TextStyle(fontSize: 16.0)),),
-                    ),
-                    const SizedBox(width: 5),
-                    ElevatedButton.icon(
-                      icon: const Icon(
-                        Icons.upload_file,
-                        color: Colors.white,
-                        size: 24.0,
-                      ),
-                      label: const Text('Pilih File', style: TextStyle(fontSize: 16.0)),
-                      onPressed: () {
-                        selectFile();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        shadowColor: Colors.blue,
-                        primary: Colors.lightBlue,
-                        minimumSize: const Size(122, 48),
-                        maximumSize: const Size(122, 48),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
                         ),
-                      ),
+                        SizedBox(width: 5),
+                        ElevatedButton.icon(
+                          icon: Icon(
+                            Icons.upload_file,
+                            color: Colors.white,
+                            size: 24.0,
+                          ),
+                          label: Text('Pilih File',
+                              style: TextStyle(fontSize: 16.0)),
+                          onPressed: () {
+                            selectFile();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            shadowColor: Colors.blue,
+                            primary: Colors.lightBlue,
+                            minimumSize: Size(122, 48),
+                            maximumSize: Size(122, 48),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
+                  ),
                 ],
               ),
             ),
@@ -420,6 +415,7 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
       ),
     );
   }
+
   selectFile() async {
     FilePickerResult? result = await FilePicker.platform
         .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
@@ -432,4 +428,3 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
     }
   }
 }
-

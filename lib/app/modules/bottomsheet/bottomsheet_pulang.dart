@@ -12,7 +12,7 @@ Future bottomSheetPulang() {
       context: Get.context!,
       isScrollControlled: true,
       isDismissible: true,
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20),
         ),
@@ -26,7 +26,7 @@ Future bottomSheetPulang() {
             ),
             child: Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -36,11 +36,11 @@ Future bottomSheetPulang() {
                     left: Get.width / 2 - 40,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFe0e0e0),
+                    color: Color(0xFFe0e0e0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 25,
                 ),
                 SingleChildScrollView(
@@ -49,14 +49,14 @@ Future bottomSheetPulang() {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: AnimationConfiguration.toStaggeredList(
-                        duration: const Duration(milliseconds: 275),
+                        duration: Duration(milliseconds: 275),
                         childAnimationBuilder: (widget) => SlideAnimation(
                           child: FadeInAnimation(
                             child: widget,
                           ),
                         ),
                         children: <Widget>[
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.all(10),
                             child: Text(
                                 'Keterangan :\n\n1.Tombol ini dipilih Karena\n-semua tindakan yang dilakukan telah masuk ke dalam sistem\n-obat yang digunakan\n\n2.Prosess akan dilanjutkan ke Kasir\n\n3.Apabila masih ada tindakan yang belum masuk ke dalam sistem ?\n\n-Tekan tombol cancel\n-Masukan tindakan yang belum masuk\n-Masukan obat yang belum Masuk\n4.Jika ada tindak\nyang belum ada di nama tindakan maka :\n-Hubungi orang terkait untuk meminta memasukan tindakan ke dalam data nama tindakan-Hubungi team IT jika terdapat Error\n\nTekan OK untuk melanjutkan ke Kasir atau Cancel untuk membatalkan'),
@@ -66,7 +66,7 @@ Future bottomSheetPulang() {
                     ),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 40,
                 ),
                 Row(
@@ -99,11 +99,11 @@ Future bottomSheetPulang() {
                           //     color: Colors.green.withOpacity(0.5),
                           //     spreadRadius: 0,
                           //     blurRadius: 10,
-                          //     offset: const Offset(2, 1),
+                          //     offset:  Offset(2, 1),
                           //   ),
                           // ],
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -117,7 +117,7 @@ Future bottomSheetPulang() {
                         ),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 10,
                     ),
                     InkWell(
@@ -133,11 +133,11 @@ Future bottomSheetPulang() {
                           //     color: Colors.green.withOpacity(0.5),
                           //     spreadRadius: 0,
                           //     blurRadius: 10,
-                          //     offset: const Offset(2, 1),
+                          //     offset:  Offset(2, 1),
                           //   ),
                           // ],
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -151,7 +151,7 @@ Future bottomSheetPulang() {
                         ),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                   ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
-  const Background({
+  Background({
     Key? key,
     required this.child,
     this.topImage = "assets/images/main_top.png",

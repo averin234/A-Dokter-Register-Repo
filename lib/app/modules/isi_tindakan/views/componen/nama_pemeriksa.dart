@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../../../../data/model/get_detail_pasien.dart';
 
 class NamaPemeriksa extends StatelessWidget {
-  const NamaPemeriksa({super.key});
+  NamaPemeriksa({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +19,18 @@ class NamaPemeriksa extends StatelessWidget {
               snapshot.data != null) {
             final data = snapshot.data!.pasien ?? Pasien();
             return Container(
-                padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.only(left: 10, right: 10),
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
+                  border: Border.all(color: Color(0x6cc7d1db)),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFe0e0e0).withOpacity(0.5),
+                      color: Color(0xFFe0e0e0).withOpacity(0.5),
                       spreadRadius: 0,
                       blurRadius: 10,
-                      offset: const Offset(2, 1),
+                      offset: Offset(2, 1),
                     ),
                   ],
                 ),
@@ -41,21 +41,20 @@ class NamaPemeriksa extends StatelessWidget {
                     Row(
                       children: [
                         Text('Nama Pasien : ${data.namaPasien ?? ''}',
-                            style:
-                                const TextStyle(fontWeight: FontWeight.bold)),
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
-                    const Divider(
+                    Divider(
                       color: Colors.grey,
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Text('No. MR : ${data.noMr ?? ''}')
                   ],
                 ));
           } else {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(),
             );
           }

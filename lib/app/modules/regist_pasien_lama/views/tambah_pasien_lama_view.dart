@@ -14,7 +14,7 @@ import '../../loading_summer/loading_pasien_lama.dart';
 import '../controllers/tambah_pasien_lama_controller.dart';
 
 class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
-  const TambahPasienLamaView({Key? key}) : super(key: key);
+  TambahPasienLamaView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,20 +25,20 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
               onPressed: () {
                 Get.back();
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_circle_left_rounded,
                 size: 40,
               ),
-              color: const Color.fromARGB(255, 192, 192, 192),
+              color: Color.fromARGB(255, 192, 192, 192),
             ),
-            systemOverlayStyle: const SystemUiOverlayStyle(
+            systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: const RoundedRectangleBorder(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -47,9 +47,9 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
             pinned: true,
             snap: true,
             automaticallyImplyLeading: false,
-            title: const Text('Daftar Pasien Lama'),
+            title: Text('Daftar Pasien Lama'),
             bottom: AppBar(
-              shape: const RoundedRectangleBorder(
+              shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
@@ -76,20 +76,23 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(10),
-                  child: Text("Cari/Pilih Pasien Lama yang sudah berkunjung sebelumnya untuk dapat di tangani kembali", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                  child: Text(
+                      "Cari/Pilih Pasien Lama yang sudah berkunjung sebelumnya untuk dapat di tangani kembali",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
-              Padding(padding: EdgeInsets.only(right: 10, left: 10),
-                child : Text(
+              Padding(
+                padding: EdgeInsets.only(right: 10, left: 10),
+                child: Text(
                   "List Riwayat Pasien",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
-                ),),
-              const SizedBox(
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+              ),
+              SizedBox(
                 height: 10,
               ),
               FutureBuilder(
@@ -103,49 +106,55 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
                       final data = snapshot.data!.pasien ?? [];
                       return data.isEmpty
                           ? Center(
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 20,
-                            ),
-                            const Text('Belum ada Pasien yg terdaftar sebagai Pasien Lama', style: TextStyle(fontWeight: FontWeight.bold)),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Image.asset(
-                              'assets/images/pasienlama.png',
-                              height: 200,
-                            ),
-                          ],
-                        ),
-                      )
-                        :Column(
-                        children: AnimationConfiguration.toStaggeredList(
-                            duration: const Duration(milliseconds: 475),
-                            childAnimationBuilder: (widget) => SlideAnimation(
-                                  child: FadeInAnimation(
-                                    child: widget,
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 20,
                                   ),
-                                ),
-                            children: data
-                                .map((e) => ListViewPasienLama(pasien: e))
-                                .toList()),
-                      );
+                                  Text(
+                                      'Belum ada Pasien yg terdaftar sebagai Pasien Lama',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Image.asset(
+                                    'assets/images/pasienlama.png',
+                                    height: 200,
+                                  ),
+                                ],
+                              ),
+                            )
+                          : Column(
+                              children: AnimationConfiguration.toStaggeredList(
+                                  duration: Duration(milliseconds: 475),
+                                  childAnimationBuilder: (widget) =>
+                                      SlideAnimation(
+                                        child: FadeInAnimation(
+                                          child: widget,
+                                        ),
+                                      ),
+                                  children: data
+                                      .map((e) => ListViewPasienLama(pasien: e))
+                                      .toList()),
+                            );
                     } else {
-                      return Column(children: [
-                        shimmerPasienLama(),
-                        shimmerPasienLama(),
-                        shimmerPasienLama(),
-                        shimmerPasienLama(),
-                        shimmerPasienLama(),
-                        shimmerPasienLama(),
-                        shimmerPasienLama(),
-                        shimmerPasienLama(),
-                        shimmerPasienLama(),
-                        shimmerPasienLama(),
-                        shimmerPasienLama(),
-                        shimmerPasienLama(),
-                      ],);
+                      return Column(
+                        children: [
+                          shimmerPasienLama(),
+                          shimmerPasienLama(),
+                          shimmerPasienLama(),
+                          shimmerPasienLama(),
+                          shimmerPasienLama(),
+                          shimmerPasienLama(),
+                          shimmerPasienLama(),
+                          shimmerPasienLama(),
+                          shimmerPasienLama(),
+                          shimmerPasienLama(),
+                          shimmerPasienLama(),
+                          shimmerPasienLama(),
+                        ],
+                      );
                     }
                   }),
               // DetailRegistPasienLamaView(),

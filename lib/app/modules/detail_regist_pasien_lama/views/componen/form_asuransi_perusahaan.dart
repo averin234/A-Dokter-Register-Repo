@@ -2,7 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 class AuransiPerusahaan1 extends StatefulWidget {
-  const AuransiPerusahaan1({super.key});
+  AuransiPerusahaan1({super.key});
 
   @override
   State<AuransiPerusahaan1> createState() => _AuransiPerusahaan1State();
@@ -25,47 +25,47 @@ class _AuransiPerusahaan1State extends State<AuransiPerusahaan1> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 10, left: 10),
+      margin: EdgeInsets.only(right: 10, left: 10),
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 254, 228, 203),
+        color: Color.fromARGB(255, 254, 228, 203),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFe0e0e0).withOpacity(0.5),
+            color: Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: const Offset(2, 1),
+            offset: Offset(2, 1),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Yankes :",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 )),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Row(children: [
-            const SizedBox(
+            SizedBox(
               width: 5,
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(right: 10),
-                margin: const EdgeInsets.only(left: 10, right: 10),
+                padding: EdgeInsets.only(right: 10),
+                margin: EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
+                  border: Border.all(color: Color(0x6cc7d1db)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +74,7 @@ class _AuransiPerusahaan1State extends State<AuransiPerusahaan1> {
                     DropdownButtonHideUnderline(
                       child: DropdownButton2(
                         isExpanded: true,
-                        hint: const Row(
+                        hint: Row(
                           children: [
                             SizedBox(
                               width: 4,
@@ -97,7 +97,7 @@ class _AuransiPerusahaan1State extends State<AuransiPerusahaan1> {
                                   value: item,
                                   child: Text(
                                     item,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black,
@@ -118,40 +118,40 @@ class _AuransiPerusahaan1State extends State<AuransiPerusahaan1> {
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               width: 5,
             ),
           ]),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("No Polis :",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 )),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Row(
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 5,
               ),
               Expanded(
                 child: Container(
-                  margin: const EdgeInsets.only(left: 10),
+                  margin: EdgeInsets.only(left: 10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: const Color(0x6cc7d1db)),
+                    border: Border.all(color: Color(0x6cc7d1db)),
                   ),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
                       enabledBorder: InputBorder.none,
@@ -165,15 +165,15 @@ class _AuransiPerusahaan1State extends State<AuransiPerusahaan1> {
                   ),
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 width: 5,
               ),
-              const SizedBox(
+              SizedBox(
                 width: 10,
               ),
             ],
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
         ],

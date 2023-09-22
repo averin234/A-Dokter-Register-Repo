@@ -12,7 +12,7 @@ import '../controllers/profile_controller.dart';
 import 'componnen/card_setting_akun.dart';
 
 class ProfileView extends GetView<ProfileController> {
-  const ProfileView({Key? key}) : super(key: key);
+  ProfileView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class ProfileView extends GetView<ProfileController> {
         slivers: [
           SliverAppBar(
             automaticallyImplyLeading: false,
-            systemOverlayStyle: const SystemUiOverlayStyle(
+            systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor:
                   Color.fromARGB(255, 255, 255, 255), // <-- SEE HERE
               statusBarIconBrightness:
@@ -28,7 +28,7 @@ class ProfileView extends GetView<ProfileController> {
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: const RoundedRectangleBorder(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -36,9 +36,9 @@ class ProfileView extends GetView<ProfileController> {
             floating: true,
             pinned: true,
             snap: true,
-            title: const Text('Pengaturan Akun'),
+            title: Text('Pengaturan Akun'),
             bottom: AppBar(
-              shape: const RoundedRectangleBorder(
+              shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
@@ -55,7 +55,7 @@ class ProfileView extends GetView<ProfileController> {
               FutureBuilder(
                   future: API.getDetailDokter(
                       kode_dokter:
-                      Publics.controller.getDataRegist.value.kode ?? ''),
+                          Publics.controller.getDataRegist.value.kode ?? ''),
                   builder: (context, snapshot) {
                     if (snapshot.hasData &&
                         snapshot.connectionState != ConnectionState.waiting &&
@@ -63,26 +63,25 @@ class ProfileView extends GetView<ProfileController> {
                       final data = snapshot.data!.dokter![0];
                       return Column(
                           children: AnimationConfiguration.toStaggeredList(
-                              duration: const Duration(milliseconds: 375),
+                              duration: Duration(milliseconds: 375),
                               childAnimationBuilder: (widget) => ScaleAnimation(
-                                child: SlideAnimation(
-                                  child: widget,
-                                ),
-                              ),
+                                    child: SlideAnimation(
+                                      child: widget,
+                                    ),
+                                  ),
                               children: <Widget>[
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                CardDokterCV( dokter: data),
-                              ]));
+                            SizedBox(
+                              height: 10,
+                            ),
+                            CardDokterCV(dokter: data),
+                          ]));
                     } else {
-                      return const Center(
+                      return Center(
                         child: shimmerSetting(),
                       );
                     }
-                  }
-              ),
-              const CardSettingAkun(),
+                  }),
+              CardSettingAkun(),
             ]),
           ),
         ],

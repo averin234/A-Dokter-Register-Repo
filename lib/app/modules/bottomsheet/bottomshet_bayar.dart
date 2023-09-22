@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 
 import 'bottomsheet_bayar_kasir.dart';
 
-Future bottomSheetBayar({required kasir,}) {
+Future bottomSheetBayar({
+  required kasir,
+}) {
   return showModalBottomSheet(
       context: Get.context!,
       isScrollControlled: true,
       isDismissible: true,
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20),
         ),
@@ -27,7 +29,7 @@ Future bottomSheetBayar({required kasir,}) {
                     color: Colors.transparent,
                   ),
                   child: Column(children: [
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Container(
@@ -37,20 +39,20 @@ Future bottomSheetBayar({required kasir,}) {
                         left: Get.width / 2 - 40,
                       ),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFe0e0e0),
+                        color: Color(0xFFe0e0e0),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 4,
                     ),
-                    const Text('Geser Kebawah',
+                    Text('Geser Kebawah',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.grey)),
-                    const SizedBox(
+                    SizedBox(
                       height: 25,
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 0),
                       child: Text("Pilih Metode Pembayaran",
                           style: TextStyle(
@@ -58,7 +60,7 @@ Future bottomSheetBayar({required kasir,}) {
                               fontSize: 16,
                               color: Colors.blue)),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Expanded(
@@ -67,7 +69,7 @@ Future bottomSheetBayar({required kasir,}) {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: AnimationConfiguration.toStaggeredList(
-                            duration: const Duration(milliseconds: 275),
+                            duration: Duration(milliseconds: 275),
                             childAnimationBuilder: (widget) => SlideAnimation(
                               child: FadeInAnimation(
                                 child: widget,
@@ -78,30 +80,29 @@ Future bottomSheetBayar({required kasir,}) {
                                 child: Column(
                                   children: [
                                     ConstrainedBox(
-                                      constraints: const BoxConstraints(
+                                      constraints: BoxConstraints(
                                           minWidth: double.infinity),
                                       child: Container(
-                                        padding: const EdgeInsets.all(10),
-                                        decoration: const BoxDecoration(
+                                        padding: EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
                                           color: Colors.blueAccent,
                                         ),
-                                        child: const Text(
-                                            'Data  Billing Pasien',
+                                        child: Text('Data  Billing Pasien',
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white)),
                                       ),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
-                                    const Padding(
+                                    Padding(
                                       padding:
-                                      EdgeInsets.only(left: 10, right: 10),
+                                          EdgeInsets.only(left: 10, right: 10),
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text('Bagian',
                                               style: TextStyle(
@@ -112,14 +113,14 @@ Future bottomSheetBayar({required kasir,}) {
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const Padding(
+                                        Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -133,47 +134,49 @@ Future bottomSheetBayar({required kasir,}) {
                                         ),
                                         Expanded(
                                           child: Container(
-                                            padding: EdgeInsets.only(right: 10, left: 10, top: 15, bottom: 15),
-                                            margin: const EdgeInsets.only(
-                                                left: 10, right: 10),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius:
-                                              BorderRadius.circular(10),
-                                              border: Border.all(
-                                                  color:
-                                                  const Color(0x6cc7d1db)),
-                                            ),
-                                            child: Text(kasir.billing ??'')
-                                          ),
+                                              padding: EdgeInsets.only(
+                                                  right: 10,
+                                                  left: 10,
+                                                  top: 15,
+                                                  bottom: 15),
+                                              margin: EdgeInsets.only(
+                                                  left: 10, right: 10),
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                border: Border.all(
+                                                    color: Color(0x6cc7d1db)),
+                                              ),
+                                              child: Text(kasir.billing ?? '')),
                                         ),
                                       ],
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     ConstrainedBox(
-                                      constraints: const BoxConstraints(
+                                      constraints: BoxConstraints(
                                           minWidth: double.infinity),
                                       child: Container(
-                                        padding: const EdgeInsets.all(10),
-                                        decoration: const BoxDecoration(
+                                        padding: EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
                                           color: Colors.yellowAccent,
                                         ),
-                                        child: const Text('Data Pembayaran',
+                                        child: Text('Data Pembayaran',
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                       ),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const Padding(
+                                        Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -182,33 +185,32 @@ Future bottomSheetBayar({required kasir,}) {
                                               'Pembayar',
                                               style: TextStyle(
                                                   fontWeight:
-                                                  FontWeight.normal),
+                                                      FontWeight.normal),
                                             ),
                                           ),
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: const EdgeInsets.only(
+                                            margin: EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                  const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
-                                              TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                                  TextInputAction.done,
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
                                                 errorBorder: InputBorder.none,
                                                 disabledBorder:
-                                                InputBorder.none,
+                                                    InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: 15,
                                                     bottom: 11,
@@ -222,15 +224,15 @@ Future bottomSheetBayar({required kasir,}) {
                                         ),
                                       ],
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
-                                     Padding(
+                                    Padding(
                                       padding:
-                                      EdgeInsets.only(left: 10, right: 15),
+                                          EdgeInsets.only(left: 10, right: 15),
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text('Pasien',
                                               style: TextStyle(
@@ -241,14 +243,14 @@ Future bottomSheetBayar({required kasir,}) {
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const Padding(
+                                        Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -257,33 +259,32 @@ Future bottomSheetBayar({required kasir,}) {
                                               'Jumlah Billing',
                                               style: TextStyle(
                                                   fontWeight:
-                                                  FontWeight.normal),
+                                                      FontWeight.normal),
                                             ),
                                           ),
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: const EdgeInsets.only(
+                                            margin: EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                  const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
-                                              TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                                  TextInputAction.done,
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
                                                 errorBorder: InputBorder.none,
                                                 disabledBorder:
-                                                InputBorder.none,
+                                                    InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: 15,
                                                     bottom: 11,
@@ -299,9 +300,9 @@ Future bottomSheetBayar({required kasir,}) {
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const Padding(
+                                        Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -310,33 +311,32 @@ Future bottomSheetBayar({required kasir,}) {
                                               'Pembulatan',
                                               style: TextStyle(
                                                   fontWeight:
-                                                  FontWeight.normal),
+                                                      FontWeight.normal),
                                             ),
                                           ),
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: const EdgeInsets.only(
+                                            margin: EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                  const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
-                                              TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                                  TextInputAction.done,
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
                                                 errorBorder: InputBorder.none,
                                                 disabledBorder:
-                                                InputBorder.none,
+                                                    InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: 15,
                                                     bottom: 11,
@@ -352,9 +352,9 @@ Future bottomSheetBayar({required kasir,}) {
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const Padding(
+                                        Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -368,27 +368,26 @@ Future bottomSheetBayar({required kasir,}) {
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: const EdgeInsets.only(
+                                            margin: EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                  const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
-                                              TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                                  TextInputAction.done,
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
                                                 errorBorder: InputBorder.none,
                                                 disabledBorder:
-                                                InputBorder.none,
+                                                    InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: 15,
                                                     bottom: 11,
@@ -402,32 +401,32 @@ Future bottomSheetBayar({required kasir,}) {
                                         ),
                                       ],
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     ConstrainedBox(
-                                      constraints: const BoxConstraints(
+                                      constraints: BoxConstraints(
                                           minWidth: double.infinity),
                                       child: Container(
-                                        padding: const EdgeInsets.all(10),
-                                        decoration: const BoxDecoration(
+                                        padding: EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
                                           color: Colors.green,
                                         ),
-                                        child: const Text('Tunai',
+                                        child: Text('Tunai',
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white)),
                                       ),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const Padding(
+                                        Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -442,27 +441,26 @@ Future bottomSheetBayar({required kasir,}) {
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: const EdgeInsets.only(
+                                            margin: EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                  const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
-                                              TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                                  TextInputAction.done,
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
                                                 errorBorder: InputBorder.none,
                                                 disabledBorder:
-                                                InputBorder.none,
+                                                    InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: 15,
                                                     bottom: 11,
@@ -478,9 +476,9 @@ Future bottomSheetBayar({required kasir,}) {
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const Padding(
+                                        Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -489,33 +487,32 @@ Future bottomSheetBayar({required kasir,}) {
                                               'Uang Yang Dibayarkan',
                                               style: TextStyle(
                                                   fontWeight:
-                                                  FontWeight.normal),
+                                                      FontWeight.normal),
                                             ),
                                           ),
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: const EdgeInsets.only(
+                                            margin: EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                  const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
-                                              TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                                  TextInputAction.done,
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
                                                 errorBorder: InputBorder.none,
                                                 disabledBorder:
-                                                InputBorder.none,
+                                                    InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: 15,
                                                     bottom: 11,
@@ -531,9 +528,9 @@ Future bottomSheetBayar({required kasir,}) {
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const Padding(
+                                        Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -542,33 +539,32 @@ Future bottomSheetBayar({required kasir,}) {
                                               'Pengambilan Uang',
                                               style: TextStyle(
                                                   fontWeight:
-                                                  FontWeight.normal),
+                                                      FontWeight.normal),
                                             ),
                                           ),
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: const EdgeInsets.only(
+                                            margin: EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                  const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
-                                              TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                                  TextInputAction.done,
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
                                                 errorBorder: InputBorder.none,
                                                 disabledBorder:
-                                                InputBorder.none,
+                                                    InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: 15,
                                                     bottom: 11,
@@ -582,13 +578,13 @@ Future bottomSheetBayar({required kasir,}) {
                                         ),
                                       ],
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                   ],
                                 ),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 1000,
                               ),
                             ],
@@ -596,7 +592,7 @@ Future bottomSheetBayar({required kasir,}) {
                         ),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -618,11 +614,11 @@ Future bottomSheetBayar({required kasir,}) {
                               //     color: Colors.green.withOpacity(0.5),
                               //     spreadRadius: 0,
                               //     blurRadius: 10,
-                              //     offset: const Offset(2, 1),
+                              //     offset:  Offset(2, 1),
                               //   ),
                               // ],
                             ),
-                            child: const Column(
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -636,7 +632,7 @@ Future bottomSheetBayar({required kasir,}) {
                             ),
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 10,
                         ),
                         InkWell(
@@ -647,7 +643,7 @@ Future bottomSheetBayar({required kasir,}) {
                               color: Colors.amber,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const Column(
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -661,7 +657,7 @@ Future bottomSheetBayar({required kasir,}) {
                             ),
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 10,
                         ),
                       ],

@@ -9,7 +9,7 @@ import 'package:intl/intl.dart';
 import '../../../../data/model/get_antrian_dokter.dart';
 
 class FormRegisPasienLama extends StatefulWidget {
-  const FormRegisPasienLama({super.key});
+  FormRegisPasienLama({super.key});
 
   @override
   State<FormRegisPasienLama> createState() => _FormRegisPasienLamaState();
@@ -21,40 +21,40 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 10, left: 10),
+      margin: EdgeInsets.only(right: 10, left: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0x6cc7d1db)),
-        color: const Color.fromARGB(255, 219, 246, 253),
+        border: Border.all(color: Color(0x6cc7d1db)),
+        color: Color.fromARGB(255, 219, 246, 253),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFe0e0e0).withOpacity(0.5),
+            color: Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: const Offset(2, 1),
+            offset: Offset(2, 1),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Padding(
-              padding: const EdgeInsets.only(right: 15, left: 10),
+              padding: EdgeInsets.only(right: 15, left: 10),
               child: Row(
                 children: [
-                  const Text('Tanggal :',
+                  Text('Tanggal :',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  const SizedBox(
+                  SizedBox(
                     width: 10,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(DateFormat('yyyy-MM-dd').format(DateTime.now()),
-                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                       // Text('Jadwal Hari : kamis',
                       //     style: TextStyle(fontWeight: FontWeight.bold)),
                       // Text('06:00 s/d 22:00',
@@ -63,34 +63,34 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
                   ),
                 ],
               )),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const Divider(
+          Divider(
             color: Colors.grey,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Jam Periksa :",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 )),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Row(children: [
-            const SizedBox(
+            SizedBox(
               width: 5,
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(right: 10),
-                margin: const EdgeInsets.only(left: 10, right: 10),
+                padding: EdgeInsets.only(right: 10),
+                margin: EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0x6cc7d1db)),
+                  border: Border.all(color: Color(0x6cc7d1db)),
                 ),
                 child: FutureBuilder(
                     future: API.getAntrianDokter(
@@ -110,49 +110,49 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
                           controller.antrianController,
                         );
                       } else {
-                        return const Center(
+                        return Center(
                           child: CircularProgressIndicator(),
                         );
                       }
                     }),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               width: 5,
             ),
           ]),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("No Antrian :",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 )),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Row(
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 5,
               ),
               Expanded(
                 child: Container(
-                  margin: const EdgeInsets.only(left: 10),
+                  margin: EdgeInsets.only(left: 10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: const Color(0x6cc7d1db)),
+                    border: Border.all(color: Color(0x6cc7d1db)),
                   ),
                   child: TextFormField(
                     controller: controller.antrianController,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
                     readOnly: true,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
                       enabledBorder: InputBorder.none,
@@ -166,39 +166,39 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
                   ),
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 width: 5,
               ),
-              const SizedBox(
+              SizedBox(
                 width: 10,
               ),
             ],
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          // const Padding(
+          //  Padding(
           //   padding: EdgeInsets.only(left: 15),
           //   child: Text("Nasabah :",
           //       style: TextStyle(
           //         fontWeight: FontWeight.bold,
           //       )),
           // ),
-          // const SizedBox(
+          //  SizedBox(
           //   height: 10,
           // ),
           // Row(children: [
-          //   const SizedBox(
+          //    SizedBox(
           //     width: 5,
           //   ),
           //   Expanded(
           //     child: Container(
-          //       padding: const EdgeInsets.only(right: 10),
-          //       margin: const EdgeInsets.only(left: 10, right: 10),
+          //       padding:  EdgeInsets.only(right: 10),
+          //       margin:  EdgeInsets.only(left: 10, right: 10),
           //       decoration: BoxDecoration(
           //         color: Colors.white,
           //         borderRadius: BorderRadius.circular(10),
-          //         border: Border.all(color: const Color(0x6cc7d1db)),
+          //         border: Border.all(color:  Color(0x6cc7d1db)),
           //       ),
           //       child: Column(
           //         crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,7 +208,7 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
           //             child: DropdownButton2(
           //               isExpanded: true,
           //               hint: Row(
-          //                 children: const [
+          //                 children:  [
           //                   SizedBox(
           //                     width: 4,
           //                   ),
@@ -230,7 +230,7 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
           //                         value: item,
           //                         child: Text(
           //                           item,
-          //                           style: const TextStyle(
+          //                           style:  TextStyle(
           //                             fontSize: 14,
           //                             fontWeight: FontWeight.bold,
           //                             color: Colors.black,
@@ -251,11 +251,11 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
           //       ),
           //     ),
           //   ),
-          //   const SizedBox(
+          //    SizedBox(
           //     width: 5,
           //   ),
           // ]),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
         ],
@@ -290,7 +290,7 @@ class AppTextField extends StatelessWidget {
   final bool isCitySelected;
   final List<ListAntrian> lists;
 
-  const AppTextField({
+  AppTextField({
     required this.textEditingController,
     required this.textEditingController1,
     required this.textEditingController2,
@@ -305,8 +305,9 @@ class AppTextField extends StatelessWidget {
   void onTextFieldTap() {
     showModalBottomSheet<void>(
       context: Get.context!,
-      showDragHandle: true,
-      shape: const RoundedRectangleBorder(
+      enableDrag: true,
+      // showDragHandle: true,
+      shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -315,38 +316,40 @@ class AppTextField extends StatelessWidget {
               child: ListView(
                 children: lists.isEmpty
                     ? [
-                  Image.asset(
-                    'assets/images/timetable.png',
-                    height: 100,
-                  ),
-                  Center(
-                    child: Text('Tidak ada waktu periksa yang tersedia.'),
-                  ),
-                ]
-                    : lists.map(
-                      (e) => TextButton(
-                    style: TextButton.styleFrom(
-                        alignment: Alignment.centerLeft,
-                        foregroundColor: Colors.black,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10)),
-                    child: Text(
-                      e.jam!,
-                      style: GoogleFonts.nunito(
-                        fontSize: 17.0,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    onPressed: () {
-                      textEditingController.text = e.jam!;
-                      textEditingController1.text = e.durasi!;
-                      textEditingController2.text = e.antrian!.toString();
-                      Get.back();
-                    },
-                  ),
-                ).toList(),
+                        Image.asset(
+                          'assets/images/timetable.png',
+                          height: 100,
+                        ),
+                        Center(
+                          child: Text('Tidak ada waktu periksa yang tersedia.'),
+                        ),
+                      ]
+                    : lists
+                        .map(
+                          (e) => TextButton(
+                            style: TextButton.styleFrom(
+                                alignment: Alignment.centerLeft,
+                                foregroundColor: Colors.black,
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10)),
+                            child: Text(
+                              e.jam!,
+                              style: GoogleFonts.nunito(
+                                fontSize: 17.0,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            onPressed: () {
+                              textEditingController.text = e.jam!;
+                              textEditingController1.text = e.durasi!;
+                              textEditingController2.text =
+                                  e.antrian!.toString();
+                              Get.back();
+                            },
+                          ),
+                        )
+                        .toList(),
               ),
-
             ),
           ],
         );
@@ -376,11 +379,10 @@ class AppTextField extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
-          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
-          contentPadding:
-              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: Icon(Icons.arrow_drop_down_circle),
+          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,

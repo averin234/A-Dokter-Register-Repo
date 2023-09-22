@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../data/model/list_data.dart';
 
 class SearchHISSdropdowmn extends StatelessWidget {
-  const SearchHISSdropdowmn({super.key});
+  SearchHISSdropdowmn({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class SearchHISSdropdowmn extends StatelessWidget {
                     ],
                   );
                 } else {
-                  return const Center(
+                  return Center(
                     child: CircularProgressIndicator(),
                   );
                 }
@@ -64,7 +64,7 @@ class AppTextField extends StatelessWidget {
   final bool isCitySelected;
   final List<Lists> lists;
 
-  const AppTextField({
+  AppTextField({
     required this.textEditingController,
     required this.textEditingController1,
     required this.title,
@@ -79,7 +79,7 @@ class AppTextField extends StatelessWidget {
     final controller = Get.put(HissController());
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -98,7 +98,7 @@ class AppTextField extends StatelessWidget {
                         style: TextButton.styleFrom(
                             alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(
+                            padding: EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10)),
                         child: Text(
                           e.nama!,
@@ -171,11 +171,10 @@ class AppTextField extends StatelessWidget {
         minLines: 1,
         decoration: InputDecoration(
           filled: true,
-          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
-          contentPadding:
-              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: Icon(Icons.arrow_drop_down_circle),
+          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../controllers/hiss_controller.dart';
 
 class Subyektifhiss extends StatefulWidget {
-  const Subyektifhiss({super.key});
+  Subyektifhiss({super.key});
 
   @override
   State<Subyektifhiss> createState() => _SubyektifhissState();
@@ -15,28 +15,28 @@ class _SubyektifhissState extends State<Subyektifhiss> {
   Widget build(BuildContext context) {
     final controller = Get.put(HissController());
     return Container(
-      margin: const EdgeInsets.only(right: 10, left: 10),
-      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      margin: EdgeInsets.only(right: 10, left: 10),
+      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0x6cc7d1db)),
+        border: Border.all(color: Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFe0e0e0).withOpacity(0.5),
+            color: Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: const Offset(2, 1),
+            offset: Offset(2, 1),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
@@ -61,10 +61,10 @@ class _SubyektifhissState extends State<Subyektifhiss> {
               // ),
             ],
           ),
-          const SizedBox(
+          SizedBox(
             height: 5,
           ),
-          const Divider(
+          Divider(
             height: 3,
             color: Colors.grey,
           ),
@@ -74,7 +74,7 @@ class _SubyektifhissState extends State<Subyektifhiss> {
             textInputAction: TextInputAction.none,
             maxLines: 7,
             readOnly: true,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,

@@ -10,7 +10,7 @@ import '../../../../data/model/list_data.dart';
 import '../../../loading_summer/loading_screen_animed.dart';
 
 class FormICD10 extends StatefulWidget {
-  const FormICD10({super.key});
+  FormICD10({super.key});
 
   @override
   State<FormICD10> createState() => _FormICD10State();
@@ -23,6 +23,7 @@ class _FormICD10State extends State<FormICD10> {
     controller.namaIcd10Controller.clear();
     controller.namaAsterixController.clear();
   }
+
   String? selectedValue;
   // Default Radio Button Selected Item When App Starts.
   String radioButtonItem = 'ONE';
@@ -32,18 +33,18 @@ class _FormICD10State extends State<FormICD10> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.only(left: 10, right: 10),
+      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: const Color(0x6cc7d1db)),
+        border: Border.all(color: Color(0x6cc7d1db)),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFe0e0e0).withOpacity(0.5),
+            color: Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: const Offset(2, 1),
+            offset: Offset(2, 1),
           ),
         ],
       ),
@@ -51,40 +52,40 @@ class _FormICD10State extends State<FormICD10> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Form isi ICD-10',
             textAlign: TextAlign.center,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
           ),
-          const SizedBox(
+          SizedBox(
             height: 30,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Nama Obat/Kode Obat",
                 style: TextStyle(fontWeight: FontWeight.normal)),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const SearchICD10(),
-          const SizedBox(
+          SearchICD10(),
+          SizedBox(
             height: 10,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("ICD - 10",
                 style: TextStyle(fontWeight: FontWeight.normal)),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
+            padding: EdgeInsets.only(right: 10),
+            margin: EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
+              border: Border.all(color: Color(0x6cc7d1db)),
             ),
             child: Obx(
               () => controller.srcIcd.value.isEmpty
@@ -98,7 +99,7 @@ class _FormICD10State extends State<FormICD10> {
                             snapshot.data != null) {
                           final data = snapshot.data!.list ?? [];
                           return data.isEmpty
-                              ? const Text('Tidak Ada ICD 10')
+                              ? Text('Tidak Ada ICD 10')
                               : dropdownicd10(
                                   'Pilih ICD 10',
                                   data,
@@ -106,30 +107,30 @@ class _FormICD10State extends State<FormICD10> {
                                   controller.namaIcd10Controller,
                                 );
                         } else {
-                          return const Center(
+                          return Center(
                             child: CircularProgressIndicator(),
                           );
                         }
                       }),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Asterik",
                 style: TextStyle(fontWeight: FontWeight.normal)),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
+            padding: EdgeInsets.only(right: 10),
+            margin: EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
+              border: Border.all(color: Color(0x6cc7d1db)),
             ),
             child: Obx(
               () => controller.srcAsterix.value.isEmpty
@@ -144,7 +145,7 @@ class _FormICD10State extends State<FormICD10> {
                             snapshot.data != null) {
                           final data = snapshot.data!.list ?? [];
                           return data.isEmpty
-                              ? const Text('Tidak Ada Asterix')
+                              ? Text('Tidak Ada Asterix')
                               : dropdown(
                                   'Pilih Asterix',
                                   data,
@@ -152,14 +153,14 @@ class _FormICD10State extends State<FormICD10> {
                                   controller.namaAsterixController,
                                 );
                         } else {
-                          return const Center(
+                          return Center(
                             child: CircularProgressIndicator(),
                           );
                         }
                       }),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           SizedBox(
@@ -177,7 +178,7 @@ class _FormICD10State extends State<FormICD10> {
                     });
                   },
                 ),
-                const Text(
+                Text(
                   'Baru',
                   style: TextStyle(),
                 ),
@@ -191,7 +192,7 @@ class _FormICD10State extends State<FormICD10> {
                     });
                   },
                 ),
-                const Text(
+                Text(
                   'Lama',
                   style: TextStyle(),
                 ),
@@ -206,8 +207,7 @@ class _FormICD10State extends State<FormICD10> {
                 onTap: () async {
                   Get.defaultDialog(
                     backgroundColor: Color(0xe0e0e0),
-                    content:
-                    Loading(),
+                    content: Loading(),
                     title: '',
                     barrierDismissible: false,
                   );
@@ -239,7 +239,7 @@ class _FormICD10State extends State<FormICD10> {
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
                         "Submit",
                         style: TextStyle(
@@ -279,7 +279,7 @@ class AppTextField extends StatelessWidget {
   final bool isCitySelected;
   final List<Lists> lists;
 
-  const AppTextField({
+  AppTextField({
     required this.textEditingController,
     required this.textEditingController1,
     required this.title,
@@ -293,7 +293,7 @@ class AppTextField extends StatelessWidget {
   void onTextFieldTap() {
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -312,7 +312,7 @@ class AppTextField extends StatelessWidget {
                         style: TextButton.styleFrom(
                             alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(
+                            padding: EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10)),
                         child: Text(
                           e.nama!,
@@ -359,11 +359,10 @@ class AppTextField extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: Colors.transparent,
           filled: true,
-          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
-          contentPadding:
-              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: Icon(Icons.arrow_drop_down_circle),
+          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,
@@ -398,7 +397,7 @@ class AppTextFieldIcd10 extends StatelessWidget {
   final bool isCitySelected;
   final List<Lists> lists;
 
-  const AppTextFieldIcd10({
+  AppTextFieldIcd10({
     required this.textEditingController,
     required this.textEditingController1,
     required this.title,
@@ -413,7 +412,7 @@ class AppTextFieldIcd10 extends StatelessWidget {
     final controller = Get.put(IsiIcd10Controller());
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -432,7 +431,7 @@ class AppTextFieldIcd10 extends StatelessWidget {
                         style: TextButton.styleFrom(
                             alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(
+                            padding: EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10)),
                         child: Text(
                           e.nama!,
@@ -481,11 +480,10 @@ class AppTextFieldIcd10 extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.transparent,
-          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
-          contentPadding:
-              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: Icon(Icons.arrow_drop_down_circle),
+          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,

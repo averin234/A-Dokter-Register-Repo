@@ -11,14 +11,13 @@ import '../../../../routes/app_pages.dart';
 import '../../../loading_summer/loading_screen_animed.dart';
 
 class FormIsiResep extends StatefulWidget {
-  const FormIsiResep({super.key});
+  FormIsiResep({super.key});
 
   @override
   State<FormIsiResep> createState() => _FormIsiResepState();
 }
 
 class _FormIsiResepState extends State<FormIsiResep> {
-
   @override
   void initState() {
     super.initState();
@@ -27,6 +26,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
     controller.namaAturanPakaiController.clear();
     controller.namaObatController.clear();
   }
+
   String? selectedValue;
   // Default Radio Button Selected Item When App Starts.
   String radioButtonItem = 'ONE';
@@ -36,18 +36,18 @@ class _FormIsiResepState extends State<FormIsiResep> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.only(left: 10, right: 10),
+      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: const Color(0x6cc7d1db)),
+        border: Border.all(color: Color(0x6cc7d1db)),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFe0e0e0).withOpacity(0.5),
+            color: Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: const Offset(2, 1),
+            offset: Offset(2, 1),
           ),
         ],
       ),
@@ -55,12 +55,12 @@ class _FormIsiResepState extends State<FormIsiResep> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Form isi Resep',
             textAlign: TextAlign.center,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
           ),
-          const SizedBox(
+          SizedBox(
             height: 30,
           ),
           // Padding(
@@ -86,7 +86,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
           //     );
           //   }
           // ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           FutureBuilder(
@@ -101,11 +101,11 @@ class _FormIsiResepState extends State<FormIsiResep> {
                   return data.isEmpty
                       ? Text(snapshot.data!.msg ?? 'Tidak Ada Obat')
                       : Container(
-                          padding: const EdgeInsets.only(right: 10),
-                          margin: const EdgeInsets.only(left: 10, right: 10),
+                          padding: EdgeInsets.only(right: 10),
+                          margin: EdgeInsets.only(left: 10, right: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: const Color(0x6cc7d1db)),
+                            border: Border.all(color: Color(0x6cc7d1db)),
                           ),
                           child: dropdown(
                               'Cari Obat',
@@ -113,34 +113,34 @@ class _FormIsiResepState extends State<FormIsiResep> {
                               controller.obatController,
                               controller.namaObatController));
                 } else {
-                  return const Center(
+                  return Center(
                     child: CircularProgressIndicator(),
                   );
                 }
               }),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 15),
             child:
                 Text("Jumlah", style: TextStyle(fontWeight: FontWeight.normal)),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Container(
-            padding: const EdgeInsets.only(right: 10),
-            margin: const EdgeInsets.only(left: 10, right: 10),
+            padding: EdgeInsets.only(right: 10),
+            margin: EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0x6cc7d1db)),
+              border: Border.all(color: Color(0x6cc7d1db)),
             ),
             child: TextField(
               controller: controller.jumlahController,
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
@@ -153,21 +153,21 @@ class _FormIsiResepState extends State<FormIsiResep> {
               ),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const Divider(
+          Divider(
             color: Colors.grey,
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Jenis Kesediaan",
                 style: TextStyle(fontWeight: FontWeight.normal)),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           FutureBuilder(
@@ -178,11 +178,11 @@ class _FormIsiResepState extends State<FormIsiResep> {
                     snapshot.data != null) {
                   final data = snapshot.data!.jenisObat ?? [];
                   return Container(
-                    padding: const EdgeInsets.only(right: 10),
-                    margin: const EdgeInsets.only(left: 10, right: 10),
+                    padding: EdgeInsets.only(right: 10),
+                    margin: EdgeInsets.only(left: 10, right: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: const Color(0x6cc7d1db)),
+                      border: Border.all(color: Color(0x6cc7d1db)),
                     ),
                     child: dropdown1(
                       'Jenis Kesediaan',
@@ -192,33 +192,32 @@ class _FormIsiResepState extends State<FormIsiResep> {
                     ),
                   );
                 } else {
-                  return const Center(
+                  return Center(
                     child: CircularProgressIndicator(),
                   );
                 }
               }),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Aturan Pemakaian",
                 style: TextStyle(fontWeight: FontWeight.normal)),
           ),
           Container(
-              padding: const EdgeInsets.only(right: 10),
-              margin: const EdgeInsets.only(
-                  left: 10, right: 10, top: 10, bottom: 10),
+              padding: EdgeInsets.only(right: 10),
+              margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
               decoration: BoxDecoration(
-                color: const Color(0xfff3f3f3),
+                color: Color(0xfff3f3f3),
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: const Color(0x6cc7d1db)),
+                border: Border.all(color: Color(0x6cc7d1db)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     height: 10,
                   ),
                   Obx(() {
@@ -234,14 +233,13 @@ class _FormIsiResepState extends State<FormIsiResep> {
                                   snapshot.data != null) {
                                 final data = snapshot.data!.list ?? [];
                                 return Container(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  margin: const EdgeInsets.only(
-                                      left: 10, right: 10),
+                                  padding: EdgeInsets.only(right: 10),
+                                  margin: EdgeInsets.only(left: 10, right: 10),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: const Color(0x6cc7d1db)),
+                                    border:
+                                        Border.all(color: Color(0x6cc7d1db)),
                                   ),
                                   child: dropdown(
                                     'Aturan Pemakaian',
@@ -251,36 +249,36 @@ class _FormIsiResepState extends State<FormIsiResep> {
                                   ),
                                 );
                               } else {
-                                return const Center(
+                                return Center(
                                   child: CircularProgressIndicator(),
                                 );
                               }
                             });
                   }),
-                  const SizedBox(
+                  SizedBox(
                     height: 10,
                   ),
                   // Row(
                   //   children: [
-                  //     const SizedBox(
+                  //      SizedBox(
                   //       width: 5,
                   //     ),
-                  //     const Padding(
+                  //      Padding(
                   //       padding: EdgeInsets.only(left: 10),
                   //       child: Text('/'),
                   //     ),
                   //     Expanded(
                   //       child: Container(
-                  //         margin: const EdgeInsets.only(left: 10),
+                  //         margin:  EdgeInsets.only(left: 10),
                   //         decoration: BoxDecoration(
                   //           color: Colors.white,
                   //           borderRadius: BorderRadius.circular(10),
-                  //           border: Border.all(color: const Color(0x6cc7d1db)),
+                  //           border: Border.all(color:  Color(0x6cc7d1db)),
                   //         ),
                   //         child: TextFormField(
                   //           keyboardType: TextInputType.text,
                   //           textInputAction: TextInputAction.done,
-                  //           decoration: const InputDecoration(
+                  //           decoration:  InputDecoration(
                   //             border: InputBorder.none,
                   //             focusedBorder: InputBorder.none,
                   //             enabledBorder: InputBorder.none,
@@ -294,25 +292,25 @@ class _FormIsiResepState extends State<FormIsiResep> {
                   //         ),
                   //       ),
                   //     ),
-                  //     const SizedBox(
+                  //      SizedBox(
                   //       width: 5,
                   //     ),
-                  //     const Text('X'),
-                  //     const SizedBox(
+                  //      Text('X'),
+                  //      SizedBox(
                   //       width: 5,
                   //     ),
                   //     Expanded(
                   //       child: Container(
-                  //         margin: const EdgeInsets.only(right: 10),
+                  //         margin:  EdgeInsets.only(right: 10),
                   //         decoration: BoxDecoration(
                   //           color: Colors.white,
                   //           borderRadius: BorderRadius.circular(10),
-                  //           border: Border.all(color: const Color(0x6cc7d1db)),
+                  //           border: Border.all(color:  Color(0x6cc7d1db)),
                   //         ),
                   //         child: TextFormField(
                   //           keyboardType: TextInputType.text,
                   //           textInputAction: TextInputAction.done,
-                  //           decoration: const InputDecoration(
+                  //           decoration:  InputDecoration(
                   //             border: InputBorder.none,
                   //             focusedBorder: InputBorder.none,
                   //             enabledBorder: InputBorder.none,
@@ -328,24 +326,24 @@ class _FormIsiResepState extends State<FormIsiResep> {
                   //     ),
                   //   ],
                   // ),
-                  // const SizedBox(
+                  //  SizedBox(
                   //   height: 10,
                   // ),
-                  // const Padding(
+                  //  Padding(
                   //   padding: EdgeInsets.only(left: 15),
                   //   child: Text("ggt",
                   //       style: TextStyle(fontWeight: FontWeight.normal)),
                   // ),
-                  // const SizedBox(
+                  //  SizedBox(
                   //   height: 10,
                   // ),
                   // Container(
-                  //   padding: const EdgeInsets.only(right: 10),
-                  //   margin: const EdgeInsets.only(left: 10, right: 10),
+                  //   padding:  EdgeInsets.only(right: 10),
+                  //   margin:  EdgeInsets.only(left: 10, right: 10),
                   //   decoration: BoxDecoration(
                   //     color: Colors.white,
                   //     borderRadius: BorderRadius.circular(10),
-                  //     border: Border.all(color: const Color(0x6cc7d1db)),
+                  //     border: Border.all(color:  Color(0x6cc7d1db)),
                   //   ),
                   //   child: Column(
                   //     crossAxisAlignment: CrossAxisAlignment.start,
@@ -355,7 +353,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                   //         child: DropdownButton2(
                   //           isExpanded: true,
                   //           hint: Row(
-                  //             children: const [
+                  //             children:  [
                   //               SizedBox(
                   //                 width: 4,
                   //               ),
@@ -377,7 +375,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                   //                     value: item,
                   //                     child: Text(
                   //                       item,
-                  //                       style: const TextStyle(
+                  //                       style:  TextStyle(
                   //                         fontSize: 14,
                   //                         fontWeight: FontWeight.bold,
                   //                         color: Colors.black,
@@ -397,7 +395,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                   //     ],
                   //   ),
                   // ),
-                  const SizedBox(
+                  SizedBox(
                     height: 10,
                   ),
                   SizedBox(
@@ -415,7 +413,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        const Text(
+                        Text(
                           'Sebelum Makan',
                           style: TextStyle(),
                         ),
@@ -429,7 +427,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        const Text(
+                        Text(
                           'Sesudah Makan',
                           style: TextStyle(),
                         ),
@@ -451,7 +449,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        const Text(
+                        Text(
                           'Saat Makan',
                           style: TextStyle(),
                         ),
@@ -465,7 +463,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        const Text(
+                        Text(
                           'Tetes',
                           style: TextStyle(),
                         ),
@@ -479,7 +477,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        const Text(
+                        Text(
                           'Oles',
                           style: TextStyle(),
                         ),
@@ -501,7 +499,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        const Text(
+                        Text(
                           'Sprey',
                           style: TextStyle(),
                         ),
@@ -515,7 +513,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        const Text(
+                        Text(
                           'UC',
                           style: TextStyle(),
                         ),
@@ -529,7 +527,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        const Text(
+                        Text(
                           'Anus',
                           style: TextStyle(),
                         ),
@@ -551,7 +549,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        const Text(
+                        Text(
                           'Vagina',
                           style: TextStyle(),
                         ),
@@ -565,7 +563,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        const Text(
+                        Text(
                           'Lainnya',
                           style: TextStyle(),
                         ),
@@ -582,8 +580,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                 onTap: () async {
                   Get.defaultDialog(
                     backgroundColor: Color(0xe0e0e0),
-                    content:
-                    Loading(),
+                    content: Loading(),
                     title: '',
                     barrierDismissible: false,
                   );
@@ -618,7 +615,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
                         "Submit",
                         style: TextStyle(
@@ -670,7 +667,7 @@ class AppTextField extends StatelessWidget {
   final bool isCitySelected;
   final List<Lists> lists;
 
-  const AppTextField({
+  AppTextField({
     required this.textEditingController,
     required this.textEditingController1,
     required this.title,
@@ -684,7 +681,7 @@ class AppTextField extends StatelessWidget {
   void onTextFieldTap() {
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -703,7 +700,7 @@ class AppTextField extends StatelessWidget {
                         style: TextButton.styleFrom(
                             alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(
+                            padding: EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10)),
                         child: Text(
                           e.nama!,
@@ -750,11 +747,10 @@ class AppTextField extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.transparent,
-          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
-          contentPadding:
-              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: Icon(Icons.arrow_drop_down_circle),
+          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,
@@ -777,7 +773,7 @@ class AppTextField1 extends StatelessWidget {
   final bool isCitySelected;
   final List<JenisObat> lists;
 
-  const AppTextField1({
+  AppTextField1({
     required this.textEditingController,
     required this.textEditingController1,
     required this.title,
@@ -792,7 +788,7 @@ class AppTextField1 extends StatelessWidget {
     final controller = Get.put(IsiResepController());
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -811,7 +807,7 @@ class AppTextField1 extends StatelessWidget {
                         style: TextButton.styleFrom(
                             alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(
+                            padding: EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10)),
                         child: Text(
                           e.namaKesediaan!,
@@ -859,11 +855,10 @@ class AppTextField1 extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: Colors.transparent,
           filled: true,
-          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
-          contentPadding:
-              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: Icon(Icons.arrow_drop_down_circle),
+          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,

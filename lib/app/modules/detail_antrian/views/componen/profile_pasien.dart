@@ -9,47 +9,47 @@ import '../../../../routes/app_pages.dart';
 
 class ProfilePasienTindakan extends StatelessWidget {
   final Pasien pasien;
-  const ProfilePasienTindakan({super.key, required this.pasien});
+  ProfilePasienTindakan({super.key, required this.pasien});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 10, left: 10),
-      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      margin: EdgeInsets.only(right: 10, left: 10),
+      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0x6cc7d1db)),
+        border: Border.all(color: Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFe0e0e0).withOpacity(0.5),
+            color: Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: const Offset(2, 1),
+            offset: Offset(2, 1),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
               SizedBox(
                 width: 270,
                 child: Text(pasien.namaPasien ?? '',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     )),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
               CircleAvatar(
@@ -62,18 +62,18 @@ class ProfilePasienTindakan extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
+          SizedBox(
             height: 5,
           ),
-          const Divider(
+          Divider(
             height: 3,
             color: Colors.grey,
           ),
           Row(
             children: [
               Container(
-                padding: const EdgeInsets.only(left: 0),
-                child: const Column(
+                padding: EdgeInsets.only(left: 0),
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -108,65 +108,65 @@ class ProfilePasienTindakan extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.only(left: 10, top: 10),
+                padding: EdgeInsets.only(left: 10, top: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        const Text(":",
+                        Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        const SizedBox(
+                        SizedBox(
                           width: 6,
                         ),
                         Text(pasien.noMr ?? '',
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        const Text(":",
+                        Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        const SizedBox(
+                        SizedBox(
                           width: 6,
                         ),
                         Text("${pasien.umur ?? ''} tahun",
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        const Text(":",
+                        Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        const SizedBox(
+                        SizedBox(
                           width: 6,
                         ),
                         Text(pasien.golDarah ?? '',
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        const Text(":",
+                        Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        const SizedBox(
+                        SizedBox(
                           width: 6,
                         ),
                         FutureBuilder(
@@ -178,21 +178,21 @@ class ProfilePasienTindakan extends StatelessWidget {
                                       ConnectionState.waiting &&
                                   snapshot.data != null) {
                                 return Text(snapshot.data!.msg ?? '',
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 13));
                               } else {
-                                return const Center(
+                                return Center(
                                   child: CircularProgressIndicator(),
                                 );
                               }
                             }),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
-                    const Row(
+                    Row(
                       children: [
                         Text(":",
                             style: TextStyle(
@@ -205,7 +205,7 @@ class ProfilePasienTindakan extends StatelessWidget {
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                   ],
@@ -213,7 +213,7 @@ class ProfilePasienTindakan extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(
+          SizedBox(
             height: 20,
           ),
           Column(
@@ -226,21 +226,21 @@ class ProfilePasienTindakan extends StatelessWidget {
                     onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
                         parameters: {'no_mr': pasien.noMr ?? ''}),
                     child: Container(
-                      padding: const EdgeInsets.all(10),
+                      padding: EdgeInsets.all(10),
                       height: 45,
                       decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 56, 229, 77),
+                        color: Color.fromARGB(255, 56, 229, 77),
                         borderRadius: BorderRadius.circular(10),
                         // boxShadow: [
                         //   BoxShadow(
                         //     color: Colors.green.withOpacity(0.5),
                         //     spreadRadius: 0,
                         //     blurRadius: 10,
-                        //     offset: const Offset(6, 6),
+                        //     offset:  Offset(6, 6),
                         //   ),
                         // ],
                       ),
-                      child: const Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -254,7 +254,7 @@ class ProfilePasienTindakan extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     width: 10,
                   ),
                   InkWell(
@@ -263,7 +263,7 @@ class ProfilePasienTindakan extends StatelessWidget {
                           context: context,
                           isScrollControlled: true,
                           isDismissible: true,
-                          shape: const RoundedRectangleBorder(
+                          shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
                               top: Radius.circular(20),
                             ),
@@ -282,7 +282,7 @@ class ProfilePasienTindakan extends StatelessWidget {
                                       ),
                                       child: Column(
                                         children: [
-                                          const SizedBox(
+                                          SizedBox(
                                             height: 10,
                                           ),
                                           Container(
@@ -292,22 +292,22 @@ class ProfilePasienTindakan extends StatelessWidget {
                                               left: Get.width / 2 - 40,
                                             ),
                                             decoration: BoxDecoration(
-                                              color: const Color(0xFFe0e0e0),
+                                              color: Color(0xFFe0e0e0),
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                             ),
                                           ),
-                                          const SizedBox(
+                                          SizedBox(
                                             height: 4,
                                           ),
-                                          const Text('Geser Kebawah',
+                                          Text('Geser Kebawah',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.grey)),
-                                          const SizedBox(
+                                          SizedBox(
                                             height: 25,
                                           ),
-                                          const Padding(
+                                          Padding(
                                             padding: EdgeInsets.only(left: 0),
                                             child: Text("Privy Sign",
                                                 style: TextStyle(
@@ -315,7 +315,7 @@ class ProfilePasienTindakan extends StatelessWidget {
                                                     fontSize: 16,
                                                     color: Colors.blue)),
                                           ),
-                                          const SizedBox(
+                                          SizedBox(
                                             height: 10,
                                           ),
                                           Expanded(
@@ -327,7 +327,7 @@ class ProfilePasienTindakan extends StatelessWidget {
                                                     MainAxisAlignment.start,
                                                 children: AnimationConfiguration
                                                     .toStaggeredList(
-                                                  duration: const Duration(
+                                                  duration: Duration(
                                                       milliseconds: 275),
                                                   childAnimationBuilder:
                                                       (widget) =>
@@ -338,12 +338,11 @@ class ProfilePasienTindakan extends StatelessWidget {
                                                   ),
                                                   children: <Widget>[
                                                     Container(
-                                                      decoration:
-                                                          const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color: Color.fromARGB(
                                                             255, 233, 231, 253),
                                                       ),
-                                                      child: const Row(
+                                                      child: Row(
                                                         children: [
                                                           Padding(
                                                             padding:
@@ -388,15 +387,14 @@ class ProfilePasienTindakan extends StatelessWidget {
                                                         ],
                                                       ),
                                                     ),
-                                                    const SizedBox(
+                                                    SizedBox(
                                                       height: 10,
                                                     ),
                                                     Container(
-                                                      decoration:
-                                                          const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color: Colors.white,
                                                       ),
-                                                      child: const Row(
+                                                      child: Row(
                                                         children: [
                                                           Padding(
                                                             padding:
@@ -430,15 +428,14 @@ class ProfilePasienTindakan extends StatelessWidget {
                                                         ],
                                                       ),
                                                     ),
-                                                    const SizedBox(
+                                                    SizedBox(
                                                       height: 10,
                                                     ),
                                                     Container(
-                                                      decoration:
-                                                          const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color: Colors.white,
                                                       ),
-                                                      child: const Row(
+                                                      child: Row(
                                                         children: [
                                                           Padding(
                                                             padding:
@@ -472,15 +469,14 @@ class ProfilePasienTindakan extends StatelessWidget {
                                                         ],
                                                       ),
                                                     ),
-                                                    const SizedBox(
+                                                    SizedBox(
                                                       height: 10,
                                                     ),
                                                     Container(
-                                                      decoration:
-                                                          const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color: Colors.white,
                                                       ),
-                                                      child: const Row(
+                                                      child: Row(
                                                         children: [
                                                           Padding(
                                                             padding:
@@ -514,15 +510,14 @@ class ProfilePasienTindakan extends StatelessWidget {
                                                         ],
                                                       ),
                                                     ),
-                                                    const SizedBox(
+                                                    SizedBox(
                                                       height: 10,
                                                     ),
                                                     Container(
-                                                      decoration:
-                                                          const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color: Colors.white,
                                                       ),
-                                                      child: const Row(
+                                                      child: Row(
                                                         children: [
                                                           Padding(
                                                             padding:
@@ -561,10 +556,10 @@ class ProfilePasienTindakan extends StatelessWidget {
                                               ),
                                             ),
                                           ),
-                                          const SizedBox(
+                                          SizedBox(
                                             height: 10,
                                           ),
-                                          const SizedBox(
+                                          SizedBox(
                                             height: 10,
                                           ),
                                         ],
@@ -575,7 +570,7 @@ class ProfilePasienTindakan extends StatelessWidget {
                     // onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
                     //     parameters: {'no_mr': pasien.noMr ?? ''}),
                     child: Container(
-                      padding: const EdgeInsets.all(10),
+                      padding: EdgeInsets.all(10),
                       height: 45,
                       decoration: BoxDecoration(
                         color: Colors.redAccent,
@@ -585,11 +580,11 @@ class ProfilePasienTindakan extends StatelessWidget {
                         //     color: Colors.green.withOpacity(0.5),
                         //     spreadRadius: 0,
                         //     blurRadius: 10,
-                        //     offset: const Offset(6, 6),
+                        //     offset:  Offset(6, 6),
                         //   ),
                         // ],
                       ),
-                      child: const Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(

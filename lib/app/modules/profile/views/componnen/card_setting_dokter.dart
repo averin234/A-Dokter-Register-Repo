@@ -9,7 +9,7 @@ import '../../controllers/profile_controller.dart';
 
 class CardDokterSetting extends GetView<ProfileController> {
   final Dokter dokter;
-  const CardDokterSetting({
+  CardDokterSetting({
     Key? key,
     required this.dokter,
   }) : super(key: key);
@@ -18,7 +18,7 @@ class CardDokterSetting extends GetView<ProfileController> {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(10),
           color: Colors.white,
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -43,11 +43,11 @@ class CardDokterSetting extends GetView<ProfileController> {
                   ),
                   borderRadius: BorderRadius.circular(40.0),
                 ),
-                padding: const EdgeInsets.all(5),
+                padding: EdgeInsets.all(5),
               ),
               Expanded(
                 child: Container(
-                  padding: const EdgeInsets.only(left: 15),
+                  padding: EdgeInsets.only(left: 15),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,30 +56,31 @@ class CardDokterSetting extends GetView<ProfileController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(greetings(),
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold,color: Colors.blue,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue,
                                     fontSize: 16)),
-                            const SizedBox(
+                            SizedBox(
                               height: 5,
                             ),
                             Row(
                               children: [
                                 Expanded(
                                   child: Text(dokter.namaPegawai ?? '',
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 14)),
                                 ),
-                                const SizedBox(
+                                SizedBox(
                                   width: 10,
                                 ),
                               ],
                             ),
-                            const SizedBox(
+                            SizedBox(
                               height: 5,
                             ),
                             Text("Spesialis : ${dokter.namaSpesialisasi ?? ''}",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16)),
                           ]),
                     ],
@@ -102,7 +103,7 @@ class CardDokterSetting extends GetView<ProfileController> {
         ),
         child: Column(
           children: [
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             Container(
@@ -112,74 +113,74 @@ class CardDokterSetting extends GetView<ProfileController> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: const Color(0xFFe0e0e0),
+                color: Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 25,
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             SingleChildScrollView(
                 child: Center(
-                  child: Column(
+              child: Column(
+                children: [
+                  Text(
+                      "Sedang Dalam Pengembangan\nMohon maaf atas ketidak nyamanannya\nlakukan update pada aplikasi untuk menikmati fitur-fitur baru nantinya",
+                      style: TextStyle(
+                          color: Colors.black45,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  // Image.asset(
+                  //   "assets/images/login_sukses.png",
+                  //   gaplessPlayback: true,
+                  //   fit: BoxFit.fitHeight,
+                  //   width: 200,
+                  //   height: 200,
+                  // ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Sedang Dalam Pengembangan\nMohon maaf atas ketidak nyamanannya\nlakukan update pada aplikasi untuk menikmati fitur-fitur baru nantinya",
-                          style: TextStyle(
-                              color: Colors.black45,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      // Image.asset(
-                      //   "assets/images/login_sukses.png",
-                      //   gaplessPlayback: true,
-                      //   fit: BoxFit.fitHeight,
-                      //   width: 200,
-                      //   height: 200,
-                      // ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding:
-                            const EdgeInsets.only(right: 10, left: 10, top: 20),
-                            child: GestureDetector(
-                              onTap: () => Get.offAllNamed(Routes.HOME),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(7),
-                                  color: Colors.blue,
+                      Padding(
+                        padding: EdgeInsets.only(right: 10, left: 10, top: 20),
+                        child: GestureDetector(
+                          onTap: () => Get.offAllNamed(Routes.HOME),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: Colors.blue,
+                            ),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(16),
+                                  child: Text("OKE",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold)),
                                 ),
-                                child: Column(
-                                  children: const [
-                                    Padding(
-                                      padding: EdgeInsets.all(16),
-                                      child: Text("OKE",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold)),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              ],
                             ),
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),
-                )),
+                ],
+              ),
+            )),
           ],
         ));
   }

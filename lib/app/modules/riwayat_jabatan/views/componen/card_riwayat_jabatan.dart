@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 
 class CardRiwayatJabatankDokter extends StatefulWidget {
-  const CardRiwayatJabatankDokter({super.key});
+  CardRiwayatJabatankDokter({super.key});
 
   @override
   State<CardRiwayatJabatankDokter> createState() =>
@@ -23,10 +23,10 @@ class _CardRiwayatJabatankDokterState extends State<CardRiwayatJabatankDokter> {
           border: Border.all(color: Color(0x6cc7d1db)),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              color: Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: const Offset(2, 1),
+              offset: Offset(2, 1),
             ),
           ],
         ),

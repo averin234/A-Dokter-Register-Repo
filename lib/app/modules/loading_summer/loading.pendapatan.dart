@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class shimmerPendapatan extends StatelessWidget {
-  const shimmerPendapatan({super.key});
+  shimmerPendapatan({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,157 +10,168 @@ class shimmerPendapatan extends StatelessWidget {
       constraints: BoxConstraints(maxWidth: 355),
       child: Column(children: [
         Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFFe0e0e0).withOpacity(0.5),
-                  spreadRadius: 0,
-                  blurRadius: 10,
-                  offset: const Offset(2, 1),
-                ),
-              ],
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Color(0x6cc7d1db)),
-            ),
-            child: Column(children: [
-            Row(
-              children: [
-                SizedBox(width: 10,),
-                Column(children: [
-                  Shimmer(
-                    child:
-                  Container(
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFBACDDB),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: EdgeInsets.all(10),
-                    constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-                  ),),
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xFFe0e0e0).withOpacity(0.5),
+                spreadRadius: 0,
+                blurRadius: 10,
+                offset: Offset(2, 1),
+              ),
+            ],
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Color(0x6cc7d1db)),
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
                   SizedBox(
-                    height: 10,
+                    width: 10,
                   ),
-                  Shimmer(
-                    child:
-                  Container(
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFBACDDB),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: EdgeInsets.all(10),
-                    constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-                  ),),
-                  SizedBox(
-                    height: 20,
+                  Column(
+                    children: [
+                      Shimmer(
+                        child: Container(
+                          height: 10,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFBACDDB),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: EdgeInsets.all(10),
+                          constraints:
+                              BoxConstraints(minWidth: 120, maxWidth: 195),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Shimmer(
+                        child: Container(
+                          height: 10,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFBACDDB),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: EdgeInsets.all(10),
+                          constraints:
+                              BoxConstraints(minWidth: 120, maxWidth: 195),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Shimmer(
+                        child: Container(
+                          height: 10,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFBACDDB),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: EdgeInsets.all(10),
+                          constraints:
+                              BoxConstraints(minWidth: 120, maxWidth: 195),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Shimmer(
+                        child: Container(
+                          height: 10,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFBACDDB),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: EdgeInsets.all(10),
+                          constraints:
+                              BoxConstraints(minWidth: 120, maxWidth: 195),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Shimmer(
+                        child: Container(
+                          height: 10,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFBACDDB),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: EdgeInsets.all(10),
+                          constraints:
+                              BoxConstraints(minWidth: 120, maxWidth: 195),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   ),
-                  Shimmer(
-                    child:
-                  Container(
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFBACDDB),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: EdgeInsets.all(10),
-                    constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-                  ),),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Shimmer(
-                    child:
-                  Container(
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFBACDDB),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: EdgeInsets.all(10),
-                    constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-                  ),),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Shimmer(
-                    child:
-                  Container(
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFBACDDB),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: EdgeInsets.all(10),
-                    constraints: BoxConstraints(minWidth: 120, maxWidth: 195),
-                  ),),
-                  SizedBox(
-                    height: 10,
-                  ),
-
-                ],),
-
-              ],),
+                ],
+              ),
               SizedBox(
                 height: 10,
               ),
               Shimmer(
-              child:
-              Container(
-                height: 2,
-                decoration: BoxDecoration(
-                  color: Color(0xFFBACDDB),
-                  borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  height: 2,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFBACDDB),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: EdgeInsets.all(10),
+                  constraints: BoxConstraints(minWidth: 120, maxWidth: 495),
                 ),
-                padding: EdgeInsets.all(10),
-                constraints: BoxConstraints(minWidth: 120, maxWidth: 495),
-              ),),
+              ),
               SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
-                   Expanded(
-    child : Shimmer(
-    child: Container(
-                      height: 10,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFBACDDB),
-                        borderRadius: BorderRadius.circular(10),
+                  Expanded(
+                    child: Shimmer(
+                      child: Container(
+                        height: 10,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFBACDDB),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: EdgeInsets.all(10),
+                        constraints: BoxConstraints(minWidth: 20, maxWidth: 35),
                       ),
-                      padding: EdgeInsets.all(10),
-                      constraints: BoxConstraints(minWidth: 20, maxWidth: 35),
-                    ),),
+                    ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     width: 10,
                   ),
                   GestureDetector(
-                    onTap: () {
-                    },
-                    child : Shimmer(
+                    onTap: () {},
+                    child: Shimmer(
                       child: Container(
-                      height: 10,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFBACDDB),
-                        borderRadius: BorderRadius.circular(10),
+                        height: 10,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFBACDDB),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: EdgeInsets.all(10),
+                        constraints: BoxConstraints(minWidth: 20, maxWidth: 35),
                       ),
-                      padding: EdgeInsets.all(10),
-                      constraints: BoxConstraints(minWidth: 20, maxWidth: 35),
-                    ),),
+                    ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     width: 10,
                   ),
                 ],
               ),
-            ],),),
+            ],
+          ),
+        ),
         SizedBox(
           height: 10,
         ),
-
       ]),
     );
   }

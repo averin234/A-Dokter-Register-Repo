@@ -7,7 +7,7 @@ Future bottomSheetTambahDataObat() {
       context: Get.context!,
       isScrollControlled: true,
       isDismissible: true,
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20),
         ),
@@ -25,7 +25,7 @@ Future bottomSheetTambahDataObat() {
                     color: Colors.transparent,
                   ),
                   child: Column(children: [
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Container(
@@ -35,20 +35,20 @@ Future bottomSheetTambahDataObat() {
                         left: Get.width / 2 - 40,
                       ),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFe0e0e0),
+                        color: Color(0xFFe0e0e0),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 4,
                     ),
-                    const Text('Geser Kebawah',
+                    Text('Geser Kebawah',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.grey)),
-                    const SizedBox(
+                    SizedBox(
                       height: 25,
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 0),
                       child: Text("Tambah Barang",
                           style: TextStyle(
@@ -56,7 +56,7 @@ Future bottomSheetTambahDataObat() {
                               fontSize: 16,
                               color: Colors.blue)),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Expanded(
@@ -65,52 +65,50 @@ Future bottomSheetTambahDataObat() {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: AnimationConfiguration.toStaggeredList(
-                            duration: const Duration(milliseconds: 275),
+                            duration: Duration(milliseconds: 275),
                             childAnimationBuilder: (widget) => SlideAnimation(
                               child: FadeInAnimation(
                                 child: widget,
                               ),
                             ),
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 10,
                               ),
                               Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(left: 15),
                                       child: Text("Nama Barang",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           )),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       children: [
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 5,
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin:
-                                                const EdgeInsets.only(left: 10),
+                                            margin: EdgeInsets.only(left: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                      const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -128,7 +126,7 @@ Future bottomSheetTambahDataObat() {
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 10,
                                         ),
                                       ],
@@ -136,45 +134,43 @@ Future bottomSheetTambahDataObat() {
                                   ],
                                 ),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 10,
                               ),
                               Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(left: 15),
                                       child: Text("Satuan Besar",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           )),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       children: [
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 5,
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin:
-                                                const EdgeInsets.only(left: 10),
+                                            margin: EdgeInsets.only(left: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                      const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -192,7 +188,7 @@ Future bottomSheetTambahDataObat() {
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 10,
                                         ),
                                       ],
@@ -200,45 +196,43 @@ Future bottomSheetTambahDataObat() {
                                   ],
                                 ),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 10,
                               ),
                               Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(left: 15),
                                       child: Text("Satuan Kecil",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           )),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       children: [
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 5,
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin:
-                                                const EdgeInsets.only(left: 10),
+                                            margin: EdgeInsets.only(left: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                      const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -256,7 +250,7 @@ Future bottomSheetTambahDataObat() {
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 10,
                                         ),
                                       ],
@@ -264,45 +258,43 @@ Future bottomSheetTambahDataObat() {
                                   ],
                                 ),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 10,
                               ),
                               Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(left: 15),
                                       child: Text("Content",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           )),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       children: [
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 5,
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin:
-                                                const EdgeInsets.only(left: 10),
+                                            margin: EdgeInsets.only(left: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                      const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -320,7 +312,7 @@ Future bottomSheetTambahDataObat() {
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 10,
                                         ),
                                       ],
@@ -328,45 +320,43 @@ Future bottomSheetTambahDataObat() {
                                   ],
                                 ),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 10,
                               ),
                               Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(left: 15),
                                       child: Text("Harga Beli",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           )),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       children: [
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 5,
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin:
-                                                const EdgeInsets.only(left: 10),
+                                            margin: EdgeInsets.only(left: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                      const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -384,7 +374,7 @@ Future bottomSheetTambahDataObat() {
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 10,
                                         ),
                                       ],
@@ -392,45 +382,43 @@ Future bottomSheetTambahDataObat() {
                                   ],
                                 ),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 10,
                               ),
                               Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(left: 15),
                                       child: Text("Harga Jual",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           )),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       children: [
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 5,
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin:
-                                                const EdgeInsets.only(left: 10),
+                                            margin: EdgeInsets.only(left: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                      const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -448,7 +436,7 @@ Future bottomSheetTambahDataObat() {
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 10,
                                         ),
                                       ],
@@ -456,45 +444,43 @@ Future bottomSheetTambahDataObat() {
                                   ],
                                 ),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 10,
                               ),
                               Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(left: 15),
                                       child: Text("Jumlah Stok",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           )),
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       children: [
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 5,
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin:
-                                                const EdgeInsets.only(left: 10),
+                                            margin: EdgeInsets.only(left: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color:
-                                                      const Color(0x6cc7d1db)),
+                                                  color: Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: const InputDecoration(
+                                              decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -512,7 +498,7 @@ Future bottomSheetTambahDataObat() {
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(
+                                        SizedBox(
                                           width: 10,
                                         ),
                                       ],
@@ -520,7 +506,7 @@ Future bottomSheetTambahDataObat() {
                                   ],
                                 ),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 1000,
                               ),
                             ],
@@ -528,7 +514,7 @@ Future bottomSheetTambahDataObat() {
                         ),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -550,11 +536,11 @@ Future bottomSheetTambahDataObat() {
                               //     color: Colors.green.withOpacity(0.5),
                               //     spreadRadius: 0,
                               //     blurRadius: 10,
-                              //     offset: const Offset(2, 1),
+                              //     offset:  Offset(2, 1),
                               //   ),
                               // ],
                             ),
-                            child: const Column(
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -568,7 +554,7 @@ Future bottomSheetTambahDataObat() {
                             ),
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 10,
                         ),
                         InkWell(
@@ -583,11 +569,11 @@ Future bottomSheetTambahDataObat() {
                               //     color: Colors.green.withOpacity(0.5),
                               //     spreadRadius: 0,
                               //     blurRadius: 10,
-                              //     offset: const Offset(2, 1),
+                              //     offset:  Offset(2, 1),
                               //   ),
                               // ],
                             ),
-                            child: const Column(
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -601,7 +587,7 @@ Future bottomSheetTambahDataObat() {
                             ),
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 10,
                         ),
                       ],

@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import '../controllers/riwayat_keluarga_controller.dart';
 
 class RiwayatKeluargaView extends StatefulWidget {
-  const RiwayatKeluargaView({super.key});
+  RiwayatKeluargaView({super.key});
 
   @override
   State<RiwayatKeluargaView> createState() => _RiwayatKeluargaViewState();
@@ -105,7 +105,7 @@ class _RiwayatKeluargaViewState extends State<RiwayatKeluargaView> {
               [
                 Column(
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 375),
+                    duration: Duration(milliseconds: 375),
                     childAnimationBuilder: (widget) => ScaleAnimation(
                       child: SlideAnimation(
                         child: widget,
@@ -169,7 +169,7 @@ class _RiwayatKeluargaViewState extends State<RiwayatKeluargaView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 275),
+                    duration: Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,

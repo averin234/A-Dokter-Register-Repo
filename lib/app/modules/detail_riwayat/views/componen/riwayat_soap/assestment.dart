@@ -5,7 +5,7 @@ import '../../../../../routes/app_pages.dart';
 
 class Assestment extends StatefulWidget {
   final String assestment;
-  const Assestment({super.key, required this.assestment});
+  Assestment({super.key, required this.assestment});
 
   @override
   State<Assestment> createState() => _AssestmentState();
@@ -24,28 +24,28 @@ class _AssestmentState extends State<Assestment> {
     return InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: const EdgeInsets.only(right: 10, left: 10),
-        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+        margin: EdgeInsets.only(right: 10, left: 10),
+        padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: const Color(0x6cc7d1db)),
+          border: Border.all(color: Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFe0e0e0).withOpacity(0.5),
+              color: Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: const Offset(2, 1),
+              offset: Offset(2, 1),
             ),
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
@@ -70,10 +70,10 @@ class _AssestmentState extends State<Assestment> {
                 // ),
               ],
             ),
-            const SizedBox(
+            SizedBox(
               height: 5,
             ),
-            const Divider(
+            Divider(
               height: 3,
               color: Colors.grey,
             ),
@@ -82,7 +82,7 @@ class _AssestmentState extends State<Assestment> {
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
               maxLines: 7,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,

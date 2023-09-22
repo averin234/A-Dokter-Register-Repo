@@ -7,7 +7,7 @@ import '../../controllers/home_controller.dart';
 
 class CardDokter extends GetView<HomeController> {
   final Dokter dokter;
-  const CardDokter({
+  CardDokter({
     Key? key,
     required this.dokter,
   }) : super(key: key);
@@ -22,7 +22,7 @@ class CardDokter extends GetView<HomeController> {
             children: <Widget>[
               Expanded(
                 child: Container(
-                  padding: const EdgeInsets.only(left: 15),
+                  padding: EdgeInsets.only(left: 15),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,29 +34,29 @@ class CardDokter extends GetView<HomeController> {
                               children: [
                                 Expanded(
                                   child: Text(greetings,
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16)),
                                 ),
-                                const SizedBox(
+                                SizedBox(
                                   width: 10,
                                 ),
-                                const SizedBox(
+                                SizedBox(
                                   width: 10,
                                 ),
                               ],
                             ),
-                            const SizedBox(
+                            SizedBox(
                               height: 6,
                             ),
                             Text(dokter.namaPegawai ?? '',
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15)),
-                            const SizedBox(
+                            SizedBox(
                               height: 5,
                             ),
                             Text("Spesialis : ${dokter.namaSpesialisasi ?? ''}",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 13,
                                     color: Colors.grey)),

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../../../routes/app_pages.dart';
 
 class MenuHome extends StatefulWidget {
-  const MenuHome({super.key});
+  MenuHome({super.key});
 
   @override
   State<MenuHome> createState() => _MenuHomeState();
@@ -16,21 +16,21 @@ class _MenuHomeState extends State<MenuHome> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Padding(padding: EdgeInsets.only(right: 10, left: 10),
-        child : Text(
-          "Menu Dokter",
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18),
-        ),),
-        Padding(padding: EdgeInsets.only(right: 10, left: 10),
-        child : Text(
-          "Menambahkan jadwal praktik dokter, menambahkan Pasien Baru/dan juga dapat Registrasi pasien lama",
-          style: TextStyle(
-              color: Colors.grey,
-              fontWeight: FontWeight.bold,
-              fontSize: 10),
-        ),),
+        Padding(
+          padding: EdgeInsets.only(right: 10, left: 10),
+          child: Text(
+            "Menu Dokter",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(right: 10, left: 10),
+          child: Text(
+            "Menambahkan jadwal praktik dokter, menambahkan Pasien Baru/dan juga dapat Registrasi pasien lama",
+            style: TextStyle(
+                color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 10),
+          ),
+        ),
         SizedBox(
           height: 10,
         ),
@@ -56,7 +56,7 @@ class _MenuHomeState extends State<MenuHome> {
                   // ],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(0),
+                  padding: EdgeInsets.all(0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +65,7 @@ class _MenuHomeState extends State<MenuHome> {
                         width: 50.0,
                         height: 50.0,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 254, 228, 203),
+                          color: Color.fromARGB(255, 254, 228, 203),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black.withOpacity(.1),
@@ -78,22 +78,22 @@ class _MenuHomeState extends State<MenuHome> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: const EdgeInsets.only(top: 0),
-                        child:  Image.asset(
+                        padding: EdgeInsets.only(top: 0),
+                        child: Image.asset(
                           'assets/images/timetable.png',
                           width: 60,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
-                      const Text(
+                      Text(
                         "Atur Jadwal\nDokter",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 12),
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
                     ],
@@ -101,7 +101,7 @@ class _MenuHomeState extends State<MenuHome> {
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               width: 10,
             ),
             InkWell(
@@ -121,7 +121,7 @@ class _MenuHomeState extends State<MenuHome> {
                   // ],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -130,7 +130,7 @@ class _MenuHomeState extends State<MenuHome> {
                         width: 50.0,
                         height: 50.0,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 254, 228, 203),
+                          color: Color.fromARGB(255, 254, 228, 203),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black.withOpacity(.1),
@@ -143,22 +143,22 @@ class _MenuHomeState extends State<MenuHome> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: const EdgeInsets.only(top: 0),
+                        padding: EdgeInsets.only(top: 0),
                         child: Image.asset(
                           'assets/images/pasienbaru.png',
                           width: 60,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
-                      const Text(
+                      Text(
                         "Tambah Pasien\nBaru",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 12),
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
                     ],
@@ -186,7 +186,7 @@ class _MenuHomeState extends State<MenuHome> {
                   // ],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -195,7 +195,7 @@ class _MenuHomeState extends State<MenuHome> {
                         width: 50.0,
                         height: 50.0,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 254, 228, 203),
+                          color: Color.fromARGB(255, 254, 228, 203),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black.withOpacity(.1),
@@ -208,22 +208,22 @@ class _MenuHomeState extends State<MenuHome> {
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
-                        padding: const EdgeInsets.only(top: 0),
-                        child:  Image.asset(
+                        padding: EdgeInsets.only(top: 0),
+                        child: Image.asset(
                           'assets/images/pasienlama.png',
                           width: 60,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
-                      const Text(
+                      Text(
                         "Registrasi Pasien\nLama",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 12),
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
                     ],
@@ -233,7 +233,7 @@ class _MenuHomeState extends State<MenuHome> {
             ),
           ],
         ),
-        const SizedBox(
+        SizedBox(
           height: 10,
         ),
         // Row(
@@ -433,7 +433,7 @@ class _MenuHomeState extends State<MenuHome> {
         //     ),
         //   ],
         // ),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
       ],
