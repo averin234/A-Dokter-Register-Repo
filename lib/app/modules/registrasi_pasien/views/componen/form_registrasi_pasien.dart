@@ -12,7 +12,7 @@ import '../../../../data/componen/fetch_data.dart';
 import '../../../loading_summer/loading_screen_animed.dart';
 
 class FormRegistrasiPasien extends StatefulWidget {
-  FormRegistrasiPasien({super.key});
+  const FormRegistrasiPasien({super.key});
 
   @override
   State<FormRegistrasiPasien> createState() => _FormRegistrasiPasienState();
@@ -23,18 +23,18 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.only(left: 10, right: 10),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(left: 10, right: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           boxShadow: [
             BoxShadow(
-              color: Color(0xFFe0e0e0).withOpacity(0.5),
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: Offset(2, 1),
+              offset: const Offset(2, 1),
             ),
           ],
         ),
@@ -43,40 +43,40 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Daftar Pasien',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Nama Pasien*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 // decoration: BoxDecoration(
                 //   borderRadius: BorderRadius.circular(10),
-                //   border: Border.all(color:  Color(0x6cc7d1db)),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
                 // ),
                 child: TextField(
                   controller: controller.namaController,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     suffixIcon: Icon(Icons.drive_file_rename_outline_rounded),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
                       ),
                       borderSide: BorderSide(
                         color: Color(0x6cc7d1db),
@@ -94,32 +94,32 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Nama Keluarga",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 // decoration: BoxDecoration(
                 //   borderRadius: BorderRadius.circular(10),
-                //   border: Border.all(color:  Color(0x6cc7d1db)),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
                 // ),
                 child: TextField(
                   controller: controller.keluargaController,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     suffixIcon: Icon(Icons.drive_file_rename_outline_rounded),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
                       ),
                       borderSide: BorderSide(
                         color: Color(0x6cc7d1db),
@@ -137,33 +137,33 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("NO KTP/KTA*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 // decoration: BoxDecoration(
                 //   borderRadius: BorderRadius.circular(10),
-                //   border: Border.all(color:  Color(0x6cc7d1db)),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
                 // ),
                 child: TextField(
                   controller: controller.ktpController,
                   maxLength: 16,
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.done,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     suffixIcon: Icon(Icons.add_card_rounded),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
                       ),
                       borderSide: BorderSide(
                         color: Color(0x6cc7d1db),
@@ -181,32 +181,32 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Tempat Lahir*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 // decoration: BoxDecoration(
                 //   borderRadius: BorderRadius.circular(10),
-                //   border: Border.all(color:  Color(0x6cc7d1db)),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
                 // ),
                 child: TextField(
                   controller: controller.tempatLahirController,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     suffixIcon: Icon(Icons.location_city_rounded),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
                       ),
                       borderSide: BorderSide(
                         color: Color(0x6cc7d1db),
@@ -224,22 +224,22 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Tanggal Lahir*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 // decoration: BoxDecoration(
                 //   borderRadius: BorderRadius.circular(10),
-                //   border: Border.all(color:  Color(0x6cc7d1db)),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
                 // ),
                 child: TextField(
                   controller: controller.tanggalLahirController,
@@ -247,32 +247,27 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   readOnly: true,
                   onTap: () async {
                     DateTime? pickedDate = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(
-                            1000), //DateTime.now() - not to allow to choose before today.
-                        lastDate: DateTime(2101));
-                    if (pickedDate != null) {
-                      print(
-                          pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                      String formattedDate =
-                          DateFormat('yyyy-MM-dd').format(pickedDate);
-                      print(
-                          formattedDate); //formatted date output using intl package =>  2021-03-16
+                        context: context, initialDate: DateTime.now(),
+                        firstDate: DateTime(1000), //DateTime.now() - not to allow to choose before today.
+                        lastDate: DateTime(2101)
+                    );
+                    if(pickedDate != null ){
+                      print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
+                      String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+                      print(formattedDate); //formatted date output using intl package =>  2021-03-16
                       //you can implement different kind of Date Format here according to your requirement
 
                       setState(() {
-                        controller.tanggalLahirController.text =
-                            formattedDate; //set output date to TextField value.
+                        controller.tanggalLahirController.text = formattedDate; //set output date to TextField value.
                       });
-                    } else {
+                    }else{
                       print("Date is not selected");
                     }
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
                       ),
                       borderSide: BorderSide(
                         color: Color(0x6cc7d1db),
@@ -291,33 +286,33 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Alamat*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 // decoration: BoxDecoration(
                 //   borderRadius: BorderRadius.circular(10),
-                //   border: Border.all(color:  Color(0x6cc7d1db)),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
                 // ),
                 child: TextField(
                   controller: controller.alamatController,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   maxLines: 3,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     suffixIcon: Icon(Icons.location_on),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
                       ),
                       borderSide: BorderSide(
                         color: Color(0x6cc7d1db),
@@ -335,7 +330,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               // FutureBuilder(
@@ -353,12 +348,12 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
               //                 controller.provinsiController.value,
               //                 controller.namaProvinsiController);
               //       } else {
-              //         return  Center(
+              //         return const Center(
               //           child: CircularProgressIndicator(),
               //         );
               //       }
               //     }),
-              //  SizedBox(
+              // const SizedBox(
               //   height: 10,
               // ),
               // controller.provinsiController.value.text.isEmpty
@@ -380,12 +375,12 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
               //                     controller.kotaController.value,
               //                     controller.namaKotaController);
               //           } else {
-              //             return  Center(
+              //             return const Center(
               //               child: CircularProgressIndicator(),
               //             );
               //           }
               //         }),
-              //  SizedBox(
+              // const SizedBox(
               //   height: 10,
               // ),
               // controller.kotaController.value.text.isEmpty
@@ -407,12 +402,12 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
               //                     controller.kecamatanController.value,
               //                     controller.namaKecamatanController);
               //           } else {
-              //             return  Center(
+              //             return const Center(
               //               child: CircularProgressIndicator(),
               //             );
               //           }
               //         }),
-              //  SizedBox(
+              // const SizedBox(
               //   height: 10,
               // ),
               // controller.kecamatanController.value.text.isEmpty
@@ -435,12 +430,12 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
               //                     controller.namaProvinsiController,
               //                     controller.kodePosController);
               //           } else {
-              //             return  Center(
+              //             return const Center(
               //               child: CircularProgressIndicator(),
               //             );
               //           }
               //         }),
-              //  SizedBox(
+              // const SizedBox(
               //   height: 10,
               // ),
               // FutureBuilder(
@@ -458,33 +453,33 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
               //                 controller.nasabahController.value,
               //                 controller.namaNasabahController);
               //       } else {
-              //         return  Center(
+              //         return const Center(
               //           child: CircularProgressIndicator(),
               //         );
               //       }
               //     }),
-              //  Padding(
+              // const Padding(
               //   padding: EdgeInsets.only(left: 15),
               //   child: Text("Kode Pos*",
               //       style: TextStyle(fontWeight: FontWeight.normal)),
               // ),
-              //  SizedBox(
+              // const SizedBox(
               //   height: 10,
               // ),
               // Container(
-              //   padding:  EdgeInsets.only(right: 10),
-              //   margin:  EdgeInsets.only(left: 10, right: 10),
+              //   padding: const EdgeInsets.only(right: 10),
+              //   margin: const EdgeInsets.only(left: 10, right: 10),
               //   decoration: BoxDecoration(
-              //     color:  Color(0xfff3f3f3),
+              //     color: const Color(0xfff3f3f3),
               //     borderRadius: BorderRadius.circular(10),
-              //     border: Border.all(color:  Color(0x6cc7d1db)),
+              //     border: Border.all(color: const Color(0x6cc7d1db)),
               //   ),
               //   child: TextField(
               //     controller: controller.kodePosController,
               //     keyboardType: TextInputType.text,
               //     readOnly: true,
               //     textInputAction: TextInputAction.done,
-              //     decoration:  InputDecoration(
+              //     decoration: const InputDecoration(
               //       border: InputBorder.none,
               //       focusedBorder: InputBorder.none,
               //       enabledBorder: InputBorder.none,
@@ -498,15 +493,15 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
               //     ),
               //   ),
               // ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Agama*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FutureBuilder(
@@ -521,38 +516,38 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                           : dropdown('Agama', data, controller.agamaController,
                               controller.namaAgamaController);
                     } else {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
                   }),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("No HP*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 // decoration: BoxDecoration(
                 //   borderRadius: BorderRadius.circular(10),
-                //   border: Border.all(color:  Color(0x6cc7d1db)),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
                 // ),
                 child: TextField(
                   controller: controller.noHPController,
                   keyboardType: TextInputType.number,
                   maxLength: 13,
                   textInputAction: TextInputAction.done,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     suffixIcon: Icon(Icons.phone_android_rounded),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
                       ),
                       borderSide: BorderSide(
                         color: Color(0x6cc7d1db),
@@ -570,15 +565,15 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Pekerjaan*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FutureBuilder(
@@ -596,37 +591,37 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                               controller.pekerjaanController,
                               controller.namaPekerjaanController);
                     } else {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
                   }),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Email*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 // decoration: BoxDecoration(
                 //   borderRadius: BorderRadius.circular(10),
-                //   border: Border.all(color:  Color(0x6cc7d1db)),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
                 // ),
                 child: TextField(
                   controller: controller.emailController,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.done,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     suffixIcon: Icon(Icons.alternate_email),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
                       ),
                       borderSide: BorderSide(
                         color: Color(0x6cc7d1db),
@@ -644,15 +639,15 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Jenis Kelamin*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FutureBuilder(
@@ -670,20 +665,20 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                               controller.jenisKelaminController,
                               controller.namaJenisKelaminController);
                     } else {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
                   }),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Status Kawin*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FutureBuilder(
@@ -701,20 +696,20 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                               controller.statusKawinController,
                               controller.namaStatusKawinController);
                     } else {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
                   }),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Golongan Darah*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FutureBuilder(
@@ -732,37 +727,37 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                               controller.golonganDarahController,
                               controller.namaGolonganDarahController);
                     } else {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
                   }),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text("Alergi*",
                     style: TextStyle(fontWeight: FontWeight.normal)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 // decoration: BoxDecoration(
                 //   borderRadius: BorderRadius.circular(10),
-                //   border: Border.all(color:  Color(0x6cc7d1db)),
+                //   border: Border.all(color: const Color(0x6cc7d1db)),
                 // ),
                 child: TextField(
                   controller: controller.alergiController,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     suffixIcon: Icon(Icons.health_and_safety),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
                       ),
                       borderSide: BorderSide(
                         color: Color(0x6cc7d1db),
@@ -780,11 +775,11 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               // Column(
@@ -859,7 +854,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
               //             child: Column(
               //               mainAxisAlignment: MainAxisAlignment.center,
               //               crossAxisAlignment: CrossAxisAlignment.center,
-              //               children:  [
+              //               children: const [
               //                 Text(
               //                   "Kirim",
               //                   style: TextStyle(
@@ -871,7 +866,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
               //             ),
               //           ),
               //         ),
-              //          SizedBox(
+              //         const SizedBox(
               //           width: 10,
               //         ),
               //         GestureDetector(
@@ -885,7 +880,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
               //             ),
               //             child: Column(
               //               mainAxisAlignment: MainAxisAlignment.center,
-              //               children:  [
+              //               children: const [
               //                 Text(
               //                   "batal",
               //                   style: TextStyle(
@@ -912,7 +907,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
 //   final TextEditingController namaController;
 //   final TextEditingController kodeController;
 //   final List<Lists> listData;
-//    DropDownRegist(
+//   const DropDownRegist(
 //       {super.key,
 //       required this.namaController,
 //       required this.kodeController,
@@ -927,25 +922,25 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
 //   @override
 //   Widget build(BuildContext context) {
 //     return Container(
-//       padding:  EdgeInsets.only(right: 10),
-//       margin:  EdgeInsets.only(left: 10, right: 10),
+//       padding: const EdgeInsets.only(right: 10),
+//       margin: const EdgeInsets.only(left: 10, right: 10),
 //       decoration: BoxDecoration(
-//         color:  Color(0xfff3f3f3),
+//         color: const Color(0xfff3f3f3),
 //         borderRadius: BorderRadius.circular(10),
-//         border: Border.all(color:  Color(0x6cc7d1db)),
+//         border: Border.all(color: const Color(0x6cc7d1db)),
 //       ),
 //       child: DropdownButtonHideUnderline(
 //         child: DropdownButton2(
 //           isExpanded: true,
 //           hint: Row(
 //             children: [
-//                SizedBox(
+//               const SizedBox(
 //                 width: 4,
 //               ),
 //               Expanded(
 //                 child: Text(
 //                   widget.title,
-//                   style:  TextStyle(
+//                   style: const TextStyle(
 //                     fontSize: 14,
 //                     fontWeight: FontWeight.normal,
 //                     color: Colors.black,
@@ -961,7 +956,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
 //                   value: item.kode,
 //                   child: Text(
 //                     item.nama ?? '',
-//                     style:  TextStyle(
+//                     style: const TextStyle(
 //                       fontSize: 14,
 //                       fontWeight: FontWeight.bold,
 //                       color: Colors.black,
@@ -990,7 +985,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
 //   final TextEditingController kodeController;
 //   final TextEditingController kodePosController;
 //   final List<Kelurahan> listData;
-//    DropDownRegistKelurahan(
+//   const DropDownRegistKelurahan(
 //       {super.key,
 //       required this.namaController,
 //       required this.kodeController,
@@ -1007,25 +1002,25 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
 //   @override
 //   Widget build(BuildContext context) {
 //     return Container(
-//       padding:  EdgeInsets.only(right: 10),
-//       margin:  EdgeInsets.only(left: 10, right: 10),
+//       padding: const EdgeInsets.only(right: 10),
+//       margin: const EdgeInsets.only(left: 10, right: 10),
 //       decoration: BoxDecoration(
-//         color:  Color(0xfff3f3f3),
+//         color: const Color(0xfff3f3f3),
 //         borderRadius: BorderRadius.circular(10),
-//         border: Border.all(color:  Color(0x6cc7d1db)),
+//         border: Border.all(color: const Color(0x6cc7d1db)),
 //       ),
 //       child: DropdownButtonHideUnderline(
 //         child: DropdownButton2(
 //           isExpanded: true,
 //           hint: Row(
 //             children: [
-//                SizedBox(
+//               const SizedBox(
 //                 width: 4,
 //               ),
 //               Expanded(
 //                 child: Text(
 //                   widget.title,
-//                   style:  TextStyle(
+//                   style: const TextStyle(
 //                     fontSize: 14,
 //                     fontWeight: FontWeight.normal,
 //                     color: Colors.black,
@@ -1040,7 +1035,7 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
 //                   value: item.id,
 //                   child: Text(
 //                     item.kelurahan ?? '',
-//                     style:  TextStyle(
+//                     style: const TextStyle(
 //                       fontSize: 14,
 //                       fontWeight: FontWeight.bold,
 //                       color: Colors.black,
@@ -1097,7 +1092,7 @@ class AppTextField extends StatelessWidget {
   final bool isCitySelected;
   final List<Lists> lists;
 
-  AppTextField({
+  const AppTextField({
     required this.textEditingController,
     required this.textEditingController1,
     required this.title,
@@ -1111,7 +1106,7 @@ class AppTextField extends StatelessWidget {
   void onTextFieldTap() {
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -1130,7 +1125,7 @@ class AppTextField extends StatelessWidget {
                         style: TextButton.styleFrom(
                             alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10)),
                         child: Text(
                           e.nama!,
@@ -1162,13 +1157,13 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
+      margin: EdgeInsets.only(right: 10,left: 10),
       height: Get.width / 7,
       width: Get.width / 1,
       alignment: Alignment.center,
       // decoration: BoxDecoration(
       //   border:
-      //   Border.all(color:  Color(0x6cc7d1db)),
+      //   Border.all(color: const Color(0x6cc7d1db)),
       //   color: Colors.transparent,
       //   borderRadius: BorderRadius.circular(10),
       // ),
@@ -1177,10 +1172,10 @@ class AppTextField extends StatelessWidget {
         controller: textEditingController1,
         cursorColor: Colors.black,
         onTap: onTextFieldTap,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(10.0),
+            borderRadius: const BorderRadius.all(
+              const Radius.circular(10.0),
             ),
             borderSide: BorderSide(
               color: Color(0x6cc7d1db),
@@ -1192,8 +1187,8 @@ class AppTextField extends StatelessWidget {
           enabled: true,
           suffixIcon: Icon(Icons.arrow_drop_down_circle_rounded),
           disabledBorder: InputBorder.none,
-          contentPadding:
-              EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
+          contentPadding: EdgeInsets.only(
+              left: 15, bottom: 11, top: 13, right: 15),
           filled: true,
           fillColor: Colors.transparent,
         ),
@@ -1211,7 +1206,7 @@ class AppTextField1 extends StatelessWidget {
   final bool isCitySelected;
   final List<Kelurahan> lists;
 
-  AppTextField1({
+  const AppTextField1({
     required this.textEditingController,
     required this.textEditingController1,
     required this.textEditingController2,
@@ -1226,7 +1221,7 @@ class AppTextField1 extends StatelessWidget {
   void onTextFieldTap() {
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -1245,7 +1240,7 @@ class AppTextField1 extends StatelessWidget {
                         style: TextButton.styleFrom(
                             alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10)),
                         child: Text(
                           e.kelurahan!,
@@ -1292,10 +1287,11 @@ class AppTextField1 extends StatelessWidget {
         onTap: onTextFieldTap,
         decoration: InputDecoration(
           filled: true,
-          suffixIcon: Icon(Icons.arrow_drop_down_circle),
-          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
+          contentPadding:
+              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,

@@ -1,27 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+import '../../../../data/componen/fetch_data.dart';
 import '../../../../data/model/get_list_kasir.dart';
+import '../../../../data/model/list_data.dart';
 import '../../../../data/model/profile_pasien/get_tunai.dart';
 import '../../controllers/pembayaran_kartu_kredit_controller.dart';
 
 class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
   PembayaranKredit({super.key});
 
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return  Container(
       margin: EdgeInsets.only(right: 10, left: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFe0e0e0).withOpacity(0.5),
+            color: const Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: Offset(2, 1),
+            offset: const Offset(2, 1),
           ),
         ],
       ),
@@ -33,34 +39,40 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 ConstrainedBox(
-                  constraints: BoxConstraints(minWidth: double.infinity),
+                  constraints: const BoxConstraints(
+                      minWidth: double.infinity),
                   child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
                       color: Colors.blueAccent,
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(10),
-                        topLeft: Radius.circular(10),
-                      ),
+                        topLeft: Radius.circular(10),),
                     ),
-                    child: Text('Data  Billing Pasien',
+                    child: const Text(
+                        'Data  Billing Pasien',
                         textAlign: TextAlign.start,
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white)),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10),
+                  padding:
+                  EdgeInsets.only(left: 10, right: 10),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment:
+                    MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Bagian',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold)),
                       Text('Biaya (Rp)',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ),
@@ -68,32 +80,24 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                   height: 20,
                 ),
                 Column(
-                  children: controller.kasir.harga!
-                      .map(
-                        (e) => Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(left: 10),
-                                  child: Text(e.namaBagian ?? ''),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 10),
-                                  child: Text(e.total ?? ''),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ],
-                        ),
-                      )
-                      .toList(),
-                ),
-                SizedBox(
+                  children: controller.kasir.harga!.map((e) =>
+                      Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(padding: EdgeInsets.only(left: 10),
+                                child :
+                                Text(e.namaBagian ?? ''),),
+                              Padding(padding: EdgeInsets.only(right: 10),
+                                child :
+                                Text(e.total ?? ''),),
+                            ],),
+                          SizedBox(
+                            height: 10,
+                          ),
+                        ],),).toList(),),
+                const SizedBox(
                   height: 10,
                 ),
                 Column(
@@ -110,83 +114,105 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 5),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
                         child: Text(
                           'Total',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                          padding: EdgeInsets.only(
-                              right: 10, left: 10, top: 15, bottom: 15),
-                          margin: EdgeInsets.only(left: 10, right: 10),
+                          padding: EdgeInsets.only(right: 10, left: 10, top: 15, bottom: 15),
+                          margin: const EdgeInsets.only(
+                              left: 10, right: 10),
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Color(0x6cc7d1db)),
+                            borderRadius:
+                            BorderRadius.circular(10),
+                            border: Border.all(
+                                color:
+                                const Color(0x6cc7d1db)),
                           ),
-                          child: Text(controller.kasir.billing ?? '')),
+                          child: Text(controller.kasir.billing ?? '')
+                      ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 ConstrainedBox(
-                  constraints: BoxConstraints(minWidth: double.infinity),
+                  constraints: const BoxConstraints(
+                      minWidth: double.infinity),
                   child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
                       color: Colors.yellowAccent,
                     ),
-                    child: Text('Data Pembayaran',
+                    child: const Text('Data Pembayaran',
                         textAlign: TextAlign.start,
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold)),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 5),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
                         child: Text(
                           'Pembayar',
-                          style: TextStyle(fontWeight: FontWeight.normal),
+                          style: TextStyle(
+                              fontWeight:
+                              FontWeight.normal),
                         ),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(
+                            left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          borderRadius:
+                          BorderRadius.circular(10),
+                          border: Border.all(
+                              color:
+                              const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           controller: controller.pembayar,
                           keyboardType: TextInputType.text,
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          textInputAction:
+                          TextInputAction.done,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
                             errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
+                            disabledBorder:
+                            InputBorder.none,
                             contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 11, top: 13, right: 15),
+                                left: 15,
+                                bottom: 11,
+                                top: 13,
+                                right: 15),
                             filled: true,
                             fillColor: Colors.transparent,
                           ),
@@ -195,48 +221,60 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 10, right: 15),
+                  padding:
+                  EdgeInsets.only(left: 10, right: 15),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment:
+                    MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Pasien',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold)),
                       Text(controller.kasir.namaPasien ?? '',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 5),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
                         child: Text(
                           'Jumlah Billing',
-                          style: TextStyle(fontWeight: FontWeight.normal),
+                          style: TextStyle(
+                              fontWeight:
+                              FontWeight.normal),
                         ),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                          padding: EdgeInsets.only(
-                              right: 10, left: 10, top: 15, bottom: 15),
-                          margin: EdgeInsets.only(left: 10, right: 10),
+                          padding: EdgeInsets.only(right: 10, left: 10, top: 15, bottom: 15),
+                          margin: const EdgeInsets.only(
+                              left: 10, right: 10),
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Color(0x6cc7d1db)),
+                            borderRadius:
+                            BorderRadius.circular(10),
+                            border: Border.all(
+                                color:
+                                const Color(0x6cc7d1db)),
                           ),
-                          child: Text(controller.kasir.billing ?? '')),
+                          child: Text(controller.kasir.billing ?? '')
+                      ),
                     ),
                   ],
                 ),
@@ -244,39 +282,52 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                   height: 5,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 5),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
                         child: Text(
                           'Pembulatan',
-                          style: TextStyle(fontWeight: FontWeight.normal),
+                          style: TextStyle(
+                              fontWeight:
+                              FontWeight.normal),
                         ),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(
+                            left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          borderRadius:
+                          BorderRadius.circular(10),
+                          border: Border.all(
+                              color:
+                              const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           keyboardType: TextInputType.text,
                           controller: controller.pembulatan,
-                          style: TextStyle(fontSize: 14),
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          style:  TextStyle(fontSize: 14),
+                          textInputAction:
+                          TextInputAction.done,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
                             errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
+                            disabledBorder:
+                            InputBorder.none,
                             contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 11, top: 13, right: 15),
+                                left: 15,
+                                bottom: 11,
+                                top: 13,
+                                right: 15),
                             filled: true,
                             fillColor: Colors.transparent,
                           ),
@@ -289,38 +340,50 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                   height: 5,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 5),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
                         child: Text(
                           'Total',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(
+                            left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          borderRadius:
+                          BorderRadius.circular(10),
+                          border: Border.all(
+                              color:
+                              const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           controller: controller.totalcontroller,
                           keyboardType: TextInputType.text,
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          textInputAction:
+                          TextInputAction.done,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
                             errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
+                            disabledBorder:
+                            InputBorder.none,
                             contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 11, top: 13, right: 15),
+                                left: 15,
+                                bottom: 11,
+                                top: 13,
+                                right: 15),
                             filled: true,
                             fillColor: Colors.transparent,
                           ),
@@ -329,30 +392,34 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 ConstrainedBox(
-                  constraints: BoxConstraints(minWidth: double.infinity),
+                  constraints: const BoxConstraints(
+                      minWidth: double.infinity),
                   child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
                       color: Colors.green,
                     ),
-                    child: Text('Kartu Kredit',
+                    child: const Text('Kartu Kredit',
                         textAlign: TextAlign.start,
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white)),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 5),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
                         child: Text(
@@ -363,24 +430,33 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(
+                            left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          borderRadius:
+                          BorderRadius.circular(10),
+                          border: Border.all(
+                              color:
+                              const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           controller: controller.jumlahcontroller,
                           keyboardType: TextInputType.text,
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          textInputAction:
+                          TextInputAction.done,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
                             errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
+                            disabledBorder:
+                            InputBorder.none,
                             contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 11, top: 13, right: 15),
+                                left: 15,
+                                bottom: 11,
+                                top: 13,
+                                right: 15),
                             filled: true,
                             fillColor: Colors.transparent,
                           ),
@@ -393,42 +469,54 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                   height: 5,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 5),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
                         child: Text(
                           'Kartu Debet :',
-                          style: TextStyle(fontWeight: FontWeight.normal),
+                          style: TextStyle(
+                              fontWeight:
+                              FontWeight.normal),
                         ),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(
+                            left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          borderRadius:
+                          BorderRadius.circular(10),
+                          border: Border.all(
+                              color:
+                              const Color(0x6cc7d1db)),
                         ),
-                        child: TextFormField(
-                          controller: controller.kartukreditcontroller,
-                          keyboardType: TextInputType.text,
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 11, top: 13, right: 15),
-                            filled: true,
-                            fillColor: Colors.transparent,
-                          ),
-                        ),
+                        child: FutureBuilder(
+                            future: API.getBank(),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData &&
+                                  snapshot.connectionState != ConnectionState.waiting &&
+                                  snapshot.data != null) {
+                                final data = snapshot.data!.list ?? [];
+                                return data.isEmpty
+                                    ? Container()
+                                    : dropdown(
+                                    'pilih bank',
+                                    data,
+                                    controller.bankcontroller,
+                                    controller.namabankcontroller);
+                              } else {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                            }),
                       ),
                     ),
                   ],
@@ -437,38 +525,51 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                   height: 5,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 5),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
                         child: Text(
                           'No. Kartu',
-                          style: TextStyle(fontWeight: FontWeight.normal),
+                          style: TextStyle(
+                              fontWeight:
+                              FontWeight.normal),
                         ),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(
+                            left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          borderRadius:
+                          BorderRadius.circular(10),
+                          border: Border.all(
+                              color:
+                              const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           controller: controller.nokartucontroller,
                           keyboardType: TextInputType.text,
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          textInputAction:
+                          TextInputAction.done,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
                             errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
+                            disabledBorder:
+                            InputBorder.none,
                             contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 11, top: 13, right: 15),
+                                left: 15,
+                                bottom: 11,
+                                top: 13,
+                                right: 15),
                             filled: true,
                             fillColor: Colors.transparent,
                           ),
@@ -481,38 +582,51 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                   height: 5,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 5),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
                         child: Text(
                           'No. Batch',
-                          style: TextStyle(fontWeight: FontWeight.normal),
+                          style: TextStyle(
+                              fontWeight:
+                              FontWeight.normal),
                         ),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(
+                            left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          borderRadius:
+                          BorderRadius.circular(10),
+                          border: Border.all(
+                              color:
+                              const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           controller: controller.nobatchcontroller,
                           keyboardType: TextInputType.text,
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          textInputAction:
+                          TextInputAction.done,
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
                             errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
+                            disabledBorder:
+                            InputBorder.none,
                             contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 11, top: 13, right: 15),
+                                left: 15,
+                                bottom: 11,
+                                top: 13,
+                                right: 15),
                             filled: true,
                             fillColor: Colors.transparent,
                           ),
@@ -521,14 +635,13 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
               ],
             ),
           ),
-        ],
-      ),
+        ],),
     );
   }
 }

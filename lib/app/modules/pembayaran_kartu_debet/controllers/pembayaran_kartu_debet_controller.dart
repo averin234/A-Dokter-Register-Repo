@@ -15,6 +15,8 @@ class PembayaranKartuDebetController extends GetxController {
   final kartudebetcontroller = TextEditingController();
   final nokartucontroller = TextEditingController();
   final nobatchcontroller = TextEditingController();
+  final bankcontroller = TextEditingController();
+  final namabankcontroller = TextEditingController();
   final count = 0.obs;
   @override
   void onInit() {
