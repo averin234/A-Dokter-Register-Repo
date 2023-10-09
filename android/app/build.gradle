@@ -18,13 +18,17 @@ if (flutterVersionCode == null) {
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
+    flutterVersionName = '1.0.0'
 }
+def(major, minor, patch) = flutterVersionName.tokenize( '.' )
+def versionCodeGlobal = major.toInteger()*10000 + minor.toInteger()*100 + patch.toInteger()
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    namespace "com.adokterregister.a_dokter_register"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -46,28 +50,37 @@ android {
         applicationId "com.adokterregister.a_dokter_register"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-       minSdkVersion 25
+        minSdkVersion 24
         targetSdkVersion 33
-        versionCode 58
-        versionName "1.2.16"
+        versionCode versionCodeGlobal
+        versionName flutterVersionName
         multiDexEnabled true
     }
-
-    // C:/Users/ekoaj/Documents/Kantor/JKS/Averin_dev.jks
-    // storeFile file('C:/Users/irwan/Averin_dev.jks')
-    // storeFile file('/Users/dev/jks_file/Averin_dev.jks') for MasOS
-    
-     signingConfigs {
+    signingConfigs {
         release {
-            storeFile file('/Users/dev/jks_file/Averin_dev.jks')
+            storeFile file('C:/Users/irwan/Averin_dev.jks')
             storePassword '48family'
             keyAlias = 'Averin2023'
             keyPassword '48family'
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def appName = "ADokter"
+                    def buildType = variant.buildType.name
+                    def newName
+                    if (buildType == 'debug'){
+                        newName = "app-${flutterVersionName}-debug.apk"
+                    } else {
+                        newName = "${appName}${flutterVersionName}_${variant.getFlavorName()}.apk"
+                    }
+                    outputFileName = newName
+                }
+            }
         }
     }
     buildTypes {
         release {
             signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -78,4 +91,12 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all { output ->
+        def builtType = variant.buildType.name
+        def flavor = variant.flavorName
+        outputFileName = "ADokter-${flavor}-${builtType}-${flutterVersionName}.apk"
+    }
 }

@@ -33,10 +33,13 @@ class _TindakanViewState extends State<TindakanView> {
         RefreshController(); // we have to use initState because this part of the app have to restart
     super.initState();
   }
+  final updateController = Get.put(TindakanController());
+  late final String currentVersion;
 
   final controller = Get.put(TindakanController());
   @override
   Widget build(BuildContext context) {
+    updateController.checkForUpdate();
     return SafeArea(
       child: Scaffold(
         body: SmartRefresher(

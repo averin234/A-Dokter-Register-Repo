@@ -36,9 +36,9 @@ import "../model/profile_pasien/get_tunai.dart";
 import "local_storage.dart";
 
 class API {
-  // static  _url = "https://a-dokter.id/";
-  // static  _url = "https://adokter.d-medis.id/";
-  static const _url = "https://demo.a-dokter.id/";
+  static  const _url = "https://a-dokter.id/";
+  // static const _url = "https://adokter.d-medis.id/";
+  // static const _url = "https://demo.a-dokter.id/";
   static const _baseUrl = "${_url}api/v1";
   static const _getToken = "$_baseUrl/get-token.php";
   static const _getAksesPx = "$_baseUrl/px-akses.php";

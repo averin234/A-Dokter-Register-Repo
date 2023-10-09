@@ -32,10 +32,12 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
         RefreshController(); // we have to use initState because this part of the app have to restart
     super.initState();
   }
-
+  final updateController = Get.put(PendapatanDokterController());
+  late final String currentVersion;
   final controller = Get.put(PendapatanDokterController());
   @override
   Widget build(BuildContext context) {
+    updateController.checkForUpdate();
     return SafeArea(
       child: WillPopScope(
         onWillPop: () async {

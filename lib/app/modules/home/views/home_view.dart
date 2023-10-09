@@ -26,7 +26,6 @@ import 'componen/menu.dart';
 
 class HomeView extends GetView<HomeController> {
   HomeView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -368,6 +367,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   // this enable our app to able to pull down
+  final updateController = Get.put(HomeController());
+  late final String currentVersion;
   AppUpdateInfo? _updateInfo;
 
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
@@ -403,6 +404,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    updateController.checkForUpdate();
     return SafeArea(
       child: Scaffold(
         body: SmartRefresher(

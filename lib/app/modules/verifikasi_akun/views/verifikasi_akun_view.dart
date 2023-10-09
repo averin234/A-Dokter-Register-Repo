@@ -1,4 +1,3 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -388,7 +387,7 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                           label: Text('Pilih File',
                               style: TextStyle(fontSize: 16.0)),
                           onPressed: () {
-                            selectFile();
+                            // selectFile();
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
@@ -416,15 +415,14 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
     );
   }
 
-  selectFile() async {
-    FilePickerResult? result = await FilePicker.platform
-        .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
-    if (result != null) {
-      setState(() {
-        controller.txtFilePicker.text = result.files.single.name;
-      });
-    } else {
-      // User canceled the picker
-    }
+  // selectFile() async {
+  //   FilePickerResult? result = await FilePicker.platform
+  //       .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
+  //   if (result != null) {
+  //     setState(() {
+  //       controller.txtFilePicker.text = result.files.single.name;
+  //     });
+  //   } else {
+  //     // User canceled the picker
+  //   }
   }
-}

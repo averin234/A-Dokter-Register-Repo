@@ -13,8 +13,12 @@ import 'componnen/card_setting_akun.dart';
 
 class ProfileView extends GetView<ProfileController> {
   ProfileView({Key? key}) : super(key: key);
+  final updateController = Get.put(ProfileController());
+  late final String currentVersion;
+  final controller = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
+    updateController.checkForUpdate();
     return Scaffold(
       body: CustomScrollView(
         slivers: [

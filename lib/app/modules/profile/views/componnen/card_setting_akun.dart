@@ -160,7 +160,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                                 fontWeight: FontWeight.bold, fontSize: 15),
                           ),
                           Text(
-                            'Update Aplikasi A-Dokter, Nikmati fitur baru dan performa yang lebih baik',
+                            'Update Aplikasi A-Dokter, Nikmati fitur baru dan performa yang lebih baik ',
                             style: TextStyle(
                                 fontWeight: FontWeight.normal, fontSize: 12),
                           ),
@@ -210,6 +210,14 @@ class CardSettingAkun extends GetView<ProfileController> {
               ),
             ),
           ),
+          SizedBox(
+            height: 150,
+          ),
+          Center (child : Text(
+            'Versi Saat ini ' + controller.packageName,
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 12),
+          ),)
         ],
       ),
     );
