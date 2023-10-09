@@ -20,15 +20,11 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0.0'
 }
-def(major, minor, patch) = flutterVersionName.tokenize( '.' )
-def versionCodeGlobal = major.toInteger()*10000 + minor.toInteger()*100 + patch.toInteger()
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    namespace "com.adokterregister.a_dokter_register"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -80,7 +76,6 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
