@@ -191,7 +191,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                             ),
                             component1(
                                 Icons.credit_card_rounded,
-                                'Surat Izin Praktek...',
+                                'Surat Tanda Registrasi...',
                                 false,
                                 false,
                                 controller.sipController),
@@ -468,7 +468,6 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             title: 'Loading..',
             barrierDismissible: false,
           );
-          Get.back();
           final daftarPXBaru = await API.postDaftarPxBaruDokter(
             nama: controller.namaController.text,
             email: controller.emailController.text,

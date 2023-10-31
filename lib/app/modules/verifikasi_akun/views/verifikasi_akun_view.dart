@@ -333,7 +333,7 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                     padding: EdgeInsets.only(left: 15),
                     child: Row(
                       children: [
-                        Text("Upload Document SIP",
+                        Text("Upload Document STR",
                             style: TextStyle(fontWeight: FontWeight.bold)),
                         Text("(*)",
                             style: TextStyle(
@@ -425,4 +425,4 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
   //   } else {
   //     // User canceled the picker
   //   }
-  }
+}
