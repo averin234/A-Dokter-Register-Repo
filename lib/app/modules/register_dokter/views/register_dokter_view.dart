@@ -13,7 +13,7 @@ import '../../bottomsheet/bottomsheet_selesai_daftar.dart';
 import '../../login/views/login_view.dart';
 
 class RegisterDokterView extends StatefulWidget {
-  RegisterDokterView({Key? key}) : super(key: key);
+  const RegisterDokterView({super.key});
 
   @override
   _RegisterDokterViewState createState() => _RegisterDokterViewState();
@@ -29,7 +29,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
     );
 
     _opacity = Tween<double>(begin: 0, end: 1).animate(
@@ -69,7 +69,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.white, // <-- SEE HERE
           statusBarIconBrightness:
               Brightness.dark, //<-- For Android SEE HERE (dark icons)
@@ -83,7 +83,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         child: SizedBox(
           child: Container(
             alignment: Alignment.center,
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Opacity(
               opacity: _opacity.value,
               child: Transform.scale(
@@ -91,14 +91,14 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 100,
                       ),
                       Image.asset(
                         'assets/images/icons/logo.png',
                         width: 160,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Container(
@@ -116,7 +116,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
@@ -143,7 +143,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                       });
                                     },
                                   ),
-                                  Text(
+                                  const Text(
                                     'Dokter',
                                     style: TextStyle(),
                                   ),
@@ -158,26 +158,26 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                       });
                                     },
                                   ),
-                                  Text(
+                                  const Text(
                                     'Dokter Gigi',
                                     style: TextStyle(),
                                   ),
                                 ],
                               ),
                             ),
-                            SizedBox(),
+                            const SizedBox(),
                             component1(
                                 Icons.account_circle_outlined,
                                 'Nama Lengkap...',
                                 false,
                                 false,
                                 controller.namaController),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             component1(Icons.email_outlined, 'Email...', false,
                                 true, controller.emailController),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             componentnamber(
@@ -186,7 +186,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 false,
                                 false,
                                 controller.noTelpController),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             component1(
@@ -195,7 +195,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                 false,
                                 false,
                                 controller.sipController),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             FutureBuilder(
@@ -229,7 +229,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                             //     false,
                             //     false,
                             //     controller.norekening),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             // FutureBuilder(
@@ -288,7 +288,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                     return Container();
                                   }
                                 }),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             component2(
@@ -296,7 +296,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                               2.6,
                             ),
                             SizedBox(width: size.width / 25),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             InkWell(
@@ -304,14 +304,14 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                               child: RichText(
                                 text: TextSpan(
                                     text: 'Kembali ke login',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.blueAccent,
                                       fontSize: 15,
                                     ),
                                     recognizer: TapGestureRecognizer()),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                           ],
@@ -328,22 +328,22 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Color(0xFFe0e0e0).withOpacity(0.5),
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: Offset(2, 1),
+              offset: const Offset(2, 1),
             ),
           ],
         ),
         height: 75,
-        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Column(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Text("Powered by"),
-            SizedBox(
+            const Text("Powered by"),
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -352,21 +352,21 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_averin.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_ipg.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_privy.png',
                       width: 80,
@@ -464,7 +464,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             controller.kodeBagianController.text.isNotEmpty &&
             controller.sipController.text.isNotEmpty) {
           Get.defaultDialog(
-            content: CircularProgressIndicator(),
+            content: const CircularProgressIndicator(),
             title: 'Loading..',
             barrierDismissible: false,
           );
@@ -495,12 +495,12 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         width: size.width / width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Color(0xff4796ff),
+          color: const Color(0xff4796ff),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(
           string,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
     );
@@ -515,7 +515,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -525,14 +525,14 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Pedaftaran Register Dokter Berhasil",
                   style: TextStyle(
@@ -540,7 +540,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -549,14 +549,14 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: Duration(milliseconds: 275),
+                    duration: const Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
                       ),
                     ),
                     children: <Widget>[
-                      Text(
+                      const Text(
                           "Silahkan cek Email yang sudah anda daftarkan untuk mendapatkan akses akun A-Dokter ",
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -568,23 +568,23 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             InkWell(
               onTap: () {
                 Navigator.pop(context); // Menutup bottom sheet
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginView()));
+                    MaterialPageRoute(builder: (context) => const LoginView()));
               },
               child: Container(
                 height: 45,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 56, 229, 77),
+                  color: const Color.fromARGB(255, 56, 229, 77),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -598,7 +598,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

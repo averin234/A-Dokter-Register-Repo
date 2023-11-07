@@ -11,40 +11,40 @@ import '../../../isi_resep/views/componen/hasil_resep.dart';
 class RiwayatResep extends StatelessWidget {
   final List<Resep> resep;
   final Resep resepi;
-  RiwayatResep({super.key, required this.resep, required this.resepi});
+  const RiwayatResep({super.key, required this.resep, required this.resepi});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(DetailRiwayatController());
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
-      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0x6cc7d1db)),
+        border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFe0e0e0).withOpacity(0.5),
+            color: const Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: Offset(2, 1),
+            offset: const Offset(2, 1),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 210,
                 child: Text("Resep",
                     style: TextStyle(
@@ -52,10 +52,10 @@ class RiwayatResep extends StatelessWidget {
                       fontSize: 15,
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Divider(
+              const Divider(
                 height: 3,
                 color: Colors.grey,
               ),
@@ -77,11 +77,11 @@ class RiwayatResep extends StatelessWidget {
                         color: Colors.blue.withOpacity(0.5),
                         spreadRadius: 0,
                         blurRadius: 10,
-                        offset: Offset(2, 1),
+                        offset: const Offset(2, 1),
                       ),
                     ],
                   ),
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
@@ -97,7 +97,7 @@ class RiwayatResep extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -113,11 +113,11 @@ class RiwayatResep extends StatelessWidget {
                           snapshot.data != null) {
                         final data = snapshot.data!.resep ?? [];
                         return data.isEmpty
-                            ? Text('Tidak Ada Resep')
+                            ? const Text('Tidak Ada Resep')
                             : Column(
                                 children:
                                     AnimationConfiguration.toStaggeredList(
-                                        duration: Duration(milliseconds: 475),
+                                        duration: const Duration(milliseconds: 475),
                                         childAnimationBuilder: (widget) =>
                                             SlideAnimation(
                                               child: FadeInAnimation(
@@ -129,7 +129,7 @@ class RiwayatResep extends StatelessWidget {
                                             .toList()),
                               );
                       } else {
-                        return Center(
+                        return const Center(
                           child: CircularProgressIndicator(),
                         );
                       }
@@ -137,7 +137,7 @@ class RiwayatResep extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           // Container(

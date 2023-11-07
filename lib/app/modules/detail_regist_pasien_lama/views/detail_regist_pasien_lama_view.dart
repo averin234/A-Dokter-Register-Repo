@@ -17,7 +17,7 @@ import 'componen/form_pasien_lama.dart';
 
 class DetailRegistPasienLamaView
     extends GetView<DetailRegistPasienLamaController> {
-  DetailRegistPasienLamaView({Key? key}) : super(key: key);
+  const DetailRegistPasienLamaView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,18 +32,18 @@ class DetailRegistPasienLamaView
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Color(0xFFe0e0e0).withOpacity(0.5),
+                color: const Color(0xFFe0e0e0).withOpacity(0.5),
                 spreadRadius: 0,
                 blurRadius: 10,
-                offset: Offset(2, 1),
+                offset: const Offset(2, 1),
               ),
             ],
           ),
           height: 75,
-          margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+          margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
           child: Row(
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 width: 230,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -60,8 +60,8 @@ class DetailRegistPasienLamaView
                 child: InkWell(
                   onTap: () async {
                     Get.defaultDialog(
-                      backgroundColor: Color(0x00e0e0e0),
-                      content: Loading(),
+                      backgroundColor: const Color(0x00e0e0e0),
+                      content: const Loading(),
                       title: '',
                       barrierDismissible: false,
                     );
@@ -82,7 +82,7 @@ class DetailRegistPasienLamaView
                     if (postAntrian.code == 200) {
                       await showModalBottomSheet(
                         context: context,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(20),
                           ),
@@ -92,7 +92,7 @@ class DetailRegistPasienLamaView
                     } else {
                       await showModalBottomSheet(
                         context: context,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(20),
                           ),
@@ -102,10 +102,10 @@ class DetailRegistPasienLamaView
                     }
                   },
                   child: Container(
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                         right: 15, left: 15, top: 10, bottom: 10),
                     alignment: Alignment.center,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5)),
                       boxShadow: <BoxShadow>[
                         BoxShadow(
@@ -121,7 +121,7 @@ class DetailRegistPasienLamaView
                         colors: [Color(0xff4babe7), Color(0xff4babe7)],
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Kirim",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -137,14 +137,14 @@ class DetailRegistPasienLamaView
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-              systemOverlayStyle: SystemUiOverlayStyle(
+              systemOverlayStyle: const SystemUiOverlayStyle(
                 statusBarColor: Colors.white, // <-- SEE HERE
                 statusBarIconBrightness:
                     Brightness.dark, //<-- For Android SEE HERE (dark icons)
                 statusBarBrightness:
                     Brightness.light, //<-- For iOS SEE HERE (dark icons)
               ),
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(10),
                 ),
@@ -156,12 +156,12 @@ class DetailRegistPasienLamaView
                   onPressed: () {
                     Get.back();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_circle_left_rounded,
                     size: 40,
                   ),
-                  color: Color.fromARGB(255, 192, 192, 192)),
-              title: Text("Data Pasien Lama",
+                  color: const Color.fromARGB(255, 192, 192, 192)),
+              title: const Text("Data Pasien Lama",
                   style: TextStyle(color: Colors.black)),
               // actions: [
               //   IconButton(
@@ -170,7 +170,7 @@ class DetailRegistPasienLamaView
               //       color: Colors.white),
               // ],
               bottom: AppBar(
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(30),
                   ),
@@ -190,7 +190,7 @@ class DetailRegistPasienLamaView
             // Other Sliver Widgets
             SliverList(
               delegate: SliverChildListDelegate([
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 FutureBuilder(
@@ -202,21 +202,21 @@ class DetailRegistPasienLamaView
                         final data = snapshot.data!.pasien ?? Pasien();
                         return ProfilePasienLama(pasien: data);
                       } else {
-                        return Column(
+                        return const Column(
                           children: [
                             shimmerCardProfile(),
                           ],
                         );
                       }
                     }),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 // VitalSignPasienLama(),
                 // FormPasienLama(),
-                FormRegisPasienLama(),
+                const FormRegisPasienLama(),
                 // FormPasienLama()
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 // AuransiPerusahaan1(),
@@ -244,7 +244,7 @@ class DetailRegistPasienLamaView
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -254,14 +254,14 @@ class DetailRegistPasienLamaView
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Gagal Mendaftarkan Pasien",
                   style: TextStyle(
@@ -269,7 +269,7 @@ class DetailRegistPasienLamaView
                       fontSize: 16,
                       color: Colors.redAccent)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -278,7 +278,7 @@ class DetailRegistPasienLamaView
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: Duration(milliseconds: 275),
+                    duration: const Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
@@ -286,8 +286,8 @@ class DetailRegistPasienLamaView
                     ),
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.only(right: 20, left: 20, top: 20),
-                        child: Center(
+                        margin: const EdgeInsets.only(right: 20, left: 20, top: 20),
+                        child: const Center(
                           child: Text(
                             'Periksa Kembali Data yang di inputkan apakah sudah sesuai atau belum ada yang di inputkan',
                             textAlign: TextAlign.center,
@@ -300,7 +300,7 @@ class DetailRegistPasienLamaView
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             // InkWell(
@@ -325,7 +325,7 @@ class DetailRegistPasienLamaView
             //     ),
             //   ),
             // ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],
@@ -341,7 +341,7 @@ class DetailRegistPasienLamaView
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -351,14 +351,14 @@ class DetailRegistPasienLamaView
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Berhasil Mendaftarkan Pasien",
                   style: TextStyle(
@@ -366,7 +366,7 @@ class DetailRegistPasienLamaView
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -375,7 +375,7 @@ class DetailRegistPasienLamaView
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: Duration(milliseconds: 275),
+                    duration: const Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
@@ -383,8 +383,8 @@ class DetailRegistPasienLamaView
                     ),
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.only(right: 20, left: 20, top: 20),
-                        child: Center(
+                        margin: const EdgeInsets.only(right: 20, left: 20, top: 20),
+                        child: const Center(
                           child: Text(
                             'Lanjut untuk melakukan pemeriksaan pasien yang sudah di daftarkan',
                             textAlign: TextAlign.center,
@@ -397,7 +397,7 @@ class DetailRegistPasienLamaView
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             InkWell(
@@ -409,7 +409,7 @@ class DetailRegistPasienLamaView
                   color: Colors.greenAccent,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -423,7 +423,7 @@ class DetailRegistPasienLamaView
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

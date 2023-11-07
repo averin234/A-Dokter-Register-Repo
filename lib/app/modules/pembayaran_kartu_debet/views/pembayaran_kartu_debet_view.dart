@@ -1,26 +1,20 @@
-import 'package:a_dokter_register/app/modules/bottomsheet/bottomsheet_bayar_kasir.dart';
 import 'package:a_dokter_register/app/modules/pembayaran_kartu_debet/views/widgets/card_infokaryawan_kasir3.dart';
 import 'package:a_dokter_register/app/modules/pembayaran_kartu_debet/views/widgets/card_pembayaran_debet.dart';
-import 'package:a_dokter_register/app/modules/pembayaran_tunai/views/widgets/data_billing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../data/componen/fetch_data.dart';
-import '../../../data/componen/publics.dart';
-import '../../../data/model/get_list_kasir.dart';
 import '../../../routes/app_pages.dart';
 import '../../loading_summer/loading_screen_animed.dart';
-import '../../pembayaran_tunai/views/widgets/card_infokaryawan_kasir.dart';
 import '../controllers/pembayaran_kartu_debet_controller.dart';
 
 class PembayaranKartuDebetView extends StatefulWidget {
-  PembayaranKartuDebetView({
-    Key? key,
-  }) : super(key: key);
+  const PembayaranKartuDebetView({
+    super.key,
+  });
 
   @override
   _PembayaranKartuDebetViewState createState() =>
@@ -30,7 +24,7 @@ class PembayaranKartuDebetView extends StatefulWidget {
 class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
   // this enable our app to able to pull down
   late final RefreshController _refreshController; // the refresh controller
-  var _scaffoldKey =
+  final _scaffoldKey =
       GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
@@ -53,18 +47,18 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Color(0xFFe0e0e0).withOpacity(0.5),
+                  color: const Color(0xFFe0e0e0).withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
-                  offset: Offset(2, 1),
+                  offset: const Offset(2, 1),
                 ),
               ],
             ),
             height: 75,
-            margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+            margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
             child: Row(
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   width: 230,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -81,8 +75,8 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
                   child: InkWell(
                     onTap: () async {
                       Get.defaultDialog(
-                        backgroundColor: Color(0xe0e0e0),
-                        content: Loading(),
+                        backgroundColor: const Color(0x00e0e0e0),
+                        content: const Loading(),
                         title: '',
                         barrierDismissible: false,
                       );
@@ -108,10 +102,10 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
                       }
                     },
                     child: Container(
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                           right: 15, left: 15, top: 10, bottom: 10),
                       alignment: Alignment.center,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
                         boxShadow: <BoxShadow>[
                           BoxShadow(
@@ -127,7 +121,7 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
                           colors: [Color(0xff4babe7), Color(0xff4babe7)],
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         "Bayar",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -144,20 +138,20 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
           body: SmartRefresher(
             controller: _refreshController,
             enablePullDown: true,
-            header: WaterDropHeader(),
+            header: const WaterDropHeader(),
             onLoading: _onLoading,
             onRefresh: _onRefresh,
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  systemOverlayStyle: SystemUiOverlayStyle(
+                  systemOverlayStyle: const SystemUiOverlayStyle(
                     statusBarColor: Colors.white, // <-- SEE HERE
                     statusBarIconBrightness:
                         Brightness.dark, //<-- For Android SEE HERE (dark icons)
                     statusBarBrightness:
                         Brightness.light, //<-- For iOS SEE HERE (dark icons)
                   ),
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       bottom: Radius.circular(10),
                     ),
@@ -169,13 +163,13 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
                     onPressed: () {
                       Get.back();
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_circle_left_rounded,
                       size: 40,
                     ),
-                    color: Color.fromARGB(255, 192, 192, 192),
+                    color: const Color.fromARGB(255, 192, 192, 192),
                   ),
-                  title: Text("Pembayaran Debet",
+                  title: const Text("Pembayaran Debet",
                       style: TextStyle(color: Colors.black)),
                   bottom: AppBar(
                     toolbarHeight: 0,
@@ -187,15 +181,15 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
                 SliverList(
                   delegate: SliverChildListDelegate(
                     [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      CardKaryawan3(),
-                      SizedBox(
+                      const CardKaryawan3(),
+                      const SizedBox(
                         height: 10,
                       ),
-                      PembayaranDebet(),
-                      SizedBox(
+                      const PembayaranDebet(),
+                      const SizedBox(
                         height: 20,
                       ),
                     ],
@@ -217,7 +211,7 @@ class _PembayaranKartuDebetViewState extends State<PembayaranKartuDebetView> {
   _onRefresh() {
     setState(() {
 // so whatever you want to refresh it must be inside the setState
-      PembayaranKartuDebetView(); // if you only want to refresh the list you can place this, so the two can be inside setState
+      const PembayaranKartuDebetView(); // if you only want to refresh the list you can place this, so the two can be inside setState
       _refreshController
           .refreshCompleted(); // request complete,the header will enter complete state,
 // resetFooterState : it will set the footer state from noData to idle

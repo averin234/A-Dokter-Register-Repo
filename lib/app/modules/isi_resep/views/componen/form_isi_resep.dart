@@ -11,7 +11,7 @@ import '../../../../routes/app_pages.dart';
 import '../../../loading_summer/loading_screen_animed.dart';
 
 class FormIsiResep extends StatefulWidget {
-  FormIsiResep({super.key});
+  const FormIsiResep({super.key});
 
   @override
   State<FormIsiResep> createState() => _FormIsiResepState();
@@ -36,18 +36,18 @@ class _FormIsiResepState extends State<FormIsiResep> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.only(left: 10, right: 10),
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Color(0x6cc7d1db)),
+        border: Border.all(color: const Color(0x6cc7d1db)),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFe0e0e0).withOpacity(0.5),
+            color: const Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: Offset(2, 1),
+            offset: const Offset(2, 1),
           ),
         ],
       ),
@@ -55,12 +55,12 @@ class _FormIsiResepState extends State<FormIsiResep> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Form isi Resep',
             textAlign: TextAlign.center,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           // Padding(
@@ -86,7 +86,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
           //     );
           //   }
           // ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           FutureBuilder(
@@ -101,11 +101,11 @@ class _FormIsiResepState extends State<FormIsiResep> {
                   return data.isEmpty
                       ? Text(snapshot.data!.msg ?? 'Tidak Ada Obat')
                       : Container(
-                          padding: EdgeInsets.only(right: 10),
-                          margin: EdgeInsets.only(left: 10, right: 10),
+                          padding: const EdgeInsets.only(right: 10),
+                          margin: const EdgeInsets.only(left: 10, right: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Color(0x6cc7d1db)),
+                            border: Border.all(color: const Color(0x6cc7d1db)),
                           ),
                           child: dropdown(
                               'Cari Obat',
@@ -113,34 +113,34 @@ class _FormIsiResepState extends State<FormIsiResep> {
                               controller.obatController,
                               controller.namaObatController));
                 } else {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
               }),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 15),
             child:
                 Text("Jumlah", style: TextStyle(fontWeight: FontWeight.normal)),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.only(right: 10),
-            margin: EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(right: 10),
+            margin: const EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Color(0x6cc7d1db)),
+              border: Border.all(color: const Color(0x6cc7d1db)),
             ),
             child: TextField(
               controller: controller.jumlahController,
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
@@ -153,21 +153,21 @@ class _FormIsiResepState extends State<FormIsiResep> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Divider(
+          const Divider(
             color: Colors.grey,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Jenis Kesediaan",
                 style: TextStyle(fontWeight: FontWeight.normal)),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           FutureBuilder(
@@ -178,11 +178,11 @@ class _FormIsiResepState extends State<FormIsiResep> {
                     snapshot.data != null) {
                   final data = snapshot.data!.jenisObat ?? [];
                   return Container(
-                    padding: EdgeInsets.only(right: 10),
-                    margin: EdgeInsets.only(left: 10, right: 10),
+                    padding: const EdgeInsets.only(right: 10),
+                    margin: const EdgeInsets.only(left: 10, right: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Color(0x6cc7d1db)),
+                      border: Border.all(color: const Color(0x6cc7d1db)),
                     ),
                     child: dropdown1(
                       'Jenis Kesediaan',
@@ -192,32 +192,32 @@ class _FormIsiResepState extends State<FormIsiResep> {
                     ),
                   );
                 } else {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
               }),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Aturan Pemakaian",
                 style: TextStyle(fontWeight: FontWeight.normal)),
           ),
           Container(
-              padding: EdgeInsets.only(right: 10),
-              margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+              padding: const EdgeInsets.only(right: 10),
+              margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
               decoration: BoxDecoration(
-                color: Color(0xfff3f3f3),
+                color: const Color(0xfff3f3f3),
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Color(0x6cc7d1db)),
+                border: Border.all(color: const Color(0x6cc7d1db)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Obx(() {
@@ -233,13 +233,13 @@ class _FormIsiResepState extends State<FormIsiResep> {
                                   snapshot.data != null) {
                                 final data = snapshot.data!.list ?? [];
                                 return Container(
-                                  padding: EdgeInsets.only(right: 10),
-                                  margin: EdgeInsets.only(left: 10, right: 10),
+                                  padding: const EdgeInsets.only(right: 10),
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(10),
                                     border:
-                                        Border.all(color: Color(0x6cc7d1db)),
+                                        Border.all(color: const Color(0x6cc7d1db)),
                                   ),
                                   child: dropdown(
                                     'Aturan Pemakaian',
@@ -249,13 +249,13 @@ class _FormIsiResepState extends State<FormIsiResep> {
                                   ),
                                 );
                               } else {
-                                return Center(
+                                return const Center(
                                   child: CircularProgressIndicator(),
                                 );
                               }
                             });
                   }),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   // Row(
@@ -395,7 +395,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                   //     ],
                   //   ),
                   // ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   SizedBox(
@@ -413,7 +413,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'Sebelum Makan',
                           style: TextStyle(),
                         ),
@@ -427,7 +427,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'Sesudah Makan',
                           style: TextStyle(),
                         ),
@@ -449,7 +449,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'Saat Makan',
                           style: TextStyle(),
                         ),
@@ -463,7 +463,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'Tetes',
                           style: TextStyle(),
                         ),
@@ -477,7 +477,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'Oles',
                           style: TextStyle(),
                         ),
@@ -499,7 +499,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'Sprey',
                           style: TextStyle(),
                         ),
@@ -513,7 +513,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'UC',
                           style: TextStyle(),
                         ),
@@ -527,7 +527,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'Anus',
                           style: TextStyle(),
                         ),
@@ -549,7 +549,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'Vagina',
                           style: TextStyle(),
                         ),
@@ -563,7 +563,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                             });
                           },
                         ),
-                        Text(
+                        const Text(
                           'Lainnya',
                           style: TextStyle(),
                         ),
@@ -579,8 +579,8 @@ class _FormIsiResepState extends State<FormIsiResep> {
               GestureDetector(
                 onTap: () async {
                   Get.defaultDialog(
-                    backgroundColor: Color(0xe0e0e0),
-                    content: Loading(),
+                    backgroundColor: const Color(0x00e0e0e0),
+                    content: const Loading(),
                     title: '',
                     barrierDismissible: false,
                   );
@@ -613,7 +613,7 @@ class _FormIsiResepState extends State<FormIsiResep> {
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
@@ -667,21 +667,21 @@ class AppTextField extends StatelessWidget {
   final bool isCitySelected;
   final List<Lists> lists;
 
-  AppTextField({
+  const AppTextField({
     required this.textEditingController,
     required this.textEditingController1,
     required this.title,
     required this.hint,
     required this.isCitySelected,
     required this.lists,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// This is on text changed method which will display on city text field on changed.
   void onTextFieldTap() {
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -700,7 +700,7 @@ class AppTextField extends StatelessWidget {
                         style: TextButton.styleFrom(
                             alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10)),
                         child: Text(
                           e.nama!,
@@ -747,10 +747,10 @@ class AppTextField extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.transparent,
-          suffixIcon: Icon(Icons.arrow_drop_down_circle),
-          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
+          contentPadding: const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,
@@ -773,22 +773,22 @@ class AppTextField1 extends StatelessWidget {
   final bool isCitySelected;
   final List<JenisObat> lists;
 
-  AppTextField1({
+  const AppTextField1({
     required this.textEditingController,
     required this.textEditingController1,
     required this.title,
     required this.hint,
     required this.isCitySelected,
     required this.lists,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// This is on text changed method which will display on city text field on changed.
   void onTextFieldTap() {
     final controller = Get.put(IsiResepController());
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -807,7 +807,7 @@ class AppTextField1 extends StatelessWidget {
                         style: TextButton.styleFrom(
                             alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10)),
                         child: Text(
                           e.namaKesediaan!,
@@ -855,10 +855,10 @@ class AppTextField1 extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: Colors.transparent,
           filled: true,
-          suffixIcon: Icon(Icons.arrow_drop_down_circle),
-          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
+          contentPadding: const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,

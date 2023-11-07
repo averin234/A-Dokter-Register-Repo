@@ -8,13 +8,13 @@ import '../../../../routes/app_pages.dart';
 
 class ListViewTindakan extends StatelessWidget {
   final Antrian antrian;
-  ListViewTindakan({super.key, required this.antrian});
+  const ListViewTindakan({super.key, required this.antrian});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         InkWell(
@@ -23,17 +23,17 @@ class ListViewTindakan extends StatelessWidget {
             'no_mr': antrian.noMr ?? ''
           }),
           child: Container(
-            padding: EdgeInsets.only(right: 0, left: 10, bottom: 10),
+            padding: const EdgeInsets.only(right: 0, left: 10, bottom: 10),
             decoration: BoxDecoration(
-              border: Border.all(color: Color(0x6cc7d1db)),
+              border: Border.all(color: const Color(0x6cc7d1db)),
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Color(0xFFe0e0e0).withOpacity(0.5),
+                  color: const Color(0xFFe0e0e0).withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
-                  offset: Offset(2, 1),
+                  offset: const Offset(2, 1),
                 ),
               ],
             ),
@@ -48,7 +48,7 @@ class ListViewTindakan extends StatelessWidget {
                       children: [
                         Container(
                           margin:
-                              EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                              const EdgeInsets.only(left: 10, bottom: 10, top: 10),
                           child: CircleAvatar(
                             radius: 30.0,
                             backgroundImage: NetworkImage(antrian.fotoPasien ??
@@ -66,27 +66,27 @@ class ListViewTindakan extends StatelessWidget {
                               child: Text(
                                 antrian.namaPasien ?? '',
                                 textAlign: TextAlign.start,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 13,
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("No MR :",
+                                const Text("No MR :",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 13)),
-                                SizedBox(
+                                const SizedBox(
                                   width: 6,
                                 ),
                                 Text(antrian.noMr ?? '',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 13)),
                               ],
@@ -97,28 +97,28 @@ class ListViewTindakan extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                                margin: EdgeInsets.only(
+                                margin: const EdgeInsets.only(
                                     right: 10, top: 10, bottom: 10),
-                                padding: EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 233, 231, 253),
+                                  color: const Color.fromARGB(255, 233, 231, 253),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Column(
                                   children: [
-                                    Text(
+                                    const Text(
                                       "Antrian",
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Text(
-                                      "${antrian.noAntrian ?? ''}",
-                                      style: TextStyle(
+                                      antrian.noAntrian ?? '',
+                                      style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 25,
                                         fontWeight: FontWeight.bold,
@@ -134,43 +134,43 @@ class ListViewTindakan extends StatelessWidget {
                 ),
                 Container(
                   padding:
-                      EdgeInsets.only(right: 7, left: 7, top: 7, bottom: 7),
-                  margin: EdgeInsets.only(right: 10),
+                      const EdgeInsets.only(right: 7, left: 7, top: 7, bottom: 7),
+                  margin: const EdgeInsets.only(right: 10),
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 219, 246, 253),
+                      color: const Color.fromARGB(255, 219, 246, 253),
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Pendaftaran",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 12),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.calendar_month_rounded,
                             color: Color.fromARGB(255, 35, 163, 223),
                             size: 24.0,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 4,
                           ),
                           Text((antrian.tglJamPoli ?? '').substring(0, 10)),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
-                          Icon(
+                          const Icon(
                             Icons.access_time_filled_rounded,
                             color: Color.fromARGB(255, 35, 163, 223),
                             size: 24.0,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 4,
                           ),
                           Text((antrian.tglJamPoli ?? '').substring(10)),
@@ -188,10 +188,10 @@ class ListViewTindakan extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -201,7 +201,7 @@ class ListViewTindakan extends StatelessWidget {
                               InkWell(
                                 onTap: () => showModalBottomSheet(
                                   context: context,
-                                  shape: RoundedRectangleBorder(
+                                  shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.vertical(
                                       top: Radius.circular(20),
                                     ),
@@ -210,9 +210,9 @@ class ListViewTindakan extends StatelessWidget {
                                 ),
                                 child: Container(
                                   width: 160,
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                       right: 10, left: 10, bottom: 10, top: 10),
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color.fromARGB(255, 254, 228, 203),
                                     borderRadius: BorderRadius.only(
                                         topRight: Radius.circular(0.0),
@@ -220,7 +220,7 @@ class ListViewTindakan extends StatelessWidget {
                                         topLeft: Radius.circular(10.0),
                                         bottomLeft: Radius.circular(10.0)),
                                   ),
-                                  child: Text(
+                                  child: const Text(
                                     'Lihat',
                                     style: TextStyle(
                                         color: Colors.blue,
@@ -238,9 +238,9 @@ class ListViewTindakan extends StatelessWidget {
                                     }),
                                 child: Container(
                                   width: 160,
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                       right: 10, left: 10, bottom: 10, top: 10),
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Colors.blue,
                                     borderRadius: BorderRadius.only(
                                         topRight: Radius.circular(10.0),
@@ -248,7 +248,7 @@ class ListViewTindakan extends StatelessWidget {
                                         topLeft: Radius.circular(0.0),
                                         bottomLeft: Radius.circular(0.0)),
                                   ),
-                                  child: Text(
+                                  child: const Text(
                                     'SOAP',
                                     style: TextStyle(
                                         color: Colors.white,
@@ -281,7 +281,7 @@ class ListViewTindakan extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -291,22 +291,22 @@ class ListViewTindakan extends StatelessWidget {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 15),
+              padding: const EdgeInsets.only(left: 15),
               child: Text("Pasien ${antrian.namaPasien ?? ''}",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: Colors.black)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -315,7 +315,7 @@ class ListViewTindakan extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: Duration(milliseconds: 275),
+                    duration: const Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
@@ -326,7 +326,7 @@ class ListViewTindakan extends StatelessWidget {
                         children: [
                           Container(
                             margin:
-                                EdgeInsets.only(left: 0, bottom: 10, top: 10),
+                                const EdgeInsets.only(left: 0, bottom: 10, top: 10),
                             child: CircleAvatar(
                               radius: 30.0,
                               backgroundImage:
@@ -334,107 +334,107 @@ class ListViewTindakan extends StatelessWidget {
                               backgroundColor: Colors.transparent,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 Row(
                                   children: [
-                                    Text("Umur :",
+                                    const Text("Umur :",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 6,
                                     ),
                                     Text("${antrian.umur ?? ''} Tahun",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 Row(
                                   children: [
-                                    Text("Golongan Darah :",
+                                    const Text("Golongan Darah :",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 6,
                                     ),
                                     Text(antrian.golDarah ?? '',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 Row(
                                   children: [
-                                    Text("Alergi :",
+                                    const Text("Alergi :",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 6,
                                     ),
                                     Text(antrian.alergi ?? '',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 Row(
                                   children: [
-                                    Text("No Hp :",
+                                    const Text("No Hp :",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 6,
                                     ),
                                     Text(antrian.noHp ?? '',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 Row(
                                   children: [
-                                    Text("Alamat :",
+                                    const Text("Alamat :",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13)),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 6,
                                     ),
                                     SizedBox(
                                       width: 170,
                                       child: Text(antrian.alamat ?? '',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 13)),
                                     ),
                                   ],
                                 ),
                               ]),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
@@ -444,10 +444,10 @@ class ListViewTindakan extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

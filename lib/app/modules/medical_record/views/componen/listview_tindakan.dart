@@ -8,7 +8,7 @@ import '../../../../routes/app_pages.dart';
 
 class ListViewPasien extends StatelessWidget {
   final Pasien pasien;
-  ListViewPasien({super.key, required this.pasien});
+  const ListViewPasien({super.key, required this.pasien});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +17,10 @@ class ListViewPasien extends StatelessWidget {
         onTap: () => Get.toNamed(Routes.RIWAYAT_MEDICAL_RECORD,
             parameters: {'no_mr': pasien.noMr ?? ''}),
         child: Container(
-          margin: EdgeInsets.only(right: 10, left: 10, bottom: 0),
-          padding: EdgeInsets.only(right: 0, left: 10, bottom: 5),
+          margin: const EdgeInsets.only(right: 10, left: 10, bottom: 0),
+          padding: const EdgeInsets.only(right: 0, left: 10, bottom: 5),
           decoration: BoxDecoration(
-            border: Border.all(color: Color(0x6cc7d1db)),
+            border: Border.all(color: const Color(0x6cc7d1db)),
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
           ),
@@ -28,7 +28,7 @@ class ListViewPasien extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                  margin: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
                   child: Row(children: [
                     CircleAvatar(
                       radius: 30.0,
@@ -38,7 +38,7 @@ class ListViewPasien extends StatelessWidget {
                               : Avatar.perempuan)),
                       backgroundColor: Colors.transparent,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Column(
@@ -46,54 +46,54 @@ class ListViewPasien extends StatelessWidget {
                       children: [
                         SizedBox(
                           child: Text(pasien.namaPasien ?? '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 13)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
                           children: [
-                            Text("No MR :",
+                            const Text("No MR :",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
-                            SizedBox(
+                            const SizedBox(
                               width: 6,
                             ),
                             Text(pasien.noMr ?? '',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 3,
                         ),
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.phone,
                               color: Colors.grey,
                               size: 20.0,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 6,
                             ),
                             Text(pasien.noHp ?? '',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 3,
                         ),
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.person,
                               color: Colors.grey,
                               size: 20.0,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 6,
                             ),
                             FutureBuilder(
@@ -105,60 +105,60 @@ class ListViewPasien extends StatelessWidget {
                                           ConnectionState.waiting &&
                                       snapshot.data != null) {
                                     return Text(snapshot.data!.msg ?? '',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13));
                                   } else {
-                                    return Center(
+                                    return const Center(
                                       child: CircularProgressIndicator(),
                                     );
                                   }
                                 }),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 3,
                         ),
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.bloodtype,
                               color: Colors.grey,
                               size: 20.0,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 6,
                             ),
                             Text(pasien.golDarah ?? '',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 13)),
                           ],
                         ),
                       ],
                     ),
                   ])),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
-                  margin: EdgeInsets.only(right: 10),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 219, 246, 253),
+                    color: const Color.fromARGB(255, 219, 246, 253),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
                     children: [
-                      Text("Cek MR",
+                      const Text("Cek MR",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold)),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Image.asset(
@@ -173,7 +173,7 @@ class ListViewPasien extends StatelessWidget {
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 5,
       ),
     ]);

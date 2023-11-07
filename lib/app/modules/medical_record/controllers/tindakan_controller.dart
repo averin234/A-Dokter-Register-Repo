@@ -36,7 +36,7 @@ class TindakanController extends GetxController {
             fit: BoxFit.fitHeight,
             height: 200,
           ),
-          Text('Versi baru aplikasi tersedia. Apakah Anda ingin mengunduh pembaruan sekarang?', textAlign: TextAlign.center),
+          const Text('Versi baru aplikasi tersedia. Apakah Anda ingin mengunduh pembaruan sekarang?', textAlign: TextAlign.center),
         ],
       ),
 
@@ -47,12 +47,12 @@ class TindakanController extends GetxController {
         },
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.blue
           ),
-          child : Center(
+          child : const Center(
             child : Text('Unduh Sekarang', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
           ),
         ),
@@ -61,20 +61,8 @@ class TindakanController extends GetxController {
     );
   }
   final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   void increment() => count.value++;
 }

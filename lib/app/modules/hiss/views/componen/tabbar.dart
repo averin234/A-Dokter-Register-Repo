@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Tabbar extends StatefulWidget {
-  Tabbar({super.key});
+  const Tabbar({super.key});
 
   @override
   State<Tabbar> createState() => _TabbarState();
@@ -31,7 +31,7 @@ class _TabbarState extends State<Tabbar> {
           Row(
             children: menuHiss
                 .map((e) => Container(
-                      margin: EdgeInsets.only(right: 10, left: 5),
+                      margin: const EdgeInsets.only(right: 10, left: 5),
                       child: ElevatedButton(
                         onPressed: () {},
                         child: Text(e),

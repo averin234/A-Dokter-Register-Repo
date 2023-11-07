@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'dart:math';
 
 import 'package:a_dokter_register/app/modules/isi_resep/controllers/isi_resep_controller.dart';
 import 'package:a_dokter_register/app/modules/isi_resep/views/componen/form_isi_resep.dart';
@@ -10,14 +8,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../data/componen/fetch_data.dart';
-import '../../bottomsheet/bottomsheet_tambah_data_obat.dart';
 
 class IsiResepView extends StatefulWidget {
-  IsiResepView({Key? key, this.title}) : super(key: key);
+  const IsiResepView({super.key, this.title});
 
   final String? title;
 
@@ -28,7 +24,7 @@ class IsiResepView extends StatefulWidget {
 class _IsiResepViewState extends State<IsiResepView> {
   // this enable our app to able to pull down
   late RefreshController _refreshController; // the refresh controller
-  var _scaffoldKey =
+  final _scaffoldKey =
       GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
@@ -46,21 +42,21 @@ class _IsiResepViewState extends State<IsiResepView> {
         body: SmartRefresher(
           controller: _refreshController,
           enablePullDown: true,
-          header: WaterDropHeader(),
+          header: const WaterDropHeader(),
           onLoading: _onLoading,
           onRefresh: _onRefresh,
           child: CustomScrollView(
             slivers: [
               SliverAppBar(
                 toolbarHeight: 70,
-                systemOverlayStyle: SystemUiOverlayStyle(
+                systemOverlayStyle: const SystemUiOverlayStyle(
                   statusBarColor: Colors.white, // <-- SEE HERE
                   statusBarIconBrightness:
                       Brightness.dark, //<-- For Android SEE HERE (dark icons)
                   statusBarBrightness:
                       Brightness.light, //<-- For iOS SEE HERE (dark icons)
                 ),
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(10),
                   ),
@@ -72,13 +68,13 @@ class _IsiResepViewState extends State<IsiResepView> {
                   onPressed: () {
                     Get.back();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_circle_left_rounded,
                     size: 40,
                   ),
-                  color: Color.fromARGB(255, 192, 192, 192),
+                  color: const Color.fromARGB(255, 192, 192, 192),
                 ),
-                actions: [
+                actions: const [
                   // Column(
                   //   children: [
                   //     IconButton(
@@ -98,7 +94,7 @@ class _IsiResepViewState extends State<IsiResepView> {
                   //   width: 10,
                   // ),
                 ],
-                title: Text("Resep", style: TextStyle(color: Colors.black)),
+                title: const Text("Resep", style: TextStyle(color: Colors.black)),
                 bottom: AppBar(
                   toolbarHeight: 0,
                   automaticallyImplyLeading: false,
@@ -111,31 +107,31 @@ class _IsiResepViewState extends State<IsiResepView> {
                   [
                     Column(
                       children: AnimationConfiguration.toStaggeredList(
-                        duration: Duration(milliseconds: 375),
+                        duration: const Duration(milliseconds: 375),
                         childAnimationBuilder: (widget) => ScaleAnimation(
                           child: SlideAnimation(
                             child: widget,
                           ),
                         ),
                         children: <Widget>[
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          NamaPemeriksa(),
-                          SizedBox(
+                          const NamaPemeriksa(),
+                          const SizedBox(
                             height: 10,
                           ),
-                          FormIsiResep(),
-                          SizedBox(
+                          const FormIsiResep(),
+                          const SizedBox(
                             height: 30,
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 10),
                             child: Text('Hasil Resep',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15)),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           FutureBuilder(
@@ -148,11 +144,11 @@ class _IsiResepViewState extends State<IsiResepView> {
                                     snapshot.data != null) {
                                   final data = snapshot.data!.resep ?? [];
                                   return data.isEmpty
-                                      ? Text('Tidak Ada Resep')
+                                      ? const Text('Tidak Ada Resep')
                                       : Column(
                                           children: AnimationConfiguration
                                               .toStaggeredList(
-                                                  duration: Duration(
+                                                  duration: const Duration(
                                                       milliseconds: 475),
                                                   childAnimationBuilder:
                                                       (widget) =>
@@ -168,12 +164,12 @@ class _IsiResepViewState extends State<IsiResepView> {
                                                       .toList()),
                                         );
                                 } else {
-                                  return Center(
+                                  return const Center(
                                     child: CircularProgressIndicator(),
                                   );
                                 }
                               }),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                           ),
                         ],
@@ -197,7 +193,7 @@ class _IsiResepViewState extends State<IsiResepView> {
   _onRefresh() {
     setState(() {
 // so whatever you want to refresh it must be inside the setState
-      IsiResepView(); // if you only want to refresh the list you can place this, so the two can be inside setState
+      const IsiResepView(); // if you only want to refresh the list you can place this, so the two can be inside setState
       _refreshController
           .refreshCompleted(); // request complete,the header will enter complete state,
 // resetFooterState : it will set the footer state from noData to idle

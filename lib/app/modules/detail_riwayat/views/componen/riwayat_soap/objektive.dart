@@ -5,7 +5,7 @@ import '../../../../../routes/app_pages.dart';
 
 class Objektive extends StatefulWidget {
   final String objective;
-  Objektive({super.key, required this.objective});
+  const Objektive({super.key, required this.objective});
 
   @override
   State<Objektive> createState() => _ObjektiveState();
@@ -24,28 +24,28 @@ class _ObjektiveState extends State<Objektive> {
     return InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10),
-        padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Color(0xFFe0e0e0).withOpacity(0.5),
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: Offset(2, 1),
+              offset: const Offset(2, 1),
             ),
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
@@ -67,10 +67,10 @@ class _ObjektiveState extends State<Objektive> {
                 // ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Divider(
+            const Divider(
               height: 3,
               color: Colors.grey,
             ),
@@ -79,7 +79,7 @@ class _ObjektiveState extends State<Objektive> {
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
               maxLines: 7,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,

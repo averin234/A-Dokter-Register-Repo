@@ -1,17 +1,12 @@
-import 'dart:async';
-import 'dart:math';
 
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
-import 'package:a_dokter_register/app/modules/detail_antrian/views/componen/surat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../data/model/list_data.dart';
 import '../../../routes/app_pages.dart';
@@ -27,11 +22,10 @@ import 'componen/planning.dart';
 import 'componen/planning/resep.dart';
 import 'componen/soap/soap.dart';
 import 'componen/profile_pasien.dart';
-import 'componen/text_field.dart';
 import 'componen/vital_sign.dart';
 
 class DetailTindakanView extends GetView<DetailTindakanController> {
-  DetailTindakanView({super.key});
+  const DetailTindakanView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +37,18 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Color(0xFFe0e0e0).withOpacity(0.5),
+                color: const Color(0xFFe0e0e0).withOpacity(0.5),
                 spreadRadius: 0,
                 blurRadius: 10,
-                offset: Offset(2, 1),
+                offset: const Offset(2, 1),
               ),
             ],
           ),
           height: 75,
-          margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+          margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
           child: Row(
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 width: 200,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -72,10 +66,10 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                     bottomSheetPulang();
                   },
                   child: Container(
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                         right: 15, left: 5, top: 10, bottom: 10),
                     alignment: Alignment.center,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5)),
                       color: Colors.redAccent,
                       boxShadow: <BoxShadow>[
@@ -87,7 +81,7 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
                         )
                       ],
                     ),
-                    child: Text(
+                    child: const Text(
                       "Pulang",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -100,14 +94,14 @@ class DetailTindakanView extends GetView<DetailTindakanController> {
             ],
           ),
         ),
-        body: DetailMR(),
+        body: const DetailMR(),
       ),
     );
   }
 }
 
 class DetailMR extends StatefulWidget {
-  DetailMR({Key? key, this.title}) : super(key: key);
+  const DetailMR({super.key, this.title});
 
   final String? title;
 
@@ -118,7 +112,7 @@ class DetailMR extends StatefulWidget {
 class _DetailMRState extends State<DetailMR> {
   // this enable our app to able to pull down
   late RefreshController _refreshController; // the refresh controller
-  var _scaffoldKey =
+  final _scaffoldKey =
       GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
@@ -141,20 +135,20 @@ class _DetailMRState extends State<DetailMR> {
           body: SmartRefresher(
               controller: _refreshController,
               enablePullDown: true,
-              header: WaterDropHeader(),
+              header: const WaterDropHeader(),
               onLoading: _onLoading,
               onRefresh: _onRefresh,
               child: CustomScrollView(
                 slivers: [
                   SliverAppBar(
-                    systemOverlayStyle: SystemUiOverlayStyle(
+                    systemOverlayStyle: const SystemUiOverlayStyle(
                       statusBarColor: Colors.white, // <-- SEE HERE
                       statusBarIconBrightness: Brightness
                           .dark, //<-- For Android SEE HERE (dark icons)
                       statusBarBrightness:
                           Brightness.light, //<-- For iOS SEE HERE (dark icons)
                     ),
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         bottom: Radius.circular(10),
                       ),
@@ -166,15 +160,15 @@ class _DetailMRState extends State<DetailMR> {
                       onPressed: () {
                         Get.toNamed(Routes.HOME);
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_circle_left_rounded,
                         size: 40,
                       ),
-                      color: Color.fromARGB(255, 192, 192, 192),
+                      color: const Color.fromARGB(255, 192, 192, 192),
                     ),
-                    title: Text("SOAP", style: TextStyle(color: Colors.black)),
+                    title: const Text("SOAP", style: TextStyle(color: Colors.black)),
                     bottom: AppBar(
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.vertical(
                           bottom: Radius.circular(30),
                         ),
@@ -182,7 +176,7 @@ class _DetailMRState extends State<DetailMR> {
                       toolbarHeight: 0,
                       automaticallyImplyLeading: false,
                       elevation: 0,
-                      backgroundColor: Color.fromARGB(255, 35, 163, 223),
+                      backgroundColor: const Color.fromARGB(255, 35, 163, 223),
                     ),
                   ),
                   // Other Sliver Widgets
@@ -208,7 +202,7 @@ class _DetailMRState extends State<DetailMR> {
                               return Column(
                                 children:
                                     AnimationConfiguration.toStaggeredList(
-                                  duration: Duration(milliseconds: 375),
+                                  duration: const Duration(milliseconds: 375),
                                   childAnimationBuilder: (widget) =>
                                       ScaleAnimation(
                                     child: SlideAnimation(
@@ -216,12 +210,12 @@ class _DetailMRState extends State<DetailMR> {
                                     ),
                                   ),
                                   children: <Widget>[
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     ProfilePasienTindakan(
                                         pasien: data.pasien ?? Pasien()),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     data.vitalSign == null
@@ -231,7 +225,7 @@ class _DetailMRState extends State<DetailMR> {
                                                   context: context,
                                                   isScrollControlled: true,
                                                   isDismissible: true,
-                                                  shape: RoundedRectangleBorder(
+                                                  shape: const RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.vertical(
                                                       top: Radius.circular(20),
@@ -261,7 +255,7 @@ class _DetailMRState extends State<DetailMR> {
                                                               ),
                                                               child: Column(
                                                                 children: [
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 10,
                                                                   ),
                                                                   Container(
@@ -278,27 +272,27 @@ class _DetailMRState extends State<DetailMR> {
                                                                     ),
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: Color(
+                                                                      color: const Color(
                                                                           0xFFe0e0e0),
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               10),
                                                                     ),
                                                                   ),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 4,
                                                                   ),
-                                                                  Text(
+                                                                  const Text(
                                                                       'Geser Kebawah',
                                                                       style: TextStyle(
                                                                           fontWeight: FontWeight
                                                                               .bold,
                                                                           color:
                                                                               Colors.grey)),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 25,
                                                                   ),
-                                                                  Padding(
+                                                                  const Padding(
                                                                     padding: EdgeInsets
                                                                         .only(
                                                                             left:
@@ -313,7 +307,7 @@ class _DetailMRState extends State<DetailMR> {
                                                                             color:
                                                                                 Colors.blue)),
                                                                   ),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 10,
                                                                   ),
                                                                   Expanded(
@@ -328,7 +322,7 @@ class _DetailMRState extends State<DetailMR> {
                                                                         children:
                                                                             AnimationConfiguration.toStaggeredList(
                                                                           duration:
-                                                                              Duration(milliseconds: 275),
+                                                                              const Duration(milliseconds: 275),
                                                                           childAnimationBuilder: (widget) =>
                                                                               SlideAnimation(
                                                                             child:
@@ -338,21 +332,21 @@ class _DetailMRState extends State<DetailMR> {
                                                                           ),
                                                                           children: <
                                                                               Widget>[
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
-                                                                            Padding(
+                                                                            const Padding(
                                                                               padding: EdgeInsets.only(left: 15),
                                                                               child: Text("Keadaan Umum",
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
                                                                                   )),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
                                                                             Container(
-                                                                              margin: EdgeInsets.only(left: 10, right: 10),
+                                                                              margin: const EdgeInsets.only(left: 10, right: 10),
                                                                               child: FutureBuilder(
                                                                                 future: API.getkeadaanUmum(),
                                                                                 builder: (context, snapshot) {
@@ -360,36 +354,36 @@ class _DetailMRState extends State<DetailMR> {
                                                                                     final data = snapshot.data!.list ?? [];
                                                                                     return data.isEmpty ? Text(snapshot.data!.msg ?? '') : dropdown('Keadaan Umum', data, controller.keadaanUmumController, controller.namaKeadaanUmumController);
                                                                                   } else {
-                                                                                    return Center(
+                                                                                    return const Center(
                                                                                       child: CircularProgressIndicator(),
                                                                                     );
                                                                                   }
                                                                                 },
                                                                               ),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
-                                                                            Padding(
+                                                                            const Padding(
                                                                               padding: EdgeInsets.only(left: 15),
                                                                               child: Text("Tekanan Darah",
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
                                                                                   )),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
                                                                             Container(
-                                                                              margin: EdgeInsets.only(left: 10, right: 10),
+                                                                              margin: const EdgeInsets.only(left: 10, right: 10),
                                                                               height: 50,
                                                                               decoration: BoxDecoration(
-                                                                                color: Color(0xfff3f3f3),
+                                                                                color: const Color(0xfff3f3f3),
                                                                                 borderRadius: BorderRadius.circular(10),
                                                                               ),
                                                                               child: TextFormField(
                                                                                 controller: controller.tekananDarahController,
-                                                                                decoration: InputDecoration(
+                                                                                decoration: const InputDecoration(
                                                                                   suffixIcon: Padding(
                                                                                     padding: EdgeInsets.only(top: 15, right: 10),
                                                                                     child: Text('mmHg'),
@@ -405,29 +399,29 @@ class _DetailMRState extends State<DetailMR> {
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
-                                                                            Padding(
+                                                                            const Padding(
                                                                               padding: EdgeInsets.only(left: 15),
                                                                               child: Text("Suhu",
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
                                                                                   )),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
                                                                             Container(
-                                                                              margin: EdgeInsets.only(left: 10, right: 10),
+                                                                              margin: const EdgeInsets.only(left: 10, right: 10),
                                                                               height: 50,
                                                                               decoration: BoxDecoration(
-                                                                                color: Color(0xfff3f3f3),
+                                                                                color: const Color(0xfff3f3f3),
                                                                                 borderRadius: BorderRadius.circular(10),
                                                                               ),
                                                                               child: TextField(
                                                                                 controller: controller.suhuController,
-                                                                                decoration: InputDecoration(
+                                                                                decoration: const InputDecoration(
                                                                                   suffixIcon: Padding(
                                                                                     padding: EdgeInsets.only(top: 15, right: 10),
                                                                                     child: Text('°/Celcius'),
@@ -443,29 +437,29 @@ class _DetailMRState extends State<DetailMR> {
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
-                                                                            Padding(
+                                                                            const Padding(
                                                                               padding: EdgeInsets.only(left: 15),
                                                                               child: Text("Tinggi Badan",
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
                                                                                   )),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
                                                                             Container(
-                                                                              margin: EdgeInsets.only(left: 10, right: 10),
+                                                                              margin: const EdgeInsets.only(left: 10, right: 10),
                                                                               height: 50,
                                                                               decoration: BoxDecoration(
-                                                                                color: Color(0xfff3f3f3),
+                                                                                color: const Color(0xfff3f3f3),
                                                                                 borderRadius: BorderRadius.circular(10),
                                                                               ),
                                                                               child: TextField(
                                                                                 controller: controller.tinggiBadanController,
-                                                                                decoration: InputDecoration(
+                                                                                decoration: const InputDecoration(
                                                                                   suffixIcon: Padding(
                                                                                     padding: EdgeInsets.only(top: 15),
                                                                                     child: Text('Cm'),
@@ -481,21 +475,21 @@ class _DetailMRState extends State<DetailMR> {
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
-                                                                            Padding(
+                                                                            const Padding(
                                                                               padding: EdgeInsets.only(left: 15),
                                                                               child: Text("Kesadaran Pasien",
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
                                                                                   )),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
                                                                             Container(
-                                                                              margin: EdgeInsets.only(left: 10, right: 10),
+                                                                              margin: const EdgeInsets.only(left: 10, right: 10),
                                                                               child: FutureBuilder(
                                                                                 future: API.getKesadaranPasien(),
                                                                                 builder: (context, snapshot) {
@@ -503,36 +497,36 @@ class _DetailMRState extends State<DetailMR> {
                                                                                     final data = snapshot.data!.list ?? [];
                                                                                     return data.isEmpty ? Text(snapshot.data!.msg ?? '') : dropdown('Kesadaran', data, controller.kesadaranController, controller.namaKesadaranController);
                                                                                   } else {
-                                                                                    return Center(
+                                                                                    return const Center(
                                                                                       child: CircularProgressIndicator(),
                                                                                     );
                                                                                   }
                                                                                 },
                                                                               ),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
-                                                                            Padding(
+                                                                            const Padding(
                                                                               padding: EdgeInsets.only(left: 15),
                                                                               child: Text("Nadi",
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
                                                                                   )),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
                                                                             Container(
-                                                                              margin: EdgeInsets.only(left: 10, right: 10),
+                                                                              margin: const EdgeInsets.only(left: 10, right: 10),
                                                                               height: 50,
                                                                               decoration: BoxDecoration(
-                                                                                color: Color(0xfff3f3f3),
+                                                                                color: const Color(0xfff3f3f3),
                                                                                 borderRadius: BorderRadius.circular(10),
                                                                               ),
                                                                               child: TextField(
                                                                                 controller: controller.nadiController,
-                                                                                decoration: InputDecoration(
+                                                                                decoration: const InputDecoration(
                                                                                   suffixIcon: Padding(
                                                                                     padding: EdgeInsets.only(top: 15, right: 10),
                                                                                     child: Text('x/menit'),
@@ -548,29 +542,29 @@ class _DetailMRState extends State<DetailMR> {
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
-                                                                            Padding(
+                                                                            const Padding(
                                                                               padding: EdgeInsets.only(left: 15),
                                                                               child: Text("Pernafasan",
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
                                                                                   )),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
                                                                             Container(
-                                                                              margin: EdgeInsets.only(left: 10, right: 10),
+                                                                              margin: const EdgeInsets.only(left: 10, right: 10),
                                                                               height: 50,
                                                                               decoration: BoxDecoration(
-                                                                                color: Color(0xfff3f3f3),
+                                                                                color: const Color(0xfff3f3f3),
                                                                                 borderRadius: BorderRadius.circular(10),
                                                                               ),
                                                                               child: TextField(
                                                                                 controller: controller.pernapasanController,
-                                                                                decoration: InputDecoration(
+                                                                                decoration: const InputDecoration(
                                                                                   suffixIcon: Padding(
                                                                                     padding: EdgeInsets.only(top: 15, right: 10),
                                                                                     child: Text('x/menit'),
@@ -586,29 +580,29 @@ class _DetailMRState extends State<DetailMR> {
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
-                                                                            Padding(
+                                                                            const Padding(
                                                                               padding: EdgeInsets.only(left: 15),
                                                                               child: Text("Berat Badan",
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
                                                                                   )),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
                                                                             Container(
-                                                                              margin: EdgeInsets.only(left: 10, right: 10),
+                                                                              margin: const EdgeInsets.only(left: 10, right: 10),
                                                                               height: 50,
                                                                               decoration: BoxDecoration(
-                                                                                color: Color(0xfff3f3f3),
+                                                                                color: const Color(0xfff3f3f3),
                                                                                 borderRadius: BorderRadius.circular(10),
                                                                               ),
                                                                               child: TextField(
                                                                                 controller: controller.beratBadanController,
-                                                                                decoration: InputDecoration(
+                                                                                decoration: const InputDecoration(
                                                                                   suffixIcon: Padding(
                                                                                     padding: EdgeInsets.only(top: 15),
                                                                                     child: Text('kg'),
@@ -624,10 +618,10 @@ class _DetailMRState extends State<DetailMR> {
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 10,
                                                                             ),
-                                                                            SizedBox(
+                                                                            const SizedBox(
                                                                               height: 400,
                                                                             ),
                                                                           ],
@@ -635,7 +629,7 @@ class _DetailMRState extends State<DetailMR> {
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 10,
                                                                   ),
                                                                   InkWell(
@@ -643,9 +637,9 @@ class _DetailMRState extends State<DetailMR> {
                                                                         () async {
                                                                       Get.defaultDialog(
                                                                         backgroundColor:
-                                                                            Color(0x00e0e0e0),
+                                                                            const Color(0x00e0e0e0),
                                                                         content:
-                                                                            Loading(),
+                                                                            const Loading(),
                                                                         title:
                                                                             '',
                                                                         barrierDismissible:
@@ -688,7 +682,7 @@ class _DetailMRState extends State<DetailMR> {
                                                                           context:
                                                                               context,
                                                                           shape:
-                                                                              RoundedRectangleBorder(
+                                                                              const RoundedRectangleBorder(
                                                                             borderRadius:
                                                                                 BorderRadius.vertical(
                                                                               top: Radius.circular(20),
@@ -711,7 +705,7 @@ class _DetailMRState extends State<DetailMR> {
                                                                           145,
                                                                       decoration:
                                                                           BoxDecoration(
-                                                                        color: Color.fromARGB(
+                                                                        color: const Color.fromARGB(
                                                                             255,
                                                                             56,
                                                                             229,
@@ -728,7 +722,7 @@ class _DetailMRState extends State<DetailMR> {
                                                                         // ],
                                                                       ),
                                                                       child:
-                                                                          Column(
+                                                                          const Column(
                                                                         mainAxisAlignment:
                                                                             MainAxisAlignment.center,
                                                                         children: [
@@ -743,7 +737,7 @@ class _DetailMRState extends State<DetailMR> {
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 10,
                                                                   ),
                                                                 ],
@@ -751,45 +745,45 @@ class _DetailMRState extends State<DetailMR> {
                                                         });
                                                   });
                                             },
-                                            icon: Icon(Icons.add),
-                                            label: Text("Tambah Vital Sign"),
+                                            icon: const Icon(Icons.add),
+                                            label: const Text("Tambah Vital Sign"),
                                           )
                                         : VitalSignView(
                                             vitalSign:
                                                 data.vitalSign ?? VitalSign()),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
-                                    Soap(),
-                                    SizedBox(
+                                    const Soap(),
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     data.resep == null
                                         ? Container(
                                             width: double.infinity,
-                                            margin: EdgeInsets.only(
+                                            margin: const EdgeInsets.only(
                                                 right: 10, left: 10),
-                                            padding: EdgeInsets.only(
+                                            padding: const EdgeInsets.only(
                                                 right: 10,
                                                 left: 10,
                                                 bottom: 10),
                                             decoration: BoxDecoration(
                                               border: Border.all(
-                                                  color: Color(0x6cc7d1db)),
+                                                  color: const Color(0x6cc7d1db)),
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               boxShadow: [
                                                 BoxShadow(
-                                                  color: Color(0xFFe0e0e0)
+                                                  color: const Color(0xFFe0e0e0)
                                                       .withOpacity(0.5),
                                                   spreadRadius: 0,
                                                   blurRadius: 10,
-                                                  offset: Offset(2, 1),
+                                                  offset: const Offset(2, 1),
                                                 ),
                                               ],
                                             ),
-                                            child: Column(
+                                            child: const Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               mainAxisAlignment:
@@ -820,26 +814,26 @@ class _DetailMRState extends State<DetailMR> {
                                           )
                                         : PlanningResep(
                                             resep: data.resep ?? []),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Container(
                                       margin:
-                                          EdgeInsets.only(right: 10, left: 10),
-                                      padding: EdgeInsets.only(
+                                          const EdgeInsets.only(right: 10, left: 10),
+                                      padding: const EdgeInsets.only(
                                           right: 10, left: 10, bottom: 10),
                                       decoration: BoxDecoration(
                                         border: Border.all(
-                                            color: Color(0x6cc7d1db)),
+                                            color: const Color(0x6cc7d1db)),
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(10),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Color(0xFFe0e0e0)
+                                            color: const Color(0xFFe0e0e0)
                                                 .withOpacity(0.5),
                                             spreadRadius: 0,
                                             blurRadius: 10,
-                                            offset: Offset(2, 1),
+                                            offset: const Offset(2, 1),
                                           ),
                                         ],
                                       ),
@@ -847,10 +841,10 @@ class _DetailMRState extends State<DetailMR> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
-                                          Row(
+                                          const Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
@@ -890,7 +884,7 @@ class _DetailMRState extends State<DetailMR> {
                                                               .data!.icd10 ??
                                                           [];
                                                       return data.isEmpty
-                                                          ? Column(
+                                                          ? const Column(
                                                               mainAxisAlignment:
                                                                   MainAxisAlignment
                                                                       .start,
@@ -915,7 +909,7 @@ class _DetailMRState extends State<DetailMR> {
                                                           : Column(
                                                               children: AnimationConfiguration
                                                                   .toStaggeredList(
-                                                                      duration: Duration(
+                                                                      duration: const Duration(
                                                                           milliseconds:
                                                                               475),
                                                                       childAnimationBuilder:
@@ -931,7 +925,7 @@ class _DetailMRState extends State<DetailMR> {
                                                                           .toList()),
                                                             );
                                                     } else {
-                                                      return Center(
+                                                      return const Center(
                                                         child:
                                                             CircularProgressIndicator(),
                                                       );
@@ -948,18 +942,18 @@ class _DetailMRState extends State<DetailMR> {
                                     // ),
                                     //  PlanningRadiologi(),
                                     //  Surat(),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
-                                    Planning(),
-                                    SizedBox(
+                                    const Planning(),
+                                    const SizedBox(
                                       height: 40,
                                     ),
                                   ],
                                 ),
                               );
                             } else {
-                              return Column(
+                              return const Column(
                                 children: [
                                   shimmerCardProfile(),
                                   shimmerVitalSign(),
@@ -987,7 +981,7 @@ class _DetailMRState extends State<DetailMR> {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -997,30 +991,30 @@ class _DetailMRState extends State<DetailMR> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SingleChildScrollView(
                 child: Center(
               child: Column(
                 children: [
-                  Text('Data Berhasil Di Tambahkan',
+                  const Text('Data Berhasil Di Tambahkan',
                       style: TextStyle(
                           color: Colors.black45,
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   // Image.asset(
@@ -1030,14 +1024,14 @@ class _DetailMRState extends State<DetailMR> {
                   //   width: 200,
                   //   height: 200,
                   // ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(right: 10, left: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, left: 10, top: 20),
                         child: GestureDetector(
                           onTap: () {
                             Get.back();
@@ -1047,7 +1041,7 @@ class _DetailMRState extends State<DetailMR> {
                               borderRadius: BorderRadius.circular(7),
                               color: Colors.grey[100],
                             ),
-                            child: Column(
+                            child: const Column(
                               children: [
                                 Padding(
                                   padding: EdgeInsets.all(16),
@@ -1090,7 +1084,7 @@ class _DetailMRState extends State<DetailMR> {
   _onRefresh() {
     setState(() {
 // so whatever you want to refresh it must be inside the setState
-      DetailMR(); // if you only want to refresh the list you can place this, so the two can be inside setState
+      const DetailMR(); // if you only want to refresh the list you can place this, so the two can be inside setState
       _refreshController
           .refreshCompleted(); // request complete,the header will enter complete state,
 // resetFooterState : it will set the footer state from noData to idle
@@ -1115,21 +1109,21 @@ class AppTextField extends StatelessWidget {
   final bool isCitySelected;
   final List<Lists> lists;
 
-  AppTextField({
+  const AppTextField({
     required this.textEditingController,
     required this.textEditingController1,
     required this.title,
     required this.hint,
     required this.isCitySelected,
     required this.lists,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// This is on text changed method which will display on city text field on changed.
   void onTextFieldTap() {
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -1148,7 +1142,7 @@ class AppTextField extends StatelessWidget {
                         style: TextButton.styleFrom(
                             alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10)),
                         child: Text(
                           e.nama!,
@@ -1194,10 +1188,10 @@ class AppTextField extends StatelessWidget {
         onTap: onTextFieldTap,
         decoration: InputDecoration(
           filled: true,
-          suffixIcon: Icon(Icons.arrow_drop_down_circle),
-          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
+          contentPadding: const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,

@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'dart:math';
 
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
@@ -11,15 +9,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:text_scroll/text_scroll.dart';
 import '../../loading_summer/loading_atur_jadwal_dokter.dart';
 import '../../loading_summer/loading_screen_animed.dart';
 import 'componen/card_jadwal.dart';
 
 class JadwalDokterView extends StatefulWidget {
-  JadwalDokterView({Key? key, this.title}) : super(key: key);
+  const JadwalDokterView({super.key, this.title});
 
   final String? title;
 
@@ -30,7 +26,7 @@ class JadwalDokterView extends StatefulWidget {
 class _JadwalDokterViewState extends State<JadwalDokterView> {
   // this enable our app to able to pull down
   late final RefreshController _refreshController; // the refresh controller
-  var _scaffoldKey =
+  final _scaffoldKey =
       GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
@@ -51,12 +47,12 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
           onPressed: () => showModalBottomSheet(
             isScrollControlled: true,
             context: context,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 top: Radius.circular(20),
               ),
             ),
-            builder: (context) => ModalJadwal(),
+            builder: (context) => const ModalJadwal(),
           ),
           elevation: 0,
           backgroundColor: Colors.tealAccent,
@@ -66,17 +62,17 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
             width: 70,
             decoration: BoxDecoration(
               color: Colors.transparent,
-              borderRadius: BorderRadius.all(Radius.circular(50)),
+              borderRadius: const BorderRadius.all(Radius.circular(50)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.2),
                   spreadRadius: 3,
                   blurRadius: 3,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
           ),
         ),
         backgroundColor: Colors.white,
@@ -84,20 +80,20 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
         body: SmartRefresher(
           controller: _refreshController,
           enablePullDown: true,
-          header: WaterDropHeader(),
+          header: const WaterDropHeader(),
           onLoading: _onLoading,
           onRefresh: _onRefresh,
           child: CustomScrollView(
             slivers: [
               SliverAppBar(
-                systemOverlayStyle: SystemUiOverlayStyle(
+                systemOverlayStyle: const SystemUiOverlayStyle(
                   statusBarColor: Colors.white, // <-- SEE HERE
                   statusBarIconBrightness:
                       Brightness.dark, //<-- For Android SEE HERE (dark icons)
                   statusBarBrightness:
                       Brightness.light, //<-- For iOS SEE HERE (dark icons)
                 ),
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(10),
                   ),
@@ -109,14 +105,14 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                   onPressed: () {
                     Get.back();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_circle_left_rounded,
                     size: 40,
                   ),
-                  color: Color.fromARGB(255, 192, 192, 192),
+                  color: const Color.fromARGB(255, 192, 192, 192),
                 ),
                 title:
-                    Text("Atur Jadwal", style: TextStyle(color: Colors.black)),
+                    const Text("Atur Jadwal", style: TextStyle(color: Colors.black)),
                 bottom: AppBar(
                   toolbarHeight: 0,
                   automaticallyImplyLeading: false,
@@ -128,10 +124,10 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                 delegate: SliverChildListDelegate(
                   [
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.blueAccent,
                       ),
-                      child: Padding(
+                      child: const Padding(
                         padding: EdgeInsets.all(10),
                         child: Text(
                             "Atur Jadwal Praktik Anda terlebih dahulu agar dapat menambahkan pasien ke daftar antrian. dengan cara tekan tombol +  ",
@@ -140,7 +136,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                 fontWeight: FontWeight.bold)),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     FutureBuilder(
@@ -157,15 +153,15 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                             return data.isEmpty
                                 ? Column(
                                     children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 40,
                                       ),
-                                      Text(
+                                      const Text(
                                         'Tidak ada jadwal Dokter',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       Center(
@@ -180,7 +176,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                     children:
                                         AnimationConfiguration.toStaggeredList(
                                             duration:
-                                                Duration(milliseconds: 375),
+                                                const Duration(milliseconds: 375),
                                             childAnimationBuilder: (widget) =>
                                                 ScaleAnimation(
                                                   child: SlideAnimation(
@@ -194,7 +190,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
                                                 .toList()),
                                   );
                           } else {
-                            return Column(
+                            return const Column(
                               children: [
                                 shimmerAturJadwal(),
                                 shimmerAturJadwal(),
@@ -227,7 +223,7 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
   _onRefresh() {
     setState(() {
 // so whatever you want to refresh it must be inside the setState
-      JadwalDokterView(); // if you only want to refresh the list you can place this, so the two can be inside setState
+      const JadwalDokterView(); // if you only want to refresh the list you can place this, so the two can be inside setState
       _refreshController
           .refreshCompleted(); // request complete,the header will enter complete state,
 // resetFooterState : it will set the footer state from noData to idle
@@ -236,13 +232,14 @@ class _JadwalDokterViewState extends State<JadwalDokterView> {
 }
 
 class ModalJadwal extends StatefulWidget {
-  ModalJadwal({super.key});
+  const ModalJadwal({super.key});
 
   @override
   State<ModalJadwal> createState() => _ModalJadwalState();
 }
 
 class _ModalJadwalState extends State<ModalJadwal> {
+  @override
   void initState() {
     _refreshController = RefreshController();
     controller.intervalController.clear();
@@ -304,7 +301,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Container(
@@ -314,17 +311,17 @@ class _ModalJadwalState extends State<ModalJadwal> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            Text("Geser Kebawah",
+            const Text("Geser Kebawah",
                 style:
                     TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Tambah Jadwal",
                   style: TextStyle(
@@ -332,7 +329,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -341,41 +338,41 @@ class _ModalJadwalState extends State<ModalJadwal> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: Duration(milliseconds: 275),
+                    duration: const Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
                       ),
                     ),
                     children: <Widget>[
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Interval *",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.only(left: 10),
+                              margin: const EdgeInsets.only(left: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: TextFormField(
                                 controller: controller.intervalController,
                                 keyboardType: TextInputType.number,
                                 textInputAction: TextInputAction.done,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   enabledBorder: InputBorder.none,
@@ -389,41 +386,41 @@ class _ModalJadwalState extends State<ModalJadwal> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
-                          Text('Menit'),
-                          SizedBox(
+                          const Text('Menit'),
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Jam Mulai *",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin: const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -434,13 +431,13 @@ class _ModalJadwalState extends State<ModalJadwal> {
                                       isExpanded: true,
                                       hint: Row(
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 4,
                                           ),
                                           Expanded(
                                             child: Text(
                                               selectedValue1 ?? '00',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                                 color: Colors.black,
@@ -456,7 +453,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
@@ -480,12 +477,12 @@ class _ModalJadwalState extends State<ModalJadwal> {
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin: const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -496,13 +493,13 @@ class _ModalJadwalState extends State<ModalJadwal> {
                                       isExpanded: true,
                                       hint: Row(
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 4,
                                           ),
                                           Expanded(
                                             child: Text(
                                               selectedValue2 ?? '00',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                                 color: Colors.black,
@@ -518,7 +515,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
@@ -539,37 +536,37 @@ class _ModalJadwalState extends State<ModalJadwal> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Jam Akhir *",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin: const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -580,13 +577,13 @@ class _ModalJadwalState extends State<ModalJadwal> {
                                       isExpanded: true,
                                       hint: Row(
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 4,
                                           ),
                                           Expanded(
                                             child: Text(
                                               selectedValue3 ?? '00',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                                 color: Colors.black,
@@ -602,7 +599,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
@@ -626,12 +623,12 @@ class _ModalJadwalState extends State<ModalJadwal> {
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin: const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -642,13 +639,13 @@ class _ModalJadwalState extends State<ModalJadwal> {
                                       isExpanded: true,
                                       hint: Row(
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 4,
                                           ),
                                           Expanded(
                                             child: Text(
                                               selectedValue4 ?? '00',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                                 color: Colors.black,
@@ -664,7 +661,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
@@ -686,21 +683,21 @@ class _ModalJadwalState extends State<ModalJadwal> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Hari Dokter Masuk",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 17)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
@@ -714,7 +711,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Senin",
                                 style:
@@ -729,7 +726,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Selasa",
                                 style:
@@ -744,7 +741,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Rabu",
                                 style: TextStyle(
@@ -760,7 +757,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Kamis",
                                 style: TextStyle(
@@ -780,7 +777,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Jumat",
                                 style:
@@ -795,7 +792,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Sabtu",
                                 style:
@@ -810,7 +807,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                               });
                             },
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 0),
                             child: Text("Minggu",
                                 style:
@@ -823,15 +820,15 @@ class _ModalJadwalState extends State<ModalJadwal> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             InkWell(
               onTap: () async {
                 HapticFeedback.lightImpact();
                 Get.defaultDialog(
-                  backgroundColor: Color(0xe0e0e0),
-                  content: Loading(),
+                  backgroundColor: const Color(0x00e0e0e0),
+                  content: const Loading(),
                   title: '',
                   barrierDismissible: false,
                 );
@@ -865,10 +862,10 @@ class _ModalJadwalState extends State<ModalJadwal> {
                 height: 45,
                 width: 145,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 56, 229, 77),
+                  color: const Color.fromARGB(255, 56, 229, 77),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -882,7 +879,7 @@ class _ModalJadwalState extends State<ModalJadwal> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

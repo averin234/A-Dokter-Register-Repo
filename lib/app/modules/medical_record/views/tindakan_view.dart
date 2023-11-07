@@ -1,12 +1,9 @@
-import 'dart:async';
-import 'dart:math';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/modules/medical_record/views/componen/cari_pasien.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../data/componen/fetch_data.dart';
 import '../../loading_summer/loading_listpasien.dart';
@@ -14,7 +11,7 @@ import '../controllers/tindakan_controller.dart';
 import 'componen/listview_tindakan.dart';
 
 class TindakanView extends StatefulWidget {
-  TindakanView({Key? key, this.title}) : super(key: key);
+  const TindakanView({super.key, this.title});
 
   final String? title;
 
@@ -25,7 +22,7 @@ class TindakanView extends StatefulWidget {
 class _TindakanViewState extends State<TindakanView> {
   // this enable our app to able to pull down
   late RefreshController _refreshController; // the refresh controller
-  var _scaffoldKey =
+  final _scaffoldKey =
       GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
@@ -45,20 +42,20 @@ class _TindakanViewState extends State<TindakanView> {
         body: SmartRefresher(
           controller: _refreshController,
           enablePullDown: true,
-          header: WaterDropHeader(),
+          header: const WaterDropHeader(),
           onLoading: _onLoading,
           onRefresh: _onRefresh,
           child: CustomScrollView(
             slivers: [
               SliverAppBar(
-                systemOverlayStyle: SystemUiOverlayStyle(
+                systemOverlayStyle: const SystemUiOverlayStyle(
                   statusBarColor: Colors.white, // <-- SEE HERE
                   statusBarIconBrightness:
                       Brightness.dark, //<-- For Android SEE HERE (dark icons)
                   statusBarBrightness:
                       Brightness.light, //<-- For iOS SEE HERE (dark icons)
                 ),
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(10),
                   ),
@@ -67,15 +64,15 @@ class _TindakanViewState extends State<TindakanView> {
                 pinned: true,
                 snap: true,
                 automaticallyImplyLeading: false,
-                title: Text('List Pasien'),
+                title: const Text('List Pasien'),
                 bottom: AppBar(
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       bottom: Radius.circular(30),
                     ),
                   ),
                   toolbarHeight: 50,
-                  title: Column(
+                  title: const Column(
                     children: [
                       CariPasien(),
                       SizedBox(
@@ -91,8 +88,8 @@ class _TindakanViewState extends State<TindakanView> {
               SliverList(
                 delegate: SliverChildListDelegate([
                   Container(
-                    margin: EdgeInsets.only(top: 10),
-                    padding: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
+                    padding: const EdgeInsets.only(top: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -111,7 +108,7 @@ class _TindakanViewState extends State<TindakanView> {
                                 ? Center(
                                     child: Column(
                                       children: [
-                                        Text('Belum Ada Pasien yang diperiksa'),
+                                        const Text('Belum Ada Pasien yang diperiksa'),
                                         Image.asset(
                                           'assets/images/pasient.jpg',
                                           height: 300,
@@ -123,7 +120,7 @@ class _TindakanViewState extends State<TindakanView> {
                                     children:
                                         AnimationConfiguration.toStaggeredList(
                                             duration:
-                                                Duration(milliseconds: 475),
+                                                const Duration(milliseconds: 475),
                                             childAnimationBuilder: (widget) =>
                                                 SlideAnimation(
                                                   child: FadeInAnimation(
@@ -136,7 +133,7 @@ class _TindakanViewState extends State<TindakanView> {
                                                 .toList()),
                                   );
                           } else {
-                            return SingleChildScrollView(
+                            return const SingleChildScrollView(
                               child: Column(
                                 children: [
                                   shimmerListPasien(),
@@ -167,7 +164,7 @@ class _TindakanViewState extends State<TindakanView> {
   _onRefresh() {
     setState(() {
 // so whatever you want to refresh it must be inside the setState
-      TindakanView(); // if you only want to refresh the list you can place this, so the two can be inside setState
+      const TindakanView(); // if you only want to refresh the list you can place this, so the two can be inside setState
       _refreshController
           .refreshCompleted(); // request complete,the header will enter complete state,
 // resetFooterState : it will set the footer state from noData to idle

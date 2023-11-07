@@ -5,15 +5,15 @@ import 'package:get/get.dart';
 import '../controllers/dosen_controller.dart';
 
 class DosenView extends GetView<DosenController> {
-  DosenView({Key? key}) : super(key: key);
+  const DosenView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DosenView'),
+        title: const Text('DosenView'),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'DosenView is working',
           style: TextStyle(fontSize: 20),

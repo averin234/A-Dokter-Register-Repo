@@ -1,7 +1,6 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/modules/medical_record/views/componen/search_medical_record.dart';
-import 'package:a_dokter_register/app/modules/medical_record/views/componen/listview_tindakan.dart';
 import 'package:a_dokter_register/app/modules/regist_pasien_lama/views/componen/listview_pasien_lama.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,12 +8,11 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
-import '../../detail_regist_pasien_lama/views/detail_regist_pasien_lama_view.dart';
 import '../../loading_summer/loading_pasien_lama.dart';
 import '../controllers/tambah_pasien_lama_controller.dart';
 
 class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
-  TambahPasienLamaView({Key? key}) : super(key: key);
+  const TambahPasienLamaView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,20 +23,20 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_circle_left_rounded,
                 size: 40,
               ),
-              color: Color.fromARGB(255, 192, 192, 192),
+              color: const Color.fromARGB(255, 192, 192, 192),
             ),
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -47,9 +45,9 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
             pinned: true,
             snap: true,
             automaticallyImplyLeading: false,
-            title: Text('Daftar Pasien Lama'),
+            title: const Text('Daftar Pasien Lama'),
             bottom: AppBar(
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
@@ -57,7 +55,7 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
               toolbarHeight: 50,
               automaticallyImplyLeading: false,
               elevation: 0,
-              title: Column(
+              title: const Column(
                 children: [
                   SearchTindakanDokter(),
                   SizedBox(
@@ -71,10 +69,10 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
           SliverList(
             delegate: SliverChildListDelegate([
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.blueAccent,
                 ),
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.all(10),
                   child: Text(
                       "Cari/Pilih Pasien Lama yang sudah berkunjung sebelumnya untuk dapat di tangani kembali",
@@ -82,17 +80,17 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
                           color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(right: 10, left: 10),
                 child: Text(
                   "List Riwayat Pasien",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FutureBuilder(
@@ -108,14 +106,14 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
                           ? Center(
                               child: Column(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 20,
                                   ),
-                                  Text(
+                                  const Text(
                                       'Belum ada Pasien yg terdaftar sebagai Pasien Lama',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold)),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Image.asset(
@@ -127,7 +125,7 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
                             )
                           : Column(
                               children: AnimationConfiguration.toStaggeredList(
-                                  duration: Duration(milliseconds: 475),
+                                  duration: const Duration(milliseconds: 475),
                                   childAnimationBuilder: (widget) =>
                                       SlideAnimation(
                                         child: FadeInAnimation(
@@ -139,7 +137,7 @@ class TambahPasienLamaView extends GetView<TambahPasienLamaController> {
                                       .toList()),
                             );
                     } else {
-                      return Column(
+                      return const Column(
                         children: [
                           shimmerPasienLama(),
                           shimmerPasienLama(),

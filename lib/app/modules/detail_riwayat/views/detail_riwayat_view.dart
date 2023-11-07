@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'dart:math';
 
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/model/get_detail_mr.dart';
@@ -8,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../isi_icd_10/views/componen/hasil_icd_10.dart';
@@ -21,7 +18,7 @@ import 'componen/riwayat_resep.dart';
 import 'componen/riwayat_soap/soap.dart';
 
 class DetailRiwayatView extends StatefulWidget {
-  DetailRiwayatView({Key? key, this.title}) : super(key: key);
+  const DetailRiwayatView({super.key, this.title});
 
   final String? title;
 
@@ -32,7 +29,7 @@ class DetailRiwayatView extends StatefulWidget {
 class _DetailRiwayatViewState extends State<DetailRiwayatView> {
   // this enable our app to able to pull down
   late RefreshController _refreshController; // the refresh controller
-  var _scaffoldKey =
+  final _scaffoldKey =
       GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
@@ -50,20 +47,20 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
         body: SmartRefresher(
           controller: _refreshController,
           enablePullDown: true,
-          header: WaterDropHeader(),
+          header: const WaterDropHeader(),
           onLoading: _onLoading,
           onRefresh: _onRefresh,
           child: CustomScrollView(
             slivers: [
               SliverAppBar(
-                systemOverlayStyle: SystemUiOverlayStyle(
+                systemOverlayStyle: const SystemUiOverlayStyle(
                   statusBarColor: Colors.white, // <-- SEE HERE
                   statusBarIconBrightness:
                       Brightness.dark, //<-- For Android SEE HERE (dark icons)
                   statusBarBrightness:
                       Brightness.light, //<-- For iOS SEE HERE (dark icons)
                 ),
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(10),
                   ),
@@ -76,12 +73,12 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                     onPressed: () {
                       Get.back();
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_circle_left_rounded,
                       size: 40,
                     ),
-                    color: Color.fromARGB(255, 192, 192, 192)),
-                title: Text("Detail Riwayat",
+                    color: const Color.fromARGB(255, 192, 192, 192)),
+                title: const Text("Detail Riwayat",
                     style: TextStyle(color: Colors.black)),
                 // actions: [
                 //   IconButton(
@@ -90,7 +87,7 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                 //       color: Colors.white),
                 // ],
                 bottom: AppBar(
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       bottom: Radius.circular(30),
                     ),
@@ -98,7 +95,7 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                   toolbarHeight: 0,
                   automaticallyImplyLeading: false,
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 35, 163, 223),
+                  backgroundColor: const Color.fromARGB(255, 35, 163, 223),
                   // title: SearchMedicalRecord(),
                 ),
               ),
@@ -116,39 +113,39 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                           final data = snapshot.data!;
                           return Column(
                             children: AnimationConfiguration.toStaggeredList(
-                              duration: Duration(milliseconds: 375),
+                              duration: const Duration(milliseconds: 375),
                               childAnimationBuilder: (widget) => ScaleAnimation(
                                 child: FadeInAnimation(
                                   child: widget,
                                 ),
                               ),
                               children: <Widget>[
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 data.vitalSign == null
                                     ? Container(
-                                        margin: EdgeInsets.only(
+                                        margin: const EdgeInsets.only(
                                             right: 10, left: 10),
-                                        padding: EdgeInsets.only(
+                                        padding: const EdgeInsets.only(
                                             right: 10, left: 10, bottom: 10),
                                         decoration: BoxDecoration(
                                           border: Border.all(
-                                              color: Color(0x6cc7d1db)),
+                                              color: const Color(0x6cc7d1db)),
                                           color: Colors.white,
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Color(0xFFe0e0e0)
+                                              color: const Color(0xFFe0e0e0)
                                                   .withOpacity(0.5),
                                               spreadRadius: 0,
                                               blurRadius: 10,
-                                              offset: Offset(2, 1),
+                                              offset: const Offset(2, 1),
                                             ),
                                           ],
                                         ),
-                                        child: Column(
+                                        child: const Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
@@ -186,32 +183,32 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                                     : RiwayatVitalSign(
                                         vitalSign:
                                             data.vitalSign ?? VitalSign()),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 data.riwayatPemeriksaan == null
                                     ? Container(
-                                        margin: EdgeInsets.only(
+                                        margin: const EdgeInsets.only(
                                             right: 10, left: 10),
-                                        padding: EdgeInsets.only(
+                                        padding: const EdgeInsets.only(
                                             right: 10, left: 10, bottom: 10),
                                         decoration: BoxDecoration(
                                           border: Border.all(
-                                              color: Color(0x6cc7d1db)),
+                                              color: const Color(0x6cc7d1db)),
                                           color: Colors.white,
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Color(0xFFe0e0e0)
+                                              color: const Color(0xFFe0e0e0)
                                                   .withOpacity(0.5),
                                               spreadRadius: 0,
                                               blurRadius: 10,
-                                              offset: Offset(2, 1),
+                                              offset: const Offset(2, 1),
                                             ),
                                           ],
                                         ),
-                                        child: Column(
+                                        child: const Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
@@ -249,32 +246,32 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                                     : RiwayatSoap(
                                         soap: data.riwayatPemeriksaan ??
                                             RiwayatPemeriksaan()),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 data.resep == null
                                     ? Container(
-                                        margin: EdgeInsets.only(
+                                        margin: const EdgeInsets.only(
                                             right: 10, left: 10),
-                                        padding: EdgeInsets.only(
+                                        padding: const EdgeInsets.only(
                                             right: 10, left: 10, bottom: 10),
                                         decoration: BoxDecoration(
                                           border: Border.all(
-                                              color: Color(0x6cc7d1db)),
+                                              color: const Color(0x6cc7d1db)),
                                           color: Colors.white,
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Color(0xFFe0e0e0)
+                                              color: const Color(0xFFe0e0e0)
                                                   .withOpacity(0.5),
                                               spreadRadius: 0,
                                               blurRadius: 10,
-                                              offset: Offset(2, 1),
+                                              offset: const Offset(2, 1),
                                             ),
                                           ],
                                         ),
-                                        child: Column(
+                                        child: const Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
@@ -313,25 +310,25 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                                         resep: data.resep ?? [],
                                         resepi: Resep(),
                                       ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(right: 10, left: 10),
-                                  padding: EdgeInsets.only(
+                                  margin: const EdgeInsets.only(right: 10, left: 10),
+                                  padding: const EdgeInsets.only(
                                       right: 10, left: 10, bottom: 10),
                                   decoration: BoxDecoration(
                                     border:
-                                        Border.all(color: Color(0x6cc7d1db)),
+                                        Border.all(color: const Color(0x6cc7d1db)),
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(10),
                                     boxShadow: [
                                       BoxShadow(
                                         color:
-                                            Color(0xFFe0e0e0).withOpacity(0.5),
+                                            const Color(0xFFe0e0e0).withOpacity(0.5),
                                         spreadRadius: 0,
                                         blurRadius: 10,
-                                        offset: Offset(2, 1),
+                                        offset: const Offset(2, 1),
                                       ),
                                     ],
                                   ),
@@ -339,10 +336,10 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
-                                      Row(
+                                      const Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
@@ -377,11 +374,11 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                                                       snapshot.data!.icd10 ??
                                                           [];
                                                   return data.isEmpty
-                                                      ? Text('Tidak Ada ICD 10')
+                                                      ? const Text('Tidak Ada ICD 10')
                                                       : Column(
                                                           children: AnimationConfiguration
                                                               .toStaggeredList(
-                                                                  duration: Duration(
+                                                                  duration: const Duration(
                                                                       milliseconds:
                                                                           475),
                                                                   childAnimationBuilder:
@@ -399,7 +396,7 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                                                                       .toList()),
                                                         );
                                                 } else {
-                                                  return Center(
+                                                  return const Center(
                                                     child:
                                                         CircularProgressIndicator(),
                                                   );
@@ -410,14 +407,14 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                               ],
                             ),
                           );
                         } else {
-                          return Column(
+                          return const Column(
                             children: [
                               shimmerVitalSign(),
                               shimmerSoap(),
@@ -443,7 +440,7 @@ class _DetailRiwayatViewState extends State<DetailRiwayatView> {
   _onRefresh() {
     setState(() {
 // so whatever you want to refresh it must be inside the setState
-      DetailRiwayatView(); // if you only want to refresh the list you can place this, so the two can be inside setState
+      const DetailRiwayatView(); // if you only want to refresh the list you can place this, so the two can be inside setState
       _refreshController
           .refreshCompleted(); // request complete,the header will enter complete state,
 // resetFooterState : it will set the footer state from noData to idle

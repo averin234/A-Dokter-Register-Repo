@@ -12,21 +12,21 @@ class AppTextField extends StatelessWidget {
   final bool isCitySelected;
   final List<Lists> lists;
 
-  AppTextField({
+  const AppTextField({
     required this.textEditingController,
     required this.textEditingController1,
     required this.title,
     required this.hint,
     required this.isCitySelected,
     required this.lists,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// This is on text changed method which will display on city text field on changed.
   void onTextFieldTap() {
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -44,7 +44,7 @@ class AppTextField extends StatelessWidget {
                       (e) => TextButton(
                         style: TextButton.styleFrom(
                             foregroundColor: Colors.black,
-                            padding: EdgeInsets.symmetric(vertical: 20)),
+                            padding: const EdgeInsets.symmetric(vertical: 20)),
                         child: Text(
                           e.nama!,
                           style: GoogleFonts.nunito(
@@ -89,15 +89,15 @@ class AppTextField extends StatelessWidget {
         onTap: onTextFieldTap,
         decoration: InputDecoration(
           filled: true,
-          suffixIcon: Icon(Icons.arrow_drop_down_circle),
+          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
           contentPadding:
-              EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 15),
+              const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 15),
           hintText: hint,
           prefixIcon: Icon(
             Icons.health_and_safety_sharp,
             color: Colors.black.withOpacity(.7),
           ),
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,

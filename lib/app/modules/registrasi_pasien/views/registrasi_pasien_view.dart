@@ -11,7 +11,7 @@ import '../../loading_summer/loading_screen_animed.dart';
 import '../controllers/registrasi_pasien_controller.dart';
 
 class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
-  RegistrasiPasienView({Key? key}) : super(key: key);
+  const RegistrasiPasienView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,18 +20,18 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Color(0xFFe0e0e0).withOpacity(0.5),
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: Offset(2, 1),
+              offset: const Offset(2, 1),
             ),
           ],
         ),
         height: 75,
-        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Row(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               width: 200,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -47,8 +47,8 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
               child: InkWell(
                 onTap: () async {
                   Get.defaultDialog(
-                    backgroundColor: Color(0xe0e0e0),
-                    content: Loading(),
+                    backgroundColor: const Color(0x00e0e0e0),
+                    content: const Loading(),
                     title: '',
                     barrierDismissible: false,
                   );
@@ -93,9 +93,9 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                 },
                 child: Container(
                   margin:
-                      EdgeInsets.only(right: 5, left: 5, top: 10, bottom: 10),
+                      const EdgeInsets.only(right: 5, left: 5, top: 10, bottom: 10),
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(5)),
                     color: Colors.greenAccent,
                     boxShadow: <BoxShadow>[
@@ -107,7 +107,7 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                       )
                     ],
                   ),
-                  child: Text(
+                  child: const Text(
                     "Kirim",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -122,12 +122,12 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                 onTap: () => Get.back(),
                 child: Container(
                   margin:
-                      EdgeInsets.only(right: 15, left: 5, top: 10, bottom: 10),
+                      const EdgeInsets.only(right: 15, left: 5, top: 10, bottom: 10),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                    boxShadow: <BoxShadow>[
+                    borderRadius: const BorderRadius.all(Radius.circular(5)),
+                    boxShadow: const <BoxShadow>[
                       BoxShadow(
                         color: Colors.white12,
                         offset: Offset(2, 1),
@@ -136,7 +136,7 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                       )
                     ],
                   ),
-                  child: Text(
+                  child: const Text(
                     "Batal",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -152,8 +152,8 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            title: Text('Daftar Pasien Baru'),
-            systemOverlayStyle: SystemUiOverlayStyle(
+            title: const Text('Daftar Pasien Baru'),
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor:
                   Color.fromARGB(255, 255, 255, 255), // <-- SEE HERE
               statusBarIconBrightness:
@@ -161,7 +161,7 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -170,16 +170,16 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                 onPressed: () {
                   Get.back();
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_circle_left_rounded,
                   size: 40,
                 ),
-                color: Color.fromARGB(255, 192, 192, 192)),
+                color: const Color.fromARGB(255, 192, 192, 192)),
             floating: true,
             pinned: true,
             snap: true,
             bottom: AppBar(
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
@@ -194,10 +194,10 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
           SliverList(
             delegate: SliverChildListDelegate([
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.blueAccent,
                 ),
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.all(10),
                   child: Text(
                       "Tambahkan Pasien Baru Anda untuk masuk ke Daftar Antirian yang akan di tangani",
@@ -205,11 +205,11 @@ class RegistrasiPasienView extends GetView<RegistrasiPasienController> {
                           color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              FormRegistrasiPasien(),
-              SizedBox(
+              const FormRegistrasiPasien(),
+              const SizedBox(
                 height: 20,
               ),
             ]),

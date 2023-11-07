@@ -20,13 +20,17 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0.0'
 }
+def(major, minor, patch) = flutterVersionName.tokenize( '.' )
+def versionCodeGlobal = major.toInteger()*10000 + minor.toInteger()*100 + patch.toInteger()
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    ndkVersion "25.1.8937393"
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -46,7 +50,7 @@ android {
         applicationId "com.adokterregister.a_dokter_register"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 24
+        minSdkVersion 25
         targetSdkVersion 33
         versionCode versionCodeGlobal
         versionName flutterVersionName
@@ -54,7 +58,7 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('C:/Users/irwan/Averin_dev.jks')
+            storeFile file('C:/Users/mtauf/Projects/Averin_dev.jks')
             storePassword '48family'
             keyAlias = 'Averin2023'
             keyPassword '48family'

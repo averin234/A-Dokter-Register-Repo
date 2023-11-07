@@ -9,7 +9,7 @@ import 'package:intl/intl.dart';
 import '../../../../data/model/get_antrian_dokter.dart';
 
 class FormRegisPasienLama extends StatefulWidget {
-  FormRegisPasienLama({super.key});
+  const FormRegisPasienLama({super.key});
 
   @override
   State<FormRegisPasienLama> createState() => _FormRegisPasienLamaState();
@@ -21,40 +21,40 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0x6cc7d1db)),
-        color: Color.fromARGB(255, 219, 246, 253),
+        border: Border.all(color: const Color(0x6cc7d1db)),
+        color: const Color.fromARGB(255, 219, 246, 253),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFe0e0e0).withOpacity(0.5),
+            color: const Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: Offset(2, 1),
+            offset: const Offset(2, 1),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Padding(
-              padding: EdgeInsets.only(right: 15, left: 10),
+              padding: const EdgeInsets.only(right: 15, left: 10),
               child: Row(
                 children: [
-                  Text('Tanggal :',
+                  const Text('Tanggal :',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(DateFormat('yyyy-MM-dd').format(DateTime.now()),
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
                       // Text('Jadwal Hari : kamis',
                       //     style: TextStyle(fontWeight: FontWeight.bold)),
                       // Text('06:00 s/d 22:00',
@@ -63,34 +63,34 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
                   ),
                 ],
               )),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Divider(
+          const Divider(
             color: Colors.grey,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Jam Periksa :",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(children: [
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(right: 10),
-                margin: EdgeInsets.only(left: 10, right: 10),
+                padding: const EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Color(0x6cc7d1db)),
+                  border: Border.all(color: const Color(0x6cc7d1db)),
                 ),
                 child: FutureBuilder(
                     future: API.getAntrianDokter(
@@ -110,49 +110,49 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
                           controller.antrianController,
                         );
                       } else {
-                        return Center(
+                        return const Center(
                           child: CircularProgressIndicator(),
                         );
                       }
                     }),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
           ]),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("No Antrian :",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(left: 10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Color(0x6cc7d1db)),
+                    border: Border.all(color: const Color(0x6cc7d1db)),
                   ),
                   child: TextFormField(
                     controller: controller.antrianController,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
                     readOnly: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
                       enabledBorder: InputBorder.none,
@@ -166,15 +166,15 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           //  Padding(
@@ -255,7 +255,7 @@ class _FormRegisPasienLamaState extends State<FormRegisPasienLama> {
           //     width: 5,
           //   ),
           // ]),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
         ],
@@ -290,7 +290,7 @@ class AppTextField extends StatelessWidget {
   final bool isCitySelected;
   final List<ListAntrian> lists;
 
-  AppTextField({
+  const AppTextField({
     required this.textEditingController,
     required this.textEditingController1,
     required this.textEditingController2,
@@ -298,8 +298,8 @@ class AppTextField extends StatelessWidget {
     required this.hint,
     required this.isCitySelected,
     required this.lists,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// This is on text changed method which will display on city text field on changed.
   void onTextFieldTap() {
@@ -307,7 +307,7 @@ class AppTextField extends StatelessWidget {
       context: Get.context!,
       enableDrag: true,
       // showDragHandle: true,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -320,7 +320,7 @@ class AppTextField extends StatelessWidget {
                           'assets/images/timetable.png',
                           height: 100,
                         ),
-                        Center(
+                        const Center(
                           child: Text('Tidak ada waktu periksa yang tersedia.'),
                         ),
                       ]
@@ -330,7 +330,7 @@ class AppTextField extends StatelessWidget {
                             style: TextButton.styleFrom(
                                 alignment: Alignment.centerLeft,
                                 foregroundColor: Colors.black,
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     vertical: 10, horizontal: 10)),
                             child: Text(
                               e.jam!,
@@ -379,10 +379,10 @@ class AppTextField extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
-          suffixIcon: Icon(Icons.arrow_drop_down_circle),
-          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
+          contentPadding: const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,

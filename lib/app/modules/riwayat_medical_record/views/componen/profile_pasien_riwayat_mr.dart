@@ -5,47 +5,47 @@ import 'package:flutter/material.dart';
 
 class ProfileRiwayat extends StatelessWidget {
   final Pasien pasien;
-  ProfileRiwayat({super.key, required this.pasien});
+  const ProfileRiwayat({super.key, required this.pasien});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
-      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0x6cc7d1db)),
+        border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFe0e0e0).withOpacity(0.5),
+            color: const Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: Offset(2, 1),
+            offset: const Offset(2, 1),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               SizedBox(
                 width: 270,
                 child: Text(pasien.namaPasien ?? '',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               CircleAvatar(
@@ -58,18 +58,18 @@ class ProfileRiwayat extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Divider(
+          const Divider(
             height: 3,
             color: Colors.grey,
           ),
           Row(
             children: [
               Container(
-                padding: EdgeInsets.only(left: 0),
-                child: Column(
+                padding: const EdgeInsets.only(left: 0),
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -104,65 +104,65 @@ class ProfileRiwayat extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(left: 10, top: 10),
+                padding: const EdgeInsets.only(left: 10, top: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        Text(":",
+                        const Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        SizedBox(
+                        const SizedBox(
                           width: 6,
                         ),
                         Text(pasien.noMr ?? '',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        Text(":",
+                        const Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        SizedBox(
+                        const SizedBox(
                           width: 6,
                         ),
                         Text("${pasien.umur ?? ''} tahun",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        Text(":",
+                        const Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        SizedBox(
+                        const SizedBox(
                           width: 6,
                         ),
                         Text(pasien.golDarah ?? '',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        Text(":",
+                        const Text(":",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
-                        SizedBox(
+                        const SizedBox(
                           width: 6,
                         ),
                         FutureBuilder(
@@ -174,11 +174,11 @@ class ProfileRiwayat extends StatelessWidget {
                                     ConnectionState.waiting &&
                                 snapshot.data != null) {
                               return Text(snapshot.data!.msg ?? '',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 13));
                             } else {
-                              return Center(
+                              return const Center(
                                 child: CircularProgressIndicator(),
                               );
                             }
@@ -186,10 +186,10 @@ class ProfileRiwayat extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Row(
+                    const Row(
                       children: [
                         Text(":",
                             style: TextStyle(
@@ -202,7 +202,7 @@ class ProfileRiwayat extends StatelessWidget {
                                 fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],

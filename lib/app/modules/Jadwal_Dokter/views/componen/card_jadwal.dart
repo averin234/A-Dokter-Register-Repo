@@ -6,13 +6,12 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import '../../../../routes/app_pages.dart';
 import '../../../loading_summer/loading_screen_animed.dart';
 import '../jadwal_dokter_view.dart';
 
 class CardJadwal extends StatefulWidget {
   final Jadwal jadwal;
-  CardJadwal({super.key, required this.jadwal});
+  const CardJadwal({super.key, required this.jadwal});
 
   @override
   State<CardJadwal> createState() => _CardJadwalState();
@@ -30,18 +29,18 @@ class _CardJadwalState extends State<CardJadwal> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           boxShadow: [
             BoxShadow(
-              color: Color(0xFFe0e0e0).withOpacity(0.5),
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: Offset(2, 1),
+              offset: const Offset(2, 1),
             ),
           ],
         ),
@@ -51,13 +50,13 @@ class _CardJadwalState extends State<CardJadwal> {
           children: [
             Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: Text(
                     "Jadwal Dokter",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 // GestureDetector(
@@ -74,13 +73,13 @@ class _CardJadwalState extends State<CardJadwal> {
                 //       Icons.edit,
                 //       color: Colors.blueAccent,
                 //     )),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 GestureDetector(
                     onTap: () => showModalBottomSheet(
                           context: context,
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
                               top: Radius.circular(20),
                             ),
@@ -88,54 +87,54 @@ class _CardJadwalState extends State<CardJadwal> {
                           builder: (context) =>
                               buildSheetHapus(id: widget.jadwal.id.toString()),
                         ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.delete,
                       color: Colors.redAccent,
                     )),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
               ],
             ),
-            Divider(
+            const Divider(
               color: Colors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                Text('Hari : ', style: TextStyle(fontWeight: FontWeight.bold)),
+                const Text('Hari : ', style: TextStyle(fontWeight: FontWeight.bold)),
                 Text(widget.jadwal.rangeHari ?? ''),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                Text('Jam Mulai : ',
+                const Text('Jam Mulai : ',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 Text(widget.jadwal.jamMulai ?? ''),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                Text('Jam Akhir : ',
+                const Text('Jam Akhir : ',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 Text(widget.jadwal.jamAkhir ?? ''),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                Text('Interval : ',
+                const Text('Interval : ',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 Text((widget.jadwal.waktu ?? 0).toString()),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],
@@ -151,7 +150,7 @@ class _CardJadwalState extends State<CardJadwal> {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -161,14 +160,14 @@ class _CardJadwalState extends State<CardJadwal> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Hapus Jadwal Dokter",
                   style: TextStyle(
@@ -176,7 +175,7 @@ class _CardJadwalState extends State<CardJadwal> {
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -185,14 +184,14 @@ class _CardJadwalState extends State<CardJadwal> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: Duration(milliseconds: 275),
+                    duration: const Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
                       ),
                     ),
                     children: <Widget>[
-                      Center(
+                      const Center(
                         child: Text(
                             'Apakah anda ingin menghapus Jadwal Dokter ini ?'),
                       )
@@ -201,13 +200,13 @@ class _CardJadwalState extends State<CardJadwal> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             InkWell(
               onTap: () async {
                 HapticFeedback.lightImpact();
                 Get.defaultDialog(
-                  backgroundColor: Color(0x00e0e0e0),
-                  content: Loading(),
+                  backgroundColor: const Color(0x00e0e0e0),
+                  content: const Loading(),
                   title: '',
                   barrierDismissible: false,
                 );
@@ -222,7 +221,7 @@ class _CardJadwalState extends State<CardJadwal> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => JadwalDokterView()));
+                          builder: (context) => const JadwalDokterView()));
                 }
               },
               child: Container(
@@ -232,7 +231,7 @@ class _CardJadwalState extends State<CardJadwal> {
                   color: Colors.redAccent,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -246,7 +245,7 @@ class _CardJadwalState extends State<CardJadwal> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

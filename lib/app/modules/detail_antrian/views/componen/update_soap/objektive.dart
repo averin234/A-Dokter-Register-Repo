@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../../../routes/app_pages.dart';
 
 class Updateobjektive extends StatefulWidget {
-  Updateobjektive({super.key});
+  const Updateobjektive({super.key});
 
   @override
   State<Updateobjektive> createState() => _UpdateobjektiveState();
@@ -16,28 +16,28 @@ class _UpdateobjektiveState extends State<Updateobjektive> {
     return InkWell(
       onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10),
-        padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Color(0xFFe0e0e0).withOpacity(0.5),
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: Offset(2, 1),
+              offset: const Offset(2, 1),
             ),
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
@@ -59,19 +59,19 @@ class _UpdateobjektiveState extends State<Updateobjektive> {
                 // ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Divider(
+            const Divider(
               height: 3,
               color: Colors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: TextField(
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
@@ -94,11 +94,11 @@ class _UpdateobjektiveState extends State<Updateobjektive> {
                   children: [
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.volume_up),
+                      icon: const Icon(Icons.volume_up),
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.clear_sharp),
+                      icon: const Icon(Icons.clear_sharp),
                     ),
                   ],
                 ),

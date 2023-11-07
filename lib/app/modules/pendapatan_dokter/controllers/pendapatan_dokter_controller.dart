@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:in_app_update/in_app_update.dart';
@@ -37,7 +36,7 @@ class PendapatanDokterController extends GetxController {
             fit: BoxFit.fitHeight,
             height: 200,
           ),
-          Text('Versi baru aplikasi tersedia. Apakah Anda ingin mengunduh pembaruan sekarang?', textAlign: TextAlign.center),
+          const Text('Versi baru aplikasi tersedia. Apakah Anda ingin mengunduh pembaruan sekarang?', textAlign: TextAlign.center),
         ],
       ),
 
@@ -48,12 +47,12 @@ class PendapatanDokterController extends GetxController {
         },
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.blue
           ),
-          child : Center(
+          child : const Center(
             child : Text('Unduh Sekarang', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
           ),
         ),
@@ -62,18 +61,6 @@ class PendapatanDokterController extends GetxController {
     );
   }
   final count = TextEditingController();
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
 }

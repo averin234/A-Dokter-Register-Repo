@@ -6,10 +6,9 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/riwayat_praktek_controller.dart';
 
 class RiwayatPraktekView extends StatefulWidget {
-  RiwayatPraktekView({super.key});
+  const RiwayatPraktekView({super.key});
 
   @override
   State<RiwayatPraktekView> createState() => _RiwayatPraktekViewState();
@@ -34,7 +33,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => showModalBottomSheet(
           context: context,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(20),
             ),
@@ -42,37 +41,37 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
           builder: (context) => buildSheet(),
         ),
         elevation: 0,
+        backgroundColor: Colors.tealAccent,
+        foregroundColor: Colors.black,
         child: Container(
           height: 70,
           width: 70,
           decoration: BoxDecoration(
             color: Colors.transparent,
-            borderRadius: BorderRadius.all(Radius.circular(50)),
+            borderRadius: const BorderRadius.all(Radius.circular(50)),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 3,
                 blurRadius: 3,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
-        backgroundColor: Colors.tealAccent,
-        foregroundColor: Colors.black,
       ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -85,14 +84,14 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_circle_left_rounded,
                 size: 40,
               ),
-              color: Color.fromARGB(255, 192, 192, 192),
+              color: const Color.fromARGB(255, 192, 192, 192),
             ),
             title:
-                Text("Riwayat Praktek", style: TextStyle(color: Colors.black)),
+                const Text("Riwayat Praktek", style: TextStyle(color: Colors.black)),
             bottom: AppBar(
               toolbarHeight: 0,
               automaticallyImplyLeading: false,
@@ -105,17 +104,17 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
               [
                 Column(
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: Duration(milliseconds: 375),
+                    duration: const Duration(milliseconds: 375),
                     childAnimationBuilder: (widget) => ScaleAnimation(
                       child: SlideAnimation(
                         child: widget,
                       ),
                     ),
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      CardRiwayatPeraktekDokter(),
+                      const CardRiwayatPeraktekDokter(),
                     ],
                   ),
                 ),
@@ -135,7 +134,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -145,14 +144,14 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text("Form Riwayat Praktek",
                   style: TextStyle(
@@ -160,7 +159,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                       fontSize: 16,
                       color: Colors.blue)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -169,36 +168,36 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: Duration(milliseconds: 275),
+                    duration: const Duration(milliseconds: 275),
                     childAnimationBuilder: (widget) => SlideAnimation(
                       child: FadeInAnimation(
                         child: widget,
                       ),
                     ),
                     children: <Widget>[
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Bagian *",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin: const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -207,7 +206,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                   DropdownButtonHideUnderline(
                                     child: DropdownButton2(
                                       isExpanded: true,
-                                      hint: Row(
+                                      hint: const Row(
                                         children: [
                                           SizedBox(
                                             width: 4,
@@ -231,7 +230,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
@@ -255,36 +254,36 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Nomer Izin Praktek *",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.only(left: 10),
+                              margin: const EdgeInsets.only(left: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: TextFormField(
                                 keyboardType: TextInputType.text,
                                 textInputAction: TextInputAction.done,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   enabledBorder: InputBorder.none,
@@ -298,37 +297,37 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Provinsi *",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin: const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -337,7 +336,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                   DropdownButtonHideUnderline(
                                     child: DropdownButton2(
                                       isExpanded: true,
-                                      hint: Row(
+                                      hint: const Row(
                                         children: [
                                           SizedBox(
                                             width: 4,
@@ -361,7 +360,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
@@ -385,32 +384,32 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Kota *",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin: const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -419,7 +418,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                   DropdownButtonHideUnderline(
                                     child: DropdownButton2(
                                       isExpanded: true,
-                                      hint: Row(
+                                      hint: const Row(
                                         children: [
                                           SizedBox(
                                             width: 4,
@@ -443,7 +442,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
@@ -467,32 +466,32 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Status *",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(right: 10),
-                              margin: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(right: 10),
+                              margin: const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -501,7 +500,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                   DropdownButtonHideUnderline(
                                     child: DropdownButton2(
                                       isExpanded: true,
-                                      hint: Row(
+                                      hint: const Row(
                                         children: [
                                           SizedBox(
                                             width: 4,
@@ -525,7 +524,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
@@ -554,7 +553,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             InkWell(
@@ -562,10 +561,10 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                 height: 45,
                 width: 145,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 56, 229, 77),
+                  color: const Color.fromARGB(255, 56, 229, 77),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -579,7 +578,7 @@ class _RiwayatPraktekViewState extends State<RiwayatPraktekView> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],

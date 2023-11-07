@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class Cetekan extends StatelessWidget {
-  Cetekan({Key? key}) : super(key: key);
+  Cetekan({super.key});
 
   // Create a webview controller
   final _controller = WebViewController()
@@ -30,7 +30,7 @@ class Cetekan extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 0,
-        title: Text('Webview Example'),
+        title: const Text('Webview Example'),
       ),
       body: SizedBox(
           width: double.infinity,

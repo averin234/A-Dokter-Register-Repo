@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'dart:math';
 
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
@@ -15,7 +13,7 @@ import 'componen/searchpendapatan.dart';
 import 'componen/tabel_pendapatan.dart';
 
 class PendapatanDokterView extends StatefulWidget {
-  PendapatanDokterView({Key? key, this.title}) : super(key: key);
+  const PendapatanDokterView({super.key, this.title});
 
   final String? title;
   @override
@@ -24,7 +22,7 @@ class PendapatanDokterView extends StatefulWidget {
 
 class _PendapatanDokterViewState extends State<PendapatanDokterView> {
   late RefreshController _refreshController; // the refresh controller
-  var _scaffoldKey =
+  final _scaffoldKey =
       GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
@@ -44,7 +42,7 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
                 builder: (context) =>
-                    HomeView()), // Ganti dengan halaman home Anda
+                    const HomeView()), // Ganti dengan halaman home Anda
           );
           return true;
         },
@@ -52,21 +50,21 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
           body: SmartRefresher(
             controller: _refreshController,
             enablePullDown: true,
-            header: WaterDropHeader(),
+            header: const WaterDropHeader(),
             onLoading: _onLoading,
             onRefresh: _onRefresh,
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
                   automaticallyImplyLeading: false,
-                  systemOverlayStyle: SystemUiOverlayStyle(
+                  systemOverlayStyle: const SystemUiOverlayStyle(
                     statusBarColor: Colors.white, // <-- SEE HERE
                     statusBarIconBrightness:
                         Brightness.dark, //<-- For Android SEE HERE (dark icons)
                     statusBarBrightness:
                         Brightness.light, //<-- For iOS SEE HERE (dark icons)
                   ),
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       bottom: Radius.circular(10),
                     ),
@@ -74,15 +72,15 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
                   floating: true,
                   pinned: true,
                   snap: true,
-                  title: Text('Kasir'),
+                  title: const Text('Kasir'),
                   bottom: AppBar(
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         bottom: Radius.circular(30),
                       ),
                     ),
                     toolbarHeight: 50,
-                    title: Column(
+                    title: const Column(
                       children: [
                         SearchPendapatan1(),
                         SizedBox(
@@ -97,7 +95,7 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
                 // Other Sliver Widgets
                 SliverList(
                   delegate: SliverChildListDelegate([
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     FutureBuilder(
@@ -115,8 +113,8 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
                                 ? Center(
                                     child: Column(
                                       children: [
-                                        Text('Belum Ada Teransaksi Saat ini'),
-                                        SizedBox(
+                                        const Text('Belum Ada Teransaksi Saat ini'),
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         Image.asset(
@@ -129,7 +127,7 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
                                 : Column(
                                     children:
                                         AnimationConfiguration.toStaggeredList(
-                                      duration: Duration(milliseconds: 375),
+                                      duration: const Duration(milliseconds: 375),
                                       childAnimationBuilder: (widget) =>
                                           ScaleAnimation(
                                         child: SlideAnimation(
@@ -144,7 +142,7 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
                                     ),
                                   );
                           } else {
-                            return SingleChildScrollView(
+                            return const SingleChildScrollView(
                               child: Column(
                                 children: [
                                   shimmerPendapatan(),
@@ -176,7 +174,7 @@ class _PendapatanDokterViewState extends State<PendapatanDokterView> {
   _onRefresh() {
     setState(() {
 // so whatever you want to refresh it must be inside the setState
-      PendapatanDokterView(); // if you only want to refresh the list you can place this, so the two can be inside setState
+      const PendapatanDokterView(); // if you only want to refresh the list you can place this, so the two can be inside setState
       _refreshController
           .refreshCompleted(); // request complete,the header will enter complete state,
 // resetFooterState : it will set the footer state from noData to idle

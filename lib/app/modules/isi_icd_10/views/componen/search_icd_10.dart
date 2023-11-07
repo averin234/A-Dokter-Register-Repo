@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SearchICD10 extends StatefulWidget {
-  SearchICD10({super.key});
+  const SearchICD10({super.key});
 
   @override
   State<SearchICD10> createState() => _SearchICD10State();
@@ -17,14 +17,14 @@ class _SearchICD10State extends State<SearchICD10> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: EdgeInsets.only(left: 10, right: 10),
+          margin: const EdgeInsets.only(left: 10, right: 10),
           height: 50,
           decoration: BoxDecoration(
-            border: Border.all(color: Color(0x6cc7d1db)),
+            border: Border.all(color: const Color(0x6cc7d1db)),
             borderRadius: BorderRadius.circular(10),
           ),
           child: TextField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,

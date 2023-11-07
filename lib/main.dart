@@ -8,7 +8,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'app/routes/app_pages.dart';
 
 void main() async {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.white,
     systemNavigationBarIconBrightness: Brightness.light,
     statusBarColor: Colors.white,
@@ -18,12 +18,12 @@ void main() async {
   await GetStorage.init('token_adokter');
   await GetStorage.init('dataRegist_adokter');
   runApp(
-    MyApp(),
+    const MyApp(),
   );
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({
+  const MyApp({
     super.key,
   });
 
@@ -31,11 +31,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshConfiguration(
       headerBuilder: () =>
-          WaterDropHeader(), // Configure the default header indicator. If you have the same header indicator for each page, you need to set this
+          const WaterDropHeader(), // Configure the default header indicator. If you have the same header indicator for each page, you need to set this
       footerBuilder: () =>
-          ClassicFooter(), // Configure default bottom indicator
+          const ClassicFooter(), // Configure default bottom indicator
       headerTriggerDistance: 80.0, // header trigger refresh trigger distance
-      springDescription: SpringDescription(
+      springDescription: const SpringDescription(
           stiffness: 170,
           damping: 16,
           mass:
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
             color: Colors.white,
             foregroundColor: Colors.black,
             iconTheme: IconThemeData(color: Colors.black),

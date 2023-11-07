@@ -9,16 +9,16 @@ import '../../controllers/profile_controller.dart';
 
 class CardDokterSetting extends GetView<ProfileController> {
   final Dokter dokter;
-  CardDokterSetting({
-    Key? key,
+  const CardDokterSetting({
+    super.key,
     required this.dokter,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           color: Colors.white,
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -43,11 +43,11 @@ class CardDokterSetting extends GetView<ProfileController> {
                   ),
                   borderRadius: BorderRadius.circular(40.0),
                 ),
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
               ),
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.only(left: 15),
+                  padding: const EdgeInsets.only(left: 15),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,31 +56,31 @@ class CardDokterSetting extends GetView<ProfileController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(greetings(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.blue,
                                     fontSize: 16)),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Row(
                               children: [
                                 Expanded(
                                   child: Text(dokter.namaPegawai ?? '',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 14)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Text("Spesialis : ${dokter.namaSpesialisasi ?? ''}",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16)),
                           ]),
                     ],
@@ -103,7 +103,7 @@ class CardDokterSetting extends GetView<ProfileController> {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -113,31 +113,31 @@ class CardDokterSetting extends GetView<ProfileController> {
                 left: Get.width / 2 - 40,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
+                color: const Color(0xFFe0e0e0),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SingleChildScrollView(
                 child: Center(
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                       "Sedang Dalam Pengembangan\nMohon maaf atas ketidak nyamanannya\nlakukan update pada aplikasi untuk menikmati fitur-fitur baru nantinya",
                       style: TextStyle(
                           color: Colors.black45,
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   // Image.asset(
@@ -147,14 +147,14 @@ class CardDokterSetting extends GetView<ProfileController> {
                   //   width: 200,
                   //   height: 200,
                   // ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(right: 10, left: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, left: 10, top: 20),
                         child: GestureDetector(
                           onTap: () => Get.offAllNamed(Routes.HOME),
                           child: Container(
@@ -162,7 +162,7 @@ class CardDokterSetting extends GetView<ProfileController> {
                               borderRadius: BorderRadius.circular(7),
                               color: Colors.blue,
                             ),
-                            child: Column(
+                            child: const Column(
                               children: [
                                 Padding(
                                   padding: EdgeInsets.all(16),

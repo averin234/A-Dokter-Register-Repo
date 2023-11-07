@@ -11,7 +11,7 @@ Future bottomSheetBayar({
       context: Get.context!,
       isScrollControlled: true,
       isDismissible: true,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20),
         ),
@@ -29,7 +29,7 @@ Future bottomSheetBayar({
                     color: Colors.transparent,
                   ),
                   child: Column(children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Container(
@@ -39,20 +39,20 @@ Future bottomSheetBayar({
                         left: Get.width / 2 - 40,
                       ),
                       decoration: BoxDecoration(
-                        color: Color(0xFFe0e0e0),
+                        color: const Color(0xFFe0e0e0),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 4,
                     ),
-                    Text('Geser Kebawah',
+                    const Text('Geser Kebawah',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.grey)),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 0),
                       child: Text("Pilih Metode Pembayaran",
                           style: TextStyle(
@@ -60,7 +60,7 @@ Future bottomSheetBayar({
                               fontSize: 16,
                               color: Colors.blue)),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Expanded(
@@ -69,7 +69,7 @@ Future bottomSheetBayar({
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: AnimationConfiguration.toStaggeredList(
-                            duration: Duration(milliseconds: 275),
+                            duration: const Duration(milliseconds: 275),
                             childAnimationBuilder: (widget) => SlideAnimation(
                               child: FadeInAnimation(
                                 child: widget,
@@ -80,24 +80,24 @@ Future bottomSheetBayar({
                                 child: Column(
                                   children: [
                                     ConstrainedBox(
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                           minWidth: double.infinity),
                                       child: Container(
-                                        padding: EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: const BoxDecoration(
                                           color: Colors.blueAccent,
                                         ),
-                                        child: Text('Data  Billing Pasien',
+                                        child: const Text('Data  Billing Pasien',
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white)),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
-                                    Padding(
+                                    const Padding(
                                       padding:
                                           EdgeInsets.only(left: 10, right: 10),
                                       child: Row(
@@ -113,14 +113,14 @@ Future bottomSheetBayar({
                                         ],
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Padding(
+                                        const Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -134,49 +134,49 @@ Future bottomSheetBayar({
                                         ),
                                         Expanded(
                                           child: Container(
-                                              padding: EdgeInsets.only(
+                                              padding: const EdgeInsets.only(
                                                   right: 10,
                                                   left: 10,
                                                   top: 15,
                                                   bottom: 15),
-                                              margin: EdgeInsets.only(
+                                              margin: const EdgeInsets.only(
                                                   left: 10, right: 10),
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius:
                                                     BorderRadius.circular(10),
                                                 border: Border.all(
-                                                    color: Color(0x6cc7d1db)),
+                                                    color: const Color(0x6cc7d1db)),
                                               ),
                                               child: Text(kasir.billing ?? '')),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     ConstrainedBox(
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                           minWidth: double.infinity),
                                       child: Container(
-                                        padding: EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: const BoxDecoration(
                                           color: Colors.yellowAccent,
                                         ),
-                                        child: Text('Data Pembayaran',
+                                        child: const Text('Data Pembayaran',
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Padding(
+                                        const Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -191,20 +191,20 @@ Future bottomSheetBayar({
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: EdgeInsets.only(
+                                            margin: const EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color: Color(0x6cc7d1db)),
+                                                  color: const Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -224,33 +224,33 @@ Future bottomSheetBayar({
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Padding(
                                       padding:
-                                          EdgeInsets.only(left: 10, right: 15),
+                                          const EdgeInsets.only(left: 10, right: 15),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text('Pasien',
+                                          const Text('Pasien',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold)),
                                           Text(kasir.namaPasien ?? '',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontWeight: FontWeight.bold)),
                                         ],
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Padding(
+                                        const Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -265,20 +265,20 @@ Future bottomSheetBayar({
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: EdgeInsets.only(
+                                            margin: const EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color: Color(0x6cc7d1db)),
+                                                  color: const Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -302,7 +302,7 @@ Future bottomSheetBayar({
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Padding(
+                                        const Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -317,20 +317,20 @@ Future bottomSheetBayar({
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: EdgeInsets.only(
+                                            margin: const EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color: Color(0x6cc7d1db)),
+                                                  color: const Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -354,7 +354,7 @@ Future bottomSheetBayar({
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Padding(
+                                        const Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -368,20 +368,20 @@ Future bottomSheetBayar({
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: EdgeInsets.only(
+                                            margin: const EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color: Color(0x6cc7d1db)),
+                                                  color: const Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -401,32 +401,32 @@ Future bottomSheetBayar({
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     ConstrainedBox(
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                           minWidth: double.infinity),
                                       child: Container(
-                                        padding: EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: const BoxDecoration(
                                           color: Colors.green,
                                         ),
-                                        child: Text('Tunai',
+                                        child: const Text('Tunai',
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white)),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Padding(
+                                        const Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -441,20 +441,20 @@ Future bottomSheetBayar({
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: EdgeInsets.only(
+                                            margin: const EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color: Color(0x6cc7d1db)),
+                                                  color: const Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -478,7 +478,7 @@ Future bottomSheetBayar({
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Padding(
+                                        const Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -493,20 +493,20 @@ Future bottomSheetBayar({
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: EdgeInsets.only(
+                                            margin: const EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color: Color(0x6cc7d1db)),
+                                                  color: const Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -530,7 +530,7 @@ Future bottomSheetBayar({
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Padding(
+                                        const Padding(
                                           padding: EdgeInsets.only(
                                               left: 10, right: 5),
                                           child: SizedBox(
@@ -545,20 +545,20 @@ Future bottomSheetBayar({
                                         ),
                                         Expanded(
                                           child: Container(
-                                            margin: EdgeInsets.only(
+                                            margin: const EdgeInsets.only(
                                                 left: 10, right: 10),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: Border.all(
-                                                  color: Color(0x6cc7d1db)),
+                                                  color: const Color(0x6cc7d1db)),
                                             ),
                                             child: TextFormField(
                                               keyboardType: TextInputType.text,
                                               textInputAction:
                                                   TextInputAction.done,
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
@@ -578,13 +578,13 @@ Future bottomSheetBayar({
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                   ],
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 1000,
                               ),
                             ],
@@ -592,7 +592,7 @@ Future bottomSheetBayar({
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -618,7 +618,7 @@ Future bottomSheetBayar({
                               //   ),
                               // ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -632,7 +632,7 @@ Future bottomSheetBayar({
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         InkWell(
@@ -643,7 +643,7 @@ Future bottomSheetBayar({
                               color: Colors.amber,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -657,12 +657,12 @@ Future bottomSheetBayar({
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                   ])); //whatever you're returning, does not have to be a Container

@@ -6,34 +6,34 @@ import 'package:get/get.dart';
 import '../../../../routes/app_pages.dart';
 
 class Planning extends StatelessWidget {
-  Planning({super.key});
+  const Planning({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(DetailTindakanController());
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
-      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0x6cc7d1db)),
+        border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFe0e0e0).withOpacity(0.5),
+            color: const Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: Offset(2, 1),
+            offset: const Offset(2, 1),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
@@ -49,7 +49,7 @@ class Planning extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -111,7 +111,7 @@ class Planning extends StatelessWidget {
                       width: 80.0,
                       height: 80.0,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
+                        image: const DecorationImage(
                           image: AssetImage("assets/prescription.png"),
                           fit: BoxFit.fill,
                         ),
@@ -127,19 +127,19 @@ class Planning extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text("Tindakan")
+                  const Text("Tindakan")
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Column(
@@ -156,7 +156,7 @@ class Planning extends StatelessWidget {
                       width: 80.0,
                       height: 80.0,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
+                        image: const DecorationImage(
                           image: AssetImage("assets/medical-equipment.png"),
                           fit: BoxFit.fill,
                         ),
@@ -172,16 +172,16 @@ class Planning extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text("Isi Resep")
+                  const Text("Isi Resep")
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Column(
@@ -198,7 +198,7 @@ class Planning extends StatelessWidget {
                       width: 80.0,
                       height: 80.0,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
+                        image: const DecorationImage(
                           image: AssetImage("assets/monitoring.png"),
                           fit: BoxFit.fill,
                         ),
@@ -214,13 +214,13 @@ class Planning extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text("Isi ICD 10")
+                  const Text("Isi ICD 10")
                 ],
               ),
               // Column(
@@ -257,16 +257,16 @@ class Planning extends StatelessWidget {
               //      Text("Cetakan")
               //   ],
               // ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             width: 60,
             height: 30,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
@@ -337,7 +337,7 @@ class Planning extends StatelessWidget {
             ),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -347,14 +347,14 @@ class Planning extends StatelessWidget {
                     left: Get.width / 2 - 40,
                   ),
                   decoration: BoxDecoration(
-                    color: Color(0xFFe0e0e0),
+                    color: const Color(0xFFe0e0e0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(left: 15),
                   child: Text("Surat Rujukan Penunjang Medis",
                       style: TextStyle(
@@ -362,7 +362,7 @@ class Planning extends StatelessWidget {
                           fontSize: 16,
                           color: Colors.blue)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 SingleChildScrollView(
@@ -370,34 +370,34 @@ class Planning extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: AnimationConfiguration.toStaggeredList(
-                      duration: Duration(milliseconds: 275),
+                      duration: const Duration(milliseconds: 275),
                       childAnimationBuilder: (widget) => SlideAnimation(
                         child: FadeInAnimation(
                           child: widget,
                         ),
                       ),
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(left: 15),
                           child: Text("Kepada Yth.",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 10, right: 10),
+                          margin: const EdgeInsets.only(left: 10, right: 10),
                           height: 50,
                           decoration: BoxDecoration(
-                            border: Border.all(color: Color(0x6cc7d1db)),
+                            border: Border.all(color: const Color(0x6cc7d1db)),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: TextField(
+                          child: const TextField(
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -411,27 +411,27 @@ class Planning extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(left: 15),
                           child: Text("Pemeriksaan Penujang",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 10, right: 10),
+                          margin: const EdgeInsets.only(left: 10, right: 10),
                           height: 120,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Color(0x6cc7d1db)),
+                            border: Border.all(color: const Color(0x6cc7d1db)),
                           ),
-                          child: TextField(
+                          child: const TextField(
                             keyboardType: TextInputType.text,
                             textInputAction: TextInputAction.done,
                             maxLines: 7,
@@ -448,14 +448,14 @@ class Planning extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -465,7 +465,7 @@ class Planning extends StatelessWidget {
                     InkWell(
                       onTap: () => showModalBottomSheet(
                         context: Get.context!,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(20),
                           ),
@@ -476,7 +476,7 @@ class Planning extends StatelessWidget {
                         height: 45,
                         width: 145,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 56, 229, 77),
+                          color: const Color.fromARGB(255, 56, 229, 77),
                           borderRadius: BorderRadius.circular(10),
                           // boxShadow: [
                           //   BoxShadow(
@@ -487,7 +487,7 @@ class Planning extends StatelessWidget {
                           //   ),
                           // ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -501,13 +501,13 @@ class Planning extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     InkWell(
                       onTap: () => showModalBottomSheet(
                         context: Get.context!,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(20),
                           ),
@@ -529,7 +529,7 @@ class Planning extends StatelessWidget {
                           //   ),
                           // ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -545,7 +545,7 @@ class Planning extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
               ],

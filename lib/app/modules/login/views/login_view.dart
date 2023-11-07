@@ -9,18 +9,18 @@ import '../../../routes/app_pages.dart';
 import '../../loading_summer/loading_screen_animed.dart';
 
 class LoginView extends GetView<LoginController> {
-   LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Login();
+    return const Login();
   }
 }
 
 class Login extends StatefulWidget {
-   Login({
-    Key? key,
-  }) : super(key: key);
+  const Login({
+    super.key,
+  });
 
   @override
   _LoginState createState() => _LoginState();
@@ -49,7 +49,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration:  Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
     );
 
     _opacity = Tween<double>(begin: 0, end: 1).animate(
@@ -87,7 +87,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        systemOverlayStyle:  SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.white, // <-- SEE HERE
           statusBarIconBrightness:
               Brightness.dark, //<-- For Android SEE HERE (dark icons)
@@ -103,10 +103,9 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
       ),
       body: SingleChildScrollView(
         child: SizedBox(
-          height: size.height,
           child: Container(
             alignment: Alignment.center,
-            decoration:  BoxDecoration(
+            decoration: const BoxDecoration(
                 // gradient: LinearGradient(
                 //   begin: Alignment.topLeft,
                 //   end: Alignment.bottomRight,
@@ -122,23 +121,23 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                   scale: _transform.value,
                   child: Column(
                     children: [
-                       SizedBox(
+                      const SizedBox(
                         height: 130,
                       ),
                       Column(
                         children: [
                           Padding(
-                            padding:  EdgeInsets.only(left: 10),
+                            padding: const EdgeInsets.only(left: 10),
                             child: Image.asset(
                               'assets/hero.png',
                               width: 250,
                             ),
                           ),
-                           Text(
-                              "A-Dokter adalah system management klinik berbasis cloud.",
+                          const Text(
+                              "A-Dokter adalah System Management Praktek Dokter Mandiri Berbasis Cloud.",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 12)),
-                           SizedBox(
+                          const SizedBox(
                             height: 10,
                           )
                         ],
@@ -187,7 +186,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                   onChanged: (value) =>
                                       controller.ingatSaya.value = value!,
                                 ),
-                                title:  Text(
+                                title: const Text(
                                   "Ingat Saya",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
@@ -199,7 +198,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                 InkWell(
                                   onTap: () {},
                                   child: RichText(
-                                    text:  TextSpan(
+                                    text: const TextSpan(
                                       text: '',
                                       style: TextStyle(
                                         color: Colors.blueAccent,
@@ -214,7 +213,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                     enableDrag: true,
                                     // showDragHandle: true,
                                     context: context,
-                                    shape:  RoundedRectangleBorder(
+                                    shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.vertical(
                                         top: Radius.circular(20),
                                       ),
@@ -222,9 +221,9 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                     builder: (context) => LupaPassword(context),
                                   ),
                                   child: Padding(
-                                    padding:  EdgeInsets.only(right: 20),
+                                    padding: const EdgeInsets.only(right: 20),
                                     child: RichText(
-                                      text:  TextSpan(
+                                      text: const TextSpan(
                                         text: 'Lupa Password ?',
                                         style: TextStyle(
                                           color: Colors.blueAccent,
@@ -239,7 +238,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                 SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 component2(
@@ -253,8 +252,8 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                             .isNotEmpty) {
                                       Get.defaultDialog(
                                         backgroundColor:
-                                             Color(0x00e0e0e0),
-                                        content: Loading(),
+                                            const Color(0x00e0e0e0),
+                                        content: const Loading(),
                                         title: '',
                                         barrierDismissible: false,
                                       );
@@ -285,13 +284,13 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                 SizedBox(width: size.width / 25),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             InkWell(
                               onTap: () => showModalBottomSheet(
                                 context: context,
-                                shape:  RoundedRectangleBorder(
+                                shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.vertical(
                                     top: Radius.circular(20),
                                   ),
@@ -299,7 +298,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                 builder: (context) => buildSheet(),
                               ),
                               child: RichText(
-                                text:  TextSpan(
+                                text: const TextSpan(
                                   text: 'Register Akun Baru',
                                   style: TextStyle(
                                     color: Colors.blueAccent,
@@ -308,10 +307,10 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                             SizedBox(),
+                            const SizedBox(),
                           ],
                         ),
                       ),
@@ -326,22 +325,22 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color:  Color(0xFFe0e0e0).withOpacity(0.5),
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset:  Offset(2, 1),
+              offset: const Offset(2, 1),
             ),
           ],
         ),
         height: 75,
-        margin:  EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
         child: Column(
           children: <Widget>[
-             SizedBox(
+            const SizedBox(
               height: 5,
             ),
-             Text("Powered by"),
-             SizedBox(
+            const Text("Powered by"),
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -350,21 +349,21 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding:  EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_averin.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_ipg.png',
                       width: 80,
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Image.asset(
                       'assets/logo_privy.png',
                       width: 80,
@@ -378,6 +377,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
       ),
     );
   }
+
   Widget component(
     IconData icon,
     String hintText,
@@ -404,7 +404,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
           border: InputBorder.none,
           hintMaxLines: 1,
           hintText: hintText,
-          prefixIcon:  Icon(
+          prefixIcon: const Icon(
             Icons.email_rounded,
             size: 24,
             color: Colors.grey,
@@ -443,13 +443,13 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
           hintText: hintText,
           hintStyle:
               TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
-          prefixIcon:  Icon(
+          prefixIcon: const Icon(
             Icons.lock_rounded,
             size: 24,
             color: Colors.grey,
           ),
           suffixIcon: Padding(
-            padding:  EdgeInsets.fromLTRB(0, 0, 4, 0),
+            padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
             child: GestureDetector(
               onTap: _toggleObscured,
               child: Icon(
@@ -476,13 +476,13 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
         width: size.width / width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color:  Color(0xff4796ff),
+          color: const Color(0xff4796ff),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(
           string,
           style:
-               TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
     );
@@ -498,7 +498,7 @@ Widget buildSheet() {
     ),
     child: Column(
       children: [
-         SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -508,18 +508,18 @@ Widget buildSheet() {
             left: Get.width / 2 - 40,
           ),
           decoration: BoxDecoration(
-            color:  Color(0xFFe0e0e0),
+            color: const Color(0xFFe0e0e0),
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-         SizedBox(
+        const SizedBox(
           height: 10,
         ),
-         Text(
+        const Text(
             'Registrasi akun anda sekarang di a-Dokter untuk mendapatkan fitur-fitur di aplikasi a-Dokter Mobile',
             style: TextStyle(fontWeight: FontWeight.bold),
             textAlign: TextAlign.center),
-         SizedBox(
+        const SizedBox(
           height: 20,
         ),
         InkWell(
@@ -534,38 +534,39 @@ Widget buildSheet() {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
-                  offset:  Offset(2, 1),
+                  offset: const Offset(2, 1),
                 ),
               ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Row(
                   children: [
-                  Image.asset(
-                    'assets/images/doctor.png',
-                    height: 60,
-                  ),
-                    SizedBox(
+                    Image.asset(
+                      'assets/images/doctor.png',
+                      height: 60,
+                    ),
+                    const SizedBox(
                       width: 30,
                     ),
-                  Text(
-                    "Register Dokter",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14),
-                  )
-                ],),
+                    const Text(
+                      "Register Dokter",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14),
+                    )
+                  ],
+                ),
               ],
             ),
           ),
         ),
-         SizedBox(
+        const SizedBox(
           height: 10,
         ),
         InkWell(
@@ -580,7 +581,7 @@ Widget buildSheet() {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
-                  offset:  Offset(2, 1),
+                  offset: const Offset(2, 1),
                 ),
               ],
             ),
@@ -589,29 +590,30 @@ Widget buildSheet() {
               children: [
                 Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Image.asset(
                       'assets/images/dosen.png',
                       height: 60,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
-                    Text(
+                    const Text(
                       "Register Dosen",
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 14),
                     )
-                  ],),
+                  ],
+                ),
               ],
             ),
           ),
         ),
-         SizedBox(
+        const SizedBox(
           height: 10,
         ),
         InkWell(
@@ -626,14 +628,14 @@ Widget buildSheet() {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
-                  offset:  Offset(2, 1),
+                  offset: const Offset(2, 1),
                 ),
               ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Row(
@@ -642,17 +644,18 @@ Widget buildSheet() {
                       'assets/images/mahasiswa.png',
                       height: 60,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 30,
                     ),
-                    Text(
+                    const Text(
                       "Register Mahasiswa",
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 14),
                     )
-                  ],),
+                  ],
+                ),
               ],
             ),
           ),
@@ -677,22 +680,22 @@ Widget LupaPassword(context) {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-           Text('Lupa Password',
+          const Text('Lupa Password',
               textAlign: TextAlign.center,
               style:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
-           SizedBox(
+          const SizedBox(
             height: 20,
           ),
-           Padding(
+          const Padding(
             padding: EdgeInsets.only(right: 10, left: 10),
             child: Text(
                 'kami akan mengirimkan email berisi Default Password untuk menyetel ulang sandi Anda'),
           ),
-           SizedBox(
+          const SizedBox(
             height: 30,
           ),
-           Column(
+          const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -706,27 +709,27 @@ Widget LupaPassword(context) {
               ),
             ],
           ),
-           SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             children: [
-               SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Expanded(
                 child: Container(
-                  margin:  EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(left: 10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color:  Color(0x6cc7d1db)),
+                    border: Border.all(color: const Color(0x6cc7d1db)),
                   ),
                   child: TextFormField(
                     controller: controller.lupapassword,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
-                    decoration:  InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
                       enabledBorder: InputBorder.none,
@@ -740,20 +743,20 @@ Widget LupaPassword(context) {
                   ),
                 ),
               ),
-               SizedBox(
+              const SizedBox(
                 width: 10,
               ),
             ],
           ),
-           SizedBox(
+          const SizedBox(
             height: 30,
           ),
           InkWell(
             onTap: () async {
               if (controller.lupapassword.text.isNotEmpty) {
                 Get.defaultDialog(
-                  backgroundColor:  Color(0x00e0e0e0),
-                  content: Loading(),
+                  backgroundColor: const Color(0x00e0e0e0),
+                  content: const Loading(),
                   title: '',
                   barrierDismissible: false,
                 );
@@ -778,13 +781,13 @@ Widget LupaPassword(context) {
               width: double.infinity,
               height: 50,
               child: Container(
-                  margin:  EdgeInsets.only(right: 10, left: 10),
+                  margin: const EdgeInsets.only(right: 10, left: 10),
                   height: 60,
                   decoration: BoxDecoration(
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child:  Column(
+                  child: const Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

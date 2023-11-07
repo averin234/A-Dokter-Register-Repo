@@ -5,15 +5,15 @@ import 'package:get/get.dart';
 import '../controllers/mahasiswa_controller.dart';
 
 class MahasiswaView extends GetView<MahasiswaController> {
-  MahasiswaView({Key? key}) : super(key: key);
+  const MahasiswaView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MahasiswaView'),
+        title: const Text('MahasiswaView'),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'MahasiswaView is working',
           style: TextStyle(fontSize: 20),

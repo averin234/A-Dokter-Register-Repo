@@ -9,7 +9,7 @@ Future bottomSheetSelesaiRegis() {
       context: Get.context!,
       isScrollControlled: true,
       isDismissible: true,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20),
         ),
@@ -23,7 +23,7 @@ Future bottomSheetSelesaiRegis() {
             ),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -33,14 +33,14 @@ Future bottomSheetSelesaiRegis() {
                     left: Get.width / 2 - 40,
                   ),
                   decoration: BoxDecoration(
-                    color: Color(0xFFe0e0e0),
+                    color: const Color(0xFFe0e0e0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(left: 15),
                   child: Text("Pedaftaran Register Dokter Berhasil",
                       style: TextStyle(
@@ -48,7 +48,7 @@ Future bottomSheetSelesaiRegis() {
                           fontSize: 16,
                           color: Colors.blue)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Expanded(
@@ -57,14 +57,14 @@ Future bottomSheetSelesaiRegis() {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: AnimationConfiguration.toStaggeredList(
-                        duration: Duration(milliseconds: 275),
+                        duration: const Duration(milliseconds: 275),
                         childAnimationBuilder: (widget) => SlideAnimation(
                           child: FadeInAnimation(
                             child: widget,
                           ),
                         ),
                         children: <Widget>[
-                          Text(
+                          const Text(
                               "Silahkan cek Email yang sudah anda daftarkan untuk mendapatkan akses akun A-Dokter ",
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -76,23 +76,23 @@ Future bottomSheetSelesaiRegis() {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 InkWell(
                   onTap: () {
                     Navigator.pop(context); // Menutup bottom sheet
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginView()));
+                        MaterialPageRoute(builder: (context) => const LoginView()));
                   },
                   child: Container(
                     height: 45,
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 56, 229, 77),
+                      color: const Color.fromARGB(255, 56, 229, 77),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -106,7 +106,7 @@ Future bottomSheetSelesaiRegis() {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
               ],
