@@ -38,8 +38,8 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         curve: Curves.ease,
       ),
     )..addListener(() {
-        setState(() {});
-      });
+      setState(() {});
+    });
 
     _transform = Tween<double>(begin: 2, end: 1).animate(
       CurvedAnimation(
@@ -72,9 +72,9 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.white, // <-- SEE HERE
           statusBarIconBrightness:
-              Brightness.dark, //<-- For Android SEE HERE (dark icons)
+          Brightness.dark, //<-- For Android SEE HERE (dark icons)
           statusBarBrightness:
-              Brightness.light, //<-- For iOS SEE HERE (dark icons)
+          Brightness.light, //<-- For iOS SEE HERE (dark icons)
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -92,7 +92,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(
-                        height: 100,
+                        height: 150,
                       ),
                       Image.asset(
                         'assets/images/icons/logo.png',
@@ -139,7 +139,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                       setState(() {
                                         id = val ?? 0;
                                         controller.kodeBagianController.text =
-                                            '';
+                                        '';
                                       });
                                     },
                                   ),
@@ -154,7 +154,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                       setState(() {
                                         id = val ?? 1;
                                         controller.kodeBagianController.text =
-                                            '';
+                                        '';
                                       });
                                     },
                                   ),
@@ -208,9 +208,9 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                     final data = snapshot.data!;
                                     return AppTextField(
                                       textEditingController:
-                                          controller.kodeBagianController,
+                                      controller.kodeBagianController,
                                       textEditingController1:
-                                          controller.namaSpesialisController,
+                                      controller.namaSpesialisController,
                                       hint: "Pilih Spesialisasi...",
                                       isCitySelected: true,
                                       lists: data.list ?? [],
@@ -276,9 +276,9 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                                     final data = snapshot.data!;
                                     return AppTextField(
                                       textEditingController:
-                                          controller.referensiController,
+                                      controller.referensiController,
                                       textEditingController1:
-                                          controller.namaReferensiController,
+                                      controller.namaReferensiController,
                                       hint: "Pilih Referensi...",
                                       isCitySelected: true,
                                       lists: data.list ?? [],
@@ -408,7 +408,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
           hintMaxLines: 1,
           hintText: hintText,
           hintStyle:
-              TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
+          TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
         ),
       ),
     );
@@ -441,7 +441,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
           hintMaxLines: 1,
           hintText: hintText,
           hintStyle:
-              TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
+          TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
         ),
       ),
     );
@@ -500,7 +500,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         child: Text(
           string,
           style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
     );
