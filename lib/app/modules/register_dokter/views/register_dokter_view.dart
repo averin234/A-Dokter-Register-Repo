@@ -476,7 +476,6 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
             sip: controller.sipController.text,
             referensi: controller.referensiController.text,
           );
-          Get.back();
           if (daftarPXBaru.code != 200) {
             Get.snackbar(
                 daftarPXBaru.code.toString(), daftarPXBaru.msg.toString());
@@ -500,7 +499,8 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         ),
         child: Text(
           string,
-          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
     );
