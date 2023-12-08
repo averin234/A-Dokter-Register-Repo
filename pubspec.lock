@@ -93,10 +93,10 @@ packages:
     dependency: "direct main"
     description:
       name: awesome_dialog
-      sha256: "7da175ea284fa5da0a4d0cbdfe835c5b71d30c7b38c1770c0f27f48272ff5a08"
+      sha256: "35a17da157ffb732dedf25a832dcf121fbbeccd1557b88a4113eb5dca3473a5b"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.0"
+    version: "2.2.1"
   awesome_drawer_bar:
     dependency: "direct main"
     description:
@@ -489,6 +489,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.65.0"
+  flare_flutter:
+    dependency: transitive
+    description:
+      name: flare_flutter
+      sha256: "99d63c60f00fac81249ce6410ee015d7b125c63d8278a30da81edf3317a1f6a0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.2"
   floating_action_bubble:
     dependency: "direct main"
     description:
@@ -1176,22 +1184,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
-  rive:
-    dependency: transitive
-    description:
-      name: rive
-      sha256: f2117a96a189758bc79bf7933865625c7a44a420ae537d2a8f6c492900136a71
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.11.17"
-  rive_common:
-    dependency: transitive
-    description:
-      name: rive_common
-      sha256: e41f12917cb58e0c9376836490ebaa431e12744da0c67e19dad8d4bee9fedd46
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.7"
   rxdart:
     dependency: transitive
     description:
@@ -1296,6 +1288,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0+1"
+  simple_animations:
+    dependency: transitive
+    description:
+      name: simple_animations
+      sha256: cd8b4685de36a1d4bd7082d860415baf3772403402a8a022bd209cf856164386
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.0"
   sky_engine:
     dependency: transitive
     description: flutter

@@ -244,19 +244,24 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                   readOnly: true,
                   onTap: () async {
                     DateTime? pickedDate = await showDatePicker(
-                        context: context, initialDate: DateTime.now(),
-                        firstDate: DateTime(1000), //DateTime.now() - not to allow to choose before today.
-                        lastDate: DateTime(2101)
-                    );
-                    print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
-                    String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-                    print(formattedDate); //formatted date output using intl package =>  2021-03-16
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(
+                            1000), //DateTime.now() - not to allow to choose before today.
+                        lastDate: DateTime(2101));
+                    print(
+                        pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                    String formattedDate = DateFormat('yyyy-MM-dd')
+                        .format(pickedDate ?? DateTime.now());
+                    print(
+                        formattedDate); //formatted date output using intl package =>  2021-03-16
                     //you can implement different kind of Date Format here according to your requirement
 
                     setState(() {
-                      controller.tanggalLahirController.text = formattedDate; //set output date to TextField value.
+                      controller.tanggalLahirController.text =
+                          formattedDate; //set output date to TextField value.
                     });
-                                    },
+                  },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
@@ -1150,7 +1155,7 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 10,left: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
       height: Get.width / 7,
       width: Get.width / 1,
       alignment: Alignment.center,
@@ -1180,8 +1185,8 @@ class AppTextField extends StatelessWidget {
           enabled: true,
           suffixIcon: Icon(Icons.arrow_drop_down_circle_rounded),
           disabledBorder: InputBorder.none,
-          contentPadding: EdgeInsets.only(
-              left: 15, bottom: 11, top: 13, right: 15),
+          contentPadding:
+              EdgeInsets.only(left: 15, bottom: 11, top: 13, right: 15),
           filled: true,
           fillColor: Colors.transparent,
         ),
