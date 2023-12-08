@@ -248,19 +248,15 @@ class _FormRegistrasiPasienState extends State<FormRegistrasiPasien> {
                         firstDate: DateTime(1000), //DateTime.now() - not to allow to choose before today.
                         lastDate: DateTime(2101)
                     );
-                    if(pickedDate != null ){
-                      print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
-                      String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-                      print(formattedDate); //formatted date output using intl package =>  2021-03-16
-                      //you can implement different kind of Date Format here according to your requirement
+                    print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
+                    String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+                    print(formattedDate); //formatted date output using intl package =>  2021-03-16
+                    //you can implement different kind of Date Format here according to your requirement
 
-                      setState(() {
-                        controller.tanggalLahirController.text = formattedDate; //set output date to TextField value.
-                      });
-                    }else{
-                      print("Date is not selected");
-                    }
-                  },
+                    setState(() {
+                      controller.tanggalLahirController.text = formattedDate; //set output date to TextField value.
+                    });
+                                    },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
