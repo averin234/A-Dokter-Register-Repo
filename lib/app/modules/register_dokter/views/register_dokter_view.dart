@@ -4,12 +4,11 @@ import 'package:a_dokter_register/app/modules/register_dokter/views/text_field.d
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../routes/app_pages.dart';
-import '../../login/views/login_view.dart';
+import '../../bottomsheet/bottomsheet_selesai_daftar.dart';
 
 class RegisterDokterView extends StatefulWidget {
   const RegisterDokterView({super.key});
@@ -90,8 +89,8 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        height: 100,
+                      const SizedBox(
+                        height: 150,
                       ),
                       Image.asset(
                         'assets/images/icons/logo.png',
@@ -481,68 +480,7 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
                 daftarPXBaru.code.toString(), daftarPXBaru.msg.toString());
           } else {
             Get.toNamed(Routes.LOGIN);
-            Get.dialog(
-              AlertDialog(
-                title: Text('Registrasi Berhasil'),
-                contentPadding:
-                    const EdgeInsets.all(0), // Atur padding konten menjadi nol
-                content: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                        15.0), // Atur radius sesuai kebutuhan
-                  ),
-                  height: 300, // Atur tinggi sesuai kebutuhan
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "assets/verifikasi.png",
-                        gaplessPlayback: true,
-                        fit: BoxFit.fitHeight,
-                        height: 200,
-                      ),
-                      Text(daftarPXBaru.msg.toString(),
-                          textAlign: TextAlign.center),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      const Text(
-                        "Silahkan cek Email yang sudah anda daftarkan untuk mendapatkan akses akun A-Dokter",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                actions: [
-                  InkWell(
-                    onTap: () {
-                      Get.back(); // Tutup dialog "Registrasi Berhasil"
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Kembali',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            );
-            // bottomSheetSelesaiRegis();
+            bottomSheetSelesaiRegis();
           }
         } else {
           Get.snackbar('404', 'Data Tolong diisi semua');
@@ -560,109 +498,11 @@ class _RegisterDokterViewState extends State<RegisterDokterView>
         ),
         child: Text(
           string,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
     );
-  }
-
-  Widget buildSheet() {
-    return Container(
-        height: 200,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50),
-          color: Colors.transparent,
-        ),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 4,
-              margin: EdgeInsets.only(
-                right: Get.width / 2 - 40,
-                left: Get.width / 2 - 40,
-              ),
-              decoration: BoxDecoration(
-                color: Color(0xFFe0e0e0),
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: Text("Pedaftaran Register Dokter Berhasil",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.blue)),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: AnimationConfiguration.toStaggeredList(
-                    duration: Duration(milliseconds: 275),
-                    childAnimationBuilder: (widget) => SlideAnimation(
-                      child: FadeInAnimation(
-                        child: widget,
-                      ),
-                    ),
-                    children: <Widget>[
-                      Text(
-                          "Silahkan cek Email yang sudah anda daftarkan untuk mendapatkan akses akun A-Dokter ",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: Colors.grey)),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.pop(context); // Menutup bottom sheet
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginView()));
-              },
-              child: Container(
-                height: 45,
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 56, 229, 77),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Silahkan Periksa Email",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-          ],
-        ));
   }
 
   Future<void> _launchUrl(String url) async {

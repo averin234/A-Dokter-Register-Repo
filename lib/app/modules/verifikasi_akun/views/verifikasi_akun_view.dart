@@ -63,7 +63,8 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
               label: const Text('Submit', style: TextStyle(fontSize: 16.0)),
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                elevation: 0, backgroundColor: Colors.lightBlue,
+                elevation: 0,
+                backgroundColor: Colors.lightBlue,
                 shadowColor: Colors.blue,
                 minimumSize: const Size(122, 48),
                 maximumSize: const Size(122, 48),
@@ -227,18 +228,22 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                             firstDate: DateTime(
                                 1000), //DateTime.now() - not to allow to choose before today.
                             lastDate: DateTime(2101));
-                        print(
-                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                        String formattedDate =
-                            DateFormat('yyyy-MM-dd').format(pickedDate);
-                        print(
-                            formattedDate); //formatted date output using intl package =>  2021-03-16
-                        //you can implement different kind of Date Format here according to your requirement
-                        setState(() {
-                          controller.tanggalMulaiBerlakuController.text =
-                              formattedDate; //set output date to TextField value.
-                        });
-                                            },
+                        if (pickedDate != null) {
+                          print(
+                              pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                          String formattedDate =
+                              DateFormat('yyyy-MM-dd').format(pickedDate);
+                          print(
+                              formattedDate); //formatted date output using intl package =>  2021-03-16
+                          //you can implement different kind of Date Format here according to your requirement
+                          setState(() {
+                            controller.tanggalMulaiBerlakuController.text =
+                                formattedDate; //set output date to TextField value.
+                          });
+                        } else {
+                          print("Date is not selected");
+                        }
+                      },
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -290,19 +295,23 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                             firstDate: DateTime(
                                 1000), //DateTime.now() - not to allow to choose before today.
                             lastDate: DateTime(2101));
-                        print(
-                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                        String formattedDate =
-                            DateFormat('yyyy-MM-dd').format(pickedDate);
-                        print(
-                            formattedDate); //formatted date output using intl package =>  2021-03-16
-                        //you can implement different kind of Date Format here according to your requirement
+                        if (pickedDate != null) {
+                          print(
+                              pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                          String formattedDate =
+                              DateFormat('yyyy-MM-dd').format(pickedDate);
+                          print(
+                              formattedDate); //formatted date output using intl package =>  2021-03-16
+                          //you can implement different kind of Date Format here according to your requirement
 
-                        setState(() {
-                          controller.tanggalAkhirBerlakuController.text =
-                              formattedDate; //set output date to TextField value.
-                        });
-                                            },
+                          setState(() {
+                            controller.tanggalAkhirBerlakuController.text =
+                                formattedDate; //set output date to TextField value.
+                          });
+                        } else {
+                          print("Date is not selected");
+                        }
+                      },
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -342,7 +351,8 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: const Color(0x6cc7d1db)),
+                              border:
+                                  Border.all(color: const Color(0x6cc7d1db)),
                             ),
                             child: TextFormField(
                                 readOnly: true,
@@ -381,7 +391,8 @@ class _VerifikasiAkunViewState extends State<VerifikasiAkunView> {
                             // selectFile();
                           },
                           style: ElevatedButton.styleFrom(
-                            elevation: 0, backgroundColor: Colors.lightBlue,
+                            elevation: 0,
+                            backgroundColor: Colors.lightBlue,
                             shadowColor: Colors.blue,
                             minimumSize: const Size(122, 48),
                             maximumSize: const Size(122, 48),

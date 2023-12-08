@@ -133,11 +133,11 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                               width: 250,
                             ),
                           ),
-                          Text(
+                          const Text(
                               "A-Dokter adalah system management klinik berbasis cloud.",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 12)),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           )
                         ],
