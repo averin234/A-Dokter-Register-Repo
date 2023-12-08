@@ -1,6 +1,7 @@
 import 'package:a_dokter_register/app/data/model/dropdown_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RegisterDokterController extends GetxController {
   final namaController = TextEditingController();
@@ -35,8 +36,14 @@ class RegisterDokterController extends GetxController {
   ];
 
   @override
-  void onInit() {
+  void onInit() async {
     kodeBagianController.text = '010011';
+    if (!await launchUrl(
+        Uri.parse("https://a-dokter.id/register_dokter.php"))) {
+      throw Exception(
+          'Could not launch https://a-dokter.id/register_dokter.php');
+    }
+
     super.onInit();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:a_dokter_register/app/data/model/dropdown_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RegisterMahasiswaController extends GetxController {
   final namaController = TextEditingController();
@@ -27,4 +28,14 @@ class RegisterMahasiswaController extends GetxController {
     Dropdowns(kategori: 'O-', initialValue: 'O-'),
     Dropdowns(kategori: 'Belum Diperiksa', initialValue: 'Belum Diperiksa'),
   ];
+
+  @override
+  void onInit() async {
+    if (!await launchUrl(
+        Uri.parse("https://a-dokter.id/register_mahasiswa.php"))) {
+      throw Exception(
+          'Could not launch https://a-dokter.id/register_mahasiswa.php');
+    }
+    super.onInit();
+  }
 }

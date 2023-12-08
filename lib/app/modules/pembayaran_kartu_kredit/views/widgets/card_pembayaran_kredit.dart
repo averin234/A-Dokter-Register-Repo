@@ -1,24 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../data/componen/fetch_data.dart';
-import '../../../../data/model/get_list_kasir.dart';
 import '../../../../data/model/list_data.dart';
-import '../../../../data/model/profile_pasien/get_tunai.dart';
 import '../../controllers/pembayaran_kartu_kredit_controller.dart';
 
 class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
-  PembayaranKredit({super.key});
+  const PembayaranKredit({super.key});
 
 
   @override
   Widget build(BuildContext context) {
     return  Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -60,7 +55,7 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                 const SizedBox(
                   height: 10,
                 ),
-                Padding(
+                const Padding(
                   padding:
                   EdgeInsets.only(left: 10, right: 10),
                   child: Row(
@@ -76,7 +71,7 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Column(
@@ -86,31 +81,31 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Padding(padding: EdgeInsets.only(left: 10),
+                              Padding(padding: const EdgeInsets.only(left: 10),
                                 child :
                                 Text(e.namaBagian ?? ''),),
-                              Padding(padding: EdgeInsets.only(right: 10),
+                              Padding(padding: const EdgeInsets.only(right: 10),
                                 child :
                                 Text(e.total ?? ''),),
                             ],),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                         ],),).toList(),),
                 const SizedBox(
                   height: 10,
                 ),
-                Column(
+                const Column(
                   children: [
                     Divider(
                       height: 3,
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -131,7 +126,7 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ),
                     Expanded(
                       child: Container(
-                          padding: EdgeInsets.only(right: 10, left: 10, top: 15, bottom: 15),
+                          padding: const EdgeInsets.only(right: 10, left: 10, top: 15, bottom: 15),
                           margin: const EdgeInsets.only(
                               left: 10, right: 10),
                           decoration: BoxDecoration(
@@ -226,16 +221,16 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                 ),
                 Padding(
                   padding:
-                  EdgeInsets.only(left: 10, right: 15),
+                  const EdgeInsets.only(left: 10, right: 15),
                   child: Row(
                     mainAxisAlignment:
                     MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Pasien',
+                      const Text('Pasien',
                           style: TextStyle(
                               fontWeight: FontWeight.bold)),
                       Text(controller.kasir.namaPasien ?? '',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -262,7 +257,7 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ),
                     Expanded(
                       child: Container(
-                          padding: EdgeInsets.only(right: 10, left: 10, top: 15, bottom: 15),
+                          padding: const EdgeInsets.only(right: 10, left: 10, top: 15, bottom: 15),
                           margin: const EdgeInsets.only(
                               left: 10, right: 10),
                           decoration: BoxDecoration(
@@ -278,7 +273,7 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Row(
@@ -313,7 +308,7 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                         child: TextFormField(
                           keyboardType: TextInputType.text,
                           controller: controller.pembulatan,
-                          style:  TextStyle(fontSize: 14),
+                          style:  const TextStyle(fontSize: 14),
                           textInputAction:
                           TextInputAction.done,
                           decoration: const InputDecoration(
@@ -336,7 +331,7 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Row(
@@ -465,7 +460,7 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Row(
@@ -521,7 +516,7 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Row(
@@ -578,7 +573,7 @@ class PembayaranKredit extends GetView<PembayaranKartuKreditController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Row(
@@ -672,8 +667,8 @@ class AppTextField extends StatelessWidget {
     required this.hint,
     required this.isCitySelected,
     required this.lists,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// This is on text changed method which will display on city text field on changed.
   void onTextFieldTap() {
@@ -723,7 +718,7 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10,left: 10),
+      margin: const EdgeInsets.only(right: 10,left: 10),
       height: Get.width / 7,
       width: Get.width / 1,
       alignment: Alignment.center,
@@ -740,8 +735,8 @@ class AppTextField extends StatelessWidget {
         onTap: onTextFieldTap,
         decoration: const InputDecoration(
           border: OutlineInputBorder(
-            borderRadius: const BorderRadius.all(
-              const Radius.circular(10.0),
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
             ),
             borderSide: BorderSide(
               width: 0,

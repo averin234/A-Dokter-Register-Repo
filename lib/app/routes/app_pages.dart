@@ -1,11 +1,9 @@
 import 'package:get/get.dart';
 
-import '../data/model/get_list_kasir.dart';
 import '../modules/Jadwal_Dokter/bindings/jadwal_dokter_binding.dart';
 import '../modules/Jadwal_Dokter/views/jadwal_dokter_view.dart';
 import '../modules/antrian_pasien/bindings/antrian_pasien_binding.dart';
 import '../modules/antrian_pasien/views/antrian_pasien_view.dart';
-import '../modules/bottomsheet/bottomsheet_bayar_kasir.dart';
 import '../modules/cetakan/bindings/cetakan_binding.dart';
 import '../modules/cetakan/views/cetakan_view.dart';
 import '../modules/cv/bindings/cv_binding.dart';
@@ -87,82 +85,82 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => HomeView(),
+      page: () => const HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () =>  LoginView(),
+      page: () =>  const LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
       name: _Paths.REGISTER_DOKTER,
-      page: () =>  RegisterDokterView(),
+      page: () =>  const RegisterDokterView(),
       binding: RegisterDokterBinding(),
     ),
     GetPage(
       name: _Paths.REGISTER_DOSEN,
-      page: () =>  RegisterDosenView(),
+      page: () =>  const RegisterDosenView(),
       binding: RegisterDosenBinding(),
     ),
     GetPage(
       name: _Paths.REGISTER_MAHASISWA,
-      page: () =>  RegisterMahasiswaView(),
+      page: () =>  const RegisterMahasiswaView(),
       binding: RegisterMahasiswaBinding(),
     ),
     GetPage(
       name: _Paths.ANTRIAN_PASIEN,
-      page: () =>  AntrianPasienView(),
+      page: () =>  const AntrianPasienView(),
       binding: AntrianPasienBinding(),
     ),
     GetPage(
       name: _Paths.HISS,
-      page: () => HissView(),
+      page: () => const HissView(),
       binding: HissBinding(),
     ),
     GetPage(
       name: _Paths.DETAIL_TINDAKAN,
-      page: () =>  DetailTindakanView(),
+      page: () =>  const DetailTindakanView(),
       binding: DetailTindakanBinding(),
     ),
     GetPage(
       name: _Paths.RIWAYAT_MEDICAL_RECORD,
-      page: () =>  RiwayatMedicalRecordView(),
+      page: () =>  const RiwayatMedicalRecordView(),
       binding: RiwayatMedicalRecordBinding(),
     ),
     GetPage(
       name: _Paths.DETAIL_RIWAYAT,
-      page: () =>  DetailRiwayatView(),
+      page: () =>  const DetailRiwayatView(),
       binding: DetailRiwayatBinding(),
     ),
     GetPage(
       name: _Paths.PENUNJANG_MEDIS,
-      page: () =>  PenunjangMedisView(),
+      page: () =>  const PenunjangMedisView(),
       binding: PenunjangMedisBinding(),
     ),
     GetPage(
       name: _Paths.TINDAKAN,
-      page: () =>  TindakanView(),
+      page: () =>  const TindakanView(),
       binding: TindakanBinding(),
     ),
     GetPage(
       name: _Paths.ISI_RESEP,
-      page: () =>  IsiResepView(),
+      page: () =>  const IsiResepView(),
       binding: IsiResepBinding(),
     ),
     GetPage(
       name: _Paths.ISI_ICD_10,
-      page: () =>  IsiIcd10View(),
+      page: () =>  const IsiIcd10View(),
       binding: IsiIcd10Binding(),
     ),
     GetPage(
       name: _Paths.PEMERIKSAAN,
-      page: () =>  PemeriksaanView(),
+      page: () =>  const PemeriksaanView(),
       binding: PemeriksaanBinding(),
     ),
     GetPage(
       name: _Paths.PENDAPATAN_DOKTER,
-      page: () =>  PendapatanDokterView(),
+      page: () =>  const PendapatanDokterView(),
       binding: PendapatanDokterBinding(),
     ),
     GetPage(
@@ -172,102 +170,102 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ISI_TINDAKAN,
-      page: () =>  IsiTindakanView(),
+      page: () =>  const IsiTindakanView(),
       binding: IsiTindakanBinding(),
     ),
     GetPage(
       name: _Paths.JADWAL_DOKTER,
-      page: () => JadwalDokterView(),
+      page: () => const JadwalDokterView(),
       binding: JadwalDokterBinding(),
     ),
     GetPage(
       name: _Paths.RIWAYAT_PRAKTEK,
-      page: () => RiwayatPraktekView(),
+      page: () => const RiwayatPraktekView(),
       binding: RiwayatPraktekBinding(),
     ),
     GetPage(
       name: _Paths.RIWAYAT_PENDIDIKAN,
-      page: () =>  RiwayatPendidikanView(),
+      page: () =>  const RiwayatPendidikanView(),
       binding: RiwayatPendidikanBinding(),
     ),
     GetPage(
       name: _Paths.RIWAYAT_JABATAN,
-      page: () =>  RiwayatJabatanView(),
+      page: () =>  const RiwayatJabatanView(),
       binding: RiwayatJabatanBinding(),
     ),
     GetPage(
       name: _Paths.RIWAYAT_KELUARGA,
-      page: () =>  RiwayatKeluargaView(),
+      page: () =>  const RiwayatKeluargaView(),
       binding: RiwayatKeluargaBinding(),
     ),
     GetPage(
       name: _Paths.CV,
-      page: () =>  CvView(),
+      page: () =>  const CvView(),
       binding: CvBinding(),
     ),
     GetPage(
       name: _Paths.PERJANJIAN_DOKTER,
-      page: () =>  PerjanjianDokterView(),
+      page: () =>  const PerjanjianDokterView(),
       binding: PerjanjianDokterBinding(),
     ),
     GetPage(
       name: _Paths.PRIVYID,
-      page: () =>  PrivyidView(),
+      page: () =>  const PrivyidView(),
       binding: PrivyidBinding(),
     ),
     GetPage(
       name: _Paths.SPLASHSCREEN,
-      page: () => SplashscreenView(),
+      page: () => const SplashscreenView(),
       binding: SplashscreenBinding(),
     ),
     GetPage(
       name: _Paths.MAHASISWA,
-      page: () =>  MahasiswaView(),
+      page: () =>  const MahasiswaView(),
       binding: MahasiswaBinding(),
     ),
     GetPage(
       name: _Paths.DOSEN,
-      page: () =>  DosenView(),
+      page: () =>  const DosenView(),
       binding: DosenBinding(),
     ),
     GetPage(
       name: _Paths.CETAKAN,
-      page: () => CetakanView(),
+      page: () => const CetakanView(),
       binding: CetakanBinding(),
     ),
     GetPage(
       name: _Paths.REGISTRASI_PASIEN,
-      page: () =>  RegistrasiPasienView(),
+      page: () =>  const RegistrasiPasienView(),
       binding: RegistrasiPasienBinding(),
     ),
     GetPage(
       name: _Paths.TAMBAH_PASIEN_LAMA,
-      page: () =>  TambahPasienLamaView(),
+      page: () =>  const TambahPasienLamaView(),
       binding: TambahPasienLamaBinding(),
     ),
     GetPage(
       name: _Paths.DETAIL_REGIST_PASIEN_LAMA,
-      page: () => DetailRegistPasienLamaView(),
+      page: () => const DetailRegistPasienLamaView(),
       binding: DetailRegistPasienLamaBinding(),
     ),
     GetPage(
       name: _Paths.VERIFIKASI_AKUN,
-      page: () =>  VerifikasiAkunView(),
+      page: () =>  const VerifikasiAkunView(),
       binding: VerifikasiAkunBinding(),
     ),
     GetPage(
       name: _Paths.PEMBAYARAN_TUNAI,
-      page: () =>  PembayaranTunaiView(),
+      page: () =>  const PembayaranTunaiView(),
       binding: PembayaranTunaiBinding(),
     ),
     GetPage(
       name: _Paths.PEMBAYARAN_KARTU_DEBET,
-      page: () => PembayaranKartuDebetView(),
+      page: () => const PembayaranKartuDebetView(),
       binding: PembayaranKartuDebetBinding(),
     ),
     GetPage(
       name: _Paths.PEMBAYARAN_KARTU_KREDIT,
-      page: () =>  PembayaranKartuKreditView(),
+      page: () =>  const PembayaranKartuKreditView(),
       binding: PembayaranKartuKreditBinding(),
     ),
   ];

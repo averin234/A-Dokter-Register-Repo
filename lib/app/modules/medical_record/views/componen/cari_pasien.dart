@@ -8,7 +8,7 @@ import 'package:search_page/search_page.dart';
 import '../../../../data/componen/fetch_data.dart';
 
 class CariPasien extends StatefulWidget {
-  CariPasien({super.key});
+  const CariPasien({super.key});
 
   @override
   State<CariPasien> createState() => _CariPasienState();
@@ -23,7 +23,7 @@ class _CariPasienState extends State<CariPasien> {
         Container(
           height: 40,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 254, 228, 203),
+            color: const Color.fromARGB(255, 254, 228, 203),
             borderRadius: BorderRadius.circular(22),
           ),
           child: FutureBuilder(
@@ -31,7 +31,7 @@ class _CariPasienState extends State<CariPasien> {
                 kode_dokter: Publics.controller.getDataRegist.value.kode ?? ''),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (snapshot.hasData && snapshot.data != null) {
@@ -60,7 +60,7 @@ class _CariPasienState extends State<CariPasien> {
                                 ],
                             builder: (pasien) => Column(
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     ListViewPasien(pasien: pasien),
@@ -72,10 +72,10 @@ class _CariPasienState extends State<CariPasien> {
                       enabledBorder: InputBorder.none,
                       errorBorder: InputBorder.none,
                       disabledBorder: InputBorder.none,
-                      contentPadding: EdgeInsets.only(
+                      contentPadding: const EdgeInsets.only(
                           left: 15, bottom: 11, top: 13, right: 15),
                       suffixIcon: IconButton(
-                        icon: Icon(Icons.search),
+                        icon: const Icon(Icons.search),
                         onPressed: () {
                           print('search');
                         },

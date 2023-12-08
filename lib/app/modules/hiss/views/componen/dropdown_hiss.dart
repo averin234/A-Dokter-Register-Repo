@@ -2,7 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
 class DropdownHISS extends StatefulWidget {
-  DropdownHISS({super.key});
+  const DropdownHISS({super.key});
 
   @override
   State<DropdownHISS> createState() => _DropdownHISSState();
@@ -22,7 +22,7 @@ class _DropdownHISSState extends State<DropdownHISS> {
           Expanded(
             child: DropdownSearch<int>(
               items: List.generate(50, (i) => i),
-              popupProps: PopupProps.bottomSheet(
+              popupProps: const PopupProps.bottomSheet(
                 showSearchBox: true,
                 fit: FlexFit.tight,
                 title: Text('Pencarian'),

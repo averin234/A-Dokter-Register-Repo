@@ -1,10 +1,7 @@
 import 'package:a_dokter_register/app/data/model/get_list_kasir.dart';
 import 'package:a_dokter_register/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import '../../../bottomsheet/bottomsheet_bayar_kasir.dart';
 
 class Pendapatan extends StatelessWidget {
   final Kasir kasir;
@@ -16,18 +13,18 @@ class Pendapatan extends StatelessWidget {
     return InkWell(
       // onTap: () => Get.toNamed(Routes.DETAIL_TINDAKAN),
       child: Container(
-        margin: EdgeInsets.only(right: 10, left: 10, bottom: 5),
-        padding: EdgeInsets.only(right: 0, left: 10, bottom: 10, top: 10),
+        margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
+        padding: const EdgeInsets.only(right: 0, left: 10, bottom: 10, top: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0x6cc7d1db)),
+          border: Border.all(color: const Color(0x6cc7d1db)),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Color(0xFFe0e0e0).withOpacity(0.5),
+              color: const Color(0xFFe0e0e0).withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 10,
-              offset: Offset(2, 1),
+              offset: const Offset(2, 1),
             ),
           ],
         ),
@@ -36,14 +33,14 @@ class Pendapatan extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(right: 10, left: 10),
+                padding: const EdgeInsets.only(right: 10, left: 10),
                 child: InkWell(
                   onTap: () async {
                     showModalBottomSheet(
                       enableDrag: true,
                       // showDragHandle: true,
                       context: context,
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.vertical(
                           top: Radius.circular(20),
                         ),
@@ -55,18 +52,18 @@ class Pendapatan extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Selesai Periksa',
+                      const Text('Selesai Periksa',
                           style: TextStyle(
                               color: Colors.green,
                               fontWeight: FontWeight.bold)),
                       Container(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                             right: 5, left: 5, top: 10, bottom: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           color: Colors.blue,
                         ),
-                        child: Row(
+                        child: const Row(
                           children: [
                             Icon(Icons.monetization_on_rounded,
                                 color: Colors.white),
@@ -84,82 +81,82 @@ class Pendapatan extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
                 children: [
-                  Text('No Registrasi ',
+                  const Text('No Registrasi ',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text(': ', style: TextStyle(fontWeight: FontWeight.bold)),
+                  const Text(': ', style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(kasir.noRegistrasi ?? '',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Row(
                 children: [
-                  Text('Tanggal Masuk ',
+                  const Text('Tanggal Masuk ',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text(': '),
+                  const Text(': '),
                   Text(kasir.jamMasuk ?? '',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
                 children: [
-                  Text('Nama Pasien '),
-                  Text(': '),
+                  const Text('Nama Pasien '),
+                  const Text(': '),
                   Text(kasir.namaPasien ?? '',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
-                  Text('Nasabah '),
-                  Text(': '),
+                  const Text('Nasabah '),
+                  const Text(': '),
                   Text(kasir.namaKelompok ?? ''),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
-                  Text('Nama Bagian '),
-                  Text(': '),
+                  const Text('Nama Bagian '),
+                  const Text(': '),
                   Text(kasir.namaBagian ?? ''),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Divider(color: Colors.black),
-              SizedBox(
+              const Divider(color: Colors.black),
+              const SizedBox(
                 height: 10,
               ),
               Padding(
-                padding: EdgeInsets.only(right: 10, left: 10),
+                padding: const EdgeInsets.only(right: 10, left: 10),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          Expanded(
+                          const Expanded(
                             child: Text(
                               "Billing",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           GestureDetector(
@@ -168,13 +165,13 @@ class Pendapatan extends StatelessWidget {
                             },
                             child: Text(
                               "Rp ${kasir.billing}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.blue),
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
@@ -196,11 +193,11 @@ class Pendapatan extends StatelessWidget {
         color: Colors.transparent,
       ),
       child: Column(children: [
-        Text(
+        const Text(
           'Pilih metode pembayaran',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         InkWell(
@@ -210,10 +207,10 @@ class Pendapatan extends StatelessWidget {
                 parameters: {'nr': kasir.noRegistrasi ?? ''}, arguments: kasir);
           },
           child: Container(
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.only(right: 10, left: 10),
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.only(right: 10, left: 10),
             decoration: BoxDecoration(
-              border: Border.all(color: Color(0x6cc7d1db)),
+              border: Border.all(color: const Color(0x6cc7d1db)),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
@@ -224,16 +221,16 @@ class Pendapatan extends StatelessWidget {
                     'assets/images/rp.png',
                     height: 40,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
-                  Text('Bayar Tunai',
+                  const Text('Bayar Tunai',
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 ]),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         InkWell(
@@ -243,10 +240,10 @@ class Pendapatan extends StatelessWidget {
                 parameters: {'nr': kasir.noRegistrasi ?? ''}, arguments: kasir);
           },
           child: Container(
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.only(right: 10, left: 10),
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.only(right: 10, left: 10),
             decoration: BoxDecoration(
-              border: Border.all(color: Color(0x6cc7d1db)),
+              border: Border.all(color: const Color(0x6cc7d1db)),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
@@ -257,10 +254,10 @@ class Pendapatan extends StatelessWidget {
                     'assets/images/atm.png',
                     height: 40,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
-                  Text('Kartu Debet',
+                  const Text('Kartu Debet',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
@@ -268,7 +265,7 @@ class Pendapatan extends StatelessWidget {
                 ]),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         InkWell(
@@ -278,10 +275,10 @@ class Pendapatan extends StatelessWidget {
                 parameters: {'nr': kasir.noRegistrasi ?? ''}, arguments: kasir);
           },
           child: Container(
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.only(right: 10, left: 10),
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.only(right: 10, left: 10),
             decoration: BoxDecoration(
-              border: Border.all(color: Color(0x6cc7d1db)),
+              border: Border.all(color: const Color(0x6cc7d1db)),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
@@ -292,10 +289,10 @@ class Pendapatan extends StatelessWidget {
                     'assets/images/credit.png',
                     height: 40,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
-                  Text('Kartu Kredit',
+                  const Text('Kartu Kredit',
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 ]),

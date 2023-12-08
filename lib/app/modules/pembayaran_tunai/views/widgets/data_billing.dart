@@ -1,27 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
-import '../../../../data/model/profile_pasien/get_tunai.dart';
 import '../../controllers/pembayaran_tunai_controller.dart';
 
 class Databilling extends GetView<PembayaranTunaiController> {
-  Databilling({Key? key}) : super(key: key);
+  const Databilling({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFe0e0e0).withOpacity(0.5),
+            color: const Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: Offset(2, 1),
+            offset: const Offset(2, 1),
           ),
         ],
       ),
@@ -33,26 +30,26 @@ class Databilling extends GetView<PembayaranTunaiController> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 ConstrainedBox(
-                  constraints: BoxConstraints(minWidth: double.infinity),
+                  constraints: const BoxConstraints(minWidth: double.infinity),
                   child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
                       color: Colors.blueAccent,
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(10),
                         topLeft: Radius.circular(10),
                       ),
                     ),
-                    child: Text('Data  Billing Pasien',
+                    child: const Text('Data  Billing Pasien',
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white)),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(left: 10, right: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,7 +61,7 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Column(
@@ -76,16 +73,16 @@ class Databilling extends GetView<PembayaranTunaiController> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(left: 10),
+                                  padding: const EdgeInsets.only(left: 10),
                                   child: Text(e.namaBagian ?? ''),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(right: 10),
+                                  padding: const EdgeInsets.only(right: 10),
                                   child: Text(e.total ?? ''),
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                           ],
@@ -93,29 +90,29 @@ class Databilling extends GetView<PembayaranTunaiController> {
                       )
                       .toList(),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Column(
+                const Column(
                   children: [
                     Divider(
                       height: 3,
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
@@ -127,40 +124,40 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                     Expanded(
                       child: Container(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               right: 10, left: 10, top: 15, bottom: 15),
-                          margin: EdgeInsets.only(left: 10, right: 10),
+                          margin: const EdgeInsets.only(left: 10, right: 10),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Color(0x6cc7d1db)),
+                            border: Border.all(color: const Color(0x6cc7d1db)),
                           ),
                           child: Text(controller.kasir.billing ?? '')),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 ConstrainedBox(
-                  constraints: BoxConstraints(minWidth: double.infinity),
+                  constraints: const BoxConstraints(minWidth: double.infinity),
                   child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
                       color: Colors.yellowAccent,
                     ),
-                    child: Text('Data Pembayaran',
+                    child: const Text('Data Pembayaran',
                         textAlign: TextAlign.start,
                         style: TextStyle(fontWeight: FontWeight.bold)),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
@@ -172,17 +169,17 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          border: Border.all(color: const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           controller: controller.pembayar,
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -198,28 +195,28 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 10, right: 15),
+                  padding: const EdgeInsets.only(left: 10, right: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Pasien',
+                      const Text('Pasien',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Text(controller.kasir.namaPasien ?? '',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
@@ -231,25 +228,25 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                     Expanded(
                       child: Container(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               right: 10, left: 10, top: 15, bottom: 15),
-                          margin: EdgeInsets.only(left: 10, right: 10),
+                          margin: const EdgeInsets.only(left: 10, right: 10),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Color(0x6cc7d1db)),
+                            border: Border.all(color: const Color(0x6cc7d1db)),
                           ),
                           child: Text(controller.kasir.billing ?? '')),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
@@ -261,18 +258,18 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          border: Border.all(color: const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           keyboardType: TextInputType.text,
                           controller: controller.pembulatan,
-                          style: TextStyle(fontSize: 14),
+                          style: const TextStyle(fontSize: 14),
                           textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -288,13 +285,13 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
@@ -306,17 +303,17 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          border: Border.all(color: const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           controller: controller.totalcontroller,
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -332,29 +329,29 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 ConstrainedBox(
-                  constraints: BoxConstraints(minWidth: double.infinity),
+                  constraints: const BoxConstraints(minWidth: double.infinity),
                   child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
                       color: Colors.green,
                     ),
-                    child: Text('Tunai',
+                    child: const Text('Tunai',
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white)),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
@@ -368,17 +365,17 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          border: Border.all(color: const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           controller: controller.uangpembayarantunaicontroller,
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -394,13 +391,13 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
@@ -412,17 +409,17 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          border: Border.all(color: const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           controller: controller.uangygdibayarkancontroller,
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -438,13 +435,13 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 5),
                       child: SizedBox(
                         width: 160,
@@ -456,17 +453,17 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                     Expanded(
                       child: Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0x6cc7d1db)),
+                          border: Border.all(color: const Color(0x6cc7d1db)),
                         ),
                         child: TextFormField(
                           controller: controller.pengambilanuangcontroller,
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -482,10 +479,10 @@ class Databilling extends GetView<PembayaranTunaiController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
               ],

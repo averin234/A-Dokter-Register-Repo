@@ -11,34 +11,34 @@ import '../../../loading_summer/loading_screen_animed.dart';
 import '../../controllers/profile_controller.dart';
 
 class CardSettingAkun extends GetView<ProfileController> {
-  CardSettingAkun({Key? key}) : super(key: key);
+  const CardSettingAkun({super.key});
   @override
   Widget build(BuildContext context) {
     return Column(
       children: AnimationConfiguration.toStaggeredList(
-        duration: Duration(milliseconds: 375),
+        duration: const Duration(milliseconds: 375),
         childAnimationBuilder: (widget) => ScaleAnimation(
           child: FadeInAnimation(
             child: widget,
           ),
         ),
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-            margin: EdgeInsets.only(top: 0, left: 10, right: 10),
-            padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
+            margin: const EdgeInsets.only(top: 0, left: 10, right: 10),
+            padding: const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
             decoration: BoxDecoration(
-              border: Border.all(color: Color(0x6cc7d1db)),
+              border: Border.all(color: const Color(0x6cc7d1db)),
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Color(0xFFe0e0e0).withOpacity(0.5),
+                  color: const Color(0xFFe0e0e0).withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
-                  offset: Offset(2, 1),
+                  offset: const Offset(2, 1),
                 ),
               ],
             ),
@@ -48,7 +48,7 @@ class CardSettingAkun extends GetView<ProfileController> {
               //   'Pengaturan Akun',
               //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               // ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               InkWell(
@@ -57,14 +57,14 @@ class CardSettingAkun extends GetView<ProfileController> {
                   context: context,
                   enableDrag: true,
                   // showDragHandle: true,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(20),
                     ),
                   ),
                   builder: (context) => UbahPassword(context),
                 ),
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(
                       Icons.history_edu,
@@ -94,15 +94,15 @@ class CardSettingAkun extends GetView<ProfileController> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               InkWell(
                 onTap: () => Get.toNamed(Routes.PRIVYID),
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(
                       Icons.history_edu,
@@ -132,7 +132,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               InkWell(
@@ -140,7 +140,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                   androidAppId: "com.adokterregister.a_dokter_register",
                   // iOSAppId: "585027354",
                 ),
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(
                       Icons.system_security_update,
@@ -170,29 +170,29 @@ class CardSettingAkun extends GetView<ProfileController> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ]),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Padding(
-            padding: EdgeInsets.only(right: 10, left: 10),
+            padding: const EdgeInsets.only(right: 10, left: 10),
             child: ElevatedButton.icon(
-              icon: Icon(
+              icon: const Icon(
                 Icons.logout_rounded,
                 color: Colors.white,
                 size: 24.0,
               ),
-              label: Text('Logout', style: TextStyle(fontSize: 14.0)),
+              label: const Text('Logout', style: TextStyle(fontSize: 14.0)),
               onPressed: () {
                 showModalBottomSheet(
                   context: context,
                   enableDrag: true,
                   // showDragHandle: true,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(20),
                     ),
@@ -201,21 +201,20 @@ class CardSettingAkun extends GetView<ProfileController> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                elevation: 0,
-                primary: Colors.redAccent,
-                minimumSize: Size.fromHeight(40),
+                elevation: 0, backgroundColor: Colors.redAccent,
+                minimumSize: const Size.fromHeight(40),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 150,
           ),
           Center (child : Text(
-            'Versi Saat ini ' + controller.packageName,
-            style: TextStyle(
+            'Versi Saat ini ${controller.packageName}',
+            style: const TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 12),
           ),)
         ],
@@ -236,7 +235,7 @@ class CardSettingAkun extends GetView<ProfileController> {
             ),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 SingleChildScrollView(
@@ -244,34 +243,34 @@ class CardSettingAkun extends GetView<ProfileController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Password Lama",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.only(left: 10),
+                              margin: const EdgeInsets.only(left: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: TextFormField(
                                 controller: controller.pwlamaController,
                                 keyboardType: TextInputType.text,
                                 textInputAction: TextInputAction.done,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   enabledBorder: InputBorder.none,
@@ -285,42 +284,42 @@ class CardSettingAkun extends GetView<ProfileController> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Password Baru",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.only(left: 10),
+                              margin: const EdgeInsets.only(left: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: TextFormField(
                                 controller: controller.pwbaruController,
                                 keyboardType: TextInputType.text,
                                 textInputAction: TextInputAction.done,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   enabledBorder: InputBorder.none,
@@ -334,42 +333,42 @@ class CardSettingAkun extends GetView<ProfileController> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text("Comfirm Password Baru",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.only(left: 10),
+                              margin: const EdgeInsets.only(left: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Color(0x6cc7d1db)),
+                                border: Border.all(color: const Color(0x6cc7d1db)),
                               ),
                               child: TextFormField(
                                 controller: controller.confirmpwbaruController,
                                 keyboardType: TextInputType.text,
                                 textInputAction: TextInputAction.done,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   enabledBorder: InputBorder.none,
@@ -383,12 +382,12 @@ class CardSettingAkun extends GetView<ProfileController> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                     ],
@@ -398,15 +397,15 @@ class CardSettingAkun extends GetView<ProfileController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(right: 10, left: 10, top: 20),
+                      padding: const EdgeInsets.only(right: 10, left: 10, top: 20),
                       child: GestureDetector(
                         onTap: () async {
                           if (controller.pwbaruController.text.isNotEmpty &&
                               controller
                                   .confirmpwbaruController.text.isNotEmpty) {
                             Get.defaultDialog(
-                              backgroundColor: Color(0xe0e0e0),
-                              content: Loading(),
+                              backgroundColor: const Color(0x00e0e0e0),
+                              content: const Loading(),
                               title: '',
                               barrierDismissible: false,
                             );
@@ -436,7 +435,7 @@ class CardSettingAkun extends GetView<ProfileController> {
                             borderRadius: BorderRadius.circular(7),
                             color: Colors.blue,
                           ),
-                          child: Column(
+                          child: const Column(
                             children: [
                               Padding(
                                 padding: EdgeInsets.all(16),
@@ -469,39 +468,38 @@ class CardSettingAkun extends GetView<ProfileController> {
                 child: Center(
               child: Column(
                 children: [
-                  Text("Apkah ingin Logout/ keluar dari Aplikasi?",
+                  const Text("Apkah ingin Logout/ keluar dari Aplikasi?",
                       style: TextStyle(
                           color: Colors.black45,
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Image.asset(
                     'assets/images/logout.jpg',
                     height: 150,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(right: 10, left: 10),
+                    padding: const EdgeInsets.only(right: 10, left: 10),
                     child: ElevatedButton.icon(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.logout_rounded,
                         color: Colors.white,
                         size: 24.0,
                       ),
-                      label: Text('Logout', style: TextStyle(fontSize: 14.0)),
+                      label: const Text('Logout', style: TextStyle(fontSize: 14.0)),
                       onPressed: () => Get.offAllNamed(Routes.LOGIN),
                       style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        primary: Colors.redAccent,
-                        minimumSize: Size.fromHeight(40),
+                        elevation: 0, backgroundColor: Colors.redAccent,
+                        minimumSize: const Size.fromHeight(40),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),

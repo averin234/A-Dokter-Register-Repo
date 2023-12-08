@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'dart:math';
 
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
 import 'package:a_dokter_register/app/data/componen/publics.dart';
@@ -8,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../home/views/home_view.dart';
 import '../../loading_summer/loading.home.dart';
@@ -17,7 +14,7 @@ import 'componen/horizontal_calender.dart';
 import 'componen/listview_tindakan.dart';
 
 class AntrianPasienView extends StatefulWidget {
-  AntrianPasienView({Key? key, this.title}) : super(key: key);
+  const AntrianPasienView({super.key, this.title});
 
   final String? title;
 
@@ -28,7 +25,7 @@ class AntrianPasienView extends StatefulWidget {
 class _AntrianPasienViewState extends State<AntrianPasienView> {
   // this enable our app to able to pull down
   late RefreshController _refreshController; // the refresh controller
-  var _scaffoldKey =
+  final _scaffoldKey =
       GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
@@ -45,7 +42,7 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
               builder: (context) =>
-                  HomeView()), // Ganti dengan halaman home Anda
+                  const HomeView()), // Ganti dengan halaman home Anda
         );
         return true;
       },
@@ -55,20 +52,20 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
           body: SmartRefresher(
             controller: _refreshController,
             enablePullDown: true,
-            header: WaterDropHeader(),
+            header: const WaterDropHeader(),
             onLoading: _onLoading,
             onRefresh: _onRefresh,
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  systemOverlayStyle: SystemUiOverlayStyle(
+                  systemOverlayStyle: const SystemUiOverlayStyle(
                     statusBarColor: Colors.white, // <-- SEE HERE
                     statusBarIconBrightness:
                         Brightness.dark, //<-- For Android SEE HERE (dark icons)
                     statusBarBrightness:
                         Brightness.light, //<-- For iOS SEE HERE (dark icons)
                   ),
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       bottom: Radius.circular(10),
                     ),
@@ -76,16 +73,16 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
                   floating: true,
                   pinned: true,
                   snap: true,
-                  title: Text('Antrian Pasien'),
+                  title: const Text('Antrian Pasien'),
                   leading: IconButton(
                       onPressed: () => Get.toNamed(Routes.HOME),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_circle_left_rounded,
                         size: 40,
                       ),
-                      color: Color.fromARGB(255, 192, 192, 192)),
+                      color: const Color.fromARGB(255, 192, 192, 192)),
                   bottom: AppBar(
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         bottom: Radius.circular(30),
                       ),
@@ -93,15 +90,15 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
                     toolbarHeight: 85,
                     automaticallyImplyLeading: false,
                     elevation: 0,
-                    title: HorizontalCalender(),
+                    title: const HorizontalCalender(),
                   ),
                 ),
                 // Other Sliver Widgets
                 SliverList(
                   delegate: SliverChildListDelegate([
                     Container(
-                      margin: EdgeInsets.only(top: 10, right: 10, left: 10),
-                      padding: EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 10, right: 10, left: 10),
+                      padding: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         // boxShadow: [
@@ -129,7 +126,7 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
                                 return data.isEmpty
                                     ? Column(
                                         children: [
-                                          Text(
+                                          const Text(
                                               'Tidak ada Antrian Pasien Hari ini'),
                                           Image.asset(
                                             'assets/images/noantri.png',
@@ -141,7 +138,7 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
                                         children: AnimationConfiguration
                                             .toStaggeredList(
                                                 duration:
-                                                    Duration(milliseconds: 475),
+                                                    const Duration(milliseconds: 475),
                                                 childAnimationBuilder:
                                                     (widget) => SlideAnimation(
                                                           child:
@@ -156,7 +153,7 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
                                                     .toList()),
                                       );
                               } else {
-                                return SingleChildScrollView(
+                                return const SingleChildScrollView(
                                   child: Column(
                                     children: [
                                       shimmerHome(),
@@ -190,7 +187,7 @@ class _AntrianPasienViewState extends State<AntrianPasienView> {
   _onRefresh() {
     setState(() {
 // so whatever you want to refresh it must be inside the setState
-      AntrianPasienView(); // if you only want to refresh the list you can place this, so the two can be inside setState
+      const AntrianPasienView(); // if you only want to refresh the list you can place this, so the two can be inside setState
       _refreshController
           .refreshCompleted(); // request complete,the header will enter complete state,
 // resetFooterState : it will set the footer state from noData to idle

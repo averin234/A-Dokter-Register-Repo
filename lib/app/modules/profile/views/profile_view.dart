@@ -12,9 +12,10 @@ import '../controllers/profile_controller.dart';
 import 'componnen/card_setting_akun.dart';
 
 class ProfileView extends GetView<ProfileController> {
-  ProfileView({Key? key}) : super(key: key);
+  ProfileView({super.key});
   final updateController = Get.put(ProfileController());
   late final String currentVersion;
+  @override
   final controller = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class ProfileView extends GetView<ProfileController> {
         slivers: [
           SliverAppBar(
             automaticallyImplyLeading: false,
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor:
                   Color.fromARGB(255, 255, 255, 255), // <-- SEE HERE
               statusBarIconBrightness:
@@ -32,7 +33,7 @@ class ProfileView extends GetView<ProfileController> {
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -40,9 +41,9 @@ class ProfileView extends GetView<ProfileController> {
             floating: true,
             pinned: true,
             snap: true,
-            title: Text('Pengaturan Akun'),
+            title: const Text('Pengaturan Akun'),
             bottom: AppBar(
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
@@ -67,25 +68,25 @@ class ProfileView extends GetView<ProfileController> {
                       final data = snapshot.data!.dokter![0];
                       return Column(
                           children: AnimationConfiguration.toStaggeredList(
-                              duration: Duration(milliseconds: 375),
+                              duration: const Duration(milliseconds: 375),
                               childAnimationBuilder: (widget) => ScaleAnimation(
                                     child: SlideAnimation(
                                       child: widget,
                                     ),
                                   ),
                               children: <Widget>[
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             CardDokterCV(dokter: data),
                           ]));
                     } else {
-                      return Center(
+                      return const Center(
                         child: shimmerSetting(),
                       );
                     }
                   }),
-              CardSettingAkun(),
+              const CardSettingAkun(),
             ]),
           ),
         ],

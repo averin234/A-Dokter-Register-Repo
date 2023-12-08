@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../data/model/list_data.dart';
 
 class SearchHISSdropdowmn extends StatelessWidget {
-  SearchHISSdropdowmn({super.key});
+  const SearchHISSdropdowmn({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class SearchHISSdropdowmn extends StatelessWidget {
                     ],
                   );
                 } else {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
@@ -64,22 +64,22 @@ class AppTextField extends StatelessWidget {
   final bool isCitySelected;
   final List<Lists> lists;
 
-  AppTextField({
+  const AppTextField({
     required this.textEditingController,
     required this.textEditingController1,
     required this.title,
     required this.hint,
     required this.isCitySelected,
     required this.lists,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// This is on text changed method which will display on city text field on changed.
   void onTextFieldTap() {
     final controller = Get.put(HissController());
     showModalBottomSheet<void>(
       context: Get.context!,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       builder: (context) {
         return Column(
@@ -98,7 +98,7 @@ class AppTextField extends StatelessWidget {
                         style: TextButton.styleFrom(
                             alignment: Alignment.centerLeft,
                             foregroundColor: Colors.black,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10)),
                         child: Text(
                           e.nama!,
@@ -171,10 +171,10 @@ class AppTextField extends StatelessWidget {
         minLines: 1,
         decoration: InputDecoration(
           filled: true,
-          suffixIcon: Icon(Icons.arrow_drop_down_circle),
-          contentPadding: EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
+          suffixIcon: const Icon(Icons.arrow_drop_down_circle),
+          contentPadding: const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 0),
           hintText: hint,
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 0,
               style: BorderStyle.none,

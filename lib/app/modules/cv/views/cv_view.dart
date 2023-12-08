@@ -10,21 +10,21 @@ import '../../../data/componen/fetch_data.dart';
 import '../controllers/cv_controller.dart';
 
 class CvView extends GetView<CvController> {
-  CvView({Key? key}) : super(key: key);
+  const CvView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -37,13 +37,13 @@ class CvView extends GetView<CvController> {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_circle_left_rounded,
                 size: 40,
               ),
-              color: Color.fromARGB(255, 192, 192, 192),
+              color: const Color.fromARGB(255, 192, 192, 192),
             ),
-            title: Text("CV", style: TextStyle(color: Colors.black)),
+            title: const Text("CV", style: TextStyle(color: Colors.black)),
             bottom: AppBar(
               toolbarHeight: 0,
               automaticallyImplyLeading: false,
@@ -56,7 +56,7 @@ class CvView extends GetView<CvController> {
               [
                 Column(
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: Duration(milliseconds: 375),
+                    duration: const Duration(milliseconds: 375),
                     childAnimationBuilder: (widget) => ScaleAnimation(
                       child: SlideAnimation(
                         child: widget,
@@ -77,7 +77,7 @@ class CvView extends GetView<CvController> {
                               return Column(
                                   children:
                                       AnimationConfiguration.toStaggeredList(
-                                          duration: Duration(milliseconds: 375),
+                                          duration: const Duration(milliseconds: 375),
                                           childAnimationBuilder: (widget) =>
                                               ScaleAnimation(
                                                 child: SlideAnimation(
@@ -85,16 +85,16 @@ class CvView extends GetView<CvController> {
                                                 ),
                                               ),
                                           children: <Widget>[
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     CardDokterCV(dokter: data),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                   ]));
                             } else {
-                              return Center(
+                              return const Center(
                                 child: CircularProgressIndicator(),
                               );
                             }

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../controllers/hiss_controller.dart';
 
 class SearchHISS extends StatefulWidget {
-  SearchHISS({super.key});
+  const SearchHISS({super.key});
 
   @override
   State<SearchHISS> createState() => _SearchHISSState();
@@ -20,11 +20,11 @@ class _SearchHISSState extends State<SearchHISS> {
         Container(
           height: 40,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 233, 231, 253),
+            color: const Color.fromARGB(255, 233, 231, 253),
             borderRadius: BorderRadius.circular(22),
           ),
           child: TextField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,

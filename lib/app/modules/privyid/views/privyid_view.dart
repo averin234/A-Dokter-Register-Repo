@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import '../controllers/privyid_controller.dart';
 
 class PrivyidView extends GetView<PrivyidController> {
-  PrivyidView({Key? key}) : super(key: key);
+  const PrivyidView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +16,14 @@ class PrivyidView extends GetView<PrivyidController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white, // <-- SEE HERE
               statusBarIconBrightness:
                   Brightness.dark, //<-- For Android SEE HERE (dark icons)
               statusBarBrightness:
                   Brightness.light, //<-- For iOS SEE HERE (dark icons)
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -36,13 +36,13 @@ class PrivyidView extends GetView<PrivyidController> {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_circle_left_rounded,
                 size: 40,
               ),
-              color: Color.fromARGB(255, 192, 192, 192),
+              color: const Color.fromARGB(255, 192, 192, 192),
             ),
-            title: Text("Privyid", style: TextStyle(color: Colors.black)),
+            title: const Text("Privyid", style: TextStyle(color: Colors.black)),
             bottom: AppBar(
               toolbarHeight: 0,
               automaticallyImplyLeading: false,
@@ -55,17 +55,17 @@ class PrivyidView extends GetView<PrivyidController> {
               [
                 Column(
                   children: AnimationConfiguration.toStaggeredList(
-                    duration: Duration(milliseconds: 375),
+                    duration: const Duration(milliseconds: 375),
                     childAnimationBuilder: (widget) => ScaleAnimation(
                       child: SlideAnimation(
                         child: widget,
                       ),
                     ),
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      FromPrivyidConnect(),
+                      const FromPrivyidConnect(),
                     ],
                   ),
                 ),

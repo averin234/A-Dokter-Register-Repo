@@ -6,10 +6,9 @@ import 'package:search_page/search_page.dart';
 
 import '../../../../data/componen/fetch_data.dart';
 import '../../../../data/componen/publics.dart';
-import '../../../../data/model/profile_pasien/get_tunai.dart';
 
 class SearchPendapatan1 extends StatefulWidget {
-  SearchPendapatan1({super.key});
+  const SearchPendapatan1({super.key});
 
   @override
   State<SearchPendapatan1> createState() => _SearchPendapatan1State();
@@ -24,7 +23,7 @@ class _SearchPendapatan1State extends State<SearchPendapatan1> {
         Container(
             height: 40,
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 233, 231, 253),
+              color: const Color.fromARGB(255, 233, 231, 253),
               borderRadius: BorderRadius.circular(22),
             ),
             child: FutureBuilder(
@@ -33,7 +32,7 @@ class _SearchPendapatan1State extends State<SearchPendapatan1> {
                       Publics.controller.getDataRegist.value.kode ?? ''),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (snapshot.hasData && snapshot.data != null) {
@@ -63,7 +62,7 @@ class _SearchPendapatan1State extends State<SearchPendapatan1> {
                                 ],
                             builder: (kasir) => Column(
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Pendapatan(kasir: kasir),
@@ -76,10 +75,10 @@ class _SearchPendapatan1State extends State<SearchPendapatan1> {
                         enabledBorder: InputBorder.none,
                         errorBorder: InputBorder.none,
                         disabledBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.only(
+                        contentPadding: const EdgeInsets.only(
                             left: 15, bottom: 11, top: 13, right: 15),
                         suffixIcon: IconButton(
-                          icon: Icon(Icons.search),
+                          icon: const Icon(Icons.search),
                           onPressed: () {
                             print('search');
                           },

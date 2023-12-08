@@ -7,7 +7,7 @@ Future bottomSheetBayarKasir() {
       context: Get.context!,
       isScrollControlled: true,
       isDismissible: true,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20),
         ),
@@ -21,7 +21,7 @@ Future bottomSheetBayarKasir() {
             ),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -31,14 +31,14 @@ Future bottomSheetBayarKasir() {
                     left: Get.width / 2 - 40,
                   ),
                   decoration: BoxDecoration(
-                    color: Color(0xFFe0e0e0),
+                    color: const Color(0xFFe0e0e0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
-                Text('Bayar Kasir',
+                const Text('Bayar Kasir',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.blue)),
                 SingleChildScrollView(
@@ -47,23 +47,23 @@ Future bottomSheetBayarKasir() {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: AnimationConfiguration.toStaggeredList(
-                        duration: Duration(milliseconds: 275),
+                        duration: const Duration(milliseconds: 275),
                         childAnimationBuilder: (widget) => SlideAnimation(
                           child: FadeInAnimation(
                             child: widget,
                           ),
                         ),
                         children: <Widget>[
-                          SizedBox(
+                          const SizedBox(
                             height: 25,
                           ),
-                          Text('Apakah yakin data yang diimput sudah benar ?'),
+                          const Text('Apakah yakin data yang diimput sudah benar ?'),
                         ],
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Row(
@@ -87,7 +87,7 @@ Future bottomSheetBayarKasir() {
                           //   ),
                           // ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -101,7 +101,7 @@ Future bottomSheetBayarKasir() {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     InkWell(
@@ -120,7 +120,7 @@ Future bottomSheetBayarKasir() {
                           //   ),
                           // ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -134,7 +134,7 @@ Future bottomSheetBayarKasir() {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],

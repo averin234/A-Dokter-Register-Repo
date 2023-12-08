@@ -8,7 +8,7 @@ Future bottomSheetSelesaiPemeriksaan() {
       context: Get.context!,
       isScrollControlled: true,
       isDismissible: true,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20),
         ),
@@ -22,7 +22,7 @@ Future bottomSheetSelesaiPemeriksaan() {
             ),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -32,14 +32,14 @@ Future bottomSheetSelesaiPemeriksaan() {
                     left: Get.width / 2 - 40,
                   ),
                   decoration: BoxDecoration(
-                    color: Color(0xFFe0e0e0),
+                    color: const Color(0xFFe0e0e0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
-                Text('Penting !!',
+                const Text('Penting !!',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.blue)),
                 SingleChildScrollView(
@@ -48,24 +48,24 @@ Future bottomSheetSelesaiPemeriksaan() {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: AnimationConfiguration.toStaggeredList(
-                        duration: Duration(milliseconds: 275),
+                        duration: const Duration(milliseconds: 275),
                         childAnimationBuilder: (widget) => SlideAnimation(
                           child: FadeInAnimation(
                             child: widget,
                           ),
                         ),
                         children: <Widget>[
-                          SizedBox(
+                          const SizedBox(
                             height: 25,
                           ),
-                          Text('Pasien Selesai Pemeriksaan'),
-                          Text('Lanjut Ke kasir untuk Pembayaran'),
+                          const Text('Pasien Selesai Pemeriksaan'),
+                          const Text('Lanjut Ke kasir untuk Pembayaran'),
                         ],
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Row(
@@ -83,7 +83,7 @@ Future bottomSheetSelesaiPemeriksaan() {
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -97,7 +97,7 @@ Future bottomSheetSelesaiPemeriksaan() {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     InkWell(
@@ -116,7 +116,7 @@ Future bottomSheetSelesaiPemeriksaan() {
                           //   ),
                           // ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -130,7 +130,7 @@ Future bottomSheetSelesaiPemeriksaan() {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],

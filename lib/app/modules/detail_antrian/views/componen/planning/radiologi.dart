@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PlanningRadiologi extends StatefulWidget {
-  PlanningRadiologi({super.key});
+  const PlanningRadiologi({super.key});
 
   @override
   State<PlanningRadiologi> createState() => _PlanningRadiologiState();
@@ -11,34 +11,34 @@ class _PlanningRadiologiState extends State<PlanningRadiologi> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
-      padding: EdgeInsets.only(right: 10, left: 10, bottom: 10),
+      margin: const EdgeInsets.only(right: 10, left: 10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0x6cc7d1db)),
+        border: Border.all(color: const Color(0x6cc7d1db)),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFe0e0e0).withOpacity(0.5),
+            color: const Color(0xFFe0e0e0).withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: Offset(2, 1),
+            offset: const Offset(2, 1),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 210,
                 child: Text("Radiologi",
                     style: TextStyle(
@@ -46,7 +46,7 @@ class _PlanningRadiologiState extends State<PlanningRadiologi> {
                       fontSize: 15,
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
@@ -63,7 +63,7 @@ class _PlanningRadiologiState extends State<PlanningRadiologi> {
                   //   ),
                   // ],
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Text("Print",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 13),)

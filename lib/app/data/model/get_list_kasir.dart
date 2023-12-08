@@ -118,9 +118,9 @@ class Harga {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['nama_bagian'] = this.namaBagian;
-    data['total'] = this.total;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['nama_bagian'] = namaBagian;
+    data['total'] = total;
     return data;
   }
 }

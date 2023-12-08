@@ -2,20 +2,17 @@ import 'package:a_dokter_register/app/modules/pembayaran_tunai/views/widgets/car
 import 'package:a_dokter_register/app/modules/pembayaran_tunai/views/widgets/data_billing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../data/componen/fetch_data.dart';
-import '../../../data/componen/publics.dart';
-import '../../../data/model/profile_pasien/get_tunai.dart';
 import '../../../routes/app_pages.dart';
 import '../../loading_summer/loading_screen_animed.dart';
 import '../controllers/pembayaran_tunai_controller.dart';
 
 class PembayaranTunaiView extends StatefulWidget {
-  PembayaranTunaiView();
+  const PembayaranTunaiView({super.key});
 
   @override
   _PembayaranTunaiViewState createState() => _PembayaranTunaiViewState();
@@ -24,7 +21,7 @@ class PembayaranTunaiView extends StatefulWidget {
 class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
   // this enable our app to able to pull down
   late final RefreshController _refreshController; // the refresh controller
-  var _scaffoldKey =
+  final _scaffoldKey =
       GlobalKey<ScaffoldState>(); // this is our key to the scaffold widget
   @override
   void initState() {
@@ -47,18 +44,18 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Color(0xFFe0e0e0).withOpacity(0.5),
+                  color: const Color(0xFFe0e0e0).withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 10,
-                  offset: Offset(2, 1),
+                  offset: const Offset(2, 1),
                 ),
               ],
             ),
             height: 75,
-            margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+            margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
             child: Row(
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   width: 230,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -75,8 +72,8 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
                   child: InkWell(
                     onTap: () async {
                       Get.defaultDialog(
-                        backgroundColor: Color(0xe0e0e0),
-                        content: Loading(),
+                        backgroundColor: const Color(0x00e0e0e0),
+                        content: const Loading(),
                         title: '',
                         barrierDismissible: false,
                       );
@@ -98,10 +95,10 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
                       }
                     },
                     child: Container(
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                           right: 15, left: 15, top: 10, bottom: 10),
                       alignment: Alignment.center,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
                         boxShadow: <BoxShadow>[
                           BoxShadow(
@@ -117,7 +114,7 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
                           colors: [Color(0xff4babe7), Color(0xff4babe7)],
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         "Bayar",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -134,21 +131,21 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
           body: SmartRefresher(
             controller: _refreshController,
             enablePullDown: true,
-            header: WaterDropHeader(),
+            header: const WaterDropHeader(),
             onLoading: _onLoading,
             onRefresh: _onRefresh,
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
                   automaticallyImplyLeading: false,
-                  systemOverlayStyle: SystemUiOverlayStyle(
+                  systemOverlayStyle: const SystemUiOverlayStyle(
                     statusBarColor: Colors.white, // <-- SEE HERE
                     statusBarIconBrightness:
                         Brightness.dark, //<-- For Android SEE HERE (dark icons)
                     statusBarBrightness:
                         Brightness.light, //<-- For iOS SEE HERE (dark icons)
                   ),
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       bottom: Radius.circular(10),
                     ),
@@ -160,13 +157,13 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
                     onPressed: () {
                       Get.back();
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_circle_left_rounded,
                       size: 40,
                     ),
-                    color: Color.fromARGB(255, 192, 192, 192),
+                    color: const Color.fromARGB(255, 192, 192, 192),
                   ),
-                  title: Text("Pembayaran Tunai",
+                  title: const Text("Pembayaran Tunai",
                       style: TextStyle(color: Colors.black)),
                   bottom: AppBar(
                     toolbarHeight: 0,
@@ -178,15 +175,15 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
                 SliverList(
                   delegate: SliverChildListDelegate(
                     [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      CardKaryawan(),
-                      SizedBox(
+                      const CardKaryawan(),
+                      const SizedBox(
                         height: 10,
                       ),
-                      Databilling(),
-                      SizedBox(
+                      const Databilling(),
+                      const SizedBox(
                         height: 10,
                       ),
                     ],
@@ -208,7 +205,7 @@ class _PembayaranTunaiViewState extends State<PembayaranTunaiView> {
   _onRefresh() {
     setState(() {
 // so whatever you want to refresh it must be inside the setState
-      PembayaranTunaiView(); // if you only want to refresh the list you can place this, so the two can be inside setState
+      const PembayaranTunaiView(); // if you only want to refresh the list you can place this, so the two can be inside setState
       _refreshController
           .refreshCompleted(); // request complete,the header will enter complete state,
 // resetFooterState : it will set the footer state from noData to idle
