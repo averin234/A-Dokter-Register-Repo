@@ -1,4 +1,5 @@
 import 'package:a_dokter_register/app/data/componen/fetch_data.dart';
+import 'package:a_dokter_register/app/data/componen/publics.dart';
 import 'package:a_dokter_register/app/modules/login/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -523,7 +524,8 @@ Widget buildSheet() {
           height: 20,
         ),
         InkWell(
-          onTap: () => Get.toNamed(Routes.REGISTER_DOKTER),
+          onTap: () async =>
+              await Publics.launch("https://a-dokter.id/register_dokter.php"),
           child: Container(
             width: 305,
             decoration: BoxDecoration(
@@ -570,7 +572,8 @@ Widget buildSheet() {
           height: 10,
         ),
         InkWell(
-          onTap: () => Get.toNamed(Routes.REGISTER_DOSEN),
+          onTap: () async =>
+              await Publics.launch("https://a-dokter.id/register_dosen.php"),
           child: Container(
             width: 305,
             decoration: BoxDecoration(
@@ -617,7 +620,8 @@ Widget buildSheet() {
           height: 10,
         ),
         InkWell(
-          onTap: () => Get.toNamed(Routes.REGISTER_MAHASISWA),
+          onTap: () async => await Publics.launch(
+              "https://a-dokter.id/register_mahasiswa.php"),
           child: Container(
             width: 305,
             decoration: BoxDecoration(
